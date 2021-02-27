@@ -52,6 +52,7 @@
     <Compile Include="EdgeworkSelectionForm.Designer.cs">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
