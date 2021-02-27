@@ -35,6 +35,16 @@ namespace KTANE_Solver
             }
         }
 
+        //tells if the port is visible on the
+        //bomb
+        public bool Visible
+        {
+            get
+            {
+                return num > 0;
+            }
+        }
+
         //===============PROPERTIES===============
         /// <summary>
         /// Creates the port
@@ -48,13 +58,6 @@ namespace KTANE_Solver
         }
 
         //===============METHODS===============
-        /// <summary>
-        /// Tells if this port is on the bomb
-        /// </summary>
-        /// <returns>true if the number of this port is greater than 0</returns>
-        public bool IsVisible()
-        {
-            return num < 0;
-        }
+
     }
 }

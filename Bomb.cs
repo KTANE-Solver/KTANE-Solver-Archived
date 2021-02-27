@@ -63,11 +63,11 @@ namespace KTANE_Solver
         //indicator nsa
         private Indicator nsa;
 
-        //indicator sig
-        private Indicator sig;
-
         //indicator snd
         private Indicator snd;
+
+        //indicator sig
+        private Indicator sig;
 
         //indicator trn
         private Indicator trn;
