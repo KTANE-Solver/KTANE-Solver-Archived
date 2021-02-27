@@ -9,7 +9,7 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 2/27/21
     //Purpose: Represnts a port
-    class Port
+    public class Port
     {
         //===============FIELDS===============
         //the name of the port
