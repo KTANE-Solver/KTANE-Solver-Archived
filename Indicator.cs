@@ -48,6 +48,35 @@ namespace KTANE_Solver
             }
         }
 
+        //Tells if this indicator can actually appear on the bomb
+        public bool ValidIndicator
+        {
+            get
+            {
+                return !(!visible && lit);
+            }
+        }
+
+        //tells if an indicator is visible and not lit
+        public bool VisibleNotLit
+        {
+
+            get
+            { 
+                return visible && !lit;
+            }
+        }
+
+        //tells if an indicator is visible and  lit
+        public bool VisibleAndLit
+        {
+            get
+            {
+                return visible && lit;
+            }
+        }
+            
+
 
         //===============CONSTRUCTOR===============
         /// <summary>
@@ -73,14 +102,5 @@ namespace KTANE_Solver
         }
 
         //===============NETHODS===============
-        /// <summary>
-        /// Tells if there is an unlit indicator
-        /// </summary>
-        /// <returns>true if the indicator is visble and unlit</returns>
-        public bool IsVisibleAndNotLit()
-        {
-            return visible && !lit;
-        }
-
     }
 }

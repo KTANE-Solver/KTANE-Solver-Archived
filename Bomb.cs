@@ -113,6 +113,160 @@ namespace KTANE_Solver
             }
         }
 
+        //tells if this serial number
+        public bool ValidSerialNumber
+        {
+            //the serial number must have at least one number
+            //the serial number must have at least on letter
+            //the serial number's last character must be a number
+
+            get
+            {
+                bool lastCharIsNum = false;
+                bool hasLetter = false;
+
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    if (!hasLetter && serialNumber[i] >= 65 && serialNumber[i] <= 90)
+                    {
+                        hasLetter = true;
+                    }
+
+                    if (i == serialNumber.Length - 1 && serialNumber[i] >= 48 && serialNumber[i] <= 57)
+                    {
+                        lastCharIsNum = true;
+                    }
+                }
+
+                return lastCharIsNum && hasLetter;
+            }
+        }
+
+        //tells the first digit in the serial number
+        public int FirstDigit
+        {
+            get
+            {
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    if (serialNumber[i] >= 48 && serialNumber[i] <= 57)
+                    {
+                        return Int32.Parse("" + serialNumber[i]);
+                    }
+                }
+
+                //should never happen
+                return -1;
+            }
+        }
+
+        //tells the last digit in the serial number
+        public int LastDigit
+        {
+            get
+            {
+                return Int32.Parse("" + serialNumber[serialNumber.Length - 1]);
+            }
+        }
+
+        //tells the last letter in the serialNumber
+        public char LastLetter
+        {
+            get
+            { 
+                for(int i = serialNumber.Length - 1; i > -1; i--)
+                {
+                    if (serialNumber[i] >= 65 && serialNumber[i] <= 90)
+                    {
+                        return serialNumber[i];
+                    }
+                }
+
+                //this should never happen
+                return serialNumber[0];
+            }
+        }
+
+        //tells how many digits are in the serial number
+        public int DigitNum
+        {
+            get
+            {
+                int num = 0;
+
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    if (serialNumber[i] >= 48 && serialNumber[i] <= 57)
+                    {
+                        num++;
+                    }
+                }
+
+                return num;
+            }
+        }
+
+        //tells how many digits are in the serial number
+        public int LetterNum
+        {
+            get
+            {
+                int num = 0;
+
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    if (serialNumber[i] >= 65 && serialNumber[i] <= 90)
+                    {
+                        num++;
+                    }
+                }
+
+                return num;
+            }
+        }
+
+        //tells how the sum of digits in the serial number
+        public int DigitSum
+        {
+            get
+            {
+                int sum = 0;
+
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    if (serialNumber[i] >= 48 && serialNumber[i] <= 57)
+                    {
+                        sum += Int32.Parse("" + serialNumber[i]);
+                    }
+                }
+
+                return sum;
+            }
+        }
+
+        //tells if the serial number has a vowel
+        public bool HasVowel
+        {
+            get
+            {
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    switch (serialNumber[i])
+                    {
+                        case 'A':
+                        case 'E':
+                        case 'I':
+                        case 'O':
+                        case 'U':
+                            return true;
+
+                    }
+                }
+
+                return false;
+            }
+        }
+
         public int Battery
         {
             get
@@ -240,6 +394,147 @@ namespace KTANE_Solver
             }
         }
 
+        //tells how many lit inidcators are on the bomb
+        public int IndicatorLitNum
+        {
+            get
+            {
+                int num = 0;
+
+                if (bob.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (car.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (clr.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (frk.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (frq.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (ind.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (msa.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (nsa.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (sig.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (snd.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                if (trn.VisibleAndLit)
+                {
+                    num++;
+                }
+
+                return num;
+            }
+        }
+
+        //tells how many unlit inidcators are on the bomb
+        public int IndicatorUnlitNum
+        {
+            get
+            {
+                int num = 0;
+
+                if (bob.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (car.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (clr.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (frk.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (frq.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (ind.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (msa.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (nsa.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (sig.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (snd.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                if (trn.VisibleNotLit)
+                {
+                    num++;
+                }
+
+                return num;
+            }
+        }
+
+        //the number of indicaotrs on the bomb
+        public int IndicatorNum
+        {
+            get
+            { 
+                return IndicatorUnlitNum + IndicatorLitNum;
+            }
+        }
+
         public bool EmptyPortPlate
         {
             get
@@ -296,6 +591,56 @@ namespace KTANE_Solver
             }
         }
 
+        //the number of unique ports on the bomb
+        public int UniquePortNum
+        {
+            get
+            {
+                int num = 0;
+
+                if (dvid.Num > 0)
+                    num++;
+
+                if (parallel.Num > 0)
+                    num++;
+
+                if (ps.Num > 0)
+                    num++;
+
+                if (rj.Num > 0)
+                    num++;
+
+                if (serial.Num > 0)
+                    num++;
+
+                if (stereo.Num > 0)
+                    num++;
+
+                return num;
+            }
+        }
+
+        //tells the total amount of ports on the bomb
+        public int PortNum
+        {
+            get
+            {
+                int num = dvid.Num;
+
+                num += parallel.Num;
+
+                num += ps.Num;
+
+                num += rj.Num;
+
+                num += serial.Num;
+
+                num += stereo.Num;
+
+                return num;
+            }
+        }
+
         public int Strike
         {
             get
@@ -335,7 +680,7 @@ namespace KTANE_Solver
                     Port ps, Port rj, Port serial, Port stereo)
         {
             this.day = day;
-            this.serialNumber = serialNumber;
+            this.serialNumber = serialNumber.ToUpper();
             this.battery = battery;
             this.batteryHolder = batteryHolder;
             this.bob = bob;
@@ -379,6 +724,27 @@ namespace KTANE_Solver
         public void ResetStrike()
         {
             strike = 0;
+        }
+
+        /// <summary>
+        /// Tells how many times a desired character 
+        /// is found in the serial number
+        /// </summary>
+        /// <param name="character">the character that wants to be found</param>
+        /// <returns>the number of times the character was found</returns>
+        public int CharacterCount(char character)
+        {
+            int num = 0;
+
+            for (int i = 0; i < serialNumber.Length; i++)
+            {
+                if (serialNumber[i] == character)
+                {
+                    num++;
+                }
+            }
+
+            return num;
         }
     }
 }

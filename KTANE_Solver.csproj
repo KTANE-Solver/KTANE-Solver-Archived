@@ -47,6 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bomb.cs" />
+    <Compile Include="EdgeworkConfirmationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EdgeworkConfirmationForm.Designer.cs">
+      <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EdgeworkInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EdgeworkInputForm.Designer.cs">
+      <DependentUpon>EdgeworkInputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EdgeworkSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +69,9 @@
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EdgeworkInputForm.resx">
+      <DependentUpon>EdgeworkInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkSelectionForm.resx">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
     </EmbeddedResource>

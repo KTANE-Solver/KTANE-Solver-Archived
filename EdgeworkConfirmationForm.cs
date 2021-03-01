@@ -12,9 +12,17 @@ namespace KTANE_Solver
 {
     public partial class EdgeworkConfirmationForm : Form
     {
-        public EdgeworkConfirmationForm()
+        /// <summary>
+        /// Tells the user what the edgework is
+        /// </summary>
+        /// <param name="bomb">the bomb that was created</param>
+        public EdgeworkConfirmationForm(Bomb bomb)
         {
+            
             InitializeComponent();
         }
+
+
+
     }
 }

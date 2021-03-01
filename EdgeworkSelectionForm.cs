@@ -63,9 +63,8 @@ namespace KTANE_Solver
             StreamReader reader = new StreamReader("../../Edgework.txt");
 
             //the line the reader is reading
-            int lineReaing = 1;
 
-            for (; lineReaing <= 22; lineReaing++)
+            for (int lineReaing = 1; lineReaing <= 22; lineReaing++)
             {
                 String currentLine = reader.ReadLine();
 
@@ -73,22 +72,39 @@ namespace KTANE_Solver
                 {
                     //day of the week
                     case 1:
-                        errorReached = Enum.TryParse(currentLine, out day);
+                        errorReached = !Enum.TryParse(currentLine, out day);
+
+                        if (errorReached)
+                        {
+                            Console.WriteLine("Can't read day. Read " + currentLine);
+                        }
                         break;
 
                     //serial number
                     case 2:
-                        serialNumber = currentLine;
+                        serialNumber = currentLine.ToUpper();
                         break;
 
                     //batteries
                     case 3:
-                        errorReached = Int32.TryParse(currentLine, out battery);
+                        errorReached = !Int32.TryParse(currentLine, out battery);
+
+                        if (errorReached)
+                        {
+                            Console.WriteLine("Can't read battery. Read " + currentLine);
+                        }
+
                         break;
 
                     //battery holder
                     case 4:
-                        errorReached = Int32.TryParse(currentLine, out batteryHolder);
+                        errorReached = !Int32.TryParse(currentLine, out batteryHolder);
+
+                        if (errorReached)
+                        {
+                            Console.WriteLine("Can't read batteryHolder");
+                        }
+
                         break;
 
                     //indicator bob
@@ -109,6 +125,10 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+
+
+                            Console.WriteLine("Can't read bob");
+
                         }
 
                         break;
@@ -128,6 +148,8 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read car");
+
                         }
                         break;
 
@@ -147,6 +169,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read clr");
                         }
 
                         break;
@@ -167,6 +190,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read frk");
                         }
 
                         break;
@@ -186,6 +210,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read frq");
                         }
 
                         break;
@@ -206,6 +231,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read ind");
                         }
 
                         break;
@@ -226,6 +252,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read msa");
                         }
 
                         break;
@@ -246,6 +273,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read nsa");
                         }
 
                         break;
@@ -266,6 +294,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read sig");
                         }
 
                         break;
@@ -286,6 +315,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read snd");
                         }
 
 
@@ -307,6 +337,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
+                            Console.WriteLine("Can't read trn");
                         }
 
 
@@ -320,8 +351,9 @@ namespace KTANE_Solver
                         }
 
                         catch
-                        { 
+                        {
                             errorReached = true;
+                            Console.WriteLine("Can't read empty port plate");
                         }
 
                         break;
@@ -330,7 +362,7 @@ namespace KTANE_Solver
                     case 17:
                         int portNum;
 
-                        errorReached = Int32.TryParse(currentLine, out portNum);
+                        errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         dvid = new Port("DVI-D", portNum);
 
@@ -338,37 +370,67 @@ namespace KTANE_Solver
 
                     //Port parallel
                     case 18:
-                        errorReached = Int32.TryParse(currentLine, out portNum);
+                        errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         parallel = new Port("Parallel", portNum);
+
+                        if (errorReached)
+                        { 
+                            Console.WriteLine("Can't read parallel port");
+                        }
+
                         break;
 
-                    ////Port ps/2
+                    //Port ps/2
                     case 19:
-                        errorReached = Int32.TryParse(currentLine, out portNum);
+                        errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         ps = new Port("PS/2", portNum);
+
+                        if (errorReached)
+                        {
+                            Console.WriteLine("Can't read ps/2 port");
+                        }
+
                         break;
                         
                     //Port rj-45
                     case 20:
-                        errorReached = Int32.TryParse(currentLine, out portNum);
+                        errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         rj = new Port("RJ-45", portNum);
+
+                        if (errorReached)
+                        {
+                            Console.WriteLine("Can't read rj-45 port. Read " + currentLine);
+                        }
+
                         break;
 
                     //Port serial
                     case 21:
-                        errorReached = Int32.TryParse(currentLine, out portNum);
+                        errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         serial = new Port("Serial", portNum);
+
+                        if (errorReached)
+                        {
+                            Console.WriteLine("Can't read serial port");
+                        }
+
                         break;
 
                     //Port stereo
                     case 22:
-                        errorReached = Int32.TryParse(currentLine, out portNum);
+                        errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         stereo = new Port("Stero RCA", portNum);
+
+                        if (errorReached)
+                        {
+                            Console.WriteLine("Can't read stereo port");
+                        }
+
                         break;
 
                 }
@@ -377,13 +439,118 @@ namespace KTANE_Solver
                 {
                     break;
                 }
-
-                lineReaing++;
             }
 
-            //make sure the number of batteries is at least the same number of holders or at most twice
+            reader.Close();
 
-            //make sure each indicator is valid
+            //no point in seeing if there is an error if there already is an error
+            if (!errorReached)
+            {
+
+                //make sure the serial number is valid
+
+                //the serial number must have at least one number
+                //the serial number must have at least on letter
+                //the serial number's last character must be a number
+                bool lastCharIsNum = false;
+                bool hasLetter = false;
+
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    if (!hasLetter && serialNumber[i] >= 65 && serialNumber[i] <= 90)
+                    {
+                        hasLetter = true;
+                    }
+
+                    if (i == serialNumber.Length - 1 && serialNumber[i] >= 48 && serialNumber[i] <= 57)
+                    {
+                        lastCharIsNum = true;
+                    }
+                }
+
+                if (!(lastCharIsNum && hasLetter))
+                {
+                    errorReached = true;
+                    Console.WriteLine("Not a valid serial number");
+
+                }
+
+                //make sure the number of batteries is at least the same number of holders or at most twice
+                if (!errorReached && battery < batteryHolder || battery * 2 > batteryHolder)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid batteries and battery holders");
+                }
+
+                //make sure each indicator is valid
+                if (!errorReached && !bob.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid bob");
+                }
+
+                if (!errorReached && !car.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid car");
+                }
+
+                if (!errorReached && !clr.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid clr");
+                }
+
+                if (!errorReached && !frk.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid frk");
+                }
+
+                if (!errorReached && !frq.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid frq");
+                }
+
+                if (!errorReached && !ind.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid ind");
+                }
+
+                if (!errorReached && !msa.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid msa");
+                }
+
+                if (!errorReached && !nsa.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid nsa");
+                }
+
+                if (!errorReached && !sig.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid sig");
+                }
+
+                if (!errorReached && !snd.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid snd");
+                }
+
+                if (!errorReached && !trn.ValidIndicator)
+                {
+                    errorReached = true;
+                    Console.WriteLine("Invalid trn");
+                }
+            }
+            
+            
 
             //if there is an error tell the user that and send them to the manually
             if (errorReached)
@@ -393,15 +560,21 @@ namespace KTANE_Solver
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                /**GO TO EDGEWORK INPUT FORM**/
+                EdgeworkInputForm edgeworkInputForm = new EdgeworkInputForm();
+                this.Hide();
+                edgeworkInputForm.Show();
             }
 
             //otherwise go to the edgework confirmation form
             else
             {
-                Bomb bomb = new Bomb(day, serialNumber, battery, batteryHolder, bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
+                Bomb bomb = new Bomb(day, serialNumber, battery, batteryHolder, 
+                                    bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, 
+                                    emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
 
-                /**GO TO EDGEWORK CONFIRMAION FORM**/
+                EdgeworkConfirmationForm edgeForm = new EdgeworkConfirmationForm(bomb);
+                this.Hide();
+                edgeForm.Show();
             }
         }
 
@@ -410,7 +583,9 @@ namespace KTANE_Solver
         /// </summary>
         private void manualButton_Click(object sender, EventArgs e)
         {
-            /**GO TO EDGEWORK INPUT FORM**/
+            EdgeworkInputForm edgeworkInputForm = new EdgeworkInputForm();
+            this.Hide();
+            edgeworkInputForm.Show();
         }
 
         /// <summary>
