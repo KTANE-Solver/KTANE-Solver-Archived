@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dayOfWeekLabel = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // dayOfWeekLabel
+            // 
+            this.dayOfWeekLabel.AutoSize = true;
+            this.dayOfWeekLabel.Location = new System.Drawing.Point(117, 41);
+            this.dayOfWeekLabel.Name = "dayOfWeekLabel";
+            this.dayOfWeekLabel.Size = new System.Drawing.Size(89, 17);
+            this.dayOfWeekLabel.TabIndex = 0;
+            this.dayOfWeekLabel.Text = "Day of Week";
+            // 
+            // EdgeworkConfirmationForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(366, 769);
+            this.Controls.Add(this.dayOfWeekLabel);
+            this.Name = "EdgeworkConfirmationForm";
             this.Text = "EdgeworkConfirmationForm";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label dayOfWeekLabel;
     }
 }

@@ -72,7 +72,7 @@
             this.Controls.Add(this.automaticButton);
             this.Controls.Add(this.promptLabel);
             this.Name = "EdgeworkSelectionForm";
-            this.Text = "KTANE Bot by Hawker";
+            this.Text = "EdgeworkSelectionForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdgeworkSelectionForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

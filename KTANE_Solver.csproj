@@ -69,6 +69,9 @@
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EdgeworkConfirmationForm.resx">
+      <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkInputForm.resx">
       <DependentUpon>EdgeworkInputForm.cs</DependentUpon>
     </EmbeddedResource>

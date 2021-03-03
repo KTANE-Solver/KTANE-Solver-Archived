@@ -19,6 +19,8 @@ namespace KTANE_Solver
             
     public partial class EdgeworkSelectionForm : Form
     {
+        EdgeworkConfirmationForm confirmationForm;
+        EdgeworkInputForm inputForm;
         public EdgeworkSelectionForm()
         {
             InitializeComponent();
@@ -560,9 +562,9 @@ namespace KTANE_Solver
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                EdgeworkInputForm edgeworkInputForm = new EdgeworkInputForm();
+                inputForm = new EdgeworkInputForm();
                 this.Hide();
-                edgeworkInputForm.Show();
+                inputForm.Show();
             }
 
             //otherwise go to the edgework confirmation form
@@ -572,9 +574,9 @@ namespace KTANE_Solver
                                     bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, 
                                     emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
 
-                EdgeworkConfirmationForm edgeForm = new EdgeworkConfirmationForm(bomb);
+                confirmationForm = new EdgeworkConfirmationForm(bomb);
                 this.Hide();
-                edgeForm.Show();
+                confirmationForm.Show();
             }
         }
 
@@ -583,9 +585,9 @@ namespace KTANE_Solver
         /// </summary>
         private void manualButton_Click(object sender, EventArgs e)
         {
-            EdgeworkInputForm edgeworkInputForm = new EdgeworkInputForm();
+            inputForm = new EdgeworkInputForm();
             this.Hide();
-            edgeworkInputForm.Show();
+            inputForm.Show();
         }
 
         /// <summary>
@@ -593,17 +595,24 @@ namespace KTANE_Solver
         /// </summary>
         private void EdgeworkSelectionForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            String message = "Are you sure you want to quit the program?";
-            String caption = "Quit Program";
-
-            DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //if the user clicks no, don't close the program
-
-            if (result == DialogResult.No)
+            if (this.Visible)
             {
-                e.Cancel = true;
+                String message = "Are you sure you want to quit the program?";
+                String caption = "Quit Program";
+
+                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                //if the user clicks no, don't close the program
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
+
+            //If this form is already hidden, just close it
+
+
+
         }
     }
 }
