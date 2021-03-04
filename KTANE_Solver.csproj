@@ -66,6 +66,12 @@
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Indicator.cs" />
+    <Compile Include="ModuleSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleSelectionForm.Designer.cs">
+      <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

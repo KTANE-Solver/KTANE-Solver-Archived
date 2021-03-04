@@ -32,6 +32,13 @@ namespace KTANE_Solver
             UpdateForm();
         }
 
+        public EdgeworkInputForm(EdgeworkConfirmationForm confirmationForm)
+        {
+            InitializeComponent();
+            UpdateForm();
+            this.confirmationForm = confirmationForm;
+        }
+
         public void UpdateForm()
         {
             SetUpDayOfWeekComboBox();
@@ -499,7 +506,18 @@ namespace KTANE_Solver
             bomb = new Bomb(day, serialNumber, battery, batteryHolder, bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
 
             //going onto the confirmation page
-            confirmationForm = new EdgeworkConfirmationForm(bomb, this);
+
+            if (confirmationForm == null)
+            {
+                confirmationForm = new EdgeworkConfirmationForm(bomb, this);
+            }
+
+            else
+            {
+                confirmationForm.UpdateForm(bomb, this);
+            }
+
+
             this.Hide();
             confirmationForm.Show();
 
