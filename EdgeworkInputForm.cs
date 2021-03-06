@@ -26,12 +26,23 @@ namespace KTANE_Solver
         //PROPERTIES
 
         //CONSTRUCTOR
+        /// <summary>
+        /// Creates an instance of the
+        /// form that will be used to
+        /// input edgework
+        /// </summary>
         public EdgeworkInputForm()
         {
             InitializeComponent();
             UpdateForm();
         }
 
+        /// <summary>
+        /// Creates an instance of the
+        /// form that will be used to
+        /// input edgework
+        /// </summary>
+        /// <param name="confirmationForm">the confirm form the user will go to</param>
         public EdgeworkInputForm(EdgeworkConfirmationForm confirmationForm)
         {
             InitializeComponent();
@@ -39,6 +50,10 @@ namespace KTANE_Solver
             this.confirmationForm = confirmationForm;
         }
 
+        /// <summary>
+        /// Sets up the form so
+        /// it looks good as new
+        /// </summary>
         public void UpdateForm()
         {
             SetUpDayOfWeekComboBox();
@@ -67,6 +82,10 @@ namespace KTANE_Solver
             this.dayOfWeekComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
  
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void bobVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!bobVisibleCheckBox.Checked)
@@ -75,6 +94,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void bobLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (bobLitCheckBox.Checked)
@@ -83,6 +106,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void carVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!carVisibleCheckBox.Checked)
@@ -91,6 +118,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void carLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (carLitCheckBox.Checked)
@@ -99,6 +130,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void clrVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!clrVisibleCheckBox.Checked)
@@ -107,6 +142,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void clrLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (clrLitCheckBox.Checked)
@@ -115,6 +154,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void frkVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!frkVisibleCheckBox.Checked)
@@ -123,6 +166,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void frkLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (frkLitCheckBox.Checked)
@@ -131,6 +178,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void frqVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!frqVisibleCheckBox.Checked)
@@ -139,6 +190,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void frqLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (frqLitCheckBox.Checked)
@@ -147,6 +202,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void indVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!indVisibleCheckBox.Checked)
@@ -155,6 +214,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void indLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (indLitCheckBox.Checked)
@@ -163,6 +226,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void msaVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!msaVisibleCheckBox.Checked)
@@ -171,6 +238,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void msaLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (msaLitCheckBox.Checked)
@@ -179,6 +250,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void nsaVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!nsaVisibleCheckBox.Checked)
@@ -187,6 +262,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void nsaLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (nsaLitCheckBox.Checked)
@@ -195,6 +274,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void sigVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!sigVisibleCheckBox.Checked)
@@ -203,6 +286,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void sigLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (sigLitCheckBox.Checked)
@@ -211,6 +298,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void sndVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!sndVisibleCheckBox.Checked)
@@ -219,6 +310,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void sndLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (sndLitCheckBox.Checked)
@@ -227,6 +322,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void trnVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (!trnVisibleCheckBox.Checked)
@@ -235,6 +334,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Changing the checkbox so an invalid indicator
+        /// can't be produed
+        /// </summary>
         private void trnLitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (trnLitCheckBox.Checked)
@@ -243,6 +346,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Confirms that all the edgework is valid
+        /// and moves on to the confirmation form
+        /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
             Bomb.Days day;
@@ -587,48 +694,91 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void batteryTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(batteryTextBox, "# of batteries");
 
         }
 
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void batteryHolderTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(batteryHolderTextBox, "# of battery holders");
         }
 
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void dvidTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(dvidTextBox, "# of DVI-D ports");
         }
 
-        
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void parallelTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(parallelTextBox, "# of parallel ports");
         }
 
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void psTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(psTextBox, "# of PS/2 ports");
         }
 
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void rjTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(rjTextBox, "# of RJ-45 ports");
         }
 
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void serialTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(serialTextBox, "# of serial ports");
         }
 
+        /// <summary>
+        /// Deletes to prompt text
+        /// and make the textbox
+        /// text black
+        /// </summary>
         private void stereoTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(stereoTextBox, "# of stereo RCA ports");
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void batteryTextBox_Leave(object sender, EventArgs e)
         {
             if (batteryTextBox.Text == "")
@@ -638,6 +788,10 @@ namespace KTANE_Solver
 
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void batteryHolderTextBox_Leave(object sender, EventArgs e)
         {
             if (batteryHolderTextBox.Text == "")
@@ -646,6 +800,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void dvidTextBox_Leave(object sender, EventArgs e)
         {
             if (dvidTextBox.Text == "")
@@ -654,6 +812,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void parallelTextBox_Leave(object sender, EventArgs e)
         {
             if (parallelTextBox.Text == "")
@@ -662,6 +824,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void psTextBox_Leave(object sender, EventArgs e)
         {
             if (psTextBox.Text == "")
@@ -670,6 +836,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void rjTextBox_Leave(object sender, EventArgs e)
         {
             if (rjTextBox.Text == "")
@@ -678,6 +848,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void serialTextBox_Leave(object sender, EventArgs e)
         {
             if (serialTextBox.Text == "")
@@ -686,6 +860,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Sets the prompt text
+        /// back up if the text box is blank
+        /// </summary>
         private void stereoTextBox_Leave(object sender, EventArgs e)
         {
             if (stereoTextBox.Text == "")

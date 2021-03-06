@@ -105,7 +105,7 @@ namespace KTANE_Solver
             }
         }
 
-        public String SeiralNumber
+        public String SerialNumber
         {
             get
             {
@@ -646,6 +646,11 @@ namespace KTANE_Solver
             get
             {
                 return strike;
+            }
+
+            set
+            {
+                strike = value;
             }
         }
         //===============CONSTRUCTORS===============

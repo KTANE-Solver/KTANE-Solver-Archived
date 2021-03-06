@@ -65,16 +65,47 @@
     <Compile Include="EdgeworkSelectionForm.Designer.cs">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IceCreamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IceCreamForm.Designer.cs">
+      <DependentUpon>IceCreamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Indicator.cs" />
+    <Compile Include="LogicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogicForm.Designer.cs">
+      <DependentUpon>LogicForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maze.cs" />
+    <Compile Include="MazeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MazeForm.Designer.cs">
+      <DependentUpon>MazeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuleSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuleSelectionForm.Designer.cs">
       <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MurderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MurderForm.Designer.cs">
+      <DependentUpon>MurderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SillySlotsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SillySlotsForm.Designer.cs">
+      <DependentUpon>SillySlotsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EdgeworkConfirmationForm.resx">
       <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +114,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkSelectionForm.resx">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MazeForm.resx">
+      <DependentUpon>MazeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuleSelectionForm.resx">
+      <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -38,18 +38,32 @@ namespace KTANE_Solver
 
         }
 
+        /// <summary>
+        /// Tells the user what the edgework is
+        /// </summary>
+        /// <param name="bomb">the bomb that was created</param>
+        /// <param name="inputForm">the form used to get to this form</param>
         public EdgeworkConfirmationForm(Bomb bomb, EdgeworkInputForm inputForm)
         {
             InitializeComponent();
             UpdateForm(bomb, inputForm);
         }
 
+        /// <summary>
+        /// Used to set the form so it looks good as new
+        /// </summary>
+        /// <param name="bomb">the bomb needed to show the edgework</param>
         public void UpdateForm(Bomb bomb)
         {
             this.bomb = bomb;
             SetUpLabels();
         }
 
+        /// <summary>
+        /// Used to set the form so it looks good as new
+        /// </summary>
+        /// <param name="bomb">the bomb needed to show the edgework</param>
+        /// <param name="inputForm">the form used to get to this form</param>
         public void UpdateForm(Bomb bomb, EdgeworkInputForm inputForm)
         {
             this.inputForm = inputForm;
@@ -57,10 +71,13 @@ namespace KTANE_Solver
             SetUpLabels();
         }
 
+        /// <summary>
+        /// Sets up that labels so they are evenly spaced on the form
+        /// </summary>
         public void SetUpLabels()
         {
             SetLabel(dayOfWeekLabel, "Day of the week: " +  bomb.Day, 1);
-            SetLabel(serialNumberLabel, "Serial Number: " + bomb.SeiralNumber, 2);
+            SetLabel(serialNumberLabel, "Serial Number: " + bomb.SerialNumber, 2);
             SetLabel(batteryLabel, "# of batteries: " + bomb.Battery, 3);
             SetLabel(batteryHolderLabel, "# battery holders:" + bomb.BatteryHolder, 4);
            
@@ -99,11 +116,23 @@ namespace KTANE_Solver
             SetPortLabel(stereoLabel, bomb.Stereo, 23);
         }
 
+        /// <summary>
+        /// Sets up the label for a port
+        /// </summary>
+        /// <param name="label">the label itself</param>
+        /// <param name="port">the port for the label</param>
+        /// <param name="index">where the label in terms of the rest of the labels</param>
         public void SetPortLabel(Label label, Port port, int index)
         {
             SetLabel(label, $"# of {port.Name} ports: {port.Num}", index);
         }
 
+        /// <summary>
+        /// Sets up the label for a indicator
+        /// </summary>
+        /// <param name="label">the label itself</param>
+        /// <param name="indicator">the indicator for the label</param>
+        /// <param name="index">where the label in temrs of the res of the labels</param>
         public void SetIndicatorLabel(Label label, Indicator indicator, int index)
         {
             String text;
@@ -126,16 +155,29 @@ namespace KTANE_Solver
             SetLabel(label, text, index);
         }
 
+        /// <summary>
+        /// Sets up the labels
+        /// </summary>
+        /// <param name="label">the label itself</param>
+        /// <param name="text">what the label will say</param>
+        /// <param name="index">where the label in temrs of the res of the labels</param>
         public void SetLabel(Label label, String text, int index)
         {
             label.Text = text;
 
+            //sets the label in the middle hoirzontally
             int positionX = (this.Width - label.Width) / 2;
+
+            //sets where the label is going to be vertically
             int positionY = index * 23;
+
 
             label.Location = new Point(positionX, positionY);
         }
 
+        /// <summary>
+        /// Asks if the player is sure they want to program. If they say yes, the entire program will be closed
+        /// </summary>
         private void EdgeworkConfirmationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.Visible)
@@ -159,6 +201,9 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Sends the user to the edgeworkInput form
+        /// </summary>
         private void backButton_Click(object sender, EventArgs e)
         {
             if (inputForm == null)
@@ -171,11 +216,19 @@ namespace KTANE_Solver
             inputForm.Show();
         }
 
+        /// <summary>
+        /// Sends the user to the module selction form
+        /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
             if (moduleSelectionForm == null)
             {
                 moduleSelectionForm = new ModuleSelectionForm(bomb, this, inputForm);
+            }
+
+            else
+            {
+                moduleSelectionForm.UpdateForm();
             }
 
             this.Hide();
