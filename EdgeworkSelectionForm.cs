@@ -478,10 +478,10 @@ namespace KTANE_Solver
                 }
 
                 //make sure the number of batteries is at least the same number of holders or at most twice
-                if (!errorReached && battery < batteryHolder || battery * 2 > batteryHolder)
+                if (!errorReached && battery < batteryHolder || battery > batteryHolder * 2)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid batteries and battery holders");
+                    Console.WriteLine($"Invalid batteries and battery holders. Battery Count: {battery}. Battery Holder Count: {batteryHolder}");
                 }
 
                 //make sure each indicator is valid

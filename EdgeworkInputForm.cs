@@ -58,7 +58,23 @@ namespace KTANE_Solver
         {
             SetUpDayOfWeekComboBox();
 
+            //reset checkBoxes
+            SetupCheckBoxes(bobVisibleCheckBox, bobLitCheckBox);
+            SetupCheckBoxes(carVisibleCheckBox, carLitCheckBox);
+            SetupCheckBoxes(clrVisibleCheckBox, clrLitCheckBox);
+            SetupCheckBoxes(indVisibleCheckBox, indLitCheckBox);
+            SetupCheckBoxes(frkVisibleCheckBox, frkLitCheckBox);
+            SetupCheckBoxes(frqVisibleCheckBox, frqLitCheckBox);
+            SetupCheckBoxes(msaVisibleCheckBox, msaLitCheckBox);
+            SetupCheckBoxes(nsaVisibleCheckBox, nsaLitCheckBox);
+            SetupCheckBoxes(sigVisibleCheckBox, sigLitCheckBox);
+            SetupCheckBoxes(sndVisibleCheckBox, sndLitCheckBox);
+            SetupCheckBoxes(trnVisibleCheckBox, trnLitCheckBox);
+
+            emptyPortPlateCheckBox.Checked = false;
+
             //setting promppt text for battery and port textboxes
+            serialNumberTextBox.Text = "";
             SetPromptText(batteryTextBox, "# of batteries");
             SetPromptText(batteryHolderTextBox, "# of battery holders");
             SetPromptText(dvidTextBox, "# of DVI-D ports");
@@ -67,6 +83,82 @@ namespace KTANE_Solver
             SetPromptText(rjTextBox, "# of RJ-45 ports");
             SetPromptText(serialTextBox, "# of serial ports");
             SetPromptText(stereoTextBox, "# of stereo RCA ports");
+
+            //setting the order of tab control
+            dayOfWeekComboBox.TabIndex = 0;
+            serialNumberTextBox.TabIndex = 1;
+            batteryTextBox.TabIndex = 2;
+            batteryHolderTextBox.TabIndex = 3;
+            dvidTextBox.TabIndex = 4;
+            parallelTextBox.TabIndex = 5;
+            psTextBox.TabIndex = 6;
+            rjTextBox.TabIndex = 7;
+            serialTextBox.TabIndex = 8;
+            stereoTextBox.TabIndex = 9;
+            submitButton.TabIndex = 10;
+
+
+            //labels shouldn't be in the tab order
+            dayOfWeekLabel.TabStop = false;
+            serialNumberLabel.TabStop = false;
+            batteryLabel.TabStop = false;
+            batteryHolderLabel.TabStop = false;
+
+            indicatorLabel.TabStop = false;
+            bobLabel.TabStop = false;
+            carLabel.TabStop = false;
+            clrLabel.TabStop = false;
+            frkLabel.TabStop = false;
+            frqLabel.TabStop = false;
+            indLabel.TabStop = false;
+            msaLabel.TabStop = false;
+            nsaLabel.TabStop = false;
+            sigLabel.TabStop = false;
+            trnLabel.TabStop = false;
+            
+            portLabel.TabStop = false;
+            dvidLabel.TabStop = false;
+            psLabel.TabStop = false;
+            rjLabel.TabStop = false;
+            serialLabel.TabStop = false;
+            stereoLabel.TabStop = false;
+
+            //checkbox shouldn't be in the tab order
+            bobVisibleCheckBox.TabStop = false;
+            bobLitCheckBox.TabStop = false;
+
+            carVisibleCheckBox.TabStop = false;
+            carLitCheckBox.TabStop = false;
+
+            clrVisibleCheckBox.TabStop = false;
+            clrLitCheckBox.TabStop = false;
+
+            frkVisibleCheckBox.TabStop = false;
+            frkLitCheckBox.TabStop = false;
+
+            frqVisibleCheckBox.TabStop = false;
+            frqLitCheckBox.TabStop = false;
+
+            indVisibleCheckBox.TabStop = false;
+            indLitCheckBox.TabStop = false;
+
+            msaVisibleCheckBox.TabStop = false;
+            msaLitCheckBox.TabStop = false;
+
+            nsaVisibleCheckBox.TabStop = false;
+            nsaLitCheckBox.TabStop = false;
+
+            sigVisibleCheckBox.TabStop = false;
+            sigLitCheckBox.TabStop = false;
+
+            sndVisibleCheckBox.TabStop = false;
+            sndLitCheckBox.TabStop = false;
+
+            trnVisibleCheckBox.TabStop = false;
+            trnLitCheckBox.TabStop = false;
+
+            emptyPortPlateCheckBox.TabStop = false;
+
         }
 
         //METHODS
@@ -80,6 +172,17 @@ namespace KTANE_Solver
             dayOfWeekComboBox.Text = "Sunday";
 
             this.dayOfWeekComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        /// <summary>
+        /// Sets the checkBoxes to unchecked
+        /// </summary>
+        /// <param name="visibleCheckBox">the checkBox that tells if an indicator is visible</param>
+        /// <param name="litCheckBox">the checkBox that tells if an indicator is lit</param>
+        private void SetupCheckBoxes(CheckBox visibleCheckBox, CheckBox litCheckBox)
+        {
+            visibleCheckBox.Checked = false;
+            litCheckBox.Checked = false;
         }
  
         /// <summary>
@@ -457,7 +560,7 @@ namespace KTANE_Solver
                 return;
             }
 
-            if (battery * 2 > batteryHolder)
+            if (battery > batteryHolder * 2)
             {
                 String text = "The number of batteries can't be greater than twice the number of battery holders";
 
@@ -551,7 +654,7 @@ namespace KTANE_Solver
 
             try
             {
-                psNum = Int32.Parse(serialTextBox.Text);
+                psNum = Int32.Parse(psTextBox.Text);
             }
             catch
             {
@@ -593,7 +696,7 @@ namespace KTANE_Solver
             //make sure parallel text box is valid
             try
             {
-                stereoNum = Int32.Parse(serialTextBox.Text);
+                stereoNum = Int32.Parse(stereoTextBox.Text);
             }
             catch
             {

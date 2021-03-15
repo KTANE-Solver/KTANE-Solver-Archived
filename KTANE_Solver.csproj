@@ -65,6 +65,7 @@
     <Compile Include="EdgeworkSelectionForm.Designer.cs">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IceCream.cs" />
     <Compile Include="IceCreamForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +73,7 @@
       <DependentUpon>IceCreamForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Indicator.cs" />
+    <Compile Include="Logic.cs" />
     <Compile Include="LogicForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkSelectionForm.resx">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IceCreamForm.resx">
+      <DependentUpon>IceCreamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm.resx">
+      <DependentUpon>LogicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MazeForm.resx">
       <DependentUpon>MazeForm.cs</DependentUpon>

@@ -57,9 +57,7 @@ namespace KTANE_Solver
             //sets up the module
             SetUpModule();
 
-            Console.WriteLine($"Player {playerRow},{playerColumn}");
-            Console.WriteLine($"Goal {goalRow},{goalColumn}");
-            Console.WriteLine($"Marker {markerRow},{markerColumn}");
+            
         }
         //==============METHODS==============
 
@@ -684,8 +682,15 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
+            Console.WriteLine("======================MAZE======================");
+
+            Console.WriteLine($"Player: ({playerRow},{playerColumn})\n");
+            Console.WriteLine($"Goal: ({goalRow},{goalColumn})\n");
+            Console.WriteLine($"Marker: ({markerRow},{markerColumn})\n");
+
             //if the player finds the goal
-            if(MoveNorth() || MoveEast() || MoveSouth() || MoveWest())
+
+            if (MoveNorth() || MoveEast() || MoveSouth() || MoveWest())
             {
                 //simplifly the directions and show them
                 directionList = SimplifyDirections();
@@ -785,10 +790,11 @@ namespace KTANE_Solver
             if (playerRow > 2 && maze[playerRow - 1, playerColumn] != "!" && maze[playerRow - 2, playerColumn] == "?"
                 && (directionList.Count == 0 || directionList[directionList.Count - 1] != "DOWN"))
             {
-                directionList.Add("UP");
-                Console.Write("UP ");
 
                 playerRow -= 2;
+                Console.WriteLine($"Moving up. Player is now at ({playerRow},{playerColumn})\n");
+                directionList.Add("UP");
+
 
                 //if he player is at the goal,
                 //set goal as true
@@ -825,6 +831,8 @@ namespace KTANE_Solver
                                 maze[playerRow, playerColumn] = "X";
                                 playerRow += 2;
                                 directionList.RemoveAt(directionList.Count - 1);
+
+                                Console.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                             }
                         }
 
@@ -853,7 +861,8 @@ namespace KTANE_Solver
             {
                 playerColumn += 2;
                 directionList.Add("RIGHT");
-                Console.Write("RIGHT ");
+                Console.WriteLine($"Moving right. Player is now at ({playerRow},{playerColumn})\n");
+
 
 
                 //if he player is at the goal,
@@ -890,6 +899,7 @@ namespace KTANE_Solver
                                     maze[playerRow, playerColumn] = "X";
                                     playerColumn -= 2;
                                     directionList.RemoveAt(directionList.Count - 1);
+                                    Console.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                                 }
                             }
                         }
@@ -918,9 +928,10 @@ namespace KTANE_Solver
                 && (directionList.Count == 0 || directionList[directionList.Count - 1] != "UP"))
             {
                 directionList.Add("DOWN");
-                Console.Write("DOWN ");
 
                 playerRow += 2;
+                Console.WriteLine($"Moving down. Player is now at ({playerRow},{playerColumn})\n");
+
 
                 //if the player is at the goal,
                 //set goal as true
@@ -957,6 +968,7 @@ namespace KTANE_Solver
                                 maze[playerRow, playerColumn] = "X";
                                 playerRow -= 2;
                                 directionList.RemoveAt(directionList.Count - 1);
+                                Console.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                             }
                         }
 
@@ -987,7 +999,8 @@ namespace KTANE_Solver
             {
                 playerColumn -= 2;
                 directionList.Add("LEFT");
-                Console.Write("LEFT ");
+                Console.WriteLine($"Moving left. Player is now at ({playerRow},{playerColumn})\n");
+
 
 
                 //if he player is at the goal,
@@ -1024,6 +1037,7 @@ namespace KTANE_Solver
                                     maze[playerRow, playerColumn] = "X";
                                     playerColumn += 2;
                                     directionList.RemoveAt(directionList.Count - 1);
+                                    Console.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                                 }
                             }
                         }

@@ -69,12 +69,24 @@ namespace KTANE_Solver
         }
 
         /// <summary>
+        /// Sets up the form, so it looks
+        /// good as new
+        /// </summary>
+        /// <param name="bomb">the new bomb</param>
+        public void UpdateForm(Bomb bomb)
+        { 
+            SetUpModuleComboBox();
+            this.bomb = bomb;
+        }
+
+        /// <summary>
         /// Sets up the combo box so it has all the modules 
         /// </summary>
         private void SetUpModuleComboBox()
         {
-            String[] modules = new String[] {"Ice Cream", "Logic", "Maze", "Murder", "Silly Slots"};
+            moduleComboBox.Items.Clear();
 
+            String[] modules = new String[] {"Ice Cream", "Logic", "Maze", "Murder", "Silly Slots"};
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = "Ice Cream";
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -192,6 +204,38 @@ namespace KTANE_Solver
 
             switch(moduleComboBox.Text)
             {
+                case "Ice Cream":
+                    this.Hide();
+
+                    if (iceCreamForm == null)
+                    {
+                        iceCreamForm = new IceCreamForm(this, bomb);
+                    }
+
+                    else
+                    {
+                        iceCreamForm.UpdateForm(this, bomb, 1);
+                    }
+
+                    iceCreamForm.Show();
+                    break;
+
+                case "Logic":
+                    this.Hide();
+
+                    if (logicForm == null)
+                    {
+                        logicForm = new LogicForm(this, bomb);
+                    }
+
+                    else
+                    {
+                        logicForm.UpdateForm(this, bomb);
+                    }
+
+                    logicForm.Show();
+                    break;
+
                 case "Maze":
                     this.Hide();
 
@@ -207,9 +251,7 @@ namespace KTANE_Solver
 
                     mazeForm.Show();
                     break;
-
-                case "Ice Cream":
-                case "Logic":
+                
                 case "Murder":
                 case "Silly Slots":
                     MessageBox.Show("Sorry. This module has not been implemented yet.", "Module Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Error);

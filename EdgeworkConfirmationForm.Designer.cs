@@ -274,7 +274,7 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(204, 697);
+            this.submitButton.Location = new System.Drawing.Point(226, 711);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(70, 37);
             this.submitButton.TabIndex = 25;
@@ -284,7 +284,7 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(102, 697);
+            this.backButton.Location = new System.Drawing.Point(76, 711);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(70, 37);
             this.backButton.TabIndex = 26;

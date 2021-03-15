@@ -83,37 +83,37 @@ namespace KTANE_Solver
            
             SetLabel(indicatorLabel, "Indicator", 5);
 
-            SetIndicatorLabel(bobLabel, bomb.Bob, 5);
-            SetIndicatorLabel(carLabel, bomb.Car, 6);
-            SetIndicatorLabel(clrLabel, bomb.Clr, 7);
-            SetIndicatorLabel(frkLabel, bomb.Frk, 8);
-            SetIndicatorLabel(frqLabel, bomb.Frq, 9);
-            SetIndicatorLabel(indLabel, bomb.Ind, 10);
-            SetIndicatorLabel(msaLabel, bomb.Msa, 11);
-            SetIndicatorLabel(nsaLabel, bomb.Nsa, 12);
-            SetIndicatorLabel(sigLabel, bomb.Sig, 13);
-            SetIndicatorLabel(sndLabel, bomb.Snd, 14);
-            SetIndicatorLabel(trnLabel, bomb.Trn, 15);
+            SetIndicatorLabel(bobLabel, bomb.Bob, 6);
+            SetIndicatorLabel(carLabel, bomb.Car, 7);
+            SetIndicatorLabel(clrLabel, bomb.Clr, 8);
+            SetIndicatorLabel(frkLabel, bomb.Frk, 9);
+            SetIndicatorLabel(frqLabel, bomb.Frq, 10);
+            SetIndicatorLabel(indLabel, bomb.Ind, 11);
+            SetIndicatorLabel(msaLabel, bomb.Msa, 12);
+            SetIndicatorLabel(nsaLabel, bomb.Nsa, 13);
+            SetIndicatorLabel(sigLabel, bomb.Sig, 14);
+            SetIndicatorLabel(sndLabel, bomb.Snd, 15);
+            SetIndicatorLabel(trnLabel, bomb.Trn, 16);
 
-            SetLabel(portLabel, "Port", 16);
+            SetLabel(portLabel, "Port", 17);
 
 
             if (bomb.EmptyPortPlate)
             {
-                SetLabel(emptyPortPlateLabel, "There is an empty port plate", 17);
+                SetLabel(emptyPortPlateLabel, "There is an empty port plate", 18);
             }
 
             else
             { 
-                SetLabel(emptyPortPlateLabel, "There isn't an empty port plate", 17);
+                SetLabel(emptyPortPlateLabel, "There isn't an empty port plate", 18);
             }
 
-            SetPortLabel(dvidLabel, bomb.Dvid, 18);
-            SetPortLabel(parallelLabel, bomb.Parallel, 19);
-            SetPortLabel(psLabel, bomb.Ps, 20);
-            SetPortLabel(rjLabel, bomb.Rj, 21);
-            SetPortLabel(serialLabel, bomb.Serial, 22);
-            SetPortLabel(stereoLabel, bomb.Stereo, 23);
+            SetPortLabel(dvidLabel, bomb.Dvid, 19);
+            SetPortLabel(parallelLabel, bomb.Parallel, 20);
+            SetPortLabel(psLabel, bomb.Ps, 21);
+            SetPortLabel(rjLabel, bomb.Rj, 22);
+            SetPortLabel(serialLabel, bomb.Serial, 23);
+            SetPortLabel(stereoLabel, bomb.Stereo, 24);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace KTANE_Solver
 
             else
             {
-                text = indicator.Name + "is visible and unlit";
+                text = indicator.Name + " is visible and unlit";
             }
 
             SetLabel(label, text, index);
@@ -228,7 +228,7 @@ namespace KTANE_Solver
 
             else
             {
-                moduleSelectionForm.UpdateForm();
+                moduleSelectionForm.UpdateForm(bomb);
             }
 
             this.Hide();
