@@ -64,6 +64,14 @@ namespace KTANE_Solver
             //find out what the customer is allergic to
             SetCustomerAllergies();
 
+            Console.WriteLine("Allergy List");
+            foreach (IceCreamFlavor.Ingredient ingredient in allergyList)
+            {
+                Console.WriteLine(ingredient);
+            }
+
+            Console.WriteLine();
+
 
 
             //set the heriarachy of the flavors
@@ -409,7 +417,8 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Sets what the customer is allergic to
+        /// Sets what the customer is allergic to depending on the 
+        /// last digit of the serial number
         /// </summary>
         private void SetCustomerAllergies()
         {
@@ -847,6 +856,15 @@ namespace KTANE_Solver
                         break;
                 }
             }
+
+            //if allergic to fruit, also add strawberries, raspberries, and cherries
+            if (allergyList.Contains(IceCreamFlavor.Ingredient.FRUIT))
+            {
+                allergyList.Add(IceCreamFlavor.Ingredient.STRAWBERRY);
+                allergyList.Add(IceCreamFlavor.Ingredient.RASPBERRY);
+                allergyList.Add(IceCreamFlavor.Ingredient.CHERRY);
+            }
+            
 
             //get rid of duplicate ingredients
             for (int i = allergyList.Count - 1; i > -1; i--)
