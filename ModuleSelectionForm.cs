@@ -65,6 +65,7 @@ namespace KTANE_Solver
         /// </summary>
         public void UpdateForm()
         {
+            Console.WriteLine("======================MODULE SELECTION======================");
             SetUpModuleComboBox();
         }
 
@@ -74,7 +75,8 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">the new bomb</param>
         public void UpdateForm(Bomb bomb)
-        { 
+        {
+            Console.WriteLine("======================MODULE SELECTION======================");
             SetUpModuleComboBox();
             this.bomb = bomb;
         }
@@ -97,6 +99,7 @@ namespace KTANE_Solver
         /// </summary>
         private void changeEdgeworkButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("User is changing edgework...\n");
             this.Hide();
             inputForm.UpdateForm();
             inputForm.Show();
@@ -107,6 +110,7 @@ namespace KTANE_Solver
         /// </summary>
         private void checkEdgeworkButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("User is checking edgework...\n");
             this.Hide();
             confirmationForm.UpdateForm(bomb, inputForm);
             confirmationForm.Show();
@@ -143,6 +147,8 @@ namespace KTANE_Solver
         /// </summary>
         private void saveEdgeworkButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("User is trying to save edgework...\n");
+
             StreamWriter writer = new StreamWriter("../../Edgework.txt");
 
             try
@@ -175,6 +181,7 @@ namespace KTANE_Solver
                 writer.Close();
 
                 MessageBox.Show("Edgework saved successfully", "Edgework Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.WriteLine("User has successfully saved edgeork\n");
             }
 
             catch
@@ -182,6 +189,8 @@ namespace KTANE_Solver
                 MessageBox.Show("There was an error saving this edgework to Edgework.txt", "Saving Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+
+                Console.WriteLine("User has unsuccessfully saved edgeork\n");
             }
         }
 

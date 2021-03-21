@@ -57,6 +57,9 @@ namespace KTANE_Solver
         {
             this.bomb = bomb;
             SetUpLabels();
+
+            //writing out information for the log file
+            WriteLog();
         }
 
         /// <summary>
@@ -69,6 +72,43 @@ namespace KTANE_Solver
             this.inputForm = inputForm;
             this.bomb = bomb;
             SetUpLabels();
+
+            //writing out information for the log file
+            WriteLog();
+
+
+
+        }
+
+        /// <summary>
+        /// Write edgework to log file
+        /// </summary>
+        private void WriteLog()
+        {
+            Console.WriteLine("======================EDGEWORK CONFIRMATION======================");
+            Console.WriteLine("Day of the week: " + bomb.Day);
+            Console.WriteLine("Serial Number: " + bomb.SerialNumber);
+            Console.WriteLine("# of batteries: " + bomb.Battery);
+            Console.WriteLine("# battery holders:" + bomb.BatteryHolder + "\n");
+
+            Console.WriteLine($"BOB - Visisble: {bomb.Bob.Visible} Lit: {bomb.Bob.Lit}");
+            Console.WriteLine($"CAR - Visisble: {bomb.Car.Visible} Lit: {bomb.Car.Lit}");
+            Console.WriteLine($"CLR - Visisble: {bomb.Clr.Visible} Lit: {bomb.Clr.Lit}");
+            Console.WriteLine($"FRK - Visisble: {bomb.Frk.Visible} Lit: {bomb.Frk.Lit}");
+            Console.WriteLine($"FRQ - Visisble: {bomb.Frq.Visible} Lit: {bomb.Frq.Lit}");
+            Console.WriteLine($"IND - Visisble: {bomb.Ind.Visible} Lit: {bomb.Ind.Lit}");
+            Console.WriteLine($"MSA - Visisble: {bomb.Msa.Visible} Lit: {bomb.Msa.Lit}");
+            Console.WriteLine($"NSA - Visisble: {bomb.Nsa.Visible} Lit: {bomb.Nsa.Lit}");
+            Console.WriteLine($"SIG - Visisble: {bomb.Sig.Visible} Lit: {bomb.Sig.Lit}");
+            Console.WriteLine($"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}");
+            Console.WriteLine($"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n");
+
+            Console.WriteLine("# of dvid ports: " + bomb.Dvid.Num);
+            Console.WriteLine("# of parallel ports: " + bomb.Parallel.Num);
+            Console.WriteLine("# of ps ports: " + bomb.Ps.Num);
+            Console.WriteLine("# of rj ports: " + bomb.Rj.Num);
+            Console.WriteLine("# of serial ports: " + bomb.Serial.Num);
+            Console.WriteLine("# of stereo ports: " + bomb.Stereo.Num + "\n");
         }
 
         /// <summary>

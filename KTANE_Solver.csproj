@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="EdgeworkConfirmationForm.cs">
       <SubType>Form</SubType>

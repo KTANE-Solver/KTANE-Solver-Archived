@@ -24,6 +24,8 @@ namespace KTANE_Solver
         public EdgeworkSelectionForm()
         {
             InitializeComponent();
+
+            Console.WriteLine("======================EDGEWORK SELECTION======================");
         }
 
         /// <summary>
@@ -31,6 +33,8 @@ namespace KTANE_Solver
         /// </summary>
         private void automaticButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
+
             Bomb.Days day = 0;
 
             String serialNumber = "0";
@@ -62,6 +66,9 @@ namespace KTANE_Solver
             //if there is a problem reading Edgework.txt
             bool errorReached = false;
 
+            //tells what casued the error
+            String errorString = "";
+
             StreamReader reader = new StreamReader("../../Edgework.txt");
 
             //the line the reader is reading
@@ -78,7 +85,7 @@ namespace KTANE_Solver
 
                         if (errorReached)
                         {
-                            Console.WriteLine("Can't read day. Read " + currentLine);
+                            errorString = "Can't read day. Read " + currentLine;
                         }
                         break;
 
@@ -93,7 +100,7 @@ namespace KTANE_Solver
 
                         if (errorReached)
                         {
-                            Console.WriteLine("Can't read battery. Read " + currentLine);
+                            errorString = "Can't read battery. Read " + currentLine;
                         }
 
                         break;
@@ -104,7 +111,7 @@ namespace KTANE_Solver
 
                         if (errorReached)
                         {
-                            Console.WriteLine("Can't read batteryHolder");
+                            errorString = "Can't read batteryHolder. Read " + currentLine;
                         }
 
                         break;
@@ -129,7 +136,7 @@ namespace KTANE_Solver
                             errorReached = true;
 
 
-                            Console.WriteLine("Can't read bob");
+                            errorString = $"Can't read bob. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
 
                         }
 
@@ -150,8 +157,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read car");
-
+                            errorString = $"Can't read car. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
                         break;
 
@@ -171,7 +177,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read clr");
+                            errorString = $"Can't read clr. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -192,7 +198,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read frk");
+                            errorString = $"Can't read frk. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -212,7 +218,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read frq");
+                            errorString = $"Can't read frq. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -233,7 +239,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read ind");
+                            errorString = $"Can't read ind. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -254,7 +260,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read msa");
+                            errorString = $"Can't read msa. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -275,7 +281,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read nsa");
+                            errorString = $"Can't read nsa. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -296,7 +302,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read sig");
+                            errorString = $"Can't read sig. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -317,7 +323,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read snd");
+                            errorString = $"Can't read snd. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
 
@@ -339,7 +345,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read trn");
+                            errorString = $"Can't read trn. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
 
@@ -355,7 +361,7 @@ namespace KTANE_Solver
                         catch
                         {
                             errorReached = true;
-                            Console.WriteLine("Can't read empty port plate");
+                            errorString = $"Can't read empty port plate. Read " + currentLine;
                         }
 
                         break;
@@ -366,20 +372,26 @@ namespace KTANE_Solver
 
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
+                        if (errorReached)
+                        {
+                            errorString = "Can't read dvid port num. Read " + currentLine;
+                        }
+
                         dvid = new Port("DVI-D", portNum);
 
                         break;
 
                     //Port parallel
                     case 18:
+
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
-                        parallel = new Port("Parallel", portNum);
-
                         if (errorReached)
-                        { 
-                            Console.WriteLine("Can't read parallel port");
+                        {
+                            errorString = "Can't read parallel port num. Read " + currentLine;
                         }
+
+                        parallel = new Port("Parallel", portNum);
 
                         break;
 
@@ -387,12 +399,12 @@ namespace KTANE_Solver
                     case 19:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
-                        ps = new Port("PS/2", portNum);
-
                         if (errorReached)
                         {
-                            Console.WriteLine("Can't read ps/2 port");
+                            errorString = "Can't read ps port num. Read " + currentLine;
                         }
+
+                        ps = new Port("PS/2", portNum);
 
                         break;
                         
@@ -400,12 +412,12 @@ namespace KTANE_Solver
                     case 20:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
-                        rj = new Port("RJ-45", portNum);
-
                         if (errorReached)
                         {
-                            Console.WriteLine("Can't read rj-45 port. Read " + currentLine);
+                            errorString = "Can't read rj-45 port num. Read " + currentLine;
                         }
+
+                        rj = new Port("RJ-45", portNum);
 
                         break;
 
@@ -413,12 +425,12 @@ namespace KTANE_Solver
                     case 21:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
-                        serial = new Port("Serial", portNum);
-
                         if (errorReached)
                         {
-                            Console.WriteLine("Can't read serial port");
+                            errorString = "Can't read serial port num. Read " + currentLine;
                         }
+
+                        serial = new Port("Serial", portNum);
 
                         break;
 
@@ -426,12 +438,12 @@ namespace KTANE_Solver
                     case 22:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
-                        stereo = new Port("Stero RCA", portNum);
-
                         if (errorReached)
                         {
-                            Console.WriteLine("Can't read stereo port");
+                            errorString = "Can't read stereo port num. Read " + currentLine;
                         }
+
+                        stereo = new Port("Stero RCA", portNum);
 
                         break;
 
@@ -557,6 +569,8 @@ namespace KTANE_Solver
             //if there is an error tell the user that and send them to the manually
             if (errorReached)
             {
+                Console.WriteLine($"Unable to read edgework. {errorString}. Sending user to manual edgework input\n");
+
                 MessageBox.Show("There was an error reading Egdework.txt. Try manually inputting the edgework",
                                 "Error Reading Edgework.txt",
                                 MessageBoxButtons.OK,
@@ -585,6 +599,8 @@ namespace KTANE_Solver
         /// </summary>
         private void manualButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("User chose to manually input edgeowrk\n");
+
             inputForm = new EdgeworkInputForm();
             this.Hide();
             inputForm.Show();
@@ -607,12 +623,13 @@ namespace KTANE_Solver
                 {
                     e.Cancel = true;
                 }
+
+                else
+                {
+                    this.Visible = false;
+                    Application.Exit();
+                }
             }
-
-            //If this form is already hidden, just close it
-
-
-
         }
     }
 }
