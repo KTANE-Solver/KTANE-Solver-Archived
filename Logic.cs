@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -64,6 +65,9 @@ namespace KTANE_Solver
         //evalualted first
         private bool bottomFirstTwoFirst;
 
+        //used to write to the logFile
+        private StreamWriter logFileWriter;
+
 
         //=========PROPERTIES=========
 
@@ -100,7 +104,7 @@ namespace KTANE_Solver
                      bool bottomSecondNotStatement, char bottomSecondLetter,
                      bool bottomThirdNotStatement,  char bottomThirdLetter, 
                      String bottomFirstOperation, String bottomSecondOperation, 
-                     bool bottomFirstTwoFirst)
+                     bool bottomFirstTwoFirst, StreamWriter logFileWriter)
         {
             this.bomb = bomb;
 
@@ -129,11 +133,13 @@ namespace KTANE_Solver
             this.bottomSecondOperation = bottomSecondOperation;
 
             this.bottomFirstTwoFirst = bottomFirstTwoFirst;
+
+            this.logFileWriter = logFileWriter;
         }
 
         public void Solve()
         {
-            Console.WriteLine("======================LOGIC======================");
+            logFileWriter.WriteLine("======================LOGIC======================");
 
             //setting the statements
             topFirstStatement = SetStatement("Top", "First", topFirstLetter);
@@ -391,7 +397,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            Console.WriteLine($"{top} {place}: {character} - {statementString}: {statement} \n");
+            logFileWriter.WriteLine($"{top} {place}: {character} - {statementString}: {statement} \n");
 
             return statement;
         }
@@ -401,7 +407,7 @@ namespace KTANE_Solver
             if (notStatement)
             {
                 statement = !statement;
-                Console.WriteLine($"Not statement detected. {letterPosition} Statement is now {statement}\n");
+                logFileWriter.WriteLine($"Not statement detected. {letterPosition} Statement is now {statement}\n");
             }
 
             return statement;
@@ -479,7 +485,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            Console.WriteLine($"{topBottom} {firstSecond} statement: {bool1} {opeartionString} {bool2} returns {statement}\n");
+            logFileWriter.WriteLine($"{topBottom} {firstSecond} statement: {bool1} {opeartionString} {bool2} returns {statement}\n");
             return statement;
         }
     }

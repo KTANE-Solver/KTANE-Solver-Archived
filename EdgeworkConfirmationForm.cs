@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -26,15 +27,21 @@ namespace KTANE_Solver
 
         private ModuleSelectionForm moduleSelectionForm;
 
+        //used to write to the log file
+        private StreamWriter logFileWriter;
+
         /// <summary>
         /// Tells the user what the edgework is
         /// </summary>
         /// <param name="bomb">the bomb that was created</param>
-        public EdgeworkConfirmationForm(Bomb bomb)
+        public EdgeworkConfirmationForm(Bomb bomb, StreamWriter logFileWriter)
         {
-            InitializeComponent();
-            inputForm = new EdgeworkInputForm();
+            InitializeComponent(); 
+            this.logFileWriter = logFileWriter;
+            inputForm = new EdgeworkInputForm(logFileWriter);
             UpdateForm(bomb);
+
+            
 
         }
 
@@ -43,9 +50,10 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">the bomb that was created</param>
         /// <param name="inputForm">the form used to get to this form</param>
-        public EdgeworkConfirmationForm(Bomb bomb, EdgeworkInputForm inputForm)
+        public EdgeworkConfirmationForm(Bomb bomb, EdgeworkInputForm inputForm, StreamWriter logFileWriter)
         {
             InitializeComponent();
+            this.logFileWriter = logFileWriter;
             UpdateForm(bomb, inputForm);
         }
 
@@ -85,30 +93,30 @@ namespace KTANE_Solver
         /// </summary>
         private void WriteLog()
         {
-            Console.WriteLine("======================EDGEWORK CONFIRMATION======================");
-            Console.WriteLine("Day of the week: " + bomb.Day);
-            Console.WriteLine("Serial Number: " + bomb.SerialNumber);
-            Console.WriteLine("# of batteries: " + bomb.Battery);
-            Console.WriteLine("# battery holders:" + bomb.BatteryHolder + "\n");
+            logFileWriter.WriteLine("======================EDGEWORK CONFIRMATION======================");
+            logFileWriter.WriteLine("Day of the week: " + bomb.Day);
+            logFileWriter.WriteLine("Serial Number: " + bomb.SerialNumber);
+            logFileWriter.WriteLine("# of batteries: " + bomb.Battery);
+            logFileWriter.WriteLine("# battery holders:" + bomb.BatteryHolder + "\n");
 
-            Console.WriteLine($"BOB - Visisble: {bomb.Bob.Visible} Lit: {bomb.Bob.Lit}");
-            Console.WriteLine($"CAR - Visisble: {bomb.Car.Visible} Lit: {bomb.Car.Lit}");
-            Console.WriteLine($"CLR - Visisble: {bomb.Clr.Visible} Lit: {bomb.Clr.Lit}");
-            Console.WriteLine($"FRK - Visisble: {bomb.Frk.Visible} Lit: {bomb.Frk.Lit}");
-            Console.WriteLine($"FRQ - Visisble: {bomb.Frq.Visible} Lit: {bomb.Frq.Lit}");
-            Console.WriteLine($"IND - Visisble: {bomb.Ind.Visible} Lit: {bomb.Ind.Lit}");
-            Console.WriteLine($"MSA - Visisble: {bomb.Msa.Visible} Lit: {bomb.Msa.Lit}");
-            Console.WriteLine($"NSA - Visisble: {bomb.Nsa.Visible} Lit: {bomb.Nsa.Lit}");
-            Console.WriteLine($"SIG - Visisble: {bomb.Sig.Visible} Lit: {bomb.Sig.Lit}");
-            Console.WriteLine($"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}");
-            Console.WriteLine($"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n");
+            logFileWriter.WriteLine($"BOB - Visisble: {bomb.Bob.Visible} Lit: {bomb.Bob.Lit}");
+            logFileWriter.WriteLine($"CAR - Visisble: {bomb.Car.Visible} Lit: {bomb.Car.Lit}");
+            logFileWriter.WriteLine($"CLR - Visisble: {bomb.Clr.Visible} Lit: {bomb.Clr.Lit}");
+            logFileWriter.WriteLine($"FRK - Visisble: {bomb.Frk.Visible} Lit: {bomb.Frk.Lit}");
+            logFileWriter.WriteLine($"FRQ - Visisble: {bomb.Frq.Visible} Lit: {bomb.Frq.Lit}");
+            logFileWriter.WriteLine($"IND - Visisble: {bomb.Ind.Visible} Lit: {bomb.Ind.Lit}");
+            logFileWriter.WriteLine($"MSA - Visisble: {bomb.Msa.Visible} Lit: {bomb.Msa.Lit}");
+            logFileWriter.WriteLine($"NSA - Visisble: {bomb.Nsa.Visible} Lit: {bomb.Nsa.Lit}");
+            logFileWriter.WriteLine($"SIG - Visisble: {bomb.Sig.Visible} Lit: {bomb.Sig.Lit}");
+            logFileWriter.WriteLine($"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}");
+            logFileWriter.WriteLine($"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n");
 
-            Console.WriteLine("# of dvid ports: " + bomb.Dvid.Num);
-            Console.WriteLine("# of parallel ports: " + bomb.Parallel.Num);
-            Console.WriteLine("# of ps ports: " + bomb.Ps.Num);
-            Console.WriteLine("# of rj ports: " + bomb.Rj.Num);
-            Console.WriteLine("# of serial ports: " + bomb.Serial.Num);
-            Console.WriteLine("# of stereo ports: " + bomb.Stereo.Num + "\n");
+            logFileWriter.WriteLine("# of dvid ports: " + bomb.Dvid.Num);
+            logFileWriter.WriteLine("# of parallel ports: " + bomb.Parallel.Num);
+            logFileWriter.WriteLine("# of ps ports: " + bomb.Ps.Num);
+            logFileWriter.WriteLine("# of rj ports: " + bomb.Rj.Num);
+            logFileWriter.WriteLine("# of serial ports: " + bomb.Serial.Num);
+            logFileWriter.WriteLine("# of stereo ports: " + bomb.Stereo.Num + "\n");
         }
 
         /// <summary>
@@ -235,6 +243,7 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();
                 }
@@ -248,7 +257,7 @@ namespace KTANE_Solver
         {
             if (inputForm == null)
             {
-                inputForm = new EdgeworkInputForm(this);
+                inputForm = new EdgeworkInputForm(this, logFileWriter);
             }
 
             this.Hide();
@@ -263,7 +272,7 @@ namespace KTANE_Solver
         {
             if (moduleSelectionForm == null)
             {
-                moduleSelectionForm = new ModuleSelectionForm(bomb, this, inputForm);
+                moduleSelectionForm = new ModuleSelectionForm(bomb, this, inputForm, logFileWriter);
             }
 
             else

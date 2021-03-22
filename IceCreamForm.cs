@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -21,6 +22,9 @@ namespace KTANE_Solver
         //the form used to get to this form
         private ModuleSelectionForm moduleSelectionForm;
 
+        //used to write to the log file
+        StreamWriter logFileWriter;
+
         //used to solve the ice cream do
         private IceCream iceCream;
 
@@ -30,10 +34,11 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
         /// <param name="bomb">used for the edgework</param>
-        public IceCreamForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
+        public IceCreamForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
         {
             InitializeComponent();
             UpdateForm(moduleSelectionForm, bomb, 1);
+            this.logFileWriter = logFileWriter;
         }
 
         /// <summary>
@@ -111,6 +116,7 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();
                 }
@@ -147,9 +153,9 @@ namespace KTANE_Solver
                 return;
             }
 
-            iceCream = new IceCream(customerComboBox.Text, flavor1, flavor2, flavor3, flavor4, bomb);
-            Console.WriteLine("======================ICE CREAM======================");
-            Console.WriteLine($"                       {stageLabel.Text}\n");
+            iceCream = new IceCream(customerComboBox.Text, flavor1, flavor2, flavor3, flavor4, bomb, logFileWriter);
+            logFileWriter.WriteLine("======================ICE CREAM======================");
+            logFileWriter.WriteLine($"{stageLabel.Text}\n");
 
             iceCream.Solve();
 

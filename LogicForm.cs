@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -21,6 +22,9 @@ namespace KTANE_Solver
         //the form used to get here
         private ModuleSelectionForm moduleSelectionForm;
 
+        //used to write to the log file
+        StreamWriter logFileWriter;
+
         //the logic module
         private Logic logicModule;
 
@@ -29,9 +33,10 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">where the edgework will come from</param>
         /// <param name="moduleSelectionForm">the form used to get here</param>
-        public LogicForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
+        public LogicForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
         {
             InitializeComponent();
+            this.logFileWriter = logFileWriter;
             UpdateForm(moduleSelectionForm, bomb);
         }
 
@@ -360,7 +365,7 @@ namespace KTANE_Solver
                                     bottomFirstChar, bottomSecondNotCheckBox.Checked, 
                                     bottomSecondChar, bottomThirdNotCheckBox.Checked, 
                                     bottomThirdChar, bottomFirstOperation, 
-                                    bottomSecondOperation, bottomFirstTwoCheckBox.Checked);
+                                    bottomSecondOperation, bottomFirstTwoCheckBox.Checked, logFileWriter);
 
             logicModule.Solve();
             UpdateForm(moduleSelectionForm, bomb);

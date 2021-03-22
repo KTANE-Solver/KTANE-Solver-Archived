@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -18,10 +19,13 @@ namespace KTANE_Solver
         //FIELDS
 
         //the form the user will go to when they press submit
-        EdgeworkConfirmationForm confirmationForm;
+        private EdgeworkConfirmationForm confirmationForm;
 
         //the bomb that will be careated
-        Bomb bomb;
+        private Bomb bomb;
+
+        //used to write to the log file
+        private StreamWriter logFileWriter;
 
         //PROPERTIES
 
@@ -31,9 +35,10 @@ namespace KTANE_Solver
         /// form that will be used to
         /// input edgework
         /// </summary>
-        public EdgeworkInputForm()
+        public EdgeworkInputForm(StreamWriter logFileWriter)
         {
             InitializeComponent();
+            this.logFileWriter = logFileWriter;
             UpdateForm();
         }
 
@@ -43,9 +48,10 @@ namespace KTANE_Solver
         /// input edgework
         /// </summary>
         /// <param name="confirmationForm">the confirm form the user will go to</param>
-        public EdgeworkInputForm(EdgeworkConfirmationForm confirmationForm)
+        public EdgeworkInputForm(EdgeworkConfirmationForm confirmationForm, StreamWriter logFileWriter)
         {
             InitializeComponent();
+            this.logFileWriter = logFileWriter;
             UpdateForm();
             this.confirmationForm = confirmationForm;
         }
@@ -483,8 +489,8 @@ namespace KTANE_Solver
             }
 
             if (!oneLetter) 
-            {            
-                Console.WriteLine("There isn't a letter in the serial number");
+            {
+                logFileWriter.WriteLine("There isn't a letter in the serial number\n");
 
                 String text = "You entered an invalid serial number. There has to be at least 1 letter in the serial number";
 
@@ -499,7 +505,7 @@ namespace KTANE_Solver
 
             if (!lastCharIsDigit)
             {
-                Console.WriteLine("The last character of the serial number isn't a number");
+                logFileWriter.WriteLine("The last character of the serial number isn't a number\n");
 
                 String text = "You entered an invalid serial number. A valid serial number must have the last character be a number";
 
@@ -719,7 +725,7 @@ namespace KTANE_Solver
 
             if (confirmationForm == null)
             {
-                confirmationForm = new EdgeworkConfirmationForm(bomb, this);
+                confirmationForm = new EdgeworkConfirmationForm(bomb, this, logFileWriter);
             }
 
             else
@@ -763,6 +769,7 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();
                 }

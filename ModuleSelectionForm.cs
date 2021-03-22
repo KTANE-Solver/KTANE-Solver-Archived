@@ -30,6 +30,9 @@ namespace KTANE_Solver
         //to change the edgework
         private EdgeworkInputForm inputForm;
 
+        //used to write to the log file
+        StreamWriter logFileWriter;
+
         //module forms
         private IceCreamForm iceCreamForm;
         private LogicForm logicForm;
@@ -47,9 +50,10 @@ namespace KTANE_Solver
         /// <param name="bomb">the current bomb</param>
         /// <param name="confirmationForm">the form used if the player wants to check the edgework</param>
         /// <param name="inputForm">the form used if the player want to change the edgework</param>
-        public ModuleSelectionForm(Bomb bomb, EdgeworkConfirmationForm confirmationForm, EdgeworkInputForm inputForm)
+        public ModuleSelectionForm(Bomb bomb, EdgeworkConfirmationForm confirmationForm, EdgeworkInputForm inputForm, StreamWriter logFileWriter)
         {
             InitializeComponent();
+            this.logFileWriter = logFileWriter;
             this.bomb = bomb;
             this.confirmationForm = confirmationForm;
             this.inputForm = inputForm;
@@ -65,7 +69,7 @@ namespace KTANE_Solver
         /// </summary>
         public void UpdateForm()
         {
-            Console.WriteLine("======================MODULE SELECTION======================");
+            logFileWriter.WriteLine("======================MODULE SELECTION======================");
             SetUpModuleComboBox();
         }
 
@@ -76,7 +80,7 @@ namespace KTANE_Solver
         /// <param name="bomb">the new bomb</param>
         public void UpdateForm(Bomb bomb)
         {
-            Console.WriteLine("======================MODULE SELECTION======================");
+            logFileWriter.WriteLine("======================MODULE SELECTION======================");
             SetUpModuleComboBox();
             this.bomb = bomb;
         }
@@ -99,7 +103,7 @@ namespace KTANE_Solver
         /// </summary>
         private void changeEdgeworkButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("User is changing edgework...\n");
+            logFileWriter.WriteLine("User is changing edgework...\n");
             this.Hide();
             inputForm.UpdateForm();
             inputForm.Show();
@@ -110,7 +114,7 @@ namespace KTANE_Solver
         /// </summary>
         private void checkEdgeworkButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("User is checking edgework...\n");
+            logFileWriter.WriteLine("User is checking edgework...\n");
             this.Hide();
             confirmationForm.UpdateForm(bomb, inputForm);
             confirmationForm.Show();
@@ -147,7 +151,7 @@ namespace KTANE_Solver
         /// </summary>
         private void saveEdgeworkButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("User is trying to save edgework...\n");
+            logFileWriter.WriteLine("User is trying to save edgework...\n");
 
             StreamWriter writer = new StreamWriter("../../Edgework.txt");
 
@@ -181,7 +185,7 @@ namespace KTANE_Solver
                 writer.Close();
 
                 MessageBox.Show("Edgework saved successfully", "Edgework Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Console.WriteLine("User has successfully saved edgeork\n");
+                logFileWriter.WriteLine("User has successfully saved edgeork\n");
             }
 
             catch
@@ -190,7 +194,7 @@ namespace KTANE_Solver
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                Console.WriteLine("User has unsuccessfully saved edgeork\n");
+                logFileWriter.WriteLine("User has unsuccessfully saved edgeork\n");
             }
         }
 
@@ -218,7 +222,7 @@ namespace KTANE_Solver
 
                     if (iceCreamForm == null)
                     {
-                        iceCreamForm = new IceCreamForm(this, bomb);
+                        iceCreamForm = new IceCreamForm(this, bomb, logFileWriter);
                     }
 
                     else
@@ -234,7 +238,7 @@ namespace KTANE_Solver
 
                     if (logicForm == null)
                     {
-                        logicForm = new LogicForm(this, bomb);
+                        logicForm = new LogicForm(this, bomb, logFileWriter);
                     }
 
                     else
@@ -250,7 +254,7 @@ namespace KTANE_Solver
 
                     if (mazeForm == null)
                     {
-                        mazeForm = new MazeForm(this, bomb);
+                        mazeForm = new MazeForm(this, bomb, logFileWriter);
                     }
 
                     else

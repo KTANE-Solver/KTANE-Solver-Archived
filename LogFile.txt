@@ -1,0 +1,86 @@
+======================EDGEWORK SELECTION======================
+User chose to manually input edgeowrk
+
+======================EDGEWORK CONFIRMATION======================
+Day of the week: Sunday
+Serial Number: F57AE4
+# of batteries: 1
+# battery holders:1
+
+BOB - Visisble: False Lit: False
+CAR - Visisble: False Lit: False
+CLR - Visisble: False Lit: False
+FRK - Visisble: False Lit: False
+FRQ - Visisble: False Lit: False
+IND - Visisble: False Lit: False
+MSA - Visisble: True Lit: True
+NSA - Visisble: False Lit: False
+SIG - Visisble: False Lit: False
+SND - Visisble: False Lit: False
+TRN - Visisble: False Lit: False
+
+# of dvid ports: 0
+# of parallel ports: 0
+# of ps ports: 1
+# of rj ports: 1
+# of serial ports: 1
+# of stereo ports: 0
+
+======================MODULE SELECTION======================
+======================ICE CREAM======================
+                       Stage 1
+
+Customer: Victor
+
+Allergy List
+NUTS
+COOKIES
+FRUIT
+STRAWBERRY
+RASPBERRY
+CHERRY
+
+Hierarchy of Flavors:
+COOKIES 1
+NEAPOLITAN 2
+CHOCOLATE 6
+MINT 7
+
+Cant have COOKIES since allergic to COOKIES
+Cant have NEAPOLITAN since allergic to STRAWBERRY
+======================ICE CREAM======================
+                       Stage 2
+
+Customer: Simon
+
+Allergy List
+MINT
+MARSHMALLOWS
+COOKIES
+
+Hierarchy of Flavors:
+NEAPOLITAN 2
+TUTTI 3
+CLASSIC 4
+ROCKY 5
+
+======================ICE CREAM======================
+                       Stage 3
+
+Customer: Ashley
+
+Allergy List
+CHOCOLATE
+MARSHMALLOWS
+RASPBERRY
+
+Hierarchy of Flavors:
+CLASSIC 4
+CHOCOLATE 6
+MINT 7
+RASPBERRY 9
+
+Cant have CLASSIC since allergic to CHOCOLATE
+Cant have CHOCOLATE since allergic to CHOCOLATE
+Cant have MINT since allergic to CHOCOLATE
+Cant have RASPBERRY since allergic to RASPBERRY

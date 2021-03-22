@@ -21,11 +21,17 @@ namespace KTANE_Solver
     {
         EdgeworkConfirmationForm confirmationForm;
         EdgeworkInputForm inputForm;
+
+        //used to write to the log file
+        StreamWriter logFileWriter;
+
         public EdgeworkSelectionForm()
         {
             InitializeComponent();
 
-            Console.WriteLine("======================EDGEWORK SELECTION======================");
+            logFileWriter = new StreamWriter("../../LogFile.txt");
+
+            logFileWriter.WriteLine("======================EDGEWORK SELECTION======================");
         }
 
         /// <summary>
@@ -33,7 +39,7 @@ namespace KTANE_Solver
         /// </summary>
         private void automaticButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
+            logFileWriter.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
 
             Bomb.Days day = 0;
 
@@ -485,7 +491,7 @@ namespace KTANE_Solver
                 if (!(lastCharIsNum && hasLetter))
                 {
                     errorReached = true;
-                    Console.WriteLine("Not a valid serial number");
+                    logFileWriter.WriteLine(serialNumber + " is not a valid serial number");
 
                 }
 
@@ -493,74 +499,74 @@ namespace KTANE_Solver
                 if (!errorReached && battery < batteryHolder || battery > batteryHolder * 2)
                 {
                     errorReached = true;
-                    Console.WriteLine($"Invalid batteries and battery holders. Battery Count: {battery}. Battery Holder Count: {batteryHolder}");
+                    errorString = $"Invalid batteries and battery holders. Battery Count: {battery}. Battery Holder Count: {batteryHolder}";
                 }
 
                 //make sure each indicator is valid
                 if (!errorReached && !bob.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid bob");
+                    errorString = "Invalid bob";
                 }
 
                 if (!errorReached && !car.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid car");
+                    errorString = "Invalid car";
                 }
 
                 if (!errorReached && !clr.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid clr");
+                    errorString = "Invalid clr";
                 }
 
                 if (!errorReached && !frk.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid frk");
+                    errorString = "Invalid frk";
                 }
 
                 if (!errorReached && !frq.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid frq");
+                    errorString = "Invalid frq";
                 }
 
                 if (!errorReached && !ind.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid ind");
+                    errorString = "Invalid ind";
                 }
 
                 if (!errorReached && !msa.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid msa");
+                    errorString = "Invalid msa";
                 }
 
                 if (!errorReached && !nsa.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid nsa");
+                    errorString = "Invalid nsa";
                 }
 
                 if (!errorReached && !sig.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid sig");
+                    errorString = "Invalid sig";
                 }
 
                 if (!errorReached && !snd.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid snd");
+                    errorString = "Invalid snd";
                 }
 
                 if (!errorReached && !trn.ValidIndicator)
                 {
                     errorReached = true;
-                    Console.WriteLine("Invalid trn");
+                    errorString = "Invalid trn";
                 }
             }
             
@@ -569,14 +575,14 @@ namespace KTANE_Solver
             //if there is an error tell the user that and send them to the manually
             if (errorReached)
             {
-                Console.WriteLine($"Unable to read edgework. {errorString}. Sending user to manual edgework input\n");
+                logFileWriter.WriteLine($"Unable to read edgework. {errorString}. Sending user to manual edgework input\n");
 
                 MessageBox.Show("There was an error reading Egdework.txt. Try manually inputting the edgework",
                                 "Error Reading Edgework.txt",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                inputForm = new EdgeworkInputForm();
+                inputForm = new EdgeworkInputForm(logFileWriter);
                 this.Hide();
                 inputForm.Show();
             }
@@ -588,7 +594,7 @@ namespace KTANE_Solver
                                     bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, 
                                     emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
 
-                confirmationForm = new EdgeworkConfirmationForm(bomb);
+                confirmationForm = new EdgeworkConfirmationForm(bomb, logFileWriter);
                 this.Hide();
                 confirmationForm.Show();
             }
@@ -599,9 +605,9 @@ namespace KTANE_Solver
         /// </summary>
         private void manualButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("User chose to manually input edgeowrk\n");
+            logFileWriter.WriteLine("User chose to manually input edgeowrk\n");
 
-            inputForm = new EdgeworkInputForm();
+            inputForm = new EdgeworkInputForm(logFileWriter);
             this.Hide();
             inputForm.Show();
         }
@@ -626,6 +632,7 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();
                 }

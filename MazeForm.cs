@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -18,6 +19,9 @@ namespace KTANE_Solver
     {
         //form that takes user to select a module to solve
         private ModuleSelectionForm moduleSelectionForm;
+
+        //used to write to the log file
+        StreamWriter logFileWriter;
 
         //the 2d array that will hold buttons
         //that will represent the gird
@@ -33,9 +37,10 @@ namespace KTANE_Solver
         /// Creates the maze form
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public MazeForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
+        public MazeForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
         {
             InitializeComponent();
+            this.logFileWriter = logFileWriter;
             UpdateForm(moduleSelectionForm, bomb);
 
         }
@@ -511,7 +516,7 @@ namespace KTANE_Solver
             }
 
             //solving maze
-            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1);
+            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, logFileWriter);
             maze.Solve();
             UpdateForm(moduleSelectionForm, bomb);
 

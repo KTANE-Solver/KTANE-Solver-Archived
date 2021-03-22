@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -28,6 +29,8 @@ namespace KTANE_Solver
         private IceCreamFlavor flavor3;
         private IceCreamFlavor flavor4;
 
+        private StreamWriter logFileWriter;
+
 
         //=======================PROPERTIES=======================
 
@@ -41,7 +44,7 @@ namespace KTANE_Solver
         /// <param name="flavor3">one of the ice cream flavors</param>
         /// <param name="flavor4">one of the ice cream flavors</param>
         /// <param name="bomb">used to get the edgework</param>
-        public IceCream(String customer, String flavor1, String flavor2, String flavor3, String flavor4, Bomb bomb)
+        public IceCream(String customer, String flavor1, String flavor2, String flavor3, String flavor4, Bomb bomb, StreamWriter logFileWriter)
         {
             this.customer = customer;
             this.bomb = bomb;
@@ -51,6 +54,7 @@ namespace KTANE_Solver
             this.flavor2 = new IceCreamFlavor(flavor2);
             this.flavor3 = new IceCreamFlavor(flavor3);
             this.flavor4 = new IceCreamFlavor(flavor4);
+            this.logFileWriter = logFileWriter;
         }
 
         //=======================METHODS=======================
@@ -59,18 +63,19 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
-            Console.WriteLine($"Customer: {customer}\n");
+            logFileWriter.WriteLine($"Customer: {customer}\n");
 
             //find out what the customer is allergic to
             SetCustomerAllergies();
 
-            Console.WriteLine("Allergy List");
+            logFileWriter.WriteLine("Allergy List");
+
             foreach (IceCreamFlavor.Ingredient ingredient in allergyList)
             {
-                Console.WriteLine(ingredient);
+                logFileWriter.WriteLine(ingredient);
             }
 
-            Console.WriteLine();
+            logFileWriter.WriteLine();
 
 
 
@@ -100,15 +105,15 @@ namespace KTANE_Solver
             }
 
             //print out the heriearcy of flavors
-            Console.WriteLine("Hierarchy of Flavors:");
+            logFileWriter.WriteLine("Hierarchy of Flavors:");
 
             for (int i = 0; i < 4; i++)
             {
-                Console.WriteLine(flavors[i].FlavorProperty.ToString() + " " + flavors[i].place);
+                logFileWriter.WriteLine(flavors[i].FlavorProperty.ToString() + " " + flavors[i].place);
 
                 if (i == 3)
                 {
-                    Console.WriteLine();
+                    logFileWriter.WriteLine();
                 } 
             }
 
@@ -141,7 +146,7 @@ namespace KTANE_Solver
             {
                 if (allergyList.Contains(ingredient))
                 {
-                    Console.WriteLine($"Cant have {flavor.FlavorProperty} since allergic to {ingredient}");
+                    logFileWriter.WriteLine($"Cant have {flavor.FlavorProperty} since allergic to {ingredient}");
                     return true;
                 }
             }
