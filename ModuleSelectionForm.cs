@@ -38,7 +38,7 @@ namespace KTANE_Solver
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MurderForm murderForm;
-        private SillySlotsForm sillySlotsForm;
+        private SillySlotsStage1Form sillySlotsForm;
 
 
         //===========CONSTRUCTORS===========
@@ -264,9 +264,24 @@ namespace KTANE_Solver
 
                     mazeForm.Show();
                     break;
-                
-                case "Murder":
+
                 case "Silly Slots":
+                    this.Hide();
+
+                    if (sillySlotsForm == null)
+                    {
+                        sillySlotsForm = new SillySlotsStage1Form(this, bomb, logFileWriter);
+                    }
+
+                    else
+                    {
+                        sillySlotsForm.UpdateForm(this, bomb);
+                    }
+
+                    sillySlotsForm.Show();
+                    break;
+
+                case "Murder":
                     MessageBox.Show("Sorry. This module has not been implemented yet.", "Module Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }

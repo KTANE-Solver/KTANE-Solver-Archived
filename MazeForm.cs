@@ -528,7 +528,7 @@ namespace KTANE_Solver
         private void strikeButton_Click(object sender, EventArgs e)
         {
             this.bomb.Strike++;
-            MessageBox.Show("Strike Added", $"A stike has been added. Currently at {bomb.Strike} strike(s)");
+            MessageBox.Show($"A stike has been added. Currently at {bomb.Strike} strike(s)", "Strike Added");
         }
     }
 }

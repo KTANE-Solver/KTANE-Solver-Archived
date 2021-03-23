@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    public partial class SillySlotsForm : Form
+    public partial class SillySlotsOtherStageForm : Form
     {
-        public SillySlotsForm()
+        public SillySlotsOtherStageForm()
         {
             InitializeComponent();
         }

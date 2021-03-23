@@ -41,6 +41,7 @@
             this.flavor4ComboBox = new System.Windows.Forms.ComboBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
+            this.strikeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // stageLabel
@@ -157,11 +158,22 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
+            // strikeButton
+            // 
+            this.strikeButton.Location = new System.Drawing.Point(144, 321);
+            this.strikeButton.Name = "strikeButton";
+            this.strikeButton.Size = new System.Drawing.Size(81, 40);
+            this.strikeButton.TabIndex = 7;
+            this.strikeButton.Text = "Strike";
+            this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
+            // 
             // IceCreamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 391);
+            this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.flavor4ComboBox);
@@ -198,5 +210,6 @@
         private System.Windows.Forms.ComboBox flavor4ComboBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button strikeButton;
     }
 }
