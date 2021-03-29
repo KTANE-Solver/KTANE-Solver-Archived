@@ -139,6 +139,8 @@ namespace KTANE_Solver
             Console.WriteLine("=======================SILLY SLOTS=======================");
             Console.WriteLine($"Stage {stage}\n");
 
+            Console.WriteLine($"Keyword: {keyword}\n");
+
             //print information to the log
             if (stage == 1)
             {
@@ -191,7 +193,7 @@ namespace KTANE_Solver
 
             if (sillySausageCount == 1)
             {
-                Console.WriteLine("There is a single Silly Sausage\n");
+                Console.WriteLine("There is a single Silly Sausage. Pulling the lever...\n");
                 return false;
             }
 
@@ -249,7 +251,7 @@ namespace KTANE_Solver
                     //if the converted slot is not soggy, pull the lever
                     if (!isAdjective(convertedSlot, ConvertedSlot.Adjective.SOGGY))
                     {
-                        Console.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy\n");
+                        Console.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -277,7 +279,7 @@ namespace KTANE_Solver
                     //if the converted slot is not soggy, pull the lever
                     if (!isAdjective(convertedSlot, ConvertedSlot.Adjective.SOGGY))
                     {
-                        Console.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy\n");
+                        Console.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -305,7 +307,7 @@ namespace KTANE_Solver
 
             if (soggyStevenCount >= 2)
             {
-                Console.WriteLine("There are 2 or more Soggy Stevens\n");
+                Console.WriteLine("There are 2 or more Soggy Stevens. Pulling the lever...\n");
                 return false;
             }
 
@@ -333,7 +335,7 @@ namespace KTANE_Solver
                 !isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SASSY) &&
                 !isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SASSY))
             {
-                Console.WriteLine("There are 3 Simons with none of them being Sassy\n");
+                Console.WriteLine("There are 3 Simons with none of them being Sassy. Pulling the lever...\n");
                 return false;
             }
 
@@ -356,7 +358,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 1 is sausage. Slot 2 is Sally without being Soggy");
+                    Console.WriteLine("Slot 1 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -366,7 +368,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 3 is sausage. Slot 2 is Sally without being Soggy");
+                    Console.WriteLine("Slot 3 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -376,7 +378,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot1, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 2 is sausage. Slot 1 is Sally without being Soggy");
+                    Console.WriteLine("Slot 2 is sausage. Slot 1 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -386,7 +388,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 2 is sausage. Slot 3 is Sally without being Soggy");
+                    Console.WriteLine("Slot 2 is sausage. Slot 3 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -420,19 +422,19 @@ namespace KTANE_Solver
             {
                 if (slot1Sally && !isNoun(placeholderSlot1, ConvertedSlot.Noun.STEVEN))
                 {
-                    Console.WriteLine("There ae two Silly slots but both are not Steven\n");
+                    Console.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
 
                 if (slot2Sally && !isNoun(placeholderSlot2, ConvertedSlot.Noun.STEVEN))
                 {
-                    Console.WriteLine("There ae two Silly slots but both are not Steven\n");
+                    Console.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
 
                 if (slot3Sally && !isNoun(placeholderSlot3, ConvertedSlot.Noun.STEVEN))
                 {
-                    Console.WriteLine("There ae two Silly slots but both are not Steven\n");
+                    Console.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -444,7 +446,7 @@ namespace KTANE_Solver
                 //if this is stage 1, then return false
                 if (stage == 1)
                 {
-                    Console.WriteLine("There is a single Soggy slot with no previous stage\n");
+                    Console.WriteLine("There is a single Soggy slot with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -460,7 +462,7 @@ namespace KTANE_Solver
 
                     if (!stage1Slot1Sausge && !stage1Slot2Sausge && !stage1Slot3Sausge)
                     {
-                        Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot\n");
+                        Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -484,7 +486,7 @@ namespace KTANE_Solver
                     if (!stage1Slot1Sausge && !stage1Slot2Sausge && !stage1Slot3Sausge &&
                         !stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge)
                     {
-                        Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot\n");
+                        Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -515,7 +517,7 @@ namespace KTANE_Solver
                         !stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge &&
                         !stage3Slot1Sausge && !stage3Slot2Sausge && !stage3Slot3Sausge)
                     {
-                        Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot\n");
+                        Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -528,7 +530,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    Console.WriteLine("All 3 slots are the same symbol and colour with no previous stage\n");
+                    Console.WriteLine("All 3 slots are the same symbol and colour with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -568,7 +570,7 @@ namespace KTANE_Solver
 
                     if (!foundSoggySausage)
                     {
-                        Console.WriteLine("All 3 slots are the same symbol and colour with no previous stage having a Soggy Sausage slot\n");
+                        Console.WriteLine("All 3 slots are the same symbol and colour with no previous stage having a Soggy Sausage slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -582,7 +584,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    Console.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage\n");
+                    Console.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -633,7 +635,7 @@ namespace KTANE_Solver
 
                     if (sillyStevenCount == 0)
                     {
-                        Console.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage having a Silly Steven Slot\n");
+                        Console.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage having a Silly Steven Slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -664,7 +666,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    Console.WriteLine($"There is {sillySimonCount} Silly Simon(S) with no previous stage\n");
+                    Console.WriteLine($"There is {sillySimonCount} Silly Simon(S) with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -704,13 +706,14 @@ namespace KTANE_Solver
 
                     if (!foundSassySausage)
                     {
-                        Console.WriteLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage slot\n");
+                        Console.WriteLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage slot. Pulling the lever...\n");
                         return false;
                     }
                 }
             }
 
             //if this statement is reached, then the user will keep the stage
+            Console.WriteLine("No illegal statements found. Pressing keep...\n");
             return true;
         }
 
@@ -1097,7 +1100,7 @@ namespace KTANE_Solver
 
             public void PrintConvertedSlot(String color, String objectString, String keyword)
             { 
-                Console.WriteLine($"Converted {color} {objectString} to {AdjectiveProperty} {NounProperty} using {keyword}\n");
+                Console.WriteLine($"Converted {color} {objectString} to {AdjectiveProperty} {NounProperty}\n");
             }
         }
     }

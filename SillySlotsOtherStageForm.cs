@@ -201,7 +201,6 @@ namespace KTANE_Solver
             SetObjectComboBox(slot1ObjectComboBox);
             SetObjectComboBox(slot2ObjectComboBox);
             SetObjectComboBox(slot3ObjectComboBox);
-
         }
 
         /// <summary>
