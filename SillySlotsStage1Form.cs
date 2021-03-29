@@ -30,6 +30,18 @@ namespace KTANE_Solver
         //pull the lever
         private SillySlotsOtherStageForm sillySlotsOtherStageForm;
 
+        //used to solve the module
+        private SillySlots sillySlotsModule;
+
+        //slot information
+        private String slot1Color;
+        private String slot2Color;
+        private string slot3Color;
+
+        private String slot1Object;
+        private String slot2Object;
+        private string slot3Object;
+
         /// <summary>
         /// Creates a form that is used to create
         /// the first stage of silly slots
@@ -103,6 +115,8 @@ namespace KTANE_Solver
         /// <param name="comboBox">the combo box that will have all the objects</param>
         private void SetObjectComboBox(ComboBox comboBox)
         {
+            comboBox.Items.Clear();
+
             String[] objectList = new string[] { "Bomb", "Cherry", "Coin", "Grape" };
 
             comboBox.Items.AddRange(objectList);
@@ -164,9 +178,63 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("======================SILLY SLOTS======================");
-            Console.WriteLine("Stage 1\n");
+            slot1Color = slot1ColorComboBox.Text;
+            slot2Color = slot2ColorComboBox.Text;
+            slot3Color = slot3ColorComboBox.Text;
 
+            slot1Object = slot1ObjectComboBox.Text;
+            slot2Object = slot2ObjectComboBox.Text;
+            slot3Object = slot3ObjectComboBox.Text;
+
+            sillySlotsModule = new SillySlots(1, keywordComboBox.Text, slot1Color, slot1Object,
+                                                                    slot2Color, slot2Object,
+                                                                    slot3Color, slot3Object);
+
+            //tells if the user has to press keep or not
+            bool pressKeep = sillySlotsModule.Solve(1);
+
+            //if the user has to press keep, then send them to the first stage again
+            if (pressKeep)
+            {
+                MessageBox.Show("Press Keep","Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.WriteLine("Pressing keep\n");
+                this.UpdateForm(moduleSelectionForm, bomb);
+            }
+
+            //otherwise send them to stage 2
+            else
+            {
+                MessageBox.Show("Pull the levr", "Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (sillySlotsOtherStageForm == null)
+                {
+                    sillySlotsOtherStageForm = new SillySlotsOtherStageForm(this,
+                    moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, 2,
+                    slot1Color, slot1Object,
+                    slot2Color, slot2Object,
+                    slot3Color, slot3Object, null, null, null, null, null, null,
+                    null, null, null, null, null, null);
+                }
+
+                else
+                {
+                    sillySlotsOtherStageForm.UpdateForm(this, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, 2,
+                                                        slot1Color, slot1Object,
+                                                        slot2Color, slot2Object,
+                                                        slot3Color, slot3Object,
+                                                        null, null,
+                                                        null, null,
+                                                        null, null,
+                                                        null, null,
+                                                        null, null,
+                                                        null, null);
+
+                    
+                }
+
+                this.Hide();
+                sillySlotsOtherStageForm.Show();
+            }
         }
     }
 }

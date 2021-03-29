@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.stageLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.keywordComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,16 +42,8 @@
             this.slot3ColorComboBox = new System.Windows.Forms.ComboBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.strikeButton = new System.Windows.Forms.Button();
+            this.stageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // stageLabel
-            // 
-            this.stageLabel.AutoSize = true;
-            this.stageLabel.Location = new System.Drawing.Point(197, 9);
-            this.stageLabel.Name = "stageLabel";
-            this.stageLabel.Size = new System.Drawing.Size(57, 17);
-            this.stageLabel.TabIndex = 0;
-            this.stageLabel.Text = "Stage 1";
             // 
             // label2
             // 
@@ -176,6 +167,15 @@
             this.strikeButton.UseVisualStyleBackColor = true;
             this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
+            // stageLabel
+            // 
+            this.stageLabel.AutoSize = true;
+            this.stageLabel.Location = new System.Drawing.Point(197, 9);
+            this.stageLabel.Name = "stageLabel";
+            this.stageLabel.Size = new System.Drawing.Size(57, 17);
+            this.stageLabel.TabIndex = 0;
+            this.stageLabel.Text = "Stage 1";
+            // 
             // SillySlotsStage1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -205,8 +205,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label stageLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox keywordComboBox;
         private System.Windows.Forms.Label label3;
@@ -221,5 +219,6 @@
         private System.Windows.Forms.ComboBox slot3ColorComboBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button strikeButton;
+        private System.Windows.Forms.Label stageLabel;
     }
 }

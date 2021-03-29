@@ -146,6 +146,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SillySlotsOtherStageForm.resx">
+      <DependentUpon>SillySlotsOtherStageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SillySlotsStage1Form.resx">
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
     </EmbeddedResource>
