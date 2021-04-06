@@ -85,7 +85,7 @@ namespace KTANE_Solver
                 stage1Slot2Object = slot2Object;
 
                 stage1Slot3Color = slot3Color;
-                stage1Slot3Object = slot3Object;
+                stage1Slot3Object = slot3Object;   
             }
 
             else if (stage == 2)
@@ -144,31 +144,31 @@ namespace KTANE_Solver
             //print information to the log
             if (stage == 1)
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword);
+                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage1Slot1Color, stage1Slot1Object);
+                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage1Slot2Color, stage1Slot2Object);
+                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage1Slot3Color, stage1Slot3Object);
 
             }
 
             else if (stage == 2)
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword);
+                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage2Slot1Color, stage2Slot1Object);
+                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage2Slot2Color, stage2Slot2Object);
+                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage2Slot3Color, stage2Slot3Object);
             }
 
             else if (stage == 3)
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword);
+                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage3Slot1Color, stage3Slot1Object);
+                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage3Slot2Color, stage3Slot2Object);
+                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage3Slot3Color, stage3Slot3Object);
             }
 
             else
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage4Slot1Color, stage4Slot1Object, keyword);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage4Slot2Color, stage4Slot2Object, keyword);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage4Slot3Color, stage4Slot3Object, keyword);
+                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage4Slot1Color, stage4Slot1Object);
+                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage4Slot2Color, stage4Slot2Object);
+                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage4Slot3Color, stage4Slot3Object);
             }
 
             //If any of these are true, then pull the lever
@@ -578,7 +578,7 @@ namespace KTANE_Solver
 
 
             //All 3 slots are the same colour, unless any of them are Sally or there was a Silly Steven in the last stage.
-            if (stage1Slot1Color == stage1Slot2Color && stage1Slot1Color == stage1Slot3Color &&
+            if (placeholderSlot1.AdjectiveProperty == placeholderSlot2.AdjectiveProperty && placeholderSlot1.AdjectiveProperty == placeholderSlot3.AdjectiveProperty &&
                 !isNoun(placeholderSlot1, ConvertedSlot.Noun.SALLY) && !isNoun(placeholderSlot2, ConvertedSlot.Noun.SALLY) && 
                 !isNoun(placeholderSlot3, ConvertedSlot.Noun.SALLY))
             {
@@ -678,13 +678,13 @@ namespace KTANE_Solver
                     convertedSlotList.Add(new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword));
                     convertedSlotList.Add(new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword));
 
-                    if (stage2Slot1Color != null)
+                    if (stage3Slot1Color != null)
                     {
                         convertedSlotList.Add(new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword));
                         convertedSlotList.Add(new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword));
                         convertedSlotList.Add(new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword));
 
-                        if (stage3Slot1Color != null)
+                        if (stage4Slot1Color != null)
                         {
                             convertedSlotList.Add(new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword));
                             convertedSlotList.Add(new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword));
@@ -706,7 +706,7 @@ namespace KTANE_Solver
 
                     if (!foundSassySausage)
                     {
-                        Console.WriteLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage slot. Pulling the lever...\n");
+                        Console.WriteLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -718,6 +718,117 @@ namespace KTANE_Solver
         }
 
         //============METHODS============
+        /// <summary>
+        /// Giveing more information to the
+        /// module
+        /// </summary>
+        /// <param name="stage">the stage the slots belong to</param>
+        /// <param name="slot1Color"></param>
+        /// <param name="slot1Object"></param>
+        /// <param name="slot2Color"></param>
+        /// <param name="slot2Object"></param>
+        /// <param name="slot3Color"></param>
+        /// <param name="slot3Object"></param>
+        public void UpdateModule(int stage, String keyword,
+                               String slot1Color, String slot1Object, 
+                               String slot2Color, String slot2Object, 
+                               String slot3Color, String slot3Object)
+        {
+            //update the placeholders ahd slots
+
+            this.keyword = keyword;
+
+            placeholderSlot1 = new ConvertedSlot(slot1Color, slot1Object, keyword);
+            placeholderSlot2 = new ConvertedSlot(slot2Color, slot2Object, keyword);
+            placeholderSlot3 = new ConvertedSlot(slot3Color, slot3Object, keyword);
+
+            if (stage == 1)
+            {
+                this.stage1Slot1Color = slot1Color;
+                this.stage1Slot2Color = slot2Color;
+                this.stage1Slot3Color = slot3Color;
+
+                this.stage1Slot1Object = slot1Object;
+                this.stage1Slot2Object = slot2Object;
+                this.stage1Slot3Object = slot3Object;
+
+                stage2Slot1Color = null;
+                stage2Slot1Object = null;
+                stage2Slot2Color = null;
+                stage2Slot2Object = null;
+                stage2Slot3Color = null;
+                stage2Slot3Object = null;
+
+                stage3Slot1Color = null;
+                stage3Slot1Object = null;
+                stage3Slot2Color = null;
+                stage3Slot2Object = null;
+                stage3Slot3Color = null;
+                stage3Slot3Object = null;
+
+                stage4Slot1Color = null;
+                stage4Slot1Object = null;
+                stage4Slot2Color = null;
+                stage4Slot2Object = null;
+                stage4Slot3Color = null;
+                stage4Slot3Object = null;
+            }
+
+            else if (stage == 2)
+            {
+                this.stage2Slot1Color = slot1Color;
+                this.stage2Slot2Color = slot2Color;
+                this.stage2Slot3Color = slot3Color;
+                          
+                this.stage2Slot1Object = slot1Object;
+                this.stage2Slot2Object = slot2Object;
+                this.stage2Slot3Object = slot3Object;
+
+                stage3Slot1Color = null;
+                stage3Slot1Object = null;
+                stage3Slot2Color = null;
+                stage3Slot2Object = null;
+                stage3Slot3Color = null;
+                stage3Slot3Object = null;
+
+                stage4Slot1Color = null;
+                stage4Slot1Object = null;
+                stage4Slot2Color = null;
+                stage4Slot2Object = null;
+                stage4Slot3Color = null;
+                stage4Slot3Object = null;
+            }
+
+            if (stage == 3)
+            {
+                this.stage3Slot1Color = slot1Color;
+                this.stage3Slot2Color = slot2Color;
+                this.stage3Slot3Color = slot3Color;
+                          
+                this.stage3Slot1Object = slot1Object;
+                this.stage3Slot2Object = slot2Object;
+                this.stage3Slot3Object = slot3Object;
+
+                stage4Slot1Color = null;
+                stage4Slot1Object = null;
+                stage4Slot2Color = null;
+                stage4Slot2Object = null;
+                stage4Slot3Color = null;
+                stage4Slot3Object = null;
+            }
+
+            else
+            {
+                this.stage4Slot1Color = slot1Color;
+                this.stage4Slot2Color = slot2Color;
+                this.stage4Slot3Color = slot3Color;
+                          
+                this.stage4Slot1Object = slot1Object;
+                this.stage4Slot2Object = slot2Object;
+                this.stage4Slot3Object = slot3Object;
+            }
+          
+        }
 
         /// <summary>
         /// Tells if a slot has a certain adjective
@@ -781,8 +892,8 @@ namespace KTANE_Solver
             /// <param name="keyword"></param>
             public ConvertedSlot(String color, String objectString, String keyword)
             {
-                NounProperty = ConvertObjectToNoun(keyword, objectString);
                 AdjectiveProperty = ConvertColorToAdjective(keyword, color);
+                NounProperty = ConvertObjectToNoun(keyword, objectString);
             }
 
             /// <summary>
@@ -1098,7 +1209,7 @@ namespace KTANE_Solver
                 return Noun.SALLY;
             }
 
-            public void PrintConvertedSlot(String color, String objectString, String keyword)
+            public void PrintConvertedSlot(String color, String objectString)
             { 
                 Console.WriteLine($"Converted {color} {objectString} to {AdjectiveProperty} {NounProperty}\n");
             }

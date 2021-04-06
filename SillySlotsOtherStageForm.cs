@@ -22,6 +22,9 @@ namespace KTANE_Solver
         private ModuleSelectionForm moduleSelectionForm;
 
         //slot information
+        private String keyword;
+
+
         private String stage1Slot1Color;
         private String stage1Slot2Color;
         private String stage1Slot3Color;
@@ -204,6 +207,79 @@ namespace KTANE_Solver
         }
 
         /// <summary>
+        /// Used to give the module more infomration
+        /// </summary>
+        /// <param name="stage">the stage the slots belong to</param>
+        /// <param name="slot1Color"></param>
+        /// <param name="slot1Object"></param>
+        /// <param name="slot2Color"></param>
+        /// <param name="slot2Object"></param>
+        /// <param name="slot3Color"></param>
+        /// <param name="slot3Object"></param>
+        public void UpdateForm(int stage,
+                               String slot1Color, String slot1Object,
+                               String slot2Color, String slot2Object,
+                               String slot3Color, String slot3Object)
+        {
+            this.stage = stage;
+
+            //the label will show what stage the user is on
+            stageLabel.Text = "Stage " + stage;
+
+            //set up keyword comboBox
+            keywordComboBox.Items.Clear();
+
+            String[] keywordList = new String[] { "Sassy", "Silly", "Soggy", "Sally", "Simon", "Sausage", "Steven" };
+
+            keywordComboBox.Items.AddRange(keywordList);
+            keywordComboBox.Text = "Sassy";
+            keywordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //set up each color combobox
+            SetColorComboBox(slot1ColorComboBox);
+            SetColorComboBox(slot2ColorComboBox);
+            SetColorComboBox(slot3ColorComboBox);
+
+            //set up each object combobox
+            SetObjectComboBox(slot1ObjectComboBox);
+            SetObjectComboBox(slot2ObjectComboBox);
+            SetObjectComboBox(slot3ObjectComboBox);
+
+            if (stage == 1)
+            {
+                this.stage1Slot1Color = slot1Color;
+                this.stage1Slot2Color = slot2Color;
+                this.stage1Slot3Color = slot3Color;
+
+                this.stage1Slot1Object = slot1Object;
+                this.stage1Slot2Object = slot2Object;
+                this.stage1Slot3Object = slot3Object;
+            }
+
+            else if (stage == 2)
+            {
+                this.stage2Slot1Color = slot1Color;
+                this.stage2Slot2Color = slot2Color;
+                this.stage2Slot3Color = slot3Color;
+
+                this.stage2Slot1Object = slot1Object;
+                this.stage2Slot2Object = slot2Object;
+                this.stage2Slot3Object = slot3Object;
+            }
+
+            if (stage == 3)
+            {
+                this.stage3Slot1Color = slot1Color;
+                this.stage3Slot2Color = slot2Color;
+                this.stage3Slot3Color = slot3Color;
+
+                this.stage3Slot1Object = slot1Object;
+                this.stage3Slot2Object = slot2Object;
+                this.stage3Slot3Object = slot3Object;
+            }
+        }
+
+        /// <summary>
         /// Sets up a combo box so it has
         /// all the colors
         /// </summary>
@@ -314,69 +390,53 @@ namespace KTANE_Solver
         /// <summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-            //if the stage is 4, tell the user the answer and go to stage 1
-            if (stage == 4)
+            //updating the module
+            keyword = keywordComboBox.Text;
+
+            String slot1Color = slot1ColorComboBox.Text;
+            String slot2Color = slot2ColorComboBox.Text;
+            String slot3Color = slot3ColorComboBox.Text;
+
+            String slot1Object = slot1ObjectComboBox.Text;
+            String slot2Object = slot2ObjectComboBox.Text;
+            String slot3Object = slot3ObjectComboBox.Text;
+
+            sillySlotsModule.UpdateModule(stage, keyword,
+                                          slot1Color, slot1Object,
+                                          slot2Color, slot2Object,
+                                          slot3Color, slot3Object);
+
+            //getting the answer and showing the appropriate form next
+            bool presskeep = sillySlotsModule.Solve(stage);
+
+            if (presskeep)
             {
-                bool pressKeep = sillySlotsModule.Solve(4);
+                MessageBox.Show("Press Keep", $"Silly Slot Stage {stage} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 this.Hide();
+
                 sillySlotsStage1Form.UpdateForm(moduleSelectionForm, bomb);
                 sillySlotsStage1Form.Show();
             }
 
-            //otherwise, go to stage 1 if the answer is keep
-            //or go to the next stage if the user has to pull the lever
             else
             {
-               bool pressKeep = sillySlotsModule.Solve(stage);
+                MessageBox.Show("Pull the lever", $"Silly Slot Stage {stage} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (pressKeep)
+                //if the stage is 4 then go to the first stage
+                if (stage == 4)
                 {
-                    MessageBox.Show("Press Keep", "Silly Slot Stage 4 Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
+
                     sillySlotsStage1Form.UpdateForm(moduleSelectionForm, bomb);
                     sillySlotsStage1Form.Show();
                 }
 
                 else
-                {
-                    MessageBox.Show("Pull the lever", $"Silly Slot Stage {stage} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    if (stage == 2)
-                    {
-                        stage2Slot1Color = slot1ColorComboBox.Text;
-                        stage2Slot2Color = slot2ColorComboBox.Text;
-                        stage2Slot3Color = slot3ColorComboBox.Text;
-
-                        stage2Slot1Object = slot1ObjectComboBox.Text;
-                        stage2Slot2Object = slot2ObjectComboBox.Text;
-                        stage2Slot3Object = slot3ObjectComboBox.Text;
-                    }
-
-                    else if (stage == 3)
-                    {
-                        stage3Slot1Color = slot1ColorComboBox.Text;
-                        stage3Slot2Color = slot2ColorComboBox.Text;
-                        stage3Slot3Color = slot3ColorComboBox.Text;
-                     
-                        stage3Slot1Object = slot1ObjectComboBox.Text;
-                        stage3Slot2Object = slot2ObjectComboBox.Text;
-                        stage3Slot3Object = slot3ObjectComboBox.Text;
-                    }
-
-                    UpdateForm(sillySlotsStage1Form, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, stage + 1,
-                           stage1Slot1Color, stage1Slot1Object,
-                           stage1Slot2Color, stage1Slot2Object,
-                           stage1Slot3Color, stage1Slot3Object,
-                           stage2Slot1Color, stage2Slot1Object,
-                           stage2Slot2Color, stage2Slot2Object,
-                           stage2Slot3Color, stage2Slot3Object,
-                           stage3Slot1Color, stage3Slot1Object,
-                           stage3Slot2Color, stage3Slot2Object,
-                           stage3Slot3Color, stage3Slot3Object);
+                { 
+                    UpdateForm(stage + 1, slot1Color, slot1Object, slot2Color, slot2Object, slot3Color, slot3Object);
                 }
             }
-
-                    
         }
     }
 }
