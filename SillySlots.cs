@@ -313,24 +313,24 @@ namespace KTANE_Solver
 
             //There are 3 Simons, unless any of them are Sassy.
 
-            int soggyCount = 0;
+            int simonCount = 0;
 
             if (isNoun(placeholderSlot1, ConvertedSlot.Noun.SIMON))
             {
-                soggyCount++;
+                simonCount++;
             }
 
             if (isNoun(placeholderSlot2, ConvertedSlot.Noun.SIMON))
             {
-                soggyCount++;
+                simonCount++;
             }
 
             if (isNoun(placeholderSlot3, ConvertedSlot.Noun.SIMON))
             {
-                soggyCount++;
+                simonCount++;
             }
 
-            if (soggyCount == 3 &&
+            if (simonCount == 3 &&
                 !isAdjective(placeholderSlot1, ConvertedSlot.Adjective.SASSY) &&
                 !isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SASSY) &&
                 !isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SASSY))
@@ -441,8 +441,26 @@ namespace KTANE_Solver
 
 
             //There is a single Soggy slot, unless the previous stage had any number of Sausage slots.
+            int soggyCount = 0;
+
+            if (isAdjective(placeholderSlot1, ConvertedSlot.Adjective.SOGGY))
+            {
+                soggyCount++;
+            }
+
+            if (isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SOGGY))
+            {
+                soggyCount++;
+            }
+
+            if (isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SOGGY))
+            {
+                soggyCount++;
+            }
+
             if (soggyCount == 1)
             {
+
                 //if this is stage 1, then return false
                 if (stage == 1)
                 {
