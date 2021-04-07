@@ -487,22 +487,15 @@ namespace KTANE_Solver
 
                 else if (stage == 3)
                 {
-                    ConvertedSlot stage1Slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword);
-                    ConvertedSlot stage1Slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword);
-                    ConvertedSlot stage1Slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword);
                     ConvertedSlot stage2Slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword);
                     ConvertedSlot stage2Slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword);
                     ConvertedSlot stage2Slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword);
 
-                    bool stage1Slot1Sausge = isNoun(stage1Slot1, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage1Slot2Sausge = isNoun(stage1Slot2, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage1Slot3Sausge = isNoun(stage1Slot3, ConvertedSlot.Noun.SAUSAGE);
                     bool stage2Slot1Sausge = isNoun(stage2Slot1, ConvertedSlot.Noun.SAUSAGE);
                     bool stage2Slot2Sausge = isNoun(stage2Slot2, ConvertedSlot.Noun.SAUSAGE);
                     bool stage2Slot3Sausge = isNoun(stage2Slot3, ConvertedSlot.Noun.SAUSAGE);
 
-                    if (!stage1Slot1Sausge && !stage1Slot2Sausge && !stage1Slot3Sausge &&
-                        !stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge)
+                    if (!stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge)
                     {
                         Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot. Pulling the lever...\n");
                         return false;
@@ -511,29 +504,15 @@ namespace KTANE_Solver
 
                 else
                 {
-                    ConvertedSlot stage1Slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword);
-                    ConvertedSlot stage1Slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword);
-                    ConvertedSlot stage1Slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword);
-                    ConvertedSlot stage2Slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword);
-                    ConvertedSlot stage2Slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword);
-                    ConvertedSlot stage2Slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword);
                     ConvertedSlot stage3Slot1 = new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword);
                     ConvertedSlot stage3Slot2 = new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword);
                     ConvertedSlot stage3Slot3 = new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword);
 
-                    bool stage1Slot1Sausge = isNoun(stage1Slot1, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage1Slot2Sausge = isNoun(stage1Slot2, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage1Slot3Sausge = isNoun(stage1Slot3, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage2Slot1Sausge = isNoun(stage2Slot1, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage2Slot2Sausge = isNoun(stage2Slot2, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage2Slot3Sausge = isNoun(stage2Slot3, ConvertedSlot.Noun.SAUSAGE);
                     bool stage3Slot1Sausge = isNoun(stage3Slot1, ConvertedSlot.Noun.SAUSAGE);
                     bool stage3Slot2Sausge = isNoun(stage3Slot2, ConvertedSlot.Noun.SAUSAGE);
                     bool stage3Slot3Sausge = isNoun(stage3Slot3, ConvertedSlot.Noun.SAUSAGE);
 
-                    if (!stage1Slot1Sausge && !stage1Slot2Sausge && !stage1Slot3Sausge &&
-                        !stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge &&
-                        !stage3Slot1Sausge && !stage3Slot2Sausge && !stage3Slot3Sausge)
+                    if (!stage3Slot1Sausge && !stage3Slot2Sausge && !stage3Slot3Sausge)
                     {
                         Console.WriteLine("There is a single Soggy slot with no previous stage having a Sausage Slot. Pulling the lever...\n");
                         return false;
