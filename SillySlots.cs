@@ -1037,7 +1037,7 @@ namespace KTANE_Solver
                     {
                         //if keyword is steven and the color is blue, the adjective is soggy
                         case "Blue":
-                            return Adjective.SASSY;
+                            return Adjective.SOGGY;
 
                         //if keyword is steven and the color is red, the adjective is silly
                         case "Red":
@@ -1045,7 +1045,8 @@ namespace KTANE_Solver
 
                         //if keyword is steven and the color is green, the adjective is sassy
                         case "Green":
-                            return Adjective.SOGGY;
+                            return Adjective.SASSY;
+
                     }
                 }
 
