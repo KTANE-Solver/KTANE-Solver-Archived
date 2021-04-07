@@ -77,10 +77,10 @@ namespace KTANE_Solver
             slot3ObjectComboBox.Items.Clear();
 
             //set up kewyword comboBox
-            String[] keywordList = new String[] {"Sassy", "Silly", "Soggy", "Sally","Simon","Sausage","Steven"};
+            String[] keywordList = new String[] { "Sally", "Sassy", "Sausage", "Silly", "Simon", "Soggy", "Steven" };
 
             keywordComboBox.Items.AddRange(keywordList);
-            keywordComboBox.Text = "Sassy";
+            keywordComboBox.Text = "Sally";
             keywordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //set up each slot color comboBox
