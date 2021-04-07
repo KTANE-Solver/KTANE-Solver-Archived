@@ -951,11 +951,11 @@ namespace KTANE_Solver
 
                         //if keyword is silly and the color is red, the adjective is soggy
                         case "Red":
-                            return Adjective.SILLY;
+                            return Adjective.SOGGY;
 
                         //if keyword is silly and the color is green, the adjective is silly
                         case "Green":
-                            return Adjective.SOGGY;
+                            return Adjective.SILLY;
                     }
                 }
 

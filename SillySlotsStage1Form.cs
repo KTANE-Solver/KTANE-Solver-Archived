@@ -197,7 +197,6 @@ namespace KTANE_Solver
             if (pressKeep)
             {
                 MessageBox.Show("Press Keep","Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Console.WriteLine("Pressing keep\n");
                 this.UpdateForm(moduleSelectionForm, bomb);
             }
 
