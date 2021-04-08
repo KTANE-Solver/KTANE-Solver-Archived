@@ -524,8 +524,8 @@ namespace KTANE_Solver
 
 
             //All 3 slots are the same symbol and colour, unless there has been a Soggy Sausage in any previous stage.
-            if (stage1Slot1Color == stage1Slot2Color && stage1Slot1Color == stage1Slot3Color &&
-                stage1Slot1Object == stage1Slot2Object && stage1Slot1Object == stage1Slot3Object)
+            if (placeholderSlot1.SlotEqual(placeholderSlot2) && 
+                placeholderSlot2.SlotEqual(placeholderSlot3))
             {
                 if (stage == 1)
                 {
@@ -577,8 +577,10 @@ namespace KTANE_Solver
 
 
             //All 3 slots are the same colour, unless any of them are Sally or there was a Silly Steven in the last stage.
-            if (placeholderSlot1.AdjectiveProperty == placeholderSlot2.AdjectiveProperty && placeholderSlot1.AdjectiveProperty == placeholderSlot3.AdjectiveProperty &&
-                !isNoun(placeholderSlot1, ConvertedSlot.Noun.SALLY) && !isNoun(placeholderSlot2, ConvertedSlot.Noun.SALLY) && 
+            if (placeholderSlot1.AdjectiveEqual(placeholderSlot2) && 
+                placeholderSlot1.AdjectiveEqual(placeholderSlot3) &&
+                !isNoun(placeholderSlot1, ConvertedSlot.Noun.SALLY) && 
+                !isNoun(placeholderSlot2, ConvertedSlot.Noun.SALLY) && 
                 !isNoun(placeholderSlot3, ConvertedSlot.Noun.SALLY))
             {
                 if (stage == 1)
@@ -1209,6 +1211,42 @@ namespace KTANE_Solver
                 return Noun.SALLY;
             }
 
+            /// <summary>
+            /// Tells if a slot has the same adjective as this one
+            /// </summary>
+            /// <param name="slot">the slot that will be compared to this one</param>
+            /// <returns>true if they have the same adjective</returns>
+            public bool AdjectiveEqual(ConvertedSlot slot)
+            {
+                return AdjectiveProperty == slot.AdjectiveProperty;
+            }
+
+            /// <summary>
+            /// Tells if a slot has the same noun as this one
+            /// </summary>
+            /// <param name="slot">the slot that will be compared to this one</param>
+            /// <returns>true if they have the same noun</returns>
+            public bool NounEqual(ConvertedSlot slot)
+            {
+                return NounProperty == slot.NounProperty;
+            }
+
+            /// <summary>
+            /// Tells if a slot has the same noun and adjective as this one
+            /// </summary>
+            /// <param name="slot">the slot that will be compared to this one</param>
+            /// <returns>true if a slot has the same noun and adjective as this
+            ///           one</returns>
+            public bool SlotEqual(ConvertedSlot slot)
+            {
+                return NounEqual(slot) && AdjectiveEqual(slot);
+            }
+
+            /// <summary>
+            /// Prints information about the conveted slot
+            /// </summary>
+            /// <param name="color">the color the slot was</param>
+            /// <param name="objectString">the object the slot had</param>
             public void PrintConvertedSlot(String color, String objectString)
             { 
                 Console.WriteLine($"Converted {color} {objectString} to {AdjectiveProperty} {NounProperty}\n");
