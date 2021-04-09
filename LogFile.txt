@@ -27,16 +27,12 @@ TRN - Visisble: False Lit: False
 # of stereo ports: 0
 
 ======================MODULE SELECTION======================
-=======================SILLY SLOTS=======================
-Stage 1
+User selected Ice Cream. Attempting to open...
 
-Keyword: Silly
+Ice Cream opened successfully
 
-Slot 1: Converted Green Coin to SILLY SALLY
+======================MODULE SELECTION======================
+User selected Murder. Attempting to open...
 
-Slot 2: Converted Blue Bomb to SASSY SIMON
-
-Slot 3: Converted Blue Grape to SASSY SAUSAGE
-
-No illegal statements found. Pressing keep...
+Murder hasn't been inplemeted yet.
 

@@ -214,10 +214,14 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
+            String module = moduleComboBox.Text;
 
-            switch(moduleComboBox.Text)
+            logFileWriter.WriteLine($"User selected {module}. Attempting to open...\n");
+
+            switch (module)
             {
                 case "Ice Cream":
+
                     this.Hide();
 
                     if (iceCreamForm == null)
@@ -231,6 +235,7 @@ namespace KTANE_Solver
                     }
 
                     iceCreamForm.Show();
+                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Logic":
@@ -247,6 +252,7 @@ namespace KTANE_Solver
                     }
 
                     logicForm.Show();
+                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Maze":
@@ -263,6 +269,7 @@ namespace KTANE_Solver
                     }
 
                     mazeForm.Show();
+                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Silly Slots":
@@ -279,12 +286,23 @@ namespace KTANE_Solver
                     }
 
                     sillySlotsForm.Show();
+                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Murder":
+                    logFileWriter.WriteLine($"{module} hasn't been inplemeted yet.\n");
                     MessageBox.Show("Sorry. This module has not been implemented yet.", "Module Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
+        }
+
+        /// <summary>
+        /// Tells the log the module opend successfully
+        /// </summary>
+        /// <param name="module"></param>
+        private void SuccessfulModuleOpening(String module)
+        {
+            logFileWriter.WriteLine($"{module} opened successfully\n");
         }
     }
 }

@@ -30,6 +30,7 @@ namespace KTANE_Solver
             InitializeComponent();
 
             logFileWriter = new StreamWriter("../../LogFile.txt");
+            logFileWriter.AutoFlush = true;
 
             logFileWriter.WriteLine("======================EDGEWORK SELECTION======================");
         }
