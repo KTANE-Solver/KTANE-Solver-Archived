@@ -88,6 +88,7 @@
     <Compile Include="MazeForm.Designer.cs">
       <DependentUpon>MazeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Module.cs" />
     <Compile Include="ModuleSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>

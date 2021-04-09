@@ -11,12 +11,9 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 3/5/21
     //Purpose: Solves the Maze module
-    class Maze
+    class Maze : Module
     {
         //==============FIELDS==============
-
-        //used to write to the log file
-        private StreamWriter logFileWriter;
 
         //the maze itself
         private String[,] maze;
@@ -43,10 +40,8 @@ namespace KTANE_Solver
         //==============PROPERTIES==============
 
         //==============CONSTRUCTORS==============
-        public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter logFileWriter)
+        public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter LogFileWriter) : base(null, LogFileWriter)
         {
-            this.logFileWriter = logFileWriter;
-
             //sets up the coordiantes
             this.playerRow = playerRow;
             this.playerColumn = playerColumn;
@@ -687,11 +682,11 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
-            logFileWriter.WriteLine("======================MAZE======================");
+            LogFileWriter.WriteLine("======================MAZE======================");
 
-            logFileWriter.WriteLine($"Player: ({playerRow},{playerColumn})\n");
-            logFileWriter.WriteLine($"Goal: ({goalRow},{goalColumn})\n");
-            logFileWriter.WriteLine($"Marker: ({markerRow},{markerColumn})\n");
+            LogFileWriter.WriteLine($"Player: ({playerRow},{playerColumn})\n");
+            LogFileWriter.WriteLine($"Goal: ({goalRow},{goalColumn})\n");
+            LogFileWriter.WriteLine($"Marker: ({markerRow},{markerColumn})\n");
 
             //if the player finds the goal
 
@@ -797,7 +792,7 @@ namespace KTANE_Solver
             {
 
                 playerRow -= 2;
-                logFileWriter.WriteLine($"Moving up. Player is now at ({playerRow},{playerColumn})\n");
+                LogFileWriter.WriteLine($"Moving up. Player is now at ({playerRow},{playerColumn})\n");
                 directionList.Add("UP");
 
 
@@ -837,7 +832,7 @@ namespace KTANE_Solver
                                 playerRow += 2;
                                 directionList.RemoveAt(directionList.Count - 1);
 
-                                logFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                             }
                         }
 
@@ -866,7 +861,7 @@ namespace KTANE_Solver
             {
                 playerColumn += 2;
                 directionList.Add("RIGHT");
-                logFileWriter.WriteLine($"Moving right. Player is now at ({playerRow},{playerColumn})\n");
+                LogFileWriter.WriteLine($"Moving right. Player is now at ({playerRow},{playerColumn})\n");
 
 
 
@@ -904,7 +899,7 @@ namespace KTANE_Solver
                                     maze[playerRow, playerColumn] = "X";
                                     playerColumn -= 2;
                                     directionList.RemoveAt(directionList.Count - 1);
-                                    logFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                    LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                                 }
                             }
                         }
@@ -935,7 +930,7 @@ namespace KTANE_Solver
                 directionList.Add("DOWN");
 
                 playerRow += 2;
-                logFileWriter.WriteLine($"Moving down. Player is now at ({playerRow},{playerColumn})\n");
+                LogFileWriter.WriteLine($"Moving down. Player is now at ({playerRow},{playerColumn})\n");
 
 
                 //if the player is at the goal,
@@ -973,7 +968,7 @@ namespace KTANE_Solver
                                 maze[playerRow, playerColumn] = "X";
                                 playerRow -= 2;
                                 directionList.RemoveAt(directionList.Count - 1);
-                                logFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                             }
                         }
 
@@ -1004,7 +999,7 @@ namespace KTANE_Solver
             {
                 playerColumn -= 2;
                 directionList.Add("LEFT");
-                logFileWriter.WriteLine($"Moving left. Player is now at ({playerRow},{playerColumn})\n");
+                LogFileWriter.WriteLine($"Moving left. Player is now at ({playerRow},{playerColumn})\n");
 
 
 
@@ -1042,7 +1037,7 @@ namespace KTANE_Solver
                                     maze[playerRow, playerColumn] = "X";
                                     playerColumn += 2;
                                     directionList.RemoveAt(directionList.Count - 1);
-                                    logFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                    LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                                 }
                             }
                         }

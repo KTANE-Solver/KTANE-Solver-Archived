@@ -11,7 +11,7 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 3/14/21
     //Purpose: Solves the Ice Cream module
-    public class IceCream
+    public class IceCream : Module
     {
         //=======================FIELDS=======================
         //the name of the customer
@@ -20,16 +20,12 @@ namespace KTANE_Solver
         //the ingredients the customer is allergic to
         private List<IceCreamFlavor.Ingredient> allergyList;
 
-        //used to get th edgework
-        private Bomb bomb;
 
         //all of the ice cream flavors
         private IceCreamFlavor flavor1;
         private IceCreamFlavor flavor2;
         private IceCreamFlavor flavor3;
         private IceCreamFlavor flavor4;
-
-        private StreamWriter logFileWriter;
 
 
         //=======================PROPERTIES=======================
@@ -43,18 +39,16 @@ namespace KTANE_Solver
         /// <param name="flavor2">one of the ice cream flavors</param>
         /// <param name="flavor3">one of the ice cream flavors</param>
         /// <param name="flavor4">one of the ice cream flavors</param>
-        /// <param name="bomb">used to get the edgework</param>
-        public IceCream(String customer, String flavor1, String flavor2, String flavor3, String flavor4, Bomb bomb, StreamWriter logFileWriter)
+        /// <param name="Bomb">used to get the edgework</param>
+        public IceCream(String customer, String flavor1, String flavor2, String flavor3, String flavor4, Bomb Bomb, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter)
         {
             this.customer = customer;
-            this.bomb = bomb;
 
             //convert the flavor as a string to an enum
             this.flavor1 = new IceCreamFlavor(flavor1);
             this.flavor2 = new IceCreamFlavor(flavor2);
             this.flavor3 = new IceCreamFlavor(flavor3);
             this.flavor4 = new IceCreamFlavor(flavor4);
-            this.logFileWriter = logFileWriter;
         }
 
         //=======================METHODS=======================
@@ -63,19 +57,19 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
-            logFileWriter.WriteLine($"Customer: {customer}\n");
+            LogFileWriter.WriteLine($"Customer: {customer}\n");
 
             //find out what the customer is allergic to
             SetCustomerAllergies();
 
-            logFileWriter.WriteLine("Allergy List");
+            LogFileWriter.WriteLine("Allergy List");
 
             foreach (IceCreamFlavor.Ingredient ingredient in allergyList)
             {
-                logFileWriter.WriteLine(ingredient);
+                LogFileWriter.WriteLine(ingredient);
             }
 
-            logFileWriter.WriteLine();
+            LogFileWriter.WriteLine();
 
 
 
@@ -105,15 +99,15 @@ namespace KTANE_Solver
             }
 
             //print out the heriearcy of flavors
-            logFileWriter.WriteLine("Hierarchy of Flavors:");
+            LogFileWriter.WriteLine("Hierarchy of Flavors:");
 
             for (int i = 0; i < 4; i++)
             {
-                logFileWriter.WriteLine(flavors[i].FlavorProperty.ToString() + " " + flavors[i].place);
+                LogFileWriter.WriteLine(flavors[i].FlavorProperty.ToString() + " " + flavors[i].place);
 
                 if (i == 3)
                 {
-                    logFileWriter.WriteLine();
+                    LogFileWriter.WriteLine();
                 } 
             }
 
@@ -146,7 +140,7 @@ namespace KTANE_Solver
             {
                 if (allergyList.Contains(ingredient))
                 {
-                    logFileWriter.WriteLine($"Cant have {flavor.FlavorProperty} since allergic to {ingredient}");
+                    LogFileWriter.WriteLine($"Cant have {flavor.FlavorProperty} since allergic to {ingredient}");
                     return true;
                 }
             }
@@ -159,7 +153,7 @@ namespace KTANE_Solver
         private void SetHeirarchy(IceCreamFlavor iceCreamFlavor)
         {
             //if there are more lit than until indicators
-            if (bomb.IndicatorLitNum > bomb.IndicatorUnlitNum)
+            if (Bomb.IndicatorLitNum > Bomb.IndicatorUnlitNum)
             {
                 //order of popularity:
 
@@ -219,7 +213,7 @@ namespace KTANE_Solver
             }
 
             //if there is an empty port plate
-            else if (bomb.EmptyPortPlate)
+            else if (Bomb.EmptyPortPlate)
             {
 
                 //order of popularity:
@@ -280,7 +274,7 @@ namespace KTANE_Solver
             }
 
             //if there are 3 or more batteries
-            else if (bomb.Battery >= 3)
+            else if (Bomb.Battery >= 3)
             {
 
                 //neapolitan
@@ -428,7 +422,7 @@ namespace KTANE_Solver
         private void SetCustomerAllergies()
         {
 
-            int lastDigit = bomb.LastDigit;
+            int lastDigit = Bomb.LastDigit;
 
             //if the serial number ends with 0 or 1
             if (lastDigit == 0 || lastDigit == 1)

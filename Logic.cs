@@ -11,12 +11,9 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 3/6/21
     //Purpose: Solves the logic module
-    class Logic
+    public class Logic : Module
     {
         //=========FIELDS=========
-
-        //used to get edgework
-        private Bomb bomb;
 
         //the letters for the top evaluation
         private char topFirstLetter;
@@ -65,9 +62,6 @@ namespace KTANE_Solver
         //evalualted first
         private bool bottomFirstTwoFirst;
 
-        //used to write to the logFile
-        private StreamWriter logFileWriter;
-
 
         //=========PROPERTIES=========
 
@@ -77,7 +71,7 @@ namespace KTANE_Solver
         /// Creates a object that will solve
         /// the logic module
         /// </summary>
-        /// <param name="bomb">used to get the edgework</param>
+        /// <param name="Bomb">used to get the edgework</param>
         /// <param name="topFirstNotStatement">if the top first statement is the opposite</param>
         /// <param name="topFirstLetter">top left letter</param>
         /// <param name="topSecondNotStatement">if the top second statement is the opposite</param>
@@ -94,7 +88,7 @@ namespace KTANE_Solver
         /// <param name="bottomSecondOperation">bottom second operation</param>
         /// <param name="bottomFirstTwoFirst">tells if the first two bottom statements are evaluated first</param>
         /// 
-        public Logic(Bomb bomb, 
+        public Logic(Bomb Bomb, 
                      bool topFirstNotStatement, char topFirstLetter, 
                      bool topSecondNotStatement, char topSecondLetter, 
                      bool topThirdNotStatement, char topThirdLetter, 
@@ -104,9 +98,8 @@ namespace KTANE_Solver
                      bool bottomSecondNotStatement, char bottomSecondLetter,
                      bool bottomThirdNotStatement,  char bottomThirdLetter, 
                      String bottomFirstOperation, String bottomSecondOperation, 
-                     bool bottomFirstTwoFirst, StreamWriter logFileWriter)
+                     bool bottomFirstTwoFirst, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter)
         {
-            this.bomb = bomb;
 
             this.topFirstNotStatement = topFirstNotStatement;
             this.topSecondNotStatement = topSecondNotStatement;
@@ -133,13 +126,11 @@ namespace KTANE_Solver
             this.bottomSecondOperation = bottomSecondOperation;
 
             this.bottomFirstTwoFirst = bottomFirstTwoFirst;
-
-            this.logFileWriter = logFileWriter;
         }
 
         public void Solve()
         {
-            logFileWriter.WriteLine("======================LOGIC======================");
+            LogFileWriter.WriteLine("======================LOGIC======================");
 
             //setting the statements
             topFirstStatement = SetStatement("Top", "First", topFirstLetter);
@@ -217,187 +208,187 @@ namespace KTANE_Solver
                 case 'A':
                     
 
-                    statement = bomb.Battery == bomb.IndicatorNum;
+                    statement = Bomb.Battery == Bomb.IndicatorNum;
                     statementString = "Number of batteries = number of indicators";
                     break;
 
                 //B - Serial number has more letters than digits
                 case 'B':
 
-                    statement = bomb.LetterNum > bomb.DigitNum;
+                    statement = Bomb.LetterNum > Bomb.DigitNum;
                     statementString = "Serial number has more letters than digits";
                     break;
 
                 //C - Has IND indicator
                 case 'C':
 
-                    statement = bomb.Ind.Visible;
+                    statement = Bomb.Ind.Visible;
                     statementString = "Has IND indicator";
                     break;
 
                 //D - Has FRK indicator
                 case 'D':
 
-                    statement = bomb.Frk.Visible;
+                    statement = Bomb.Frk.Visible;
                     statementString = "Has FRK indicator";
                     break;
 
                 //E - Exactly 1 unlit indicator
                 case 'E':
 
-                    statement = bomb.IndicatorUnlitNum == 1;
+                    statement = Bomb.IndicatorUnlitNum == 1;
                     statementString = "Exactly 1 unlit indicator";
                     break;
 
                 //F - More than 1 port type
                 case 'F':
 
-                    statement = bomb.UniquePortNum > 1;
+                    statement = Bomb.UniquePortNum > 1;
                     statementString = "More than 1 port type";
                     break;
 
                 //G - 2 batteries or more
                 case 'G':
 
-                    statement = bomb.Battery >= 2;
+                    statement = Bomb.Battery >= 2;
                     statementString = "2 batteries or more";
                     break;
 
                 //H - Less than 2 batteries
                 case 'H':
 
-                    statement = bomb.Battery < 2;
+                    statement = Bomb.Battery < 2;
                     statementString = "Less than 2 batteries";
                     break;
 
                 //I - Last digit of serial number is odd
                 case 'I':
 
-                    statement = bomb.LastDigit % 2 == 1;
+                    statement = Bomb.LastDigit % 2 == 1;
                     statementString = "Last digit of serial number is odd";
                     break;
 
                 //J - More than 4 batteries
                 case 'J':
 
-                    statement = bomb.Battery > 4;
+                    statement = Bomb.Battery > 4;
                     statementString = "More than 4 batteries";
                     break;
 
                 //K - Exactly 1 lit indicator
                 case 'K':
 
-                    statement = bomb.IndicatorLitNum == 1;
+                    statement = Bomb.IndicatorLitNum == 1;
                     statementString = "Exactly 1 lit indicator";
                     break;
 
                 //L - More than 2 indicators
                 case 'L':
 
-                    statement = bomb.IndicatorNum > 2;
+                    statement = Bomb.IndicatorNum > 2;
                     statementString = "More than 2 indicators";
                     break;
 
                 //M - No duplicate ports
                 case 'M':
 
-                    statement = bomb.UniquePortNum == bomb.PortNum;
+                    statement = Bomb.UniquePortNum == Bomb.PortNum;
                     statementString = "No duplicate ports";
                     break;
 
                 //N - More than 2 battery holders
                 case 'N':
 
-                    statement = bomb.BatteryHolder > 2;
+                    statement = Bomb.BatteryHolder > 2;
                     statementString = "More than 2 battery holders";
                     break;
 
                 //O - Has both lit and unlit indicators
                 case 'O':
 
-                    statement = bomb.IndicatorLitNum > 0 && bomb.IndicatorUnlitNum > 0;
+                    statement = Bomb.IndicatorLitNum > 0 && Bomb.IndicatorUnlitNum > 0;
                     statementString = "Has both lit and unlit indicators";
                     break;
 
                 //P - Has parallel port
                 case 'P':
 
-                    statement = bomb.Parallel.Visible;
+                    statement = Bomb.Parallel.Visible;
                     statementString = "Has parallel port";
                     break;
 
                 //Q - Exactly 2 ports
                 case 'Q':
 
-                    statement = bomb.PortNum == 2;
+                    statement = Bomb.PortNum == 2;
                     statementString = "Exactly 2 ports";
                     break;
 
                 //R - Has PS/2 port
                 case 'R':
 
-                    statement = bomb.Ps.Visible;
+                    statement = Bomb.Ps.Visible;
                     statementString = "Has PS/2 port";
                     break;
 
                 //S - Sum of digits in serial number > 10
                 case 'S':
 
-                    statement = bomb.DigitSum > 10;
+                    statement = Bomb.DigitSum > 10;
                     statementString = "2 batteries or more";
                     break;
 
                 //T - Has MSA indicator
                 case 'T':
 
-                    statement = bomb.Msa.Visible;
+                    statement = Bomb.Msa.Visible;
                     statementString = "Has MSA indicator";
                     break;
 
                 //U - Exactly 1 battery holder
                 case 'U':
 
-                    statement = bomb.BatteryHolder == 1;
+                    statement = Bomb.BatteryHolder == 1;
                     statementString = "Exactly 1 battery holder";
                     break;
 
                 //V - Serial number contains vowels
                 case 'V':
 
-                    statement = bomb.HasVowel;
+                    statement = Bomb.HasVowel;
                     statementString = "Serial number contains vowels";
                     break;
 
                 //W - No indicators
                 case 'W':
 
-                    statement = bomb.IndicatorNum == 0;
+                    statement = Bomb.IndicatorNum == 0;
                     statementString = "No indicators";
                     break;
 
                 //X - Exactly 1 indicator
                 case 'X':
 
-                    statement = bomb.IndicatorNum == 1;
+                    statement = Bomb.IndicatorNum == 1;
                     statementString = "Exactly 1 indicator";
                     break;
 
                 //Y - More than 5 ports
                 case 'Y':
 
-                    statement = bomb.PortNum > 5;
+                    statement = Bomb.PortNum > 5;
                     statementString = "More than 5 ports";
                     break;
                     
                 //Z - Less than 2 ports
                 case 'Z':
 
-                    statement = bomb.PortNum < 2;
+                    statement = Bomb.PortNum < 2;
                     statementString = "Less than 2 ports";
                     break;
             }
 
-            logFileWriter.WriteLine($"{top} {place}: {character} - {statementString}: {statement} \n");
+            LogFileWriter.WriteLine($"{top} {place}: {character} - {statementString}: {statement} \n");
 
             return statement;
         }
@@ -407,7 +398,7 @@ namespace KTANE_Solver
             if (notStatement)
             {
                 statement = !statement;
-                logFileWriter.WriteLine($"Not statement detected. {letterPosition} Statement is now {statement}\n");
+                LogFileWriter.WriteLine($"Not statement detected. {letterPosition} Statement is now {statement}\n");
             }
 
             return statement;
@@ -485,7 +476,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            logFileWriter.WriteLine($"{topBottom} {firstSecond} statement: {bool1} {opeartionString} {bool2} returns {statement}\n");
+            LogFileWriter.WriteLine($"{topBottom} {firstSecond} statement: {bool1} {opeartionString} {bool2} returns {statement}\n");
             return statement;
         }
     }

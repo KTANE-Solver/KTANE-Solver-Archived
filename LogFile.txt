@@ -27,12 +27,18 @@ TRN - Visisble: False Lit: False
 # of stereo ports: 0
 
 ======================MODULE SELECTION======================
-User selected Ice Cream. Attempting to open...
+User selected Maze. Attempting to open...
 
-Ice Cream opened successfully
+Maze opened successfully
 
-======================MODULE SELECTION======================
-User selected Murder. Attempting to open...
+======================MAZE======================
+Player: (9,1)
 
-Murder hasn't been inplemeted yet.
+Goal: (5,1)
+
+Marker: (4,3)
+
+Moving up. Player is now at (7,1)
+
+Moving up. Player is now at (5,1)
 
