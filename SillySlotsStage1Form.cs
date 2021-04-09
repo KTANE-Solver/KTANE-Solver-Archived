@@ -79,6 +79,7 @@ namespace KTANE_Solver
             //set up kewyword comboBox
             String[] keywordList = new String[] { "Sally", "Sassy", "Sausage", "Silly", "Simon", "Soggy", "Steven" };
 
+
             keywordComboBox.Items.AddRange(keywordList);
             keywordComboBox.Text = "Sally";
             keywordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -203,7 +204,7 @@ namespace KTANE_Solver
             //otherwise send them to stage 2
             else
             {
-                MessageBox.Show("Pull the levr", "Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Pull the lever", "Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (sillySlotsOtherStageForm == null)
                 {
