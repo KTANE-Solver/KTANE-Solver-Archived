@@ -15,17 +15,8 @@ namespace KTANE_Solver
     //Date: 3/23/21
     //Purpose: Gets the information needed to solve the fisrt stage of Silly Slots
 
-    public partial class SillySlotsStage1Form : Form
+    public partial class SillySlotsStage1Form : ModuleForm
     {
-        //the form used to get here
-        private ModuleSelectionForm moduleSelectionForm;
-
-        //used to write to the log file
-        private StreamWriter logFileWriter;
-
-        //used to increase the amount of srikes
-        private Bomb bomb;
-
         //the form the user will see next if the user needs to
         //pull the lever
         private SillySlotsOtherStageForm sillySlotsOtherStageForm;
@@ -49,9 +40,8 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm">the form used to get here</param>
         /// <param name="bomb">used to get the edgework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public SillySlotsStage1Form(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
+        public SillySlotsStage1Form(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb,logFileWriter, moduleSelectionForm)
         {
-            this.logFileWriter = logFileWriter;
             InitializeComponent();
             UpdateForm(moduleSelectionForm, bomb);
         }
@@ -62,8 +52,8 @@ namespace KTANE_Solver
         /// </summary>
         public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
         {
-            this.moduleSelectionForm = moduleSelectionForm;
-            this.bomb = bomb;
+            ModuleSelectionForm = moduleSelectionForm;
+            Bomb = bomb;
 
             //clearing all existing items in each comboBox
             keywordComboBox.Items.Clear();
@@ -131,9 +121,7 @@ namespace KTANE_Solver
         /// </summary>
         private void moduleSelectionButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            moduleSelectionForm.UpdateForm();
-            moduleSelectionForm.Show();
+            GoToMoudleSelectionForm();
         }
 
         /// <summary>
@@ -142,26 +130,7 @@ namespace KTANE_Solver
         /// </summary>
         private void SillySlotsStage1Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.Visible)
-            {
-                String message = "Are you sure you want to quit the program?";
-                String caption = "Quit Program";
-
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                //if the user clicks no, don't close the program
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-
-                else
-                {
-                    logFileWriter.Close();
-                    this.Visible = false;
-                    Application.Exit();
-                }
-            }
+            CloseProgram(e);
         }
 
         /// <summary>
@@ -169,8 +138,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            this.bomb.Strike++;
-            MessageBox.Show($"A stike has been added. Currently at {bomb.Strike} strike(s)", "Strike Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            IncrementStrike();
         }
 
 
@@ -189,7 +157,7 @@ namespace KTANE_Solver
 
             sillySlotsModule = new SillySlots(1, keywordComboBox.Text, slot1Color, slot1Object,
                                                                     slot2Color, slot2Object,
-                                                                    slot3Color, slot3Object, logFileWriter);
+                                                                    slot3Color, slot3Object, LogFileWriter);
 
             //tells if the user has to press keep or not
             bool pressKeep = sillySlotsModule.Solve(1);
@@ -198,7 +166,7 @@ namespace KTANE_Solver
             if (pressKeep)
             {
                 MessageBox.Show("Press Keep","Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.UpdateForm(moduleSelectionForm, bomb);
+                this.UpdateForm(ModuleSelectionForm, Bomb);
             }
 
             //otherwise send them to stage 2
@@ -209,7 +177,7 @@ namespace KTANE_Solver
                 if (sillySlotsOtherStageForm == null)
                 {
                     sillySlotsOtherStageForm = new SillySlotsOtherStageForm(this,
-                    moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, 2,
+                    ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, 2,
                     slot1Color, slot1Object,
                     slot2Color, slot2Object,
                     slot3Color, slot3Object, null, null, null, null, null, null,
@@ -218,7 +186,7 @@ namespace KTANE_Solver
 
                 else
                 {
-                    sillySlotsOtherStageForm.UpdateForm(this, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, 2,
+                    sillySlotsOtherStageForm.UpdateForm(this, ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, 2,
                                                         slot1Color, slot1Object,
                                                         slot2Color, slot2Object,
                                                         slot3Color, slot3Object,

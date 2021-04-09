@@ -15,20 +15,11 @@ namespace KTANE_Solver
     //Date: 3/4/21
     //Purpose: Gets the infomration needed 
     //to solve the Maze module
-    public partial class MazeForm : Form
+    public partial class MazeForm : ModuleForm
     {
-        //form that takes user to select a module to solve
-        private ModuleSelectionForm moduleSelectionForm;
-
-        //used to write to the log file
-        StreamWriter logFileWriter;
-
         //the 2d array that will hold buttons
         //that will represent the gird
         private Button[,] buttonArray;
-
-        //used to get the amount of strikes
-        Bomb bomb;
 
         //used to solve the module
         private Maze maze;
@@ -37,10 +28,9 @@ namespace KTANE_Solver
         /// Creates the maze form
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public MazeForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
+        public MazeForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter): base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
-            this.logFileWriter = logFileWriter;
             UpdateForm(moduleSelectionForm, bomb);
 
         }
@@ -51,7 +41,9 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
         public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
         {
-            this.bomb = bomb;
+
+            Bomb = bomb;
+            ModuleSelectionForm = moduleSelectionForm;
 
             //centers and positions all the labels
             redLabel.Left = (this.Width - redLabel.Width) / 2;
@@ -73,8 +65,6 @@ namespace KTANE_Solver
             //changes the y positions of the buttons so the title of
             //the mze can be seen
             int YOffset = 12;
-
-            this.moduleSelectionForm = moduleSelectionForm;
 
             buttonArray = new Button[6, 6];
 
@@ -156,25 +146,7 @@ namespace KTANE_Solver
         /// </summary>
         private void MazeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.Visible)
-            {
-                String message = "Are you sure you want to quit the program?";
-                String caption = "Quit Program";
-
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                //if the user clicks no, don't close the program
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-
-                else
-                {
-                    this.Visible = false;
-                    Application.Exit();
-                }
-            }
+            CloseProgram(e);
         }
 
         /// <summary>
@@ -182,10 +154,7 @@ namespace KTANE_Solver
         /// </summary>
         private void backButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
-            moduleSelectionForm.Update();
-            moduleSelectionForm.Show();
+            GoToMoudleSelectionForm();
         }
 
         /// <summary>
@@ -516,9 +485,9 @@ namespace KTANE_Solver
             }
 
             //solving maze
-            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, logFileWriter);
+            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, LogFileWriter);
             maze.Solve();
-            UpdateForm(moduleSelectionForm, bomb);
+            UpdateForm(ModuleSelectionForm, Bomb);
 
         }
 
@@ -527,8 +496,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            this.bomb.Strike++;
-            MessageBox.Show($"A stike has been added. Currently at {bomb.Strike} strike(s)", "Strike Added");
+            IncrementStrike();
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿namespace KTANE_Solver
+﻿
+namespace KTANE_Solver
 {
-    partial class MurderForm
+    partial class ModuleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +29,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // MurderForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 450);
-            this.Name = "MurderForm";
-            this.Text = "MurderForm";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "ModuleForm";
         }
 
         #endregion

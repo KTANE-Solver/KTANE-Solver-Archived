@@ -31,14 +31,46 @@ User selected Maze. Attempting to open...
 
 Maze opened successfully
 
-======================MAZE======================
-Player: (9,1)
+======================MODULE SELECTION======================
+User selected Maze. Attempting to open...
 
-Goal: (5,1)
+Maze opened successfully
 
-Marker: (4,3)
+======================MODULE SELECTION======================
+User selected Silly Slots. Attempting to open...
 
-Moving up. Player is now at (7,1)
+Silly Slots opened successfully
 
-Moving up. Player is now at (5,1)
+======================MODULE SELECTION======================
+User selected Silly Slots. Attempting to open...
+
+Silly Slots opened successfully
+
+=======================SILLY SLOTS=======================
+Stage 1
+
+Keyword: Sally
+
+Slot 1: Converted Blue Bomb to SILLY SAUSAGE
+
+Slot 2: Converted Blue Bomb to SILLY SAUSAGE
+
+Slot 3: Converted Blue Bomb to SILLY SAUSAGE
+
+All 3 slots are the same symbol and colour with no previous stage. Pulling the lever...
+
+======================MODULE SELECTION======================
+User selected Logic. Attempting to open...
+
+Logic opened successfully
+
+======================MODULE SELECTION======================
+User selected Ice Cream. Attempting to open...
+
+Ice Cream opened successfully
+
+======================MODULE SELECTION======================
+User selected Ice Cream. Attempting to open...
+
+Ice Cream opened successfully
 

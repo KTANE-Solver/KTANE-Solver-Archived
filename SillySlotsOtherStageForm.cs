@@ -14,12 +14,10 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 3/25/21
     //Purpose: Used to get the information needed to solve stage 2-4
-    public partial class SillySlotsOtherStageForm : Form
+    public partial class SillySlotsOtherStageForm : ModuleForm
     {
 
         //=========FEILDS=========
-        //the form used to get here
-        private ModuleSelectionForm moduleSelectionForm;
 
         //slot information
         private String keyword;
@@ -52,11 +50,6 @@ namespace KTANE_Solver
         //the stage the user is on
         private int stage;
 
-        //used to write to the log file
-        private StreamWriter logFileWriter;
-
-        //used to increase the amount of srikes
-        private Bomb bomb;
 
         //the form the user will see next if they press the back button
         //while on stage 2
@@ -109,7 +102,7 @@ namespace KTANE_Solver
                                         String stage2Slot3Color, String stage2Slot3Object,
                                         String stage3Slot1Color, String stage3Slot1Object,
                                         String stage3Slot2Color, String stage3Slot2Object,
-                                        String stage3Slot3Color, String stage3Slot3Object)
+                                        String stage3Slot3Color, String stage3Slot3Object) : base(bomb, logFileWriter,moduleSelectionForm)
         {
             InitializeComponent();
             UpdateForm(sillySlotsStage1Form,
@@ -150,11 +143,11 @@ namespace KTANE_Solver
         {
 
             //setting up all the vairables
-            this.moduleSelectionForm = moduleSelectionForm;
-            this.bomb = bomb;
+            ModuleSelectionForm = moduleSelectionForm;
+            Bomb = bomb;
             this.sillySlotsStage1Form = sillySlotsStage1Form;
             this.stage = stage;
-            this.logFileWriter = logFileWriter;
+            LogFileWriter = logFileWriter;
             this.sillySlotsModule = sillySlotsModule;
 
             this.stage1Slot1Color = stage1Slot1Color;
@@ -316,8 +309,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            this.bomb.Strike++;
-            MessageBox.Show($"A stike has been added. Currently at {bomb.Strike} strike(s)", "Strike Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            IncrementStrike();
         }
 
 
@@ -326,26 +318,7 @@ namespace KTANE_Solver
         /// </summary>
         private void SillySlotsOtherStageForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.Visible)
-            {
-                String message = "Are you sure you want to quit the program?";
-                String caption = "Quit Program";
-
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                //if the user clicks no, don't close the program
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-
-                else
-                {
-                    logFileWriter.Close();
-                    this.Visible = false;
-                    Application.Exit();
-                }
-            }
+            CloseProgram(e);
         }
 
         /// <summary>
@@ -353,9 +326,7 @@ namespace KTANE_Solver
         /// </summary>
         private void moduleSelectionButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            moduleSelectionForm.UpdateForm();
-            moduleSelectionForm.Show();
+            GoToMoudleSelectionForm();
         }
 
         /// <summary>
@@ -366,13 +337,13 @@ namespace KTANE_Solver
             if (stage == 2)
             {
                 this.Hide();
-                sillySlotsStage1Form.UpdateForm(moduleSelectionForm, bomb);
+                sillySlotsStage1Form.UpdateForm(ModuleSelectionForm, Bomb);
                 sillySlotsStage1Form.Show();
             }
 
             else
             {
-                UpdateForm(sillySlotsStage1Form, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, stage - 1,
+                UpdateForm(sillySlotsStage1Form, ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, stage - 1,
                            stage1Slot1Color, stage1Slot1Object,
                            stage1Slot2Color, stage1Slot2Object,
                            stage1Slot3Color, stage1Slot3Object,
@@ -415,7 +386,7 @@ namespace KTANE_Solver
 
                 this.Hide();
 
-                sillySlotsStage1Form.UpdateForm(moduleSelectionForm, bomb);
+                sillySlotsStage1Form.UpdateForm(ModuleSelectionForm, Bomb);
                 sillySlotsStage1Form.Show();
             }
 
@@ -428,7 +399,7 @@ namespace KTANE_Solver
                 {
                     this.Hide();
 
-                    sillySlotsStage1Form.UpdateForm(moduleSelectionForm, bomb);
+                    sillySlotsStage1Form.UpdateForm(ModuleSelectionForm, Bomb);
                     sillySlotsStage1Form.Show();
                 }
 

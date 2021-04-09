@@ -14,17 +14,8 @@ namespace KTANE_Solver
     //AUTHOR: Nya Bentley
     //DATE: 3/14/21
     //PURPOSE: Gets the informtion needed to solve the ice cream module
-    public partial class IceCreamForm : Form
+    public partial class IceCreamForm : ModuleForm
     {
-        //used for the edgework
-        private Bomb bomb;
-
-        //the form used to get to this form
-        private ModuleSelectionForm moduleSelectionForm;
-
-        //used to write to the log file
-        StreamWriter logFileWriter;
-
         //used to solve the ice cream do
         private IceCream iceCream;
 
@@ -34,11 +25,11 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
         /// <param name="bomb">used for the edgework</param>
-        public IceCreamForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
+        public IceCreamForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
             UpdateForm(moduleSelectionForm, bomb, 1);
-            this.logFileWriter = logFileWriter;
+            LogFileWriter = logFileWriter;
         }
 
         /// <summary>
@@ -48,8 +39,8 @@ namespace KTANE_Solver
         /// <param name="stage">what stage the user is on</param>
         public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb,  int stage)
         {
-            this.bomb = bomb;
-            this.moduleSelectionForm = moduleSelectionForm;
+            Bomb = bomb;
+            ModuleSelectionForm = moduleSelectionForm;
 
             stageLabel.Text = "Stage " + stage;
 
@@ -101,26 +92,7 @@ namespace KTANE_Solver
         /// </summary>
         private void IceCreamForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.Visible)
-            {
-                String message = "Are you sure you want to quit the program?";
-                String caption = "Quit Program";
-
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                //if the user clicks no, don't close the program
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-
-                else
-                {
-                    logFileWriter.Close();
-                    this.Visible = false;
-                    Application.Exit();
-                }
-            }
+            CloseProgram(e);
         }
         
         /// <summary>
@@ -128,9 +100,7 @@ namespace KTANE_Solver
         /// </summary>
         private void backButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            moduleSelectionForm.UpdateForm();
-            moduleSelectionForm.Show();
+            GoToMoudleSelectionForm();
         }
 
         /// <summary>
@@ -153,33 +123,32 @@ namespace KTANE_Solver
                 return;
             }
 
-            iceCream = new IceCream(customerComboBox.Text, flavor1, flavor2, flavor3, flavor4, bomb, logFileWriter);
-            logFileWriter.WriteLine("======================ICE CREAM======================");
-            logFileWriter.WriteLine($"{stageLabel.Text}\n");
+            iceCream = new IceCream(customerComboBox.Text, flavor1, flavor2, flavor3, flavor4, Bomb, LogFileWriter);
+            LogFileWriter.WriteLine("======================ICE CREAM======================");
+            LogFileWriter.WriteLine($"{stageLabel.Text}\n");
 
             iceCream.Solve();
 
             if (stageLabel.Text == "Stage 1")
             {
-                UpdateForm(moduleSelectionForm, bomb, 2);
+                UpdateForm(ModuleSelectionForm, Bomb, 2);
             }
 
             else if (stageLabel.Text == "Stage 2")
             {
-                UpdateForm(moduleSelectionForm, bomb, 3);
+                UpdateForm(ModuleSelectionForm, Bomb, 3);
             }
 
             else
             { 
-                UpdateForm(moduleSelectionForm, bomb, 1);
+                UpdateForm(ModuleSelectionForm, Bomb, 1);
             }
 
         }
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            this.bomb.Strike++;
-            MessageBox.Show($"A stike has been added. Currently at {bomb.Strike} strike(s)", "Strike Added");
+            IncrementStrike();
         }
     }
 }

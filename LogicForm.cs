@@ -14,17 +14,8 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 3/6/21
     //Purpose: Gets the information needed to solve the Logic module
-    public partial class LogicForm : Form
+    public partial class LogicForm : ModuleForm
     {
-        //used to get edgework
-        private Bomb bomb;
-
-        //the form used to get here
-        private ModuleSelectionForm moduleSelectionForm;
-
-        //used to write to the log file
-        StreamWriter logFileWriter;
-
         //the logic module
         private Logic logicModule;
 
@@ -33,10 +24,9 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">where the edgework will come from</param>
         /// <param name="moduleSelectionForm">the form used to get here</param>
-        public LogicForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
+        public LogicForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
-            this.logFileWriter = logFileWriter;
             UpdateForm(moduleSelectionForm, bomb);
         }
 
@@ -47,8 +37,9 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm">the form used to get here</param>
         public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
         {
-            this.bomb = bomb;
-            this.moduleSelectionForm = moduleSelectionForm;
+            Bomb = bomb;
+
+            ModuleSelectionForm = moduleSelectionForm;
 
             //setting the prompt text for the textboxes
             SetPromptText(topFirstTextBox, "Top First Letter");
@@ -104,10 +95,7 @@ namespace KTANE_Solver
         /// </summary>
         private void backButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
-            moduleSelectionForm.UpdateForm();
-            moduleSelectionForm.Show();
+            GoToMoudleSelectionForm();
 
         }
 
@@ -282,25 +270,7 @@ namespace KTANE_Solver
         /// </summary>
         private void LogicForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.Visible)
-            {
-                String message = "Are you sure you want to quit the program?";
-                String caption = "Quit Program";
-
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                //if the user clicks no, don't close the program
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-
-                else
-                {
-                    this.Visible = false;
-                    Application.Exit();
-                }
-            }
+            CloseProgram(e);
         }
 
         /// <summary>
@@ -357,7 +327,7 @@ namespace KTANE_Solver
             bottomSecondOperation = bottomSecondOperation.Replace(tab.ToString(), "");
 
 
-            logicModule = new Logic(bomb, topFirstNotCheckBox.Checked, topFirstChar, 
+            logicModule = new Logic(Bomb, topFirstNotCheckBox.Checked, topFirstChar, 
                                     topSecondNotCheckBox.Checked, topSecondChar, 
                                     topThirdNotCheckBox.Checked, topThirdChar, 
                                     topFirstOperation, topSecondOperation, 
@@ -365,10 +335,10 @@ namespace KTANE_Solver
                                     bottomFirstChar, bottomSecondNotCheckBox.Checked, 
                                     bottomSecondChar, bottomThirdNotCheckBox.Checked, 
                                     bottomThirdChar, bottomFirstOperation, 
-                                    bottomSecondOperation, bottomFirstTwoCheckBox.Checked, logFileWriter);
+                                    bottomSecondOperation, bottomFirstTwoCheckBox.Checked, LogFileWriter);
 
             logicModule.Solve();
-            UpdateForm(moduleSelectionForm, bomb);
+            UpdateForm(ModuleSelectionForm, Bomb);
         }
 
         /// <summary>
@@ -396,8 +366,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            this.bomb.Strike++;
-            MessageBox.Show("Strike Added", $"A stike has been added. Currently at {bomb.Strike} strike(s)");
+            IncrementStrike();
         }
     }
 }
