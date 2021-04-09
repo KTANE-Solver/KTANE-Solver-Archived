@@ -189,7 +189,7 @@ namespace KTANE_Solver
 
             sillySlotsModule = new SillySlots(1, keywordComboBox.Text, slot1Color, slot1Object,
                                                                     slot2Color, slot2Object,
-                                                                    slot3Color, slot3Object);
+                                                                    slot3Color, slot3Object, logFileWriter);
 
             //tells if the user has to press keep or not
             bool pressKeep = sillySlotsModule.Solve(1);

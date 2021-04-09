@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -12,6 +13,9 @@ namespace KTANE_Solver
     public class SillySlots
     {
         //============FIELDS============
+
+        //used to add to the logfile
+        private StreamWriter logFileWriter;
 
         private String keyword;
 
@@ -70,8 +74,11 @@ namespace KTANE_Solver
         /// <param name="slot2Object">third slot object</param>
         /// <param name="slot3Color">third slot color</param>
         /// <param name="slot3Object">third slot object</param>
-        public SillySlots(int stage, String keyword, String slot1Color, String slot1Object, String slot2Color, String slot2Object, String slot3Color, String slot3Object)
+        /// <param name="logFile">used to write to the log file</param>
+        public SillySlots(int stage, String keyword, String slot1Color, String slot1Object, String slot2Color, String slot2Object, String slot3Color, String slot3Object, StreamWriter logFile)
         {
+            logFileWriter = logFile;
+
             //setting the variables depending on the stage
 
             this.keyword = keyword;
@@ -124,9 +131,9 @@ namespace KTANE_Solver
                 stage4Slot3Object = slot3Object;
             }
 
-            placeholderSlot1 = new ConvertedSlot(slot1Color, slot1Object, keyword);
-            placeholderSlot2 = new ConvertedSlot(slot2Color, slot2Object, keyword);
-            placeholderSlot3 = new ConvertedSlot(slot3Color, slot3Object, keyword);
+            placeholderSlot1 = new ConvertedSlot(slot1Color, slot1Object, keyword, logFileWriter);
+            placeholderSlot2 = new ConvertedSlot(slot2Color, slot2Object, keyword, logFileWriter);
+            placeholderSlot3 = new ConvertedSlot(slot3Color, slot3Object, keyword, logFileWriter);
         }
 
         /// <summary>
@@ -136,39 +143,39 @@ namespace KTANE_Solver
         /// <returns>true if the user presses keep</returns>
         public bool Solve(int stage)
         {
-            Console.WriteLine("=======================SILLY SLOTS=======================");
-            Console.WriteLine($"Stage {stage}\n");
+            logFileWriter.WriteLine("=======================SILLY SLOTS=======================");
+            logFileWriter.WriteLine($"Stage {stage}\n");
 
-            Console.WriteLine($"Keyword: {keyword}\n");
+            logFileWriter.WriteLine($"Keyword: {keyword}\n");
 
             //print information to the log
             if (stage == 1)
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage1Slot1Color, stage1Slot1Object);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage1Slot2Color, stage1Slot2Object);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage1Slot3Color, stage1Slot3Object);
+                logFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage1Slot1Color, stage1Slot1Object);
+                logFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage1Slot2Color, stage1Slot2Object);
+                logFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage1Slot3Color, stage1Slot3Object);
 
             }
 
             else if (stage == 2)
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage2Slot1Color, stage2Slot1Object);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage2Slot2Color, stage2Slot2Object);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage2Slot3Color, stage2Slot3Object);
+                logFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage2Slot1Color, stage2Slot1Object);
+                logFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage2Slot2Color, stage2Slot2Object);
+                logFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage2Slot3Color, stage2Slot3Object);
             }
 
             else if (stage == 3)
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage3Slot1Color, stage3Slot1Object);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage3Slot2Color, stage3Slot2Object);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage3Slot3Color, stage3Slot3Object);
+                logFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage3Slot1Color, stage3Slot1Object);
+                logFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage3Slot2Color, stage3Slot2Object);
+                logFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage3Slot3Color, stage3Slot3Object);
             }
 
             else
             {
-                Console.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage4Slot1Color, stage4Slot1Object);
-                Console.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage4Slot2Color, stage4Slot2Object);
-                Console.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage4Slot3Color, stage4Slot3Object);
+                logFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage4Slot1Color, stage4Slot1Object);
+                logFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage4Slot2Color, stage4Slot2Object);
+                logFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage4Slot3Color, stage4Slot3Object);
             }
 
             //If any of these are true, then pull the lever
@@ -193,7 +200,7 @@ namespace KTANE_Solver
 
             if (sillySausageCount == 1)
             {
-                Console.WriteLine("There is a single Silly Sausage. Pulling the lever...\n");
+                logFileWriter.WriteLine("There is a single Silly Sausage. Pulling the lever...\n");
                 return false;
             }
 
@@ -226,7 +233,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1 || stage == 2)
                 {
-                    Console.WriteLine("There is a single Sassy Sally\n");
+                    logFileWriter.WriteLine("There is a single Sassy Sally\n");
                     return false;
                 }
 
@@ -237,23 +244,23 @@ namespace KTANE_Solver
                     //checking which slot needs to be convertd from stage 2
                     if (sassySallySlot1)
                     {
-                        convertedSlot = new ConvertedSlot(stage1Slot1Color, stage2Slot1Object, keyword);
+                        convertedSlot = new ConvertedSlot(stage1Slot1Color, stage2Slot1Object, keyword, logFileWriter);
                     }
 
                     else if (sassySallySlot2)
                     {
-                        convertedSlot = new ConvertedSlot(stage1Slot2Color, stage2Slot2Object, keyword);
+                        convertedSlot = new ConvertedSlot(stage1Slot2Color, stage2Slot2Object, keyword, logFileWriter);
                     }
 
                     else
                     {
-                        convertedSlot = new ConvertedSlot(stage1Slot3Color, stage2Slot3Object, keyword);
+                        convertedSlot = new ConvertedSlot(stage1Slot3Color, stage2Slot3Object, keyword, logFileWriter);
                     }
 
                     //if the converted slot is not soggy, pull the lever
                     if (!isAdjective(convertedSlot, ConvertedSlot.Adjective.SOGGY))
                     {
-                        Console.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
+                        logFileWriter.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -265,23 +272,23 @@ namespace KTANE_Solver
                     //checking which slot needs to be convertd from stage 2
                     if (sassySallySlot1)
                     {
-                        convertedSlot = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword);
+                        convertedSlot = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, logFileWriter);
                     }
 
                     else if (sassySallySlot2)
                     {
-                        convertedSlot = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword);
+                        convertedSlot = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, logFileWriter);
                     }
 
                     else
                     {
-                        convertedSlot = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword);
+                        convertedSlot = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, logFileWriter);
                     }
 
                     //if the converted slot is not soggy, pull the lever
                     if (!isAdjective(convertedSlot, ConvertedSlot.Adjective.SOGGY))
                     {
-                        Console.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
+                        logFileWriter.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -309,7 +316,7 @@ namespace KTANE_Solver
 
             if (soggyStevenCount >= 2)
             {
-                Console.WriteLine("There are 2 or more Soggy Stevens. Pulling the lever...\n");
+                logFileWriter.WriteLine("There are 2 or more Soggy Stevens. Pulling the lever...\n");
                 return false;
             }
 
@@ -337,7 +344,7 @@ namespace KTANE_Solver
                 !isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SASSY) &&
                 !isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SASSY))
             {
-                Console.WriteLine("There are 3 Simons with none of them being Sassy. Pulling the lever...\n");
+                logFileWriter.WriteLine("There are 3 Simons with none of them being Sassy. Pulling the lever...\n");
                 return false;
             }
 
@@ -360,7 +367,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 1 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
+                    logFileWriter.WriteLine("Slot 1 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -370,7 +377,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 3 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
+                    logFileWriter.WriteLine("Slot 3 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -380,7 +387,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot1, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 2 is sausage. Slot 1 is Sally without being Soggy. Pulling the lever...\n");
+                    logFileWriter.WriteLine("Slot 2 is sausage. Slot 1 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -390,7 +397,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SOGGY))
                 {
-                    Console.WriteLine("Slot 2 is sausage. Slot 3 is Sally without being Soggy. Pulling the lever...\n");
+                    logFileWriter.WriteLine("Slot 2 is sausage. Slot 3 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -424,19 +431,19 @@ namespace KTANE_Solver
             {
                 if (slot1Silly && !isNoun(placeholderSlot1, ConvertedSlot.Noun.STEVEN))
                 {
-                    Console.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
+                    logFileWriter.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
 
                 if (slot2Silly && !isNoun(placeholderSlot2, ConvertedSlot.Noun.STEVEN))
                 {
-                    Console.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
+                    logFileWriter.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
 
                 if (slot3Silly && !isNoun(placeholderSlot3, ConvertedSlot.Noun.STEVEN))
                 {
-                    Console.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
+                    logFileWriter.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -466,15 +473,15 @@ namespace KTANE_Solver
                 //if this is stage 1, then return false
                 if (stage == 1)
                 {
-                    Console.WriteLine("There is a single Soggy slot with no previous stage. Pulling the lever...\n");
+                    logFileWriter.WriteLine("There is a single Soggy slot with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
                 else if (stage == 2)
                 {
-                    ConvertedSlot stage1Slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword);
-                    ConvertedSlot stage1Slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword);
-                    ConvertedSlot stage1Slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword);
+                    ConvertedSlot stage1Slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, logFileWriter);
+                    ConvertedSlot stage1Slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, logFileWriter);
+                    ConvertedSlot stage1Slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, logFileWriter);
 
                     bool stage1Slot1Sausge = isNoun(stage1Slot1, ConvertedSlot.Noun.SAUSAGE);
                     bool stage1Slot2Sausge = isNoun(stage1Slot2, ConvertedSlot.Noun.SAUSAGE);
@@ -482,16 +489,16 @@ namespace KTANE_Solver
 
                     if (!stage1Slot1Sausge && !stage1Slot2Sausge && !stage1Slot3Sausge)
                     {
-                        Console.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
+                        logFileWriter.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
 
                 else if (stage == 3)
                 {
-                    ConvertedSlot stage2Slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword);
-                    ConvertedSlot stage2Slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword);
-                    ConvertedSlot stage2Slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword);
+                    ConvertedSlot stage2Slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, logFileWriter);
+                    ConvertedSlot stage2Slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, logFileWriter);
+                    ConvertedSlot stage2Slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, logFileWriter);
 
                     bool stage2Slot1Sausge = isNoun(stage2Slot1, ConvertedSlot.Noun.SAUSAGE);
                     bool stage2Slot2Sausge = isNoun(stage2Slot2, ConvertedSlot.Noun.SAUSAGE);
@@ -499,16 +506,16 @@ namespace KTANE_Solver
 
                     if (!stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge)
                     {
-                        Console.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
+                        logFileWriter.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
 
                 else
                 {
-                    ConvertedSlot stage3Slot1 = new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword);
-                    ConvertedSlot stage3Slot2 = new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword);
-                    ConvertedSlot stage3Slot3 = new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword);
+                    ConvertedSlot stage3Slot1 = new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, logFileWriter);
+                    ConvertedSlot stage3Slot2 = new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, logFileWriter);
+                    ConvertedSlot stage3Slot3 = new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, logFileWriter);
 
                     bool stage3Slot1Sausge = isNoun(stage3Slot1, ConvertedSlot.Noun.SAUSAGE);
                     bool stage3Slot2Sausge = isNoun(stage3Slot2, ConvertedSlot.Noun.SAUSAGE);
@@ -516,7 +523,7 @@ namespace KTANE_Solver
 
                     if (!stage3Slot1Sausge && !stage3Slot2Sausge && !stage3Slot3Sausge)
                     {
-                        Console.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
+                        logFileWriter.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -529,7 +536,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    Console.WriteLine("All 3 slots are the same symbol and colour with no previous stage. Pulling the lever...\n");
+                    logFileWriter.WriteLine("All 3 slots are the same symbol and colour with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -537,21 +544,21 @@ namespace KTANE_Solver
                 {
                     List<ConvertedSlot> convertedSlotList = new List<ConvertedSlot>();
 
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, logFileWriter));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, logFileWriter));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, logFileWriter));
 
                     if (stage2Slot1Color != null)
                     {
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, logFileWriter));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, logFileWriter));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, logFileWriter));
 
                         if (stage3Slot1Color != null)
                         {
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, logFileWriter));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, logFileWriter));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, logFileWriter));
                         }
                     }
 
@@ -569,7 +576,7 @@ namespace KTANE_Solver
 
                     if (!foundSoggySausage)
                     {
-                        Console.WriteLine("All 3 slots are the same symbol and colour with no previous stage having a Soggy Sausage slot. Pulling the lever...\n");
+                        logFileWriter.WriteLine("All 3 slots are the same symbol and colour with no previous stage having a Soggy Sausage slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -585,7 +592,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    Console.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage. Pulling the lever...\n");
+                    logFileWriter.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -597,23 +604,23 @@ namespace KTANE_Solver
 
                     if (stage == 2)
                     {
-                        slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword);
-                        slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword);
-                        slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword);
+                        slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, logFileWriter);
+                        slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, logFileWriter);
+                        slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, logFileWriter);
                     }
 
                     else if (stage == 3)
                     {
-                        slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword);
-                        slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword);
-                        slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword);
+                        slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, logFileWriter);
+                        slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, logFileWriter);
+                        slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, logFileWriter);
                     }
 
                     else
                     {
-                        slot1 = new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword);
-                        slot2 = new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword);
-                        slot3 = new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword);
+                        slot1 = new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, logFileWriter);
+                        slot2 = new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, logFileWriter);
+                        slot3 = new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, logFileWriter);
                     }
 
                     //count of many silly stevens there are
@@ -636,7 +643,7 @@ namespace KTANE_Solver
 
                     if (sillyStevenCount == 0)
                     {
-                        Console.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage having a Silly Steven Slot. Pulling the lever...\n");
+                        logFileWriter.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage having a Silly Steven Slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -667,7 +674,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    Console.WriteLine($"There is {sillySimonCount} Silly Simon(S) with no previous stage. Pulling the lever...\n");
+                    logFileWriter.WriteLine($"There is {sillySimonCount} Silly Simon(S) with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -675,21 +682,21 @@ namespace KTANE_Solver
                 {
                     List<ConvertedSlot> convertedSlotList = new List<ConvertedSlot>();
 
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, logFileWriter));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, logFileWriter));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, logFileWriter));
 
                     if (stage3Slot1Color != null)
                     {
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, logFileWriter));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, logFileWriter));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, logFileWriter));
 
                         if (stage4Slot1Color != null)
                         {
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, logFileWriter));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, logFileWriter));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, logFileWriter));
                         }
                     }
 
@@ -707,14 +714,14 @@ namespace KTANE_Solver
 
                     if (!foundSassySausage)
                     {
-                        Console.WriteLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage. Pulling the lever...\n");
+                        logFileWriter.WriteLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
             }
 
             //if this statement is reached, then the user will keep the stage
-            Console.WriteLine("No illegal statements found. Pressing keep...\n");
+            logFileWriter.WriteLine("No illegal statements found. Pressing keep...\n");
             return true;
         }
 
@@ -739,9 +746,9 @@ namespace KTANE_Solver
 
             this.keyword = keyword;
 
-            placeholderSlot1 = new ConvertedSlot(slot1Color, slot1Object, keyword);
-            placeholderSlot2 = new ConvertedSlot(slot2Color, slot2Object, keyword);
-            placeholderSlot3 = new ConvertedSlot(slot3Color, slot3Object, keyword);
+            placeholderSlot1 = new ConvertedSlot(slot1Color, slot1Object, keyword, logFileWriter);
+            placeholderSlot2 = new ConvertedSlot(slot2Color, slot2Object, keyword, logFileWriter);
+            placeholderSlot3 = new ConvertedSlot(slot3Color, slot3Object, keyword, logFileWriter);
 
             if (stage == 1)
             {
@@ -859,7 +866,9 @@ namespace KTANE_Solver
         /// </summary>
         public class ConvertedSlot
         {
-            
+
+             private StreamWriter logFileWriter;
+
             public enum Adjective
             {
                 SASSY,
@@ -891,8 +900,11 @@ namespace KTANE_Solver
             /// <param name="color"></param>
             /// <param name="objectString"></param>
             /// <param name="keyword"></param>
-            public ConvertedSlot(String color, String objectString, String keyword)
+            public ConvertedSlot(String color, String objectString, String keyword, StreamWriter logFile)
             {
+                this.logFileWriter = logFile;
+
+
                 AdjectiveProperty = ConvertColorToAdjective(keyword, color);
                 NounProperty = ConvertObjectToNoun(keyword, objectString);
             }
@@ -1034,7 +1046,7 @@ namespace KTANE_Solver
                 }
 
                 //this should not happen
-                Console.WriteLine("Invalid keword. Setting adjective to Sassy\n");
+                logFileWriter.WriteLine("Invalid keword. Setting adjective to Sassy\n");
                 return Adjective.SASSY;
             }
 
@@ -1207,7 +1219,7 @@ namespace KTANE_Solver
                 }
 
                 //this should not happen
-                Console.WriteLine("Invalid keword. Setting noun to Sally\n");
+                logFileWriter.WriteLine("Invalid keword. Setting noun to Sally\n");
                 return Noun.SALLY;
             }
 
@@ -1249,7 +1261,7 @@ namespace KTANE_Solver
             /// <param name="objectString">the object the slot had</param>
             public void PrintConvertedSlot(String color, String objectString)
             { 
-                Console.WriteLine($"Converted {color} {objectString} to {AdjectiveProperty} {NounProperty}\n");
+                logFileWriter.WriteLine($"Converted {color} {objectString} to {AdjectiveProperty} {NounProperty}\n");
             }
         }
     }
