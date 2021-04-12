@@ -18,9 +18,9 @@ namespace KTANE_Solver
     public partial class ModuleForm : Form
     {
         protected Bomb Bomb { get; set; }
-
+        
         protected StreamWriter LogFileWriter { get; set; }
-
+        
         protected ModuleSelectionForm ModuleSelectionForm;
 
         public ModuleForm(Bomb bomb, StreamWriter logFileWriter, 
@@ -33,13 +33,25 @@ namespace KTANE_Solver
             ModuleSelectionForm = moduleSelectionForm;
         }
 
+        public ModuleForm()
+        { 
+            InitializeComponent();
+        }
 
+
+        /// <summary>
+        /// Adds one strike to the bomb
+        /// </summary>
         public void IncrementStrike()
         {
             Bomb.Strike++;
             MessageBox.Show( $"A stike has been added. Currently at {Bomb.Strike} strike(s)", "Strike Added", MessageBoxButtons.OK ,MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// Asks the user if they want to close the program
+        /// </summary>
+        /// <param name="e"></param>
         public void CloseProgram(FormClosingEventArgs e)
         {
             if (this.Visible)

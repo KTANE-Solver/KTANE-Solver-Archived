@@ -101,6 +101,7 @@
     <Compile Include="ModuleSelectionForm.Designer.cs">
       <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Murder.cs" />
     <Compile Include="MurderForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -3,15 +3,15 @@ User chose to autmoatically get edgework. Reading Edgework.txt...
 
 ======================EDGEWORK CONFIRMATION======================
 Day of the week: Sunday
-Serial Number: W1
-# of batteries: 0
-# battery holders:0
+Serial Number: A03BS4
+# of batteries: 3
+# battery holders:2
 
 BOB - Visisble: False Lit: False
 CAR - Visisble: False Lit: False
 CLR - Visisble: False Lit: False
 FRK - Visisble: False Lit: False
-FRQ - Visisble: False Lit: False
+FRQ - Visisble: True Lit: True
 IND - Visisble: False Lit: False
 MSA - Visisble: False Lit: False
 NSA - Visisble: False Lit: False
@@ -19,58 +19,43 @@ SIG - Visisble: False Lit: False
 SND - Visisble: False Lit: False
 TRN - Visisble: False Lit: False
 
-# of dvid ports: 0
-# of parallel ports: 0
+# of dvid ports: 1
+# of parallel ports: 1
 # of ps ports: 0
-# of rj ports: 0
+# of rj ports: 1
 # of serial ports: 0
-# of stereo ports: 0
+# of stereo ports: 1
 
 ======================MODULE SELECTION======================
-User selected Maze. Attempting to open...
+User is checking edgework...
 
-Maze opened successfully
+======================EDGEWORK CONFIRMATION======================
+Day of the week: Sunday
+Serial Number: A03BS4
+# of batteries: 3
+# battery holders:2
 
-======================MODULE SELECTION======================
-User selected Maze. Attempting to open...
+BOB - Visisble: False Lit: False
+CAR - Visisble: False Lit: False
+CLR - Visisble: False Lit: False
+FRK - Visisble: False Lit: False
+FRQ - Visisble: True Lit: True
+IND - Visisble: False Lit: False
+MSA - Visisble: False Lit: False
+NSA - Visisble: False Lit: False
+SIG - Visisble: False Lit: False
+SND - Visisble: False Lit: False
+TRN - Visisble: False Lit: False
 
-Maze opened successfully
-
-======================MODULE SELECTION======================
-User selected Silly Slots. Attempting to open...
-
-Silly Slots opened successfully
-
-======================MODULE SELECTION======================
-User selected Silly Slots. Attempting to open...
-
-Silly Slots opened successfully
-
-=======================SILLY SLOTS=======================
-Stage 1
-
-Keyword: Sally
-
-Slot 1: Converted Blue Bomb to SILLY SAUSAGE
-
-Slot 2: Converted Blue Bomb to SILLY SAUSAGE
-
-Slot 3: Converted Blue Bomb to SILLY SAUSAGE
-
-All 3 slots are the same symbol and colour with no previous stage. Pulling the lever...
+# of dvid ports: 1
+# of parallel ports: 1
+# of ps ports: 0
+# of rj ports: 1
+# of serial ports: 0
+# of stereo ports: 1
 
 ======================MODULE SELECTION======================
-User selected Logic. Attempting to open...
+User selected Murder. Attempting to open...
 
-Logic opened successfully
-
-======================MODULE SELECTION======================
-User selected Ice Cream. Attempting to open...
-
-Ice Cream opened successfully
-
-======================MODULE SELECTION======================
-User selected Ice Cream. Attempting to open...
-
-Ice Cream opened successfully
+Murder opened successfully
 

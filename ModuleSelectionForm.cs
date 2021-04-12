@@ -290,8 +290,20 @@ namespace KTANE_Solver
                     break;
 
                 case "Murder":
-                    logFileWriter.WriteLine($"{module} hasn't been inplemeted yet.\n");
-                    MessageBox.Show("Sorry. This module has not been implemented yet.", "Module Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Hide();
+
+                    if (murderForm == null)
+                    {
+                        murderForm = new MurderForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        murderForm.UpdateForm(bomb, this);
+                    }
+
+                    murderForm.Show();
+                    SuccessfulModuleOpening(module);
                     break;
             }
         }
