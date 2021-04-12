@@ -178,6 +178,8 @@ namespace KTANE_Solver
             }
             Murder murder = new Murder(suspects, weapons, room, Bomb, LogFileWriter);
             murder.Solve();
+
+            UpdateForm(Bomb, ModuleSelectionForm);
         }
     }
 }
