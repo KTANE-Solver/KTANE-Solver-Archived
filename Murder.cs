@@ -52,7 +52,7 @@ namespace KTANE_Solver
         /// <param name="logFileWriter">used to write to the log file</param>
         public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter)
         {
-            Console.WriteLine("======================MURDER======================\n");
+            Console.WriteLine("======================MURDER======================");
             this.suspects = new List<Suspect>();
             this.weapons = new List<Weapon>();
 
@@ -83,10 +83,10 @@ namespace KTANE_Solver
             String murderer = null;
 
             //what they did it with
-            String killingItem;
+            String killingItem = null;
 
             //where they did it
-            String room;
+            String room = null;
 
             //the row to figure out where suspects were
             int suspectRow = FindSuspectRow();
@@ -123,10 +123,6 @@ namespace KTANE_Solver
                         murderer = Suspect.ConvertEnumToString(suspects[j].name);
                         killingItem = Weapon.ConvertEnumToNameString(weapons[i].name);
                         room = Suspect.ConvertRoomToString(suspects[j].room);
-
-                        String answer = $"{murderer} with the {killingItem} in the {room}";
-
-                        MessageBox.Show(answer, "Murder answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     }
                 }
@@ -136,12 +132,23 @@ namespace KTANE_Solver
                 }
             }
 
-            if (murderer == null)
+            if (!answerFound)
             {
                 MessageBox.Show("Something went wrong", "Murder answer", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            else
+            {
+                String answer = $"{murderer} with the {killingItem} in the {room}";
+
+                MessageBox.Show(answer, "Murder answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+
         }
+
+
 
         /// <summary>
         /// Finds the suspect row

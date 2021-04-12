@@ -171,14 +171,13 @@ namespace KTANE_Solver
                 }
 
                 if (duplicateSuspects)
-                { 
+                {
                     MessageBox.Show("Can't have duplicate suspects", "Murder Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                Murder murder = new Murder(suspects, weapons, room, Bomb, LogFileWriter);
-                murder.Solve();
             }
+            Murder murder = new Murder(suspects, weapons, room, Bomb, LogFileWriter);
+            murder.Solve();
         }
     }
 }
