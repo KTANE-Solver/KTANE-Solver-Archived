@@ -47,7 +47,7 @@ namespace KTANE_Solver
             //set up comboBox where the body was found
             bodyFoundComboBox.Items.Clear();
 
-            String[] rooms = new string[] { "Conservatory", "Dining Room", "Kitchen", "Library", "Lounge",  "Study" };
+            String[] rooms = new string[] { "Ballroom", "Conservatory", "Dining Room", "Kitchen", "Library", "Lounge",  "Study" };
 
             bodyFoundComboBox.Items.AddRange(rooms);
 

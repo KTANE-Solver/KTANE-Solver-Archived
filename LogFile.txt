@@ -27,34 +27,6 @@ TRN - Visisble: False Lit: False
 # of stereo ports: 1
 
 ======================MODULE SELECTION======================
-User is checking edgework...
-
-======================EDGEWORK CONFIRMATION======================
-Day of the week: Sunday
-Serial Number: A03BS4
-# of batteries: 3
-# battery holders:2
-
-BOB - Visisble: False Lit: False
-CAR - Visisble: False Lit: False
-CLR - Visisble: False Lit: False
-FRK - Visisble: False Lit: False
-FRQ - Visisble: True Lit: True
-IND - Visisble: False Lit: False
-MSA - Visisble: False Lit: False
-NSA - Visisble: False Lit: False
-SIG - Visisble: False Lit: False
-SND - Visisble: False Lit: False
-TRN - Visisble: False Lit: False
-
-# of dvid ports: 1
-# of parallel ports: 1
-# of ps ports: 0
-# of rj ports: 1
-# of serial ports: 0
-# of stereo ports: 1
-
-======================MODULE SELECTION======================
 User selected Murder. Attempting to open...
 
 Murder opened successfully
