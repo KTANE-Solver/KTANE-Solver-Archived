@@ -51,7 +51,7 @@ namespace KTANE_Solver
 
             bodyFoundComboBox.Items.AddRange(rooms);
 
-            bodyFoundComboBox.Text = "Conservatory";
+            bodyFoundComboBox.Text = "Ballroom";
 
             bodyFoundComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
