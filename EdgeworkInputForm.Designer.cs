@@ -707,7 +707,7 @@
             this.Controls.Add(this.dayOfWeekComboBox);
             this.Controls.Add(this.dayOfWeekLabel);
             this.Name = "EdgeworkInputForm";
-            this.Text = "EdgeworkInputForm";
+            this.Text = "KTANE Bot by Hawker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdgeworkInputForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

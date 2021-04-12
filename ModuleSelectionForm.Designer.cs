@@ -98,7 +98,7 @@
             this.Controls.Add(this.changeEdgeworkButton);
             this.Controls.Add(this.moduleComboBox);
             this.Name = "ModuleSelectionForm";
-            this.Text = "ModuleSelectionForm";
+            this.Text = "KTANE Bot by Hawker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModuleSelectionForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

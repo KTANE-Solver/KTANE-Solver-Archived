@@ -197,7 +197,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.stageLabel);
             this.Name = "SillySlotsStage1Form";
-            this.Text = "SillySlotFormStage1";
+            this.Text = "KTANE Bot by Hawker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SillySlotsStage1Form_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

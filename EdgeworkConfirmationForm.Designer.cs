@@ -324,7 +324,7 @@
             this.Controls.Add(this.batteryLabel);
             this.Controls.Add(this.serialNumberLabel);
             this.Name = "EdgeworkConfirmationForm";
-            this.Text = "EdgeworkConfirmationForm";
+            this.Text = "KTANE Bot by Hawker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdgeworkConfirmationForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

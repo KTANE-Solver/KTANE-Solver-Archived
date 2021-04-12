@@ -274,7 +274,7 @@
             this.Controls.Add(this.bottomFirstTextBox);
             this.Controls.Add(this.topFirstTextBox);
             this.Name = "LogicForm";
-            this.Text = "LogicForm";
+            this.Text = "KTANE Bot by Hawker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogicForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

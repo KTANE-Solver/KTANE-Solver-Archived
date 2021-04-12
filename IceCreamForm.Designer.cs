@@ -188,7 +188,7 @@
             this.Controls.Add(this.customerLabel);
             this.Controls.Add(this.stageLabel);
             this.Name = "IceCreamForm";
-            this.Text = "IceCreamForm";
+            this.Text = "KTANE Bot by Hawker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IceCreamForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
