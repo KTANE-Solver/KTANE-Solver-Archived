@@ -52,23 +52,23 @@ namespace KTANE_Solver
         /// <param name="logFileWriter">used to write to the log file</param>
         public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter)
         {
-            Console.WriteLine("======================MURDER======================");
+            logFileWriter.WriteLine("======================MURDER======================");
             this.suspects = new List<Suspect>();
             this.weapons = new List<Weapon>();
 
             for (int i = 0; i < 4; i++)
             {
                 this.suspects.Add(new Suspect(Suspect.ConvertNameStringToEnum(suspects[i])));
-                Console.WriteLine($"Suspect {i + 1}: {suspects[i]}\n");
+                logFileWriter.WriteLine($"Suspect {i + 1}: {suspects[i]}\n");
             }
 
             for (int i = 0; i < 4; i++)
             {
                 this.weapons.Add(new Weapon(Weapon.ConverStringToEnum(weapons[i])));
-                Console.WriteLine($"Weapon {i + 1}: {weapons[i]}\n");
+                logFileWriter.WriteLine($"Weapon {i + 1}: {weapons[i]}\n");
             }
 
-            Console.WriteLine($"Body found: {bodyRoom}\n");
+            logFileWriter.WriteLine($"Body found: {bodyRoom}\n");
 
             this.bodyRoom = Suspect.ConvertRoomToEnum(bodyRoom);
 
@@ -91,7 +91,7 @@ namespace KTANE_Solver
             //the row to figure out where suspects were
             int suspectRow = FindSuspectRow();
 
-            Console.WriteLine("Suspect Row: " + suspectRow);
+            logFileWriter.WriteLine("Suspect Row: " + suspectRow);
 
             //find where each suspect was
             foreach (Suspect suspect in suspects)
@@ -102,7 +102,7 @@ namespace KTANE_Solver
             //the row to figure out where weapon was
             int weaponRow = FindWeaponRow();
 
-            Console.WriteLine("Murder Row: " + weaponRow);
+            logFileWriter.WriteLine("Weapon Row: " + weaponRow + "\n");
 
 
             //find where each weapon was
@@ -140,6 +140,8 @@ namespace KTANE_Solver
             else
             {
                 String answer = $"{murderer} with the {killingItem} in the {room}";
+
+                logFileWriter.WriteLine(answer + "\n");
 
                 MessageBox.Show(answer, "Murder answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

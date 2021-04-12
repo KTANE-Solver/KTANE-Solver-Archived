@@ -31,3 +31,27 @@ User selected Murder. Attempting to open...
 
 Murder opened successfully
 
+======================MURDER======================
+Suspect 1: Green
+
+Suspect 2: Mustard
+
+Suspect 3: Peacock
+
+Suspect 4: Plum
+
+Weapon 1: Candle Stick
+
+Weapon 2: Lead Pipe
+
+Weapon 3: Revolver
+
+Weapon 4: Rope
+
+Body found: Ballroom
+
+Suspect Row: 6
+Weapon Row: 8
+
+Plum with the Rope in the Lounge
+
