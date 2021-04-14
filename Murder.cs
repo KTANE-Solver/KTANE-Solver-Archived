@@ -11,7 +11,7 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 4/9/21
     //Purpose: Solves the murder moudle
-    class Murder
+    class Murder : Module
     {
         //all the rooms
         public enum Room
@@ -36,12 +36,6 @@ namespace KTANE_Solver
         //the room the body was found
         private Room bodyRoom;
 
-        //used for edgoework
-        private Bomb bomb;
-
-        //used to write to the log file
-        private StreamWriter logFileWriter;
-
         /// <summary>
         /// 
         /// </summary>
@@ -50,7 +44,7 @@ namespace KTANE_Solver
         /// <param name="bodyRoom">the room the body was found</param>
         /// <param name="bomb">used for edgoework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter)
+        public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter) : base(bomb,logFileWriter)
         {
             logFileWriter.WriteLine("======================MURDER======================");
             this.suspects = new List<Suspect>();
@@ -71,10 +65,6 @@ namespace KTANE_Solver
             logFileWriter.WriteLine($"Body found: {bodyRoom}\n");
 
             this.bodyRoom = Suspect.ConvertRoomToEnum(bodyRoom);
-
-            this.bomb = bomb;
-
-            this.logFileWriter = logFileWriter;
         }
 
         public void Solve()
@@ -91,7 +81,7 @@ namespace KTANE_Solver
             //the row to figure out where suspects were
             int suspectRow = FindSuspectRow();
 
-            logFileWriter.WriteLine("Suspect Row: " + suspectRow);
+            LogFileWriter.WriteLine("Suspect Row: " + suspectRow);
 
             //find where each suspect was
             foreach (Suspect suspect in suspects)
@@ -102,7 +92,7 @@ namespace KTANE_Solver
             //the row to figure out where weapon was
             int weaponRow = FindWeaponRow();
 
-            logFileWriter.WriteLine("Weapon Row: " + weaponRow + "\n");
+            LogFileWriter.WriteLine("Weapon Row: " + weaponRow + "\n");
 
 
             //find where each weapon was
@@ -141,7 +131,7 @@ namespace KTANE_Solver
             {
                 String answer = $"{murderer} with the {killingItem} in the {room}";
 
-                logFileWriter.WriteLine(answer + "\n");
+                LogFileWriter.WriteLine(answer + "\n");
 
                 MessageBox.Show(answer, "Murder answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -159,7 +149,7 @@ namespace KTANE_Solver
         private int FindSuspectRow()
         {
             //If there is a lit indicator with label TRN, use row 5 to locate the suspects.
-            if (bomb.Trn.Lit)
+            if (Bomb.Trn.Lit)
             { 
                 return 5;
             }
@@ -171,12 +161,12 @@ namespace KTANE_Solver
             }
 
             //Otherwise, if the bomb has 2 or more Stereo RCA ports, use row 8.
-            if (bomb.Stereo.Num >= 2)
+            if (Bomb.Stereo.Num >= 2)
             { 
                 return 8;
             }
             //Otherwise, if there are no D batteries on the bomb, use row 2.
-            if (bomb.DBattery == 0)
+            if (Bomb.DBattery == 0)
             { 
                 return 2;
             }
@@ -188,13 +178,13 @@ namespace KTANE_Solver
             }
 
             //Otherwise, if there are 5 or more batteries, use row 9.
-            if (bomb.Battery >= 5)
+            if (Bomb.Battery >= 5)
             { 
                 return 9;
             }
 
             //Otherwise, if there is an unlit indicator with label FRQ, use row 1.
-            if (bomb.Frq.VisibleNotLit)
+            if (Bomb.Frq.VisibleNotLit)
             {
                 return 1;
             }
@@ -221,13 +211,13 @@ namespace KTANE_Solver
             }
 
             //Otherwise, if there are 5 or more batteries, use row 1.
-            if (bomb.Battery >= 5)
+            if (Bomb.Battery >= 5)
             {
                 return 1;
             }
 
             //Otherwise, if the bomb has a serial port, use row 9.
-            if (bomb.Serial.Visible)
+            if (Bomb.Serial.Visible)
             {
                 return 9;
             }
@@ -239,13 +229,13 @@ namespace KTANE_Solver
             }
 
             //Otherwise, if there are no batteries on the bomb, use row 6.
-            if (bomb.Battery == 0)
+            if (Bomb.Battery == 0)
             {
                 return 6;
             }
 
             //Otherwise, if there are no lit indicators on the bomb, use row 5.
-            if (bomb.IndicatorLitNum == 0)
+            if (Bomb.IndicatorLitNum == 0)
             {
                 return 5;
             }
@@ -257,7 +247,7 @@ namespace KTANE_Solver
             }
 
             //Otherwise, if the bomb has 2 or more Stereo RCA ports, use row 2.
-            if (bomb.Stereo.Num >= 2)
+            if (Bomb.Stereo.Num >= 2)
             {
                 return 2;
             }
