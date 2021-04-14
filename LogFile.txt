@@ -26,4 +26,3 @@ TRN - Visisble: False Lit: False
 # of serial ports: 0
 # of stereo ports: 1
 
-======================MODULE SELECTION======================

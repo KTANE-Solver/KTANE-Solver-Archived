@@ -29,7 +29,7 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
-            logFileWriter = new StreamWriter("../../LogFile.txt");
+            logFileWriter = new StreamWriter("LogFile.txt");
             logFileWriter.AutoFlush = true;
 
             logFileWriter.WriteLine("======================EDGEWORK SELECTION======================");
@@ -76,7 +76,7 @@ namespace KTANE_Solver
             //tells what casued the error
             String errorString = "";
 
-            StreamReader reader = new StreamReader("../../Edgework.txt");
+            StreamReader reader = new StreamReader("Edgework.txt");
 
             //the line the reader is reading
 
