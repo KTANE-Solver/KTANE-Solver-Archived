@@ -38,6 +38,7 @@ namespace KTANE_Solver
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MurderForm murderForm;
+        private WiresForm wiresForm;
         private SillySlotsStage1Form sillySlotsForm;
 
 
@@ -92,7 +93,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Ice Cream", "Logic", "Maze", "Murder", "Silly Slots"};
+            String[] modules = new String[] {"Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Wires"};
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = "Ice Cream";
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -303,6 +304,23 @@ namespace KTANE_Solver
                     }
 
                     murderForm.Show();
+                    SuccessfulModuleOpening(module);
+                    break;
+
+                case "Wires":
+                    this.Hide();
+
+                    if (wiresForm == null)
+                    {
+                        wiresForm = new WiresForm(this, bomb, logFileWriter);
+                    }
+
+                    else
+                    {
+                        wiresForm.UpdateForm(this, bomb);
+                    }
+
+                    wiresForm.Show();
                     SuccessfulModuleOpening(module);
                     break;
             }

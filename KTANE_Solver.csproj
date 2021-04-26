@@ -127,6 +127,13 @@
     <Compile Include="SillySlotsStage1Form.Designer.cs">
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wires.cs" />
+    <Compile Include="WiresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WiresForm.Designer.cs">
+      <DependentUpon>WiresForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EdgeworkConfirmationForm.resx">
       <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SillySlotsStage1Form.resx">
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WiresForm.resx">
+      <DependentUpon>WiresForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
