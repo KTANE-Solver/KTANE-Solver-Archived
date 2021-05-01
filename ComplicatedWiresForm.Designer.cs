@@ -355,6 +355,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.wireLabel1);
             this.Name = "ComplicatedWiresForm";
             this.Text = "ComplicatedWiresForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ComplicatedWiresForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

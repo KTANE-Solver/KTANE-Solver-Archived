@@ -30,14 +30,16 @@ namespace KTANE_Solver
 
             directions = new List<string>();
 
-            Console.WriteLine("======================COMPLICATED WIRES======================\n");
+            
+
+            LogFileWriter.WriteLine("======================COMPLICATED WIRES======================\n");
 
             for (int i = 0; i < wires.Count; i++)
             {
                 PrintWire(i + 1, wires[i]);
             }
 
-            Console.WriteLine();
+            LogFileWriter.WriteLine();
         }
 
         public void Solve()
@@ -179,7 +181,7 @@ namespace KTANE_Solver
         /// <param name="wire">the wire itself</param>
         private void PrintWire(int num, ComplicatedWire wire)
         {
-            Console.WriteLine($"Wire {num} Color: {wire.ColorPropety} Light: {wire.Lit} Star: {wire.Star}");
+            LogFileWriter.WriteLine($"Wire {num} Color: {wire.ColorPropety} Light: {wire.Lit} Star: {wire.Star}");
         }
     }
 }
