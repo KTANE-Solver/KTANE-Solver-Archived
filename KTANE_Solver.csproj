@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="Bomb.cs" />
+    <Compile Include="Chess.cs" />
     <Compile Include="ComplicatedWire.cs" />
     <Compile Include="ComplicatedWires.cs" />
     <Compile Include="ComplicatedWiresForm.cs">
