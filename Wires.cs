@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    //Author: Nya Bentley
+    //Date: 4/25/21
     //Purpose: Sovles the Wires module
     class Wires : Module
     {

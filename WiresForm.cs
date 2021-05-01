@@ -11,6 +11,9 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    //Author: Nya Bentley
+    //Date: 4/25/21
+    //Purpose: Used to get infomration to solve the wires module
     public partial class WiresForm : ModuleForm
     {
 

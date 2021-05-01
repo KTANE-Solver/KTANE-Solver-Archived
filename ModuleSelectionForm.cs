@@ -34,6 +34,7 @@ namespace KTANE_Solver
         StreamWriter logFileWriter;
 
         //module forms
+        private ComplicatedWiresForm complicatedWiresForm;
         private IceCreamForm iceCreamForm;
         private LogicForm logicForm;
         private MazeForm mazeForm;
@@ -93,7 +94,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Wires"};
+            String[] modules = new String[] {"Complicated Wires", "Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Wires"};
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = "Ice Cream";
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -154,7 +155,7 @@ namespace KTANE_Solver
         {
             logFileWriter.WriteLine("User is trying to save edgework...\n");
 
-            StreamWriter writer = new StreamWriter("../../Edgework.txt");
+            StreamWriter writer = new StreamWriter("Edgework.txt");
 
             try
             {
@@ -221,6 +222,21 @@ namespace KTANE_Solver
 
             switch (module)
             {
+                case "Complicated Wires":
+                    this.Hide();
+
+                    if (complicatedWiresForm == null)
+                    {
+                        complicatedWiresForm = new ComplicatedWiresForm(this, bomb, logFileWriter);
+                    }
+                    else
+                    {
+                        complicatedWiresForm.UpdateForm(bomb);
+                    }
+
+                    complicatedWiresForm.Show();
+                    SuccessfulModuleOpening(module);
+                    break;
                 case "Ice Cream":
 
                     this.Hide();

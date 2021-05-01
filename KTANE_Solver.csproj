@@ -51,6 +51,14 @@
   <ItemGroup>
     <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="Bomb.cs" />
+    <Compile Include="ComplicatedWire.cs" />
+    <Compile Include="ComplicatedWires.cs" />
+    <Compile Include="ComplicatedWiresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComplicatedWiresForm.Designer.cs">
+      <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EdgeworkConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +142,9 @@
     <Compile Include="WiresForm.Designer.cs">
       <DependentUpon>WiresForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ComplicatedWiresForm.resx">
+      <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkConfirmationForm.resx">
       <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
