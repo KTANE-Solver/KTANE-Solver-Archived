@@ -30,10 +30,14 @@ namespace KTANE_Solver
 
             directions = new List<string>();
 
+            Console.WriteLine("======================COMPLICATED WIRES======================\n");
+
             for (int i = 0; i < wires.Count; i++)
             {
                 PrintWire(i + 1, wires[i]);
             }
+
+            Console.WriteLine();
         }
 
         public void Solve()

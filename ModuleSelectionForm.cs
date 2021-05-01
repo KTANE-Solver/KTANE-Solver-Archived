@@ -96,7 +96,7 @@ namespace KTANE_Solver
 
             String[] modules = new String[] {"Complicated Wires", "Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Wires"};
             moduleComboBox.Items.AddRange(modules);
-            moduleComboBox.Text = "Ice Cream";
+            moduleComboBox.Text = "Complicated Wires";
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
