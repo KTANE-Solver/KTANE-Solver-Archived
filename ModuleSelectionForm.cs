@@ -227,6 +227,7 @@ namespace KTANE_Solver
                 case "Chess":
                     this.Hide();
 
+                    
                     if (chessForm == null)
                     {
                         chessForm = new ChessForm(this, bomb, logFileWriter);

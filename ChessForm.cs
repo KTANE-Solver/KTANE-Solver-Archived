@@ -18,6 +18,7 @@ namespace KTANE_Solver
         public ChessForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
         { 
             InitializeComponent();
+            UpdateForm(moduleSelectionForm, bomb, LogFileWriter);
         }
 
         public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
@@ -70,12 +71,12 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-            String piece1 = piece1TextBox.Text;
-            String piece2 = piece2TextBox.Text;
-            String piece3 = piece3TextBox.Text;
-            String piece4 = piece4TextBox.Text;
-            String piece5 = piece5TextBox.Text;
-            String piece6 = piece6TextBox.Text;
+            String piece1 = piece1TextBox.Text.ToLower();
+            String piece2 = piece2TextBox.Text.ToLower();
+            String piece3 = piece3TextBox.Text.ToLower();
+            String piece4 = piece4TextBox.Text.ToLower();
+            String piece5 = piece5TextBox.Text.ToLower();
+            String piece6 = piece6TextBox.Text.ToLower();
 
             if (!ValidLocation(piece1) || !ValidLocation(piece2) || !ValidLocation(piece3) ||
                 !ValidLocation(piece4) || !ValidLocation(piece5) || !ValidLocation(piece6))
@@ -83,9 +84,12 @@ namespace KTANE_Solver
                 return;
             }
 
+            LogFileWriter.WriteLine("======================CHESS======================\n");
+
             Chess module = new Chess(piece1, piece2, piece3, piece4, piece5, piece6, Bomb, LogFileWriter);
 
             module.Solve();
+            UpdateForm(ModuleSelectionForm, Bomb, LogFileWriter);
         }
 
         private bool ValidLocation(String str)
@@ -96,8 +100,6 @@ namespace KTANE_Solver
                 MessageBox.Show("There can only be two characters", "Chess Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            str = str.ToLower();
 
             //first character has to be a-f
             if ((int)str[0] < 97 || (int)str[1] > 102)

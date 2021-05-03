@@ -58,6 +58,16 @@ namespace KTANE_Solver
         //will take 6 positions for the pieces, the bomb, and the streamwriter
         public Chess(String position1, String position2, String position3, String position4, String position5, String position6, Bomb bomb, StreamWriter logWriterFile) : base (bomb, logWriterFile)
         {
+            board = new char[,]
+                {
+                    {'.','.','.','.','.','.'},
+                    {'.','.','.','.','.','.'},
+                    {'.','.','.','.','.','.'},
+                    {'.','.','.','.','.','.'},
+                    {'.','.','.','.','.','.'},
+                    {'.','.','.','.','.','.'}
+                };
+
             //determine all the piece locations
             piece1Location = ConvertLocation(position1);
             piece2Location = ConvertLocation(position2);
@@ -66,13 +76,25 @@ namespace KTANE_Solver
             piece5Location = ConvertLocation(position5);
             piece6Location = ConvertLocation(position6);
 
-            //determine all the pieces
+
+            //determine and place all the pieces
             piece4 = DeterminePiece(piece4Location, 4);
+            PlacePiece(piece4, piece4Location);
+
             piece5 = DeterminePiece(piece5Location, 5);
+            PlacePiece(piece5, piece5Location);
+
             piece1 = DeterminePiece(piece1Location, 1);
+            PlacePiece(piece1, piece1Location);
+
             piece2 = DeterminePiece(piece2Location, 2);
-            piece3 = DeterminePiece(piece2Location, 3);
-            piece6 = DeterminePiece(piece2Location, 6);
+            PlacePiece(piece2, piece2Location);
+
+            piece3 = DeterminePiece(piece3Location, 3);
+            PlacePiece(piece3, piece3Location);
+
+            piece6 = DeterminePiece(piece6Location, 6);
+            PlacePiece(piece6, piece6Location);
 
             //print information about all the pieces
             PrintPiece(1, piece1, position1);
@@ -82,7 +104,7 @@ namespace KTANE_Solver
             PrintPiece(5, piece5, position5);
             PrintPiece(6, piece6, position6);
 
-            Console.WriteLine();
+            System.Diagnostics.Debug.WriteLine("");
         }
 
         //METHODS
@@ -92,14 +114,6 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
-            //place all pieces on board
-            PlacePiece(piece1, piece1Location);
-            PlacePiece(piece2, piece2Location);
-            PlacePiece(piece3, piece3Location);
-            PlacePiece(piece4, piece4Location);
-            PlacePiece(piece5, piece5Location);
-            PlacePiece(piece6, piece6Location);
-
             //sees which tiles are covered by the pieces
             ConverArea(piece1, piece1Location);
             ConverArea(piece2, piece2Location);
@@ -119,6 +133,7 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 6; j++)
                 {
+
                     if (board[i, j] == '.')
                     {
                         row = i;
@@ -127,15 +142,26 @@ namespace KTANE_Solver
                     }
                 }
 
-                if (row != 1)
+                if (row != -1)
                     break;
             }
 
             //convert the location back to the module
 
-            String answer = $"{Math.Abs(6 - row)}{(char)(column + 97)}";
+            String answer = "";
+
+            if (row == -1)
+            {
+                answer = "Couldn't find answer";
+            }
+
+            else
+            { 
+                answer = $"{(char)(column + 97)}{Math.Abs(6 - row)}";
+            }
 
             MessageBox.Show(answer, "Chess Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         /// <summary>
@@ -177,7 +203,7 @@ namespace KTANE_Solver
 
                 case 5:
                     //Occupied by a queen if the field is white.
-                    if (position[0] % 2 == 0 && position[1] % 2 == 0)
+                    if (position[0] % 2 == position[1] % 2)
                         return 'Q';
 
 
@@ -230,7 +256,7 @@ namespace KTANE_Solver
         /// <returns></returns>
         private int[] ConvertLocation(String location)
         {
-            return new int[] { (int)location[0] - 54, (int)location[1] - 65 };
+            return new int[] {Math.Abs((int)location[1] - 54), (int)location[0] - 97 };
         }
 
         //a method that places all the pieces on the board
@@ -256,12 +282,36 @@ namespace KTANE_Solver
                     int newRow = position[0] + row;
                     int newColumn = position[1] + column;
 
-                    if (ValidCoordinate(newRow, newColumn) && (row != 0 && column != 0))
+                    if (ValidCoordinate(newRow, newColumn))
                     {
-                        board[newRow, newColumn] = '*';
+                        CoverTile(newRow, newColumn);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Tells if a tile is a piece
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        private bool isPiece(int row, int column)
+        {
+            char character = board[row, column];
+
+            switch (character)
+            {
+                case 'K':
+                case 'R':
+                case 'Q':
+                case 'B':
+                case 'N':
+                    return true;
+
+                default:
+                    return false;
+
+            } 
         }
 
 
@@ -273,133 +323,85 @@ namespace KTANE_Solver
         {
             //go up
 
-            int newRow = position[0] - 1;
+            int newRow = 1;
 
-            while (ValidCoordinate(newRow, position[1]))
+            while (ValidCoordinate(position[0] - newRow, position[1]) && !isPiece(position[0] - newRow, position[1]))
             {
-                board[newRow, position[1]] = '*';
+                board[position[0] - newRow, position[1]] = '*';
+                newRow++;
             }
 
             //go down
 
-            newRow = position[0] + 1;
+            newRow = 1;
 
-            while (ValidCoordinate(newRow, position[1]))
+            while (ValidCoordinate(position[0] + newRow, position[1]) && !isPiece(position[0] + newRow, position[1]))
             {
-                board[newRow, position[1]] = '*';
+                board[position[0] + newRow, position[1]] = '*';
+                newRow++;
             }
 
             //go left
 
-            int newColumn = position[1] - 1;
+            int newColumn = 1;
 
-            while (ValidCoordinate(position[0], newColumn))
+            while (ValidCoordinate(position[0], position[1] - newColumn) && !isPiece(position[0], position[1] - newColumn))
             {
-                board[position[0], newColumn] = '*';
+                board[position[0], position[1] - newColumn] = '*';
+                newColumn++;
             }
 
             //go right
 
-            newColumn = position[1] + 1;
+            newColumn = 1;
 
-            while (ValidCoordinate(position[0], newColumn))
+            while (ValidCoordinate(position[0], position[1] + newColumn) && !isPiece(position[0], position[1] + newColumn))
             {
-                board[position[0], newColumn] = '*';
+                board[position[0], position[1] + newColumn] = '*';
+                newColumn++;
             }
         }
 
 
-        /// <summary>
-        /// Tells where a knight will go
-        /// </summary>
-        /// <param name="position"></param>
-        private void KnightArea(int[] position)
+            /// <summary>
+            /// Tells where a knight will go
+            /// </summary>
+            /// <param name="position"></param>
+            private void KnightArea(int[] position)
         {
-            //left twice
-            if (ValidCoordinate(position[0], position[1] - 1))
-            {
-                board[position[0], position[1] - 1] = '*';
-
-                if (ValidCoordinate(position[0], position[1] - 2))
-                {
-                    board[position[0], position[1] - 2] = '*';
-
-                    //up once
-                    if (ValidCoordinate(position[0] - 1, position[1] - 2))
-                        board[position[0] - 1, position[1] - 2] = '*';
+            //left twice and up once
+            if (ValidCoordinate(position[0] - 1, position[1] - 2))
+                CoverTile(position[0] - 1, position[1] - 2);
 
 
-                    //down once
-                    if (ValidCoordinate(position[0] + 1, position[1] - 2))
-                        board[position[0] + 1, position[1] - 2] = '*';
-                }
+            //left twice and down once
+            if (ValidCoordinate(position[0] + 1, position[1] - 2))
+                CoverTile(position[0] + 1, position[1] - 2);
+
+            //right twice and up once
+            if (ValidCoordinate(position[0] - 1, position[1] + 2))
+                CoverTile(position[0] - 1, position[1] + 2);
+
+            //right twice and down once
+            if (ValidCoordinate(position[0] + 1, position[1] + 2))
+                CoverTile(position[0] + 1, position[1] + 2);
+
+            //up twice and left once
+            if (ValidCoordinate(position[0] - 2, position[1] - 1))
+                CoverTile(position[0] - 2, position[1] - 1);
+
+            //up twice and right once
+            if (ValidCoordinate(position[0] - 2, position[1] + 1))
+                CoverTile(position[0] - 2, position[1] + 1);
 
 
-            }
+            //down twice and left once
+            if (ValidCoordinate(position[0] + 2, position[1] - 1))
+                CoverTile(position[0] + 2, position[1] - 1);
 
-
-            //right twice
-            if (ValidCoordinate(position[0], position[1] + 1))
-            {
-                board[position[0], position[1] + 1] = '*';
-
-                if (ValidCoordinate(position[0], position[1] + 2))
-                {
-                    board[position[0], position[1] + 2] = '*';
-
-                    //up once
-                    if (ValidCoordinate(position[0] - 1, position[1] + 2))
-                        board[position[0] - 1, position[1] + 2] = '*';
-
-
-                    //down once
-                    if (ValidCoordinate(position[0] + 1, position[1] + 2))
-                        board[position[0] + 1, position[1] + 2] = '*';
-                }
-
-            }
-
-            //up once
-            if (ValidCoordinate(position[0] - 1, position[1]))
-            {
-                board[position[0] - 1, position[1]] = '*';
-
-
-                if (ValidCoordinate(position[0] - 2, position[1]))
-                {
-                    //left once
-                    if (ValidCoordinate(position[0] - 2, position[1] - 1))
-                        board[position[0] - 2, position[1] - 1] = '*';
-
-                    //right once
-                    if (ValidCoordinate(position[0] - 2, position[1] + 1))
-                        board[position[0] - 2, position[1] + 1] = '*';
-                }
-
-
-            }
-
-            //down once
-            if (ValidCoordinate(position[0] + 1, position[1]))
-            {
-                board[position[0] + 1, position[1]] = '*';
-
-
-                if (ValidCoordinate(position[0] + 2, position[1]))
-                {
-                    //left once
-                    if (ValidCoordinate(position[0] + 2, position[1] - 1))
-                        board[position[0] + 2, position[1] - 1] = '*';
-
-                    //right once
-                    if (ValidCoordinate(position[0] + 2, position[1] + 1))
-                        board[position[0] + 2, position[1] + 1] = '*';
-                }
-
-
-            }
-
-
+            //down twice and right once
+            if (ValidCoordinate(position[0] + 2, position[1] + 1))
+                CoverTile(position[0] + 2, position[1] + 1);
         }
 
         //a method that will 
@@ -416,10 +418,10 @@ namespace KTANE_Solver
             //top left
             while (ValidCoordinate(position[0] - newRow, position[1] - newColumn))
             {
-                board[position[0] - newRow, position[1] - newColumn] = '*';
+                CoverTile(position[0] - newRow, position[1] - newColumn);
+                newColumn++;
+                newRow++;
             }
-
-
 
             //top right
 
@@ -428,7 +430,9 @@ namespace KTANE_Solver
 
             while (ValidCoordinate(position[0] - newRow, position[1] + newColumn))
             {
-                board[position[0] - newRow, position[1] + newColumn] = '*';
+                CoverTile(position[0] - newRow, position[1] + newColumn);
+                newColumn++;
+                newRow++;
             }
 
             //bottom left
@@ -438,8 +442,11 @@ namespace KTANE_Solver
 
             while (ValidCoordinate(position[0] + newRow, position[1] - newColumn))
             {
-                board[position[0] + newRow, position[1] - newColumn] = '*';
+                CoverTile(position[0] + newRow, position[1] - newColumn);
+                newColumn++;
+                newRow++;
             }
+
 
             //bottom right
 
@@ -448,7 +455,9 @@ namespace KTANE_Solver
 
             while (ValidCoordinate(position[0] + newRow, position[1] + newColumn))
             {
-                board[position[0] + newRow, position[1] + newColumn] = '*';
+                CoverTile(position[0] + newRow, position[1] + newColumn);
+                newColumn++;
+                newRow++;
             }
         }
 
@@ -509,13 +518,13 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    Console.Write(board[i, j] + " ");
+                    System.Diagnostics.Debug.Write(board[i, j] + " ");
                 }
 
-                Console.WriteLine();
+                System.Diagnostics.Debug.WriteLine("");
             }
 
-            Console.WriteLine();
+            System.Diagnostics.Debug.WriteLine("");
         }
 
         /// <summary>
@@ -525,7 +534,18 @@ namespace KTANE_Solver
         /// <param name="piece"></param>
         private void PrintPiece(int num, char piece, String locattion)
         {
-            Console.WriteLine($"{num}. Location {locattion}: {piece}");
+            System.Diagnostics.Debug.WriteLine($"{num}. Location {locattion}: {piece}");
+        }
+
+        /// <summary>
+        /// Covers a tile if it's blank
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        private void CoverTile(int row, int column)
+        {
+            if (board[row, column] == '.')
+                board[row, column] = '*';
         }
 
     }

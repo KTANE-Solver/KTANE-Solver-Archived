@@ -105,49 +105,49 @@ namespace KTANE_Solver
             this.piece2TextBox.Location = new System.Drawing.Point(162, 75);
             this.piece2TextBox.Name = "piece2TextBox";
             this.piece2TextBox.Size = new System.Drawing.Size(100, 20);
-            this.piece2TextBox.TabIndex = 6;
+            this.piece2TextBox.TabIndex = 1;
             // 
             // piece1TextBox
             // 
             this.piece1TextBox.Location = new System.Drawing.Point(162, 24);
             this.piece1TextBox.Name = "piece1TextBox";
             this.piece1TextBox.Size = new System.Drawing.Size(100, 20);
-            this.piece1TextBox.TabIndex = 7;
+            this.piece1TextBox.TabIndex = 0;
             // 
             // piece3TextBox
             // 
             this.piece3TextBox.Location = new System.Drawing.Point(162, 125);
             this.piece3TextBox.Name = "piece3TextBox";
             this.piece3TextBox.Size = new System.Drawing.Size(100, 20);
-            this.piece3TextBox.TabIndex = 8;
+            this.piece3TextBox.TabIndex = 2;
             // 
             // piece4TextBox
             // 
             this.piece4TextBox.Location = new System.Drawing.Point(162, 178);
             this.piece4TextBox.Name = "piece4TextBox";
             this.piece4TextBox.Size = new System.Drawing.Size(100, 20);
-            this.piece4TextBox.TabIndex = 9;
+            this.piece4TextBox.TabIndex = 3;
             // 
             // piece5TextBox
             // 
             this.piece5TextBox.Location = new System.Drawing.Point(162, 231);
             this.piece5TextBox.Name = "piece5TextBox";
             this.piece5TextBox.Size = new System.Drawing.Size(100, 20);
-            this.piece5TextBox.TabIndex = 10;
+            this.piece5TextBox.TabIndex = 4;
             // 
             // piece6TextBox
             // 
             this.piece6TextBox.Location = new System.Drawing.Point(162, 282);
             this.piece6TextBox.Name = "piece6TextBox";
             this.piece6TextBox.Size = new System.Drawing.Size(100, 20);
-            this.piece6TextBox.TabIndex = 11;
+            this.piece6TextBox.TabIndex = 5;
             // 
             // backButton
             // 
             this.backButton.Location = new System.Drawing.Point(31, 342);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(79, 32);
-            this.backButton.TabIndex = 12;
+            this.backButton.TabIndex = 6;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -157,7 +157,7 @@ namespace KTANE_Solver
             this.strikeButton.Location = new System.Drawing.Point(141, 342);
             this.strikeButton.Name = "strikeButton";
             this.strikeButton.Size = new System.Drawing.Size(79, 32);
-            this.strikeButton.TabIndex = 13;
+            this.strikeButton.TabIndex = 7;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
             this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
@@ -167,7 +167,7 @@ namespace KTANE_Solver
             this.submitButton.Location = new System.Drawing.Point(239, 342);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(79, 32);
-            this.submitButton.TabIndex = 14;
+            this.submitButton.TabIndex = 8;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
