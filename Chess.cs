@@ -104,7 +104,7 @@ namespace KTANE_Solver
             PrintPiece(5, piece5, position5);
             PrintPiece(6, piece6, position6);
 
-            System.Diagnostics.Debug.WriteLine("");
+            LogFileWriter.WriteLine("");
         }
 
         //METHODS
@@ -518,13 +518,13 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    System.Diagnostics.Debug.Write(board[i, j] + " ");
+                    LogFileWriter.Write(board[i, j] + " ");
                 }
 
-                System.Diagnostics.Debug.WriteLine("");
+                LogFileWriter.WriteLine("");
             }
 
-            System.Diagnostics.Debug.WriteLine("");
+            LogFileWriter.WriteLine("");
         }
 
         /// <summary>
@@ -534,7 +534,7 @@ namespace KTANE_Solver
         /// <param name="piece"></param>
         private void PrintPiece(int num, char piece, String locattion)
         {
-            System.Diagnostics.Debug.WriteLine($"{num}. Location {locattion}: {piece}");
+            LogFileWriter.WriteLine($"{num}. Location {locattion}: {piece}");
         }
 
         /// <summary>

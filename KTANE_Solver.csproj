@@ -142,6 +142,7 @@
     <Compile Include="SillySlotsStage1Form.Designer.cs">
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="WhosOnFirst.cs" />
     <Compile Include="Wires.cs" />
     <Compile Include="WiresForm.cs">
       <SubType>Form</SubType>
