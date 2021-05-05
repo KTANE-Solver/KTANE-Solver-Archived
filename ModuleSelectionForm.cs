@@ -40,8 +40,9 @@ namespace KTANE_Solver
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MurderForm murderForm;
-        private WiresForm wiresForm;
         private SillySlotsStage1Form sillySlotsForm;
+        private WhosOnFirstFirstStageForm whosOnFirstForm;
+        private WiresForm wiresForm;
 
 
         //===========CONSTRUCTORS===========
@@ -95,7 +96,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Chess", "Complicated Wires", "Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Wires"};
+            String[] modules = new String[] {"Chess", "Complicated Wires", "Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Who's on First", "Wires"};
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = "Chess";
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -343,6 +344,21 @@ namespace KTANE_Solver
                     murderForm.Show();
                     SuccessfulModuleOpening(module);
                     break;
+
+                case "Who's on First":
+                    this.Hide();
+                    if (whosOnFirstForm == null)
+                        whosOnFirstForm = new WhosOnFirstFirstStageForm(this, bomb, logFileWriter);
+
+                    else
+                        whosOnFirstForm.UpdateForm(this, bomb, logFileWriter);
+
+                    whosOnFirstForm.Show();
+                    SuccessfulModuleOpening(module);
+                    break;
+
+
+
 
                 case "Wires":
                     this.Hide();

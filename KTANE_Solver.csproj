@@ -143,6 +143,18 @@
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
     </Compile>
     <Compile Include="WhosOnFirst.cs" />
+    <Compile Include="WhosOnFirstFirstStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WhosOnFirstFirstStageForm.Designer.cs">
+      <DependentUpon>WhosOnFirstFirstStageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WhosOnFirstOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WhosOnFirstOtherStageForm.Designer.cs">
+      <DependentUpon>WhosOnFirstOtherStageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wires.cs" />
     <Compile Include="WiresForm.cs">
       <SubType>Form</SubType>
@@ -194,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SillySlotsStage1Form.resx">
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WhosOnFirstFirstStageForm.resx">
+      <DependentUpon>WhosOnFirstFirstStageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WhosOnFirstOtherStageForm.resx">
+      <DependentUpon>WhosOnFirstOtherStageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WiresForm.resx">
       <DependentUpon>WiresForm.cs</DependentUpon>
