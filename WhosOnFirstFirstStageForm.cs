@@ -30,7 +30,7 @@ namespace KTANE_Solver
         {
             InitializeComponent();
             UpdateForm(moduleSelectionForm, bomb, logFileWriter);
-            whosOnFirstOtherStage = new WhosOnFirstOtherStageForm(moduleSelectionForm, bomb, logFileWriter);
+            whosOnFirstOtherStage = new WhosOnFirstOtherStageForm(moduleSelectionForm, bomb, logFileWriter, this);
 
         }
 
@@ -72,21 +72,26 @@ namespace KTANE_Solver
 
             displayComboBox.Items.AddRange(display);
 
-            displayComboBox.Text = "*BLANK*";
+            displayComboBox.Text = display[0];
 
             displayComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
+        /// <summary>
+        /// Restarts a button comboBox
+        /// </summary>
+        /// <param name="comboBox"></param>
         private void UpdateButtonComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
 
-            String[] items = new string[] { "BLANK", "FIRST", "LEFT", "MIDDLE", "NO", "NOTHING", "OKAY", "PRESS", "READY", "RIGHT", "UHHH", "WAIT", "WHAT", "YES" };
-
-            comboBox.Text = "BLANK";
+            String[] items = new string[] { "BLANK", "DONE", "FIRST", "HOLD", "LEFT", "LIKE", "MIDDLE", "NEXT", "NO", "NOTHING", "OKAY", "PRESS", "READY", "RIGHT", "SURE", "U", "UH HUH",
+                                            "UH UH", "UHHH", "UR", "WAIT", "WHAT", "WHAT?", "YES", "YOU ARE", "YOU", "YOU'RE", "YOUR" };
 
             comboBox.Items.AddRange(items);
+
+            comboBox.Text = items[0];
 
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -111,19 +116,31 @@ namespace KTANE_Solver
             //make sure there are no duplicates words
 
             String topLeft = topLeftComboBox.Text;
-            String midLeft = topLeftComboBox.Text;
-            String bottomLeft = topLeftComboBox.Text;
+            String midLeft = midLeftComboBox.Text;
+            String bottomLeft = bottomLeftComboBox.Text;
             String topRight = topRightComboBox.Text;
             String midRight = midRightComboBox.Text;
             String bottomRight = bottomRightComboBox.Text;
 
-            if (topLeft == midLeft || topLeft == bottomLeft || topLeft == topRight || topLeft == midRight || topLeft == bottomRight ||
-               midLeft == bottomLeft || midLeft == topRight || midLeft == midRight || midLeft == bottomRight || bottomLeft == topRight ||
-               bottomLeft == midRight || bottomLeft == bottomRight || topRight == midRight || bottomLeft == bottomRight || midRight == bottomRight)
+
+            List<String> words = new List<string>() { topLeft, midLeft, bottomLeft, topRight, midRight, bottomRight };
+
+            for (int i = 0; i < 6; i++)
             {
-                MessageBox.Show("Can't have duplicate words", "Who's on First Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                for (int j = 0; j < 6; j++)
+                {
+                    if (i == j)
+                        continue;
+
+                    if (words[i] == words[j])
+                    {
+                        MessageBox.Show("Can't have duplicate words", "Who's on First Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    
+                }
             }
+            
 
             WhosOnFirst module = new WhosOnFirst(1, displayComboBox.Text, topLeft, topRight, midLeft, midRight, bottomLeft, bottomRight, Bomb, LogFileWriter);
             module.Solve();
@@ -131,6 +148,7 @@ namespace KTANE_Solver
             this.Hide();
 
             whosOnFirstOtherStage.Show();
+            whosOnFirstOtherStage.UpdateForm(2, ModuleSelectionForm, Bomb, LogFileWriter);
 
         }
     }

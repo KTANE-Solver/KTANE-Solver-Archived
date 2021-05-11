@@ -72,7 +72,7 @@ namespace KTANE_Solver
 
             displayComboBox.Items.AddRange(display);
 
-            displayComboBox.Text = "*BLANK*";
+            displayComboBox.Text = display[0];
 
             displayComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -86,11 +86,12 @@ namespace KTANE_Solver
         {
             comboBox.Items.Clear();
 
-            String[] items = new string[] { "BLANK", "FIRST", "LEFT", "MIDDLE", "NO", "NOTHING", "OKAY", "PRESS", "READY", "RIGHT", "UHHH", "WAIT", "WHAT", "YES" };
-
-            comboBox.Text = "BLANK";
+            String[] items = new string[] { "BLANK", "DONE", "FIRST", "HOLD", "LEFT", "LIKE", "MIDDLE", "NEXT", "NO", "NOTHING", "OKAY", "PRESS", "READY", "RIGHT", "SURE", "U", "UH HUH", 
+                                            "UH UH", "UHHH", "UR", "WAIT", "WHAT", "WHAT?", "YES", "YOU ARE", "YOU", "YOU'RE", "YOUR" };
 
             comboBox.Items.AddRange(items);
+
+            comboBox.Text = items[0];
 
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -124,12 +125,54 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            //make sure there are no duplicates words
 
+            String topLeft = topLeftComboBox.Text;
+            String midLeft = midLeftComboBox.Text;
+            String bottomLeft = bottomLeftComboBox.Text;
+            String topRight = topRightComboBox.Text;
+            String midRight = midRightComboBox.Text;
+            String bottomRight = bottomRightComboBox.Text;
+
+            List<String> words = new List<string>() { topLeft, midLeft, bottomLeft, topRight, midRight, bottomRight };
+
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (i == j)
+                        continue;
+
+                    if (words[i] == words[j])
+                    {
+                        MessageBox.Show("Can't have duplicate words", "Who's on First Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                }
+            }
+
+            WhosOnFirst module = new WhosOnFirst(1, displayComboBox.Text, topLeft, topRight, midLeft, midRight, bottomLeft, bottomRight, Bomb, LogFileWriter);
+            module.Solve();
+
+            //if this is stage 2, restart this form
+            if (stageLabel.Text == "Stage 2")
+            {
+                UpdateForm(3, ModuleSelectionForm, Bomb, LogFileWriter);
+            }
+
+            //otherwise hide this form and go to stage 1
+            else
+            {
+                this.Hide();
+                whosOnFirstFirstStageForm.UpdateForm(ModuleSelectionForm, Bomb, LogFileWriter);
+                whosOnFirstFirstStageForm.Show();
+            }
         }
 
         private void moduleSelectionButton_Click(object sender, EventArgs e)
