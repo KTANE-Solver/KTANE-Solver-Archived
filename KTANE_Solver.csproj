@@ -92,6 +92,7 @@
       <DependentUpon>IceCreamForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Indicator.cs" />
+    <Compile Include="Keypad.cs" />
     <Compile Include="KeypadForm.cs">
       <SubType>Form</SubType>
     </Compile>

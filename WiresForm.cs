@@ -19,11 +19,10 @@ namespace KTANE_Solver
 
         //the form used to get here
         private ModuleSelectionForm moduleSelectionForm;
-        public WiresForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
+        public WiresForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
             UpdateForm(moduleSelectionForm, bomb);
-            LogFileWriter = logFileWriter;
         }
 
         public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)

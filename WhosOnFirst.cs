@@ -64,6 +64,9 @@ namespace KTANE_Solver
 
         public void Solve()
         {
+            System.Diagnostics.Debug.WriteLine("======================WHO'S ON FIRST======================");
+
+            System.Diagnostics.Debug.WriteLine($"Stage {stage}\n");
             //find what the reference word is going to be
             switch (display)
             {

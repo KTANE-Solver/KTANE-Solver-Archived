@@ -23,6 +23,12 @@ namespace KTANE_Solver
         
         protected ModuleSelectionForm ModuleSelectionForm;
 
+        //this should never be used
+        public ModuleForm()
+        {
+            InitializeComponent();
+        }
+
         public ModuleForm(Bomb bomb, StreamWriter logFileWriter, 
                ModuleSelectionForm moduleSelectionForm)
         {
@@ -32,12 +38,6 @@ namespace KTANE_Solver
             LogFileWriter = logFileWriter;
             ModuleSelectionForm = moduleSelectionForm;
         }
-
-        public ModuleForm()
-        { 
-            InitializeComponent();
-        }
-
 
         /// <summary>
         /// Adds one strike to the bomb

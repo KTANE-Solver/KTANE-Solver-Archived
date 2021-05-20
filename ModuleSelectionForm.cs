@@ -37,6 +37,7 @@ namespace KTANE_Solver
         private ChessForm chessForm;
         private ComplicatedWiresForm complicatedWiresForm;
         private IceCreamForm iceCreamForm;
+        private KeypadForm keyPadForm;
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MurderForm murderForm;
@@ -46,6 +47,8 @@ namespace KTANE_Solver
 
 
         //===========CONSTRUCTORS===========
+
+        
 
         /// <summary>
         /// Creates an form that allows the user to
@@ -96,9 +99,9 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Chess", "Complicated Wires", "Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Who's on First", "Wires"};
+            String[] modules = new String[] {"Complicated Wires", "Ice Cream", "Logic", "Maze", "Murder", "Silly Slots", "Wires"};
             moduleComboBox.Items.AddRange(modules);
-            moduleComboBox.Text = "Chess";
+            moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -274,6 +277,24 @@ namespace KTANE_Solver
                     }
 
                     iceCreamForm.Show();
+                    SuccessfulModuleOpening(module);
+                    break;
+
+                case "Keypad":
+
+                    this.Hide();
+
+                    if (keyPadForm == null)
+                    {
+                        keyPadForm = new KeypadForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        keyPadForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    keyPadForm.Show();
                     SuccessfulModuleOpening(module);
                     break;
 

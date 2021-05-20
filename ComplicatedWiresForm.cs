@@ -15,10 +15,6 @@ namespace KTANE_Solver
     //"Complicated Wires" module
     public partial class ComplicatedWiresForm : ModuleForm
     {
-        public ComplicatedWiresForm()
-        {
-            InitializeComponent();
-        }
 
         public ComplicatedWiresForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
         {

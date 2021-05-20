@@ -29,7 +29,7 @@ namespace KTANE_Solver
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureButton4 = new System.Windows.Forms.Button();
+            this.selectedImageButton4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.threeButton = new System.Windows.Forms.Button();
             this.sixButton = new System.Windows.Forms.Button();
@@ -40,9 +40,9 @@ namespace KTANE_Solver
             this.blackStarButton = new System.Windows.Forms.Button();
             this.backwardsCButton = new System.Windows.Forms.Button();
             this.bButton = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.selectedImageButton1 = new System.Windows.Forms.Button();
+            this.selectedImageButton2 = new System.Windows.Forms.Button();
+            this.selectedImageButton3 = new System.Windows.Forms.Button();
             this.lambdaButton = new System.Windows.Forms.Button();
             this.lightningButton = new System.Windows.Forms.Button();
             this.nButton = new System.Windows.Forms.Button();
@@ -66,13 +66,13 @@ namespace KTANE_Solver
             this.strikeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // pictureButton4
+            // selectedImageButton4
             // 
-            this.pictureButton4.Location = new System.Drawing.Point(381, 69);
-            this.pictureButton4.Name = "pictureButton4";
-            this.pictureButton4.Size = new System.Drawing.Size(101, 101);
-            this.pictureButton4.TabIndex = 1;
-            this.pictureButton4.UseVisualStyleBackColor = true;
+            this.selectedImageButton4.Location = new System.Drawing.Point(381, 69);
+            this.selectedImageButton4.Name = "selectedImageButton4";
+            this.selectedImageButton4.Size = new System.Drawing.Size(101, 101);
+            this.selectedImageButton4.TabIndex = 1;
+            this.selectedImageButton4.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -155,29 +155,29 @@ namespace KTANE_Solver
             this.bButton.TabIndex = 13;
             this.bButton.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // selectedImageButton1
             // 
-            this.button10.Location = new System.Drawing.Point(15, 69);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(101, 101);
-            this.button10.TabIndex = 14;
-            this.button10.UseVisualStyleBackColor = true;
+            this.selectedImageButton1.Location = new System.Drawing.Point(15, 69);
+            this.selectedImageButton1.Name = "selectedImageButton1";
+            this.selectedImageButton1.Size = new System.Drawing.Size(101, 101);
+            this.selectedImageButton1.TabIndex = 14;
+            this.selectedImageButton1.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // selectedImageButton2
             // 
-            this.button11.Location = new System.Drawing.Point(138, 69);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(101, 101);
-            this.button11.TabIndex = 15;
-            this.button11.UseVisualStyleBackColor = true;
+            this.selectedImageButton2.Location = new System.Drawing.Point(138, 69);
+            this.selectedImageButton2.Name = "selectedImageButton2";
+            this.selectedImageButton2.Size = new System.Drawing.Size(101, 101);
+            this.selectedImageButton2.TabIndex = 15;
+            this.selectedImageButton2.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // selectedImageButton3
             // 
-            this.button12.Location = new System.Drawing.Point(263, 69);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(101, 101);
-            this.button12.TabIndex = 16;
-            this.button12.UseVisualStyleBackColor = true;
+            this.selectedImageButton3.Location = new System.Drawing.Point(263, 69);
+            this.selectedImageButton3.Name = "selectedImageButton3";
+            this.selectedImageButton3.Size = new System.Drawing.Size(101, 101);
+            this.selectedImageButton3.TabIndex = 16;
+            this.selectedImageButton3.UseVisualStyleBackColor = true;
             // 
             // lambdaButton
             // 
@@ -331,6 +331,7 @@ namespace KTANE_Solver
             this.backButton.TabIndex = 35;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // submitButton
             // 
@@ -340,6 +341,7 @@ namespace KTANE_Solver
             this.submitButton.TabIndex = 36;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -349,6 +351,7 @@ namespace KTANE_Solver
             this.strikeButton.TabIndex = 37;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // KeypadForm
             // 
@@ -376,9 +379,9 @@ namespace KTANE_Solver
             this.Controls.Add(this.hButton);
             this.Controls.Add(this.eButton);
             this.Controls.Add(this.copyrightButton);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.selectedImageButton3);
+            this.Controls.Add(this.selectedImageButton2);
+            this.Controls.Add(this.selectedImageButton1);
             this.Controls.Add(this.bButton);
             this.Controls.Add(this.backwardsCButton);
             this.Controls.Add(this.blackStarButton);
@@ -389,9 +392,10 @@ namespace KTANE_Solver
             this.Controls.Add(this.sixButton);
             this.Controls.Add(this.threeButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureButton4);
+            this.Controls.Add(this.selectedImageButton4);
             this.Name = "KeypadForm";
             this.Text = "KeypadForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KeypadForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,7 +403,7 @@ namespace KTANE_Solver
 
         #endregion
 
-        private System.Windows.Forms.Button pictureButton4;
+        private System.Windows.Forms.Button selectedImageButton4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button threeButton;
         private System.Windows.Forms.Button sixButton;
@@ -410,9 +414,9 @@ namespace KTANE_Solver
         private System.Windows.Forms.Button blackStarButton;
         private System.Windows.Forms.Button backwardsCButton;
         private System.Windows.Forms.Button bButton;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button selectedImageButton1;
+        private System.Windows.Forms.Button selectedImageButton2;
+        private System.Windows.Forms.Button selectedImageButton3;
         private System.Windows.Forms.Button lambdaButton;
         private System.Windows.Forms.Button lightningButton;
         private System.Windows.Forms.Button nButton;
