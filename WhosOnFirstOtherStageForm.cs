@@ -119,7 +119,7 @@ namespace KTANE_Solver
 
             else
             { 
-                UpdateForm(3, ModuleSelectionForm, Bomb, LogFileWriter);
+                UpdateForm(2, ModuleSelectionForm, Bomb, LogFileWriter);
             }
         }
 

@@ -91,10 +91,10 @@ namespace KTANE_Solver
             Array.Sort(array);
 
             //keeps track of the places of each symbol
-            int symbol1Place = Array.IndexOf(array, symbol1Index);
-            int symbol2Place = Array.IndexOf(array, symbol2Index);
-            int symbol3Place = Array.IndexOf(array, symbol3Index);
-            int symbol4Place = Array.IndexOf(array, symbol4Index);
+            int symbol1Place = Array.IndexOf(array, symbol1Index) + 1;
+            int symbol2Place = Array.IndexOf(array, symbol2Index) + 1;
+            int symbol3Place = Array.IndexOf(array, symbol3Index) + 1;
+            int symbol4Place = Array.IndexOf(array, symbol4Index) + 1;
 
             KeypadFormAnswer answerForm;
 
@@ -112,6 +112,9 @@ namespace KTANE_Solver
 
             else if (symbol1Place == 1 && symbol2Place == 4 && symbol3Place == 2 && symbol4Place == 3)
                 answerForm = new KeypadFormAnswer(symbol1, symbol3, symbol4, symbol2);
+
+            else if (symbol1Place == 1 && symbol2Place == 4 && symbol3Place == 3 && symbol4Place == 2)
+                answerForm = new KeypadFormAnswer(symbol1, symbol4, symbol3, symbol2);
 
             else if (symbol1Place == 2 && symbol2Place == 1 && symbol3Place == 3 && symbol4Place == 4)
                 answerForm = new KeypadFormAnswer(symbol2, symbol1, symbol3, symbol4);
@@ -165,24 +168,14 @@ namespace KTANE_Solver
                 answerForm = new KeypadFormAnswer(symbol4, symbol2, symbol3, symbol1);
 
             else if (symbol1Place == 4 && symbol2Place == 3 && symbol3Place == 1 && symbol4Place == 2)
-                answerForm = new KeypadFormAnswer(symbol3, symbol1, symbol2, symbol1);
+                answerForm = new KeypadFormAnswer(symbol3, symbol4, symbol2, symbol1);
 
             else
                 answerForm = new KeypadFormAnswer(symbol4, symbol3, symbol2, symbol1);
 
-            answerForm.Show();
+            answerForm.ShowDialog();
         }
 
-        /// <summary>
-        /// Finds the place of the symbol given its original index
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="array"></param>
-        /// <returns></returns>
-        private int FindPlace(int item, int[] array)
-        {
-            return Array.IndexOf(array, item) + 1;
-        }
 
         /// <summary>
         /// Finds the row the contains all symbols
