@@ -99,6 +99,12 @@
     <Compile Include="KeypadForm.Designer.cs">
       <DependentUpon>KeypadForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeypadFormAnswer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeypadFormAnswer.Designer.cs">
+      <DependentUpon>KeypadFormAnswer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logic.cs" />
     <Compile Include="LogicForm.cs">
       <SubType>Form</SubType>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KeypadForm.resx">
       <DependentUpon>KeypadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeypadFormAnswer.resx">
+      <DependentUpon>KeypadFormAnswer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogicForm.resx">
       <DependentUpon>LogicForm.cs</DependentUpon>

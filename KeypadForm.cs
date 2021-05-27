@@ -14,6 +14,12 @@ namespace KTANE_Solver
     //Purpose: gets the information needed to solve "Keypad"
     public partial class KeypadForm : ModuleForm
     {
+        //the name of the selected images
+        private String image1Name;
+        private String image2Name;
+        private String image3Name;
+        private String image4Name;
+
 
         public KeypadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
         {
@@ -116,21 +122,124 @@ namespace KTANE_Solver
             //the image that was selected
             Image selectedImage = ((Button)sender).Image;
 
+            Button selectedButton = (Button)sender;
+
+            
+
+
             //check to see if the selection is full and if the selected image is already selected,
             //if neither add the selected image to the current selection
             if (SelectedImageNum() != 4 && !ImageSelected(selectedImage))
             {
+                String fileName = null;
+
+                //finding which button was selected
+                if (selectedButton == threeButton)
+                    fileName = "3";
+
+                else if (selectedButton == sixButton)
+                    fileName = "6";
+
+                else if (selectedButton == aButton)
+                    fileName = "A";
+
+                else if (selectedButton == aeButton)
+                    fileName = "AE";
+
+                else if (selectedButton == bButton)
+                    fileName = "B";
+
+                else if (selectedButton == backwardsCButton)
+                    fileName = "Backwards C";
+
+                else if (selectedButton == blackStarButton)
+                    fileName = "Black Star";
+
+                else if (selectedButton == buttButton)
+                    fileName = "Butt";
+
+                else if (selectedButton == cButton)
+                    fileName = "C";
+
+                else if (selectedButton == copyrightButton)
+                    fileName = "Copyright";
+
+                else if (selectedButton == eButton)
+                    fileName = "E";
+
+                else if (selectedButton == hButton)
+                    fileName = "H";
+
+                else if (selectedButton == hashtagButton)
+                    fileName = "Hashtag";
+
+                else if (selectedButton == lambdaButton)
+                    fileName = "Lambda";
+
+                else if (selectedButton == lightningButton)
+                    fileName = "Lightning";
+
+                else if (selectedButton == nButton)
+                    fileName = "N";
+
+                else if (selectedButton == oButton)
+                    fileName = "O";
+
+                else if (selectedButton == omegaButton)
+                    fileName = "Omega";
+
+                else if (selectedButton == paragraphButton)
+                    fileName = "Paragraph";
+
+                else if (selectedButton == questionMarkButton)
+                    fileName = "Question Mark";
+
+                else if (selectedButton == smilyFaceButton)
+                    fileName = "Smily Face";
+
+                else if (selectedButton == squidButton)
+                    fileName = "Squid";
+
+                else if (selectedButton == swirlButton)
+                    fileName = "Swirl";
+
+                else if (selectedButton == tridentButton)
+                    fileName = "Trident";
+
+                else if (selectedButton == unfinishedRButton)
+                    fileName = "Unfinished R";
+
+                else if (selectedButton == whiteStarButton)
+                    fileName = "White Star";
+
+                else if (selectedButton == xButton)
+                    fileName = "X";
+
+
+
                 if (selectedImageButton1.Image == null)
+                {
                     selectedImageButton1.Image = selectedImage;
+                    image1Name = fileName;
+                }
 
                 else if (selectedImageButton2.Image == null)
+                {
                     selectedImageButton2.Image = selectedImage;
+                    image2Name = fileName;
+                }
 
                 else if (selectedImageButton3.Image == null)
+                {
                     selectedImageButton3.Image = selectedImage;
+                    image3Name = fileName;
+                }
 
                 else if (selectedImageButton4.Image == null)
+                { 
                     selectedImageButton4.Image = selectedImage;
+                    image4Name = fileName;
+                }
             }
 
         }
@@ -148,22 +257,37 @@ namespace KTANE_Solver
             if (selectedButton == selectedImageButton3)
             {
                 selectedImageButton3.Image = selectedImageButton4.Image;
+                image3Name = image4Name;
+
                 selectedImageButton4.Image = null;
+                image4Name = "";
             }
 
             else if (selectedButton == selectedImageButton2)
             {
                 selectedImageButton2.Image = selectedImageButton3.Image;
+                image2Name = image3Name;
+
                 selectedImageButton3.Image = selectedImageButton4.Image;
+                image3Name = image4Name;
+
                 selectedImageButton4.Image = null;
+                image4Name = "";
             }
 
             else if (selectedButton == selectedImageButton1)
             {
                 selectedImageButton1.Image = selectedImageButton2.Image;
+                image1Name = image2Name;
+
                 selectedImageButton2.Image = selectedImageButton3.Image;
+                image2Name = image3Name;
+
                 selectedImageButton3.Image = selectedImageButton4.Image;
+                image3Name = image4Name;
+
                 selectedImageButton4.Image = null;
+                image4Name = "";
             }
         }
 
@@ -217,6 +341,12 @@ namespace KTANE_Solver
                 return;
             }
 
+
+            Keypad module = new Keypad(image1Name, image2Name, image3Name, image4Name, Bomb, LogFileWriter);
+
+            module.Solve();
+
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             
         }
 

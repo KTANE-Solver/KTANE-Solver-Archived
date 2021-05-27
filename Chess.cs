@@ -265,6 +265,30 @@ namespace KTANE_Solver
             board[position[0], position[1]] = piece;
         }
 
+        /// <summary>
+        /// Tells if a tile is a piece
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        private bool isPiece(int row, int column)
+        {
+            char character = board[row, column];
+
+            switch (character)
+            {
+                case 'K':
+                case 'R':
+                case 'Q':
+                case 'B':
+                case 'N':
+                    return true;
+
+                default:
+                    return false;
+
+            }
+        }
+
 
 
         //a method that will tell where a king will go
@@ -289,31 +313,6 @@ namespace KTANE_Solver
                 }
             }
         }
-
-        /// <summary>
-        /// Tells if a tile is a piece
-        /// </summary>
-        /// <param name="position"></param>
-        /// <returns></returns>
-        private bool isPiece(int row, int column)
-        {
-            char character = board[row, column];
-
-            switch (character)
-            {
-                case 'K':
-                case 'R':
-                case 'Q':
-                case 'B':
-                case 'N':
-                    return true;
-
-                default:
-                    return false;
-
-            } 
-        }
-
 
         /// <summary>
         ///  Tells where the rook can go
@@ -363,46 +362,46 @@ namespace KTANE_Solver
         }
 
 
-            /// <summary>
-            /// Tells where a knight will go
-            /// </summary>
-            /// <param name="position"></param>
-            private void KnightArea(int[] position)
-        {
-            //left twice and up once
-            if (ValidCoordinate(position[0] - 1, position[1] - 2))
-                CoverTile(position[0] - 1, position[1] - 2);
+        /// <summary>
+        /// Tells where a knight will go
+        /// </summary>
+        /// <param name="position"></param>
+        private void KnightArea(int[] position)
+    {
+        //left twice and up once
+        if (ValidCoordinate(position[0] - 1, position[1] - 2))
+            CoverTile(position[0] - 1, position[1] - 2);
 
 
-            //left twice and down once
-            if (ValidCoordinate(position[0] + 1, position[1] - 2))
-                CoverTile(position[0] + 1, position[1] - 2);
+        //left twice and down once
+        if (ValidCoordinate(position[0] + 1, position[1] - 2))
+            CoverTile(position[0] + 1, position[1] - 2);
 
-            //right twice and up once
-            if (ValidCoordinate(position[0] - 1, position[1] + 2))
-                CoverTile(position[0] - 1, position[1] + 2);
+        //right twice and up once
+        if (ValidCoordinate(position[0] - 1, position[1] + 2))
+            CoverTile(position[0] - 1, position[1] + 2);
 
-            //right twice and down once
-            if (ValidCoordinate(position[0] + 1, position[1] + 2))
-                CoverTile(position[0] + 1, position[1] + 2);
+        //right twice and down once
+        if (ValidCoordinate(position[0] + 1, position[1] + 2))
+            CoverTile(position[0] + 1, position[1] + 2);
 
-            //up twice and left once
-            if (ValidCoordinate(position[0] - 2, position[1] - 1))
-                CoverTile(position[0] - 2, position[1] - 1);
+        //up twice and left once
+        if (ValidCoordinate(position[0] - 2, position[1] - 1))
+            CoverTile(position[0] - 2, position[1] - 1);
 
-            //up twice and right once
-            if (ValidCoordinate(position[0] - 2, position[1] + 1))
-                CoverTile(position[0] - 2, position[1] + 1);
+        //up twice and right once
+        if (ValidCoordinate(position[0] - 2, position[1] + 1))
+            CoverTile(position[0] - 2, position[1] + 1);
 
 
-            //down twice and left once
-            if (ValidCoordinate(position[0] + 2, position[1] - 1))
-                CoverTile(position[0] + 2, position[1] - 1);
+        //down twice and left once
+        if (ValidCoordinate(position[0] + 2, position[1] - 1))
+            CoverTile(position[0] + 2, position[1] - 1);
 
-            //down twice and right once
-            if (ValidCoordinate(position[0] + 2, position[1] + 1))
-                CoverTile(position[0] + 2, position[1] + 1);
-        }
+        //down twice and right once
+        if (ValidCoordinate(position[0] + 2, position[1] + 1))
+            CoverTile(position[0] + 2, position[1] + 1);
+    }
 
         //a method that will 
 
