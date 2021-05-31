@@ -189,11 +189,11 @@ namespace KTANE_Solver
 
             //any port
             //parallel port
-            diamondTree.SetChildren(aceTree.Root.RightNode.LeftNode, new Card(Card.Number.KING, Card.Suite.DIAMOND), new Card(Card.Number.ACE, Card.Suite.DIAMOND), Bomb.PortNum > 0, Bomb.Parallel.Visible);
+            diamondTree.SetChildren(diamondTree.Root.RightNode.LeftNode, new Card(Card.Number.KING, Card.Suite.DIAMOND), new Card(Card.Number.ACE, Card.Suite.DIAMOND), Bomb.PortNum > 0, Bomb.Parallel.Visible);
             
             //fewer than three ports
             //rca and dvid port
-            diamondTree.SetChildren(aceTree.Root.RightNode.RightNode, new Card(Card.Number.SEVEN, Card.Suite.DIAMOND), new Card(Card.Number.FIVE, Card.Suite.CLUB), Bomb.PortNum < 3, Bomb.Stereo.Visible && Bomb.Dvid.Visible);
+            diamondTree.SetChildren(diamondTree.Root.RightNode.RightNode, new Card(Card.Number.SEVEN, Card.Suite.DIAMOND), new Card(Card.Number.FIVE, Card.Suite.CLUB), Bomb.PortNum < 3, Bomb.Stereo.Visible && Bomb.Dvid.Visible);
 
             //fifth card
             diamondTree.SetChildren(diamondTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), false, false);
@@ -217,48 +217,48 @@ namespace KTANE_Solver
 
             //five or fewer batteries
             //serial contain even number of letters
-            clubTree.SetChildren(aceTree.Root, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.THREE, Card.Suite.HEART), Bomb.Battery <= 5, Bomb.LetterNum % 2 == 0);
+            clubTree.SetChildren(clubTree.Root, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.THREE, Card.Suite.HEART), Bomb.Battery <= 5, Bomb.LetterNum % 2 == 0);
 
             //third card
 
             //dvid or stereo
             //digits of the serial add up to more than 12
-            clubTree.SetChildren(aceTree.Root.LeftNode, new Card(Card.Number.TEN, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.SPADE), Bomb.Dvid.Visible || Bomb.Stereo.Visible, Bomb.DigitSum > 12);
+            clubTree.SetChildren(clubTree.Root.LeftNode, new Card(Card.Number.TEN, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.SPADE), Bomb.Dvid.Visible || Bomb.Stereo.Visible, Bomb.DigitSum > 12);
             
             //parallel and serial
             //rj port
-            clubTree.SetChildren(aceTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), Bomb.Parallel.Visible && Bomb.Serial.Visible, Bomb.Rj.Visible);
+            clubTree.SetChildren(clubTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), Bomb.Parallel.Visible && Bomb.Serial.Visible, Bomb.Rj.Visible);
 
             //fourth card
 
             //last letter of seiral is a consonant
             //last digit of serial odd
-            clubTree.SetChildren(aceTree.Root.LeftNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.HEART), new Card(Card.Number.JACK, Card.Suite.CLUB), Bomb.LastLetterIsVowel, Bomb.LastDigit % 2 == 1);
+            clubTree.SetChildren(clubTree.Root.LeftNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.HEART), new Card(Card.Number.JACK, Card.Suite.CLUB), Bomb.LastLetterIsVowel, Bomb.LastDigit % 2 == 1);
             
             //ps and parallel
             //three or fewer ports
-            clubTree.SetChildren(aceTree.Root.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Ps.Visible && Bomb.Parallel.Visible, Bomb.PortNum <= 3);
+            clubTree.SetChildren(clubTree.Root.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Ps.Visible && Bomb.Parallel.Visible, Bomb.PortNum <= 3);
 
             //more aa than d
             //more d than aa
-            diamondTree.SetChildren(aceTree.Root.RightNode.LeftNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.HEART),  Bomb.AABattery > Bomb.DBattery, Bomb.DBattery > Bomb.AABattery);
-            
+            clubTree.SetChildren(clubTree.Root.RightNode.LeftNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.HEART),  Bomb.AABattery > Bomb.DBattery, Bomb.DBattery > Bomb.AABattery);
+
             //more than 2 d
             //mor than 2 batteries
-            diamondTree.SetChildren(aceTree.Root.RightNode.RightNode, new Card(Card.Number.KING, Card.Suite.CLUB), new Card(Card.Number.FOUR, Card.Suite.DIAMOND), Bomb.DBattery > 2, Bomb.Battery > 2);
+            clubTree.SetChildren(clubTree.Root.RightNode.RightNode, new Card(Card.Number.KING, Card.Suite.CLUB), new Card(Card.Number.FOUR, Card.Suite.DIAMOND), Bomb.DBattery > 2, Bomb.Battery > 2);
 
             //fifth card
-            clubTree.SetChildren(aceTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.QUEEN, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
-            clubTree.SetChildren(aceTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.CLUB), new Card(Card.Number.KING, Card.Suite.CLUB), false, false);
+            clubTree.SetChildren(clubTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.QUEEN, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
+            clubTree.SetChildren(clubTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.CLUB), new Card(Card.Number.KING, Card.Suite.CLUB), false, false);
 
-            clubTree.SetChildren(aceTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.DIAMOND), new Card(Card.Number.TWO, Card.Suite.HEART), false, false);
-            clubTree.SetChildren(aceTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SEVEN, Card.Suite.SPADE), false, false);
+            clubTree.SetChildren(clubTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.DIAMOND), new Card(Card.Number.TWO, Card.Suite.HEART), false, false);
+            clubTree.SetChildren(clubTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SEVEN, Card.Suite.SPADE), false, false);
 
-            clubTree.SetChildren(aceTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.FIVE, Card.Suite.DIAMOND), false, false);
-            clubTree.SetChildren(aceTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), false, false);
+            clubTree.SetChildren(clubTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.FIVE, Card.Suite.DIAMOND), false, false);
+            clubTree.SetChildren(clubTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), false, false);
 
-            clubTree.SetChildren(aceTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.KING, Card.Suite.SPADE), false, false);
-            clubTree.SetChildren(aceTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
+            clubTree.SetChildren(clubTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.KING, Card.Suite.SPADE), false, false);
+            clubTree.SetChildren(clubTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    if ((int)hand[i].number > (int)hand[j].number)
+                    if ((int)hand[i].number < (int)hand[j].number)
                     {
                         Card temp = hand[i];
                         hand[i] = hand[j];
@@ -425,7 +425,7 @@ namespace KTANE_Solver
                (int)hand[2].number + 1 == (int)hand[3].number &&
                (int)hand[3].number + 1 == (int)hand[4].number)
             {
-                return "Flush";
+                return "Straight";
             }
 
             //if there is an Ace, check to see if it with the ace being at the bottom
@@ -434,7 +434,7 @@ namespace KTANE_Solver
                (int)hand[1].number + 1 == (int)hand[2].number &&
                (int)hand[2].number + 1 == (int)hand[3].number)
             {
-                return "Flush";
+                return "Straight";
             }
 
             //three of a kind - three cards of the same value
@@ -552,11 +552,11 @@ namespace KTANE_Solver
                         return 1;
 
                     //Otherwise, if there is an unlit FRQ indicator and the fourth card is black, press the second card.
-                    if (Bomb.Frq.VisibleNotLit && card4.suite == Card.Suite.CLUB || card4.suite == Card.Suite.SPADE)
+                    if (Bomb.Frq.VisibleNotLit && card4.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
                         return 2;
 
                     //Otherwise, if there is at least one diamond and your opponent said "Really?" or "Really, really?", press the third card.
-                    if (DiamondNum(card1, card2, card3, card4) >= 1 && response == "Really, really?")
+                    if (DiamondNum(card1, card2, card3, card4) >= 1 && (response == "Really, really?" || response == "Really?"))
                         return 3;
 
                     //Otherwise, if the fourth card is a spade and there are more than four batteries, press the third card.
@@ -602,7 +602,7 @@ namespace KTANE_Solver
                         return 2;
 
                     //Otherwise, if your opponent said "Really, really?" and the first or second card are hearts, press the fourth card.
-                    if(response == "Really, really?" && (card1.suite == Card.Suite.HEART) || card2.suite == Card.Suite.HEART)
+                    if(response == "Really, really?" && (card1.suite == Card.Suite.HEART || card2.suite == Card.Suite.HEART))
                         return 4;
 
                     //Otherwise, if the starter card was the Five of Diamonds and there is a parallel port, press the first card.
@@ -687,7 +687,7 @@ namespace KTANE_Solver
 
                 case 500:
                     //If there is more than one club, press the third card.
-                    if (ClubNum(card1, card2, card3, card4) >= 1)
+                    if (ClubNum(card1, card2, card3, card4) > 1)
                         return 3;
 
                     //Otherwise, if the serial number contains a vowel and there is at least one spade, press the second card.
@@ -707,7 +707,7 @@ namespace KTANE_Solver
                         return 4;
 
                     //Otherwise, if there are no lit indicators and the first card is a heart, press the third card.
-                    if (Bomb.IndicatorUnlitNum == 0 && card1.suite == Card.Suite.HEART)
+                    if (Bomb.IndicatorLitNum == 0 && card1.suite == Card.Suite.HEART)
                         return 3;
 
                     //Otherwise, if there is at least one unlit indicator and the second card is a club, press the second card.
@@ -866,7 +866,7 @@ namespace KTANE_Solver
                     return true;
             }
 
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -878,11 +878,21 @@ namespace KTANE_Solver
         public int FindNumberNum(Card.Number target, Card[] hand)
         {
             int num = 0;
-            foreach (Card card in hand)
-            {
-                if (FindNumber(target, hand))
-                    num++;
-            }
+
+            if (hand[0].number == target)
+                num++;
+
+            if (hand[1].number == target)
+                num++;
+
+            if (hand[2].number == target)
+                num++;
+
+            if (hand[3].number == target)
+                num++;
+
+            if (hand[4].number == target)
+                num++;
 
             return num;
         }

@@ -42,14 +42,29 @@ namespace KTANE_Solver
             IncrementStrike();
         }
 
+        private void PrintCards(List<Poker.Card> hand)
+        {
+            foreach (Poker.Card card in hand)
+            {
+                System.Diagnostics.Debug.WriteLine($"{card.number} of {card.suite}");
+
+            }
+
+            System.Diagnostics.Debug.WriteLine("");
+        }
+
         private void submitButton_Click(object sender, EventArgs e)
         {
             Poker module = new Poker(Bomb, LogFileWriter, cardComboBox.Text);
 
             module.SetHand();
 
+            PrintCards(module.hand);
+
             Poker.Card[] hand = module.hand.ToArray();
             String rank = module.SetRank(hand);
+
+            System.Diagnostics.Debug.WriteLine($"Rank: {rank}\n");
 
             String answer;
 

@@ -46,6 +46,7 @@ namespace KTANE_Solver
         {
             this.Hide();
             pokerStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            pokerStage1Form.Show();
         }
 
         private void strikeButton_Click(object sender, EventArgs e)
