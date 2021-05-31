@@ -187,6 +187,15 @@ namespace KTANE_Solver
             }
         }
 
+        //Tells if the last letter is a vowel
+        public bool LastLetterIsVowel
+        {
+            get
+            {
+                return LastLetter == 'A' || LastLetter == 'E' || LastLetter == 'O' || LastLetter == 'I' || LastLetter == 'U';
+            }
+        }
+
         //tells how many digits are in the serial number
         public int DigitNum
         {

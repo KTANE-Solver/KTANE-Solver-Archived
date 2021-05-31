@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdventureGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdventureGameForm.Designer.cs">
+      <DependentUpon>AdventureGameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Chess.cs" />
@@ -139,6 +145,25 @@
     <Compile Include="MurderForm.Designer.cs">
       <DependentUpon>MurderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Poker.cs" />
+    <Compile Include="PokerStage1Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PokerStage1Form.Designer.cs">
+      <DependentUpon>PokerStage1Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PokerStage2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PokerStage2Form.Designer.cs">
+      <DependentUpon>PokerStage2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PokerStage3Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PokerStage3Form.Designer.cs">
+      <DependentUpon>PokerStage3Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,6 +200,9 @@
     <Compile Include="WiresForm.Designer.cs">
       <DependentUpon>WiresForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdventureGameForm.resx">
+      <DependentUpon>AdventureGameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChessForm.resx">
       <DependentUpon>ChessForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +238,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MurderForm.resx">
       <DependentUpon>MurderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PokerStage1Form.resx">
+      <DependentUpon>PokerStage1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PokerStage2Form.resx">
+      <DependentUpon>PokerStage2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PokerStage3Form.resx">
+      <DependentUpon>PokerStage3Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
