@@ -544,7 +544,7 @@ namespace KTANE_Solver
                 case 25:
                     
                     //If the first card is red and there is a lit BOB indicator, press the fourth card.
-                    if (card1.suite == Card.Suite.DIAMOND || card1.suite == Card.Suite.HEART && Bomb.Bob.Lit)
+                    if ((card1.suite == Card.Suite.DIAMOND || card1.suite == Card.Suite.HEART) && Bomb.Bob.Lit)
                         return 4;
 
                     //Otherwise, if your opponent said "Awful play!" and the starter card was the Ace of Spades, press the first card.
@@ -552,7 +552,7 @@ namespace KTANE_Solver
                         return 1;
 
                     //Otherwise, if there is an unlit FRQ indicator and the fourth card is black, press the second card.
-                    if (Bomb.Frq.VisibleNotLit && card4.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
+                    if (Bomb.Frq.VisibleNotLit && (card4.suite == Card.Suite.CLUB || card4.suite == Card.Suite.SPADE))
                         return 2;
 
                     //Otherwise, if there is at least one diamond and your opponent said "Really?" or "Really, really?", press the third card.
@@ -592,9 +592,13 @@ namespace KTANE_Solver
                         return 3;
 
                     //Otherwise, if a heart appears anywhere above a spade and there are no diamonds press the fourth card.
-                    if (DiamondNum(card1, card2, card3, card4) == 0 && ((card1.suite == Card.Suite.HEART && card2.suite == Card.Suite.SPADE) ||
-                       (card2.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE) ||
-                       card3.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE))
+                    if (DiamondNum(card1, card2, card3, card4) == 0 && 
+                       ((card1.suite == Card.Suite.HEART && card2.suite == Card.Suite.SPADE) ||
+                        (card1.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE) ||
+                        (card1.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE) ||
+                        (card2.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE) ||
+                        (card2.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE) ||
+                        (card3.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)))
                         return 4;
 
                     //Otherwise, if the first card is a heart and the starter card was not the King of Hearts, press the second card.
@@ -630,7 +634,7 @@ namespace KTANE_Solver
                         return 2;
 
                     //Otherwise, if your opponent said, "Really?", press the fourth card.
-                    if (response == "Really")
+                    if (response == "Really?")
                         return 4;
 
                     //Otherwise, if there are no D batteries and the starter card was the Ace of Spades, press the first card.

@@ -58,6 +58,9 @@ namespace KTANE_Solver
         {
             module.response = responseComboBox.Text;
 
+            System.Diagnostics.Debug.WriteLine($"Response: {module.response}\n");
+
+
             String answer = module.BluffTruth();
 
             MessageBox.Show($"Press {answer}", "Poker Part 2 Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);

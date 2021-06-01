@@ -308,10 +308,21 @@ namespace KTANE_Solver
         {
             get
             {
-                //keep subtracting two batteries for every
-                //holder on the bomb
+                //keep subtracting the number of holders by a factor of 1,
+                //and keep subtracting the number of batteries by a factor of 2,
+                //until the number of batteries and number of holders are the same.
+                //That will be the number of d batteries
 
-                return battery - (2 * batteryHolder);
+                int batteryNum = battery;
+                int batteryHolderNum = batteryHolder;
+
+                while (batteryHolderNum != batteryNum)
+                {
+                    batteryNum -= 2;
+                    batteryHolderNum -= 1;
+                }
+
+                return batteryNum;
             }
         }
 

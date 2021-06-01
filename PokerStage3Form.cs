@@ -74,6 +74,11 @@ namespace KTANE_Solver
             IncrementStrike();
         }
 
+        private void PrintCard(Poker.Card card, int position)
+        {
+            System.Diagnostics.Debug.WriteLine($"Card {position}: {card.suite}");
+        }
+
         private void submitButton_Click(object sender, EventArgs e)
         {
             Poker.Card card1 = SetUpCard(card1ComboBox.Text);
@@ -81,7 +86,18 @@ namespace KTANE_Solver
             Poker.Card card3 = SetUpCard(card3ComboBox.Text);
             Poker.Card card4 = SetUpCard(card4ComboBox.Text);
 
+            System.Diagnostics.Debug.WriteLine($"Bet: {betAmountComboBox.Text}\n");
+
+            PrintCard(card1, 1);
+            PrintCard(card2, 2);
+            PrintCard(card3, 3);
+            PrintCard(card4, 4);
+
+
             int index = module.BettingRule(Int32.Parse(betAmountComboBox.Text), card1, card2, card3, card4);
+
+            System.Diagnostics.Debug.WriteLine($"\nAnswer: {index}\n");
+
 
             String prefix = "";
 
