@@ -206,7 +206,7 @@ namespace KTANE_Solver
                     break;
 
                 case "YOU ARE":
-                    orderOfWords = new string[] {"YOUR", "NEXT", "LIKE", "UH HUH", "WHAT?", "DONE", "UH UH", "HOLD", "YOU", "U", "YOU'RE", "SURE", "UR", "YOU ARE "};
+                    orderOfWords = new string[] {"YOUR", "NEXT", "LIKE", "UH HUH", "WHAT?", "DONE", "UH UH", "HOLD", "YOU", "U", "YOU'RE", "SURE", "UR", "YOU ARE"};
                     break;
 
                 case "YOUR":
