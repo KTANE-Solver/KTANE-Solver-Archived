@@ -60,6 +60,8 @@ namespace KTANE_Solver
             this.midRight = midRight;
             this.bottomLeft = bottomLeft;
             this.bottomRight = bottomRight;
+
+            
         }
 
         public void Solve()
@@ -67,6 +69,16 @@ namespace KTANE_Solver
             System.Diagnostics.Debug.WriteLine("======================WHO'S ON FIRST======================");
 
             System.Diagnostics.Debug.WriteLine($"Stage {stage}\n");
+
+            System.Diagnostics.Debug.WriteLine($"Display: {display}\n");
+
+            System.Diagnostics.Debug.WriteLine($"Top Left: {topLeft}");
+            System.Diagnostics.Debug.WriteLine($"Top Right: {topRight}");
+            System.Diagnostics.Debug.WriteLine($"Middle Left: {midLeft}");
+            System.Diagnostics.Debug.WriteLine($"Middle Right: {midRight}");
+            System.Diagnostics.Debug.WriteLine($"Bottom Left: {bottomLeft}");
+            System.Diagnostics.Debug.WriteLine($"Bottom Right: {bottomRight}\n");
+
             //find what the reference word is going to be
             switch (display)
             {
@@ -122,6 +134,9 @@ namespace KTANE_Solver
                     reference = bottomRight;
                     break;
             }
+
+            System.Diagnostics.Debug.WriteLine($"Reference: {reference}\n");
+
 
             //an array that will hold the order of words depending on the reference
             String[] orderOfWords = new string[0];
@@ -183,11 +198,11 @@ namespace KTANE_Solver
                     break;
 
                 case "PRESS":
-                    orderOfWords = new string[] { "RIGHT", "MIDDLE", "YES", "READY", "PRESS", "OKAY", "NOTHING", "UHHH", "BLANK", "LEFT", "FIRST", "WHAT", "NO", "WAIT "};
+                    orderOfWords = new string[] { "RIGHT", "MIDDLE", "YES", "READY", "PRESS", "OKAY", "NOTHING", "UHHH", "BLANK", "LEFT", "FIRST", "WHAT", "NO", "WAIT"};
                     break;
 
                 case "YOU":
-                    orderOfWords = new string[] { "SURE", "YOU ARE", "YOUR", "YOU'RE", "NEXT", "UH HUH", "UR", "HOLD", "WHAT?", "YOU", "UH UH", "LIKE", "DONE", "U "};
+                    orderOfWords = new string[] { "SURE", "YOU ARE", "YOUR", "YOU'RE", "NEXT", "UH HUH", "UR", "HOLD", "WHAT?", "YOU", "UH UH", "LIKE", "DONE", "U"};
                     break;
 
                 case "YOU ARE":
@@ -287,6 +302,9 @@ namespace KTANE_Solver
 
             else
                 answer = bottomRight;
+
+            System.Diagnostics.Debug.WriteLine($"Answer: {answer}\n");
+
 
             MessageBox.Show(answer, $"Who's on first Stage {stage}", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
