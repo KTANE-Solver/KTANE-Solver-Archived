@@ -297,7 +297,7 @@ namespace KTANE_Solver
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(98, 399);
+            this.backButton.Location = new System.Drawing.Point(29, 399);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(84, 39);
             this.backButton.TabIndex = 24;
@@ -315,7 +315,7 @@ namespace KTANE_Solver
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(331, 399);
+            this.button3.Location = new System.Drawing.Point(374, 399);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(84, 39);
             this.button3.TabIndex = 26;

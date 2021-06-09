@@ -57,6 +57,13 @@
     </Compile>
     <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="Bomb.cs" />
+    <Compile Include="CheapCheckout.cs" />
+    <Compile Include="CheapCheckoutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheapCheckoutForm.Designer.cs">
+      <DependentUpon>CheapCheckoutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chess.cs" />
     <Compile Include="ChessForm.cs">
       <SubType>Form</SubType>
@@ -202,6 +209,9 @@
     </Compile>
     <EmbeddedResource Include="AdventureGameForm.resx">
       <DependentUpon>AdventureGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheapCheckoutForm.resx">
+      <DependentUpon>CheapCheckoutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChessForm.resx">
       <DependentUpon>ChessForm.cs</DependentUpon>
