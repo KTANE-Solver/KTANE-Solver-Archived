@@ -108,10 +108,28 @@ namespace KTANE_Solver
 
             int item5Weight = Int32.Parse(item5WeightComboBox.Text);
             int item6Weight = Int32.Parse(item6WeightComboBox.Text);
+            int amount;
 
+            try
+            {
+                amount = int.Parse(amountTextBox.Text);
+            }
+
+            catch
+            {
+                MessageBox.Show("Invalid amount", "Cheap Checkout Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //make sure amount only has to decimals
+
+            if (Decimal.Round(amount, 2) != amount)
+            {
+                MessageBox.Show("Amount should only have 2 decimals", "Cheap Checkout Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //no duplicate items
-
 
             if (item1 == item2 ||
                 item1 == item3 ||
@@ -125,7 +143,11 @@ namespace KTANE_Solver
                 return;
             }
 
+            CheapCheckout module = new CheapCheckout(Bomb, LogFileWriter, amount, item1, item2, item3, item4, item5Weight, item5, item6Weight, item6);
             
+            module.Solve();
+
+            UpdateForm(Bomb, ModuleSelectionForm, LogFileWriter);
         }
     }
 }

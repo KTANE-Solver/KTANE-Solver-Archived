@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
@@ -34,9 +35,70 @@ namespace KTANE_Solver
             this.amount = amount;
         }
 
-        private void Solve()
+        public void Solve()
+        {
+            System.Diagnostics.Debug.WriteLine("===========================Cheap Checkout===========================\n");
+
+
+            //print the day
+            System.Diagnostics.Debug.WriteLine($"Day: {Bomb.Day}\n");
+
+            //print the amount
+            System.Diagnostics.Debug.WriteLine($"Amount: ${amount}\n");
+
+            //print the items
+            PrintItem(item1, 1);
+            PrintItem(item2, 2);
+            PrintItem(item3, 3);
+            PrintItem(item4, 4);
+            PrintItem(item5, 5);
+            PrintItem(item6, 6);
+
+            //apply the sale
+            ApplySale();
+
+            //print the items
+            PrintItem(item1, 1);
+            PrintItem(item2, 2);
+            PrintItem(item3, 3);
+            PrintItem(item4, 4);
+            PrintItem(item5, 5);
+            PrintItem(item6, 6);
+
+            //check the total
+            double total = RoundPrice(item1.price + item2.price + item3.price + item4.price + item5.price + item6.price);
+
+            //see if the customer has enough money
+            if (amount > total)
+            {
+                //if yes, tell the user the amount to give back
+                MessageBox.Show($"${amount - total}", "Cheap Checkout Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            else
+            {
+                //if not, then tell ther user to alert the customer and tell the new amount
+                CheapCheckoutAlertForm alertForm = new CheapCheckoutAlertForm(item1, item2, item3, item4, item5, item6, total);
+
+                alertForm.ShowDialog();
+            }
+
+
+        }
+
+        /// <summary>
+        /// Prints information about an item
+        /// </summary>
+        /// <param name="item"></param>
+        private void PrintItem(Item item, int num)
         { 
-            
+            System.Diagnostics.Debug.WriteLine($"Item {num}: {item.name}\n");
+
+            System.Diagnostics.Debug.WriteLine($"Weight: {item.weight}\n");
+
+            System.Diagnostics.Debug.WriteLine($"Price: {item.price}\n");
+
+            System.Diagnostics.Debug.WriteLine($"Category: {item.category}\n");
         }
 
         /// <summary>
@@ -240,7 +302,7 @@ namespace KTANE_Solver
         {
             //remove .
 
-            String newPriceString = ("" + price).Replace('.', '');
+            String newPriceString = ("" + price).Remove('.');
 
             //convert to int
 
