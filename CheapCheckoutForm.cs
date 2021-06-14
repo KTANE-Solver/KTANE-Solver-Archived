@@ -54,11 +54,12 @@ namespace KTANE_Solver
              "Cookies",  "Deodorant", "Fruit Punch", "Grape Jelly", "Grapefruit",
                 "Gum", "Honey", "Ketchup", "Lollipops", "Lotion", "Mayonnaise", "Mints",
                 "Mustard", "Oranges", "Paper Towels", "Pasta Sauce", "Peanut Butter",
-                "Pork", "Potato Chips", "Shampoo", "Socks", "Spaghetti", "Sugar", "Tea",
+                "Pork", "Potato Chips", "Shampoo", "Socks", "Soda", "Spaghetti", "Sugar", "Tea",
                 "Tissues", "Toothpaste", "Water Bottles", "White Bread", "White Milk"  };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(fixedItems);
+            comboBox.Text = fixedItems[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -73,6 +74,7 @@ namespace KTANE_Solver
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
+            comboBox.Text = items[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -81,9 +83,10 @@ namespace KTANE_Solver
         /// </summary>
         private void SetUpWeightComboBox(ComboBox comboBox)
         {
-            String[] wieghts = new string[] { ".05", "1.0", "1.5" };
+            String[] wieghts = new string[] { "0.5", "1.0", "1.5" };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(wieghts);
+            comboBox.Text = wieghts[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -106,13 +109,13 @@ namespace KTANE_Solver
             String item5 = item5ComboBox.Text;
             String item6 = item6ComboBox.Text;
 
-            int item5Weight = Int32.Parse(item5WeightComboBox.Text);
-            int item6Weight = Int32.Parse(item6WeightComboBox.Text);
+            double item5Weight = Double.Parse(item5WeightComboBox.Text);
+            double item6Weight = Double.Parse(item6WeightComboBox.Text);
             int amount;
 
             try
             {
-                amount = int.Parse(amountTextBox.Text);
+                amount = Int32.Parse(amountTextBox.Text);
             }
 
             catch
@@ -148,6 +151,11 @@ namespace KTANE_Solver
             module.Solve();
 
             UpdateForm(Bomb, ModuleSelectionForm, LogFileWriter);
+        }
+
+        private void CheapCheckoutForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseProgram(e);
         }
     }
 }

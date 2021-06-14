@@ -240,6 +240,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.label1);
             this.Name = "CheapCheckoutForm";
             this.Text = "CheapCheckoutForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheapCheckoutForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -34,6 +34,7 @@ namespace KTANE_Solver
         StreamWriter logFileWriter;
 
         //module forms
+        private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
         private ComplicatedWiresForm complicatedWiresForm;
         private IceCreamForm iceCreamForm;
@@ -100,7 +101,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires" };
+            String[] modules = new String[] {"Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -228,10 +229,26 @@ namespace KTANE_Solver
 
             switch (module)
             {
+                case "Cheap Checkout":
+                    this.Hide();
+                    
+                    if (cheapForm == null)
+                    {
+                        cheapForm = new CheapCheckoutForm(bomb, this, logFileWriter);
+                    }
+
+                    else
+                    {
+                        cheapForm.UpdateForm(bomb, this, logFileWriter);
+                    }
+
+                    cheapForm.Show();
+                    SuccessfulModuleOpening(module);
+
+                    break;
 
                 case "Chess":
                     this.Hide();
-
                     
                     if (chessForm == null)
                     {

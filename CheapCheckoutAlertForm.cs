@@ -10,40 +10,24 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    public partial class CheapCheckoutAlertForm : Form
+    public partial class CheapCheckoutAlertForm : ModuleForm
     {
-        double total;
+        decimal total;
 
-        CheapCheckout.Item item1;
-        CheapCheckout.Item item2;
-        CheapCheckout.Item item3;
-        CheapCheckout.Item item4;
-        CheapCheckout.Item item5;
-        CheapCheckout.Item item6;
-
-
-        public CheapCheckoutAlertForm(CheapCheckout.Item item1, CheapCheckout.Item item2, CheapCheckout.Item item3, CheapCheckout.Item item4, CheapCheckout.Item item5, CheapCheckout.Item item6, double total)
+        public CheapCheckoutAlertForm(decimal total)
         {
             InitializeComponent();
-
             this.total = total;
-
-            this.item1 = item1;
-            this.item2 = item2;
-            this.item3 = item3;
-            this.item4 = item4;
-            this.item5 = item5;
-            this.item6 = item6;
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
             //check to make sure text box converts to double
-            int amount;
+            Decimal amount;
 
             try
             {
-                amount = int.Parse(newAmountTextBox.Text);
+                amount = Decimal.Parse(newAmountTextBox.Text);
             }
 
             catch
@@ -67,9 +51,25 @@ namespace KTANE_Solver
                 return;
             }
 
-            MessageBox.Show($"${amount - total}", "Cheap Checkout Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            decimal answer = RoundPrice(amount - total);
+
+            System.Diagnostics.Debug.WriteLine($"Answer: ${answer}\n");
+
+            MessageBox.Show($"${string.Format("{0:0.00}", answer)}", "Cheap Checkout Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Hide();
+        }
+
+        private Decimal RoundPrice(Decimal oldPrice)
+        {
+            //round the price
+            return Math.Round(oldPrice, 2, MidpointRounding.AwayFromZero);
+
+        }
+
+        private void CheapCheckoutAlertForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseProgram(e);
         }
     }
 }
