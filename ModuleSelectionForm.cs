@@ -101,7 +101,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires" };
+            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -229,6 +229,23 @@ namespace KTANE_Solver
 
             switch (module)
             {
+                case "Binary Puzzle":
+
+                    char[,] grid = new char[,]
+                    {
+                           {'1', '1', '0', '1', '1', '0'},
+                           {'0', '0', '0', '1', '-', '-'},
+                           {'0', '0', '-', '-', '1', '1'},
+                           {'1', '1', '-', '-', '-', '-'},
+                           {'1', '-', '-', '-', '-', '-'},
+                           {'0', '-', '-', '-', '-', '-'}
+                    };
+
+                    BinaryPuzzle puzzle = new BinaryPuzzle(grid);
+                    puzzle.Solve();
+
+                    break;
+
                 case "Cheap Checkout":
                     this.Hide();
                     
