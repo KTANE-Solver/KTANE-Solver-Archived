@@ -31,11 +31,9 @@ namespace KTANE_Solver
 
             MakeMoves(Grid, false, null);
 
-            PrintGrid(Grid);
-
             //if the current grid is not complete, the start guessing
 
-            if (!ValidPuzzle(Grid))
+            if (!PuzzledFilled(Grid)|| !ValidPuzzle(Grid))
             {
                 //a copy to the gird
                 char[,] tempGrid0 = new char[6, 6];
@@ -95,13 +93,37 @@ namespace KTANE_Solver
 
         private void MakeMoves(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
+            System.Diagnostics.Debug.WriteLine("Make Moves\n");
+
             bool moveMade;
 
             do
             {
                 moveMade = BlockUp(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 bool possibleMoveMade = BlockDown(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -110,12 +132,34 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FillComparableColumn(Grid, false, null);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = BlockLeft(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -124,12 +168,35 @@ namespace KTANE_Solver
 
                 possibleMoveMade = BlockRight(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = BlockMiddleRow(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -138,12 +205,34 @@ namespace KTANE_Solver
 
                 possibleMoveMade = BlockMiddleColumn(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = FillRow(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -152,12 +241,35 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FillColumn(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = FillSecondAndFifthColumn(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -166,12 +278,34 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FilledSecondAndFifthRow(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = FillFirstCornerColumn(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -180,12 +314,34 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FillFirstTileRow(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = FillSixthTileRow(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -194,12 +350,35 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FillSixthTileColumn(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = FillComparableColumn(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -208,12 +387,34 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FillComparableRow(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = FilledFirstTileColumn(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -222,12 +423,34 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FilledFirstCornerRow(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
                 possibleMoveMade = FillSixthCornerColumn(grid, isGuessing, filledTiles);
+
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
 
                 if (!moveMade && possibleMoveMade)
                 {
@@ -236,12 +459,26 @@ namespace KTANE_Solver
 
                 possibleMoveMade = FillSixthCornerRow(grid, isGuessing, filledTiles);
 
+                if (filledTiles != null)
+                {
+                    foreach (Tile tile in filledTiles)
+                    {
+                        if (tile.row == 0 && tile.column == 1 && tile.str == '-')
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
                 if (!moveMade && possibleMoveMade)
                 {
                     moveMade = true;
                 }
 
+
             } while (moveMade);
+
+            PrintGrid(grid);
         }
 
         private bool ValidPuzzle(char[,] grid)
@@ -268,18 +505,21 @@ namespace KTANE_Solver
                 //has to have 3 1's and 0's in each row
                 if (NumRowCount(grid, '1', i) != 3)
                 {
+                    System.Diagnostics.Debug.WriteLine($"More than 3 1 in row {i}\n");
                     return false;
                 }
 
                 //has to have 3 1's and 0's in each column
                 if (NumCoulmnCount(grid, '0', i) != 3)
                 {
+                    System.Diagnostics.Debug.WriteLine($"More than 3 0 in column {i}\n");
                     return false;
                 }
 
                 //has to have 3 1's and 0's in each row
                 if (NumRowCount(grid, '0', i) != 3)
                 {
+                    System.Diagnostics.Debug.WriteLine($"More than 3 0 in row {i}\n");
                     return false;
                 }
 
@@ -294,16 +534,19 @@ namespace KTANE_Solver
                     //can't have duplicate rows or columns
                     if (SameColumn(grid, i, j))
                     {
+                        System.Diagnostics.Debug.WriteLine($"Same column {i} and {j}\n");
                         return false;
                     }
 
                     if (SameRow(grid, i, j))
                     {
+                        System.Diagnostics.Debug.WriteLine($"Same row {i} and {j}\n");
                         return false;
                     }
                 }
             }
 
+            System.Diagnostics.Debug.WriteLine($"Valid Puzzle\n");
             return true;
         }
 
@@ -322,62 +565,68 @@ namespace KTANE_Solver
                 {
                     if (grid[row, column] == '-')
                     {
-                        blankSpace = new Tile(row, column, '-');
+                        blankSpace = new Tile(row, column, startingNum);
                         break;
-                    }
+                    }    
                 }
 
                 if (blankSpace.row != -1 && blankSpace.column != -1)
                 {
                     break;
                 }
-
-                //if there isn't a blank space, return false
-                if (blankSpace.row == -1 || blankSpace.column == -1)
-                {
-                    return false;
-                }
             }
 
-            //fill in the space with the starting num
-            grid[blankSpace.row, blankSpace.column] = startingNum;
 
+            //if there isn't a blank space, return false
+            if (blankSpace.row == -1 || blankSpace.column == -1)
+            {
+                return false;
+            }
+            
+
+            //fill in the space with the starting num
+            grid[blankSpace.row, blankSpace.column] = blankSpace.str;
 
             System.Diagnostics.Debug.WriteLine("Guess\n");
+
+            PrintGrid(grid);
 
             //see if adding this space causes problems
             for (int i = 0; i < 6; i++)
             {
                 if (NumRowCount(grid, '0', i) > 3)
                 {
+                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 0 in row {i}\n");
                     return false;
                 }
 
                 if (NumRowCount(grid, '1', i) > 3)
                 {
+                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 1 in row {i}\n");
                     return false;
                 }
 
                 if (NumCoulmnCount(grid, '0', i) > 3)
                 {
+                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 0 in column {i}\n");
                     return false;
                 }
 
                 if (NumCoulmnCount(grid, '1', i) > 3)
-
                 {
+                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 1 in column {i}\n");
                     return false;
                 }
 
                 if (ThreeNumInARow(grid))
                 {
-                    System.Diagnostics.Debug.WriteLine("Three numbers in a row.");
+                    System.Diagnostics.Debug.WriteLine("Three numbers in a row\n");
                     return false;
                 }
 
                 if (ThreeNumInAColumn(grid))
                 {
-                    System.Diagnostics.Debug.WriteLine("Three numbers in a column");
+                    System.Diagnostics.Debug.WriteLine("Three numbers in a column\n");
                     return false;
                 }
 
@@ -390,13 +639,13 @@ namespace KTANE_Solver
 
                     if (SameRow(grid, i, j))
                     {
-                        System.Diagnostics.Debug.WriteLine("Same row. " + i + " " + j);
+                        System.Diagnostics.Debug.WriteLine($"Same row. {i} and {j}\n");
                         return false;
                     }
 
                     if (SameColumn(grid, i, j))
                     {
-                        System.Diagnostics.Debug.WriteLine("Same column. " + i + " " + j);
+                        System.Diagnostics.Debug.WriteLine($"Same column. {i} and {j}\n");
                         return false;
                     }
 
@@ -408,8 +657,6 @@ namespace KTANE_Solver
 
             //if it doesn't then see if blocking/filling is possible
             MakeMoves(grid, true, filledTiles);
-
-            PrintGrid(grid);
 
             //if it's not filled or not valid, then return guessGrid with the next blank being 0
             if (!PuzzledFilled(grid) || !ValidPuzzle(grid))
@@ -543,12 +790,14 @@ namespace KTANE_Solver
                     if (!IsFilled(grid[row, column]) && IsFilled(grid[row + 1, column]) && grid[row + 1, column] == grid[row + 2, column])
                     {
                         grid[row, column] = GetOppositeNumber(grid[row + 1, column]);
+
+                        if (isGuessing)
+                            filledTiles.Add(new Tile(row, column, grid[row, column]));
+
+                        blocked = true;
                     }
 
-                    if (isGuessing)
-                        filledTiles.Add(new Tile(row, column, grid[row, column]));
-
-                    blocked = true;
+                    
                 }
 
             }
@@ -744,6 +993,7 @@ namespace KTANE_Solver
                 {
                     if (IsFilled(grid[row, column]) && grid[row, column] == (grid[row, column + 1]) && grid[row, column] == (grid[row, column + 2]))
                     {
+                        System.Diagnostics.Debug.WriteLine($"3 consecutive numbers in row {row}\n");
                         return true;
                     }
                 }
@@ -760,6 +1010,7 @@ namespace KTANE_Solver
                 {
                     if (IsFilled(grid[row, column]) && grid[row, column] == (grid[row + 1, column]) && grid[row, column] == (grid[row + 2, column]))
                     {
+                        System.Diagnostics.Debug.WriteLine($"3 consecutive numbers in column {column}\n");
                         return true;
                     }
                 }
@@ -846,12 +1097,14 @@ namespace KTANE_Solver
                     if (!IsFilled(grid[row, column]) && IsFilled(grid[row - 1, column]) && grid[row - 1, column] == grid[row - 2, column])
                     {
                         grid[row, column] = GetOppositeNumber(grid[row - 1, column]);
+
+                        if (isGuessing)
+                            filledTiles.Add(new Tile(row, column, grid[row, column]));
+
+                        blocked = true;
                     }
 
-                    if (isGuessing)
-                        filledTiles.Add(new Tile(row, column, grid[row, column]));
-
-                    blocked = true;
+                    
                 }
             }
 
@@ -937,6 +1190,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// 1 - - - - 1 will become 1 0 - - 0 1
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="isGuessing"></param>
+        /// <param name="filledTiles"></param>
+        /// <returns></returns>
         private bool FilledSecondAndFifthRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -954,11 +1214,11 @@ namespace KTANE_Solver
 
                     if (isGuessing && !IsFilled(grid[row, 4]))
                     {
-                        filledTiles.Add(new Tile(row, 1, grid[row, 4]));
+                        filledTiles.Add(new Tile(row, 4, grid[row, 4]));
                     }
 
                     grid[row, 1] = GetOppositeNumber(grid[row, 0]);
-                    grid[row, 4] = GetOppositeNumber(grid[row, 5]);
+                    grid[row, 4] = GetOppositeNumber(grid[row, 0]);
 
                     filled = true;
                 }

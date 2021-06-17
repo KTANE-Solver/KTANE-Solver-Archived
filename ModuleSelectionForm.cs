@@ -34,6 +34,7 @@ namespace KTANE_Solver
         StreamWriter logFileWriter;
 
         //module forms
+        private BinaryPuzzleForm binaryForm;
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
         private ComplicatedWiresForm complicatedWiresForm;
@@ -231,18 +232,20 @@ namespace KTANE_Solver
             {
                 case "Binary Puzzle":
 
-                    char[,] grid = new char[,]
-                    {
-                           {'1', '1', '0', '1', '1', '0'},
-                           {'0', '0', '0', '1', '-', '-'},
-                           {'0', '0', '-', '-', '1', '1'},
-                           {'1', '1', '-', '-', '-', '-'},
-                           {'1', '-', '-', '-', '-', '-'},
-                           {'0', '-', '-', '-', '-', '-'}
-                    };
+                    this.Hide();
 
-                    BinaryPuzzle puzzle = new BinaryPuzzle(grid);
-                    puzzle.Solve();
+                    if (binaryForm == null)
+                    {
+                        binaryForm = new BinaryPuzzleForm(this, logFileWriter);
+                    }
+
+                    else
+                    {
+                        binaryForm.UpdateForm(this, logFileWriter);
+                    }
+
+                    binaryForm.Show();
+                    SuccessfulModuleOpening(module);
 
                     break;
 
