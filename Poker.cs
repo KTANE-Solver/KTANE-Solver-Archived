@@ -18,10 +18,10 @@ namespace KTANE_Solver
         BinaryTree kingTree;
 
         //diamond tree
-        BinaryTree diamondTree;
+        BinaryTree fiveTree;
 
         //club tree
-        BinaryTree clubTree;
+        BinaryTree twoTree;
 
         //the first card
         Card startingCard;
@@ -136,8 +136,8 @@ namespace KTANE_Solver
             kingTree.SetChildren(kingTree.Root.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.CLUB), new Card(Card.Number.QUEEN, Card.Suite.SPADE), Bomb.Snd.Lit, Bomb.Trn.VisibleNotLit || Bomb.Frk.VisibleNotLit);
 
             //lit frq
-            //unlit unlit msa or lit nsa
-            kingTree.SetChildren(kingTree.Root.RightNode.LeftNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SEVEN, Card.Suite.SPADE), Bomb.Msa.Lit || Bomb.Nsa.Lit, Bomb.Frq.Lit);
+            //unlit msa or lit nsa
+            kingTree.SetChildren(kingTree.Root.RightNode.LeftNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SEVEN, Card.Suite.SPADE), Bomb.Msa.VisibleNotLit || Bomb.Nsa.Lit, Bomb.Frq.Lit);
             
             //more aa than d
             //five or fewr batteries
@@ -159,106 +159,106 @@ namespace KTANE_Solver
             //diamond tree
 
             //there are more aa than b
-            diamondTree = new BinaryTree(new Card(Card.Number.FIVE, Card.Suite.DIAMOND), Bomb.AABattery > Bomb.DBattery);
+            fiveTree = new BinaryTree(new Card(Card.Number.FIVE, Card.Suite.DIAMOND), Bomb.AABattery > Bomb.DBattery);
 
             //second card
 
             //serial contains vowel
             //last digit of the serial an odd number
-            diamondTree.SetChildren(diamondTree.Root, new Card(Card.Number.THREE, Card.Suite.CLUB), new Card(Card.Number.NINE, Card.Suite.DIAMOND), Bomb.HasVowel, Bomb.LastDigit % 2 == 1);
+            fiveTree.SetChildren(fiveTree.Root, new Card(Card.Number.THREE, Card.Suite.CLUB), new Card(Card.Number.NINE, Card.Suite.DIAMOND), Bomb.HasVowel, Bomb.LastDigit % 2 == 1);
 
             //third card
 
             //more than one port
             //ther are ps or rj port
-            diamondTree.SetChildren(diamondTree.Root.LeftNode, new Card(Card.Number.TWO, Card.Suite.SPADE), new Card(Card.Number.NINE, Card.Suite.HEART), Bomb.PortNum > 1, Bomb.Ps.Visible || Bomb.Rj.Visible);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode, new Card(Card.Number.TWO, Card.Suite.SPADE), new Card(Card.Number.NINE, Card.Suite.HEART), Bomb.PortNum > 1, Bomb.Ps.Visible || Bomb.Rj.Visible);
 
             //bob or unlit frq or sig
             //any lit indicators
-            diamondTree.SetChildren(diamondTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), Bomb.Bob.Lit || Bomb.Frq.VisibleNotLit || Bomb.Sig.Visible, Bomb.IndicatorLitNum > 0);
+            fiveTree.SetChildren(fiveTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), Bomb.Bob.Lit || Bomb.Frq.VisibleNotLit || Bomb.Sig.Visible, Bomb.IndicatorLitNum > 0);
 
             //fourth card
 
             //unlit clr or lit car
             //lit msa or unlit nsa
-            diamondTree.SetChildren(diamondTree.Root.LeftNode.LeftNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Clr.VisibleNotLit || Bomb.Car.Lit, Bomb.Msa.Lit || Bomb.Nsa.Lit);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode.LeftNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Clr.VisibleNotLit || Bomb.Car.Lit, Bomb.Msa.Lit || Bomb.Nsa.VisibleNotLit);
             
             //any unlit indicator
             //ulit clr
-            diamondTree.SetChildren(diamondTree.Root.LeftNode.RightNode, new Card(Card.Number.TEN, Card.Suite.SPADE), new Card(Card.Number.JACK, Card.Suite.SPADE), Bomb.IndicatorUnlitNum > 0, Bomb.Car.VisibleNotLit);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode, new Card(Card.Number.TEN, Card.Suite.SPADE), new Card(Card.Number.JACK, Card.Suite.SPADE), Bomb.IndicatorUnlitNum > 0, Bomb.Car.VisibleNotLit);
 
             //any port
             //parallel port
-            diamondTree.SetChildren(diamondTree.Root.RightNode.LeftNode, new Card(Card.Number.KING, Card.Suite.DIAMOND), new Card(Card.Number.ACE, Card.Suite.DIAMOND), Bomb.PortNum > 0, Bomb.Parallel.Visible);
+            fiveTree.SetChildren(fiveTree.Root.RightNode.LeftNode, new Card(Card.Number.KING, Card.Suite.DIAMOND), new Card(Card.Number.ACE, Card.Suite.DIAMOND), Bomb.PortNum > 0, Bomb.Parallel.Visible);
             
             //fewer than three ports
             //rca and dvid port
-            diamondTree.SetChildren(diamondTree.Root.RightNode.RightNode, new Card(Card.Number.SEVEN, Card.Suite.DIAMOND), new Card(Card.Number.FIVE, Card.Suite.CLUB), Bomb.PortNum < 3, Bomb.Stereo.Visible && Bomb.Dvid.Visible);
+            fiveTree.SetChildren(fiveTree.Root.RightNode.RightNode, new Card(Card.Number.SEVEN, Card.Suite.DIAMOND), new Card(Card.Number.FIVE, Card.Suite.CLUB), Bomb.PortNum < 3, Bomb.Stereo.Visible && Bomb.Dvid.Visible);
 
             //fifth card
-            diamondTree.SetChildren(diamondTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), false, false);
-            diamondTree.SetChildren(diamondTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.SPADE), new Card(Card.Number.THREE, Card.Suite.DIAMOND), false, false);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), false, false);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.SPADE), new Card(Card.Number.THREE, Card.Suite.DIAMOND), false, false);
 
-            diamondTree.SetChildren(diamondTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.NINE, Card.Suite.SPADE), false, false);
-            diamondTree.SetChildren(diamondTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.QUEEN, Card.Suite.HEART), new Card(Card.Number.FIVE, Card.Suite.HEART), false, false);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.NINE, Card.Suite.SPADE), false, false);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.QUEEN, Card.Suite.HEART), new Card(Card.Number.FIVE, Card.Suite.HEART), false, false);
 
-            diamondTree.SetChildren(diamondTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.KING, Card.Suite.HEART), new Card(Card.Number.QUEEN, Card.Suite.DIAMOND), false, false);
-            diamondTree.SetChildren(diamondTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.SPADE), false, false);
+            fiveTree.SetChildren(fiveTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.KING, Card.Suite.HEART), new Card(Card.Number.QUEEN, Card.Suite.DIAMOND), false, false);
+            fiveTree.SetChildren(fiveTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.SPADE), false, false);
 
-            diamondTree.SetChildren(diamondTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.EIGHT, Card.Suite.DIAMOND), new Card(Card.Number.EIGHT, Card.Suite.HEART), false, false);
-            diamondTree.SetChildren(diamondTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.SPADE), false, false);
+            fiveTree.SetChildren(fiveTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.EIGHT, Card.Suite.DIAMOND), new Card(Card.Number.EIGHT, Card.Suite.HEART), false, false);
+            fiveTree.SetChildren(fiveTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.SPADE), false, false);
 
-            //clubTree tree
+            //twoTree tree
 
             //lit trn bob or ind
-            clubTree = new BinaryTree(new Card(Card.Number.TWO, Card.Suite.CLUB), Bomb.Trn.Lit || Bomb.Bob.Visible || Bomb.Ind.Visible);
+            twoTree = new BinaryTree(new Card(Card.Number.TWO, Card.Suite.CLUB), Bomb.Trn.Lit || Bomb.Bob.Visible || Bomb.Ind.Visible);
 
             //second card
 
             //five or fewer batteries
             //serial contain even number of letters
-            clubTree.SetChildren(clubTree.Root, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.THREE, Card.Suite.HEART), Bomb.Battery <= 5, Bomb.LetterNum % 2 == 0);
+            twoTree.SetChildren(twoTree.Root, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.THREE, Card.Suite.HEART), Bomb.Battery <= 5, Bomb.LetterNum % 2 == 0);
 
             //third card
 
             //dvid or stereo
             //digits of the serial add up to more than 12
-            clubTree.SetChildren(clubTree.Root.LeftNode, new Card(Card.Number.TEN, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.SPADE), Bomb.Dvid.Visible || Bomb.Stereo.Visible, Bomb.DigitSum > 12);
+            twoTree.SetChildren(twoTree.Root.LeftNode, new Card(Card.Number.TEN, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.SPADE), Bomb.Dvid.Visible || Bomb.Stereo.Visible, Bomb.DigitSum > 12);
             
             //parallel and serial
             //rj port
-            clubTree.SetChildren(clubTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), Bomb.Parallel.Visible && Bomb.Serial.Visible, Bomb.Rj.Visible);
+            twoTree.SetChildren(twoTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), Bomb.Parallel.Visible && Bomb.Serial.Visible, Bomb.Rj.Visible);
 
             //fourth card
 
             //last letter of seiral is a consonant
             //last digit of serial odd
-            clubTree.SetChildren(clubTree.Root.LeftNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.HEART), new Card(Card.Number.JACK, Card.Suite.CLUB), Bomb.LastLetterIsVowel, Bomb.LastDigit % 2 == 1);
+            twoTree.SetChildren(twoTree.Root.LeftNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.HEART), new Card(Card.Number.JACK, Card.Suite.CLUB), !Bomb.LastLetterIsVowel, Bomb.LastDigit % 2 == 1);
             
             //ps and parallel
             //three or fewer ports
-            clubTree.SetChildren(clubTree.Root.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Ps.Visible && Bomb.Parallel.Visible, Bomb.PortNum <= 3);
+            twoTree.SetChildren(twoTree.Root.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Ps.Visible && Bomb.Parallel.Visible, Bomb.PortNum <= 3);
 
             //more aa than d
             //more d than aa
-            clubTree.SetChildren(clubTree.Root.RightNode.LeftNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.HEART),  Bomb.AABattery > Bomb.DBattery, Bomb.DBattery > Bomb.AABattery);
+            twoTree.SetChildren(twoTree.Root.RightNode.LeftNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.HEART),  Bomb.AABattery > Bomb.DBattery, Bomb.DBattery > Bomb.AABattery);
 
             //more than 2 d
             //mor than 2 batteries
-            clubTree.SetChildren(clubTree.Root.RightNode.RightNode, new Card(Card.Number.KING, Card.Suite.CLUB), new Card(Card.Number.FOUR, Card.Suite.DIAMOND), Bomb.DBattery > 2, Bomb.Battery > 2);
+            twoTree.SetChildren(twoTree.Root.RightNode.RightNode, new Card(Card.Number.KING, Card.Suite.CLUB), new Card(Card.Number.FOUR, Card.Suite.DIAMOND), Bomb.DBattery > 2, Bomb.Battery > 2);
 
             //fifth card
-            clubTree.SetChildren(clubTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.QUEEN, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
-            clubTree.SetChildren(clubTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.CLUB), new Card(Card.Number.KING, Card.Suite.CLUB), false, false);
+            twoTree.SetChildren(twoTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.QUEEN, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
+            twoTree.SetChildren(twoTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.CLUB), new Card(Card.Number.KING, Card.Suite.CLUB), false, false);
 
-            clubTree.SetChildren(clubTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.DIAMOND), new Card(Card.Number.TWO, Card.Suite.HEART), false, false);
-            clubTree.SetChildren(clubTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SEVEN, Card.Suite.SPADE), false, false);
+            twoTree.SetChildren(twoTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.DIAMOND), new Card(Card.Number.TWO, Card.Suite.HEART), false, false);
+            twoTree.SetChildren(twoTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SEVEN, Card.Suite.SPADE), false, false);
 
-            clubTree.SetChildren(clubTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.FIVE, Card.Suite.DIAMOND), false, false);
-            clubTree.SetChildren(clubTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), false, false);
+            twoTree.SetChildren(twoTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.FIVE, Card.Suite.DIAMOND), false, false);
+            twoTree.SetChildren(twoTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), false, false);
 
-            clubTree.SetChildren(clubTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.KING, Card.Suite.SPADE), false, false);
-            clubTree.SetChildren(clubTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
+            twoTree.SetChildren(twoTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.KING, Card.Suite.SPADE), false, false);
+            twoTree.SetChildren(twoTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace KTANE_Solver
 
             else if (startingCard.number == Card.Number.TWO)
             {
-                currentNode = ChoosePath(clubTree.Root);
+                currentNode = ChoosePath(twoTree.Root);
             }
 
             else if (startingCard.number == Card.Number.KING)
@@ -290,7 +290,7 @@ namespace KTANE_Solver
 
             else
             { 
-                currentNode = ChoosePath(diamondTree.Root);
+                currentNode = ChoosePath(fiveTree.Root);
             }
 
             hand.Add(currentNode.Data);
