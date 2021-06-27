@@ -174,6 +174,7 @@ namespace KTANE_Solver
         private void SetUpDayOfWeekComboBox()
         {
             String[] days = new String[] {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            dayOfWeekComboBox.Items.Clear();
             dayOfWeekComboBox.Items.AddRange(days);
             dayOfWeekComboBox.Text = "Sunday";
 

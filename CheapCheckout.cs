@@ -59,6 +59,7 @@ namespace KTANE_Solver
             PrintItem(item6, 6);
 
             Console.WriteLine("==============================After Sale==============================\n");
+            
             //apply the sale
             ApplySale();
 
@@ -315,7 +316,7 @@ namespace KTANE_Solver
         {
             //remove .
 
-            String newPriceString = ("" + price).Remove('.');
+            String newPriceString = price.ToString().Replace(".","");
 
             //convert to int
 

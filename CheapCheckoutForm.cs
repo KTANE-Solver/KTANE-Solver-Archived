@@ -102,12 +102,15 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+
+
             String item1 = item1ComboBox.Text;
             String item2 = item2ComboBox.Text;
             String item3 = item3ComboBox.Text;
             String item4 = item4ComboBox.Text;
             String item5 = item5ComboBox.Text;
             String item6 = item6ComboBox.Text;
+
 
             double item5Weight = Double.Parse(item5WeightComboBox.Text);
             double item6Weight = Double.Parse(item6WeightComboBox.Text);
@@ -146,6 +149,7 @@ namespace KTANE_Solver
                 return;
             }
 
+            
             CheapCheckout module = new CheapCheckout(Bomb, LogFileWriter, amount, item1, item2, item3, item4, item5Weight, item5, item6Weight, item6);
             
             module.Solve();
