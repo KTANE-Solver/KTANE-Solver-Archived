@@ -47,6 +47,7 @@ namespace KTANE_Solver
         private SillySlotsStage1Form sillySlotsForm;
         private WhosOnFirstFirstStageForm whosOnFirstForm;
         private WiresForm wiresForm;
+        private WordSearchForm wordSearchForm;
 
 
         //===========CONSTRUCTORS===========
@@ -102,7 +103,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires" };
+            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires", "Word Search" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -433,9 +434,6 @@ namespace KTANE_Solver
                     SuccessfulModuleOpening(module);
                     break;
 
-
-
-
                 case "Wires":
                     this.Hide();
 
@@ -452,7 +450,26 @@ namespace KTANE_Solver
                     wiresForm.Show();
                     SuccessfulModuleOpening(module);
                     break;
+
+                case "Word Search":
+                    this.Hide();
+
+                    if (wordSearchForm == null)
+                    {
+                        wordSearchForm = new WordSearchForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        wordSearchForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    wordSearchForm.Show();
+                    SuccessfulModuleOpening(module);
+                    break;
             }
+
+
         }
 
         /// <summary>
