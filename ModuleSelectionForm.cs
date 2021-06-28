@@ -38,6 +38,7 @@ namespace KTANE_Solver
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
         private ComplicatedWiresForm complicatedWiresForm;
+        private ColorMathForm colorMathForm;
         private IceCreamForm iceCreamForm;
         private KeypadForm keyPadForm;
         private LogicForm logicForm;
@@ -103,7 +104,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires", "Word Search" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -284,6 +285,22 @@ namespace KTANE_Solver
                     chessForm.Show();
                     SuccessfulModuleOpening(module);
 
+                    break;
+
+                case "Color Math":
+                    this.Hide();
+
+                    if (colorMathForm == null)
+                    {
+                        colorMathForm = new ColorMathForm(this, logFileWriter, bomb);
+                    }
+                    else
+                    {
+                        colorMathForm.UpdateForm(this, logFileWriter, bomb);
+                    }
+
+                    colorMathForm.Show();
+                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Complicated Wires":
