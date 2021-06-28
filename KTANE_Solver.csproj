@@ -89,6 +89,13 @@
     <Compile Include="ChessForm.Designer.cs">
       <DependentUpon>ChessForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ColorMath.cs" />
+    <Compile Include="ColorMathForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorMathForm.Designer.cs">
+      <DependentUpon>ColorMathForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComplicatedWire.cs" />
     <Compile Include="ComplicatedWires.cs" />
     <Compile Include="ComplicatedWiresForm.cs">
@@ -249,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChessForm.resx">
       <DependentUpon>ChessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorMathForm.resx">
+      <DependentUpon>ColorMathForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ComplicatedWiresForm.resx">
       <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>

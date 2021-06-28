@@ -253,6 +253,31 @@ namespace KTANE_Solver
             }
         }
 
+        //the number of vowles in the serial number
+        public int VowelNum
+        {
+            get
+            {
+                int num = 0;
+                for (int i = 0; i < serialNumber.Length; i++)
+                {
+                    switch (serialNumber[i])
+                    {
+                        case 'A':
+                        case 'E':
+                        case 'I':
+                        case 'O':
+                        case 'U':
+                            num++;
+                            break;
+
+                    }
+                }
+
+                return num;
+            }
+        }
+
         //tells if the serial number has a vowel
         public bool HasVowel
         {
