@@ -73,6 +73,8 @@ namespace KTANE_Solver
             //check the total
             Decimal total = RoundPrice(item1.price + item2.price + item3.price + item4.price + item5.price + item6.price);
 
+            System.Diagnostics.Debug.WriteLine($"Total: ${total}\n");
+
             //see if the customer has enough money
             if (amount > total)
             {
@@ -134,12 +136,6 @@ namespace KTANE_Solver
 
                     if (item4.name.ToUpper().Contains('S'))
                         item4.price += 2.15m;
-
-                    if (item5.name.ToUpper().Contains('S'))
-                        item5.price += 2.15m;
-
-                    if (item6.name.ToUpper().Contains('S'))
-                        item6.price += 2.15m;
                     break;
 
                 case Bomb.Days.Monday:
