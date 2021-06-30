@@ -94,7 +94,7 @@ namespace KTANE_Solver
 
             answer %= 10000;
 
-            MessageBox.Show("" + answer, "Color Math Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(ConvertAnswerToColor(answer), "Color Math Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void SolveRed()
@@ -113,35 +113,36 @@ namespace KTANE_Solver
 
             int rightNumber = thousandPlace * 1000 + hundredPlace * 100 + tenPlace * 10 + onePlace;
 
-            int answer = -1;
+            int number = -1;
 
             switch (letter)
             {
                 case 'A':
-                    answer = leftNumber + rightNumber;
+                    number = leftNumber + rightNumber;
                     break;
 
                 case 'M':
-                    answer = leftNumber * rightNumber;
+                    number = leftNumber * rightNumber;
                     break;
 
                 case 'D':
-                    answer = leftNumber / rightNumber;
+                    number = leftNumber / rightNumber;
                     break;
 
                 case 'S':
-                    answer = leftNumber - rightNumber;
+                    number = leftNumber - rightNumber;
                     break;
             }
 
-            if (answer < 0)
+            if (number < 0)
             {
-                answer *= -1;
+                number *= -1;
             }
 
-            answer %= 10000;
+            number %= 10000;
 
-            MessageBox.Show("" + answer, "Color Math Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            MessageBox.Show(ConvertAnswerToColor(number), "Color Math Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public int GetLeftSideNumber(int place, Color color)
@@ -536,6 +537,197 @@ namespace KTANE_Solver
 
                     return Bomb.IndicatorLitNum;
             }
+        }
+
+        private String ConvertAnswerToColor(int answer)
+        {
+            int thousandPlace = answer / 1000;
+            int hundredPlace = (answer % 1000) / 100;
+            int tenPlace = (answer % 100) / 10;
+            int onePlace = answer % 10;
+
+            List<Color> answerList = new List<Color>();
+
+            switch (thousandPlace)
+            {
+                case 0:
+                    answerList.Add(Color.Gray);
+                    break;
+
+                case 1:
+                    answerList.Add(Color.Green);
+                    break;
+
+                case 2:
+                    answerList.Add(Color.Orange);
+                    break;
+
+                case 3:
+                    answerList.Add(Color.White);
+                    break;
+
+                case 4:
+                    answerList.Add(Color.Purple);
+                    break;
+
+                case 5:
+                    answerList.Add(Color.Blue);
+                    break;
+
+                case 6:
+                    answerList.Add(Color.Magenta);
+                    break;
+
+                case 7:
+                    answerList.Add(Color.Black);
+                    break;
+
+                case 8:
+                    answerList.Add(Color.Yellow);
+                    break;
+
+                case 9:
+                    answerList.Add(Color.Red);
+                    break;
+            }
+
+            switch (hundredPlace)
+            {
+                case 0:
+                    answerList.Add(Color.Blue);
+                    break;
+
+                case 1:
+                    answerList.Add(Color.Green);
+                    break;
+
+                case 2:
+                    answerList.Add(Color.Black);
+                    break;
+
+                case 3:
+                    answerList.Add(Color.Purple);
+                    break;
+
+                case 4:
+                    answerList.Add(Color.Magenta);
+                    break;
+
+                case 5:
+                    answerList.Add(Color.Red);
+                    break;
+
+                case 6:
+                    answerList.Add(Color.Gray);
+                    break;
+
+                case 7:
+                    answerList.Add(Color.Yellow);
+                    break;
+
+                case 8:
+                    answerList.Add(Color.Orange);
+                    break;
+
+                case 9:
+                    answerList.Add(Color.White);
+                    break;
+            }
+
+            switch (tenPlace)
+            {
+                case 0:
+                    answerList.Add(Color.Magenta);
+                    break;
+
+                case 1:
+                    answerList.Add(Color.Yellow);
+                    break;
+
+                case 2:
+                    answerList.Add(Color.Blue);
+                    break;
+
+                case 3:
+                    answerList.Add(Color.Gray);
+                    break;
+
+                case 4:
+                    answerList.Add(Color.Red);
+                    break;
+
+                case 5:
+                    answerList.Add(Color.Black);
+                    break;
+
+                case 6:
+                    answerList.Add(Color.Green);
+                    break;
+
+                case 7:
+                    answerList.Add(Color.Purple);
+                    break;
+
+                case 8:
+                    answerList.Add(Color.Orange);
+                    break;
+
+                case 9:
+                    answerList.Add(Color.White);
+                    break;
+            }
+
+            switch (onePlace)
+            {
+                case 0:
+                    answerList.Add(Color.Gray);
+                    break;
+
+                case 1:
+                    answerList.Add(Color.Blue);
+                    break;
+
+                case 2:
+                    answerList.Add(Color.Purple);
+                    break;
+
+                case 3:
+                    answerList.Add(Color.Red);
+                    break;
+
+                case 4:
+                    answerList.Add(Color.Yellow);
+                    break;
+
+                case 5:
+                    answerList.Add(Color.Magenta);
+                    break;
+
+                case 6:
+                    answerList.Add(Color.Black);
+                    break;
+
+                case 7:
+                    answerList.Add(Color.Orange);
+                    break;
+
+                case 8:
+                    answerList.Add(Color.Green);
+                    break;
+
+                case 9:
+                    answerList.Add(Color.White);
+                    break;
+            }
+
+            String answerString = "";
+
+            foreach (Color color in answerList)
+            {
+                answerString += color.ToString() + "\n";
+            }
+
+            return answerString;
         }
 
         public enum Color

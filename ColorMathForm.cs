@@ -16,6 +16,7 @@ namespace KTANE_Solver
         public ColorMathForm(ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter, Bomb bomb) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
+            UpdateForm(moduleSelectionForm, logFileWriter, bomb);
         }
 
         public void UpdateForm(ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter, Bomb bomb)
@@ -33,6 +34,8 @@ namespace KTANE_Solver
             UpdateRightComboBox(rightComboBox3);
             UpdateRightComboBox(rightComboBox4);
 
+            letterTextBox.Text = "";
+
         }
 
         private void UpdateLeftComboBox(ComboBox comboBox)
@@ -47,7 +50,7 @@ namespace KTANE_Solver
 
         private void UpdateRightComboBox(ComboBox comboBox)
         {
-            String[] colors = new String[] { "Black", "Blue", "Gray", "Green", "Magenta", "Orange", "Purple", "Red", "White", "Yellow"};
+            String[] colors = new String[] { "", "Black", "Blue", "Gray", "Green", "Magenta", "Orange", "Purple", "Red", "White", "Yellow"};
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(colors);
@@ -80,7 +83,7 @@ namespace KTANE_Solver
             //if at least one, but not all are filled, throw an error
             int rightFilled = RightTextBoxFilled();
 
-            if (rightFilled != 0 || rightFilled != 4)
+            if (rightFilled != 0 && rightFilled != 4)
             {
                 MessageBox.Show("Either all or none of the right text boxes must be filled", "Color Math Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -96,8 +99,6 @@ namespace KTANE_Solver
 
             //make sure that the letter text box only has a letter
 
-            char letter = '-';
-
             if (letterTextBox.Text.Length != 1)
             {
                 MessageBox.Show("Letter text box can only have 1 letter", "Color Math Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -111,7 +112,7 @@ namespace KTANE_Solver
             }
 
             //capitalize letter
-            letter = letterTextBox.Text.ToUpper()[0];
+            char letter = letterTextBox.Text.ToUpper()[0];
 
 
             //if not all of the right is filled, assume that the letter is red

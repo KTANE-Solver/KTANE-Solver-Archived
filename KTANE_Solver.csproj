@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdventureGameForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdventureGameForm.Designer.cs">
-      <DependentUpon>AdventureGameForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="BinaryPuzzleAnswerForm.cs">
       <SubType>Form</SubType>
@@ -177,6 +171,13 @@
     <Compile Include="MurderForm.Designer.cs">
       <DependentUpon>MurderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NumberPad.cs" />
+    <Compile Include="NumberPadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumberPadForm.Designer.cs">
+      <DependentUpon>NumberPadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Poker.cs" />
     <Compile Include="PokerStage1Form.cs">
       <SubType>Form</SubType>
@@ -239,9 +240,6 @@
     <Compile Include="WordSearchForm.Designer.cs">
       <DependentUpon>WordSearchForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdventureGameForm.resx">
-      <DependentUpon>AdventureGameForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BinaryPuzzleAnswerForm.resx">
       <DependentUpon>BinaryPuzzleAnswerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MurderForm.resx">
       <DependentUpon>MurderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumberPadForm.resx">
+      <DependentUpon>NumberPadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PokerStage1Form.resx">
       <DependentUpon>PokerStage1Form.cs</DependentUpon>
