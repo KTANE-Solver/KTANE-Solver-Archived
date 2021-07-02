@@ -47,6 +47,7 @@ namespace KTANE_Solver
         private NumberPadForm numberPadForm;
         private PokerStage1Form pokerForm;
         private SillySlotsStage1Form sillySlotsForm;
+        private SimonSaysForm simonSaysForm;
         private WhosOnFirstFirstStageForm whosOnFirstForm;
         private WiresForm wiresForm;
         private WordSearchForm wordSearchForm;
@@ -105,7 +106,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Silly Slots", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Silly Slots", "Simon Says", "Who's on First", "Wires", "Word Search" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -248,8 +249,6 @@ namespace KTANE_Solver
                     }
 
                     binaryForm.Show();
-                    SuccessfulModuleOpening(module);
-
                     break;
 
                 case "Cheap Checkout":
@@ -266,8 +265,6 @@ namespace KTANE_Solver
                     }
 
                     cheapForm.Show();
-                    SuccessfulModuleOpening(module);
-
                     break;
 
                 case "Chess":
@@ -284,8 +281,6 @@ namespace KTANE_Solver
                     }
 
                     chessForm.Show();
-                    SuccessfulModuleOpening(module);
-
                     break;
 
                 case "Color Math":
@@ -301,7 +296,6 @@ namespace KTANE_Solver
                     }
 
                     colorMathForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Complicated Wires":
@@ -317,7 +311,6 @@ namespace KTANE_Solver
                     }
 
                     complicatedWiresForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
                 case "Ice Cream":
 
@@ -334,7 +327,6 @@ namespace KTANE_Solver
                     }
 
                     iceCreamForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Keypad":
@@ -352,7 +344,6 @@ namespace KTANE_Solver
                     }
 
                     keyPadForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Logic":
@@ -369,7 +360,6 @@ namespace KTANE_Solver
                     }
 
                     logicForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Maze":
@@ -386,7 +376,6 @@ namespace KTANE_Solver
                     }
 
                     mazeForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Number Pad":
@@ -403,7 +392,6 @@ namespace KTANE_Solver
                     }
 
                     numberPadForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Poker":
@@ -420,7 +408,6 @@ namespace KTANE_Solver
                     }
 
                     pokerForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Silly Slots":
@@ -437,7 +424,22 @@ namespace KTANE_Solver
                     }
 
                     sillySlotsForm.Show();
-                    SuccessfulModuleOpening(module);
+                    break;
+
+                case "Simon Says":
+                    this.Hide();
+
+                    if (simonSaysForm == null)
+                    {
+                        simonSaysForm = new SimonSaysForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        simonSaysForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    simonSaysForm.Show();
                     break;
 
                 case "Murder":
@@ -454,7 +456,6 @@ namespace KTANE_Solver
                     }
 
                     murderForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Who's on First":
@@ -466,7 +467,6 @@ namespace KTANE_Solver
                         whosOnFirstForm.UpdateForm(this, bomb, logFileWriter);
 
                     whosOnFirstForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Wires":
@@ -483,7 +483,6 @@ namespace KTANE_Solver
                     }
 
                     wiresForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
 
                 case "Word Search":
@@ -500,11 +499,10 @@ namespace KTANE_Solver
                     }
 
                     wordSearchForm.Show();
-                    SuccessfulModuleOpening(module);
                     break;
             }
 
-
+            SuccessfulModuleOpening(module);
         }
 
         /// <summary>

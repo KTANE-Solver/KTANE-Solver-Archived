@@ -213,6 +213,13 @@
     <Compile Include="SillySlotsStage1Form.Designer.cs">
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="SimonSays.cs" />
+    <Compile Include="SimonSaysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimonSaysForm.Designer.cs">
+      <DependentUpon>SimonSaysForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WhosOnFirst.cs" />
     <Compile Include="WhosOnFirstFirstStageForm.cs">
       <SubType>Form</SubType>
@@ -317,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SillySlotsStage1Form.resx">
       <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimonSaysForm.resx">
+      <DependentUpon>SimonSaysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WhosOnFirstFirstStageForm.resx">
       <DependentUpon>WhosOnFirstFirstStageForm.cs</DependentUpon>

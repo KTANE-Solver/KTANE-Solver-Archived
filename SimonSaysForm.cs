@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace KTANE_Solver
+{
+    public partial class SimonSaysForm : ModuleForm
+    {
+        public SimonSaysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base (bomb, logFileWriter, moduleSelectionForm)
+        {
+            InitializeComponent();
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
+        }
+
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        {
+            Bomb = bomb;
+            LogFileWriter = logFileWriter;
+            ModuleSelectionForm = moduleSelectionForm;
+
+            instructionLabel.Text = "B - Blue\nG - Green\nR - Red\nY - Yellow";
+            textBox1.Text = "";
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            GoToMoudleSelectionForm();
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            //textbox can only contain the character b, r, g, and y
+
+            String input = textBox1.Text.ToUpper();
+
+            foreach (char character in input)
+            {
+                switch (character)
+                {
+                    case 'B':
+                    case 'G':
+                    case 'R':
+                    case 'Y':
+                        break;
+
+                    default:
+                        MessageBox.Show("Textbox can only contain the character b, r, g, and y", "Simon Says Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                }
+            }
+
+            SimonSays module = new SimonSays(input, Bomb, LogFileWriter);
+            module.Solve();
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+        }
+
+        private void strikeButton_Click(object sender, EventArgs e)
+        {
+            IncrementStrike();
+        }
+
+        private void SimonSaysForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseProgram(e);
+        }
+    }
+}

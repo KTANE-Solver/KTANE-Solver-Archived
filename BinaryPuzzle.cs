@@ -90,7 +90,12 @@ namespace KTANE_Solver
         }
 
 
-
+        /// <summary>
+        /// Uses logic to make moves
+        /// </summary>
+        /// <param name="grid">the grid that will be analyzed</param>
+        /// <param name="isGuessing">if the program has started guessing</param>
+        /// <param name="filledTiles">Tiles that have been filled after a guess has been made</param>
         private void MakeMoves(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             System.Diagnostics.Debug.WriteLine("Make Moves\n");
