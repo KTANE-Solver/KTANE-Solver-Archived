@@ -85,7 +85,7 @@ namespace KTANE_Solver
 
                 System.Diagnostics.Debug.WriteLine($"Answer: ${answer}\n");
 
-                MessageBox.Show($"${string.Format("{0:0.00}", answer)}", "Cheap Checkout Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowAnswer($"${string.Format("{0:0.00}", answer)}", "Cheap Checkout Answer");
             }
 
             else

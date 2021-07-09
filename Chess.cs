@@ -160,7 +160,7 @@ namespace KTANE_Solver
                 answer = $"{(char)(column + 97)}{Math.Abs(6 - row)}";
             }
 
-            MessageBox.Show(answer, "Chess Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(answer, "Chess Answer");
 
         }
 

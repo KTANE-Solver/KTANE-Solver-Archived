@@ -140,7 +140,7 @@ namespace KTANE_Solver
                 answer += $"{i + 1}. {directions[i]}\n";
             }
 
-            MessageBox.Show(answer, "Complicated Wires", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(answer, "Complicated Wires");
             
         }
 

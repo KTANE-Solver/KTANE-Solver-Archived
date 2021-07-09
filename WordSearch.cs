@@ -83,7 +83,8 @@ namespace KTANE_Solver
             bottomLeftWord = bottomLeftWord.ToUpper();
             bottomRightWord = bottomRightWord.ToUpper();
 
-            MessageBox.Show($"{topLeftWord}\n{topRightWord}\n{bottomLeftWord}\n{bottomRightWord}", "Word Search Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            ShowAnswer($"{topLeftWord}\n{topRightWord}\n{bottomLeftWord}\n{bottomRightWord}", "Word Search Answer");
         }
 
         public class Letter

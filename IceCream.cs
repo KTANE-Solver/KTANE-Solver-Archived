@@ -120,12 +120,12 @@ namespace KTANE_Solver
                 {
                     String message = ConvertFlavorEnumToString(flavor.FlavorProperty);
 
-                    MessageBox.Show(message, "Ice Cream Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowAnswer(message, "Ice Cream Answer");
                     return;
                 }
             }
 
-            MessageBox.Show("Vanilla", "Ice Cream Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer("Vanilla", "Ice Cream Answer");
 
         }
 

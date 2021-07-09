@@ -184,7 +184,7 @@ namespace KTANE_Solver
 
             String text = $"Top: {topEvaluation} \nBottom: {bottomEvaluation}";
 
-            MessageBox.Show(text, "Logic Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(text, "Logic Answer");
         }
 
         //=========METHODS=========

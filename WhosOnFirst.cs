@@ -305,8 +305,7 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Answer: {answer}\n");
 
-
-            MessageBox.Show(answer, $"Who's on first Stage {stage}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(answer, $"Who's on first Stage {stage}");
         }
 
 

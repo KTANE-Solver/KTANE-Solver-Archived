@@ -94,7 +94,7 @@ namespace KTANE_Solver
 
             answer %= 10000;
 
-            MessageBox.Show(ConvertAnswerToColor(answer), "Color Math Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(ConvertAnswerToColor(answer), "Color Math Answer");
         }
 
         public void SolveRed()

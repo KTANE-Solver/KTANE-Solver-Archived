@@ -150,7 +150,7 @@ namespace KTANE_Solver
 
             answer = answer.Remove(answer.Length - 2, 2);
 
-            MessageBox.Show(answer, "Simon Says Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(answer, "Simon Says Answer");
         }
     }
 }

@@ -182,7 +182,7 @@ namespace KTANE_Solver
             String caption = $"Cut the {place} wire";
             String title = "Wire Answer";
 
-            MessageBox.Show(caption, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(caption, title);
 
             Console.WriteLine($"Cutting the {place} wire\n");
         }

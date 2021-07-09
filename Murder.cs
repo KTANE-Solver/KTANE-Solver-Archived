@@ -133,7 +133,7 @@ namespace KTANE_Solver
 
                 LogFileWriter.WriteLine(answer + "\n");
 
-                MessageBox.Show(answer, "Murder answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowAnswer(answer, "Murder answer");
             }
 
 
