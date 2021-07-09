@@ -46,6 +46,7 @@ namespace KTANE_Solver
         private MurderForm murderForm;
         private NumberPadForm numberPadForm;
         private PokerStage1Form pokerForm;
+        private RubixCubeForm rubikCubeForm;
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
         private WhosOnFirstFirstStageForm whosOnFirstForm;
@@ -106,7 +107,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Silly Slots", "Simon Says", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Who's on First", "Wires", "Word Search" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -394,6 +395,7 @@ namespace KTANE_Solver
                     numberPadForm.Show();
                     break;
 
+
                 case "Poker":
                     this.Hide();
 
@@ -408,6 +410,22 @@ namespace KTANE_Solver
                     }
 
                     pokerForm.Show();
+                    break;
+
+                case "Rubik's Cube":
+                    this.Hide();
+
+                    if (rubikCubeForm == null)
+                    {
+                        rubikCubeForm = new RubixCubeForm(this, bomb, logFileWriter);
+                    }
+
+                    else
+                    {
+                        rubikCubeForm.UpdateForm(this, bomb, logFileWriter);
+                    }
+
+                    rubikCubeForm.Show();
                     break;
 
                 case "Silly Slots":
