@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
@@ -28,6 +29,14 @@ namespace KTANE_Solver
         {
             Bomb = bomb;
             LogFileWriter = logFileWriter;
+        }
+
+        /// <summary>
+        /// A method that will show the answer in a messageBox 
+        /// </summary>
+        public void ShowAnswer(String answer, String caption)
+        {
+            MessageBox.Show(answer, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
