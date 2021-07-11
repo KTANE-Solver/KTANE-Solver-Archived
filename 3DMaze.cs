@@ -18,7 +18,7 @@ namespace KTANE_Solver
         /// <summary>
         /// Initializes the grid depending on the three letters found
         /// </summary>
-        private void CreateGrid(List<char> characters)
+        public void CreateGrid(List<char> characters)
         {
             if (characters.Contains('A') && characters.Contains('B') && characters.Contains('C'))
             {
@@ -269,8 +269,10 @@ namespace KTANE_Solver
         ///          2 is south
         ///          3 is west.
         ///If there happens to be a -1, then the spots were invalid</returns>
-        private int[] FindLocation(List<char> spots)
+        public List<int[]> FindLocation(List<char> spots)
         {
+            List<int[]> coordinates = new List<int[]>();
+
             //If any of the spots contain N,E,S, or W convert them to *
             for (int i = 0; i < spots.Count; i++)
             {
@@ -287,363 +289,409 @@ namespace KTANE_Solver
             {
                 for (int column = 0; column < 16; column++)
                 {
-                    if (grid[row, column] == spots[0])
+                    if (FoundPathNorth(spots, row, column))
                     {
-                        //if the spot can be found, then find the 
-                        //last spot of the spots [length - 1] * 2 spaces away
-
-                        //tells if the path is wrong
-                        bool invalidPath = false;
-
-                        //start north
-                        {
-                            //if row becomes negative, add 16 til postive
-
-                            int tempRow = row - ((spots.Count - 1) * 2);
-
-                            if (tempRow < 0)
-                            {
-                                tempRow += 16;
-                            }
-
-                            if (grid[tempRow, column] == spots[spots.Count - 1])
-                            {
-                                //if the end is correct, the make sure there are no
-                                //walls in between the start and end
-
-                                tempRow = row - 1;
-
-                                if (tempRow < 0)
-                                {
-                                    tempRow += 16;
-                                }
-
-                                int endRow = row - ((spots.Count - 1) * 2);
-
-                                if (endRow < 0)
-                                {
-                                    endRow += 16;
-                                }
-
-                                bool noWalls = true;
-
-                                do
-                                {
-                                    if (grid[tempRow, column] == '!')
-                                    {
-                                        noWalls = false;
-                                        invalidPath = true;
-                                        break;
-                                    }
-
-                                    tempRow--;
-
-                                    if (tempRow < 0)
-                                    {
-                                        tempRow += 16;
-                                    }
-                                }
-                                while (tempRow != endRow);
-
-                                if (noWalls)
-                                {
-                                    //if no walls have been found, then make sure each spot is correct
-
-                                    while (tempRow != endRow && !invalidPath)
-                                    {
-                                        for (int i = 0; i < spots.Count; i++)
-                                        {
-                                            tempRow = row - (2 * i);
-
-                                            if (tempRow < 0)
-                                            {
-                                                tempRow += 16;
-                                            }
-
-                                            if (grid[tempRow, column] != spots[i])
-                                            {
-                                                invalidPath = true;
-                                                break;
-                                            }
-                                        }
-                                    }
-
-                                    //reaching this point means the user's location has been found and is point north
-                                    if (!invalidPath)
-                                    {
-                                        return new int[] { endRow, column, 0 };
-                                    }
-                                }
-                            }
-                        }
-
-                        //if this point is reached, that means north wasn't the correct way, try going east
-                        {
-                            invalidPath = false;
-
-                            
-                            //if row becomes negative, add 16 til postive
-
-                            int tempColumn = column - ((spots.Count - 1) * 2);
-
-                            if (tempColumn < 0)
-                            {
-                                tempColumn += 16;
-                            }
-
-                            if (grid[row, tempColumn] == spots[spots.Count - 1])
-                            {
-                                //if the end is correct, then make sure there are no
-                                //walls in between the start and end
-
-                                tempColumn = column - 1;
-
-                                if (tempColumn < 0)
-                                {
-                                    tempColumn += 16;
-                                }
-
-                                int endColumn = column - ((spots.Count - 1) * 2);
-
-                                if (endColumn < 0)
-                                {
-                                    endColumn += 16;
-                                }
-
-                                bool noWalls = true;
-
-                                do
-                                {
-                                    if (grid[row, tempColumn] == '!')
-                                    {
-                                        noWalls = false;
-                                        invalidPath = true;
-                                        break;
-                                    }
-
-                                    tempColumn--;
-
-                                    if (tempColumn < 0)
-                                    {
-                                        tempColumn += 16;
-                                    }
-                                }
-                                while (tempColumn != endColumn);
-
-                                if (noWalls)
-                                {
-                                    //if no walls have been found, then make sure each spot is correct
-
-                                    while (tempColumn != endColumn && !invalidPath)
-                                    {
-                                        for (int i = 0; i < spots.Count; i++)
-                                        {
-                                            tempColumn = column - (2 * i);
-
-                                            if (tempColumn < 0)
-                                            {
-                                                tempColumn += 16;
-                                            }
-
-                                            if (grid[row, tempColumn] != spots[i])
-                                            {
-                                                invalidPath = true;
-                                                break;
-                                            }
-                                        }
-                                    }
-
-                                    //reaching this point means the user's location has been found and is point west
-                                    if (!invalidPath)
-                                    {
-                                        return new int[] { row, endColumn, 1 };
-                                    }
-                                }
-                            }
-                            
-                        }
-
-                        //if this point is reached, that means west wasn't the correct way, try going south
-                        {
-                            //if row too high, subract 16 til between 0-15
-
-                            int tempRow = row + ((spots.Count - 1) * 2);
-
-                            if (tempRow > 15)
-                            {
-                                tempRow -= 16;
-                            }
-
-                            if (grid[tempRow, column] == spots[spots.Count - 1])
-                            {
-                                //if the end is correct, the make sure there are no
-                                //walls in between the start and end
-
-                                tempRow = row + 1;
-
-                                if (tempRow > 15)
-                                {
-                                    tempRow -= 16;
-                                }
-
-                                int endRow = row + ((spots.Count - 1) * 2);
-
-                                if (endRow > 15)
-                                {
-                                    endRow -= 16;
-                                }
-
-                                bool noWalls = true;
-
-                                do
-                                {
-                                    if (grid[tempRow, column] == '!')
-                                    {
-                                        noWalls = false;
-                                        invalidPath = true;
-                                        break;
-                                    }
-
-                                    tempRow++;
-
-                                    if (tempRow > 15)
-                                    {
-                                        tempRow -= 16;
-                                    }
-                                }
-                                while (tempRow != endRow);
-
-                                if (noWalls)
-                                {
-                                    //if no walls have been found, then make sure each spot is correct
-
-                                    while (tempRow != endRow && !invalidPath)
-                                    {
-                                        for (int i = 0; i < spots.Count; i++)
-                                        {
-                                            tempRow = row + (2 * i);
-
-                                            if (tempRow > 15)
-                                            {
-                                                tempRow -= 16;
-                                            }
-
-                                            if (grid[tempRow, column] != spots[i])
-                                            {
-                                                invalidPath = true;
-                                                break;
-                                            }
-                                        }
-                                    }
-
-                                    //reaching this point means the user's location has been found and is point south
-                                    if (!invalidPath)
-                                    {
-                                        return new int[] { endRow, column, 2 };
-                                    }
-                                }
-                            }
-                        }
-
-                        //if this point is reached, that means north wasn't the correct way, try going west
-                        {
-                            invalidPath = false;
-
-
-                            //if row becomes negative, add 16 til postive
-
-                            int tempColumn = column + ((spots.Count - 1) * 2);
-
-                            if (tempColumn > 15)
-                            {
-                                tempColumn -= 16;
-                            }
-
-                            if (grid[row, tempColumn] == spots[spots.Count - 1])
-                            {
-                                //if the end is correct, then make sure there are no
-                                //walls in between the start and end
-
-                                tempColumn = column + 1;
-
-                                if (tempColumn > 15)
-                                {
-                                    tempColumn -= 16;
-                                }
-
-                                int endColumn = column + ((spots.Count - 1) * 2);
-
-                                if (endColumn > 15)
-                                {
-                                    endColumn -= 16;
-                                }
-
-                                bool noWalls = true;
-
-                                do
-                                {
-                                    if (grid[row, tempColumn] == '!')
-                                    {
-                                        noWalls = false;
-                                        invalidPath = true;
-                                        break;
-                                    }
-
-                                    tempColumn--;
-
-                                    if (tempColumn > 15)
-                                    {
-                                        tempColumn -= 16;
-                                    }
-                                }
-                                while (tempColumn != endColumn);
-
-                                if (noWalls)
-                                {
-                                    //if no walls have been found, then make sure each spot is correct
-
-                                    while (tempColumn != endColumn && !invalidPath)
-                                    {
-                                        for (int i = 0; i < spots.Count; i++)
-                                        {
-                                            tempColumn = column + (2 * i);
-
-                                            if (tempColumn > 15)
-                                            {
-                                                tempColumn -= 16;
-                                            }
-
-                                            if (grid[row, tempColumn] != spots[i])
-                                            {
-                                                invalidPath = true;
-                                                break;
-                                            }
-                                        }
-                                    }
-
-                                    //reaching this point means the user's location has been found and is point west
-                                    if (!invalidPath)
-                                    {
-                                        return new int[] { row, endColumn, 3 };
-                                    }
-                                }
-                            }
-
-                        }
-
-                        //if this point is reached, then this is not the correct starting spot, moving on to the next one
+                        coordinates.Add(new int[] { row, column, 0 });
                     }
 
-                    else
+                    if (FoundPathEast(spots, row, column))
                     {
-                        continue;
+                        coordinates.Add(new int[] { row, column, 1 });
+                    }
+
+                    if (FoundPathSouth(spots, row, column))
+                    {
+                        coordinates.Add(new int[] { row, column, 2 });
+                    }
+
+                    if (FoundPathWest(spots, row, column))
+                    {
+                        coordinates.Add(new int[] { row, column, 3 });
                     }
 
                 }
             }
 
-            //if this point is reached that means the user's spots were invalid
-            return new int[] { -1 };
+            //check if there have been any possible locations found
+
+            //if yes, return them
+            if (coordinates.Count != 0)
+            {
+                return coordinates;
+            }
+
+            //if not return null, representing an invalid path was given
+            return null;
+        }
+
+        /// <summary>
+        /// Tells if a path is found going north
+        /// </summary>
+        /// <param name="spots"></param>
+        /// <returns></returns>
+        private bool FoundPathNorth(List<char> spots, int startRow, int startColumn)
+        {
+            if (grid[startRow, startColumn] == spots[0])
+            {
+                
+                //if row becomes negative, add 16 til postive
+
+                int tempRow = startRow - ((spots.Count - 1) * 2);
+
+                if (tempRow < 0)
+                {
+                    tempRow += 16;
+                }
+
+                if (grid[tempRow, startColumn] == spots[spots.Count - 1])
+                {
+                    //if the end is correct, the make sure there are no
+                    //walls in between the start and end
+
+                    tempRow = startRow - 1;
+
+                    if (tempRow < 0)
+                    {
+                        tempRow += 16;
+                    }
+
+                    int endRow = startRow - ((spots.Count - 1) * 2) - 1;
+
+                    if (endRow < 0)
+                    {
+                        endRow += 16;
+                    }
+
+                    do
+                    {
+                        if (grid[tempRow, startColumn] == '!')
+                        {
+                            return false;
+                        }
+
+                        tempRow -= 2;
+
+                        if (tempRow < 0)
+                        {
+                            tempRow += 16;
+                        }
+                    }
+                    while (tempRow != endRow);
+
+                    //checking one last time just in case
+                    if (grid[tempRow, startColumn] == '!')
+                    {
+                        return false;
+                    }
+
+                    //if no walls have been found, then make sure each spot is correct
+
+                    for (int i = 0; i < spots.Count; i++)
+                    {
+                        tempRow = startRow - (2 * i);
+
+                        if (tempRow < 0)
+                        {
+                            tempRow += 16;
+                        }
+
+                        if (grid[tempRow, startColumn] != spots[i])
+                        {
+                            return false;
+                        }
+                    }
+                    
+
+                    //if this point is reached, then this path is valid
+                    return true;
+                    
+                }
+                
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Tells if a path is found going east
+        /// </summary>
+        /// <param name="spots"></param>
+        /// <returns></returns>
+        private bool FoundPathEast(List<char> spots, int startRow, int startColumn)
+        {
+            if (grid[startRow, startColumn] == spots[0])
+            {
+
+                //if row becomes negative, add 16 til postive
+
+                int tempColumn = startColumn + ((spots.Count - 1) * 2);
+
+                if (tempColumn > 15)
+                {
+                    tempColumn -= 16;
+                }
+
+                if (grid[startRow, tempColumn] == spots[spots.Count - 1])
+                {
+                    //if the end is correct, the make sure there are no
+                    //walls in between the start and end
+
+                    tempColumn = startColumn + 1;
+
+                    if (tempColumn > 15)
+                    {
+                        tempColumn -= 16;
+                    }
+
+                    int endColumn = startColumn + ((spots.Count - 1) * 2) - 1;
+
+                    if (endColumn > 15)
+                    {
+                        endColumn -= 16;
+                    }
+
+                    do
+                    {
+                        if (grid[startRow, tempColumn] == '!')
+                        {
+                            return false;
+                        }
+
+                        tempColumn += 2;
+
+                        if (tempColumn > 15)
+                        {
+                            tempColumn -= 16;
+                        }
+                    }
+                    while (tempColumn != endColumn);
+
+                    //checking the last tile just in case
+                    if (grid[startRow, tempColumn] == '!')
+                    {
+                        return false;
+                    }
+
+
+                    //if no walls have been found, then make sure each spot is correct
+                    for (int i = 0; i < spots.Count; i++)
+                    {
+                        tempColumn = startColumn + (2 * i);
+
+                        if (tempColumn > 15)
+                        {
+                            tempColumn -= 16;
+                        }
+
+                        if (grid[startRow, tempColumn] != spots[i])
+                        {
+                            return false;
+                        }
+                    }
+
+                    //if this point is reached, then this path is valid
+                    return true;
+                    
+                }
+
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Tells if a path is found going south
+        /// </summary>
+        /// <param name="spots"></param>
+        /// <returns></returns>
+        private bool FoundPathSouth(List<char> spots, int startRow, int startColumn)
+        {
+            if (startRow == 1 && startColumn == 7)
+            {
+                Console.WriteLine();
+            }
+
+            if (grid[startRow, startColumn] == spots[0])
+            {
+
+                //if row becomes negative, add 16 til postive
+
+                int tempRow = startRow + ((spots.Count - 1) * 2);
+
+                if (tempRow > 15)
+                {
+                    tempRow -= 16;
+                }
+
+                if (grid[tempRow, startColumn] == spots[spots.Count - 1])
+                {
+                    //if the end is correct, the make sure there are no
+                    //walls in between the start and end
+
+                    tempRow = startRow + 1;
+
+                    if (tempRow > 15)
+                    {
+                        tempRow -= 16;
+                    }
+
+                    int endRow = startRow + ((spots.Count - 1) * 2) - 1;
+
+                    if (endRow > 15)
+                    {
+                        endRow -= 16;
+                    }
+
+                    do
+                    {
+                        if (grid[tempRow, startColumn] == '!')
+                        {
+                            return false;
+                        }
+
+                        tempRow += 2;
+
+                        if (tempRow > 15)
+                        {
+                            tempRow -= 16;
+                        }
+                    }
+                    while (tempRow != endRow);
+
+                    //checking just in case
+                    if (grid[tempRow, startColumn] == '!')
+                    {
+                        return false;
+                    }
+
+                    //if no walls have been found, then make sure each spot is correct
+                    for (int i = 0; i < spots.Count; i++)
+                    {
+                        tempRow = startRow + (2 * i);
+
+                        if (tempRow < 0)
+                        {
+                            tempRow += 16;
+                        }
+
+                        if (grid[tempRow, startColumn] != spots[i])
+                        {
+                            return false;
+                        }
+                    }
+                    
+
+                    //if this point is reached, then this path is valid
+                    return true;
+                    
+                }
+
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Tells if a path is found going west
+        /// </summary>
+        /// <param name="spots"></param>
+        /// <returns></returns>
+        private bool FoundPathWest(List<char> spots, int startRow, int startColumn)
+        {
+            if (startRow == 1 && startColumn == 1)
+            {
+                Console.WriteLine();
+            }
+            if (grid[startRow, startColumn] == spots[0])
+            {
+                //if row becomes negative, add 16 til postive
+
+                int tempColumn = startColumn - ((spots.Count - 1) * 2);
+
+                if (tempColumn < 0)
+                {
+                    tempColumn += 16;
+                }
+
+                if (grid[startRow, tempColumn] == spots[spots.Count - 1])
+                {
+                    //if the end is correct, the make sure there are no
+                    //walls in between the start and end
+
+                    tempColumn = startColumn - 1;
+
+                    if (tempColumn < 0)
+                    {
+                        tempColumn += 16;
+                    }
+
+                    int endColumn = startColumn - ((spots.Count - 1) * 2) + 1;
+
+                    if (endColumn > 0)
+                    {
+                        endColumn += 16;
+                    }
+
+                    do
+                    {
+                        if (grid[startRow, tempColumn] == '!')
+                        {
+                            return false;
+                        }
+
+                        tempColumn -= 2;
+
+                        if (tempColumn < 0)
+                        {
+                            tempColumn += 16;
+                        }
+                    }
+                    while (tempColumn != endColumn);
+
+                    //checking just in case
+                    if (grid[startRow, tempColumn] == '!')
+                    {
+                        return false;
+                    }
+
+                    //if no walls have been found, then make sure each spot is correct
+                    for (int i = 0; i < spots.Count; i++)
+                    {
+                        tempColumn = startColumn - (2 * i);
+
+                        if (tempColumn > 15)
+                        {
+                            tempColumn -= 16;
+                        }
+
+                        if (grid[tempColumn, tempColumn] != spots[i])
+                        {
+                            return false;
+                        }
+                    }
+                    
+
+                    //if this point is reached, then this path is valid
+                    return true;
+                    
+                }
+
+            }
+
+            return false;
+        }
+
+        public void PrintGrid()
+        {
+            for (int row = 0; row < 16; row++)
+            {
+                for (int column = 0; column < 16; column++)
+                {
+                    System.Diagnostics.Debug.Write(grid[row, column] + " ");
+                }
+
+                System.Diagnostics.Debug.WriteLine("");
+            }
         }
     }
 }

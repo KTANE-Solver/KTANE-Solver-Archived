@@ -34,6 +34,7 @@ namespace KTANE_Solver
         StreamWriter logFileWriter;
 
         //module forms
+        private _3DMazeForm threeDMazeForm;
         private BinaryPuzzleForm binaryForm;
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
@@ -107,7 +108,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Who's on First", "Wires", "Word Search" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -235,6 +236,22 @@ namespace KTANE_Solver
 
             switch (module)
             {
+                case "3D Maze":
+                    this.Hide();
+
+                    if (threeDMazeForm == null)
+                    {
+                        threeDMazeForm = new _3DMazeForm();
+                    }
+
+                    else
+                    {
+                        threeDMazeForm.UpdateForm();
+                    }
+
+                    threeDMazeForm.Show();
+
+                    break;
                 case "Binary Puzzle":
 
                     this.Hide();
