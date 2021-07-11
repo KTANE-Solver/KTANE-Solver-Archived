@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace KTANE_Solver
@@ -10,9 +7,22 @@ namespace KTANE_Solver
     class _3DMaze : Module
     {
         char[,] grid;
+
+        Vertex[,] VertexGrid;
+
+        public int currentRow;
+        public int currentColumn;
+
+        public int endRow;
+        public int endColumn;
+
+        bool goal;
+
         public _3DMaze(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
-        { 
+        {
+            VertexGrid = new Vertex[8, 8];
             
+            FindEndSpace();
         }
 
         /// <summary>
@@ -255,6 +265,86 @@ namespace KTANE_Solver
                 };
             }
 
+            int gridRow; 
+            int gridColumn;
+
+            for (int row = 0; row < 8; row++)
+            {
+                for (int column = 0; column < 8; column++)
+                {
+                    gridRow = (row * 2) + 1;
+                    gridColumn = (column * 2) + 1;
+
+                    VertexGrid[row, column] = new Vertex(grid[gridRow, gridColumn], row, column);
+                }
+            }
+
+            for (int row = 0; row < 8; row++)
+            {
+                for (int column = 0; column < 8; column++)
+                {
+                    gridRow = (row * 2) + 1;
+                    gridColumn = (column * 2) + 1;
+
+                    //north
+                    if (grid[gridRow - 1, gridColumn] != '!')
+                    {
+                        if (row == 0)
+                        {
+                            VertexGrid[row, column].NorthVertex = VertexGrid[7, column];
+                        }
+
+                        else
+                        {
+                            VertexGrid[row, column].NorthVertex = VertexGrid[row - 1, column];
+                        }
+                    }
+
+                    //east
+                    if ((gridColumn < 15 && grid[gridRow, gridColumn + 1] != '!') || grid[gridRow, 0] != '!')
+                    {
+                        if (column == 7)
+                        {
+                            VertexGrid[row, column].EastVertex = VertexGrid[row, 0];
+                        }
+
+                        else
+                        {
+                            VertexGrid[row, column].EastVertex = VertexGrid[row, column + 1];
+                        }
+                    }
+
+                    //south
+                    if ((gridRow < 15 && grid[gridRow + 1, gridColumn] != '!') || grid[0, gridColumn] != '!')
+                    {
+                        if (row == 7)
+                        {
+                            VertexGrid[row, column].SouthVertex = VertexGrid[0, column];
+                        }
+
+                        else
+                        {
+                            VertexGrid[row, column].SouthVertex = VertexGrid[row + 1, column];
+                        }
+                    }
+
+                    //west
+                    if (grid[gridRow, gridColumn - 1] != '!')
+                    {
+                        if (column == 0)
+                        {
+                            VertexGrid[row, column].WestVertex = VertexGrid[row, 7];
+                        }
+
+                        else
+                        {
+                            VertexGrid[row, column].WestVertex = VertexGrid[row, column - 1];
+                        }
+                    }
+                }
+            }
+
+           
         }
 
         /// <summary>
@@ -333,7 +423,7 @@ namespace KTANE_Solver
         {
             if (grid[startRow, startColumn] == spots[0])
             {
-                
+
                 //if row becomes negative, add 16 til postive
 
                 int tempRow = startRow - ((spots.Count - 1) * 2);
@@ -400,13 +490,13 @@ namespace KTANE_Solver
                             return false;
                         }
                     }
-                    
+
 
                     //if this point is reached, then this path is valid
                     return true;
-                    
+
                 }
-                
+
             }
 
             return false;
@@ -419,9 +509,13 @@ namespace KTANE_Solver
         /// <returns></returns>
         private bool FoundPathEast(List<char> spots, int startRow, int startColumn)
         {
+            if (startRow == 5 && startColumn == 7)
+            {
+                Console.WriteLine();
+            }
+
             if (grid[startRow, startColumn] == spots[0])
             {
-
                 //if row becomes negative, add 16 til postive
 
                 int tempColumn = startColumn + ((spots.Count - 1) * 2);
@@ -491,7 +585,7 @@ namespace KTANE_Solver
 
                     //if this point is reached, then this path is valid
                     return true;
-                    
+
                 }
 
             }
@@ -506,7 +600,7 @@ namespace KTANE_Solver
         /// <returns></returns>
         private bool FoundPathSouth(List<char> spots, int startRow, int startColumn)
         {
-            if (startRow == 1 && startColumn == 7)
+            if (startRow == 3 && startColumn == 5)
             {
                 Console.WriteLine();
             }
@@ -579,11 +673,11 @@ namespace KTANE_Solver
                             return false;
                         }
                     }
-                    
+
 
                     //if this point is reached, then this path is valid
                     return true;
-                    
+
                 }
 
             }
@@ -669,16 +763,138 @@ namespace KTANE_Solver
                             return false;
                         }
                     }
-                    
+
 
                     //if this point is reached, then this path is valid
                     return true;
-                    
+
                 }
 
             }
 
             return false;
+        }
+
+        public void Solve()
+        {
+            //using DFS
+            Queue<Vertex> queue = new Queue<Vertex>();
+
+            Vertex startVertex = VertexGrid[currentRow, currentColumn];
+            Vertex endVertex = VertexGrid[endRow, endColumn];
+
+
+            queue.Enqueue(startVertex);
+
+            startVertex.Visited = true;
+
+            //contiune until end is added
+            while (!queue.Contains(endVertex))
+            {
+
+                Vertex adjacentVertex = GetUnvistedNeighbor(queue.Peek());
+
+                if (adjacentVertex == null)
+                {
+                    queue.Dequeue();
+                }
+
+                else
+                {
+                    queue.Enqueue(adjacentVertex);
+
+                    adjacentVertex.Visited = true;
+                }
+            }
+
+            List<Vertex> directions = new List<Vertex>();
+
+            directions.AddRange(queue);
+
+            foreach (Vertex direction in directions)
+            {
+                System.Diagnostics.Debug.WriteLine($"{direction.Row} {direction.Column}");
+            }
+
+        }
+
+        /// <summary>
+        /// Finding the goal space
+        /// </summary>
+        private void FindEndSpace()
+        {
+            //Start with the first numeric digit in the serial number.
+            //Add 1 for every unlit indicator with a letter in “MAZE GAMER”.
+            //If the row number is greater than 7, subtract 8.
+
+            int startingRow = Bomb.FirstDigit;
+
+            if (Bomb.Car.VisibleNotLit)
+                startingRow++;
+
+            if (Bomb.Clr.VisibleNotLit)
+                startingRow++;
+
+            if (Bomb.Frk.VisibleNotLit)
+                startingRow++;
+
+            if (Bomb.Frq.VisibleNotLit)
+                startingRow++;
+
+            if (Bomb.Msa.VisibleNotLit)
+                startingRow++;
+
+            if (Bomb.Nsa.VisibleNotLit)
+                startingRow++;
+
+            if (Bomb.Sig.VisibleNotLit)
+                startingRow++;
+
+            if (Bomb.Trn.VisibleNotLit)
+                startingRow++;
+
+            endRow = startingRow % 8;
+
+            //Start with the last numeric digit in the serial number.
+            //Add 1 for every lit indicator with a letter in “HELP IM LOST”.
+            //If the column number is greater than 7, subtract 8.
+
+            int startingColumn = Bomb.LastDigit;
+
+
+            if (Bomb.Bob.Lit)
+                startingColumn++;
+
+            if (Bomb.Clr.Lit)
+                startingColumn++;
+
+            if (Bomb.Ind.Lit)
+                startingColumn++;
+
+            if (Bomb.Msa.Lit)
+                startingColumn++;
+
+            if (Bomb.Sig.Lit)
+                startingColumn++;
+
+            endColumn = startingColumn % 8;
+        }
+
+        public Vertex GetUnvistedNeighbor(Vertex start)
+        {
+            if (start.NorthVertex != null && !start.NorthVertex.Visited)
+                return start.NorthVertex;
+
+            if (start.EastVertex != null && !start.EastVertex.Visited)
+                return start.EastVertex;
+
+            if (start.SouthVertex != null && !start.SouthVertex.Visited)
+                return start.SouthVertex;
+
+            if (start.WestVertex != null && !start.WestVertex.Visited)
+                return start.WestVertex;
+
+            return null;
         }
 
         public void PrintGrid()
@@ -692,6 +908,41 @@ namespace KTANE_Solver
 
                 System.Diagnostics.Debug.WriteLine("");
             }
+        }
+
+        public class Vertex
+        {
+            public char Data { get; }
+
+            public bool Visited { get; set; }
+
+            public Vertex NorthVertex { get; set; }
+            public Vertex EastVertex { get; set; }
+            public Vertex SouthVertex { get; set; }
+            public Vertex WestVertex { get; set; }
+
+            public int Row { get; }
+            public int Column { get; }
+
+            public List<Vertex> Edges { get; set; }
+
+            public Vertex(char data, int row, int  column)
+            {
+                Data = data;
+
+                Row = row;
+                Column = column;
+
+                Visited = false;
+
+                NorthVertex = null;
+                EastVertex = null;
+                SouthVertex = null;
+                WestVertex = null;
+
+            }
+
+            
         }
     }
 }

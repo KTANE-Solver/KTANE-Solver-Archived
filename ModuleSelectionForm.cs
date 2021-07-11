@@ -241,12 +241,12 @@ namespace KTANE_Solver
 
                     if (threeDMazeForm == null)
                     {
-                        threeDMazeForm = new _3DMazeForm();
+                        threeDMazeForm = new _3DMazeForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        threeDMazeForm.UpdateForm();
+                        threeDMazeForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     threeDMazeForm.Show();

@@ -13,13 +13,17 @@ namespace KTANE_Solver
 {
     public partial class _3DMazeForm : ModuleForm
     {
-        public _3DMazeForm()
+        public _3DMazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
         }
 
-        public void UpdateForm()
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
+            Bomb = bomb;
+            LogFileWriter = logFileWriter;
+            ModuleSelectionForm = moduleSelectionForm;
+
             threeLettersTextBox.Text = "";
             pathTextBox.Text = "";
         }
@@ -86,7 +90,7 @@ namespace KTANE_Solver
                         case 0:
                             pointOfDirection = "North";
 
-                            endRow = coor[0] + ((spots.Count - 1) * 2);
+                            endRow = coor[0] - ((spots.Count - 1) * 2);
 
                             if (endRow > 15)
                             {
@@ -100,7 +104,7 @@ namespace KTANE_Solver
                         case 1:
                             pointOfDirection = "East";
 
-                            endColumn = coor[0] + ((spots.Count - 1) * 2);
+                            endColumn = coor[1] + ((spots.Count - 1) * 2);
 
                             if (endColumn > 15)
                             {
@@ -114,7 +118,7 @@ namespace KTANE_Solver
                         case 2:
                             pointOfDirection = "South";
 
-                            endRow = coor[0] - ((spots.Count - 1) * 2);
+                            endRow = coor[0] + ((spots.Count - 1) * 2);
 
                             if (endRow < 0)
                             {
@@ -128,7 +132,7 @@ namespace KTANE_Solver
                         default:
                             pointOfDirection = "West";
 
-                            endColumn = coor[0] - ((spots.Count - 1) * 2);
+                            endColumn = coor[1] - ((spots.Count - 1) * 2);
 
                             if (endColumn < 0)
                             {
@@ -154,22 +158,71 @@ namespace KTANE_Solver
             {
                 case 0:
                     pointOfDirection = "North";
+
+                    endRow = coordinate[0] - ((spots.Count - 1) * 2);
+
+                    if (endRow > 15)
+                    {
+                        endRow -= 16;
+                    }
+
+                    endColumn = coordinate[1];
+
                     break;
 
                 case 1:
                     pointOfDirection = "East";
+
+                    endColumn = coordinate[1] + ((spots.Count - 1) * 2);
+
+                    if (endColumn > 15)
+                    {
+                        endColumn -= 16;
+                    }
+
+                    endRow = coordinate[0];
+
                     break;
 
                 case 2:
                     pointOfDirection = "South";
+
+                    endRow = coordinate[0] + ((spots.Count - 1) * 2);
+
+                    if (endRow < 0)
+                    {
+                        endRow += 16;
+                    }
+
+                    endColumn = coordinate[1];
+
                     break;
 
                 default:
                     pointOfDirection = "West";
+
+                    endColumn = coordinate[1] - ((spots.Count - 1) * 2);
+
+                    if (endColumn < 0)
+                    {
+                        endColumn += 16;
+                    }
+
+                    endRow = coordinate[0];
                     break;
             }
 
-            System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {coordinate[0]} {coordinate[1]}");
+            endRow /= 2;
+            endColumn /= 2;
+
+            System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {endRow} {endColumn}");
+
+
+            module.currentRow = endRow;
+            module.currentColumn = endColumn;
+
+            module.Solve();
+
         }
 
 
