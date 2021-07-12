@@ -50,6 +50,7 @@ namespace KTANE_Solver
         private RubixCubeForm rubikCubeForm;
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
+        private TwoBitsStage1Form twoBitsForm;
         private WhosOnFirstFirstStageForm whosOnFirstForm;
         private WiresForm wiresForm;
         private WordSearchForm wordSearchForm;
@@ -108,7 +109,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder","Number Pad", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Word Search" };
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
             moduleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -502,6 +503,22 @@ namespace KTANE_Solver
                         whosOnFirstForm.UpdateForm(this, bomb, logFileWriter);
 
                     whosOnFirstForm.Show();
+                    break;
+
+                case "Two Bits":
+                    this.Hide();
+
+                    if (twoBitsForm == null)
+                    {
+                        twoBitsForm = new TwoBitsStage1Form(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        twoBitsForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    twoBitsForm.Show();
                     break;
 
                 case "Wires":

@@ -169,6 +169,23 @@ namespace KTANE_Solver
             }
         }
 
+        public char FirstLetter
+        {
+            get
+            {
+                for (int i = 0; i > serialNumber.Length; i++)
+                {
+                    if (serialNumber[i] >= 65 && serialNumber[i] <= 90)
+                    {
+                        return serialNumber[i];
+                    }
+                }
+
+                //this should never happen
+                return serialNumber[0];
+            }
+        }
+
         //tells the last letter in the serialNumber
         public char LastLetter
         {
