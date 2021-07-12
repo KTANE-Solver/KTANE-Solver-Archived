@@ -56,6 +56,9 @@ namespace KTANE_Solver
         private WordSearchForm wordSearchForm;
 
 
+        private ModuleForm moduleForm;
+
+
         //===========CONSTRUCTORS===========
 
         
@@ -225,6 +228,7 @@ namespace KTANE_Solver
             writer.WriteLine($"{indicator.Visible}|{indicator.Lit}");
         }
 
+        
         /// <summary>
         /// Sends the player to the module form
         /// they selected in the combo box
@@ -235,10 +239,12 @@ namespace KTANE_Solver
 
             logFileWriter.WriteLine($"User selected {module}. Attempting to open...\n");
 
+            this.Hide();
+
             switch (module)
             {
                 case "3D Maze":
-                    this.Hide();
+                    
 
                     if (threeDMazeForm == null)
                     {
@@ -255,8 +261,6 @@ namespace KTANE_Solver
                     break;
                 case "Binary Puzzle":
 
-                    this.Hide();
-
                     if (binaryForm == null)
                     {
                         binaryForm = new BinaryPuzzleForm(this, logFileWriter);
@@ -271,8 +275,7 @@ namespace KTANE_Solver
                     break;
 
                 case "Cheap Checkout":
-                    this.Hide();
-                    
+   
                     if (cheapForm == null)
                     {
                         cheapForm = new CheapCheckoutForm(bomb, logFileWriter, this);
@@ -287,7 +290,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Chess":
-                    this.Hide();
                     
                     if (chessForm == null)
                     {
@@ -303,7 +305,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Color Math":
-                    this.Hide();
 
                     if (colorMathForm == null)
                     {
@@ -318,7 +319,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Complicated Wires":
-                    this.Hide();
 
                     if (complicatedWiresForm == null)
                     {
@@ -331,9 +331,8 @@ namespace KTANE_Solver
 
                     complicatedWiresForm.Show();
                     break;
-                case "Ice Cream":
 
-                    this.Hide();
+                case "Ice Cream":
 
                     if (iceCreamForm == null)
                     {
@@ -350,8 +349,6 @@ namespace KTANE_Solver
 
                 case "Keypad":
 
-                    this.Hide();
-
                     if (keyPadForm == null)
                     {
                         keyPadForm = new KeypadForm(bomb, logFileWriter, this);
@@ -366,7 +363,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Logic":
-                    this.Hide();
 
                     if (logicForm == null)
                     {
@@ -382,7 +378,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Maze":
-                    this.Hide();
 
                     if (mazeForm == null)
                     {
@@ -398,7 +393,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Number Pad":
-                    this.Hide();
 
                     if (numberPadForm == null)
                     {
@@ -415,7 +409,6 @@ namespace KTANE_Solver
 
 
                 case "Poker":
-                    this.Hide();
 
                     if (pokerForm == null)
                     {
@@ -431,7 +424,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Rubik's Cube":
-                    this.Hide();
 
                     if (rubikCubeForm == null)
                     {
@@ -447,7 +439,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Silly Slots":
-                    this.Hide();
 
                     if (sillySlotsForm == null)
                     {
@@ -463,7 +454,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Simon Says":
-                    this.Hide();
 
                     if (simonSaysForm == null)
                     {
@@ -479,7 +469,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Murder":
-                    this.Hide();
 
                     if (murderForm == null)
                     {
@@ -495,7 +484,7 @@ namespace KTANE_Solver
                     break;
 
                 case "Who's on First":
-                    this.Hide();
+
                     if (whosOnFirstForm == null)
                         whosOnFirstForm = new WhosOnFirstFirstStageForm(bomb, logFileWriter, this);
 
@@ -506,7 +495,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Two Bits":
-                    this.Hide();
 
                     if (twoBitsForm == null)
                     {
@@ -522,7 +510,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Wires":
-                    this.Hide();
 
                     if (wiresForm == null)
                     {
@@ -538,7 +525,6 @@ namespace KTANE_Solver
                     break;
 
                 case "Word Search":
-                    this.Hide();
 
                     if (wordSearchForm == null)
                     {
@@ -552,10 +538,16 @@ namespace KTANE_Solver
 
                     wordSearchForm.Show();
                     break;
+
+                //this means that the module doesn't exist
+                default:
+                    this.Show();
+                break;
             }
 
             SuccessfulModuleOpening(module);
         }
+
 
         /// <summary>
         /// Tells the log the module opend successfully
