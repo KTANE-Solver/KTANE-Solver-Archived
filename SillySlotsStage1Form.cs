@@ -40,20 +40,19 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm">the form used to get here</param>
         /// <param name="bomb">used to get the edgework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public SillySlotsStage1Form(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb,logFileWriter, moduleSelectionForm)
+        public SillySlotsStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, bomb);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
         /// <summary>
         /// Updates this form so it looks
         /// good as new
         /// </summary>
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            ModuleSelectionForm = moduleSelectionForm;
-            Bomb = bomb;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             //clearing all existing items in each comboBox
             keywordComboBox.Items.Clear();
@@ -166,7 +165,8 @@ namespace KTANE_Solver
             if (pressKeep)
             {
                 MessageBox.Show("Press Keep","Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.UpdateForm(ModuleSelectionForm, Bomb);
+                
+                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
 
             //otherwise send them to stage 2

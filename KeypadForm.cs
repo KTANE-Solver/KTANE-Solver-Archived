@@ -21,7 +21,7 @@ namespace KTANE_Solver
         private String image4Name;
 
 
-        public KeypadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
+        public KeypadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
 
@@ -92,15 +92,12 @@ namespace KTANE_Solver
 
         public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, LogFileWriter, moduleSelectionForm);
 
             selectedImageButton1.Image = null;
             selectedImageButton2.Image = null;
             selectedImageButton3.Image = null;
             selectedImageButton4.Image = null;
-
         }
 
         /// <summary>

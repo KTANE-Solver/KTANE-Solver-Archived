@@ -13,18 +13,16 @@ namespace KTANE_Solver
 {
     public partial class RubixCubeForm : ModuleForm
     {
-        public RubixCubeForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
+        public RubixCubeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, bomb, logFileWriter);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
 
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-            ModuleSelectionForm = moduleSelectionForm;
-            LogFileWriter = logFileWriter;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             UpdateComboBox(topComboBox);
             UpdateComboBox(leftComboBox);
@@ -78,7 +76,7 @@ namespace KTANE_Solver
 
             RubikCube module = new RubikCube(topFace, leftFace, frontFace, rightFace, bottomFace, Bomb, LogFileWriter);
             module.Solve();
-            UpdateForm(ModuleSelectionForm, Bomb, LogFileWriter);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             
 
         }

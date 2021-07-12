@@ -15,17 +15,15 @@ namespace KTANE_Solver
     //Purpose: Gets information needed to solve the Chess module
     public partial class ChessForm : ModuleForm
     {
-        public ChessForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
+        public ChessForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         { 
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, bomb, LogFileWriter);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            ModuleSelectionForm = moduleSelectionForm;
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             UpdateTextBox(piece1TextBox);
             UpdateTextBox(piece2TextBox);
@@ -89,7 +87,7 @@ namespace KTANE_Solver
             Chess module = new Chess(piece1, piece2, piece3, piece4, piece5, piece6, Bomb, LogFileWriter);
 
             module.Solve();
-            UpdateForm(ModuleSelectionForm, Bomb, LogFileWriter);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         private bool ValidLocation(String str)

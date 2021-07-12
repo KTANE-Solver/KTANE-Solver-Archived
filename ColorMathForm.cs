@@ -13,17 +13,16 @@ namespace KTANE_Solver
 {
     public partial class ColorMathForm : ModuleForm
     {
-        public ColorMathForm(ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter, Bomb bomb) : base(bomb, logFileWriter, moduleSelectionForm)
+        public ColorMathForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, logFileWriter, bomb);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter, Bomb bomb)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            ModuleSelectionForm = moduleSelectionForm;
-            LogFileWriter = logFileWriter;
-            Bomb = bomb;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
             UpdateLeftComboBox(leftComboBox1);
             UpdateLeftComboBox(leftComboBox2);
             UpdateLeftComboBox(leftComboBox3);
@@ -125,14 +124,14 @@ namespace KTANE_Solver
 
                 ColorMath module = new ColorMath(left1, left2, left3, left4, right1, right2, right3, right4, letter, Bomb, LogFileWriter);
                 module.SolveGreen();
-                UpdateForm(ModuleSelectionForm, LogFileWriter, Bomb);
+                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
 
             else
             {
                 ColorMath module = new ColorMath(left1, left2, left3, left4, letter, Bomb, LogFileWriter);
                 module.SolveRed();
-                UpdateForm(ModuleSelectionForm, LogFileWriter, Bomb);
+                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
 
         }

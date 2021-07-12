@@ -143,11 +143,11 @@ namespace KTANE_Solver
         {
 
             //setting up all the vairables
-            ModuleSelectionForm = moduleSelectionForm;
-            Bomb = bomb;
+
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
             this.sillySlotsStage1Form = sillySlotsStage1Form;
             this.stage = stage;
-            LogFileWriter = logFileWriter;
             this.sillySlotsModule = sillySlotsModule;
 
             this.stage1Slot1Color = stage1Slot1Color;
@@ -337,7 +337,7 @@ namespace KTANE_Solver
             if (stage == 2)
             {
                 this.Hide();
-                sillySlotsStage1Form.UpdateForm(ModuleSelectionForm, Bomb);
+                sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 sillySlotsStage1Form.Show();
             }
 
@@ -386,7 +386,7 @@ namespace KTANE_Solver
 
                 this.Hide();
 
-                sillySlotsStage1Form.UpdateForm(ModuleSelectionForm, Bomb);
+                sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 sillySlotsStage1Form.Show();
             }
 
@@ -399,7 +399,7 @@ namespace KTANE_Solver
                 {
                     this.Hide();
 
-                    sillySlotsStage1Form.UpdateForm(ModuleSelectionForm, Bomb);
+                    sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                     sillySlotsStage1Form.Show();
                 }
 

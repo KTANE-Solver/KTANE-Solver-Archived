@@ -28,10 +28,10 @@ namespace KTANE_Solver
         /// Creates the maze form
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public MazeForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter): base(bomb, logFileWriter, moduleSelectionForm)
+        public MazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm): base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, bomb);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
 
         }
 
@@ -39,11 +39,9 @@ namespace KTANE_Solver
         /// Sets up this form so it looks new
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-
-            Bomb = bomb;
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             //centers and positions all the labels
             redLabel.Left = (this.Width - redLabel.Width) / 2;
@@ -487,8 +485,8 @@ namespace KTANE_Solver
             //solving maze
             maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, LogFileWriter);
             maze.Solve();
-            UpdateForm(ModuleSelectionForm, Bomb);
 
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         /// <summary>

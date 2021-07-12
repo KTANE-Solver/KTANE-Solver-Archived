@@ -13,7 +13,7 @@ namespace KTANE_Solver
 {
     public partial class NumberPadForm : ModuleForm
     {
-        public NumberPadForm(ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter,  Bomb bomb) : base(bomb, logFileWriter, moduleSelectionForm)
+        public NumberPadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
 
@@ -28,14 +28,12 @@ namespace KTANE_Solver
             nineButton.Click += new EventHandler(numberButton_Click);
             zeroButton.Click += new EventHandler(numberButton_Click);
 
-            UpdateForm(moduleSelectionForm, logFileWriter, bomb);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter, Bomb bomb)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            ModuleSelectionForm = moduleSelectionForm;
-            LogFileWriter = logFileWriter;
-            Bomb = bomb;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             oneButton.BackColor = Color.White;
             twoButton.BackColor = Color.White;
@@ -104,7 +102,8 @@ namespace KTANE_Solver
 
             NumberPad module = new NumberPad(zeroColor, oneColor, twoColor, threeColor, fourColor, fiveColor, sixColor, sevenColor, eightColor, nineColor, Bomb, LogFileWriter);
             module.Solve();
-            UpdateForm(ModuleSelectionForm, LogFileWriter, Bomb);
+
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         private void NumberPadForm_FormClosing(object sender, FormClosingEventArgs e)

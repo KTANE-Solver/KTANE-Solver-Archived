@@ -21,10 +21,7 @@ namespace KTANE_Solver
 
         public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-            ModuleSelectionForm = moduleSelectionForm;
-
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             cardComboBox.Items.Clear();
             cardComboBox.Items.AddRange(new String[] { "ACE", "FIVE", "KING", "TWO" });

@@ -21,7 +21,7 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
-            UpdateForm(bomb, moduleSelectionForm);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
         /// <summary>
@@ -29,10 +29,9 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb"></param>
         /// <param name="moduleSelectionForm"></param>
-        public void UpdateForm(Bomb bomb, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             SetUpSuspectCombBox(suspectComboBox1);
             SetUpSuspectCombBox(suspectComboBox2);
@@ -179,7 +178,7 @@ namespace KTANE_Solver
             Murder murder = new Murder(suspects, weapons, room, Bomb, LogFileWriter);
             murder.Solve();
 
-            UpdateForm(Bomb, ModuleSelectionForm);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }
 }

@@ -21,9 +21,8 @@ namespace KTANE_Solver
 
         public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
             topLeftTextBox.Text = "";
             bottomLeftTextBox.Text = "";
             topRightTextBox.Text = "";

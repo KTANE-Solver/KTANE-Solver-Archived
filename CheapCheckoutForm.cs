@@ -15,20 +15,18 @@ namespace KTANE_Solver
     //Purpose: Gets the information needed to solve "Cheap Checkout"
     public partial class CheapCheckoutForm : ModuleForm
     {
-        public CheapCheckoutForm(Bomb bomb, ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter)
+        public CheapCheckoutForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(bomb, moduleSelectionForm, logFileWriter);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
         /// <summary>
         /// Updates the form so it looks brand new
         /// </summary>
-        public void UpdateForm(Bomb bomb, ModuleSelectionForm moduleSelectionForm, StreamWriter logFileWriter)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-            ModuleSelectionForm = moduleSelectionForm;
-            LogFileWriter = logFileWriter;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             amountTextBox.Text = "";
 
@@ -154,7 +152,7 @@ namespace KTANE_Solver
             
             module.Solve();
 
-            UpdateForm(Bomb, ModuleSelectionForm, LogFileWriter);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         private void CheapCheckoutForm_FormClosing(object sender, FormClosingEventArgs e)

@@ -27,9 +27,7 @@ namespace KTANE_Solver
             this.pokerStage1Form = pokerStage1Form;
             this.module = module;
 
-            ModuleSelectionForm = moduleSelectionForm;
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             responseComboBox.Items.Clear();
             responseComboBox.Items.AddRange(new String [] { "Are you sure?", "Awful play!", "Really?", "Really, really?", "Sure about that?", "Terrible play!" });

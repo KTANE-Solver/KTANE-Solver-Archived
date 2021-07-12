@@ -16,19 +16,15 @@ namespace KTANE_Solver
     //Purpose: Used to get infomration to solve the wires module
     public partial class WiresForm : ModuleForm
     {
-
-        //the form used to get here
-        private ModuleSelectionForm moduleSelectionForm;
-        public WiresForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
+        public WiresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, bomb);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            this.moduleSelectionForm = moduleSelectionForm;
-            Bomb = bomb;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             SetUpFirstThreeComboBoxes(wireComboBox1);
             SetUpFirstThreeComboBoxes(wireComboBox2);
@@ -117,7 +113,7 @@ namespace KTANE_Solver
 
             Wires wireModule = new Wires(wire1, wire2, wire3, wire4, wire5, wire6, Bomb, LogFileWriter);
             wireModule.Solve();
-            UpdateForm(ModuleSelectionForm, Bomb);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         /// <summary>

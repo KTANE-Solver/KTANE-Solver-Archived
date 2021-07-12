@@ -25,8 +25,7 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm"></param>
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
-        public WhosOnFirstOtherStageForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter, WhosOnFirstFirstStageForm whosOnFirstFirstStageForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm)
+        public WhosOnFirstOtherStageForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter, WhosOnFirstFirstStageForm whosOnFirstFirstStageForm)
         {
             this.whosOnFirstFirstStageForm = whosOnFirstFirstStageForm;
             InitializeComponent();
@@ -44,10 +43,7 @@ namespace KTANE_Solver
         {
             stageLabel.Text = "Stage " + stage;
 
-            ModuleSelectionForm = moduleSelectionForm;
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             UpdateDisplay();
 
@@ -113,7 +109,7 @@ namespace KTANE_Solver
             {
                 this.Hide();
 
-                whosOnFirstFirstStageForm.UpdateForm(ModuleSelectionForm, Bomb, LogFileWriter);
+                whosOnFirstFirstStageForm.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 whosOnFirstFirstStageForm.Show();
             }
 
@@ -170,7 +166,7 @@ namespace KTANE_Solver
             else
             {
                 this.Hide();
-                whosOnFirstFirstStageForm.UpdateForm(ModuleSelectionForm, Bomb, LogFileWriter);
+                whosOnFirstFirstStageForm.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 whosOnFirstFirstStageForm.Show();
             }
         }

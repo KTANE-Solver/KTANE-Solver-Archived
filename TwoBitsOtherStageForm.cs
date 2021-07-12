@@ -26,6 +26,8 @@ namespace KTANE_Solver
 
         public void UpdateForm(TwoBitsStage1Form stage1Form, int stage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
             this.stage1Form = stage1Form;
 
             this.stage = stage;
@@ -33,10 +35,6 @@ namespace KTANE_Solver
             stageLabel.Text = "Stage " + stage;
 
             resultTextBox.Text = "";
-
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-            ModuleSelectionForm = moduleSelectionForm;
         }
 
         private void backButton_Click(object sender, EventArgs e)

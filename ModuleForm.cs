@@ -34,6 +34,18 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+        }
+
+        /// <summary>
+        /// Updates infomration needed to solve most modules
+        /// and reset the form
+        /// </summary>
+        /// <param name="bomb"></param>
+        /// <param name="logFileWriter"></param>
+        /// <param name="moduleSelectionForm"></param>
+        public void UpdateEdgeWork(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        {
             Bomb = bomb;
             LogFileWriter = logFileWriter;
             ModuleSelectionForm = moduleSelectionForm;

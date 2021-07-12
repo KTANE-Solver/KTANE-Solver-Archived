@@ -27,14 +27,12 @@ namespace KTANE_Solver
 
         public void UpdateForm(PokerStage1Form pokerStage1Form, PokerStage2Form pokerStage2Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
         {
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
             this.pokerStage1Form = pokerStage1Form;
             this.pokerStage2Form = pokerStage2Form;
 
             this.module = module;
-
-            ModuleSelectionForm = moduleSelectionForm;
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
 
             betAmountComboBox.Items.Clear();
             betAmountComboBox.Items.AddRange(new String[] { "25", "50", "100", "500" });

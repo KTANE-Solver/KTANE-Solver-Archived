@@ -25,10 +25,10 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
         /// <param name="bomb">used for the edgework</param>
-        public IceCreamForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
+        public IceCreamForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, bomb, 1);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm, 1);
             LogFileWriter = logFileWriter;
         }
 
@@ -37,10 +37,9 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">used to get the edgework</param>
         /// <param name="stage">what stage the user is on</param>
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb,  int stage)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, int stage)
         {
-            Bomb = bomb;
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             stageLabel.Text = "Stage " + stage;
 
@@ -131,17 +130,17 @@ namespace KTANE_Solver
 
             if (stageLabel.Text == "Stage 1")
             {
-                UpdateForm(ModuleSelectionForm, Bomb, 2);
+                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm, 2);
             }
 
             else if (stageLabel.Text == "Stage 2")
             {
-                UpdateForm(ModuleSelectionForm, Bomb, 3);
+                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm, 3);
             }
 
             else
-            { 
-                UpdateForm(ModuleSelectionForm, Bomb, 1);
+            {
+                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm, 4);
             }
 
         }

@@ -24,10 +24,10 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">where the edgework will come from</param>
         /// <param name="moduleSelectionForm">the form used to get here</param>
-        public LogicForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
+        public LogicForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(moduleSelectionForm, bomb);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
         /// <summary>
@@ -35,11 +35,9 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">where the edgework will come from</param>
         /// <param name="moduleSelectionForm">the form used to get here</param>
-        public void UpdateForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             //setting the prompt text for the textboxes
             SetPromptText(topFirstTextBox, "Top First Letter");
@@ -338,7 +336,8 @@ namespace KTANE_Solver
                                     bottomSecondOperation, bottomFirstTwoCheckBox.Checked, LogFileWriter);
 
             logicModule.Solve();
-            UpdateForm(ModuleSelectionForm, Bomb);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+
         }
 
         /// <summary>

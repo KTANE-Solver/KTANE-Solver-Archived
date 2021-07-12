@@ -16,18 +16,18 @@ namespace KTANE_Solver
     public partial class ComplicatedWiresForm : ModuleForm
     {
 
-        public ComplicatedWiresForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, moduleSelectionForm)
+        public ComplicatedWiresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(bomb);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
         /// <summary>
         /// Updates the form
         /// </summary>
-        public void UpdateForm(Bomb bomb)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             ResetComboBox(wireComboBox1);
             ResetComboBox(wireComboBox2);
@@ -135,7 +135,7 @@ namespace KTANE_Solver
             ComplicatedWires module = new ComplicatedWires(wireList, Bomb, LogFileWriter);
 
             module.Solve();
-            UpdateForm(Bomb);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         /// <summary>

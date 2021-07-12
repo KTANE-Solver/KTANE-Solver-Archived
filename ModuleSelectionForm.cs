@@ -275,12 +275,12 @@ namespace KTANE_Solver
                     
                     if (cheapForm == null)
                     {
-                        cheapForm = new CheapCheckoutForm(bomb, this, logFileWriter);
+                        cheapForm = new CheapCheckoutForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        cheapForm.UpdateForm(bomb, this, logFileWriter);
+                        cheapForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     cheapForm.Show();
@@ -291,12 +291,12 @@ namespace KTANE_Solver
                     
                     if (chessForm == null)
                     {
-                        chessForm = new ChessForm(this, bomb, logFileWriter);
+                        chessForm = new ChessForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        chessForm.UpdateForm(this, bomb, logFileWriter);
+                        chessForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     chessForm.Show();
@@ -307,11 +307,11 @@ namespace KTANE_Solver
 
                     if (colorMathForm == null)
                     {
-                        colorMathForm = new ColorMathForm(this, logFileWriter, bomb);
+                        colorMathForm = new ColorMathForm(bomb, logFileWriter, this);
                     }
                     else
                     {
-                        colorMathForm.UpdateForm(this, logFileWriter, bomb);
+                        colorMathForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     colorMathForm.Show();
@@ -322,11 +322,11 @@ namespace KTANE_Solver
 
                     if (complicatedWiresForm == null)
                     {
-                        complicatedWiresForm = new ComplicatedWiresForm(this, bomb, logFileWriter);
+                        complicatedWiresForm = new ComplicatedWiresForm(bomb, logFileWriter, this);
                     }
                     else
                     {
-                        complicatedWiresForm.UpdateForm(bomb);
+                        complicatedWiresForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     complicatedWiresForm.Show();
@@ -337,12 +337,12 @@ namespace KTANE_Solver
 
                     if (iceCreamForm == null)
                     {
-                        iceCreamForm = new IceCreamForm(this, bomb, logFileWriter);
+                        iceCreamForm = new IceCreamForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        iceCreamForm.UpdateForm(this, bomb, 1);
+                        iceCreamForm.UpdateForm(bomb, logFileWriter, this, 1);
                     }
 
                     iceCreamForm.Show();
@@ -370,12 +370,12 @@ namespace KTANE_Solver
 
                     if (logicForm == null)
                     {
-                        logicForm = new LogicForm(this, bomb, logFileWriter);
+                        logicForm = new LogicForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        logicForm.UpdateForm(this, bomb);
+                        logicForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     logicForm.Show();
@@ -386,12 +386,12 @@ namespace KTANE_Solver
 
                     if (mazeForm == null)
                     {
-                        mazeForm = new MazeForm(this, bomb, logFileWriter);
+                        mazeForm = new MazeForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        mazeForm.UpdateForm(this, bomb);
+                        mazeForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     mazeForm.Show();
@@ -402,12 +402,12 @@ namespace KTANE_Solver
 
                     if (numberPadForm == null)
                     {
-                        numberPadForm = new NumberPadForm(this, logFileWriter, bomb);
+                        numberPadForm = new NumberPadForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        numberPadForm.UpdateForm(this, logFileWriter, bomb);
+                        numberPadForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     numberPadForm.Show();
@@ -435,12 +435,12 @@ namespace KTANE_Solver
 
                     if (rubikCubeForm == null)
                     {
-                        rubikCubeForm = new RubixCubeForm(this, bomb, logFileWriter);
+                        rubikCubeForm = new RubixCubeForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        rubikCubeForm.UpdateForm(this, bomb, logFileWriter);
+                        rubikCubeForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     rubikCubeForm.Show();
@@ -451,12 +451,12 @@ namespace KTANE_Solver
 
                     if (sillySlotsForm == null)
                     {
-                        sillySlotsForm = new SillySlotsStage1Form(this, bomb, logFileWriter);
+                        sillySlotsForm = new SillySlotsStage1Form(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        sillySlotsForm.UpdateForm(this, bomb);
+                        sillySlotsForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     sillySlotsForm.Show();
@@ -488,7 +488,7 @@ namespace KTANE_Solver
 
                     else
                     {
-                        murderForm.UpdateForm(bomb, this);
+                        murderForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     murderForm.Show();
@@ -497,10 +497,10 @@ namespace KTANE_Solver
                 case "Who's on First":
                     this.Hide();
                     if (whosOnFirstForm == null)
-                        whosOnFirstForm = new WhosOnFirstFirstStageForm(this, bomb, logFileWriter);
+                        whosOnFirstForm = new WhosOnFirstFirstStageForm(bomb, logFileWriter, this);
 
                     else
-                        whosOnFirstForm.UpdateForm(this, bomb, logFileWriter);
+                        whosOnFirstForm.UpdateForm(bomb, logFileWriter, this);
 
                     whosOnFirstForm.Show();
                     break;
@@ -526,12 +526,12 @@ namespace KTANE_Solver
 
                     if (wiresForm == null)
                     {
-                        wiresForm = new WiresForm(this, bomb, logFileWriter);
+                        wiresForm = new WiresForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        wiresForm.UpdateForm(this, bomb);
+                        wiresForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     wiresForm.Show();

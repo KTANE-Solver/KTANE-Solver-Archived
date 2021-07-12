@@ -29,9 +29,7 @@ namespace KTANE_Solver
 
             answerLabel.Text = $"Insert {firstAnswer} and press query";
 
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
 
         private void backButton_Click(object sender, EventArgs e)

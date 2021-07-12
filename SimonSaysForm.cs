@@ -13,7 +13,7 @@ namespace KTANE_Solver
 {
     public partial class SimonSaysForm : ModuleForm
     {
-        public SimonSaysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base (bomb, logFileWriter, moduleSelectionForm)
+        public SimonSaysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -21,9 +21,7 @@ namespace KTANE_Solver
 
         public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-            ModuleSelectionForm = moduleSelectionForm;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             instructionLabel.Text = "B - Blue\nG - Green\nR - Red\nY - Yellow";
             textBox1.Text = "";
