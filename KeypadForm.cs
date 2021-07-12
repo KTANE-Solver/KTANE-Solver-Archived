@@ -25,6 +25,8 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
+
             //setting up the imaages for the buttons
             threeButton.Image = SetUpImage("3");
             sixButton.Image = SetUpImage("6");
@@ -92,7 +94,7 @@ namespace KTANE_Solver
 
         public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            UpdateEdgeWork(bomb, LogFileWriter, moduleSelectionForm);
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             selectedImageButton1.Image = null;
             selectedImageButton2.Image = null;
