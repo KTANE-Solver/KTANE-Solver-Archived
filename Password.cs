@@ -1,0 +1,240 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace KTANE_Solver
+{
+    class Password : Module
+    {
+       public List<char> firstRow;
+       public List<char> secondRow;
+       public List<char> thirdRow;
+       public List<char> fourthRow;
+       public List<char> fifthRow;
+
+        public Password(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        { 
+            
+        }
+
+        public void FillRow(char letter1, char letter2, char letternum, char letter4, char letter5, char letter6, List<char> list)
+        {
+            list = new List<char> { letter1, letter2, letternum, letter4, letter5, letter6 };
+        }
+
+        /// <summary>
+        /// Attempts to solve the moudle given 
+        /// only the first three rows
+        /// </summary>
+        /// <returns></returns>
+        public bool Solve(int num)
+        {
+            //a list of all the possible answers
+            List<String> possibleAnswer = new List<string>();
+
+            if (ContainsWord("ABOUT", num))
+            {
+                possibleAnswer.Add("ABOUT");
+            }
+
+            if (ContainsWord("AFTER", num))
+            {
+                possibleAnswer.Add("AFTER");
+            }
+
+            if (ContainsWord("AGAIN", num))
+            {
+                possibleAnswer.Add("AGAIN");
+            }
+
+
+            if (ContainsWord("BELOW", num))
+            {
+                possibleAnswer.Add("BELOW");
+            }
+
+            if (ContainsWord("COULD", num))
+            {
+                possibleAnswer.Add("COULD");
+            }
+            if (ContainsWord("EVERY", num))
+            {
+                possibleAnswer.Add("EVERY");
+            }
+
+            if (ContainsWord("FIRST", num))
+            {
+                possibleAnswer.Add("FIRST");
+            }
+
+            if (ContainsWord("FOUND", num))
+            {
+                possibleAnswer.Add("FOUND");
+            }
+
+            if (ContainsWord("GREAT", num))
+            {
+                possibleAnswer.Add("GREAT");
+            }
+
+            if (ContainsWord("HOUSE", num))
+            {
+                possibleAnswer.Add("HOUSE");
+            }
+
+            if (ContainsWord("LARGE", num))
+            {
+                possibleAnswer.Add("LARGE");
+            }
+
+            if (ContainsWord("LEARN", num))
+            {
+                possibleAnswer.Add("LEARN");
+            }
+
+            if (ContainsWord("NEVER", num))
+            {
+                possibleAnswer.Add("NEVER");
+            }
+
+            if (ContainsWord("OTHER", num))
+            {
+                possibleAnswer.Add("OTHER");
+            }
+
+            if (ContainsWord("PLACE", num))
+            {
+                possibleAnswer.Add("PLACE");
+            }
+
+            if (ContainsWord("PLANT", num))
+            {
+                possibleAnswer.Add("PLANT");
+            }
+
+            if (ContainsWord("POINT", num))
+            {
+                possibleAnswer.Add("POINT");
+            }
+
+            if (ContainsWord("RIGHT", num))
+            {
+                possibleAnswer.Add("RIGHT");
+            }
+
+            if (ContainsWord("SMALL", num))
+            {
+                possibleAnswer.Add("SMALL");
+            }
+
+            if (ContainsWord("SOUND", num))
+            {
+                possibleAnswer.Add("SOUND");
+            }
+
+            if (ContainsWord("SPELL", num))
+            {
+                possibleAnswer.Add("SPELL");
+            }
+
+            if (ContainsWord("STILL", num))
+            {
+                possibleAnswer.Add("STILL");
+            }
+
+            if (ContainsWord("STUDY", num))
+            {
+                possibleAnswer.Add("STUDY");
+            }
+
+            if (ContainsWord("THEIR", num))
+            {
+                possibleAnswer.Add("THEIR");
+            }
+
+            if (ContainsWord("THESE", num))
+            {
+                possibleAnswer.Add("THESE");
+            }
+
+            if (ContainsWord("THING", num))
+            {
+                possibleAnswer.Add("THING");
+            }
+
+            if (ContainsWord("THINK", num))
+            {
+                possibleAnswer.Add("THINK");
+            }
+
+            if (ContainsWord("THREE", num))
+            {
+                possibleAnswer.Add("THREE");
+            }
+            if (ContainsWord("WATER", num))
+            {
+                possibleAnswer.Add("WATER");
+            }
+
+            if (ContainsWord("WHERE", num))
+            {
+                possibleAnswer.Add("WHERE");
+            }
+
+            if (ContainsWord("WHICH", num))
+            {
+                possibleAnswer.Add("WHICH");
+            }
+
+            if (ContainsWord("WORLD", num))
+            {
+                possibleAnswer.Add("WORLD");
+            }
+
+            if (ContainsWord("WOULD", num))
+            {
+                possibleAnswer.Add("WOULD");
+            }
+
+            if (ContainsWord("WRITE", num))
+            {
+                possibleAnswer.Add("WRITE");
+            }
+
+            if (possibleAnswer.Count == 1)
+            {
+                ShowAnswer(possibleAnswer[0], "Password Answer");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Tells if the rows can possibly spell a word
+        /// </summary>
+        /// <param name="word"></param>
+        /// <param name="numRows"></param>
+        /// <returns></returns>
+        private bool ContainsWord(String word, int numRows)
+        {
+            //this may be a terrible way to inplement, but it looks cleaner
+            switch (numRows)
+            {
+                case 3:
+                    return firstRow.Contains(word[0]) && secondRow.Contains(word[1]) && thirdRow.Contains(word[2]);
+
+                case 4:
+                    return ContainsWord(word, 3) && fourthRow.Contains(word[3]);
+
+                default:
+                    return ContainsWord(word, 4) && fifthRow.Contains(word[4]);
+
+            }
+        }
+    }
+}

@@ -184,6 +184,13 @@
     <Compile Include="NumberPadForm.Designer.cs">
       <DependentUpon>NumberPadForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Password.cs" />
+    <Compile Include="PasswordFirstStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordFirstStageForm.Designer.cs">
+      <DependentUpon>PasswordFirstStageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Poker.cs" />
     <Compile Include="PokerStage1Form.cs">
       <SubType>Form</SubType>
@@ -329,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NumberPadForm.resx">
       <DependentUpon>NumberPadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordFirstStageForm.resx">
+      <DependentUpon>PasswordFirstStageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PokerStage1Form.resx">
       <DependentUpon>PokerStage1Form.cs</DependentUpon>
