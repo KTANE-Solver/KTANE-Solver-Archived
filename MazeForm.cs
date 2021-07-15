@@ -140,14 +140,6 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Confirms the user wants to close the program
-        /// </summary>
-        private void MazeForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
-
-        /// <summary>
         /// Sends the user back to the moduleSelection form
         /// </summary>
         private void backButton_Click(object sender, EventArgs e)

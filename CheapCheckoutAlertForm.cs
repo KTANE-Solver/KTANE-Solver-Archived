@@ -66,10 +66,5 @@ namespace KTANE_Solver
             return Math.Round(oldPrice, 2, MidpointRounding.AwayFromZero);
 
         }
-
-        private void CheapCheckoutAlertForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

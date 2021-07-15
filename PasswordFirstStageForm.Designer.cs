@@ -357,7 +357,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.label1);
             this.Name = "PasswordFirstStageForm";
             this.Text = "PasswordFirstStageForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PasswordFirstStageForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

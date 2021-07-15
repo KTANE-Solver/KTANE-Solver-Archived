@@ -244,7 +244,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.stageLabel);
             this.Name = "WhosOnFirstOtherStageForm";
             this.Text = "WhosOnFirstOtherStageForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WhosOnFirstOtherStageForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

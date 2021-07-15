@@ -262,7 +262,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.left1);
             this.Name = "ColorMathForm";
             this.Text = "ColorMathForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ColorMathForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

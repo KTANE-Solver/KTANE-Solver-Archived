@@ -27,12 +27,17 @@ namespace KTANE_Solver
         public ModuleForm()
         {
             InitializeComponent();
+
+            FormClosing += CloseProgram;
+
         }
 
         public ModuleForm(Bomb bomb, StreamWriter logFileWriter, 
                ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
+
+            FormClosing += CloseProgram;
 
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
@@ -64,7 +69,7 @@ namespace KTANE_Solver
         /// Asks the user if they want to close the program
         /// </summary>
         /// <param name="e"></param>
-        public void CloseProgram(FormClosingEventArgs e)
+        public void CloseProgram(object sender, FormClosingEventArgs e)
         {
             if (this.Visible)
             {

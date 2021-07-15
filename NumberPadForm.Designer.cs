@@ -174,7 +174,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.sevenButton);
             this.Name = "NumberPadForm";
             this.Text = "NumberPadForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NumberPadForm_FormClosing);
             this.ResumeLayout(false);
 
         }

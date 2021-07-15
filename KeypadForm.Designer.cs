@@ -395,7 +395,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.selectedImageButton4);
             this.Name = "KeypadForm";
             this.Text = "KeypadForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KeypadForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

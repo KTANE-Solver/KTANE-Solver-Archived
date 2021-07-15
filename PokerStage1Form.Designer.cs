@@ -95,7 +95,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.label1);
             this.Name = "PokerStage1Form";
             this.Text = "PokerStage1Form";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PokerStage1Form_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

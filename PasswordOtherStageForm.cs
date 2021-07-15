@@ -148,10 +148,5 @@ namespace KTANE_Solver
         {
             return str.Length == 1 && str[0] >= 65 && str[0] <= 90;
         }
-
-        private void PasswordOtherStageForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

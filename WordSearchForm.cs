@@ -97,11 +97,6 @@ namespace KTANE_Solver
         {
             GoToMoudleSelectionForm();
         }
-
-        private void WordSearchForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 
   

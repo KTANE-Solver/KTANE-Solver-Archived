@@ -18,6 +18,7 @@ namespace KTANE_Solver
         public TwoBitsStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
+            
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
@@ -47,11 +48,6 @@ namespace KTANE_Solver
             this.Hide();
             TwoBitsOtherStageForm secondStage = new TwoBitsOtherStageForm(module, this, 2, Bomb, LogFileWriter, ModuleSelectionForm);
             secondStage.Show();
-        }
-
-        private void TwoBitsStage1Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
         }
     }
 }

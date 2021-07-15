@@ -68,10 +68,5 @@ namespace KTANE_Solver
             PokerStage3Form stage3 = new PokerStage3Form(pokerStage1Form, this, ModuleSelectionForm, module, Bomb, LogFileWriter);
             stage3.Show();
         }
-
-        private void PokerStage2Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

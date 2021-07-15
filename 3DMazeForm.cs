@@ -228,9 +228,5 @@ namespace KTANE_Solver
         {
             return characters.Contains(one) && characters.Contains(two) && characters.Contains(three);
         }
-        private void _3DMazeForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

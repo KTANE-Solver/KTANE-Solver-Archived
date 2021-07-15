@@ -85,14 +85,6 @@ namespace KTANE_Solver
             comboBox.Text = "Cookies and Cream";
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-
-        /// <summary>
-        /// Asks the user if they're sure if they want to close the program
-        /// </summary>
-        private void IceCreamForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
         
         /// <summary>
         /// sends the player back to the module selection stage

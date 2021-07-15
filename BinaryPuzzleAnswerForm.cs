@@ -58,7 +58,6 @@ namespace KTANE_Solver
             row6button4.BackColor = GetColor(grid[5, 3]);
             row6button5.BackColor = GetColor(grid[5, 4]);
             row6button6.BackColor = GetColor(grid[5, 5]);
-
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -72,11 +71,6 @@ namespace KTANE_Solver
                 return Color.Green;
 
             return Color.Red;
-        }
-
-        private void BinaryPuzzleAnswerForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
         }
     }
 }

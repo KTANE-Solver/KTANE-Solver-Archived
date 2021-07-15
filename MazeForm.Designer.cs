@@ -150,7 +150,6 @@
             this.Controls.Add(this.blueLabel);
             this.Name = "MazeForm";
             this.Text = "KTANE Bot by Hawker";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MazeForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

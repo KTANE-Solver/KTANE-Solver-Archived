@@ -262,7 +262,6 @@
             this.Controls.Add(this.backButton);
             this.Name = "MurderForm";
             this.Text = "KTANE Bot by Hawker";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MurderForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

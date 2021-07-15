@@ -107,14 +107,6 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Makes sure the user want to close the program
-        /// </summary>
-        private void MurderForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
-
-        /// <summary>
         /// Passes in information to solve the murder module
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)

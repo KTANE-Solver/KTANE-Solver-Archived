@@ -92,12 +92,6 @@ namespace KTANE_Solver
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-
-        private void WhosOnFirstOtherStageForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
-
         /// <summary>
         /// Goes back to the previous stage
         /// </summary>

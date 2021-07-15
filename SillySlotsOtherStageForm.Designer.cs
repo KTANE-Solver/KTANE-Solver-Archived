@@ -210,7 +210,6 @@
             this.Controls.Add(this.moduleSelectionButton);
             this.Name = "SillySlotsOtherStageForm";
             this.Text = "KTANE Bot by Hawker";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SillySlotsOtherStageForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

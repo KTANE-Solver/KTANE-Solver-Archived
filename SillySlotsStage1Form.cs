@@ -124,15 +124,6 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Asks the player if they're sure they want to
-        /// close the program
-        /// </summary>
-        private void SillySlotsStage1Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
-
-        /// <summary>
         /// Gives the player a strike
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)

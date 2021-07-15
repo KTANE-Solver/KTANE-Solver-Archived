@@ -80,10 +80,5 @@ namespace KTANE_Solver
             
 
         }
-
-        private void RubixCubeForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

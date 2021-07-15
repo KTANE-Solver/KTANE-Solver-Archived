@@ -18,7 +18,6 @@ namespace KTANE_Solver
         //the form used for stage 2 and 3
         WhosOnFirstOtherStageForm whosOnFirstOtherStage;
 
-
         /// <summary>
         /// Creates the form that will Get information 
         /// needed to solve Stage 1 of "Who's on First"
@@ -103,11 +102,6 @@ namespace KTANE_Solver
         private void strikeButton_Click(object sender, EventArgs e)
         {
             IncrementStrike();
-        }
-
-        private void WhosOnFirstFirstStageForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
         }
 
         private void submitButton_Click(object sender, EventArgs e)

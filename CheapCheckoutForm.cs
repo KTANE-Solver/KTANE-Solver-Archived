@@ -154,10 +154,5 @@ namespace KTANE_Solver
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
-
-        private void CheapCheckoutForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

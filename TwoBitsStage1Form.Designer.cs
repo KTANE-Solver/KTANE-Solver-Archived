@@ -96,7 +96,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.stageLabel);
             this.Name = "TwoBitsStage1Form";
             this.Text = "TwoBitsStage1Form";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TwoBitsStage1Form_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -321,11 +321,6 @@ namespace KTANE_Solver
                    selectedImageButton4.Image == selectedImage;
         }
 
-        private void KeypadForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
-
         private void backButton_Click(object sender, EventArgs e)
         {
             GoToMoudleSelectionForm();

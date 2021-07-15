@@ -159,13 +159,5 @@ namespace KTANE_Solver
 
             return wire;
         }
-
-        /// <summary>
-        /// Asks the user if they want to close the program
-        /// </summary>
-        private void ComplicatedWiresForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

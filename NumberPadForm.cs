@@ -105,10 +105,5 @@ namespace KTANE_Solver
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
-
-        private void NumberPadForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

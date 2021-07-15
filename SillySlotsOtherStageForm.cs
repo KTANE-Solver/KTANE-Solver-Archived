@@ -142,6 +142,8 @@ namespace KTANE_Solver
                                         String stage3Slot3Color, String stage3Slot3Object)
         {
 
+            FormClosing += CloseProgram;
+
             //setting up all the vairables
 
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
@@ -310,15 +312,6 @@ namespace KTANE_Solver
         private void strikeButton_Click(object sender, EventArgs e)
         {
             IncrementStrike();
-        }
-
-
-        /// <summary>
-        /// Asks if the user is sure they wnt to close the program
-        /// </summary>
-        private void SillySlotsOtherStageForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
         }
 
         /// <summary>

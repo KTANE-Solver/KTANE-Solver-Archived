@@ -94,7 +94,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.instructionLabel);
             this.Name = "SimonSaysForm";
             this.Text = "SimonSaysForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SimonSaysForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -158,10 +158,5 @@ namespace KTANE_Solver
 
             return num;
         }
-
-        private void ColorMathForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

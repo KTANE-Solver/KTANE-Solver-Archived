@@ -39,14 +39,6 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Asks the user if they want to close the program
-        /// </summary>
-        private void ChessForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
-
-        /// <summary>
         /// Goes back to the module selection form
         /// </summary>
         private void backButton_Click(object sender, EventArgs e)

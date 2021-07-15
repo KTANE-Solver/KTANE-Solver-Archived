@@ -264,14 +264,6 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Make sure the user wants to close the program
-        /// </summary>
-        private void LogicForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
-
-        /// <summary>
         /// Shows logic answer if
         /// infomration given is appropriate
         /// </summary>

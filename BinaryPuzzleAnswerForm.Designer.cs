@@ -445,7 +445,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.row1button1);
             this.Name = "BinaryPuzzleAnswerForm";
             this.Text = "BinaryPuzzleAnswerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BinaryPuzzleAnswerForm_FormClosing);
             this.ResumeLayout(false);
 
         }

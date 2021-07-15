@@ -194,7 +194,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.peice1Label);
             this.Name = "ChessForm";
             this.Text = "ChessForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChessForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

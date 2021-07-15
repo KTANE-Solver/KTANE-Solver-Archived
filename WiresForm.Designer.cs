@@ -200,7 +200,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.wire1Label);
             this.Name = "WiresForm";
             this.Text = "KTANE Bot by Hawker";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WiresForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -98,10 +98,5 @@ namespace KTANE_Solver
                 UpdateForm(stage1Form, stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);
             }
         }
-
-        private void TwoBitsOtherStageForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

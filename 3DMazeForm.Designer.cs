@@ -115,7 +115,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.threeLettersTextBox);
             this.Name = "_3DMazeForm";
             this.Text = "_3DMazeForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this._3DMazeForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

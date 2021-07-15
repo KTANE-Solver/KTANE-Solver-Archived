@@ -179,7 +179,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.topFace);
             this.Name = "RubixCubeForm";
             this.Text = "RubixCubeForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RubixCubeForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

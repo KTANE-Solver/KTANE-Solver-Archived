@@ -221,10 +221,5 @@ namespace KTANE_Solver
             return '1';
 
         }
-
-        private void BinaryPuzzleForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

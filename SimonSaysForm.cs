@@ -65,10 +65,5 @@ namespace KTANE_Solver
         {
             IncrementStrike();
         }
-
-        private void SimonSaysForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
-        }
     }
 }

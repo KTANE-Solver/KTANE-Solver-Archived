@@ -22,6 +22,7 @@ namespace KTANE_Solver
         public PokerStage3Form(PokerStage1Form pokerStage1Form, PokerStage2Form pokerStage2Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
         {
             InitializeComponent();
+
             UpdateForm(pokerStage1Form, pokerStage2Form, moduleSelectionForm, module, bomb, logFileWriter);
         }
 
@@ -144,11 +145,6 @@ namespace KTANE_Solver
 
             }
 
-        }
-
-        private void PokerStage3Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(e);
         }
     }
 }

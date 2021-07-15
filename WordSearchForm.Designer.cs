@@ -154,7 +154,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.label1);
             this.Name = "WordSearchForm";
             this.Text = "WordSearchForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WordSearchForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
