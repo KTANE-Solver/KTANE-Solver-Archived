@@ -158,84 +158,84 @@ namespace KTANE_Solver
             this.firstRow1TextBox.Location = new System.Drawing.Point(101, 113);
             this.firstRow1TextBox.Name = "firstRow1TextBox";
             this.firstRow1TextBox.Size = new System.Drawing.Size(48, 20);
-            this.firstRow1TextBox.TabIndex = 10;
+            this.firstRow1TextBox.TabIndex = 0;
             // 
             // thirdRow1TextBox
             // 
             this.thirdRow1TextBox.Location = new System.Drawing.Point(356, 114);
             this.thirdRow1TextBox.Name = "thirdRow1TextBox";
             this.thirdRow1TextBox.Size = new System.Drawing.Size(48, 20);
-            this.thirdRow1TextBox.TabIndex = 12;
+            this.thirdRow1TextBox.TabIndex = 2;
             // 
             // thirdRow2TextBox
             // 
             this.thirdRow2TextBox.Location = new System.Drawing.Point(356, 159);
             this.thirdRow2TextBox.Name = "thirdRow2TextBox";
             this.thirdRow2TextBox.Size = new System.Drawing.Size(48, 20);
-            this.thirdRow2TextBox.TabIndex = 15;
+            this.thirdRow2TextBox.TabIndex = 5;
             // 
             // firstRow2TextBox
             // 
             this.firstRow2TextBox.Location = new System.Drawing.Point(101, 158);
             this.firstRow2TextBox.Name = "firstRow2TextBox";
             this.firstRow2TextBox.Size = new System.Drawing.Size(48, 20);
-            this.firstRow2TextBox.TabIndex = 13;
+            this.firstRow2TextBox.TabIndex = 3;
             // 
             // thirdRow3TextBox
             // 
             this.thirdRow3TextBox.Location = new System.Drawing.Point(356, 203);
             this.thirdRow3TextBox.Name = "thirdRow3TextBox";
             this.thirdRow3TextBox.Size = new System.Drawing.Size(48, 20);
-            this.thirdRow3TextBox.TabIndex = 18;
+            this.thirdRow3TextBox.TabIndex = 8;
             // 
             // firstRow3TextBox
             // 
             this.firstRow3TextBox.Location = new System.Drawing.Point(101, 202);
             this.firstRow3TextBox.Name = "firstRow3TextBox";
             this.firstRow3TextBox.Size = new System.Drawing.Size(48, 20);
-            this.firstRow3TextBox.TabIndex = 16;
+            this.firstRow3TextBox.TabIndex = 6;
             // 
             // thirdRow4TextBox
             // 
             this.thirdRow4TextBox.Location = new System.Drawing.Point(356, 248);
             this.thirdRow4TextBox.Name = "thirdRow4TextBox";
             this.thirdRow4TextBox.Size = new System.Drawing.Size(48, 20);
-            this.thirdRow4TextBox.TabIndex = 21;
+            this.thirdRow4TextBox.TabIndex = 11;
             // 
             // firstRow4TextBox
             // 
             this.firstRow4TextBox.Location = new System.Drawing.Point(101, 247);
             this.firstRow4TextBox.Name = "firstRow4TextBox";
             this.firstRow4TextBox.Size = new System.Drawing.Size(48, 20);
-            this.firstRow4TextBox.TabIndex = 19;
+            this.firstRow4TextBox.TabIndex = 9;
             // 
             // thirdRow5TextBox
             // 
             this.thirdRow5TextBox.Location = new System.Drawing.Point(356, 289);
             this.thirdRow5TextBox.Name = "thirdRow5TextBox";
             this.thirdRow5TextBox.Size = new System.Drawing.Size(48, 20);
-            this.thirdRow5TextBox.TabIndex = 24;
+            this.thirdRow5TextBox.TabIndex = 14;
             // 
             // firstRow5TextBox
             // 
             this.firstRow5TextBox.Location = new System.Drawing.Point(101, 288);
             this.firstRow5TextBox.Name = "firstRow5TextBox";
             this.firstRow5TextBox.Size = new System.Drawing.Size(48, 20);
-            this.firstRow5TextBox.TabIndex = 22;
+            this.firstRow5TextBox.TabIndex = 12;
             // 
             // thirdRow6TextBox
             // 
             this.thirdRow6TextBox.Location = new System.Drawing.Point(356, 335);
             this.thirdRow6TextBox.Name = "thirdRow6TextBox";
             this.thirdRow6TextBox.Size = new System.Drawing.Size(48, 20);
-            this.thirdRow6TextBox.TabIndex = 27;
+            this.thirdRow6TextBox.TabIndex = 17;
             // 
             // firstRow6TextBox
             // 
             this.firstRow6TextBox.Location = new System.Drawing.Point(101, 334);
             this.firstRow6TextBox.Name = "firstRow6TextBox";
             this.firstRow6TextBox.Size = new System.Drawing.Size(48, 20);
-            this.firstRow6TextBox.TabIndex = 25;
+            this.firstRow6TextBox.TabIndex = 15;
             // 
             // backButton
             // 
@@ -272,42 +272,42 @@ namespace KTANE_Solver
             this.secondRow6TextBox.Location = new System.Drawing.Point(223, 337);
             this.secondRow6TextBox.Name = "secondRow6TextBox";
             this.secondRow6TextBox.Size = new System.Drawing.Size(48, 20);
-            this.secondRow6TextBox.TabIndex = 36;
+            this.secondRow6TextBox.TabIndex = 16;
             // 
             // secondRow5TextBox
             // 
             this.secondRow5TextBox.Location = new System.Drawing.Point(223, 291);
             this.secondRow5TextBox.Name = "secondRow5TextBox";
             this.secondRow5TextBox.Size = new System.Drawing.Size(48, 20);
-            this.secondRow5TextBox.TabIndex = 35;
+            this.secondRow5TextBox.TabIndex = 13;
             // 
             // secondRow4TextBox
             // 
             this.secondRow4TextBox.Location = new System.Drawing.Point(223, 250);
             this.secondRow4TextBox.Name = "secondRow4TextBox";
             this.secondRow4TextBox.Size = new System.Drawing.Size(48, 20);
-            this.secondRow4TextBox.TabIndex = 34;
+            this.secondRow4TextBox.TabIndex = 10;
             // 
             // secondRow3TextBox
             // 
             this.secondRow3TextBox.Location = new System.Drawing.Point(223, 205);
             this.secondRow3TextBox.Name = "secondRow3TextBox";
             this.secondRow3TextBox.Size = new System.Drawing.Size(48, 20);
-            this.secondRow3TextBox.TabIndex = 33;
+            this.secondRow3TextBox.TabIndex = 7;
             // 
             // secondRow2TextBox
             // 
             this.secondRow2TextBox.Location = new System.Drawing.Point(223, 161);
             this.secondRow2TextBox.Name = "secondRow2TextBox";
             this.secondRow2TextBox.Size = new System.Drawing.Size(48, 20);
-            this.secondRow2TextBox.TabIndex = 32;
+            this.secondRow2TextBox.TabIndex = 4;
             // 
             // secondRow1TextBox
             // 
             this.secondRow1TextBox.Location = new System.Drawing.Point(223, 116);
             this.secondRow1TextBox.Name = "secondRow1TextBox";
             this.secondRow1TextBox.Size = new System.Drawing.Size(48, 20);
-            this.secondRow1TextBox.TabIndex = 31;
+            this.secondRow1TextBox.TabIndex = 1;
             // 
             // label11
             // 

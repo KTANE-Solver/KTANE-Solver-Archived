@@ -94,13 +94,27 @@ namespace KTANE_Solver
 
             Password module = new Password(Bomb, LogFileWriter);
 
-            module.FillRow(firstRow1[0], firstRow2[0], firstRow3[0], firstRow4[0], firstRow5[0], firstRow6[0], module.firstRow);
-            module.FillRow(secondRow1[0], secondRow2[0], secondRow3[0], secondRow4[0], secondRow5[0], secondRow6[0], module.secondRow);
-            module.FillRow(thirdRow1[0], thirdRow2[0], thirdRow3[0], thirdRow4[0], thirdRow5[0], thirdRow6[0], module.thirdRow);
+            module.FillRow(firstRow1[0], firstRow2[0], firstRow3[0], firstRow4[0], firstRow5[0], firstRow6[0], 1);
+            module.FillRow(secondRow1[0], secondRow2[0], secondRow3[0], secondRow4[0], secondRow5[0], secondRow6[0], 2);
+            module.FillRow(thirdRow1[0], thirdRow2[0], thirdRow3[0], thirdRow4[0], thirdRow5[0], thirdRow6[0], 3);
 
             if (module.Solve(3))
             {
                 UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            }
+
+            else
+            {
+                this.Hide();
+                List<char> previousLetters = new List<char>
+                {
+                    firstRow1[0], firstRow2[0], firstRow3[0], firstRow4[0], firstRow5[0], firstRow6[0],
+                    secondRow1[0], secondRow2[0], secondRow3[0], secondRow4[0], secondRow5[0], secondRow6[0],
+                    thirdRow1[0], thirdRow2[0], thirdRow3[0], thirdRow4[0], thirdRow5[0], thirdRow6[0]
+                };
+
+                PasswordOtherStageForm otherStageForm = new PasswordOtherStageForm(2, previousLetters, this, module, Bomb, LogFileWriter, ModuleSelectionForm);
+                otherStageForm.Show();
             }
 
 

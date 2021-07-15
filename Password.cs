@@ -8,7 +8,7 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    class Password : Module
+    public class Password : Module
     {
        public List<char> firstRow;
        public List<char> secondRow;
@@ -17,13 +17,41 @@ namespace KTANE_Solver
        public List<char> fifthRow;
 
         public Password(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
-        { 
-            
+        {
+            firstRow = new List<char>();
+            secondRow = new List<char>();
+            thirdRow = new List<char>();
+            fourthRow = new List<char>();
+            fifthRow = new List<char>();
+
         }
 
-        public void FillRow(char letter1, char letter2, char letternum, char letter4, char letter5, char letter6, List<char> list)
+        public void FillRow(char letter1, char letter2, char letternum, char letter4, char letter5, char letter6, int num)
         {
-            list = new List<char> { letter1, letter2, letternum, letter4, letter5, letter6 };
+            List<char> list = new List<char> { letter1, letter2, letternum, letter4, letter5, letter6 };
+
+            switch (num)
+            {
+                case 1:
+                    firstRow.AddRange(list);
+                    break;
+
+                case 2:
+                    secondRow.AddRange(list);
+                    break;
+
+                case 3:
+                    thirdRow.AddRange(list);
+                    break;
+
+                case 4:
+                    fourthRow.AddRange(list);
+                    break;
+
+                default:
+                    fifthRow.AddRange(list);
+                    break;
+            }
         }
 
         /// <summary>

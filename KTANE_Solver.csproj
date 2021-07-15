@@ -191,6 +191,12 @@
     <Compile Include="PasswordFirstStageForm.Designer.cs">
       <DependentUpon>PasswordFirstStageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordOtherStageForm.Designer.cs">
+      <DependentUpon>PasswordOtherStageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Poker.cs" />
     <Compile Include="PokerStage1Form.cs">
       <SubType>Form</SubType>
@@ -339,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordFirstStageForm.resx">
       <DependentUpon>PasswordFirstStageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordOtherStageForm.resx">
+      <DependentUpon>PasswordOtherStageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PokerStage1Form.resx">
       <DependentUpon>PokerStage1Form.cs</DependentUpon>
