@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
@@ -14,21 +15,11 @@ namespace KTANE_Solver
         //===============ENUM===============
 
         //an enum that represents the days of the week
-        public enum Days
-        { 
-            Sunday,
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday
-        }
 
         //===============FIELDS===============
 
         //the day of the week
-        private Days day;
+        private Day day;
 
         //the seraial number
         private String serialNumber;
@@ -97,7 +88,7 @@ namespace KTANE_Solver
         private int strike;
 
         //===============PROPERTIES===============
-        public Days Day
+        public Day Day
         {
             get
             { 
@@ -741,7 +732,7 @@ namespace KTANE_Solver
         /// <param name="rj">the rj-45 port</param>
         /// <param name="serial">the serial port</param>
         /// <param name="stereo">the stereo port</param>
-        public Bomb(Days day, String serialNumber, int battery, int batteryHolder, Indicator bob, Indicator car, 
+        public Bomb(Day day, String serialNumber, int battery, int batteryHolder, Indicator bob, Indicator car, 
                     Indicator clr, Indicator frk, Indicator frq, Indicator ind, Indicator msa, Indicator nsa, 
                     Indicator sig, Indicator snd, Indicator trn, bool emptyPortPlate, Port dvid, Port parallel, 
                     Port ps, Port rj, Port serial, Port stereo)

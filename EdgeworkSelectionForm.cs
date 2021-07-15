@@ -42,7 +42,7 @@ namespace KTANE_Solver
         {
             logFileWriter.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
 
-            Bomb.Days day = 0;
+            Day day = Day.Sunday;
 
             String serialNumber = "0";
 

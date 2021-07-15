@@ -122,7 +122,7 @@ namespace KTANE_Solver
 
             switch (Bomb.Day)
             {
-                case Bomb.Days.Sunday:
+                case Day.Sunday:
                     //Special Sunday
                     //All fixed price items that contain an S in them are $2.15 more.
 
@@ -139,7 +139,7 @@ namespace KTANE_Solver
                         item4.price += 2.15m;
                     break;
 
-                case Bomb.Days.Monday:
+                case Day.Monday:
                     //Malleable Monday
                     //The 1st, 3rd and 6th items on the shopping list are 15 % off.
 
@@ -151,7 +151,7 @@ namespace KTANE_Solver
 
 
                     break;
-                case Bomb.Days.Tuesday:
+                case Day.Tuesday:
                     //Troublesome Tuesday
                     //Calculate the digital root of the item price without the decimal point.
                     //Add that many dollars to the item price. Only applies to fixed price items.
@@ -162,7 +162,7 @@ namespace KTANE_Solver
                     item4.price += DigitalRoot(item4.price);
 
                     break;
-                case Bomb.Days.Wednesday:
+                case Day.Wednesday:
                     //Wacky Wednesday
                     //Change each occurrence of the largest digit in the price with the smallest digit
                     //in the price, and vice versa.
@@ -175,7 +175,7 @@ namespace KTANE_Solver
                     item6.price = WackyWedmesday(item6.price);
                     break;
 
-                case Bomb.Days.Thursday:
+                case Day.Thursday:
                     //Thrilling Thursday
                     //All of the odd positioned items on the shopping list are half off.
 
@@ -189,7 +189,7 @@ namespace KTANE_Solver
 
 
                     break;
-                case Bomb.Days.Friday:
+                case Day.Friday:
                     //Fruity Friday
                     //All fruits are 25 % more per pound.
 
@@ -207,7 +207,7 @@ namespace KTANE_Solver
 
                     break;
 
-                case Bomb.Days.Saturday:
+                case Day.Saturday:
                     //Sweet Saturday
                     //All sweet items are 35 % off.
 

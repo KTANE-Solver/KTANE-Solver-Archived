@@ -462,7 +462,7 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Bomb.Days day;
+            Day day;
             Enum.TryParse(dayOfWeekComboBox.Text, out day);
 
 
