@@ -28,7 +28,10 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
+            Text = "KTANE Bot by Hawker";
+
             FormClosing += CloseProgram;
+            Shown += ChangeTitle;
 
         }
 
@@ -38,6 +41,7 @@ namespace KTANE_Solver
             InitializeComponent();
 
             FormClosing += CloseProgram;
+            Shown += ChangeTitle;
 
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
@@ -98,6 +102,11 @@ namespace KTANE_Solver
             this.Hide();
             ModuleSelectionForm.UpdateForm();
             ModuleSelectionForm.Show();
+        }
+
+        private void ChangeTitle(object sender, EventArgs e)
+        {
+            Text = "KTANE Bot by Hawker";
         }
     }
 }

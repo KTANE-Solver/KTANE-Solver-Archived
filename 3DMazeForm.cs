@@ -16,6 +16,7 @@ namespace KTANE_Solver
         public _3DMazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
         public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

@@ -334,6 +334,9 @@
     <EmbeddedResource Include="MazeForm.resx">
       <DependentUpon>MazeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuleForm.resx">
+      <DependentUpon>ModuleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuleSelectionForm.resx">
       <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
