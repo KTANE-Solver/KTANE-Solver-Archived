@@ -4,24 +4,23 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    class _3DMaze : Module
+    public class _3DMaze : Module
     {
         char[,] grid;
 
         Vertex[,] VertexGrid;
 
-        public int currentRow;
-        public int currentColumn;
-
+        //where the user needs to be
         public int endRow;
         public int endColumn;
 
-        bool goal;
+        public int cardinalRow;
+        public int cardinalColumn;
 
         public _3DMaze(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
             VertexGrid = new Vertex[8, 8];
-            
+
             FindEndSpace();
         }
 
@@ -105,7 +104,7 @@ namespace KTANE_Solver
                 grid = new char[,]
                 {
                     {'!',   '!',    '!',    '.',    '!',    '!',    '!',    '!',    '!',    '!',    '!',    '.',    '!',    '!',    '!',    '!' },
-                    {'.',   '?',    '.',    '?',    '.',    '?',    '.',    '?',    '!',    '?',    '.',    '?',    '.',    '?',    '.',    '?' },
+                    {'.',   'D',    '.',    '?',    '.',    '?',    '.',    '?',    '!',    '?',    '.',    '?',    '.',    '?',    '.',    '?' },
                     {'!',   '.',    '!',    '!',    '!',    '!',    '!',    '.',    '!',    '.',    '!',    '!',    '!',    '!',    '!',    '.' },
                     {'!',   '?',    '!',    '?',    '.',    'C',    '.',    '?',    '!',    'D',    '!',    '*',    '.',    '?',    '.',    'C' },
                     {'!',   '.',    '!',    '.',    '!',    '.',    '!',    '.',    '!',    '.',    '!',    '!',    '!',    '!',    '!',    '!' },
@@ -265,7 +264,7 @@ namespace KTANE_Solver
                 };
             }
 
-            int gridRow; 
+            int gridRow;
             int gridColumn;
 
             for (int row = 0; row < 8; row++)
@@ -286,46 +285,41 @@ namespace KTANE_Solver
                     gridRow = (row * 2) + 1;
                     gridColumn = (column * 2) + 1;
 
+                    Vertex vertex = VertexGrid[row, column];
                     //north
                     if (grid[gridRow - 1, gridColumn] != '!')
                     {
                         if (row == 0)
                         {
-                            VertexGrid[row, column].NorthVertex = VertexGrid[7, column];
+                            vertex.SetNorthVertex(VertexGrid[7, column]);
                         }
 
                         else
                         {
-                            VertexGrid[row, column].NorthVertex = VertexGrid[row - 1, column];
+                            vertex.SetNorthVertex(VertexGrid[row - 1, column]);
                         }
                     }
 
                     //east
-                    if ((gridColumn < 15 && grid[gridRow, gridColumn + 1] != '!') || grid[gridRow, 0] != '!')
+                    if (column == 7 && grid[gridRow, 0] != '!')
                     {
-                        if (column == 7)
-                        {
-                            VertexGrid[row, column].EastVertex = VertexGrid[row, 0];
-                        }
+                        vertex.SetEastVertex(VertexGrid[row, 0]);
+                    }
 
-                        else
-                        {
-                            VertexGrid[row, column].EastVertex = VertexGrid[row, column + 1];
-                        }
+                    else if (column != 7 && grid[gridRow, gridColumn + 1] != '!')
+                    {
+                        vertex.SetEastVertex(VertexGrid[row, column + 1]);
                     }
 
                     //south
-                    if ((gridRow < 15 && grid[gridRow + 1, gridColumn] != '!') || grid[0, gridColumn] != '!')
+                    if (row == 7 && grid[0, gridColumn] != '!')
                     {
-                        if (row == 7)
-                        {
-                            VertexGrid[row, column].SouthVertex = VertexGrid[0, column];
-                        }
+                        vertex.SetSouthVertex(VertexGrid[0, column]);
+                    }
 
-                        else
-                        {
-                            VertexGrid[row, column].SouthVertex = VertexGrid[row + 1, column];
-                        }
+                    else if (row != 7 && grid[gridRow + 1, gridColumn] != '!')
+                    {
+                        vertex.SetSouthVertex(VertexGrid[row + 1, column]);
                     }
 
                     //west
@@ -333,18 +327,18 @@ namespace KTANE_Solver
                     {
                         if (column == 0)
                         {
-                            VertexGrid[row, column].WestVertex = VertexGrid[row, 7];
+                            vertex.SetWestVertex(VertexGrid[row, 0]);
                         }
 
                         else
                         {
-                            VertexGrid[row, column].WestVertex = VertexGrid[row, column - 1];
+                            vertex.SetWestVertex(VertexGrid[row, column - 1]);
                         }
                     }
                 }
             }
 
-           
+
         }
 
         /// <summary>
@@ -363,12 +357,23 @@ namespace KTANE_Solver
         {
             List<int[]> coordinates = new List<int[]>();
 
+            //have two seperate spots list. one with the cardinals and one without
+
+
+            List<char> cardinalSpots = new List<char>();
+
             //If any of the spots contain N,E,S, or W convert them to *
             for (int i = 0; i < spots.Count; i++)
             {
                 if (spots[i] == 'N' || spots[i] == 'E' || spots[i] == 'S' || spots[i] == 'W')
                 {
-                    spots[i] = '*';
+                    cardinalSpots.Add('*');
+                    spots[i] = '?';
+                }
+
+                else
+                {
+                    cardinalSpots.Add(spots[i]);
                 }
             }
 
@@ -379,22 +384,31 @@ namespace KTANE_Solver
             {
                 for (int column = 0; column < 16; column++)
                 {
-                    if (FoundPathNorth(spots, row, column))
+                    if (row == 11 && column == 11)
+                    {
+                        Console.WriteLine();
+                    }
+                    if (FoundPathNorth(spots, row, column) || FoundPathNorth(cardinalSpots, row, column))
                     {
                         coordinates.Add(new int[] { row, column, 0 });
                     }
 
-                    if (FoundPathEast(spots, row, column))
+                    if (FoundPathEast(spots, row, column) || FoundPathEast(cardinalSpots, row, column))
                     {
                         coordinates.Add(new int[] { row, column, 1 });
                     }
 
-                    if (FoundPathSouth(spots, row, column))
+                    if (row == 5 && column == 15)
+                    {
+                        Console.WriteLine();
+                    }
+
+                    if (FoundPathSouth(spots, row, column) || FoundPathSouth(cardinalSpots, row, column))
                     {
                         coordinates.Add(new int[] { row, column, 2 });
                     }
 
-                    if (FoundPathWest(spots, row, column))
+                    if (FoundPathWest(spots, row, column) || FoundPathWest(cardinalSpots, row, column))
                     {
                         coordinates.Add(new int[] { row, column, 3 });
                     }
@@ -468,12 +482,6 @@ namespace KTANE_Solver
                     }
                     while (tempRow != endRow);
 
-                    //checking one last time just in case
-                    if (grid[tempRow, startColumn] == '!')
-                    {
-                        return false;
-                    }
-
                     //if no walls have been found, then make sure each spot is correct
 
                     for (int i = 0; i < spots.Count; i++)
@@ -509,11 +517,6 @@ namespace KTANE_Solver
         /// <returns></returns>
         private bool FoundPathEast(List<char> spots, int startRow, int startColumn)
         {
-            if (startRow == 5 && startColumn == 7)
-            {
-                Console.WriteLine();
-            }
-
             if (grid[startRow, startColumn] == spots[0])
             {
                 //if row becomes negative, add 16 til postive
@@ -600,11 +603,6 @@ namespace KTANE_Solver
         /// <returns></returns>
         private bool FoundPathSouth(List<char> spots, int startRow, int startColumn)
         {
-            if (startRow == 3 && startColumn == 5)
-            {
-                Console.WriteLine();
-            }
-
             if (grid[startRow, startColumn] == spots[0])
             {
 
@@ -663,9 +661,9 @@ namespace KTANE_Solver
                     {
                         tempRow = startRow + (2 * i);
 
-                        if (tempRow < 0)
+                        if (tempRow > 15)
                         {
-                            tempRow += 16;
+                            tempRow -= 16;
                         }
 
                         if (grid[tempRow, startColumn] != spots[i])
@@ -692,10 +690,6 @@ namespace KTANE_Solver
         /// <returns></returns>
         private bool FoundPathWest(List<char> spots, int startRow, int startColumn)
         {
-            if (startRow == 1 && startColumn == 1)
-            {
-                Console.WriteLine();
-            }
             if (grid[startRow, startColumn] == spots[0])
             {
                 //if row becomes negative, add 16 til postive
@@ -742,12 +736,6 @@ namespace KTANE_Solver
                     }
                     while (tempColumn != endColumn);
 
-                    //checking just in case
-                    if (grid[startRow, tempColumn] == '!')
-                    {
-                        return false;
-                    }
-
                     //if no walls have been found, then make sure each spot is correct
                     for (int i = 0; i < spots.Count; i++)
                     {
@@ -775,47 +763,342 @@ namespace KTANE_Solver
             return false;
         }
 
-        public void Solve()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="startRow"></param>
+        /// <param name="startColumn"></param>
+        /// <param name="startingDirection"></param>
+        /// <returns>the direction the user is currently facing</returns>
+        public String FindClosestCardinal(int startRow, int startColumn, String startingDirection)
         {
-            //using DFS
-            Queue<Vertex> queue = new Queue<Vertex>();
+            DijkstraAlgorithm(startRow, startColumn);
 
-            Vertex startVertex = VertexGrid[currentRow, currentColumn];
+            Vertex startVertex = VertexGrid[startRow, startColumn];
+
+            Dictionary<Vertex, List<Vertex>> cardinals = new Dictionary<Vertex, List<Vertex>>();
+
+            foreach (Vertex vertex in VertexGrid)
+            {
+                if (vertex.Data == '*')
+                {
+                    cardinals.Add(vertex, new List<Vertex>());
+                }
+            }
+
+            List<Vertex> shortestPath = null;
+
+            List<Vertex> keys = new List<Vertex>(cardinals.Keys);
+
+            foreach (Vertex endVertex in keys)
+            {
+                cardinals[endVertex] = FindShortestPath(startVertex, endVertex);
+                
+                if (shortestPath == null)
+                {
+                    shortestPath = cardinals[endVertex];
+                }
+
+                else if(shortestPath.Count > cardinals[endVertex].Count)
+                {
+                    shortestPath = cardinals[endVertex];
+                }
+            }
+
+            cardinalRow = shortestPath[shortestPath.Count - 1].Row;
+            cardinalColumn = shortestPath[shortestPath.Count - 1].Column;
+
+
+            return PrintDirections(shortestPath, startingDirection, null);
+        }
+
+        public void FindExit(String startingDirection, String endingDirection)
+        {
+            DijkstraAlgorithm(cardinalRow, cardinalColumn);
+
+            Vertex startVertex = VertexGrid[cardinalRow, cardinalColumn];
+
             Vertex endVertex = VertexGrid[endRow, endColumn];
 
+            List<Vertex> shortestPath = FindShortestPath(startVertex, endVertex);
 
-            queue.Enqueue(startVertex);
-
-            startVertex.Visited = true;
-
-            //contiune until end is added
-            while (!queue.Contains(endVertex))
+            foreach (Vertex vertex in shortestPath)
             {
+                System.Diagnostics.Debug.WriteLine($"{vertex.Row} {vertex.Column}");
+            }
 
-                Vertex adjacentVertex = GetUnvistedNeighbor(queue.Peek());
+            PrintDirections(shortestPath, startingDirection, endingDirection);
 
-                if (adjacentVertex == null)
+            ShowAnswer("Continue pressing forward until module is solved", "3D Maze Answer");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="startingDirection"></param>
+        /// <param name="designatedDirection">the direction the user wants to end up facing</param>
+        /// <returns></returns>
+        public String PrintDirections(List<Vertex> path, String startingDirection, String designatedDirection)
+        {
+            Vertex currentVertex = path[0];
+
+            Vertex nextVertex = path[1];
+
+            String currentDirectionFacing = startingDirection;
+
+            List<String> directions = new List<string>();
+
+            do
+            {
+                switch (currentDirectionFacing)
                 {
-                    queue.Dequeue();
+                    case "NORTH":
+                        if (currentVertex.EastVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            currentDirectionFacing = "EAST";
+                        }
+
+                        else if (currentVertex.SouthVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            directions.Add("Right");
+
+                            currentDirectionFacing = "SOUTH";
+
+                        }
+
+                        else if (currentVertex.WestVertex == nextVertex)
+                        {
+                            directions.Add("Left");
+
+                            currentDirectionFacing = "WEST";
+                        }
+
+                        else
+                        { 
+                            currentDirectionFacing = "NORTH";
+                        }
+                        break;
+
+                    case "EAST":
+                        if (currentVertex.NorthVertex == nextVertex)
+                        {
+                            directions.Add("Left");
+                            currentDirectionFacing = "NORTH";
+                        }
+
+                        else if (currentVertex.SouthVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            currentDirectionFacing = "SOUTH";
+                        }
+
+                        else if (currentVertex.WestVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            directions.Add("Right");
+                            currentDirectionFacing = "WEST";
+                        }
+
+                        else
+                        { 
+                            currentDirectionFacing = "EAST";
+                        }
+                        break;
+
+                    case "SOUTH":
+                        if (currentVertex.NorthVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            directions.Add("Right");
+                            currentDirectionFacing = "NORTH";
+                        }
+
+                        else if (currentVertex.EastVertex == nextVertex)
+                        {
+                            directions.Add("Left");
+                            currentDirectionFacing = "EAST";
+                        }
+
+                        else if (currentVertex.WestVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            currentDirectionFacing = "WEST";
+                        }
+
+                        else
+                        { 
+                            currentDirectionFacing = "SOUTH";
+                        }
+                        break;
+
+                    //west
+                    default:
+                        if (currentVertex.NorthVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            currentDirectionFacing = "NORTH";
+                        }
+
+                        else if (currentVertex.EastVertex == nextVertex)
+                        {
+                            directions.Add("Right");
+                            directions.Add("Right");
+                            currentDirectionFacing = "EAST";
+                        }
+
+                        else if (currentVertex.SouthVertex == nextVertex)
+                        {
+                            directions.Add("Left");
+                            currentDirectionFacing = "SOUTH";
+                        }
+
+                        else
+                        { 
+                            currentDirectionFacing = "WEST";
+                        }
+                        break;
+                }
+
+                directions.Add("Forward");
+
+                if (nextVertex == path[path.Count - 1])
+                {
+                    nextVertex = null;
+
+                    if (designatedDirection != null)
+                    {
+                        switch (currentDirectionFacing)
+                        {
+                            case "NORTH":
+                                if (designatedDirection == "EAST")
+                                {
+                                    directions.Add("Right");
+                                    currentDirectionFacing = "EAST";
+                                }
+
+                                else if (designatedDirection == "SOUTH")
+                                {
+                                    directions.Add("Right");
+                                    directions.Add("Right");
+
+                                    currentDirectionFacing = "SOUTH";
+
+                                }
+
+                                else if (designatedDirection == "WEST")
+                                {
+                                    directions.Add("Left");
+
+                                    currentDirectionFacing = "WEST";
+                                }
+                                break;
+
+                            case "EAST":
+                                if (designatedDirection == "NORTH")
+                                {
+                                    directions.Add("Left");
+                                    currentDirectionFacing = "NORTH";
+                                }
+
+                                else if (designatedDirection == "SOUTH")
+                                {
+                                    directions.Add("Right");
+                                    currentDirectionFacing = "SOUTH";
+                                }
+
+                                else if (designatedDirection == "WEST")
+                                {
+                                    directions.Add("Right");
+                                    directions.Add("Right");
+                                    currentDirectionFacing = "WEST";
+                                }
+                                break;
+
+                            case "SOUTH":
+                                if (designatedDirection == "NORTH")
+                                {
+                                    directions.Add("Right");
+                                    directions.Add("Right");
+                                    currentDirectionFacing = "NORTH";
+                                }
+
+                                else if (designatedDirection == "EAST")
+                                {
+                                    directions.Add("Left");
+                                    currentDirectionFacing = "EAST";
+                                }
+
+                                else if (designatedDirection == "WEST")
+                                {
+                                    directions.Add("Right");
+                                    currentDirectionFacing = "WEST";
+                                }
+                                break;
+
+                            default:
+                                if (designatedDirection == "NORTH")
+                                {
+                                    directions.Add("Right");
+                                    currentDirectionFacing = "NORTH";
+                                }
+
+                                else if (designatedDirection == "EAST")
+                                {
+                                    directions.Add("Right");
+                                    directions.Add("Right");
+                                    currentDirectionFacing = "EAST";
+                                }
+
+                                else if (designatedDirection == "SOUTH")
+                                {
+                                    directions.Add("Left");
+                                    currentDirectionFacing = "SOUTH";
+                                }
+                                break;
+
+                        }
+                    }
+                    
                 }
 
                 else
                 {
-                    queue.Enqueue(adjacentVertex);
-
-                    adjacentVertex.Visited = true;
+                    currentVertex = nextVertex;
+                    nextVertex = path[path.IndexOf(nextVertex) + 1];
                 }
-            }
 
-            List<Vertex> directions = new List<Vertex>();
+            } while (nextVertex != null);
 
-            directions.AddRange(queue);
+            List<String> finalDirections = new List<String>();
 
-            foreach (Vertex direction in directions)
+            while (directions.Count != 0)
             {
-                System.Diagnostics.Debug.WriteLine($"{direction.Row} {direction.Column}");
+                int counter = 0;
+                String word = directions[0];
+
+                while (directions.Count != 0 && word == directions[0])
+                {
+                    counter++;
+                    directions.RemoveAt(0);
+                }
+                finalDirections.Add(word + " x" + counter);
             }
 
+            String answer = "";
+
+            foreach (String direction in finalDirections)
+            {
+                answer += direction + ", ";
+            }
+
+            answer = answer.Substring(0, answer.Length - 2);
+
+            ShowAnswer(answer, "3D Maze Answer Part 1");
+
+            return currentDirectionFacing;
         }
 
         /// <summary>
@@ -880,23 +1163,6 @@ namespace KTANE_Solver
             endColumn = startingColumn % 8;
         }
 
-        public Vertex GetUnvistedNeighbor(Vertex start)
-        {
-            if (start.NorthVertex != null && !start.NorthVertex.Visited)
-                return start.NorthVertex;
-
-            if (start.EastVertex != null && !start.EastVertex.Visited)
-                return start.EastVertex;
-
-            if (start.SouthVertex != null && !start.SouthVertex.Visited)
-                return start.SouthVertex;
-
-            if (start.WestVertex != null && !start.WestVertex.Visited)
-                return start.WestVertex;
-
-            return null;
-        }
-
         public void PrintGrid()
         {
             for (int row = 0; row < 16; row++)
@@ -910,21 +1176,140 @@ namespace KTANE_Solver
             }
         }
 
+        public void DijkstraAlgorithm(int startRow, int startColumn)
+        {
+            ResetVertecies();
+
+            Vertex currentVertex = VertexGrid[startRow, startColumn];
+
+            currentVertex.TotalCost = 0;
+
+            currentVertex.Permanent = true;
+
+            List<Vertex> nonPermanentList = FindNonPermanentVerticies();
+
+            while (nonPermanentList.Count != 0)
+            {
+                foreach (Vertex neighbor in FindNonPermanentNeighbors(currentVertex))
+                {
+                    //unweighted
+                    int potentialCost = currentVertex.TotalCost + 1;
+
+                    if (potentialCost < neighbor.TotalCost)
+                    {
+                        neighbor.TotalCost = potentialCost;
+                        neighbor.PreviousVertex = currentVertex;
+                    }
+                }
+
+                //Find the smallest non-permanent vertex, make it permanent,
+                //and set it the the current node
+                Vertex smallestCost = nonPermanentList[0];
+
+                for (int i = 1; i < nonPermanentList.Count; i++)
+                {
+                    if (nonPermanentList[i].TotalCost < smallestCost.TotalCost)
+                    {
+                        smallestCost = nonPermanentList[i];
+                    }
+                }
+
+                smallestCost.Permanent = true;
+
+                currentVertex = smallestCost;
+
+                //udpate the non-permanent list
+                nonPermanentList.Remove(smallestCost);
+            }
+        }
+
+        public List<Vertex> FindShortestPath(Vertex start, Vertex end)
+        {
+            List<Vertex> path = new List<Vertex>();
+
+            path.Add(end);
+
+            while (!path.Contains(start))
+            {
+                Vertex current = path[path.Count - 1];
+                path.Add(current.PreviousVertex);
+            }
+
+            path.Reverse();
+
+            return path;
+        }
+
+        private List<Vertex> FindNonPermanentNeighbors(Vertex vertex)
+        {
+            List<Vertex> nonPermanentNeighbors = new List<Vertex>();
+
+            //start by find all the non-permanent rooms, and return the ones that
+            //are connected to the starting rooms
+
+            foreach (Vertex possibleNeighbor in FindNonPermanentVerticies())
+            {
+                if (vertex.Edges.Contains(possibleNeighbor))
+                {
+                    nonPermanentNeighbors.Add(possibleNeighbor);
+                }
+            }
+
+            return nonPermanentNeighbors;
+        }
+
+        private List<Vertex> FindNonPermanentVerticies()
+        {
+            List<Vertex> nonPermanentList = new List<Vertex>();
+
+            foreach (Vertex v in VertexGrid)
+            {
+                if (!v.Permanent)
+                {
+                    nonPermanentList.Add(v);
+                }
+            }
+
+            return nonPermanentList;
+        }
+
+
+        /// <summary>
+        /// Sets all vertices visited to false
+        /// </summary>
+        public void ResetVertecies()
+        {
+            foreach (Vertex vertex in VertexGrid)
+            {
+                vertex.Permanent = false;
+                vertex.TotalCost = int.MaxValue;
+                vertex.PreviousVertex = null;
+            }
+        }
+
         public class Vertex
         {
             public char Data { get; }
 
-            public bool Visited { get; set; }
+            public bool Permanent { get; set; }
+
+            public int TotalCost { get; set; }
+
+            public Vertex PreviousVertex { get; set; }
 
             public Vertex NorthVertex { get; set; }
             public Vertex EastVertex { get; set; }
             public Vertex SouthVertex { get; set; }
             public Vertex WestVertex { get; set; }
 
+            public List<Vertex> Edges { get; set; }
+
+
+
             public int Row { get; }
             public int Column { get; }
 
-            public List<Vertex> Edges { get; set; }
+
 
             public Vertex(char data, int row, int  column)
             {
@@ -933,16 +1318,44 @@ namespace KTANE_Solver
                 Row = row;
                 Column = column;
 
-                Visited = false;
-
                 NorthVertex = null;
                 EastVertex = null;
                 SouthVertex = null;
                 WestVertex = null;
+                
+                Permanent = false;
+                
+
+                Edges = new List<Vertex>();
 
             }
 
-            
+            public void SetNorthVertex(Vertex vertex)
+            {
+                NorthVertex = vertex;
+                Edges.Add(vertex);
+            }
+
+            public void SetEastVertex(Vertex vertex)
+            {
+                EastVertex = vertex;
+                Edges.Add(vertex);
+
+            }
+
+            public void SetWestVertex(Vertex vertex)
+            {
+                WestVertex = vertex;
+                Edges.Add(vertex);
+
+            }
+
+            public void SetSouthVertex(Vertex vertex)
+            {
+                SouthVertex = vertex;
+                Edges.Add(vertex);
+            }
+
         }
     }
 }

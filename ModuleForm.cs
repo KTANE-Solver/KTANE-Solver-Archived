@@ -18,9 +18,9 @@ namespace KTANE_Solver
     public partial class ModuleForm : Form
     {
         protected Bomb Bomb { get; set; }
-        
+
         protected StreamWriter LogFileWriter { get; set; }
-        
+
         protected ModuleSelectionForm ModuleSelectionForm;
 
         //this should never be used
@@ -35,7 +35,7 @@ namespace KTANE_Solver
 
         }
 
-        public ModuleForm(Bomb bomb, StreamWriter logFileWriter, 
+        public ModuleForm(Bomb bomb, StreamWriter logFileWriter,
                ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
@@ -66,7 +66,7 @@ namespace KTANE_Solver
         public void IncrementStrike()
         {
             Bomb.Strike++;
-            MessageBox.Show( $"A stike has been added. Currently at {Bomb.Strike} strike(s)", "Strike Added", MessageBoxButtons.OK ,MessageBoxIcon.Information);
+            MessageBox.Show($"A stike has been added. Currently at {Bomb.Strike} strike(s)", "Strike Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -95,6 +95,11 @@ namespace KTANE_Solver
                     Application.Exit();
                 }
             }
+        }
+
+        public void ShowErrorMessage(String message, String captions)
+        {
+            MessageBox.Show(message, captions, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void GoToMoudleSelectionForm()

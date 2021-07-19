@@ -80,6 +80,9 @@ namespace KTANE_Solver
             int endRow;
             int endColumn;
 
+            int startRow;
+            int startColumn;
+
             if (coordinateList.Count > 1)
             {
                 foreach (int[] coor in coordinateList)
@@ -142,8 +145,13 @@ namespace KTANE_Solver
 
                             break;
                     }
+                    startRow = coor[0] / 2;
+                    startColumn = coor[1] / 2;
 
-                    System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {endRow} {endColumn}. Started at {coor[0]} {coor[1]}");
+                    int newEndRow = endRow / 2;
+                    int newEndColumn = endColumn / 2;
+                    
+                    System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {endRow} {endColumn} ({newEndRow} {newEndColumn}). Started at {startRow} {startColumn} ({coor[0]} {coor[1]})");
                 }
 
                 MessageBox.Show("Multiple paths found. Try another", "3D Maze Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -156,13 +164,13 @@ namespace KTANE_Solver
             switch (coordinate[2])
             {
                 case 0:
-                    pointOfDirection = "North";
+                    pointOfDirection = "NORTH";
 
                     endRow = coordinate[0] - ((spots.Count - 1) * 2);
 
-                    if (endRow > 15)
+                    if (endRow < 0)
                     {
-                        endRow -= 16;
+                        endRow += 16;
                     }
 
                     endColumn = coordinate[1];
@@ -170,7 +178,7 @@ namespace KTANE_Solver
                     break;
 
                 case 1:
-                    pointOfDirection = "East";
+                    pointOfDirection = "EAST";
 
                     endColumn = coordinate[1] + ((spots.Count - 1) * 2);
 
@@ -184,13 +192,13 @@ namespace KTANE_Solver
                     break;
 
                 case 2:
-                    pointOfDirection = "South";
+                    pointOfDirection = "SOUTH";
 
                     endRow = coordinate[0] + ((spots.Count - 1) * 2);
 
-                    if (endRow < 0)
+                    if (endRow > 15)
                     {
-                        endRow += 16;
+                        endRow -= 16;
                     }
 
                     endColumn = coordinate[1];
@@ -198,7 +206,7 @@ namespace KTANE_Solver
                     break;
 
                 default:
-                    pointOfDirection = "West";
+                    pointOfDirection = "WEST";
 
                     endColumn = coordinate[1] - ((spots.Count - 1) * 2);
 
@@ -209,6 +217,8 @@ namespace KTANE_Solver
 
                     endRow = coordinate[0];
                     break;
+
+                   
             }
 
             endRow /= 2;
@@ -216,12 +226,15 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {endRow} {endColumn}");
 
+            String currentDirection = module.FindClosestCardinal(endRow, endColumn, pointOfDirection);
 
-            module.currentRow = endRow;
-            module.currentColumn = endColumn;
+            System.Diagnostics.Debug.WriteLine($"User is pointing {currentDirection} at {module.cardinalRow} {module.cardinalColumn}");
 
-            module.Solve();
 
+            _3DMazePart2Form part2Form = new _3DMazePart2Form(this, module, endRow, endColumn, currentDirection, Bomb, LogFileWriter, ModuleSelectionForm);
+
+            this.Hide();
+            part2Form.Show();
         }
 
 
