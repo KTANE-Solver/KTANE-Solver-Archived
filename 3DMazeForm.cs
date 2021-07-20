@@ -55,7 +55,7 @@ namespace KTANE_Solver
 
             if (!(ContainsLetters('A','B','C', characters) || ContainsLetters('A', 'B', 'D', characters) || ContainsLetters('A', 'B', 'H', characters) ||
                 ContainsLetters('A','D','C', characters) || ContainsLetters('A', 'C', 'H', characters) || ContainsLetters('A', 'D', 'H', characters) ||
-                ContainsLetters('B','D','C', characters) || ContainsLetters('B', 'D', 'H', characters) || ContainsLetters('C', 'B', 'H', characters)))
+                ContainsLetters('B','D','C', characters) || ContainsLetters('B', 'D', 'H', characters) || ContainsLetters('C', 'B', 'H', characters) || ContainsLetters('H','C','D',characters)))
             {
                 MessageBox.Show("Invalid three letters in the first text box", "3D Maze Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -151,7 +151,7 @@ namespace KTANE_Solver
                     int newEndRow = endRow / 2;
                     int newEndColumn = endColumn / 2;
                     
-                    System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {endRow} {endColumn} ({newEndRow} {newEndColumn}). Started at {startRow} {startColumn} ({coor[0]} {coor[1]})");
+                    System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {newEndRow} {newEndColumn} ({endRow} {endColumn}). Started at {startRow} {startColumn} ({coor[0]} {coor[1]})");
                 }
 
                 MessageBox.Show("Multiple paths found. Try another", "3D Maze Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -224,14 +224,14 @@ namespace KTANE_Solver
             endRow /= 2;
             endColumn /= 2;
 
-            System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {endRow} {endColumn}");
+            System.Diagnostics.Debug.WriteLine($"Found user {pointOfDirection} at {endRow} {endColumn}");
 
             String currentDirection = module.FindClosestCardinal(endRow, endColumn, pointOfDirection);
 
-            System.Diagnostics.Debug.WriteLine($"User is pointing {currentDirection} at {module.cardinalRow} {module.cardinalColumn}");
+            System.Diagnostics.Debug.WriteLine($"User is facing {currentDirection} at cardinal {module.cardinalRow} {module.cardinalColumn}");
 
 
-            _3DMazePart2Form part2Form = new _3DMazePart2Form(this, module, endRow, endColumn, currentDirection, Bomb, LogFileWriter, ModuleSelectionForm);
+            _3DMazePart2Form part2Form = new _3DMazePart2Form(this, module, currentDirection, Bomb, LogFileWriter, ModuleSelectionForm);
 
             this.Hide();
             part2Form.Show();

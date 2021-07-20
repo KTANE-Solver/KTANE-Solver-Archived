@@ -16,15 +16,11 @@ namespace KTANE_Solver
         private _3DMazeForm firstStage;
         private _3DMaze module;
 
-        private int currentRow;
-        private int currentColumn;
         private String currentDirection;
 
-        public _3DMazePart2Form(_3DMazeForm firstStage, _3DMaze module, int currentRow, int currentColumn, String currentDirection, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public _3DMazePart2Form(_3DMazeForm firstStage, _3DMaze module, String currentDirection, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             this.currentDirection = currentDirection;
-            this.currentRow = currentRow;
-            this.currentColumn = currentColumn;
             this.firstStage = firstStage;
             this.module = module;
 
@@ -94,6 +90,8 @@ namespace KTANE_Solver
             {
                 endDirection = "WEST";
             }
+
+            System.Diagnostics.Debug.WriteLine($"Aiming {endDirection} at {module.endRow} {module.endColumn}");
 
             module.FindExit(currentDirection, endDirection);
 

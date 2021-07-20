@@ -33,23 +33,23 @@ namespace KTANE_Solver
             {
                 grid = new char[,]
                 {
-                    {'!', '!', '!', '!', '!', '.', '!', '.', '!', '.', '!', '!', '!', '!', '!', '.'},
-                    {'!', '?', '.', '?', '!', '?', '.', '?', '!', '?', '.', 'A', '.', '?', '!', '?'},
-                    {'!', '.', '!', '.', '!', '.', '!', '.', '!', '!', '!', '.', '!', '.', '!', '.'},
-                    {'!', '?', '.', '*', '!', 'A', '.', '?', '.', '?', '!', '?', '.', '?', '.', 'B'},
-                    {'!', '.', '!', '!', '!', '.', '!', '!', '!', '!', '!', '!', '!', '.', '!', '.'},
-                    {'.', 'A', '.', '?', '.', '?', '!', 'B', '.', '?', '.', 'C', '.', '?', '!', '?'},
-                    {'!', '.', '!', '.', '!', '!', '!', '.', '!', '.', '!', '.', '!', '!', '!', '!'},
-                    {'.', '?', '!', 'C', '.', '?', '!', '?', '.', '*', '!', '?', '!', '?', '.', 'B'},
-                    {'!', '!', '!', '.', '!', '.', '!', '!', '!', '!', '!', '.', '!', '.', '!', '!'},
-                    {'.', '?', '!', '?', '.', '?', '!', '?', '.', 'A', '.', '?', '.', '?', '!', '?'},
-                    {'!', '.', '!', '.', '!', '.',  '!', '.', '!', '.', '!', '!' ,'!', '.', '!','.'},
-                    {'.', '?', '!', 'B', '!', '?', '.', 'C', '.', '?', '!', '?', '.', 'B', '.', '?'},
-                    {'!', '.', '!', '.', '!', '!', '!', '!', '!', '.', '!', '.', '!', '!', '!', '.'},
-                    {'.', '*', '!', '?', '.', 'C', '.', '?', '!', '?', '!', '?', '.', '?', '!', '?'},
-                    {'!', '!', '!', '!', '!', '.', '!', '.', '!', '!', '!', '.', '!', '.', '!', '!'},
-                    {'.', '?', '.', '?', '!', '?', '.', '?', '!', 'A', '!', '?', '.', 'C',  '.','?'}
-                };
+                    {'!','!','!','!','!','.','!','.','!','.','!','!','!','!','!','.'},
+                    {'!','?','.','?','!','?','!','?','!','?','.','A','.','?','!','?'},
+                    {'!','.','!','.','!','.','!','!','!','!','!','.','!','.','!','.'},
+                    {'!','?','.','*','!','A','.','?','.','?',' ','?','.','?','.','B'},
+                    {'!','.','!','!','!','.','!','!','!','!','!','!','!','.','!','.'},
+                    {'.','A','.','?','.','?','!','B','.','?','.','C','.','?','!','?'},
+                    {'!','.','!','.','!','!','!','.','!','.','!','.','!','!','!','!'},
+                    {'.','?','!','C','.','?','!','?','.','*','!','?','!','?','.','B'},
+                    {'!','!','!','.','!','.','!','!','!','!','!','.','!','.','!','!'},
+                    {'.','?','!','?','.','?','!','?','.','A','.','?','.','?','!','?'},
+                    {'!','.','!','.','!','.','!','.','!','.','!','!','!','.','!','.'},
+                    {'.','?','!','B','!','?','.','C','.','?','!','?','.','B','.','?'},
+                    {'!','.','!','.','!','!','!','!','!','.','!','.','!','!','!','.'},
+                    {'.','*','!','?','.','C','.','?','!','?','!','?','.','?','!','?'},
+                    {'!','!','!','!','!','.','!','.','!','.','!','.','!','.','!','!'},
+                    {'.','?','.','?','!','?','.','?','!','A','!','?','.','C','.','?'}
+                };      
             }
 
             else if (characters.Contains('A') && characters.Contains('B') && characters.Contains('D'))
@@ -195,7 +195,7 @@ namespace KTANE_Solver
                 };
             }
 
-            else if (characters.Contains('B') && characters.Contains('C') && characters.Contains('D'))
+            else if (characters.Contains('B') && characters.Contains('C') && characters.Contains('H'))
             {
                 grid = new char[,]
                 {
@@ -384,10 +384,6 @@ namespace KTANE_Solver
             {
                 for (int column = 0; column < 16; column++)
                 {
-                    if (row == 11 && column == 11)
-                    {
-                        Console.WriteLine();
-                    }
                     if (FoundPathNorth(spots, row, column) || FoundPathNorth(cardinalSpots, row, column))
                     {
                         coordinates.Add(new int[] { row, column, 0 });
@@ -406,6 +402,11 @@ namespace KTANE_Solver
                     if (FoundPathSouth(spots, row, column) || FoundPathSouth(cardinalSpots, row, column))
                     {
                         coordinates.Add(new int[] { row, column, 2 });
+                    }
+
+                    if (row == 11 && column == 9)
+                    {
+                        Console.WriteLine();
                     }
 
                     if (FoundPathWest(spots, row, column) || FoundPathWest(cardinalSpots, row, column))
@@ -479,8 +480,18 @@ namespace KTANE_Solver
                         {
                             tempRow += 16;
                         }
+
+                        if (tempRow == endRow)
+                        {
+                            if (grid[tempRow, startColumn] == '!')
+                            {
+                                return false;
+                            }
+
+                            tempRow = -1;
+                        }
                     }
-                    while (tempRow != endRow);
+                    while (tempRow != -1);
 
                     //if no walls have been found, then make sure each spot is correct
 
@@ -560,15 +571,21 @@ namespace KTANE_Solver
                         {
                             tempColumn -= 16;
                         }
-                    }
-                    while (tempColumn != endColumn);
 
-                    //checking the last tile just in case
-                    if (grid[startRow, tempColumn] == '!')
-                    {
-                        return false;
-                    }
+                        if (tempColumn == endColumn)
+                        {
+                            if (grid[startRow, tempColumn] == '!')
+                            {
+                                return false;
+                            }
 
+                            tempColumn = -1;
+                        }
+
+                        
+
+                    }
+                    while (tempColumn != -1);
 
                     //if no walls have been found, then make sure each spot is correct
                     for (int i = 0; i < spots.Count; i++)
@@ -647,14 +664,18 @@ namespace KTANE_Solver
                         {
                             tempRow -= 16;
                         }
-                    }
-                    while (tempRow != endRow);
 
-                    //checking just in case
-                    if (grid[tempRow, startColumn] == '!')
-                    {
-                        return false;
+                        if (tempRow == endRow)
+                        {
+                            if (grid[tempRow, startColumn] == '!')
+                            {
+                                return false;
+                            }
+
+                            tempRow = -1;
+                        }
                     }
+                    while (tempRow != -1);
 
                     //if no walls have been found, then make sure each spot is correct
                     for (int i = 0; i < spots.Count; i++)
@@ -715,7 +736,7 @@ namespace KTANE_Solver
 
                     int endColumn = startColumn - ((spots.Count - 1) * 2) + 1;
 
-                    if (endColumn > 0)
+                    if (endColumn < 0)
                     {
                         endColumn += 16;
                     }
@@ -733,20 +754,30 @@ namespace KTANE_Solver
                         {
                             tempColumn += 16;
                         }
+
+                        if (tempColumn == endColumn)
+                        {
+                            if (grid[startRow, tempColumn] == '!')
+                            {
+                                return false;
+                            }
+
+                            tempColumn = -1;
+                        }
                     }
-                    while (tempColumn != endColumn);
+                    while (tempColumn != -1);
 
                     //if no walls have been found, then make sure each spot is correct
                     for (int i = 0; i < spots.Count; i++)
                     {
                         tempColumn = startColumn - (2 * i);
 
-                        if (tempColumn > 15)
+                        if (tempColumn < 0)
                         {
-                            tempColumn -= 16;
+                            tempColumn += 16;
                         }
 
-                        if (grid[tempColumn, tempColumn] != spots[i])
+                        if (grid[startRow, tempColumn] != spots[i])
                         {
                             return false;
                         }
@@ -1155,6 +1186,9 @@ namespace KTANE_Solver
                 startingColumn++;
 
             if (Bomb.Msa.Lit)
+                startingColumn++;
+
+            if (Bomb.Nsa.Lit)
                 startingColumn++;
 
             if (Bomb.Sig.Lit)
