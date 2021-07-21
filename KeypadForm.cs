@@ -331,7 +331,7 @@ namespace KTANE_Solver
             //must have 4 image
             if (SelectedImageNum() != 4)
             {
-                MessageBox.Show("Must have 4 images to continue", "KeyPad Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Must have 4 images to continue", "KeyPad Error");
                 return;
             }
 

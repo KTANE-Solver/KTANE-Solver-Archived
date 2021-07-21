@@ -157,13 +157,13 @@ namespace KTANE_Solver
 
                 if (duplicateWeapons)
                 {
-                    MessageBox.Show("Can't have duplicate weapons", "Murder Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ShowErrorMessage("Can't have duplicate weapons", "Murder Error");
                     return;
                 }
 
                 if (duplicateSuspects)
                 {
-                    MessageBox.Show("Can't have duplicate suspects", "Murder Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ShowErrorMessage("Can't have duplicate suspects", "Murder Error");
                     return;
                 }
             }

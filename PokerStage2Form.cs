@@ -61,7 +61,7 @@ namespace KTANE_Solver
 
             String answer = module.BluffTruth();
 
-            MessageBox.Show($"Press {answer}", "Poker Part 2 Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer($"Press {answer}", "Poker Part 2 Answer");
 
             this.Hide();
 

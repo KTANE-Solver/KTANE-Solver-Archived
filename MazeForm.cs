@@ -203,7 +203,7 @@ namespace KTANE_Solver
                 String text = "There needs to be 1 player. Found " + playersFound;
                 String caption = "Invalid Player Number";
 
-                MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(text, caption);
                 return;
             }
 
@@ -213,7 +213,7 @@ namespace KTANE_Solver
                 String text = "There needs to be 1 goal. Found " + goalsFound;
                 String caption = "Invalid Goal Number";
 
-                MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(text, caption);
                 return;
             }
 
@@ -223,136 +223,21 @@ namespace KTANE_Solver
                 String text = "There needs to be 1 or 2 markers. Found " + markersFound;
                 String caption = "Invalid Marker Number";
 
-                MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(text, caption);
                 return;
             }
 
             //if there is a marker is found in any of these places, they're invalid
-            
 
-            //(1,3)
-            if (buttonArray[0, 2].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            //(1,6)
-            if (buttonArray[0, 5].BackColor == Color.Green)
+            //(1,3) (1,6) (2,2) (2,4) (2,6) (3,1) (3,2) (3,3) (3,4) (4,5) (5,2) (5,4) (5,5) (5,6) (6,1) (6,3) (6,5) (6,6)
+            if (buttonArray[0, 2].BackColor == Color.Green || buttonArray[0, 5].BackColor == Color.Green || buttonArray[1, 1].BackColor == Color.Green ||
+                buttonArray[1, 3].BackColor == Color.Green || buttonArray[1, 5].BackColor == Color.Green || buttonArray[2, 0].BackColor == Color.Green ||
+                buttonArray[2, 1].BackColor == Color.Green || buttonArray[3, 4].BackColor == Color.Green || buttonArray[4, 3].BackColor == Color.Green ||
+                buttonArray[4, 4].BackColor == Color.Green || buttonArray[4, 5].BackColor == Color.Green || buttonArray[5, 0].BackColor == Color.Green ||
+                buttonArray[5, 2].BackColor == Color.Green || buttonArray[5, 4].BackColor == Color.Green || buttonArray[5, 5].BackColor == Color.Green)
             {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(2,2)
-            if (buttonArray[1, 1].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(2,4)
-            if (buttonArray[1, 3].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(2,6)
-            if (buttonArray[1, 5].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(3,1)
-            if (buttonArray[2, 0].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(3,2)
-            if (buttonArray[2, 1].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(3,3)
-            if (buttonArray[2, 2].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(3,4)
-            if (buttonArray[2, 3].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(4,5)
-            if (buttonArray[3, 4].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(5,2)
-            if (buttonArray[4, 1].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(5,4)
-            if (buttonArray[4, 3].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(5,5)
-            if (buttonArray[4, 4].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(5,6)
-            if (buttonArray[4, 5].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(6,1)
-            if (buttonArray[5, 0].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(6,3)
-            if (buttonArray[5, 2].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(6,5)
-            if (buttonArray[5, 4].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //(6,6)
-            if (buttonArray[5, 5].BackColor == Color.Green)
-            {
-                MessageBox.Show("There is an invalid marker inputted on the maze", "Invalid Marker", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("There is an invalid marker inputted on the maze", "Invalid Marker");
                 return;
             }
 
@@ -361,70 +246,30 @@ namespace KTANE_Solver
             if(markersFound == 2)
             {
                 //(2,1) (3,6)
-                if (buttonArray[1, 0].BackColor == Color.Green && buttonArray[2, 5].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 //(2,5) (4,2)
-                if (buttonArray[1, 4].BackColor == Color.Green && buttonArray[3, 1].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 //(4,4) (4,6)
-                if (buttonArray[3, 3].BackColor == Color.Green && buttonArray[3, 5].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 //(1,1) (4,1)
-                if (buttonArray[0, 0].BackColor == Color.Green && buttonArray[3, 0].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 //(3,5) (6,4)
-                if (buttonArray[2, 4].BackColor == Color.Green && buttonArray[5, 3].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 //(1,5) (5,3)
-                if (buttonArray[0, 4].BackColor == Color.Green && buttonArray[4, 2].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                //(1,2) (6,2)
-                if (buttonArray[0, 1].BackColor == Color.Green && buttonArray[5, 1].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 //(1,4) (4,3)
-                if (buttonArray[0, 3].BackColor == Color.Green && buttonArray[3, 2].BackColor != Color.Green)
-                {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
+                //(1,2) (6,2)
                 //(2,3) (5,1)
-                if (buttonArray[1, 2].BackColor == Color.Green && buttonArray[4, 0].BackColor != Color.Green)
+
+                if ((buttonArray[1, 0].BackColor == Color.Green && buttonArray[2, 5].BackColor != Color.Green) ||
+                    (buttonArray[1, 4].BackColor == Color.Green && buttonArray[3, 1].BackColor != Color.Green) ||
+                    (buttonArray[3, 3].BackColor == Color.Green && buttonArray[3, 5].BackColor != Color.Green) ||
+                    (buttonArray[0, 0].BackColor == Color.Green && buttonArray[3, 0].BackColor != Color.Green) ||
+                    (buttonArray[2, 4].BackColor == Color.Green && buttonArray[5, 3].BackColor != Color.Green) ||
+                    (buttonArray[0, 4].BackColor == Color.Green && buttonArray[4, 2].BackColor != Color.Green) ||
+                    (buttonArray[0, 1].BackColor == Color.Green && buttonArray[5, 1].BackColor != Color.Green) ||
+                    (buttonArray[0, 3].BackColor == Color.Green && buttonArray[3, 2].BackColor != Color.Green) ||
+                    (buttonArray[1, 2].BackColor == Color.Green && buttonArray[4, 0].BackColor != Color.Green))
+
                 {
-                    MessageBox.Show("There is an invalid pair of markers", "Invalid Marker Pair", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ShowErrorMessage("There is an invalid pair of markers", "Invalid Marker Pair");
                     return;
                 }
             }
-
-            
 
             //finding the goal, player, and marker
             for(int row = 0; row < 6; row++)

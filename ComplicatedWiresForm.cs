@@ -110,7 +110,7 @@ namespace KTANE_Solver
             //wire 6 can't not be blank when 5 isn't
             if (wireComboBox6.Text != "*Blank*" && wireComboBox5.Text == "*Blank*")
             {
-                MessageBox.Show("Wire 6 can't not be blank when 5 is");
+                ShowErrorMessage("Wire 6 can't not be blank when 5 is", "Complicated Wires Error");
                 return;
             }
 

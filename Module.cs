@@ -38,5 +38,10 @@ namespace KTANE_Solver
         {
             MessageBox.Show(answer, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        public void ShowErrorMessage(String answer, String caption)
+        {
+            MessageBox.Show(answer, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

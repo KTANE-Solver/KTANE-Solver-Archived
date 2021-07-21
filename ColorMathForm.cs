@@ -84,7 +84,7 @@ namespace KTANE_Solver
 
             if (rightFilled != 0 && rightFilled != 4)
             {
-                MessageBox.Show("Either all or none of the right text boxes must be filled", "Color Math Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Either all or none of the right text boxes must be filled", "Color Math Error");
                 return;
             }
 
@@ -100,13 +100,13 @@ namespace KTANE_Solver
 
             if (letterTextBox.Text.Length != 1)
             {
-                MessageBox.Show("Letter text box can only have 1 letter", "Color Math Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Letter text box can only have 1 letter", "Color Math Error");
                 return;
             }
 
             if (!((letterTextBox.Text[0] >= 65 && letterTextBox.Text[0] <= 90) || (letterTextBox.Text[0] >= 97 && letterTextBox.Text[0] <= 122)))
             {
-                MessageBox.Show("Letter text box can only have 1 letter", "Color Math Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Letter text box can only have 1 letter", "Color Math Error");
                 return;
             }
 

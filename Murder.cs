@@ -124,7 +124,7 @@ namespace KTANE_Solver
 
             if (!answerFound)
             {
-                MessageBox.Show("Something went wrong", "Murder answer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Something went wrong", "Murder answer");
             }
 
             else

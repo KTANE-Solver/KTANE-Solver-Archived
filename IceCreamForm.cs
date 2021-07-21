@@ -110,7 +110,7 @@ namespace KTANE_Solver
                 flavor2 == flavor3 || flavor2 == flavor4 ||
                 flavor3 == flavor4)
             {
-                MessageBox.Show("Can't have duplicate flavors", "Invalid Ice Cream", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Can't have duplicate flavors", "Invalid Ice Cream");
                 return;
             }
 

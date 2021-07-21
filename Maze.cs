@@ -710,7 +710,7 @@ namespace KTANE_Solver
                     }
                 }
 
-                MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowAnswer(text, caption);
             }
 
             //otherwise tell them this module is unsolvable
@@ -723,7 +723,7 @@ namespace KTANE_Solver
                               $"Goal (row, column): {goalRow},{goalColumn} \n" +
                               $"Marker (row, column): {markerRow},{markerColumn}";
 
-                MessageBox.Show(caption, text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(text, caption);
             }
         }
 

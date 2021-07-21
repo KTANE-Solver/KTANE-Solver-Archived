@@ -97,7 +97,7 @@ namespace KTANE_Solver
             if (!(ContainsOneLetter(letter1) || ContainsOneLetter(letter2) || ContainsOneLetter(letter3) ||
                   ContainsOneLetter(letter4) || ContainsOneLetter(letter5) || ContainsOneLetter(letter6)))
             {
-                MessageBox.Show("Each text box must contain only 1 letter", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Each text box must contain only 1 letter", "Password Error");
                 return;
             }
 
@@ -107,7 +107,7 @@ namespace KTANE_Solver
 
                 if (!module.Solve(5))
                 {
-                    MessageBox.Show("Unable to find answer", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ShowErrorMessage("Unable to find answer", "Password Error");
                 }
 
                 this.Hide();

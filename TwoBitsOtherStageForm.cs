@@ -72,13 +72,13 @@ namespace KTANE_Solver
 
             catch
             {
-                MessageBox.Show("Text box can only hold numbers", "Two Bits Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Text box can only hold numbers", "Two Bits Error");
                 return;
             }
 
             if (code < 0 && code > 99)
             {
-                MessageBox.Show("Text box can only hold numbers that are between 0 and 99", "Two Bits Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Text box can only hold numbers that are between 0 and 99", "Two Bits Error");
                 return;
             }
 

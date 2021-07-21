@@ -88,7 +88,7 @@ namespace KTANE_Solver
                   ContainsOneLetter(secondRow1) || ContainsOneLetter(secondRow2) || ContainsOneLetter(secondRow3) || ContainsOneLetter(secondRow4) || ContainsOneLetter(secondRow5) || ContainsOneLetter(secondRow6) ||
                   ContainsOneLetter(thirdRow1) || ContainsOneLetter(thirdRow2) || ContainsOneLetter(thirdRow3) || ContainsOneLetter(thirdRow4) || ContainsOneLetter(thirdRow5) || ContainsOneLetter(thirdRow6)))
             {
-                MessageBox.Show("Each text box must contain only 1 letter", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Each text box must contain only 1 letter", "Password Error");
                 return;
             }
 

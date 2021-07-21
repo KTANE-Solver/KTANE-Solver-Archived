@@ -25,8 +25,6 @@ namespace KTANE_Solver
             this.bottomLeftLetter = bottomLeftLetter;
             this.bottomRightLetter = bottomRightLetter;
 
-            //i messed up bad
-
             dictionary.Add('V', new Letter("Hotel", "Search", "Boom", "Line", "Done", "Quebec", "Submit", "Blue"));
             dictionary.Add('U', new Letter("Search", "Add", "Line", "Kaboom", "Quebec", "Check", "Blue", "Echo"));
             dictionary.Add('S', new Letter("Add", "Sierra", "Kaboom", "Panic", "Check", "Find", "Echo", "False"));

@@ -365,7 +365,7 @@ namespace KTANE_Solver
             int answer = firstNumber * 1000 + secondNumber * 100 + thirdNumber * 10 + fourthNumber;
             answer %= 10000;
 
-            MessageBox.Show(answer.ToString("D4"), "NumberPad Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(answer.ToString("D4"), "NumberPad Answer");
         }
 
         private int AddDigit(int digit)

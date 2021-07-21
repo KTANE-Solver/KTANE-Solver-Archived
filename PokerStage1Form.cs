@@ -93,7 +93,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            MessageBox.Show($"Press {answer}", "Poker Part 1 Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer($"Press {answer}", "Poker Part 1 Answer");
             
             this.Hide();
 

@@ -64,7 +64,7 @@ namespace KTANE_Solver
                right == front || right == bottom ||
                front == bottom)
             {
-                MessageBox.Show("Can't have duplicate colors", "Rubik Cube Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Can't have duplicate colors", "Rubik Cube Error");
                 return;
             }
 

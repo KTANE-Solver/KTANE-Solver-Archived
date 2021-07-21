@@ -50,7 +50,7 @@ namespace KTANE_Solver
                         break;
 
                     default:
-                        MessageBox.Show("Textbox can only contain the character b, r, g, and y", "Simon Says Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ShowErrorMessage("Textbox can only contain the character b, r, g, and y", "Simon Says Error");
                         return;
 
                 }

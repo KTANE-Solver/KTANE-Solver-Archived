@@ -246,7 +246,7 @@ namespace KTANE_Solver
 
             answer = answer.Substring(0, answer.Length - 2);
 
-            MessageBox.Show(answer, "Rubik's Cube Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(answer, "Rubik's Cube Answer");
         }
 
         /// <summary>

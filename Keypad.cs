@@ -76,7 +76,7 @@ namespace KTANE_Solver
 
             if (row == null)
             {
-                MessageBox.Show("Can't find answer", "Keypad Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Can't find answer", "Keypad Error");
                 return;
             }
 

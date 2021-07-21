@@ -155,7 +155,7 @@ namespace KTANE_Solver
             //if the user has to press keep, then send them to the first stage again
             if (pressKeep)
             {
-                MessageBox.Show("Press Keep","Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowAnswer("Press Keep","Silly Slots Stage 1 answer");
                 
                 UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
@@ -163,7 +163,7 @@ namespace KTANE_Solver
             //otherwise send them to stage 2
             else
             {
-                MessageBox.Show("Pull the lever", "Silly Slots Stage 1 answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowAnswer("Pull the lever", "Silly Slots Stage 1 answer");
 
                 if (sillySlotsOtherStageForm == null)
                 {

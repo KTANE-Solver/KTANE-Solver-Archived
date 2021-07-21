@@ -375,7 +375,7 @@ namespace KTANE_Solver
 
             if (presskeep)
             {
-                MessageBox.Show("Press Keep", $"Silly Slot Stage {stage} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowAnswer("Press Keep", $"Silly Slot Stage {stage} Answer");
 
                 this.Hide();
 
@@ -385,7 +385,7 @@ namespace KTANE_Solver
 
             else
             {
-                MessageBox.Show("Pull the lever", $"Silly Slot Stage {stage} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowAnswer("Pull the lever", $"Silly Slot Stage {stage} Answer");
 
                 //if the stage is 4 then go to the first stage
                 if (stage == 4)

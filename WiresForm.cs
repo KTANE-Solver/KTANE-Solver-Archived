@@ -107,7 +107,7 @@ namespace KTANE_Solver
 
             if (errorFound)
             {
-                MessageBox.Show(error, "Wires Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(error, "Wires Error");
                 return;
             }
 

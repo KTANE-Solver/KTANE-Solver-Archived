@@ -87,21 +87,21 @@ namespace KTANE_Solver
             //str has to be only two charcters
             if (str.Length != 2)
             {
-                MessageBox.Show("There can only be two characters", "Chess Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("There can only be two characters", "Chess Error");
                 return false;
             }
 
             //first character has to be a-f
             if ((int)str[0] < 97 || (int)str[1] > 102)
             {
-                MessageBox.Show("First charcter has to be \"a-f\"", "Chess Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("First charcter has to be \"a-f\"", "Chess Error");
                 return false;
             }
 
             //second character has to be 1-6
             if ((int)str[1] < 49 || (int)str[1] > 57)
             {
-                MessageBox.Show("Second charcter has to be \"1-6\"", "Chess Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Second charcter has to be \"1-6\"", "Chess Error");
                 return false;
             }
 

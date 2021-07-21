@@ -141,8 +141,7 @@ namespace KTANE_Solver
 
             number %= 10000;
 
-            
-            MessageBox.Show(ConvertAnswerToColor(number), "Color Math Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer(ConvertAnswerToColor(number), "Color Math Answer");
         }
 
         public int GetLeftSideNumber(int place, Color color)

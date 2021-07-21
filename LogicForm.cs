@@ -343,16 +343,6 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Shows an error message
-        /// </summary>
-        /// <param name="caption">the caption of the message</param>
-        /// <param name="text">what the message detail</param>
-        private void ShowErrorMessage(String caption, String text)
-        { 
-            MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        /// <summary>
         /// Adds a stirke to the total
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)

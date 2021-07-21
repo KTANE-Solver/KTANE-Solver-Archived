@@ -120,7 +120,7 @@ namespace KTANE_Solver
 
             }
 
-            MessageBox.Show($"Press the {prefix} card", "Poker Part 3 Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowAnswer($"Press the {prefix} card", "Poker Part 3 Answer");
             this.Hide();
 
             pokerStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

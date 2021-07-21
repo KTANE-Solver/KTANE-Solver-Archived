@@ -127,7 +127,7 @@ namespace KTANE_Solver
 
                     if (words[i] == words[j])
                     {
-                        MessageBox.Show("Can't have duplicate words", "Who's on First Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ShowErrorMessage("Can't have duplicate words", "Who's on First Error");
                         return;
                     }
                     

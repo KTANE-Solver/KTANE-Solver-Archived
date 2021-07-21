@@ -121,7 +121,7 @@ namespace KTANE_Solver
 
             catch
             {
-                MessageBox.Show("Invalid amount", "Cheap Checkout Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Invalid amount", "Cheap Checkout Error");
                 return;
             }
 
@@ -129,7 +129,7 @@ namespace KTANE_Solver
 
             if (Decimal.Round(amount, 2) != amount)
             {
-                MessageBox.Show("Amount should only have 2 decimals", "Cheap Checkout Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Amount should only have 2 decimals", "Cheap Checkout Error");
                 return;
             }
 
@@ -143,7 +143,7 @@ namespace KTANE_Solver
                 item3 == item4 ||
                 item5 == item6)
             {
-                MessageBox.Show("Can't have duplicate items", "Cheap Checkout Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Can't have duplicate items", "Cheap Checkout Error");
                 return;
             }
 
