@@ -102,6 +102,10 @@ namespace KTANE_Solver
             MessageBox.Show(message, captions, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ShowAnswer(String message, String captions)
+        {
+            MessageBox.Show(message, captions, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         public void GoToMoudleSelectionForm()
         {
             this.Hide();

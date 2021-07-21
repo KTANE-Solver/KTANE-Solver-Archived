@@ -43,7 +43,7 @@ namespace KTANE_Solver
 
             if (threeLetters.Length != 3)
             {
-                MessageBox.Show("There must only be 3 letters in the first text box", "3D Maze Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("There must only be 3 letters in the first text box", "3D Maze Error");
                 return;
             }
 
@@ -57,7 +57,7 @@ namespace KTANE_Solver
                 ContainsLetters('A','D','C', characters) || ContainsLetters('A', 'C', 'H', characters) || ContainsLetters('A', 'D', 'H', characters) ||
                 ContainsLetters('B','D','C', characters) || ContainsLetters('B', 'D', 'H', characters) || ContainsLetters('C', 'B', 'H', characters) || ContainsLetters('H','C','D',characters)))
             {
-                MessageBox.Show("Invalid three letters in the first text box", "3D Maze Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Invalid three letters in the first text box", "3D Maze Error");
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace KTANE_Solver
 
             if (coordinateList == null)
             {
-                MessageBox.Show("Invalid Path", "3D Maze Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Invalid Path", "3D Maze Error");
                 return;
             }
 
@@ -153,8 +153,7 @@ namespace KTANE_Solver
                     
                     System.Diagnostics.Debug.WriteLine($"User is pointing {pointOfDirection} at {newEndRow} {newEndColumn} ({endRow} {endColumn}). Started at {startRow} {startColumn} ({coor[0]} {coor[1]})");
                 }
-
-                MessageBox.Show("Multiple paths found. Try another", "3D Maze Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Multiple paths found. Try another", "3D Maze Error");
                 return;
             }
 

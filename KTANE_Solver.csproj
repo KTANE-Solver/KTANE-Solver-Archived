@@ -163,6 +163,19 @@
     <Compile Include="MazeForm.Designer.cs">
       <DependentUpon>MazeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Memory.cs" />
+    <Compile Include="MemoryOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemoryOtherStageForm.Designer.cs">
+      <DependentUpon>MemoryOtherStageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryStage1Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemoryStage1Form.Designer.cs">
+      <DependentUpon>MemoryStage1Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Module.cs" />
     <Compile Include="ModuleForm.cs">
       <SubType>Form</SubType>
@@ -342,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MazeForm.resx">
       <DependentUpon>MazeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryOtherStageForm.resx">
+      <DependentUpon>MemoryOtherStageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryStage1Form.resx">
+      <DependentUpon>MemoryStage1Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuleForm.resx">
       <DependentUpon>ModuleForm.cs</DependentUpon>

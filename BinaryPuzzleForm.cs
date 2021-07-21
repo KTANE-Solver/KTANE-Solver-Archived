@@ -194,7 +194,7 @@ namespace KTANE_Solver
 
             if (grid == null)
             {
-                MessageBox.Show("Unable to solve", "Binary Puzzle Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("Unable to solve", "Binary Puzzle Error");
             }
 
             else
