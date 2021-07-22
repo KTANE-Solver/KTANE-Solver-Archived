@@ -45,6 +45,7 @@ namespace KTANE_Solver
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MemoryStage1Form memoryForm;
+        private MorseCodeForm morseCodeForm;
         private MurderForm murderForm;
         private NumberPadForm numberPadForm;
         private PasswordFirstStageForm passwordForm;
@@ -111,7 +112,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -407,6 +408,20 @@ namespace KTANE_Solver
                     memoryForm.Show();
                     break;
 
+                case "Morse Code":
+
+                    if (morseCodeForm == null)
+                    {
+                        morseCodeForm = new MorseCodeForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        morseCodeForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    morseCodeForm.Show();
+                    break;
                 case "Number Pad":
 
                     if (numberPadForm == null)

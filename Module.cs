@@ -34,7 +34,7 @@ namespace KTANE_Solver
         /// <summary>
         /// A method that will show the answer in a messageBox 
         /// </summary>
-        public void ShowAnswer(String answer, String caption)
+        public static void ShowAnswer(String answer, String caption)
         {
             MessageBox.Show(answer, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
