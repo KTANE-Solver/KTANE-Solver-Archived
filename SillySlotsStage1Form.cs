@@ -17,21 +17,8 @@ namespace KTANE_Solver
 
     public partial class SillySlotsStage1Form : ModuleForm
     {
-        //the form the user will see next if the user needs to
-        //pull the lever
-        private SillySlotsOtherStageForm sillySlotsOtherStageForm;
-
         //used to solve the module
         private SillySlots sillySlotsModule;
-
-        //slot information
-        private String slot1Color;
-        private String slot2Color;
-        private string slot3Color;
-
-        private String slot1Object;
-        private String slot2Object;
-        private string slot3Object;
 
         /// <summary>
         /// Creates a form that is used to create
@@ -137,17 +124,11 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-            slot1Color = slot1ColorComboBox.Text;
-            slot2Color = slot2ColorComboBox.Text;
-            slot3Color = slot3ColorComboBox.Text;
+            SillySlots.Slot slot1 = new SillySlots.Slot(slot1ColorComboBox.Text, slot1ObjectComboBox.Text);
+            SillySlots.Slot slot2 = new SillySlots.Slot(slot2ColorComboBox.Text, slot2ObjectComboBox.Text);
+            SillySlots.Slot slot3 = new SillySlots.Slot(slot3ColorComboBox.Text, slot3ObjectComboBox.Text);
 
-            slot1Object = slot1ObjectComboBox.Text;
-            slot2Object = slot2ObjectComboBox.Text;
-            slot3Object = slot3ObjectComboBox.Text;
-
-            sillySlotsModule = new SillySlots(1, keywordComboBox.Text, slot1Color, slot1Object,
-                                                                    slot2Color, slot2Object,
-                                                                    slot3Color, slot3Object, LogFileWriter);
+            sillySlotsModule = new SillySlots(keywordComboBox.Text, slot1, slot2, slot3, LogFileWriter);
 
             //tells if the user has to press keep or not
             bool pressKeep = sillySlotsModule.Solve(1);
@@ -165,31 +146,8 @@ namespace KTANE_Solver
             {
                 ShowAnswer("Pull the lever", "Silly Slots Stage 1 answer");
 
-                if (sillySlotsOtherStageForm == null)
-                {
-                    sillySlotsOtherStageForm = new SillySlotsOtherStageForm(this,
-                    ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, 2,
-                    slot1Color, slot1Object,
-                    slot2Color, slot2Object,
-                    slot3Color, slot3Object, null, null, null, null, null, null,
-                    null, null, null, null, null, null);
-                }
-
-                else
-                {
-                    sillySlotsOtherStageForm.UpdateForm(this, ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, 2,
-                                                        slot1Color, slot1Object,
-                                                        slot2Color, slot2Object,
-                                                        slot3Color, slot3Object,
-                                                        null, null,
-                                                        null, null,
-                                                        null, null,
-                                                        null, null,
-                                                        null, null,
-                                                        null, null);
-
-                    
-                }
+                SillySlotsOtherStageForm sillySlotsOtherStageForm = new SillySlotsOtherStageForm(this,
+                    ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, 2);
 
                 this.Hide();
                 sillySlotsOtherStageForm.Show();

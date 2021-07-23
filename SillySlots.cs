@@ -16,40 +16,24 @@ namespace KTANE_Solver
         private String keyword;
 
         //stage 1 information
-        private String stage1Slot1Color;
-        private String stage1Slot2Color;
-        private String stage1Slot3Color;
-
-        private String stage1Slot1Object;
-        private String stage1Slot2Object;
-        private String stage1Slot3Object;
+        private Slot stage1Slot1;
+        private Slot stage1Slot2;
+        private Slot stage1Slot3;
 
         //stage 2 information
-        private String stage2Slot1Color;
-        private String stage2Slot2Color;
-        private String stage2Slot3Color;
-                            
-        private String stage2Slot1Object;
-        private String stage2Slot2Object;
-        private String stage2Slot3Object;
+        private Slot stage2Slot1;
+        private Slot stage2Slot2;
+        private Slot stage2Slot3;
 
         //stage 3 information
-        private String stage3Slot1Color;
-        private String stage3Slot2Color;
-        private String stage3Slot3Color;
-                            
-        private String stage3Slot1Object;
-        private String stage3Slot2Object;
-        private String stage3Slot3Object;
+        private Slot stage3Slot1;
+        private Slot stage3Slot2;
+        private Slot stage3Slot3;
 
         //stage 4 information
-        private String stage4Slot1Color;
-        private String stage4Slot2Color;
-        private String stage4Slot3Color;
-                            
-        private String stage4Slot1Object;
-        private String stage4Slot2Object;
-        private String stage4Slot3Object;
+        private Slot stage4Slot1;
+        private Slot stage4Slot2;
+        private Slot stage4Slot3;
 
         //placeholder information for the currnet slots
         private ConvertedSlot placeholderSlot1;
@@ -64,72 +48,20 @@ namespace KTANE_Solver
         /// Used to solve the first stage of the module
         /// </summary>
         /// <param name="keyword">the keyword at the top</param>
-        /// <param name="slot1Color">first slot color</param>
-        /// <param name="slot1Object">second slot object</param>
-        /// <param name="slot2Color">second slot color</param>
-        /// <param name="slot2Object">third slot object</param>
-        /// <param name="slot3Color">third slot color</param>
-        /// <param name="slot3Object">third slot object</param>
         /// <param name="logFile">used to write to the log file</param>
-        public SillySlots(int stage, String keyword, String slot1Color, String slot1Object, String slot2Color, String slot2Object, String slot3Color, String slot3Object, StreamWriter logFile) 
+        public SillySlots(String keyword, Slot slot1, Slot slot2, Slot slot3, StreamWriter logFile) 
             : base(null, logFile)
         {
-
             //setting the variables depending on the stage
-
             this.keyword = keyword;
 
-            if (stage == 1)
-            {
-                stage1Slot1Color = slot1Color;
-                stage1Slot1Object = slot1Object;
+            stage1Slot1 = slot1;
+            stage1Slot2 = slot2;
+            stage1Slot3 = slot3;
 
-                stage1Slot2Color = slot2Color;
-                stage1Slot2Object = slot2Object;
-
-                stage1Slot3Color = slot3Color;
-                stage1Slot3Object = slot3Object;   
-            }
-
-            else if (stage == 2)
-            {
-                stage2Slot1Color = slot1Color;
-                stage2Slot1Object = slot1Object;
-
-                stage2Slot2Color = slot2Color;
-                stage2Slot2Object = slot2Object;
-
-                stage2Slot3Color = slot3Color;
-                stage2Slot3Object = slot3Object;
-            }
-
-            else if (stage == 3)
-            {
-                stage3Slot1Color = slot1Color;
-                stage3Slot1Object = slot1Object;
-
-                stage3Slot2Color = slot2Color;
-                stage3Slot2Object = slot2Object;
-
-                stage3Slot3Color = slot3Color;
-                stage3Slot3Object = slot3Object;
-            }
-
-            else if (stage == 4)
-            {
-                stage4Slot1Color = slot1Color;
-                stage4Slot1Object = slot1Object;
-                     
-                stage4Slot2Color = slot2Color;
-                stage4Slot2Object = slot2Object;
-                     
-                stage4Slot3Color = slot3Color;
-                stage4Slot3Object = slot3Object;
-            }
-
-            placeholderSlot1 = new ConvertedSlot(slot1Color, slot1Object, keyword, LogFileWriter);
-            placeholderSlot2 = new ConvertedSlot(slot2Color, slot2Object, keyword, LogFileWriter);
-            placeholderSlot3 = new ConvertedSlot(slot3Color, slot3Object, keyword, LogFileWriter);
+            placeholderSlot1 = new ConvertedSlot(stage1Slot1, keyword);
+            placeholderSlot2 = new ConvertedSlot(stage1Slot2, keyword);
+            placeholderSlot3 = new ConvertedSlot(stage1Slot3, keyword);
         }
 
         /// <summary>
@@ -145,33 +77,32 @@ namespace KTANE_Solver
             LogFileWriter.WriteLine($"Keyword: {keyword}\n");
 
             //print information to the log
-            if (stage == 1)
+            if (stage >= 1)
             {
-                LogFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage1Slot1Color, stage1Slot1Object);
-                LogFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage1Slot2Color, stage1Slot2Object);
-                LogFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage1Slot3Color, stage1Slot3Object);
-
+                LogFileWriter.WriteLine($"Stage 1 Slot 1: {stage1Slot1.Color} {stage1Slot1.Object}");
+                LogFileWriter.WriteLine($"Stage 1 Slot 2: {stage1Slot2.Color} {stage1Slot2.Object}");
+                LogFileWriter.WriteLine($"Stage 1 Slot 3: {stage1Slot3.Color} {stage1Slot3.Object}");
             }
 
-            else if (stage == 2)
+            if (stage >= 2)
             {
-                LogFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage2Slot1Color, stage2Slot1Object);
-                LogFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage2Slot2Color, stage2Slot2Object);
-                LogFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage2Slot3Color, stage2Slot3Object);
+                LogFileWriter.WriteLine($"Stage 2 Slot 1: {stage2Slot1.Color} {stage2Slot1.Object}");
+                LogFileWriter.WriteLine($"Stage 2 Slot 2: {stage2Slot2.Color} {stage2Slot2.Object}");
+                LogFileWriter.WriteLine($"Stage 2 Slot 3: {stage2Slot3.Color} {stage2Slot3.Object}");
             }
 
-            else if (stage == 3)
+            if (stage >= 3)
             {
-                LogFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage3Slot1Color, stage3Slot1Object);
-                LogFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage3Slot2Color, stage3Slot2Object);
-                LogFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage3Slot3Color, stage3Slot3Object);
+                LogFileWriter.WriteLine($"Stage 3 Slot 1: {stage3Slot1.Color} {stage3Slot1.Object}");
+                LogFileWriter.WriteLine($"Stage 3 Slot 2: {stage3Slot2.Color} {stage3Slot2.Object}");
+                LogFileWriter.WriteLine($"Stage 3 Slot 3: {stage3Slot3.Color} {stage3Slot3.Object}");
             }
 
-            else
+            if(stage == 4)
             {
-                LogFileWriter.Write($"Slot 1: "); placeholderSlot1.PrintConvertedSlot(stage4Slot1Color, stage4Slot1Object);
-                LogFileWriter.Write($"Slot 2: "); placeholderSlot2.PrintConvertedSlot(stage4Slot2Color, stage4Slot2Object);
-                LogFileWriter.Write($"Slot 3: "); placeholderSlot3.PrintConvertedSlot(stage4Slot3Color, stage4Slot3Object);
+                LogFileWriter.WriteLine($"Stage 4 Slot 1: {stage4Slot1.Color} {stage4Slot1.Object}");
+                LogFileWriter.WriteLine($"Stage 4 Slot 2: {stage4Slot2.Color} {stage4Slot2.Object}");
+                LogFileWriter.WriteLine($"Stage 4 Slot 3: {stage4Slot3.Color} {stage4Slot3.Object}");
             }
 
             //If any of these are true, then pull the lever
@@ -237,20 +168,20 @@ namespace KTANE_Solver
                 {
                     ConvertedSlot convertedSlot;
 
-                    //checking which slot needs to be convertd from stage 2
+                    //checking which slot needs to be convertd from stage 1
                     if (sassySallySlot1)
                     {
-                        convertedSlot = new ConvertedSlot(stage1Slot1Color, stage2Slot1Object, keyword, LogFileWriter);
+                        convertedSlot = new ConvertedSlot(stage1Slot1, keyword);
                     }
 
                     else if (sassySallySlot2)
                     {
-                        convertedSlot = new ConvertedSlot(stage1Slot2Color, stage2Slot2Object, keyword, LogFileWriter);
+                        convertedSlot = new ConvertedSlot(stage1Slot2, keyword);
                     }
 
                     else
                     {
-                        convertedSlot = new ConvertedSlot(stage1Slot3Color, stage2Slot3Object, keyword, LogFileWriter);
+                        convertedSlot = new ConvertedSlot(stage1Slot3, keyword);
                     }
 
                     //if the converted slot is not soggy, pull the lever
@@ -268,17 +199,17 @@ namespace KTANE_Solver
                     //checking which slot needs to be convertd from stage 2
                     if (sassySallySlot1)
                     {
-                        convertedSlot = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, LogFileWriter);
+                        convertedSlot = new ConvertedSlot(stage2Slot1, keyword);
                     }
 
                     else if (sassySallySlot2)
                     {
-                        convertedSlot = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, LogFileWriter);
+                        convertedSlot = new ConvertedSlot(stage2Slot2, keyword);
                     }
 
                     else
                     {
-                        convertedSlot = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, LogFileWriter);
+                        convertedSlot = new ConvertedSlot(stage2Slot3, keyword);
                     }
 
                     //if the converted slot is not soggy, pull the lever
@@ -475,13 +406,13 @@ namespace KTANE_Solver
 
                 else if (stage == 2)
                 {
-                    ConvertedSlot stage1Slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, LogFileWriter);
-                    ConvertedSlot stage1Slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, LogFileWriter);
-                    ConvertedSlot stage1Slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, LogFileWriter);
+                    ConvertedSlot convertedSlot1 = new ConvertedSlot(stage1Slot1, keyword);
+                    ConvertedSlot convertedSlot2 = new ConvertedSlot(stage1Slot2, keyword);
+                    ConvertedSlot convertedSlot3 = new ConvertedSlot(stage1Slot3, keyword);
 
-                    bool stage1Slot1Sausge = isNoun(stage1Slot1, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage1Slot2Sausge = isNoun(stage1Slot2, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage1Slot3Sausge = isNoun(stage1Slot3, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage1Slot1Sausge = isNoun(convertedSlot1, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage1Slot2Sausge = isNoun(convertedSlot2, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage1Slot3Sausge = isNoun(convertedSlot3, ConvertedSlot.Noun.SAUSAGE);
 
                     if (!stage1Slot1Sausge && !stage1Slot2Sausge && !stage1Slot3Sausge)
                     {
@@ -492,13 +423,13 @@ namespace KTANE_Solver
 
                 else if (stage == 3)
                 {
-                    ConvertedSlot stage2Slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, LogFileWriter);
-                    ConvertedSlot stage2Slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, LogFileWriter);
-                    ConvertedSlot stage2Slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, LogFileWriter);
+                    ConvertedSlot convertedSlot1 = new ConvertedSlot(stage2Slot1, keyword);
+                    ConvertedSlot convertedSlot2 = new ConvertedSlot(stage2Slot2, keyword);
+                    ConvertedSlot convertedSlot3 = new ConvertedSlot(stage2Slot3, keyword);
 
-                    bool stage2Slot1Sausge = isNoun(stage2Slot1, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage2Slot2Sausge = isNoun(stage2Slot2, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage2Slot3Sausge = isNoun(stage2Slot3, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage2Slot1Sausge = isNoun(convertedSlot1, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage2Slot2Sausge = isNoun(convertedSlot2, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage2Slot3Sausge = isNoun(convertedSlot3, ConvertedSlot.Noun.SAUSAGE);
 
                     if (!stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge)
                     {
@@ -509,13 +440,13 @@ namespace KTANE_Solver
 
                 else
                 {
-                    ConvertedSlot stage3Slot1 = new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, LogFileWriter);
-                    ConvertedSlot stage3Slot2 = new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, LogFileWriter);
-                    ConvertedSlot stage3Slot3 = new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, LogFileWriter);
+                    ConvertedSlot convertedSlot1 = new ConvertedSlot(stage3Slot1, keyword);
+                    ConvertedSlot convertedSlot2 = new ConvertedSlot(stage3Slot2, keyword);
+                    ConvertedSlot convertedSlot3 = new ConvertedSlot(stage3Slot3, keyword);
 
-                    bool stage3Slot1Sausge = isNoun(stage3Slot1, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage3Slot2Sausge = isNoun(stage3Slot2, ConvertedSlot.Noun.SAUSAGE);
-                    bool stage3Slot3Sausge = isNoun(stage3Slot3, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage3Slot1Sausge = isNoun(convertedSlot1, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage3Slot2Sausge = isNoun(convertedSlot2, ConvertedSlot.Noun.SAUSAGE);
+                    bool stage3Slot3Sausge = isNoun(convertedSlot3, ConvertedSlot.Noun.SAUSAGE);
 
                     if (!stage3Slot1Sausge && !stage3Slot2Sausge && !stage3Slot3Sausge)
                     {
@@ -540,21 +471,21 @@ namespace KTANE_Solver
                 {
                     List<ConvertedSlot> convertedSlotList = new List<ConvertedSlot>();
 
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, LogFileWriter));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, LogFileWriter));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, LogFileWriter));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1, keyword));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2, keyword));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3, keyword));
 
-                    if (stage2Slot1Color != null)
+                    if (stage >= 2)
                     {
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, LogFileWriter));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, LogFileWriter));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, LogFileWriter));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1, keyword));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2, keyword));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3, keyword));
 
-                        if (stage3Slot1Color != null)
+                        if (stage >= 3)
                         {
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, LogFileWriter));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, LogFileWriter));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, LogFileWriter));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1, keyword));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2, keyword));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3, keyword));
                         }
                     }
 
@@ -600,23 +531,23 @@ namespace KTANE_Solver
 
                     if (stage == 2)
                     {
-                        slot1 = new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, LogFileWriter);
-                        slot2 = new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, LogFileWriter);
-                        slot3 = new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, LogFileWriter);
+                        slot1 = new ConvertedSlot(stage1Slot1, keyword);
+                        slot2 = new ConvertedSlot(stage1Slot2, keyword);
+                        slot3 = new ConvertedSlot(stage1Slot2, keyword);
                     }
 
                     else if (stage == 3)
                     {
-                        slot1 = new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, LogFileWriter);
-                        slot2 = new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, LogFileWriter);
-                        slot3 = new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, LogFileWriter);
+                        slot1 = new ConvertedSlot(stage2Slot1, keyword);
+                        slot2 = new ConvertedSlot(stage2Slot2, keyword);
+                        slot3 = new ConvertedSlot(stage2Slot2, keyword);
                     }
 
                     else
                     {
-                        slot1 = new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, LogFileWriter);
-                        slot2 = new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, LogFileWriter);
-                        slot3 = new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, LogFileWriter);
+                        slot1 = new ConvertedSlot(stage3Slot1, keyword);
+                        slot2 = new ConvertedSlot(stage3Slot2, keyword);
+                        slot3 = new ConvertedSlot(stage3Slot2, keyword);
                     }
 
                     //count of many silly stevens there are
@@ -678,21 +609,21 @@ namespace KTANE_Solver
                 {
                     List<ConvertedSlot> convertedSlotList = new List<ConvertedSlot>();
 
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1Color, stage1Slot1Object, keyword, LogFileWriter));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2Color, stage1Slot2Object, keyword, LogFileWriter));
-                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3Color, stage1Slot3Object, keyword, LogFileWriter));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot1, keyword));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot2, keyword));
+                    convertedSlotList.Add(new ConvertedSlot(stage1Slot3, keyword));
 
-                    if (stage3Slot1Color != null)
+                    if (stage >= 3)
                     {
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1Color, stage2Slot1Object, keyword, LogFileWriter));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2Color, stage2Slot2Object, keyword, LogFileWriter));
-                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3Color, stage2Slot3Object, keyword, LogFileWriter));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot1, keyword));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot2, keyword));
+                        convertedSlotList.Add(new ConvertedSlot(stage2Slot3, keyword));
 
-                        if (stage4Slot1Color != null)
+                        if (stage >= 4)
                         {
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1Color, stage3Slot1Object, keyword, LogFileWriter));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2Color, stage3Slot2Object, keyword, LogFileWriter));
-                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3Color, stage3Slot3Object, keyword, LogFileWriter));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot1, keyword));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot2, keyword));
+                            convertedSlotList.Add(new ConvertedSlot(stage3Slot3, keyword));
                         }
                     }
 
@@ -742,94 +673,42 @@ namespace KTANE_Solver
 
             this.keyword = keyword;
 
-            placeholderSlot1 = new ConvertedSlot(slot1Color, slot1Object, keyword, LogFileWriter);
-            placeholderSlot2 = new ConvertedSlot(slot2Color, slot2Object, keyword, LogFileWriter);
-            placeholderSlot3 = new ConvertedSlot(slot3Color, slot3Object, keyword, LogFileWriter);
+            Slot slot1 = new Slot(slot1Color, slot1Object);
+            Slot slot2 = new Slot(slot2Color, slot2Object);
+            Slot slot3 = new Slot(slot3Color, slot3Object);
+
+
+            placeholderSlot1 = new ConvertedSlot(slot1, keyword);
+            placeholderSlot2 = new ConvertedSlot(slot2, keyword);
+            placeholderSlot3 = new ConvertedSlot(slot3, keyword);
 
             if (stage == 1)
             {
-                this.stage1Slot1Color = slot1Color;
-                this.stage1Slot2Color = slot2Color;
-                this.stage1Slot3Color = slot3Color;
+                stage1Slot1 = slot1;
+                stage1Slot2 = slot2;
+                stage1Slot3 = slot3;
 
-                this.stage1Slot1Object = slot1Object;
-                this.stage1Slot2Object = slot2Object;
-                this.stage1Slot3Object = slot3Object;
-
-                stage2Slot1Color = null;
-                stage2Slot1Object = null;
-                stage2Slot2Color = null;
-                stage2Slot2Object = null;
-                stage2Slot3Color = null;
-                stage2Slot3Object = null;
-
-                stage3Slot1Color = null;
-                stage3Slot1Object = null;
-                stage3Slot2Color = null;
-                stage3Slot2Object = null;
-                stage3Slot3Color = null;
-                stage3Slot3Object = null;
-
-                stage4Slot1Color = null;
-                stage4Slot1Object = null;
-                stage4Slot2Color = null;
-                stage4Slot2Object = null;
-                stage4Slot3Color = null;
-                stage4Slot3Object = null;
             }
 
             else if (stage == 2)
             {
-                this.stage2Slot1Color = slot1Color;
-                this.stage2Slot2Color = slot2Color;
-                this.stage2Slot3Color = slot3Color;
-                          
-                this.stage2Slot1Object = slot1Object;
-                this.stage2Slot2Object = slot2Object;
-                this.stage2Slot3Object = slot3Object;
-
-                stage3Slot1Color = null;
-                stage3Slot1Object = null;
-                stage3Slot2Color = null;
-                stage3Slot2Object = null;
-                stage3Slot3Color = null;
-                stage3Slot3Object = null;
-
-                stage4Slot1Color = null;
-                stage4Slot1Object = null;
-                stage4Slot2Color = null;
-                stage4Slot2Object = null;
-                stage4Slot3Color = null;
-                stage4Slot3Object = null;
+                stage2Slot1 = slot1;
+                stage2Slot2 = slot2;
+                stage2Slot3 = slot3;
             }
 
             if (stage == 3)
             {
-                this.stage3Slot1Color = slot1Color;
-                this.stage3Slot2Color = slot2Color;
-                this.stage3Slot3Color = slot3Color;
-                          
-                this.stage3Slot1Object = slot1Object;
-                this.stage3Slot2Object = slot2Object;
-                this.stage3Slot3Object = slot3Object;
-
-                stage4Slot1Color = null;
-                stage4Slot1Object = null;
-                stage4Slot2Color = null;
-                stage4Slot2Object = null;
-                stage4Slot3Color = null;
-                stage4Slot3Object = null;
+                stage3Slot1 = slot1;
+                stage3Slot2 = slot2;
+                stage3Slot3 = slot3;
             }
 
             else
             {
-                this.stage4Slot1Color = slot1Color;
-                this.stage4Slot2Color = slot2Color;
-                this.stage4Slot3Color = slot3Color;
-                          
-                this.stage4Slot1Object = slot1Object;
-                this.stage4Slot2Object = slot2Object;
-                this.stage4Slot3Object = slot3Object;
+                stage4Slot1 = slot1;
+                stage4Slot2 = slot2;
+                stage4Slot3 = slot3;
             }
           
         }
@@ -863,8 +742,6 @@ namespace KTANE_Solver
         public class ConvertedSlot
         {
 
-             private StreamWriter LogFileWriter;
-
             public enum Adjective
             {
                 SASSY,
@@ -896,13 +773,10 @@ namespace KTANE_Solver
             /// <param name="color"></param>
             /// <param name="objectString"></param>
             /// <param name="keyword"></param>
-            public ConvertedSlot(String color, String objectString, String keyword, StreamWriter logFile)
+            public ConvertedSlot(Slot slot, String keyword)
             {
-                this.LogFileWriter = logFile;
-
-
-                AdjectiveProperty = ConvertColorToAdjective(keyword, color);
-                NounProperty = ConvertObjectToNoun(keyword, objectString);
+                AdjectiveProperty = ConvertColorToAdjective(keyword, slot.Color);
+                NounProperty = ConvertObjectToNoun(keyword, slot.Object);
             }
 
             /// <summary>
@@ -1042,7 +916,6 @@ namespace KTANE_Solver
                 }
 
                 //this should not happen
-                LogFileWriter.WriteLine("Invalid keword. Setting adjective to Sassy\n");
                 return Adjective.SASSY;
             }
 
@@ -1215,7 +1088,6 @@ namespace KTANE_Solver
                 }
 
                 //this should not happen
-                LogFileWriter.WriteLine("Invalid keword. Setting noun to Sally\n");
                 return Noun.SALLY;
             }
 
@@ -1249,15 +1121,18 @@ namespace KTANE_Solver
             {
                 return NounEqual(slot) && AdjectiveEqual(slot);
             }
+           
+        }
 
-            /// <summary>
-            /// Prints information about the conveted slot
-            /// </summary>
-            /// <param name="color">the color the slot was</param>
-            /// <param name="objectString">the object the slot had</param>
-            public void PrintConvertedSlot(String color, String objectString)
-            { 
-                LogFileWriter.WriteLine($"Converted {color} {objectString} to {AdjectiveProperty} {NounProperty}\n");
+        public class Slot
+        {
+            public String Object { get; set; }
+            public String Color { get; set; }
+
+            public Slot(String color, String Object)
+            {
+                this.Object = Object;
+                Color = color;
             }
         }
     }

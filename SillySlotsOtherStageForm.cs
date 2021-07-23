@@ -22,31 +22,6 @@ namespace KTANE_Solver
         //slot information
         private String keyword;
 
-
-        private String stage1Slot1Color;
-        private String stage1Slot2Color;
-        private String stage1Slot3Color;
-
-        private String stage1Slot1Object;
-        private String stage1Slot2Object;
-        private String stage1Slot3Object;
-
-        private String stage2Slot1Color;
-        private String stage2Slot2Color;
-        private String stage2Slot3Color;
-
-        private String stage2Slot1Object;
-        private String stage2Slot2Object;
-        private String stage2Slot3Object;
-
-        private String stage3Slot1Color;
-        private String stage3Slot2Color;
-        private String stage3Slot3Color;
-
-        private String stage3Slot1Object;
-        private String stage3Slot2Object;
-        private String stage3Slot3Object;
-
         //the stage the user is on
         private int stage;
 
@@ -72,52 +47,13 @@ namespace KTANE_Solver
         /// <param name="logFileWriter">used to write to the log file</param>
         /// <param name="sillySlotsModule">used to solve the module</param>
         /// <param name="stage">which stage the user is on</param>
-        /// <param name="stage1Slot1Color"></param>
-        /// <param name="stage1Slot1Object"></param>
-        /// <param name="stage1Slot2Color"></param>
-        /// <param name="stage1Slot2Object"></param>
-        /// <param name="stage1Slot3Color"></param>
-        /// <param name="stage1Slot3Object"></param>
-        /// <param name="stage2Slot1Color"></param>
-        /// <param name="stage2Slot1Object"></param>
-        /// <param name="stage2Slot2Color"></param>
-        /// <param name="stage2Slot2Object"></param>
-        /// <param name="stage2Slot3Color"></param>
-        /// <param name="stage2Slot3Object"></param>
-        /// <param name="stage3Slot1Color"></param>
-        /// <param name="stage3Slot1Object"></param>
-        /// <param name="stage3Slot2Color"></param>
-        /// <param name="stage3Slot2Object"></param>
-        /// <param name="stage3Slot3Color"></param>
-        /// <param name="stage3Slot3Object"></param>
         public SillySlotsOtherStageForm(SillySlotsStage1Form sillySlotsStage1Form,
                                         ModuleSelectionForm moduleSelectionForm,
                                         Bomb bomb, StreamWriter logFileWriter,
-                                        SillySlots sillySlotsModule, int stage,
-                                        String stage1Slot1Color, String stage1Slot1Object,
-                                        String stage1Slot2Color, String stage1Slot2Object,
-                                        String stage1Slot3Color, String stage1Slot3Object,
-                                        String stage2Slot1Color, String stage2Slot1Object,
-                                        String stage2Slot2Color, String stage2Slot2Object,
-                                        String stage2Slot3Color, String stage2Slot3Object,
-                                        String stage3Slot1Color, String stage3Slot1Object,
-                                        String stage3Slot2Color, String stage3Slot2Object,
-                                        String stage3Slot3Color, String stage3Slot3Object) : base(bomb, logFileWriter,moduleSelectionForm)
+                                        SillySlots sillySlotsModule, int stage) : base(bomb, logFileWriter,moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(sillySlotsStage1Form,
-                       moduleSelectionForm,
-                       bomb, logFileWriter,
-                       sillySlotsModule, stage,
-                       stage1Slot1Color, stage1Slot1Object,
-                       stage1Slot2Color, stage1Slot2Object,
-                       stage1Slot3Color, stage1Slot3Object,
-                       stage2Slot1Color, stage2Slot1Object,
-                       stage2Slot2Color, stage2Slot2Object,
-                       stage2Slot3Color, stage2Slot3Object,
-                       stage3Slot1Color, stage3Slot1Object,
-                       stage3Slot2Color, stage3Slot2Object,
-                       stage3Slot3Color, stage3Slot3Object);
+            UpdateForm(sillySlotsStage1Form, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, stage);
         }
 
         
@@ -130,16 +66,7 @@ namespace KTANE_Solver
         public void UpdateForm(SillySlotsStage1Form sillySlotsStage1Form,
                                         ModuleSelectionForm moduleSelectionForm,
                                         Bomb bomb, StreamWriter logFileWriter,
-                                        SillySlots sillySlotsModule, int stage,
-                                        String stage1Slot1Color, String stage1Slot1Object,
-                                        String stage1Slot2Color, String stage1Slot2Object,
-                                        String stage1Slot3Color, String stage1Slot3Object,
-                                        String stage2Slot1Color, String stage2Slot1Object,
-                                        String stage2Slot2Color, String stage2Slot2Object,
-                                        String stage2Slot3Color, String stage2Slot3Object,
-                                        String stage3Slot1Color, String stage3Slot1Object,
-                                        String stage3Slot2Color, String stage3Slot2Object,
-                                        String stage3Slot3Color, String stage3Slot3Object)
+                                        SillySlots sillySlotsModule, int stage)
         {
 
             FormClosing += CloseProgram;
@@ -151,30 +78,6 @@ namespace KTANE_Solver
             this.sillySlotsStage1Form = sillySlotsStage1Form;
             this.stage = stage;
             this.sillySlotsModule = sillySlotsModule;
-
-            this.stage1Slot1Color = stage1Slot1Color;
-            this.stage1Slot2Color = stage1Slot2Color;
-            this.stage1Slot3Color = stage1Slot3Color;
-
-            this.stage1Slot1Object = stage1Slot1Object;
-            this.stage1Slot2Object = stage1Slot2Object;
-            this.stage1Slot3Object = stage1Slot3Object;
-
-            this.stage2Slot1Color = stage2Slot1Color;
-            this.stage2Slot2Color = stage2Slot2Color;
-            this.stage2Slot3Color = stage2Slot3Color;
-
-            this.stage2Slot1Object = stage2Slot1Object;
-            this.stage2Slot2Object = stage2Slot2Object;
-            this.stage2Slot3Object = stage2Slot3Object;
-
-            this.stage3Slot1Color = stage3Slot1Color;
-            this.stage3Slot2Color = stage3Slot2Color;
-            this.stage3Slot3Color = stage3Slot3Color;
-
-            this.stage3Slot1Object = stage3Slot1Object;
-            this.stage3Slot2Object = stage3Slot2Object;
-            this.stage3Slot3Object = stage3Slot3Object;
 
             /**updating the form itself**/
 
@@ -211,10 +114,7 @@ namespace KTANE_Solver
         /// <param name="slot2Object"></param>
         /// <param name="slot3Color"></param>
         /// <param name="slot3Object"></param>
-        public void UpdateForm(int stage,
-                               String slot1Color, String slot1Object,
-                               String slot2Color, String slot2Object,
-                               String slot3Color, String slot3Object)
+        public void UpdateForm(int stage)
         {
             this.stage = stage;
 
@@ -239,39 +139,6 @@ namespace KTANE_Solver
             SetObjectComboBox(slot1ObjectComboBox);
             SetObjectComboBox(slot2ObjectComboBox);
             SetObjectComboBox(slot3ObjectComboBox);
-
-            if (stage == 1)
-            {
-                this.stage1Slot1Color = slot1Color;
-                this.stage1Slot2Color = slot2Color;
-                this.stage1Slot3Color = slot3Color;
-
-                this.stage1Slot1Object = slot1Object;
-                this.stage1Slot2Object = slot2Object;
-                this.stage1Slot3Object = slot3Object;
-            }
-
-            else if (stage == 2)
-            {
-                this.stage2Slot1Color = slot1Color;
-                this.stage2Slot2Color = slot2Color;
-                this.stage2Slot3Color = slot3Color;
-
-                this.stage2Slot1Object = slot1Object;
-                this.stage2Slot2Object = slot2Object;
-                this.stage2Slot3Object = slot3Object;
-            }
-
-            if (stage == 3)
-            {
-                this.stage3Slot1Color = slot1Color;
-                this.stage3Slot2Color = slot2Color;
-                this.stage3Slot3Color = slot3Color;
-
-                this.stage3Slot1Object = slot1Object;
-                this.stage3Slot2Object = slot2Object;
-                this.stage3Slot3Object = slot3Object;
-            }
         }
 
         /// <summary>
@@ -336,16 +203,7 @@ namespace KTANE_Solver
 
             else
             {
-                UpdateForm(sillySlotsStage1Form, ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, stage - 1,
-                           stage1Slot1Color, stage1Slot1Object,
-                           stage1Slot2Color, stage1Slot2Object,
-                           stage1Slot3Color, stage1Slot3Object,
-                           stage2Slot1Color, stage2Slot1Object,
-                           stage2Slot2Color, stage2Slot2Object,
-                           stage2Slot3Color, stage2Slot3Object,
-                           stage3Slot1Color, stage3Slot1Object,
-                           stage3Slot2Color, stage3Slot2Object,
-                           stage3Slot3Color, stage3Slot3Object);
+                UpdateForm(sillySlotsStage1Form, ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, stage - 1);
             }
         }
 
@@ -398,7 +256,7 @@ namespace KTANE_Solver
 
                 else
                 { 
-                    UpdateForm(stage + 1, slot1Color, slot1Object, slot2Color, slot2Object, slot3Color, slot3Object);
+                    UpdateForm(stage + 1);
                 }
             }
         }
