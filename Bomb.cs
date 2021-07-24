@@ -30,6 +30,12 @@ namespace KTANE_Solver
         //the number of battery holders
         private int batteryHolder;
 
+        //list of lit indicators
+        public List<Indicator> LitIndicatorsList { get; }
+
+        //list of unlit indicators
+        public List<Indicator> UnlitIndicatorsList { get; }
+
         //indicator bob
         private Indicator bob;
 
@@ -452,64 +458,7 @@ namespace KTANE_Solver
         {
             get
             {
-                int num = 0;
-
-                if (bob.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (car.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (clr.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (frk.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (frq.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (ind.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (msa.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (nsa.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (sig.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (snd.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                if (trn.VisibleAndLit)
-                {
-                    num++;
-                }
-
-                return num;
+                return litIndicatorsList.Count;
             }
         }
 
@@ -518,64 +467,7 @@ namespace KTANE_Solver
         {
             get
             {
-                int num = 0;
-
-                if (bob.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (car.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (clr.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (frk.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (frq.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (ind.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (msa.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (nsa.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (sig.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (snd.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                if (trn.VisibleNotLit)
-                {
-                    num++;
-                }
-
-                return num;
+                return unlitIndicatorsList.Count;
             }
         }
 
@@ -750,12 +642,6 @@ namespace KTANE_Solver
             this.msa = msa;
             this.nsa = nsa;
             this.sig = sig;
-            this.frk = frk;
-            this.frq = frq;
-            this.ind = ind;
-            this.msa = msa;
-            this.nsa = nsa;
-            this.sig = sig;
             this.snd = snd;
             this.trn = trn;
             this.emptyPortPlate = emptyPortPlate;
@@ -765,6 +651,121 @@ namespace KTANE_Solver
             this.rj = rj;
             this.serial = serial;
             this.stereo = stereo;
+
+            litIndicatorsList = new List<Indicator>();
+
+            if (bob.VisibleAndLit)
+            {
+                litIndicatorsList.Add(bob);
+            }
+
+            else if (bob.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(bob);
+            }
+
+            if (car.VisibleAndLit)
+            {
+                litIndicatorsList.Add(car);
+            }
+
+            else if (car.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(car);
+            }
+
+
+            if (clr.VisibleAndLit)
+            {
+                litIndicatorsList.Add(clr);
+            }
+
+            else if (clr.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(clr);
+            }
+
+
+            if (frk.VisibleAndLit)
+            {
+                litIndicatorsList.Add(frk);
+            }
+
+            else if (frk.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(frk);
+            }
+
+            if (frq.VisibleAndLit)
+            {
+                litIndicatorsList.Add(frq);
+            }
+
+            else if (frq.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(frq);
+            }
+
+            if (ind.VisibleAndLit)
+            {
+                litIndicatorsList.Add(ind);
+            }
+
+            else if (ind.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(ind);
+            }
+
+            if (msa.VisibleAndLit)
+            {
+                litIndicatorsList.Add(msa);
+            }
+
+            else if (msa.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(msa);
+            }
+
+            if (nsa.VisibleAndLit)
+            {
+                litIndicatorsList.Add(nsa);
+            }
+
+            else if (nsa.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(nsa);
+            }
+
+            if (sig.VisibleAndLit)
+            {
+                litIndicatorsList.Add(sig);
+            }
+
+            else if (sig.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(sig);
+            }
+
+            if (snd.VisibleAndLit)
+            {
+                litIndicatorsList.Add(snd);
+            }
+
+            else if (snd.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(snd);
+            }
+
+            if (trn.VisibleAndLit)
+            {
+                litIndicatorsList.Add(trn);
+            }
+
+            else if (trn.VisibleNotLit)
+            {
+                unlitIndicatorsList.Add(trn);
+            }
+
         }
 
         //===============METHODS===============

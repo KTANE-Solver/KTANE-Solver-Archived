@@ -189,6 +189,19 @@
     <Compile Include="ModuleSelectionForm.Designer.cs">
       <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MonsplodeTradingCard.cs" />
+    <Compile Include="MonsplodeTradingCardForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MonsplodeTradingCardForm1.Designer.cs">
+      <DependentUpon>MonsplodeTradingCardForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonsplodeTradingCardOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MonsplodeTradingCardOtherStageForm.Designer.cs">
+      <DependentUpon>MonsplodeTradingCardOtherStageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MorseCode.cs" />
     <Compile Include="MorseCodeForm.cs">
       <SubType>Form</SubType>
@@ -374,6 +387,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuleSelectionForm.resx">
       <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonsplodeTradingCardForm1.resx">
+      <DependentUpon>MonsplodeTradingCardForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonsplodeTradingCardOtherStageForm.resx">
+      <DependentUpon>MonsplodeTradingCardOtherStageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MorseCodeForm.resx">
       <DependentUpon>MorseCodeForm.cs</DependentUpon>
