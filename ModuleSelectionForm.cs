@@ -45,6 +45,7 @@ namespace KTANE_Solver
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MemoryStage1Form memoryForm;
+        private MonsplodeTradingCardForm1 monsplodeTradingCardForm;
         private MorseCodeForm morseCodeForm;
         private MurderForm murderForm;
         private NumberPadForm numberPadForm;
@@ -112,7 +113,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -406,6 +407,20 @@ namespace KTANE_Solver
                     }
 
                     memoryForm.Show();
+                    break;
+
+                case "Monsplode Trading Cards":
+                    if (monsplodeTradingCardForm == null)
+                    {
+                        monsplodeTradingCardForm = new MonsplodeTradingCardForm1(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        monsplodeTradingCardForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    monsplodeTradingCardForm.Show();
                     break;
 
                 case "Morse Code":

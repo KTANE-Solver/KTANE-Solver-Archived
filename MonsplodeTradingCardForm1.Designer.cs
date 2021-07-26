@@ -35,44 +35,45 @@ namespace KTANE_Solver
             this.strikeButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.card1RarityComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.card1 = new System.Windows.Forms.ComboBox();
+            this.card1NameComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.card1ShinyCheckBox = new System.Windows.Forms.CheckBox();
+            this.card1PrintVersionTextBox = new System.Windows.Forms.TextBox();
+            this.card1BentCornerTextBox = new System.Windows.Forms.TextBox();
+            this.card3BentCornerTextBox = new System.Windows.Forms.TextBox();
+            this.card3PrintVersionTextBox = new System.Windows.Forms.TextBox();
+            this.card3ShinyCheckBox = new System.Windows.Forms.CheckBox();
+            this.card3NameComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.card3RarityComboBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.card2BentCornerTextBox = new System.Windows.Forms.TextBox();
+            this.card2PrintVersionTextBox = new System.Windows.Forms.TextBox();
+            this.card2ShinyCheckBox = new System.Windows.Forms.CheckBox();
+            this.card2NameComboBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.card2RarityComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.offeringCardBentCornerTextBox = new System.Windows.Forms.TextBox();
+            this.offeringCardPrintVersionTextBox = new System.Windows.Forms.TextBox();
+            this.offeringCardShinyCheckBox = new System.Windows.Forms.CheckBox();
+            this.offeringCardNameComboBox = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.offeringCardRarityComboBox = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.moduleSelectionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -101,15 +102,17 @@ namespace KTANE_Solver
             this.backButton.TabIndex = 4;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(350, 525);
+            this.strikeButton.Location = new System.Drawing.Point(459, 525);
             this.strikeButton.Name = "strikeButton";
             this.strikeButton.Size = new System.Drawing.Size(107, 42);
             this.strikeButton.TabIndex = 5;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -119,28 +122,29 @@ namespace KTANE_Solver
             this.submitButton.TabIndex = 6;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(81, 101);
+            this.label5.Location = new System.Drawing.Point(81, 138);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 7;
             this.label5.Text = "Rarity:";
             // 
-            // comboBox1
+            // card1RarityComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(144, 98);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
+            this.card1RarityComboBox.FormattingEnabled = true;
+            this.card1RarityComboBox.Location = new System.Drawing.Point(144, 135);
+            this.card1RarityComboBox.Name = "card1RarityComboBox";
+            this.card1RarityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.card1RarityComboBox.TabIndex = 8;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(62, 142);
+            this.label6.Location = new System.Drawing.Point(62, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 9;
@@ -155,13 +159,13 @@ namespace KTANE_Solver
             this.label7.TabIndex = 11;
             this.label7.Text = "# of bent Corners:";
             // 
-            // card1
+            // card1NameComboBox
             // 
-            this.card1.FormattingEnabled = true;
-            this.card1.Location = new System.Drawing.Point(144, 60);
-            this.card1.Name = "card1";
-            this.card1.Size = new System.Drawing.Size(121, 21);
-            this.card1.TabIndex = 16;
+            this.card1NameComboBox.FormattingEnabled = true;
+            this.card1NameComboBox.Location = new System.Drawing.Point(144, 60);
+            this.card1NameComboBox.Name = "card1NameComboBox";
+            this.card1NameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.card1NameComboBox.TabIndex = 16;
             // 
             // label3
             // 
@@ -172,61 +176,61 @@ namespace KTANE_Solver
             this.label3.TabIndex = 15;
             this.label3.Text = "Name:";
             // 
-            // checkBox1
+            // card1ShinyCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(171, 220);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(52, 17);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Shiny";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.card1ShinyCheckBox.AutoSize = true;
+            this.card1ShinyCheckBox.Location = new System.Drawing.Point(171, 220);
+            this.card1ShinyCheckBox.Name = "card1ShinyCheckBox";
+            this.card1ShinyCheckBox.Size = new System.Drawing.Size(52, 17);
+            this.card1ShinyCheckBox.TabIndex = 17;
+            this.card1ShinyCheckBox.Text = "Shiny";
+            this.card1ShinyCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // card1PrintVersionTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 135);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 18;
+            this.card1PrintVersionTextBox.Location = new System.Drawing.Point(144, 94);
+            this.card1PrintVersionTextBox.Name = "card1PrintVersionTextBox";
+            this.card1PrintVersionTextBox.Size = new System.Drawing.Size(121, 20);
+            this.card1PrintVersionTextBox.TabIndex = 18;
             // 
-            // textBox2
+            // card1BentCornerTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(144, 174);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 19;
+            this.card1BentCornerTextBox.Location = new System.Drawing.Point(144, 174);
+            this.card1BentCornerTextBox.Name = "card1BentCornerTextBox";
+            this.card1BentCornerTextBox.Size = new System.Drawing.Size(121, 20);
+            this.card1BentCornerTextBox.TabIndex = 19;
             // 
-            // textBox3
+            // card3BentCornerTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(144, 424);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 29;
+            this.card3BentCornerTextBox.Location = new System.Drawing.Point(144, 424);
+            this.card3BentCornerTextBox.Name = "card3BentCornerTextBox";
+            this.card3BentCornerTextBox.Size = new System.Drawing.Size(121, 20);
+            this.card3BentCornerTextBox.TabIndex = 29;
             // 
-            // textBox4
+            // card3PrintVersionTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(144, 385);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 20);
-            this.textBox4.TabIndex = 28;
+            this.card3PrintVersionTextBox.Location = new System.Drawing.Point(144, 348);
+            this.card3PrintVersionTextBox.Name = "card3PrintVersionTextBox";
+            this.card3PrintVersionTextBox.Size = new System.Drawing.Size(121, 20);
+            this.card3PrintVersionTextBox.TabIndex = 28;
             // 
-            // checkBox2
+            // card3ShinyCheckBox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(171, 470);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(52, 17);
-            this.checkBox2.TabIndex = 27;
-            this.checkBox2.Text = "Shiny";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.card3ShinyCheckBox.AutoSize = true;
+            this.card3ShinyCheckBox.Location = new System.Drawing.Point(171, 470);
+            this.card3ShinyCheckBox.Name = "card3ShinyCheckBox";
+            this.card3ShinyCheckBox.Size = new System.Drawing.Size(52, 17);
+            this.card3ShinyCheckBox.TabIndex = 27;
+            this.card3ShinyCheckBox.Text = "Shiny";
+            this.card3ShinyCheckBox.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // card3NameComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(144, 310);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 26;
+            this.card3NameComboBox.FormattingEnabled = true;
+            this.card3NameComboBox.Location = new System.Drawing.Point(144, 310);
+            this.card3NameComboBox.Name = "card3NameComboBox";
+            this.card3NameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.card3NameComboBox.TabIndex = 26;
             // 
             // label4
             // 
@@ -249,24 +253,24 @@ namespace KTANE_Solver
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(62, 392);
+            this.label9.Location = new System.Drawing.Point(62, 355);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 13);
             this.label9.TabIndex = 23;
             this.label9.Text = "Print Version:";
             // 
-            // comboBox3
+            // card3RarityComboBox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(144, 348);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 22;
+            this.card3RarityComboBox.FormattingEnabled = true;
+            this.card3RarityComboBox.Location = new System.Drawing.Point(144, 385);
+            this.card3RarityComboBox.Name = "card3RarityComboBox";
+            this.card3RarityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.card3RarityComboBox.TabIndex = 22;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(81, 351);
+            this.label10.Location = new System.Drawing.Point(81, 388);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 13);
             this.label10.TabIndex = 21;
@@ -281,37 +285,37 @@ namespace KTANE_Solver
             this.label11.TabIndex = 20;
             this.label11.Text = "Card 3:";
             // 
-            // textBox5
+            // card2BentCornerTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(538, 170);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 20);
-            this.textBox5.TabIndex = 39;
+            this.card2BentCornerTextBox.Location = new System.Drawing.Point(538, 170);
+            this.card2BentCornerTextBox.Name = "card2BentCornerTextBox";
+            this.card2BentCornerTextBox.Size = new System.Drawing.Size(121, 20);
+            this.card2BentCornerTextBox.TabIndex = 39;
             // 
-            // textBox6
+            // card2PrintVersionTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(538, 131);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 20);
-            this.textBox6.TabIndex = 38;
+            this.card2PrintVersionTextBox.Location = new System.Drawing.Point(538, 94);
+            this.card2PrintVersionTextBox.Name = "card2PrintVersionTextBox";
+            this.card2PrintVersionTextBox.Size = new System.Drawing.Size(121, 20);
+            this.card2PrintVersionTextBox.TabIndex = 38;
             // 
-            // checkBox3
+            // card2ShinyCheckBox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(565, 216);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(52, 17);
-            this.checkBox3.TabIndex = 37;
-            this.checkBox3.Text = "Shiny";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.card2ShinyCheckBox.AutoSize = true;
+            this.card2ShinyCheckBox.Location = new System.Drawing.Point(565, 216);
+            this.card2ShinyCheckBox.Name = "card2ShinyCheckBox";
+            this.card2ShinyCheckBox.Size = new System.Drawing.Size(52, 17);
+            this.card2ShinyCheckBox.TabIndex = 37;
+            this.card2ShinyCheckBox.Text = "Shiny";
+            this.card2ShinyCheckBox.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
+            // card2NameComboBox
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(538, 56);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 36;
+            this.card2NameComboBox.FormattingEnabled = true;
+            this.card2NameComboBox.Location = new System.Drawing.Point(538, 56);
+            this.card2NameComboBox.Name = "card2NameComboBox";
+            this.card2NameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.card2NameComboBox.TabIndex = 36;
             // 
             // label12
             // 
@@ -334,24 +338,24 @@ namespace KTANE_Solver
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(456, 138);
+            this.label14.Location = new System.Drawing.Point(456, 101);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(69, 13);
             this.label14.TabIndex = 33;
             this.label14.Text = "Print Version:";
             // 
-            // comboBox6
+            // card2RarityComboBox
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(538, 94);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 32;
+            this.card2RarityComboBox.FormattingEnabled = true;
+            this.card2RarityComboBox.Location = new System.Drawing.Point(538, 135);
+            this.card2RarityComboBox.Name = "card2RarityComboBox";
+            this.card2RarityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.card2RarityComboBox.TabIndex = 32;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(475, 97);
+            this.label15.Location = new System.Drawing.Point(475, 138);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(37, 13);
             this.label15.TabIndex = 31;
@@ -366,37 +370,37 @@ namespace KTANE_Solver
             this.label16.TabIndex = 30;
             this.label16.Text = "Card 2:";
             // 
-            // textBox7
+            // offeringCardBentCornerTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(538, 424);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(121, 20);
-            this.textBox7.TabIndex = 49;
+            this.offeringCardBentCornerTextBox.Location = new System.Drawing.Point(538, 424);
+            this.offeringCardBentCornerTextBox.Name = "offeringCardBentCornerTextBox";
+            this.offeringCardBentCornerTextBox.Size = new System.Drawing.Size(121, 20);
+            this.offeringCardBentCornerTextBox.TabIndex = 49;
             // 
-            // textBox8
+            // offeringCardPrintVersionTextBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(538, 385);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(121, 20);
-            this.textBox8.TabIndex = 48;
+            this.offeringCardPrintVersionTextBox.Location = new System.Drawing.Point(538, 348);
+            this.offeringCardPrintVersionTextBox.Name = "offeringCardPrintVersionTextBox";
+            this.offeringCardPrintVersionTextBox.Size = new System.Drawing.Size(121, 20);
+            this.offeringCardPrintVersionTextBox.TabIndex = 48;
             // 
-            // checkBox4
+            // offeringCardShinyCheckBox
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(565, 470);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(52, 17);
-            this.checkBox4.TabIndex = 47;
-            this.checkBox4.Text = "Shiny";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.offeringCardShinyCheckBox.AutoSize = true;
+            this.offeringCardShinyCheckBox.Location = new System.Drawing.Point(565, 470);
+            this.offeringCardShinyCheckBox.Name = "offeringCardShinyCheckBox";
+            this.offeringCardShinyCheckBox.Size = new System.Drawing.Size(52, 17);
+            this.offeringCardShinyCheckBox.TabIndex = 47;
+            this.offeringCardShinyCheckBox.Text = "Shiny";
+            this.offeringCardShinyCheckBox.UseVisualStyleBackColor = true;
             // 
-            // comboBox5
+            // offeringCardNameComboBox
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(538, 310);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 46;
+            this.offeringCardNameComboBox.FormattingEnabled = true;
+            this.offeringCardNameComboBox.Location = new System.Drawing.Point(538, 310);
+            this.offeringCardNameComboBox.Name = "offeringCardNameComboBox";
+            this.offeringCardNameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.offeringCardNameComboBox.TabIndex = 46;
             // 
             // label17
             // 
@@ -419,24 +423,24 @@ namespace KTANE_Solver
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(456, 392);
+            this.label19.Location = new System.Drawing.Point(456, 355);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(69, 13);
             this.label19.TabIndex = 43;
             this.label19.Text = "Print Version:";
             // 
-            // comboBox7
+            // offeringCardRarityComboBox
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(538, 348);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 21);
-            this.comboBox7.TabIndex = 42;
+            this.offeringCardRarityComboBox.FormattingEnabled = true;
+            this.offeringCardRarityComboBox.Location = new System.Drawing.Point(538, 385);
+            this.offeringCardRarityComboBox.Name = "offeringCardRarityComboBox";
+            this.offeringCardRarityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.offeringCardRarityComboBox.TabIndex = 42;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(475, 351);
+            this.label20.Location = new System.Drawing.Point(475, 388);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(37, 13);
             this.label20.TabIndex = 41;
@@ -451,49 +455,60 @@ namespace KTANE_Solver
             this.label21.TabIndex = 40;
             this.label21.Text = "Offering Card:";
             // 
+            // moduleSelectionButton
+            // 
+            this.moduleSelectionButton.Location = new System.Drawing.Point(247, 525);
+            this.moduleSelectionButton.Name = "moduleSelectionButton";
+            this.moduleSelectionButton.Size = new System.Drawing.Size(107, 42);
+            this.moduleSelectionButton.TabIndex = 50;
+            this.moduleSelectionButton.Text = "Module Selection";
+            this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
+            // 
             // MonsplodeTradingCardForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(811, 579);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.moduleSelectionButton);
+            this.Controls.Add(this.offeringCardBentCornerTextBox);
+            this.Controls.Add(this.offeringCardPrintVersionTextBox);
+            this.Controls.Add(this.offeringCardShinyCheckBox);
+            this.Controls.Add(this.offeringCardNameComboBox);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.offeringCardRarityComboBox);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.card2BentCornerTextBox);
+            this.Controls.Add(this.card2PrintVersionTextBox);
+            this.Controls.Add(this.card2ShinyCheckBox);
+            this.Controls.Add(this.card2NameComboBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.card2RarityComboBox);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.card3BentCornerTextBox);
+            this.Controls.Add(this.card3PrintVersionTextBox);
+            this.Controls.Add(this.card3ShinyCheckBox);
+            this.Controls.Add(this.card3NameComboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.card3RarityComboBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.card1);
+            this.Controls.Add(this.card1BentCornerTextBox);
+            this.Controls.Add(this.card1PrintVersionTextBox);
+            this.Controls.Add(this.card1ShinyCheckBox);
+            this.Controls.Add(this.card1NameComboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.card1RarityComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.strikeButton);
@@ -501,7 +516,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "MonsplodeTradingCardForm1";
-            this.Text = "MonslodeTradingCardForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,43 +529,44 @@ namespace KTANE_Solver
         private System.Windows.Forms.Button strikeButton;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox card1RarityComboBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox card1;
+        private System.Windows.Forms.ComboBox card1NameComboBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.CheckBox card1ShinyCheckBox;
+        private System.Windows.Forms.TextBox card1PrintVersionTextBox;
+        private System.Windows.Forms.TextBox card1BentCornerTextBox;
+        private System.Windows.Forms.TextBox card3BentCornerTextBox;
+        private System.Windows.Forms.TextBox card3PrintVersionTextBox;
+        private System.Windows.Forms.CheckBox card3ShinyCheckBox;
+        private System.Windows.Forms.ComboBox card3NameComboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox card3RarityComboBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.TextBox card2BentCornerTextBox;
+        private System.Windows.Forms.TextBox card2PrintVersionTextBox;
+        private System.Windows.Forms.CheckBox card2ShinyCheckBox;
+        private System.Windows.Forms.ComboBox card2NameComboBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox card2RarityComboBox;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.TextBox offeringCardBentCornerTextBox;
+        private System.Windows.Forms.TextBox offeringCardPrintVersionTextBox;
+        private System.Windows.Forms.CheckBox offeringCardShinyCheckBox;
+        private System.Windows.Forms.ComboBox offeringCardNameComboBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox offeringCardRarityComboBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button moduleSelectionButton;
     }
 }

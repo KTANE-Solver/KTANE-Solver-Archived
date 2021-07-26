@@ -458,7 +458,7 @@ namespace KTANE_Solver
         {
             get
             {
-                return litIndicatorsList.Count;
+                return LitIndicatorsList.Count;
             }
         }
 
@@ -467,7 +467,7 @@ namespace KTANE_Solver
         {
             get
             {
-                return unlitIndicatorsList.Count;
+                return UnlitIndicatorsList.Count;
             }
         }
 
@@ -629,6 +629,9 @@ namespace KTANE_Solver
                     Indicator sig, Indicator snd, Indicator trn, bool emptyPortPlate, Port dvid, Port parallel, 
                     Port ps, Port rj, Port serial, Port stereo)
         {
+            LitIndicatorsList = new List<Indicator>();
+            UnlitIndicatorsList = new List<Indicator>();
+
             this.day = day;
             this.serialNumber = serialNumber.ToUpper();
             this.battery = battery;
@@ -652,118 +655,117 @@ namespace KTANE_Solver
             this.serial = serial;
             this.stereo = stereo;
 
-            litIndicatorsList = new List<Indicator>();
 
             if (bob.VisibleAndLit)
             {
-                litIndicatorsList.Add(bob);
+                LitIndicatorsList.Add(bob);
             }
 
             else if (bob.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(bob);
+                UnlitIndicatorsList.Add(bob);
             }
 
             if (car.VisibleAndLit)
             {
-                litIndicatorsList.Add(car);
+                LitIndicatorsList.Add(car);
             }
 
             else if (car.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(car);
+                UnlitIndicatorsList.Add(car);
             }
 
 
             if (clr.VisibleAndLit)
             {
-                litIndicatorsList.Add(clr);
+                LitIndicatorsList.Add(clr);
             }
 
             else if (clr.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(clr);
+                UnlitIndicatorsList.Add(clr);
             }
 
 
             if (frk.VisibleAndLit)
             {
-                litIndicatorsList.Add(frk);
+                LitIndicatorsList.Add(frk);
             }
 
             else if (frk.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(frk);
+                UnlitIndicatorsList.Add(frk);
             }
 
             if (frq.VisibleAndLit)
             {
-                litIndicatorsList.Add(frq);
+                LitIndicatorsList.Add(frq);
             }
 
             else if (frq.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(frq);
+                UnlitIndicatorsList.Add(frq);
             }
 
             if (ind.VisibleAndLit)
             {
-                litIndicatorsList.Add(ind);
+                LitIndicatorsList.Add(ind);
             }
 
             else if (ind.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(ind);
+                UnlitIndicatorsList.Add(ind);
             }
 
             if (msa.VisibleAndLit)
             {
-                litIndicatorsList.Add(msa);
+                LitIndicatorsList.Add(msa);
             }
 
             else if (msa.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(msa);
+                UnlitIndicatorsList.Add(msa);
             }
 
             if (nsa.VisibleAndLit)
             {
-                litIndicatorsList.Add(nsa);
+                LitIndicatorsList.Add(nsa);
             }
 
             else if (nsa.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(nsa);
+                UnlitIndicatorsList.Add(nsa);
             }
 
             if (sig.VisibleAndLit)
             {
-                litIndicatorsList.Add(sig);
+                LitIndicatorsList.Add(sig);
             }
 
             else if (sig.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(sig);
+                UnlitIndicatorsList.Add(sig);
             }
 
             if (snd.VisibleAndLit)
             {
-                litIndicatorsList.Add(snd);
+                LitIndicatorsList.Add(snd);
             }
 
             else if (snd.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(snd);
+                UnlitIndicatorsList.Add(snd);
             }
 
             if (trn.VisibleAndLit)
             {
-                litIndicatorsList.Add(trn);
+                LitIndicatorsList.Add(trn);
             }
 
             else if (trn.VisibleNotLit)
             {
-                unlitIndicatorsList.Add(trn);
+                UnlitIndicatorsList.Add(trn);
             }
 
         }

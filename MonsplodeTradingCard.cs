@@ -10,15 +10,31 @@ namespace KTANE_Solver
 {
     public class MonsplodeTradingCard : Module
     {
-        Card[] hand;
+        public Card[] hand { get; }
 
         public MonsplodeTradingCard(Bomb bomb, StreamWriter logfileWriter, Card card1, Card card2, Card card3) : base(bomb, logfileWriter)
         {
             hand = new Card [] { card1, card2, card3 };
         }
 
+        /// <summary>
+        /// Returns the cards that the player currently has
+        /// </summary>
         public void Solve(Card offeredCard)
         {
+
+            System.Diagnostics.Debug.WriteLine("Card 1");
+            hand[0].PrintCard();
+
+            System.Diagnostics.Debug.WriteLine("Card 2");
+            hand[1].PrintCard();
+
+            System.Diagnostics.Debug.WriteLine("Card 3");
+            hand[2].PrintCard();
+
+            System.Diagnostics.Debug.WriteLine("Offering Card");
+            offeredCard.PrintCard();
+
             //find the lowest card in our hand
             Card lowestCard = hand[0];
             int position = 0;
@@ -43,10 +59,9 @@ namespace KTANE_Solver
 
             else
             { 
-                ShowAnswer($"Trade {lowestCard.Name}", "Monosplode Trading Cards Answer");
+                ShowAnswer($"Trade Card {position + 1}", "Monosplode Trading Cards Answer");
                 hand[position] = offeredCard;
             }
-
         }
 
         public class Card
@@ -93,6 +108,11 @@ namespace KTANE_Solver
 
                 Value = GetInitalValue(name);
 
+                if (Value == 0)
+                {
+                    return;
+                }
+
                 double mutiplier = 0;
 
                 //If the card is Common, the multiplier is 1.
@@ -135,6 +155,16 @@ namespace KTANE_Solver
                 }
             }
 
+            public void PrintCard()
+            {
+                System.Diagnostics.Debug.WriteLine($"Name: {Name}");
+                System.Diagnostics.Debug.WriteLine($"Print Version: {PrintVersion}");
+                System.Diagnostics.Debug.WriteLine($"Rarity: {rarity}");
+                System.Diagnostics.Debug.WriteLine($"Value: {Value}");
+                System.Diagnostics.Debug.WriteLine($"Bent Corners: {DentCorners}\n");
+
+            }
+
             private int GetInitalValue(String Name)
             {
                 int Value;
@@ -150,6 +180,11 @@ namespace KTANE_Solver
                 {
                     switch (Name)
                     {
+                        case "Aluga, The Fighter":
+                        case "Buhar, The Protector":
+                            Value = 6;
+                            break;
+
                         case "Asteran":
                         case "Aluga":
                         case "Bob":
@@ -167,6 +202,7 @@ namespace KTANE_Solver
 
                         case "Buhar":
                         case "Gloorim":
+                        case "Bob, The Ancestor":
                             Value = 5;
                             break;
 
@@ -202,9 +238,12 @@ namespace KTANE_Solver
                             break;
 
                         case "Asteran":
+                        case "Buhar, The Protector":
                             Value = 5;
                             break;
 
+                        case "Melbor, The Web Bug":
+                        case "Aluga, The Fighter":
                         case "Bob":
                         case "Caadarim":
                         case "Cutie Pie":
@@ -214,6 +253,10 @@ namespace KTANE_Solver
                         case "Violan":
                         case "Zapra":
                             Value = 4;
+                            break;
+
+                        case "Bob, The Ancestor":
+                            Value = 6;
                             break;
 
                         default:
@@ -234,7 +277,8 @@ namespace KTANE_Solver
                         case "Lanaluff":
                         case "Melbor":
                         case "Myrchat":
-
+                        case "Bob, The Ancestor":
+                        case "Melbor, The Web Bug":
                             Value = 4;
                             break;
 
@@ -251,6 +295,10 @@ namespace KTANE_Solver
                         case "Zapra":
                         case "Zenlad":
                             Value = 2;
+                            break;
+
+                        case "Aluga, The Fighter":
+                            Value = 5;
                             break;
 
                         default:
@@ -274,6 +322,14 @@ namespace KTANE_Solver
                         case "Violan":
 
                             Value = 2;
+                            break;
+
+                        case "Aluga, The Fighter":
+                            Value = 3;
+                            break;
+
+                        case "Melbor, The Web Bug":
+                            Value = 6;
                             break;
 
                         case "Bob":
@@ -305,26 +361,19 @@ namespace KTANE_Solver
                 //For each indicator on the bomb that contains the letter of the Print Version, add 1 to the card’s value if it’s lit and subtract 1 if it’s unlit
                 foreach (Indicator litIndicator in bomb.LitIndicatorsList)
                 {
-                    foreach (char letter in Name.ToUpper())
+                    
+                    if (litIndicator.Name.Contains(PrintAlphabet))
                     {
-                        if (litIndicator.Name.Contains(letter))
-                        {
-                            Value++;
-                        }
+                        Value++;
                     }
-
                 }
 
                 foreach (Indicator unlitIndicator in bomb.UnlitIndicatorsList)
                 {
-                    foreach (char letter in Name.ToUpper())
+                    if (unlitIndicator.Name.Contains(PrintAlphabet))
                     {
-                        if (unlitIndicator.Name.Contains(letter))
-                        {
-                            Value--;
-                        }
+                        Value--;
                     }
-
                 }
 
                 //If the bomb has no batteries, keep the card’s current value.
