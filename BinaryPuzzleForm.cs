@@ -114,7 +114,7 @@ namespace KTANE_Solver
 
         public void Tile_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
 
             if (button.BackColor == Color.White)
             {
@@ -205,7 +205,7 @@ namespace KTANE_Solver
             }
         }
 
-        private char GetInput(Button button)
+        private char GetInput(System.Windows.Forms.Button button)
         {
             if (button.BackColor == Color.White)
             {

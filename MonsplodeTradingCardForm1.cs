@@ -52,7 +52,7 @@ namespace KTANE_Solver
 
         private void UpdateCardNameComboBox(ComboBox comboBox)
         {
-            String[] names = { "Aluga", "Aluga, The Fighter", "Asteran", "Bob", "Bob, The Ancestor", "Buhar", "	Buhar, The Protector", "Caadarim", "Clondar", "Cutie Pie", "Docsplode", "Flaurim", "Gloorim", "Lanaluff", "Lugirit", "Magmy", "Melbor", "Melbor, The WebBug", "Mountoise", "Myrchat", "Nibs", "Percy", "Pouse", "Ukkens", "Vellarim", "Violan", "Zapra", "Zenlad" };
+            String[] names = { "Aluga", "Aluga, The Fighter", "Asteran", "Bob", "Bob, The Ancestor", "Buhar", "Buhar, The Protector", "Caadarim", "Clondar", "Cutie Pie", "Docsplode", "Flaurim", "Gloorim", "Lanaluff", "Lugirit", "Magmy", "Melbor", "Melbor, The Web Bug", "Mountoise", "Myrchat", "Nibs", "Percy", "Pouse", "Ukkens", "Vellarim", "Violan", "Zapra", "Zenlad" };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(names);
             comboBox.Text = names[0];

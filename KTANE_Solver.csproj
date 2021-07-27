@@ -319,6 +319,19 @@
       <DependentUpon>WhosOnFirstOtherStageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Wires.cs" />
+    <Compile Include="WireSequence.cs" />
+    <Compile Include="WireSequenceOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WireSequenceOtherStageForm.Designer.cs">
+      <DependentUpon>WireSequenceOtherStageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WireSequenceStage1Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WireSequenceStage1Form.Designer.cs">
+      <DependentUpon>WireSequenceStage1Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="WiresForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -460,6 +473,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WhosOnFirstOtherStageForm.resx">
       <DependentUpon>WhosOnFirstOtherStageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WireSequenceOtherStageForm.resx">
+      <DependentUpon>WireSequenceOtherStageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WireSequenceStage1Form.resx">
+      <DependentUpon>WireSequenceStage1Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WiresForm.resx">
       <DependentUpon>WiresForm.cs</DependentUpon>

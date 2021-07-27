@@ -119,9 +119,9 @@ namespace KTANE_Solver
         private void AddSelection(object sender, EventArgs e)
         {
             //the image that was selected
-            Image selectedImage = ((Button)sender).Image;
+            Image selectedImage = ((System.Windows.Forms.Button)sender).Image;
 
-            Button selectedButton = (Button)sender;
+            System.Windows.Forms.Button selectedButton = (System.Windows.Forms.Button)sender;
 
             
 
@@ -249,7 +249,7 @@ namespace KTANE_Solver
         /// </summary>
         private void DeleteSelection(object sender, EventArgs e)
         {
-            Button selectedButton = (Button)sender;
+            System.Windows.Forms.Button selectedButton = (System.Windows.Forms.Button)sender;
 
             selectedButton.Image = null;
 

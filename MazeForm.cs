@@ -19,7 +19,7 @@ namespace KTANE_Solver
     {
         //the 2d array that will hold buttons
         //that will represent the gird
-        private Button[,] buttonArray;
+        private System.Windows.Forms.Button[,] buttonArray;
 
         //used to solve the module
         private Maze maze;
@@ -64,7 +64,7 @@ namespace KTANE_Solver
             //the mze can be seen
             int YOffset = 12;
 
-            buttonArray = new Button[6, 6];
+            buttonArray = new System.Windows.Forms.Button[6, 6];
 
             mazeBox.Controls.Clear();
 
@@ -77,7 +77,7 @@ namespace KTANE_Solver
             {
                 for (int column = 0; column < 6; column++)
                 {
-                    Button button = new Button();
+                    System.Windows.Forms.Button button = new System.Windows.Forms.Button();
 
 
                     button.Width = buttonWidth;
@@ -105,7 +105,7 @@ namespace KTANE_Solver
         /// </summary>
         private void button_Click(object sender, EventArgs e)
         {
-            Button button = (Button) sender;
+            System.Windows.Forms.Button button = (System.Windows.Forms.Button) sender;
 
 
             if (button.BackColor == Color.Blue)
@@ -167,7 +167,7 @@ namespace KTANE_Solver
             int markerRow = -1;
             int markerColumn = -1;
 
-            foreach (Button button in buttonArray)
+            foreach (System.Windows.Forms.Button button in buttonArray)
             {
                 if (button.BackColor == Color.Red)
                 {

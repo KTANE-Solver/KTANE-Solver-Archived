@@ -49,7 +49,7 @@ namespace KTANE_Solver
 
         private void numberButton_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
 
             if (button.BackColor == Color.White)
             {

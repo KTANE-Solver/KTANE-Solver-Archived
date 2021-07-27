@@ -160,8 +160,11 @@ namespace KTANE_Solver
                 System.Diagnostics.Debug.WriteLine($"Name: {Name}");
                 System.Diagnostics.Debug.WriteLine($"Print Version: {PrintVersion}");
                 System.Diagnostics.Debug.WriteLine($"Rarity: {rarity}");
+                System.Diagnostics.Debug.WriteLine($"Bent Corners: {DentCorners}");
                 System.Diagnostics.Debug.WriteLine($"Value: {Value}");
-                System.Diagnostics.Debug.WriteLine($"Bent Corners: {DentCorners}\n");
+                System.Diagnostics.Debug.WriteLine($"Shiny: {Shiny}\n");
+
+
 
             }
 
