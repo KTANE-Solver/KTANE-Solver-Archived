@@ -76,6 +76,13 @@
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Bomb.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="ButtonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ButtonForm.Designer.cs">
+      <DependentUpon>ButtonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheapCheckout.cs" />
     <Compile Include="CheapCheckoutAlertForm.cs">
       <SubType>Form</SubType>
@@ -336,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BinaryPuzzleForm.resx">
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ButtonForm.resx">
+      <DependentUpon>ButtonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CheapCheckoutAlertForm.resx">
       <DependentUpon>CheapCheckoutAlertForm.cs</DependentUpon>

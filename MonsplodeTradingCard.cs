@@ -52,7 +52,7 @@ namespace KTANE_Solver
             }
 
             //see if the lowest card is worse than the offered card, if yes then trade, if not then keep
-            if (lowestCard.Value > offeredCard.Value)
+            if (lowestCard.Value >= offeredCard.Value)
             {
                 ShowAnswer("Press Keep", "Monosplode Trading Cards Answer");
             }
