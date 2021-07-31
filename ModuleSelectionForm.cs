@@ -58,6 +58,7 @@ namespace KTANE_Solver
         private TwoBitsStage1Form twoBitsForm;
         private WhosOnFirstFirstStageForm whosOnFirstForm;
         private WiresForm wiresForm;
+        private WireSequenceStage1Form wireSequenceForm;
         private WordSearchForm wordSearchForm;
 
 
@@ -114,7 +115,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -598,6 +599,21 @@ namespace KTANE_Solver
                     }
 
                     wiresForm.Show();
+                    break;
+
+                case "Wires Sequence":
+
+                    if (wireSequenceForm == null)
+                    {
+                        wireSequenceForm = new WireSequenceStage1Form(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        wireSequenceForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    wireSequenceForm.Show();
                     break;
 
                 case "Word Search":

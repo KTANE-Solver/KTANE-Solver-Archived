@@ -7,7 +7,7 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    class WireSequence : Module
+    public class WireSequence : Module
     {
         private int redColor;
         private int blueColor;
@@ -19,7 +19,7 @@ namespace KTANE_Solver
             blackColor = 0;
         }
 
-        public void Solve(String color, char letter)
+        public String Solve(String color, char letter)
         {
             switch (color)
             {
@@ -30,12 +30,12 @@ namespace KTANE_Solver
                     {
                         if (redColor == 3 || redColor == 4 || redColor == 6 || redColor == 7 || redColor == 8)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         { 
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
 
@@ -43,12 +43,12 @@ namespace KTANE_Solver
                     {
                         if (redColor == 2 || redColor == 5 || redColor == 7 || redColor == 8 || redColor == 9)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
 
@@ -56,16 +56,14 @@ namespace KTANE_Solver
                     {
                         if (redColor == 1 || redColor == 4 || redColor == 6 || redColor == 7)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
-
-                    break;
 
                 case "Blue":
                     blueColor++;
@@ -73,12 +71,12 @@ namespace KTANE_Solver
                     {
                         if (blueColor == 2 || blueColor == 4 || blueColor == 8 || blueColor == 9)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
 
@@ -86,12 +84,12 @@ namespace KTANE_Solver
                     {
                         if (blueColor == 1 || blueColor == 3 || blueColor == 5 || blueColor == 6)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
 
@@ -99,16 +97,14 @@ namespace KTANE_Solver
                     {
                         if (blueColor == 2 || blueColor == 7 || blueColor == 8 || blueColor == 6)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";;
                         }
                     }
-
-                    break;
 
                 default:
                     blackColor++;
@@ -116,12 +112,12 @@ namespace KTANE_Solver
                     {
                         if (blackColor == 1 || blackColor == 2 || blackColor == 4 || blackColor == 7)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
 
@@ -129,12 +125,12 @@ namespace KTANE_Solver
                     {
                         if (blackColor == 1 || blackColor == 3 || blackColor == 5 || blackColor == 6 || blackColor == 7)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
 
@@ -142,16 +138,14 @@ namespace KTANE_Solver
                     {
                         if (blackColor == 1 || blackColor == 2 || blackColor == 4 || blackColor == 6 || blackColor == 8 || blackColor == 9)
                         {
-                            ShowAnswer("Cut", "Wire Sequence Answer");
+                            return "Cut";
                         }
 
                         else
                         {
-                            ShowAnswer("Don't Cut", "Wire Sequence Answer");
+                            return "Don't Cut";
                         }
                     }
-
-                    break;
             }
         }
     }
