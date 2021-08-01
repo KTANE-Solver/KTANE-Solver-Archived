@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace KTANE_Solver
+{
+    public partial class BulbForm : ModuleForm
+    {
+        public BulbForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        {
+            InitializeComponent();
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
+        }
+
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        {
+            String[] colors = { "Blue", "Green", "Purple", "Red", "White", "Yellow" };
+
+            colorComboBox.Items.Clear();
+            colorComboBox.Items.AddRange(colors);
+            colorComboBox.Text = colors[0];
+            colorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            opaqueCheckBox.Checked = false;
+            litCheckBox.Checked = false;
+
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            GoToMoudleSelectionForm();
+        }
+
+        private void strikeButton_Click(object sender, EventArgs e)
+        {
+            IncrementStrike();
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            new Bulb(Bomb, LogFileWriter, litCheckBox.Checked, opaqueCheckBox.Checked, colorComboBox.Text);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+        }
+    }
+}

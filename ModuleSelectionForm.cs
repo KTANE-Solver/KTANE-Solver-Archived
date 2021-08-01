@@ -36,6 +36,7 @@ namespace KTANE_Solver
         //module forms
         private _3DMazeForm threeDMazeForm;
         private BinaryPuzzleForm binaryForm;
+        private BulbForm bulbForm;
         private ButtonForm buttonForm;
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
@@ -115,7 +116,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -291,6 +292,22 @@ namespace KTANE_Solver
                     }
 
                     buttonForm.Show();
+                    break;
+
+                case "Bulb":
+
+                    if (bulbForm == null)
+                    {
+                        bulbForm = new BulbForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        bulbForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    bulbForm.Show();
+
                     break;
 
                 case "Cheap Checkout":
