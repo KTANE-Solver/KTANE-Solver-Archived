@@ -54,6 +54,7 @@ namespace KTANE_Solver
         private NumberPadForm numberPadForm;
         private PasswordFirstStageForm passwordForm;
         private PokerStage1Form pokerForm;
+        private RockPaperScissorsLizardSpockForm rockPaperScissorsLizardSpockForm;
         private RubixCubeForm rubikCubeForm;
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
@@ -117,7 +118,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Gamepad", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Gamepad", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -529,6 +530,20 @@ namespace KTANE_Solver
                     }
 
                     pokerForm.Show();
+                    break;
+
+                case "Rock Paper Scissors Lizard Spock":
+                    if (rockPaperScissorsLizardSpockForm == null)
+                    {
+                        rockPaperScissorsLizardSpockForm = new RockPaperScissorsLizardSpockForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        rockPaperScissorsLizardSpockForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    rockPaperScissorsLizardSpockForm.Show();
                     break;
 
                 case "Rubik's Cube":
