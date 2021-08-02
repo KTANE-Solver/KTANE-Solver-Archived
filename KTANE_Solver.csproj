@@ -142,6 +142,13 @@
     <Compile Include="EdgeworkSelectionForm.Designer.cs">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamepad.cs" />
+    <Compile Include="GamepadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GamepadForm.Designer.cs">
+      <DependentUpon>GamepadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IceCream.cs" />
     <Compile Include="IceCreamForm.cs">
       <SubType>Form</SubType>
@@ -393,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkSelectionForm.resx">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GamepadForm.resx">
+      <DependentUpon>GamepadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IceCreamForm.resx">
       <DependentUpon>IceCreamForm.cs</DependentUpon>

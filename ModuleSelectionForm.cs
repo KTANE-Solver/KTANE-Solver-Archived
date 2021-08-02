@@ -42,6 +42,7 @@ namespace KTANE_Solver
         private ChessForm chessForm;
         private ComplicatedWiresForm complicatedWiresForm;
         private ColorMathForm colorMathForm;
+        private GamepadForm gamepadForm;
         private IceCreamForm iceCreamForm;
         private KeypadForm keyPadForm;
         private LogicForm logicForm;
@@ -116,7 +117,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
-            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Gamepad", "Ice Cream", "Keypad", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -366,6 +367,19 @@ namespace KTANE_Solver
                     }
 
                     complicatedWiresForm.Show();
+                    break;
+
+                case "Gamepad":
+                    if (gamepadForm == null)
+                    {
+                        gamepadForm = new GamepadForm(bomb, logFileWriter, this);
+                    }
+                    else
+                    {
+                        gamepadForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    gamepadForm.Show();
                     break;
 
                 case "Ice Cream":
