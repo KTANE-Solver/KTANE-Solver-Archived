@@ -142,6 +142,13 @@
     <Compile Include="EdgeworkSelectionForm.Designer.cs">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FizzBuzz.cs" />
+    <Compile Include="FizzBuzzForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FizzBuzzForm.Designer.cs">
+      <DependentUpon>FizzBuzzForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gamepad.cs" />
     <Compile Include="GamepadForm.cs">
       <SubType>Form</SubType>
@@ -407,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkSelectionForm.resx">
       <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FizzBuzzForm.resx">
+      <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GamepadForm.resx">
       <DependentUpon>GamepadForm.cs</DependentUpon>
