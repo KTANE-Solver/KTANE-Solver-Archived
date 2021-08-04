@@ -177,6 +177,13 @@
     <Compile Include="KeypadFormAnswer.Designer.cs">
       <DependentUpon>KeypadFormAnswer.cs</DependentUpon>
     </Compile>
+    <Compile Include="LightCycle.cs" />
+    <Compile Include="LightCycleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LightCycleForm.Designer.cs">
+      <DependentUpon>LightCycleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logic.cs" />
     <Compile Include="LogicForm.cs">
       <SubType>Form</SubType>
@@ -429,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KeypadFormAnswer.resx">
       <DependentUpon>KeypadFormAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LightCycleForm.resx">
+      <DependentUpon>LightCycleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogicForm.resx">
       <DependentUpon>LogicForm.cs</DependentUpon>

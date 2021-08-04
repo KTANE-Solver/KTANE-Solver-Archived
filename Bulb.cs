@@ -22,8 +22,11 @@ namespace KTANE_Solver
         private String Step1Direction;
         private String Step2Direction;
         private String Step3Direction;
+
+        private List<string> list;
         public Bulb(Bomb bomb, StreamWriter logFileWriter, bool lit, bool opaque, String color) : base(bomb, logFileWriter)
         {
+            list = new List<string>();
             Lit = lit;
             Opaque = opaque;
             Color = color;
@@ -74,6 +77,7 @@ namespace KTANE_Solver
             {
                 PressI();
                 Step1Direction = "Press I";
+                PrintList();
                 Step1LightWentOff = LightWentOff();
                 Step2();
             }
@@ -83,6 +87,7 @@ namespace KTANE_Solver
             {
                 PressO();
                 Step1Direction = "Press O";
+                PrintList();
                 Step1LightWentOff = LightWentOff();
                 Step3();
             }
@@ -134,6 +139,7 @@ namespace KTANE_Solver
             {
                 PressI();
                 Step3Direction = "Press I";
+                PrintList();
                 Step3LightWentOff = LightWentOff();
                 Unscrew();
                 Step6();
@@ -182,7 +188,7 @@ namespace KTANE_Solver
             //If the light went off at Step 1, press the same button again, then screw the bulb back in.
             if (Step1LightWentOff)
             {
-                MessageBox.Show(Step1Direction);
+                list.Add(Step1Direction);
             }
             //Otherwise, press the button you haven’t yet pressed, then screw the bulb back in.
             else
@@ -200,6 +206,7 @@ namespace KTANE_Solver
             }
 
             Screw();
+            PrintList();
         }
 
         private void Step6()
@@ -209,7 +216,7 @@ namespace KTANE_Solver
             //If the bulb went off when you pressed I, press the button that you pressed in Step 1, then screw the bulb back in.
             if ((Step1LightWentOff && Step1Direction == "Press I") || Step3Direction == "Press I" && Step3LightWentOff)
             {
-                MessageBox.Show(Step1Direction);
+                list.Add(Step1Direction);
             }
 
             //Otherwise, press the button that you pressed in Step 2 or 3, then screw the bulb back in.
@@ -217,16 +224,17 @@ namespace KTANE_Solver
             {
                 if (Step2Direction != null)
                 {
-                    MessageBox.Show(Step2Direction);
+                    list.Add(Step2Direction);
                 }
 
                 else
                 {
-                    MessageBox.Show(Step3Direction);
+                    list.Add(Step3Direction);
                 }
             }
 
             Screw();
+            PrintList();
         }
 
         private void Step7()
@@ -399,6 +407,7 @@ namespace KTANE_Solver
             //Otherwise, screw the bulb back in, then press O and go to Step 12.
             else
             {
+                Screw();
                 PressO();
                 Step12();
             }
@@ -420,6 +429,7 @@ namespace KTANE_Solver
             }
 
             Screw();
+            PrintList();
         }
 
         private void Step12()
@@ -427,6 +437,8 @@ namespace KTANE_Solver
             System.Diagnostics.Debug.WriteLine($"Stage 12...\n");
 
             //If the light is now on, press I.
+
+            PrintList();
 
             //Otherwise, press O.
             if (LightIsOn())
@@ -438,12 +450,15 @@ namespace KTANE_Solver
             {
                 PressO();
             }
-           
+
+            PrintList();
         }
 
         private void Step13()
         {
             System.Diagnostics.Debug.WriteLine($"Stage 13...\n");
+
+            PrintList();
 
             //If the light is now on, press O.
             //Otherwise, press I.
@@ -456,7 +471,8 @@ namespace KTANE_Solver
             {
                 PressI();
             }
-            
+
+            PrintList();
         }
 
         private void Step14()
@@ -475,6 +491,7 @@ namespace KTANE_Solver
             }
 
             Screw();
+            PrintList();
         }
 
         private void Step15()
@@ -493,35 +510,38 @@ namespace KTANE_Solver
             }
 
             Screw();
+            PrintList();
         }
 
         private void PressI()
         {
-            MessageBox.Show("Press I", "");
-            System.Diagnostics.Debug.WriteLine("Pressing I...\n");
+            list.Add("Press I");
+
+            System.Diagnostics.Debug.WriteLine("Press I");
         }
 
         private void PressO()
         {
-            MessageBox.Show("Press O", "");
-            
-            System.Diagnostics.Debug.WriteLine("Pressing O...\n");
-
+            list.Add("Press O");
+            System.Diagnostics.Debug.WriteLine("Press O");
         }
 
         private void Screw()
         {
-            MessageBox.Show("Screw", "");
-
-            System.Diagnostics.Debug.WriteLine("Screwing...\n");
-
+            list.Add("Screw");
+            System.Diagnostics.Debug.WriteLine("Screw");
         }
 
         private void Unscrew()
         {
-            MessageBox.Show("Unscrew", "");
+            list.Add("Unscrew");
+            System.Diagnostics.Debug.WriteLine("Unscrew");
+        }
 
-            System.Diagnostics.Debug.WriteLine("Unscrewing...\n");
+        private void PrintList()
+        {
+            ShowAnswer(string.Join(", ", list), "Bulb Answer");
+            list.Clear();
         }
 
         private bool LightWentOff()
