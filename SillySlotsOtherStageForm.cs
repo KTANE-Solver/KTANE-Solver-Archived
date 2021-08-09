@@ -90,7 +90,7 @@ namespace KTANE_Solver
             String[] keywordList = new String[] { "Sally", "Sassy", "Sausage", "Silly", "Simon", "Soggy", "Steven" };
 
             keywordComboBox.Items.AddRange(keywordList);
-            keywordComboBox.Text = "Sally";
+            keywordComboBox.Text = keywordList[0];
             keywordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //set up each color combobox
@@ -124,10 +124,10 @@ namespace KTANE_Solver
             //set up keyword comboBox
             keywordComboBox.Items.Clear();
 
-            String[] keywordList = new String[] { "Sassy", "Silly", "Soggy", "Sally", "Simon", "Sausage", "Steven" };
+            String[] keywordList = new String[] { "Sally", "Sassy", "Silly", "Simon", "Soggy", "Sausage", "Steven" };
 
             keywordComboBox.Items.AddRange(keywordList);
-            keywordComboBox.Text = "Sassy";
+            keywordComboBox.Text = keywordList[0];
             keywordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //set up each color combobox

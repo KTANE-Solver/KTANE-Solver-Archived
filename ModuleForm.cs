@@ -90,6 +90,8 @@ namespace KTANE_Solver
 
                 else
                 {
+                    LogFileWriter.Write("User closed program...");
+                    System.Diagnostics.Debug.Write("User closed program...");
                     LogFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();

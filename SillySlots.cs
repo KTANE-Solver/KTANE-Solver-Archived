@@ -71,38 +71,41 @@ namespace KTANE_Solver
         /// <returns>true if the user presses keep</returns>
         public bool Solve(int stage)
         {
-            LogFileWriter.WriteLine("=======================SILLY SLOTS=======================");
-            LogFileWriter.WriteLine($"Stage {stage}\n");
+            if (stage == 1)
+            {
+                PrintDebugLine("=======================SILLY SLOTS=======================\n");
+            }
 
-            LogFileWriter.WriteLine($"Keyword: {keyword}\n");
+            PrintDebugLine($"Stage {stage}\n");
+            PrintDebugLine($"Keyword: {keyword}\n");
 
             //print information to the log
-            if (stage >= 1)
+            if (stage == 1)
             {
-                LogFileWriter.WriteLine($"Stage 1 Slot 1: {stage1Slot1.Color} {stage1Slot1.Object}");
-                LogFileWriter.WriteLine($"Stage 1 Slot 2: {stage1Slot2.Color} {stage1Slot2.Object}");
-                LogFileWriter.WriteLine($"Stage 1 Slot 3: {stage1Slot3.Color} {stage1Slot3.Object}");
+                PrintDebugLine($"Stage 1 Slot 1: {stage1Slot1.Color} {stage1Slot1.Object}");
+                PrintDebugLine($"Stage 1 Slot 2: {stage1Slot2.Color} {stage1Slot2.Object}");
+                PrintDebugLine($"Stage 1 Slot 3: {stage1Slot3.Color} {stage1Slot3.Object}\n");
             }
 
-            if (stage >= 2)
+            if (stage == 2)
             {
-                LogFileWriter.WriteLine($"Stage 2 Slot 1: {stage2Slot1.Color} {stage2Slot1.Object}");
-                LogFileWriter.WriteLine($"Stage 2 Slot 2: {stage2Slot2.Color} {stage2Slot2.Object}");
-                LogFileWriter.WriteLine($"Stage 2 Slot 3: {stage2Slot3.Color} {stage2Slot3.Object}");
+                PrintDebugLine($"Stage 2 Slot 1: {stage2Slot1.Color} {stage2Slot1.Object}");
+                PrintDebugLine($"Stage 2 Slot 2: {stage2Slot2.Color} {stage2Slot2.Object}");
+                PrintDebugLine($"Stage 2 Slot 3: {stage2Slot3.Color} {stage2Slot3.Object}\n");
             }
 
-            if (stage >= 3)
+            if (stage == 3)
             {
-                LogFileWriter.WriteLine($"Stage 3 Slot 1: {stage3Slot1.Color} {stage3Slot1.Object}");
-                LogFileWriter.WriteLine($"Stage 3 Slot 2: {stage3Slot2.Color} {stage3Slot2.Object}");
-                LogFileWriter.WriteLine($"Stage 3 Slot 3: {stage3Slot3.Color} {stage3Slot3.Object}");
+                PrintDebugLine($"Stage 3 Slot 1: {stage3Slot1.Color} {stage3Slot1.Object}");
+                PrintDebugLine($"Stage 3 Slot 2: {stage3Slot2.Color} {stage3Slot2.Object}");
+                PrintDebugLine($"Stage 3 Slot 3: {stage3Slot3.Color} {stage3Slot3.Object}\n");
             }
 
             if(stage == 4)
             {
-                LogFileWriter.WriteLine($"Stage 4 Slot 1: {stage4Slot1.Color} {stage4Slot1.Object}");
-                LogFileWriter.WriteLine($"Stage 4 Slot 2: {stage4Slot2.Color} {stage4Slot2.Object}");
-                LogFileWriter.WriteLine($"Stage 4 Slot 3: {stage4Slot3.Color} {stage4Slot3.Object}");
+                PrintDebugLine($"Stage 4 Slot 1: {stage4Slot1.Color} {stage4Slot1.Object}");
+                PrintDebugLine($"Stage 4 Slot 2: {stage4Slot2.Color} {stage4Slot2.Object}");
+                PrintDebugLine($"Stage 4 Slot 3: {stage4Slot3.Color} {stage4Slot3.Object}\n");
             }
 
             //If any of these are true, then pull the lever
@@ -127,7 +130,7 @@ namespace KTANE_Solver
 
             if (sillySausageCount == 1)
             {
-                LogFileWriter.WriteLine("There is a single Silly Sausage. Pulling the lever...\n");
+                PrintDebugLine("There is a single Silly Sausage. Pulling the lever...\n");
                 return false;
             }
 
@@ -160,7 +163,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1 || stage == 2)
                 {
-                    LogFileWriter.WriteLine("There is a single Sassy Sally\n");
+                    PrintDebugLine("There is a single Sassy Sally\n");
                     return false;
                 }
 
@@ -187,7 +190,7 @@ namespace KTANE_Solver
                     //if the converted slot is not soggy, pull the lever
                     if (!isAdjective(convertedSlot, ConvertedSlot.Adjective.SOGGY))
                     {
-                        LogFileWriter.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
+                        PrintDebugLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -215,7 +218,7 @@ namespace KTANE_Solver
                     //if the converted slot is not soggy, pull the lever
                     if (!isAdjective(convertedSlot, ConvertedSlot.Adjective.SOGGY))
                     {
-                        LogFileWriter.WriteLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
+                        PrintDebugLine("There is a single sassy sally with the slot two stage ago not being Soggy. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -243,7 +246,7 @@ namespace KTANE_Solver
 
             if (soggyStevenCount >= 2)
             {
-                LogFileWriter.WriteLine("There are 2 or more Soggy Stevens. Pulling the lever...\n");
+                PrintDebugLine("There are 2 or more Soggy Stevens. Pulling the lever...\n");
                 return false;
             }
 
@@ -271,7 +274,7 @@ namespace KTANE_Solver
                 !isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SASSY) &&
                 !isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SASSY))
             {
-                LogFileWriter.WriteLine("There are 3 Simons with none of them being Sassy. Pulling the lever...\n");
+                PrintDebugLine("There are 3 Simons with none of them being Sassy. Pulling the lever...\n");
                 return false;
             }
 
@@ -294,7 +297,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SOGGY))
                 {
-                    LogFileWriter.WriteLine("Slot 1 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
+                    PrintDebugLine("Slot 1 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -304,7 +307,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot2, ConvertedSlot.Adjective.SOGGY))
                 {
-                    LogFileWriter.WriteLine("Slot 3 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
+                    PrintDebugLine("Slot 3 is sausage. Slot 2 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -314,7 +317,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot1, ConvertedSlot.Adjective.SOGGY))
                 {
-                    LogFileWriter.WriteLine("Slot 2 is sausage. Slot 1 is Sally without being Soggy. Pulling the lever...\n");
+                    PrintDebugLine("Slot 2 is sausage. Slot 1 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -324,7 +327,7 @@ namespace KTANE_Solver
             {
                 if (!isAdjective(placeholderSlot3, ConvertedSlot.Adjective.SOGGY))
                 {
-                    LogFileWriter.WriteLine("Slot 2 is sausage. Slot 3 is Sally without being Soggy. Pulling the lever...\n");
+                    PrintDebugLine("Slot 2 is sausage. Slot 3 is Sally without being Soggy. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -358,19 +361,19 @@ namespace KTANE_Solver
             {
                 if (slot1Silly && !isNoun(placeholderSlot1, ConvertedSlot.Noun.STEVEN))
                 {
-                    LogFileWriter.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
+                    PrintDebugLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
 
                 if (slot2Silly && !isNoun(placeholderSlot2, ConvertedSlot.Noun.STEVEN))
                 {
-                    LogFileWriter.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
+                    PrintDebugLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
 
                 if (slot3Silly && !isNoun(placeholderSlot3, ConvertedSlot.Noun.STEVEN))
                 {
-                    LogFileWriter.WriteLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
+                    PrintDebugLine("There ae two Silly slots but both are not Steven. Pulling the lever...\n");
                     return false;
                 }
             }
@@ -400,7 +403,7 @@ namespace KTANE_Solver
                 //if this is stage 1, then return false
                 if (stage == 1)
                 {
-                    LogFileWriter.WriteLine("There is a single Soggy slot with no previous stage. Pulling the lever...\n");
+                    PrintDebugLine("There is a single Soggy slot with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -416,7 +419,7 @@ namespace KTANE_Solver
 
                     if (!stage1Slot1Sausge && !stage1Slot2Sausge && !stage1Slot3Sausge)
                     {
-                        LogFileWriter.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
+                        PrintDebugLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -433,7 +436,7 @@ namespace KTANE_Solver
 
                     if (!stage2Slot1Sausge && !stage2Slot2Sausge && !stage2Slot3Sausge)
                     {
-                        LogFileWriter.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
+                        PrintDebugLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -450,7 +453,7 @@ namespace KTANE_Solver
 
                     if (!stage3Slot1Sausge && !stage3Slot2Sausge && !stage3Slot3Sausge)
                     {
-                        LogFileWriter.WriteLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
+                        PrintDebugLine("There is a single Soggy slot with the previous stage not having a Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -463,7 +466,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    LogFileWriter.WriteLine("All 3 slots are the same symbol and colour with no previous stage. Pulling the lever...\n");
+                    PrintDebugLine("All 3 slots are the same symbol and colour with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -503,7 +506,7 @@ namespace KTANE_Solver
 
                     if (!foundSoggySausage)
                     {
-                        LogFileWriter.WriteLine("All 3 slots are the same symbol and colour with no previous stage having a Soggy Sausage slot. Pulling the lever...\n");
+                        PrintDebugLine("All 3 slots are the same symbol and colour with no previous stage having a Soggy Sausage slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -519,7 +522,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    LogFileWriter.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage. Pulling the lever...\n");
+                    PrintDebugLine("All 3 slots are the same colour with none of them being Sally and no last stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -570,7 +573,7 @@ namespace KTANE_Solver
 
                     if (sillyStevenCount == 0)
                     {
-                        LogFileWriter.WriteLine("All 3 slots are the same colour with none of them being Sally and no last stage having a Silly Steven Slot. Pulling the lever...\n");
+                        PrintDebugLine("All 3 slots are the same colour with none of them being Sally and no last stage having a Silly Steven Slot. Pulling the lever...\n");
                         return false;
                     }
                 }
@@ -601,7 +604,7 @@ namespace KTANE_Solver
             {
                 if (stage == 1)
                 {
-                    LogFileWriter.WriteLine($"There is {sillySimonCount} Silly Simon(S) with no previous stage. Pulling the lever...\n");
+                    PrintDebugLine($"There is {sillySimonCount} Silly Simon(S) with no previous stage. Pulling the lever...\n");
                     return false;
                 }
 
@@ -641,14 +644,14 @@ namespace KTANE_Solver
 
                     if (!foundSassySausage)
                     {
-                        LogFileWriter.WriteLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage. Pulling the lever...\n");
+                        PrintDebugLine($"There is {sillySimonCount} Silly Simon(s) with no previous stage having a Sassy Sausage. Pulling the lever...\n");
                         return false;
                     }
                 }
             }
 
             //if this statement is reached, then the user will keep the stage
-            LogFileWriter.WriteLine("No illegal statements found. Pressing keep...\n");
+            PrintDebugLine("No illegal statements found. Pressing keep...\n");
             return true;
         }
 

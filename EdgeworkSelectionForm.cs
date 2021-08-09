@@ -33,6 +33,7 @@ namespace KTANE_Solver
             logFileWriter.AutoFlush = true;
 
             logFileWriter.WriteLine("======================EDGEWORK SELECTION======================");
+            System.Diagnostics.Debug.WriteLine("======================EDGEWORK SELECTION======================");
         }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace KTANE_Solver
         private void automaticButton_Click(object sender, EventArgs e)
         {
             logFileWriter.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
+            System.Diagnostics.Debug.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
 
             Day day = Day.Sunday;
 
@@ -493,7 +495,7 @@ namespace KTANE_Solver
                 {
                     errorReached = true;
                     logFileWriter.WriteLine(serialNumber + " is not a valid serial number");
-
+                    System.Diagnostics.Debug.WriteLine(serialNumber + " is not a valid serial number");
                 }
 
                 //make sure the number of batteries is at least the same number of holders or at most twice
@@ -577,6 +579,7 @@ namespace KTANE_Solver
             if (errorReached)
             {
                 logFileWriter.WriteLine($"Unable to read edgework. {errorString}. Sending user to manual edgework input\n");
+                System.Diagnostics.Debug.WriteLine($"Unable to read edgework. {errorString}. Sending user to manual edgework input\n");
 
                 MessageBox.Show("There was an error reading Egdework.txt. Try manually inputting the edgework",
                                 "Error Reading Edgework.txt",
@@ -633,6 +636,8 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Write("User closed program...");
+                    System.Diagnostics.Debug.Write("User closed program...");
                     logFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();

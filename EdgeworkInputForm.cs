@@ -492,6 +492,7 @@ namespace KTANE_Solver
             if (!oneLetter) 
             {
                 logFileWriter.WriteLine("There isn't a letter in the serial number\n");
+                System.Diagnostics.Debug.WriteLine("There isn't a letter in the serial number\n");
 
                 String text = "You entered an invalid serial number. There has to be at least 1 letter in the serial number";
 
@@ -507,6 +508,7 @@ namespace KTANE_Solver
             if (!lastCharIsDigit)
             {
                 logFileWriter.WriteLine("The last character of the serial number isn't a number\n");
+                System.Diagnostics.Debug.WriteLine("The last character of the serial number isn't a number\n");
 
                 String text = "You entered an invalid serial number. A valid serial number must have the last character be a number";
 
@@ -770,6 +772,8 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Write("User closed program...");
+                    System.Diagnostics.Debug.Write("User closed program...");
                     logFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();

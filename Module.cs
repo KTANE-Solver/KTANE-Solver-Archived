@@ -43,5 +43,16 @@ namespace KTANE_Solver
         {
             MessageBox.Show(answer, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public void PrintDebugLine(String message)
+        {
+            PrintDebug(message + "\n");
+        }
+
+        public void PrintDebug(String message)
+        {
+            LogFileWriter.Write(message);
+            System.Diagnostics.Debug.Write(message);
+        }
     }
 }

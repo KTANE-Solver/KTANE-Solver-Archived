@@ -93,30 +93,30 @@ namespace KTANE_Solver
         /// </summary>
         private void WriteLog()
         {
-            logFileWriter.WriteLine("======================EDGEWORK CONFIRMATION======================");
-            logFileWriter.WriteLine("Day of the week: " + bomb.Day);
-            logFileWriter.WriteLine("Serial Number: " + bomb.SerialNumber);
-            logFileWriter.WriteLine("# of batteries: " + bomb.Battery);
-            logFileWriter.WriteLine("# battery holders:" + bomb.BatteryHolder + "\n");
+            PrintDebugLine("======================EDGEWORK CONFIRMATION======================" + "\n", logFileWriter);
+            PrintDebugLine("Day of the week: " + bomb.Day, logFileWriter);
+            PrintDebugLine("Serial Number: " + bomb.SerialNumber, logFileWriter);
+            PrintDebugLine("# of batteries: " + bomb.Battery, logFileWriter);
+            PrintDebugLine("# battery holders:" + bomb.BatteryHolder + "\n", logFileWriter);
 
-            logFileWriter.WriteLine($"BOB - Visisble: {bomb.Bob.Visible} Lit: {bomb.Bob.Lit}");
-            logFileWriter.WriteLine($"CAR - Visisble: {bomb.Car.Visible} Lit: {bomb.Car.Lit}");
-            logFileWriter.WriteLine($"CLR - Visisble: {bomb.Clr.Visible} Lit: {bomb.Clr.Lit}");
-            logFileWriter.WriteLine($"FRK - Visisble: {bomb.Frk.Visible} Lit: {bomb.Frk.Lit}");
-            logFileWriter.WriteLine($"FRQ - Visisble: {bomb.Frq.Visible} Lit: {bomb.Frq.Lit}");
-            logFileWriter.WriteLine($"IND - Visisble: {bomb.Ind.Visible} Lit: {bomb.Ind.Lit}");
-            logFileWriter.WriteLine($"MSA - Visisble: {bomb.Msa.Visible} Lit: {bomb.Msa.Lit}");
-            logFileWriter.WriteLine($"NSA - Visisble: {bomb.Nsa.Visible} Lit: {bomb.Nsa.Lit}");
-            logFileWriter.WriteLine($"SIG - Visisble: {bomb.Sig.Visible} Lit: {bomb.Sig.Lit}");
-            logFileWriter.WriteLine($"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}");
-            logFileWriter.WriteLine($"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n");
+            PrintDebugLine($"BOB - Visisble: {bomb.Bob.Visible} Lit: {bomb.Bob.Lit}", logFileWriter);
+            PrintDebugLine($"CAR - Visisble: {bomb.Car.Visible} Lit: {bomb.Car.Lit}", logFileWriter);
+            PrintDebugLine($"CLR - Visisble: {bomb.Clr.Visible} Lit: {bomb.Clr.Lit}", logFileWriter);
+            PrintDebugLine($"FRK - Visisble: {bomb.Frk.Visible} Lit: {bomb.Frk.Lit}", logFileWriter);
+            PrintDebugLine($"FRQ - Visisble: {bomb.Frq.Visible} Lit: {bomb.Frq.Lit}", logFileWriter);
+            PrintDebugLine($"IND - Visisble: {bomb.Ind.Visible} Lit: {bomb.Ind.Lit}", logFileWriter);
+            PrintDebugLine($"MSA - Visisble: {bomb.Msa.Visible} Lit: {bomb.Msa.Lit}", logFileWriter);
+            PrintDebugLine($"NSA - Visisble: {bomb.Nsa.Visible} Lit: {bomb.Nsa.Lit}", logFileWriter);
+            PrintDebugLine($"SIG - Visisble: {bomb.Sig.Visible} Lit: {bomb.Sig.Lit}", logFileWriter);
+            PrintDebugLine($"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}", logFileWriter);
+            PrintDebugLine($"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n", logFileWriter);
 
-            logFileWriter.WriteLine("# of dvid ports: " + bomb.Dvid.Num);
-            logFileWriter.WriteLine("# of parallel ports: " + bomb.Parallel.Num);
-            logFileWriter.WriteLine("# of ps ports: " + bomb.Ps.Num);
-            logFileWriter.WriteLine("# of rj ports: " + bomb.Rj.Num);
-            logFileWriter.WriteLine("# of serial ports: " + bomb.Serial.Num);
-            logFileWriter.WriteLine("# of stereo ports: " + bomb.Stereo.Num + "\n");
+            PrintDebugLine("# of dvid ports: " + bomb.Dvid.Num, logFileWriter);
+            PrintDebugLine("# of parallel ports: " + bomb.Parallel.Num, logFileWriter);
+            PrintDebugLine("# of ps ports: " + bomb.Ps.Num, logFileWriter);
+            PrintDebugLine("# of rj ports: " + bomb.Rj.Num, logFileWriter);
+            PrintDebugLine("# of serial ports: " + bomb.Serial.Num, logFileWriter);
+            PrintDebugLine("# of stereo ports: " + bomb.Stereo.Num + "\n", logFileWriter);
         }
 
         /// <summary>
@@ -243,6 +243,8 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Write("User closed program...");
+                    System.Diagnostics.Debug.Write("User closed program...");
                     logFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();
@@ -283,6 +285,12 @@ namespace KTANE_Solver
             this.Hide();
 
             moduleSelectionForm.Show();
+        }
+
+        public void PrintDebugLine(string message, StreamWriter logFileWriter)
+        {
+            logFileWriter.WriteLine(message);
+            System.Diagnostics.Debug.WriteLine(message);
         }
     }
 }

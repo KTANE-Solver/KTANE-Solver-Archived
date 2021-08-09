@@ -98,6 +98,7 @@ namespace KTANE_Solver
         public void UpdateForm()
         {
             logFileWriter.WriteLine("======================MODULE SELECTION======================");
+            System.Diagnostics.Debug.WriteLine("======================MODULE SELECTION======================");
             SetUpModuleComboBox();
         }
 
@@ -108,8 +109,7 @@ namespace KTANE_Solver
         /// <param name="bomb">the new bomb</param>
         public void UpdateForm(Bomb bomb)
         {
-            logFileWriter.WriteLine("======================MODULE SELECTION======================");
-            SetUpModuleComboBox();
+            UpdateForm();
             this.bomb = bomb;
         }
 
@@ -133,6 +133,7 @@ namespace KTANE_Solver
         private void changeEdgeworkButton_Click(object sender, EventArgs e)
         {
             logFileWriter.WriteLine("User is changing edgework...\n");
+            System.Diagnostics.Debug.WriteLine("User is changing edgework...\n");
             this.Hide();
             inputForm.UpdateForm();
             inputForm.Show();
@@ -143,6 +144,7 @@ namespace KTANE_Solver
         /// </summary>
         private void checkEdgeworkButton_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("User is checking edgework...\n");
             logFileWriter.WriteLine("User is checking edgework...\n");
             this.Hide();
             confirmationForm.UpdateForm(bomb, inputForm);
@@ -169,6 +171,8 @@ namespace KTANE_Solver
 
                 else
                 {
+                    logFileWriter.Write("User closed program...");
+                    System.Diagnostics.Debug.Write("User closed program...");
                     this.Visible = false;
                     Application.Exit();
                 }
@@ -180,6 +184,7 @@ namespace KTANE_Solver
         /// </summary>
         private void saveEdgeworkButton_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("User is trying to save edgework...\n");
             logFileWriter.WriteLine("User is trying to save edgework...\n");
 
             StreamWriter writer = new StreamWriter("Edgework.txt");
@@ -215,6 +220,8 @@ namespace KTANE_Solver
 
                 MessageBox.Show("Edgework saved successfully", "Edgework Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 logFileWriter.WriteLine("User has successfully saved edgeork\n");
+                System.Diagnostics.Debug.WriteLine("User has successfully saved edgeork\n");
+
             }
 
             catch
@@ -224,6 +231,7 @@ namespace KTANE_Solver
                                 MessageBoxIcon.Error);
 
                 logFileWriter.WriteLine("User has unsuccessfully saved edgeork\n");
+                System.Diagnostics.Debug.WriteLine("User has unsuccessfully saved edgeork\n");
             }
         }
 
@@ -724,6 +732,7 @@ namespace KTANE_Solver
         private void SuccessfulModuleOpening(String module)
         {
             logFileWriter.WriteLine($"{module} opened successfully\n");
+            System.Diagnostics.Debug.WriteLine($"{module} opened successfully\n");
         }
     }
 }
