@@ -63,14 +63,14 @@ namespace KTANE_Solver
                 bulbOpaque = "translucent";
             }
 
-            System.Diagnostics.Debug.WriteLine($"Bulb is {color}, {bulbLit}, and {bulbOpaque}\n");
+            PrintDebugLine($"Bulb is {color}, {bulbLit}, and {bulbOpaque}\n");
 
             Step1();
         }
 
         private void Step1()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 1...\n");
+            PrintDebugLine($"Stage 1...\n");
 
             //If the light is on and the bulb is see-through, press I and go to Step 2.
             if (!Opaque && Lit)
@@ -102,7 +102,7 @@ namespace KTANE_Solver
 
         private void Step2()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 2...\n");
+            PrintDebugLine($"\nStage 2...\n");
 
             //If the bulb is red, press I, then unscrew it and go to Step 5.
             if (Color == "Red")
@@ -132,7 +132,7 @@ namespace KTANE_Solver
 
         private void Step3()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 3...\n");
+            PrintDebugLine($"\nStage 3...\n");
 
             //If the bulb is green, press I, then unscrew it and go to Step 6.
             if (Color == "Green")
@@ -164,7 +164,7 @@ namespace KTANE_Solver
 
         private void Step4()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 4...\n");
+            PrintDebugLine($"\nStage 4...\n");
 
             //If the bomb has any of the following indicators: CAR, IND, MSA or SND, press I and go to Step 9.
             if (Bomb.Car.Visible || Bomb.Ind.Visible || Bomb.Msa.Visible || Bomb.Snd.Visible)
@@ -183,7 +183,7 @@ namespace KTANE_Solver
 
         private void Step5()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 5...\n");
+            PrintDebugLine($"\nStage 5...\n");
 
             //If the light went off at Step 1, press the same button again, then screw the bulb back in.
             if (Step1LightWentOff)
@@ -211,7 +211,7 @@ namespace KTANE_Solver
 
         private void Step6()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 6...\n");
+            PrintDebugLine($"\nStage 6...\n");
 
             //If the bulb went off when you pressed I, press the button that you pressed in Step 1, then screw the bulb back in.
             if ((Step1LightWentOff && Step1Direction == "Press I") || Step3Direction == "Press I" && Step3LightWentOff)
@@ -239,7 +239,7 @@ namespace KTANE_Solver
 
         private void Step7()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 7...\n");
+            PrintDebugLine($"\nStage 7...\n");
 
             //If the bulb is green, press I, remember SIG and go to Step 11.
             if (Color == "Green")
@@ -276,7 +276,7 @@ namespace KTANE_Solver
 
         private void Step8()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 8...\n");
+            PrintDebugLine($"\nStage 8...\n");
 
             //If the bulb is white, press I, remember FRQ and go to Step 11.
             if (Color == "White")
@@ -313,7 +313,7 @@ namespace KTANE_Solver
 
         private void Step9()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 9...\n");
+            PrintDebugLine($"\nStage 9...\n");
 
             //If the bulb is blue, press I and go to Step 14.
             if (Color == "Blue")
@@ -364,7 +364,7 @@ namespace KTANE_Solver
 
         private void Step10()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 10...\n");
+            PrintDebugLine($"\nStage 10...\n");
 
             //If the bulb is purple, press I and go to Step 14.
             if (Color == "Purple")
@@ -415,7 +415,7 @@ namespace KTANE_Solver
 
         private void Step11()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 11...\n");
+            PrintDebugLine($"\nStage 11...\n");
 
             //If the bomb has the remembered indicator, press I, then screw the bulb back in.
             if (RemeberedIndicator.Visible)
@@ -434,7 +434,7 @@ namespace KTANE_Solver
 
         private void Step12()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 12...\n");
+            PrintDebugLine($"\nStage 12...\n");
 
             //If the light is now on, press I.
 
@@ -456,7 +456,7 @@ namespace KTANE_Solver
 
         private void Step13()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 13...\n");
+            PrintDebugLine($"\nStage 13...\n");
 
             PrintList();
 
@@ -477,7 +477,7 @@ namespace KTANE_Solver
 
         private void Step14()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 14...\n");
+            PrintDebugLine($"\nStage 14...\n");
 
             //If the bulb is opaque, press I, then screw the bulb back in.
             if (Opaque)
@@ -496,7 +496,7 @@ namespace KTANE_Solver
 
         private void Step15()
         {
-            System.Diagnostics.Debug.WriteLine($"Stage 15...\n");
+            PrintDebugLine($"\nStage 15...\n");
 
             //If the bulb is see - through, press I, then screw the bulb back in.
             if (!Opaque)
@@ -517,25 +517,25 @@ namespace KTANE_Solver
         {
             list.Add("Press I");
 
-            System.Diagnostics.Debug.WriteLine("Press I");
+            PrintDebugLine("Press I");
         }
 
         private void PressO()
         {
             list.Add("Press O");
-            System.Diagnostics.Debug.WriteLine("Press O");
+            PrintDebugLine("Press O");
         }
 
         private void Screw()
         {
             list.Add("Screw");
-            System.Diagnostics.Debug.WriteLine("Screw");
+            PrintDebugLine("Screw");
         }
 
         private void Unscrew()
         {
             list.Add("Unscrew");
-            System.Diagnostics.Debug.WriteLine("Unscrew");
+            PrintDebugLine("Unscrew");
         }
 
         private void PrintList()
