@@ -187,7 +187,7 @@ namespace KTANE_Solver
 
 
 
-            BinaryPuzzle module = new BinaryPuzzle(grid);
+            BinaryPuzzle module = new BinaryPuzzle(grid, LogFileWriter);
 
             grid = module.Solve();
 
@@ -199,7 +199,7 @@ namespace KTANE_Solver
 
             else
             {
-                BinaryPuzzleAnswerForm answerForm = new BinaryPuzzleAnswerForm(grid);
+                BinaryPuzzleAnswerForm answerForm = new BinaryPuzzleAnswerForm(grid, LogFileWriter);
                 answerForm.ShowDialog();
                 UpdateForm(ModuleSelectionForm, LogFileWriter);
             }

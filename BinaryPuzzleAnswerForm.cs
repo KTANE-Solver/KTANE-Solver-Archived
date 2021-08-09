@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace KTANE_Solver
 {
     public partial class BinaryPuzzleAnswerForm : ModuleForm
     {
-        public BinaryPuzzleAnswerForm(char [,] grid)
+        public BinaryPuzzleAnswerForm(char[,] grid, StreamWriter logFileWriter)
         {
             InitializeComponent();
+
+            this.ControlBox = false;
+            LogFileWriter = logFileWriter;
 
             row1button1.BackColor = GetColor(grid[0,0]);
             row1button2.BackColor = GetColor(grid[0,1]);

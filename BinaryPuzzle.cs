@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace KTANE_Solver
 {
     //Author: Nya Bentley
     //Date: 3/15/21
     //Purpose: Solves Binary Puzzle Module
-    class BinaryPuzzle
+    class BinaryPuzzle : Module
     {
 
         //============================PROPERTIES============================
@@ -18,7 +18,7 @@ namespace KTANE_Solver
         public char[,] Grid;
 
         //============================CONSTRUCTORS============================
-        public BinaryPuzzle(char[,] grid)
+        public BinaryPuzzle(char[,] grid, StreamWriter logFileWriter) : base(null, logFileWriter)
         {
             Grid = grid;
         }
@@ -27,6 +27,8 @@ namespace KTANE_Solver
 
         public char[,] Solve()
         {
+            PrintDebugLine("Original Grid\n");
+
             PrintGrid(Grid);
 
             MakeMoves(Grid, false, null);
@@ -98,7 +100,7 @@ namespace KTANE_Solver
         /// <param name="filledTiles">Tiles that have been filled after a guess has been made</param>
         private void MakeMoves(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
-            System.Diagnostics.Debug.WriteLine("Make Moves\n");
+            PrintDebugLine("Make Moves\n");
 
             bool moveMade;
 
@@ -277,21 +279,21 @@ namespace KTANE_Solver
                 //has to have 3 1's and 0's in each row
                 if (NumRowCount(grid, '1', i) != 3)
                 {
-                    System.Diagnostics.Debug.WriteLine($"More than 3 1 in row {i}\n");
+                    PrintDebugLine($"More than 3 1 in row {i}\n");
                     return false;
                 }
 
                 //has to have 3 1's and 0's in each column
                 if (NumCoulmnCount(grid, '0', i) != 3)
                 {
-                    System.Diagnostics.Debug.WriteLine($"More than 3 0 in column {i}\n");
+                    PrintDebugLine($"More than 3 0 in column {i}\n");
                     return false;
                 }
 
                 //has to have 3 1's and 0's in each row
                 if (NumRowCount(grid, '0', i) != 3)
                 {
-                    System.Diagnostics.Debug.WriteLine($"More than 3 0 in row {i}\n");
+                    PrintDebugLine($"More than 3 0 in row {i}\n");
                     return false;
                 }
 
@@ -306,19 +308,19 @@ namespace KTANE_Solver
                     //can't have duplicate rows or columns
                     if (SameColumn(grid, i, j))
                     {
-                        System.Diagnostics.Debug.WriteLine($"Same column {i} and {j}\n");
+                        PrintDebugLine($"Same column {i} and {j}\n");
                         return false;
                     }
 
                     if (SameRow(grid, i, j))
                     {
-                        System.Diagnostics.Debug.WriteLine($"Same row {i} and {j}\n");
+                        PrintDebugLine($"Same row {i} and {j}\n");
                         return false;
                     }
                 }
             }
 
-            System.Diagnostics.Debug.WriteLine($"Valid Puzzle\n");
+            PrintDebugLine($"Valid Puzzle\n");
             return true;
         }
 
@@ -359,7 +361,7 @@ namespace KTANE_Solver
             //fill in the space with the starting num
             grid[blankSpace.row, blankSpace.column] = blankSpace.str;
 
-            System.Diagnostics.Debug.WriteLine("Guess\n");
+            PrintDebugLine("Guess\n");
 
             PrintGrid(grid);
 
@@ -368,37 +370,37 @@ namespace KTANE_Solver
             {
                 if (NumRowCount(grid, '0', i) > 3)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 0 in row {i}\n");
+                    PrintDebugLine($"Counted more than 3 0 in row {i}\n");
                     return false;
                 }
 
                 if (NumRowCount(grid, '1', i) > 3)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 1 in row {i}\n");
+                    PrintDebugLine($"Counted more than 3 1 in row {i}\n");
                     return false;
                 }
 
                 if (NumCoulmnCount(grid, '0', i) > 3)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 0 in column {i}\n");
+                    PrintDebugLine($"Counted more than 3 0 in column {i}\n");
                     return false;
                 }
 
                 if (NumCoulmnCount(grid, '1', i) > 3)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Counted more than 3 1 in column {i}\n");
+                    PrintDebugLine($"Counted more than 3 1 in column {i}\n");
                     return false;
                 }
 
                 if (ThreeNumInARow(grid))
                 {
-                    System.Diagnostics.Debug.WriteLine("Three numbers in a row\n");
+                    PrintDebugLine("Three numbers in a row\n");
                     return false;
                 }
 
                 if (ThreeNumInAColumn(grid))
                 {
-                    System.Diagnostics.Debug.WriteLine("Three numbers in a column\n");
+                    PrintDebugLine("Three numbers in a column\n");
                     return false;
                 }
 
@@ -411,13 +413,13 @@ namespace KTANE_Solver
 
                     if (SameRow(grid, i, j))
                     {
-                        System.Diagnostics.Debug.WriteLine($"Same row. {i} and {j}\n");
+                        PrintDebugLine($"Same row. {i} and {j}\n");
                         return false;
                     }
 
                     if (SameColumn(grid, i, j))
                     {
-                        System.Diagnostics.Debug.WriteLine($"Same column. {i} and {j}\n");
+                        PrintDebugLine($"Same column. {i} and {j}\n");
                         return false;
                     }
 
@@ -765,7 +767,7 @@ namespace KTANE_Solver
                 {
                     if (IsFilled(grid[row, column]) && grid[row, column] == (grid[row, column + 1]) && grid[row, column] == (grid[row, column + 2]))
                     {
-                        System.Diagnostics.Debug.WriteLine($"3 consecutive numbers in row {row}\n");
+                        PrintDebugLine($"3 consecutive numbers in row {row}\n");
                         return true;
                     }
                 }
@@ -782,7 +784,7 @@ namespace KTANE_Solver
                 {
                     if (IsFilled(grid[row, column]) && grid[row, column] == (grid[row + 1, column]) && grid[row, column] == (grid[row + 2, column]))
                     {
-                        System.Diagnostics.Debug.WriteLine($"3 consecutive numbers in column {column}\n");
+                        PrintDebugLine($"3 consecutive numbers in column {column}\n");
                         return true;
                     }
                 }
@@ -1477,13 +1479,13 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    System.Diagnostics.Debug.Write(grid[i,j] + " ");
+                    PrintDebug(grid[i, j] + " ");
                 }
 
-                System.Diagnostics.Debug.WriteLine("");
+                PrintDebugLine("");
             }
 
-            System.Diagnostics.Debug.WriteLine("");
+            PrintDebugLine("");
         }
 
         //a class that represents a tile on the grid
