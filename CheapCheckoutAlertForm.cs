@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -14,8 +15,9 @@ namespace KTANE_Solver
     {
         decimal total;
 
-        public CheapCheckoutAlertForm(decimal total)
+        public CheapCheckoutAlertForm(decimal total, StreamWriter logfileWriter)
         {
+            LogFileWriter = logfileWriter;
             InitializeComponent();
             this.total = total;
         }
@@ -53,7 +55,7 @@ namespace KTANE_Solver
 
             decimal answer = RoundPrice(amount - total);
 
-            System.Diagnostics.Debug.WriteLine($"Answer: ${answer}\n");
+            PrintDebugLine($"Answer: ${answer}\n");
             ShowAnswer($"${string.Format("{0:0.00}", answer)}", "Cheap Checkout Answer");
 
             this.Hide();

@@ -108,6 +108,18 @@ namespace KTANE_Solver
         {
             MessageBox.Show(message, captions, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        public void PrintDebugLine(String message)
+        {
+            PrintDebug(message + "\n");
+        }
+
+        public void PrintDebug(String message)
+        {
+            LogFileWriter.Write(message);
+            System.Diagnostics.Debug.Write(message);
+        }
+
         public void GoToMoudleSelectionForm()
         {
             this.Hide();

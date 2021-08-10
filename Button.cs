@@ -12,11 +12,14 @@ namespace KTANE_Solver
     {
         public Button(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         { 
-        
         }
 
         public void Solve(Color color, String word)
         {
+            PrintDebugLine("===========================BUTTON===========================\n");
+
+            PrintDebugLine($"{color} {word}\n");
+
             switch (color)
             {
                 case Color.Red:

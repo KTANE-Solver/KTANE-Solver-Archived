@@ -40,15 +40,15 @@ namespace KTANE_Solver
 
         public void Solve()
         {
-            System.Diagnostics.Debug.WriteLine("===========================Cheap Checkout===========================\n");
+            PrintDebugLine("===========================CHEAP CHECKOUT===========================\n");
             
 
 
             //print the day
-            System.Diagnostics.Debug.WriteLine($"Day: {Bomb.Day}\n");
+            PrintDebugLine($"Day: {Bomb.Day}\n");
 
             //print the amount
-            System.Diagnostics.Debug.WriteLine($"Amount: ${amount}\n");
+            PrintDebugLine($"Amount: ${amount}\n");
 
             //print the items
             PrintItem(item1, 1);
@@ -58,7 +58,7 @@ namespace KTANE_Solver
             PrintItem(item5, 5);
             PrintItem(item6, 6);
 
-            Console.WriteLine("==============================After Sale==============================\n");
+            PrintDebugLine("==============================After Sale==============================\n");
             
             //apply the sale
             ApplySale();
@@ -74,7 +74,7 @@ namespace KTANE_Solver
             //check the total
             Decimal total = RoundPrice(item1.price + item2.price + item3.price + item4.price + item5.price + item6.price);
 
-            System.Diagnostics.Debug.WriteLine($"Total: ${total}\n");
+            PrintDebugLine($"Total: ${total}\n");
 
             //see if the customer has enough money
             if (amount > total)
@@ -83,7 +83,7 @@ namespace KTANE_Solver
 
                 decimal answer = RoundPrice(amount - total);
 
-                System.Diagnostics.Debug.WriteLine($"Answer: ${answer}\n");
+                PrintDebugLine($"Answer: ${answer}\n");
 
                 ShowAnswer($"${string.Format("{0:0.00}", answer)}", "Cheap Checkout Answer");
             }
@@ -91,7 +91,7 @@ namespace KTANE_Solver
             else
             {
                 //if not, then tell ther user to alert the customer and tell the new amount
-                CheapCheckoutAlertForm alertForm = new CheapCheckoutAlertForm(total);
+                CheapCheckoutAlertForm alertForm = new CheapCheckoutAlertForm(total, LogFileWriter);
 
                 alertForm.ShowDialog();
             }
@@ -105,13 +105,13 @@ namespace KTANE_Solver
         /// <param name="item"></param>
         private void PrintItem(Item item, int num)
         { 
-            Console.WriteLine($"Item {num}: {item.name}");
+            PrintDebugLine($"Item {num}: {item.name}");
 
-            Console.WriteLine($"Weight: {item.weight}");
+            PrintDebugLine($"Weight: {item.weight}");
 
-            Console.WriteLine($"Price: {item.price}");
+            PrintDebugLine($"Price: {item.price}");
 
-            Console.WriteLine($"Category: {item.category}\n");
+            PrintDebugLine($"Category: {item.category}\n");
         }
 
         /// <summary>
