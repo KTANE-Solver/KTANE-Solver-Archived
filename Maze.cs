@@ -16,19 +16,26 @@ namespace KTANE_Solver
         //==============FIELDS==============
 
         //the maze itself
-        private String[,] maze;
+        private char[,] maze;
 
         //the player coordinates
         private int playerRow;
         private int playerColumn;
+        private int startingPlayerRow;
+        private int startingPlayerColumn;
+
 
         //the goal coordiantes
         private int goalRow;
         private int goalColumn;
-
+        private int startingGoalRow;
+        private int startingGoalColumn;
+        
         //the marker coordiantes
         private int markerRow;
         private int markerColumn;
+
+        private int mazeIndex;
 
         //a list to hold the directions the player
         //has to go
@@ -43,13 +50,11 @@ namespace KTANE_Solver
         public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter LogFileWriter) : base(null, LogFileWriter)
         {
             //sets up the coordiantes
-            this.playerRow = playerRow;
-            this.playerColumn = playerColumn;
+            startingPlayerRow = playerRow;
+            startingPlayerColumn = playerColumn;
 
-
-            this.goalRow = goalRow;
-            this.goalColumn = goalColumn;
-
+            startingGoalRow = goalRow;
+            startingGoalColumn = goalColumn;
 
             this.markerRow = markerRow;
             this.markerColumn = markerColumn;
@@ -57,7 +62,6 @@ namespace KTANE_Solver
             //sets up the module
             SetUpModule();
 
-            
         }
         //==============METHODS==============
 
@@ -75,602 +79,185 @@ namespace KTANE_Solver
             // ? - represents an available space
             // . - represents a passage
 
-            maze = new String[,]
-                {
-                        {"!","!","!","!","!","!","!","!","!","!","!","!","!"},
-                        {"!","?",".","?",".","?",".","?",".","?",".","?","!"},
-                        {"!",".",".",".",".",".",".",".",".",".",".",".","!"},
-                        {"!","?",".","?",".","?",".","?",".","?",".","?","!"},
-                        {"!",".",".",".",".",".",".",".",".",".",".",".","!"},
-                        {"!","?",".","?",".","?",".","?",".","?",".","?","!"},
-                        {"!",".",".",".",".",".",".",".",".",".",".",".","!"},
-                        {"!","?",".","?",".","?",".","?",".","?",".","?","!"},
-                        {"!",".",".",".",".",".",".",".",".",".",".",".","!"},
-                        {"!","?",".","?",".","?",".","?",".","?",".","?","!"},
-                        {"!",".",".",".",".",".",".",".",".",".",".",".","!"},
-                        {"!","?",".","?",".","?",".","?",".","?",".","?","!"},
-                        {"!","!","!","!","!","!","!","!","!","!","!","!","!"}
-                };
-
             //sets up the rest of the maze
             if ((markerRow == 2 && markerColumn == 1) || (markerRow == 3 && markerColumn == 6))
             {
-                maze[1, 6] = "!";
-
-                maze[2, 2] = "!";
-                maze[2, 3] = "!";
-                maze[2, 4] = "!";
-                maze[2, 6] = "!";
-                maze[1, 6] = "!";
-                maze[2, 8] = "!";
-                maze[2, 9] = "!";
-                maze[2, 10] = "!";
-                maze[2, 11] = "!";
-
-                maze[3, 2] = "!";
-                maze[3, 6] = "!";
-
-                maze[4, 2] = "!";
-                maze[4, 4] = "!";
-                maze[4, 5] = "!";
-                maze[4, 6] = "!";
-                maze[4, 7] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 2] = "!";
-                maze[5, 6] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 3] = "!";
-                maze[6, 4] = "!";
-                maze[6, 6] = "!";
-                maze[6, 8] = "!";
-                maze[6, 9] = "!";
-                maze[6, 10] = "!";
-
-                maze[7, 2] = "!";
-                maze[7, 8] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 3] = "!";
-                maze[8, 4] = "!";
-                maze[8, 5] = "!";
-                maze[8, 6] = "!";
-                maze[8, 7] = "!";
-                maze[8, 8] = "!";
-                maze[8, 9] = "!";
-                maze[8, 10] = "!";
-                maze[9, 6] = "!";
-                maze[9, 10] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 3] = "!";
-                maze[10, 4] = "!";
-                maze[10, 6] = "!";
-                maze[10, 8] = "!";
-                maze[10, 9] = "!";
-                maze[10, 10] = "!";
-
-                maze[11, 4] = "!";
-                maze[11, 8] = "!";
+                mazeIndex = 1;
+                maze = new char[,]
+                {
+                        {'?','.','?','.','?','!','?','.','?','.','?'},
+                        {'.','.','!','.','.','.','.','.','!','.','!'},
+                        {'?','!','?','!','?','!','?','.','?','.','?'},
+                        {'.','.','.','.','!','.','!','.','!','.','.'},
+                        {'?','!','?','.','?','!','?','.','?','.','?'},
+                        {'.','.','!','.','.','.','.','.','!','.','.'},
+                        {'?','!','?','.','?','.','?','!','?','.','?'},
+                        {'.','.','!','.','!','.','!','.','!','.','.'},
+                        {'?','.','?','.','?','!','?','.','?','!','?'},
+                        {'.','.','!','.','.','.','.','.','!','.','.'},
+                        {'?','.','?','!','?','.','?','!','?','.','?'}
+                };
             }
 
             else if ((markerRow == 2 && markerColumn == 5) || (markerRow == 4 && markerColumn == 2))
             {
-                maze[1, 6] = "!";
-
-                maze[2, 1] = "!";
-                maze[2, 2] = "!";
-                maze[2, 4] = "!";
-                maze[2, 5] = "!";
-                maze[2, 6] = "!";
-                maze[2, 8] = "!";
-                maze[2, 10] = "!";
-                maze[2, 11] = "!";
-
-                maze[3, 4] = "!";
-                maze[3, 8] = "!";
-
-                maze[4, 2] = "!";
-                maze[4, 3] = "!";
-                maze[4, 4] = "!";
-                maze[4, 6] = "!";
-                maze[4, 7] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 2] = "!";
-                maze[5, 6] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 4] = "!";
-                maze[6, 5] = "!";
-                maze[6, 6] = "!";
-                maze[6, 8] = "!";
-                maze[6, 9] = "!";
-                maze[6, 10] = "!";
-
-                maze[7, 4] = "!";
-                maze[7, 8] = "!";
-                maze[7, 10] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 3] = "!";
-                maze[8, 4] = "!";
-                maze[8, 6] = "!";
-                maze[8, 7] = "!";
-                maze[8, 8] = "!";
-                maze[8, 10] = "!";
-
-                maze[9, 2] = "!";
-                maze[9, 4] = "!";
-                maze[9, 6] = "!";
-                maze[9, 10] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 4] = "!";
-                maze[10, 6] = "!";
-                maze[10, 8] = "!";
-                maze[10, 9] = "!";
-                maze[10, 10] = "!";
-
-                maze[11, 2] = "!";
-                maze[11, 6] = "!";
-
+                mazeIndex = 2;
+                maze = new char[,]
+                {
+                    {'?','.','?','.','?','!','?','.','?','.','?'},
+                    {'!','.','.','.','!','.','.','.','.','.','!'},
+                    {'?','.','?','!','?','.','?','!','?','.','?'},
+                    {'.','.','!','.','.','.','!','.','!','.','.'},
+                    {'?','!','?','.','?','!','?','.','?','.','?'},
+                    {'.','.','.','.','!','.','.','.','!','.','.'},
+                    {'?','.','?','!','?','.','?','.','?','!','?'},
+                    {'.','.','!','.','.','.','!','.','.','.','.'},
+                    {'?','!','?','!','?','!','?','.','?','!','?'},
+                    {'.','.','.','.','.','.','.','.','!','.','.'},
+                    {'?','!','?','.','?','!','?','.','?','.','?'}
+                };
             }
 
             else if ((markerRow == 4 && markerColumn == 4) || (markerRow == 4 && markerColumn == 6))
             {
-                maze[1, 6] = "!";
-                maze[1, 8] = "!";
-
-                maze[2, 2] = "!";
-                maze[2, 3] = "!";
-                maze[2, 4] = "!";
-                maze[2, 6] = "!";
-                maze[2, 10] = "!";
-
-                maze[3, 2] = "!";
-                maze[3, 4] = "!";
-                maze[3, 6] = "!";
-                maze[3, 10] = "!";
-
-                maze[4, 1] = "!";
-                maze[4, 2] = "!";
-                maze[4, 4] = "!";
-                maze[4, 6] = "!";
-                maze[4, 7] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 4] = "!";
-                maze[5, 6] = "!";
-                maze[5, 10] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 4] = "!";
-                maze[6, 6] = "!";
-                maze[6, 8] = "!";
-                maze[6, 10] = "!";
-
-                maze[7, 2] = "!";
-                maze[7, 4] = "!";
-                maze[7, 6] = "!";
-                maze[7, 8] = "!";
-                maze[7, 10] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 4] = "!";
-                maze[8, 6] = "!";
-                maze[8, 8] = "!";
-                maze[8, 10] = "!";
-
-                maze[9, 2] = "!";
-                maze[9, 6] = "!";
-                maze[9, 8] = "!";
-                maze[9, 10] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 3] = "!";
-                maze[10, 4] = "!";
-                maze[10, 5] = "!";
-                maze[10, 6] = "!";
-                maze[10, 8] = "!";
-                maze[10, 10] = "!";
-
-                maze[11, 8] = "!";
+                mazeIndex = 3;
+                maze = new char[,]
+                {
+                        {'?','.','?','.','?','!','?','!','?','.','?'},
+                        {'.','.','!','.','.','.','.','.','.','.','.'},
+                        {'?','!','?','!','?','!','?','.','?','!','?'},
+                        {'!','.','.','.','.','.','!','.','!','.','.'},
+                        {'?','.','?','!','?','!','?','.','?','!','?'},
+                        {'.','.','.','.','.','.','.','.','.','.','.'},
+                        {'?','!','?','!','?','!','?','!','?','!','?'},
+                        {'.','.','.','.','.','.','.','.','.','.','.'},
+                        {'?','!','?','.','?','!','?','!','?','!','?'},
+                        {'.','.','!','.','!','.','.','.','.','.','.'},
+                        {'?','.','?','.','?','.','?','!','?','.','?'}
+                };
             }
 
             else if ((markerRow == 1 && markerColumn == 1) || (markerRow == 4 && markerColumn == 1))
             {
-                maze[1, 4] = "!";
-
-                maze[2, 2] = "!";
-                maze[2, 4] = "!";
-                maze[2, 5] = "!";
-                maze[2, 6] = "!";
-                maze[2, 7] = "!";
-                maze[2, 8] = "!";
-                maze[2, 9] = "!";
-                maze[2, 10] = "!";
-
-                maze[3, 2] = "!";
-                maze[3, 4] = "!";
-
-                maze[4, 2] = "!";
-                maze[4, 4] = "!";
-                maze[4, 7] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 2] = "!";
-                maze[5, 6] = "!";
-                maze[5, 10] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 3] = "!";
-                maze[6, 4] = "!";
-                maze[6, 5] = "!";
-                maze[6, 6] = "!";
-                maze[6, 8] = "!";
-                maze[6, 9] = "!";
-                maze[6, 10] = "!";
-
-                maze[7, 2] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 3] = "!";
-                maze[8, 4] = "!";
-                maze[8, 5] = "!";
-                maze[8, 6] = "!";
-                maze[8, 7] = "!";
-                maze[8, 8] = "!";
-                maze[8, 9] = "!";
-                maze[8, 10] = "!";
-
-                maze[9, 10] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 3] = "!";
-                maze[10, 4] = "!";
-                maze[10, 5] = "!";
-                maze[10, 6] = "!";
-                maze[10, 7] = "!";
-                maze[10, 8] = "!";
-                maze[10, 10] = "!";
-
-                maze[11, 6] = "!";
-                maze[11, 10] = "!";
+                mazeIndex = 4;
+                maze = new char[,]
+                {
+                    { '?','.','?','!','?','.','?','.','?','.','?'},
+                    {'.','.','.','.','!','.','!','.','!','.','.'},
+                    { '?','!','?','!','?','.','?','.','?','.','?'},
+                    { '.','.','.','.','.','.', '!','.','!','.','.'},
+                    { '?','!','?','.','?','!','?','.','?','!','?'},
+                    { '.','.','!','.','!','.','.','.','!','.','.'},
+                    { '?','!','?','.','?','.','?','.','?','.','?'},
+                    { '.','.','!','.','!','.','!','.','!','.','.'},
+                    { '?','.','?','.','?','.','?','.','?','!','?'},
+                    { '.','.','!','.','!','.','!','.','.','.','.'},
+                    { '?','.','?','.','?','!','?','.','?','!','?'}
+                };
             }
 
             else if ((markerRow == 3 && markerColumn == 5) || (markerRow == 6 && markerColumn == 4))
             {
-                maze[2, 1] = "!";
-                maze[2, 2] = "!";
-                maze[2, 3] = "!";
-                maze[2, 4] = "!";
-                maze[2, 5] = "!";
-                maze[2, 6] = "!";
-                maze[2, 7] = "!";
-                maze[2, 8] = "!";
-                maze[2, 10] = "!";
-                maze[3, 10] = "!";
-                maze[4, 2] = "!";
-                maze[4, 3] = "!";
-                maze[4, 4] = "!";
-                maze[4, 5] = "!";
-                maze[4, 6] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-                maze[4, 11] = "!";
-
-                maze[5, 4] = "!";
-                maze[5, 8] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 4] = "!";
-                maze[6, 5] = "!";
-                maze[6, 6] = "!";
-                maze[6, 7] = "!";
-                maze[6, 8] = "!";
-                maze[6, 10] = "!";
-
-                maze[7, 2] = "!";
-                maze[7, 8] = "!";
-                maze[7, 10] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 3] = "!";
-                maze[8, 4] = "!";
-                maze[8, 5] = "!";
-                maze[8, 6] = "!";
-                maze[8, 8] = "!";
-                maze[8, 9] = "!";
-                maze[8, 10] = "!";
-
-                maze[9, 2] = "!";
-                maze[9, 10] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 4] = "!";
-                maze[10, 5] = "!";
-                maze[10, 6] = "!";
-                maze[10, 7] = "!";
-                maze[10, 8] = "!";
-                maze[10, 9] = "!";
-                maze[10, 10] = "!";
-
-                maze[11, 2] = "!";
+                mazeIndex = 5;
+                maze = new char[,]
+                {
+                    {'?','.','?','.','?','.','?','.','?','.','?'},
+                    {'!',' ','!','.','!','.','!','.','.','.','.'},
+                    {'?','.','?','.','?','.','?','.','?','!','?'},
+                    {'.','.','!','.','!','.','.','.','!','.','!'},
+                    {'?','.','?','!','?','!','?','!','?','.','?'},
+                    {'.','.','.','.','.','.','!','.','.','.','.'},
+                    {'?','!','?','.','?','.','?','!','?','!','?'},
+                    {'.','.','!','.','!','.','.','.','!','.','.'},
+                    {'?','!','?','.','?','.','?','.','?','!','?'},
+                    {'.','.','.','.','!','.','!','.','!','.','.'},
+                    {'?','!','?','.','?','.','?','.','?','.','?'}
+                };
             }
 
             else if ((markerRow == 1 && markerColumn == 5) || (markerRow == 5 && markerColumn == 3))
             {
-                maze[1, 2] = "!";
-                maze[1, 6] = "!";
-
-                maze[2, 2] = "!";
-                maze[2, 4] = "!";
-                maze[2, 6] = "!";
-                maze[2, 7] = "!";
-                maze[2, 8] = "!";
-                maze[2, 10] = "!";
-
-                maze[3, 2] = "!";
-                maze[3, 4] = "!";
-                maze[3, 6] = "!";
-                maze[3, 10] = "!";
-
-                maze[4, 2] = "!";
-                maze[4, 4] = "!";
-                maze[4, 6] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 4] = "!";
-                maze[5, 6] = "!";
-                maze[5, 8] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 3] = "!";
-                maze[6, 4] = "!";
-                maze[6, 5] = "!";
-                maze[6, 6] = "!";
-                maze[6, 8] = "!";
-                maze[6, 10] = "!";
-                maze[6, 11] = "!";
-
-                maze[7, 4] = "!";
-                maze[7, 8] = "!";
-                maze[7, 10] = "!";
-
-                maze[8, 1] = "!";
-                maze[8, 2] = "!";
-                maze[8, 4] = "!";
-                maze[8, 6] = "!";
-                maze[8, 8] = "!";
-                maze[8, 10] = "!";
-
-                maze[9, 4] = "!";
-                maze[9, 6] = "!";
-                maze[9, 8] = "!";
-
-
-                maze[10, 2] = "!";
-                maze[10, 3] = "!";
-                maze[10, 4] = "!";
-                maze[10, 5] = "!";
-                maze[10, 6] = "!";
-                maze[10, 8] = "!";
-                maze[10, 9] = "!";
-                maze[10, 10] = "!";
-
-                maze[11, 8] = "!";
+                mazeIndex = 6;
+                maze = new char[,]
+                {
+                    {'?','!','?','.','?','!','?','.','?','.','?'},
+                    {'.','.','.','.','.','.','!','.','.','.','.'},
+                    {'?','!','?','!','?','!','?','.','?','!','?'},
+                    {'.','.','.','.','.','.','.','.','!','.','.'},
+                    {'?','.','?','!','?','!','?','!','?','.','?'},
+                    {'.','.','!','.','!','.','.','.','.','.','!'},
+                    {'?','.','?','!','?','.','?','!','?','!','?'},
+                    {'!','.','.','.','.','.','.','.','.','.','.'},
+                    {'?','.','?','!','?','!','?','!','?','.','?'},
+                    {'.','.','!','.','!','.','.','.','!','.','.'},
+                    {'?','.','?','.','?','.','?','!','?','.','?'}
+                };
             }
 
             else if ((markerRow == 1 && markerColumn == 2) || (markerRow == 6 && markerColumn == 2))
             {
-                maze[1, 8] = "!";
-
-                maze[2, 2] = "!";
-                maze[2, 3] = "!";
-                maze[2, 4] = "!";
-                maze[2, 5] = "!";
-                maze[2, 6] = "!";
-                maze[2, 8] = "!";
-                maze[2, 10] = "!";
-
-                maze[3, 2] = "!";
-                maze[3, 6] = "!";
-                maze[3, 10] = "!";
-
-                maze[4, 2] = "!";
-                maze[4, 4] = "!";
-                maze[4, 5] = "!";
-                maze[4, 7] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 4] = "!";
-                maze[5, 8] = "!";
-
-                maze[6, 1] = "!";
-                maze[6, 2] = "!";
-                maze[6, 3] = "!";
-                maze[6, 4] = "!";
-                maze[6, 6] = "!";
-                maze[6, 7] = "!";
-                maze[6, 8] = "!";
-                maze[6, 10] = "!";
-                maze[6, 11] = "!";
-
-                maze[7, 4] = "!";
-                maze[7, 10] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 4] = "!";
-                maze[8, 6] = "!";
-                maze[8, 7] = "!";
-                maze[8, 8] = "!";
-                maze[8, 9] = "!";
-                maze[8, 10] = "!";
-
-                maze[9, 2] = "!";
-                maze[9, 4] = "!";
-                maze[9, 10] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 3] = "!";
-                maze[10, 4] = "!";
-                maze[10, 5] = "!";
-                maze[10, 6] = "!";
-                maze[10, 7] = "!";
-                maze[10, 8] = "!";
-                maze[10, 10] = "!";
+                mazeIndex = 7;
+                maze = new char[,]
+                {
+                    {'?','.','?','.','?','.','?','!','?','.','?'},
+                    {'.','.','!','.','!','.','.','.','.','.','.'},
+                    {'?','!','?','.','?','!','?','!','?','!','?'},
+                    {'.','.','.','.','!','.','!','.','!','.','.'},
+                    {'?','.','?','!','?','.','?','.','?','.','?'},
+                    {'!','.','!','.','.','.','!','.','.','.','!'},
+                    {'?','.','?','!','?','.','?','.','?','!','?'},
+                    {'.','.','.','.','.','.','!','.','!','.','.'},
+                    {'?','!','?','!','?','.','?','.','?','!','?'},
+                    {'.','.','!','.','!','.','!','.','.','.','.'},
+                    {'?','.','?','.','?','.','?','.','?','.','?'}
+                };
             }
 
             else if ((markerRow == 1 && markerColumn == 4) || (markerRow == 4 && markerColumn == 3))
             {
-                maze[1, 2] = "!";
-                maze[1, 8] = "!";
-
-                maze[2, 2] = "!";
-                maze[2, 4] = "!";
-                maze[2, 5] = "!";
-                maze[2, 6] = "!";
-                maze[2, 8] = "!";
-                maze[2, 10] = "!";
-
-                maze[3, 6] = "!";
-                maze[3, 10] = "!";
-
-                maze[4, 2] = "!";
-                maze[4, 3] = "!";
-                maze[4, 4] = "!";
-                maze[4, 5] = "!";
-                maze[4, 6] = "!";
-                maze[4, 7] = "!";
-                maze[4, 8] = "!";
-                maze[4, 9] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 2] = "!";
-                maze[5, 10] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 4] = "!";
-                maze[6, 5] = "!";
-                maze[6, 6] = "!";
-                maze[6, 7] = "!";
-                maze[6, 8] = "!";
-                maze[6, 10] = "!";
-
-                maze[7, 2] = "!";
-                maze[7, 6] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 3] = "!";
-                maze[8, 4] = "!";
-                maze[8, 6] = "!";
-                maze[8, 7] = "!";
-                maze[8, 8] = "!";
-                maze[8, 9] = "!";
-                maze[8, 10] = "!";
-                maze[8, 11] = "!";
-
-                maze[9, 2] = "!";
-                maze[9, 4] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 4] = "!";
-                maze[10, 5] = "!";
-                maze[10, 6] = "!";
-                maze[10, 7] = "!";
-                maze[10, 8] = "!";
-                maze[10, 9] = "!";
-                maze[10, 10] = "!";
-                maze[10, 11] = "!";
+                mazeIndex = 8;
+                maze = new char[,]
+                {
+                    {'?','!','?','.','?','.','?','!','?','.','?'},
+                    {'.','.','.','.','!','.','.','.','.','.','.'},
+                    {'?','.','?','.','?','!','?','.','?','!','?'},
+                    {'.','.','!','.','!','.','!','.','!','.','.'},
+                    {'?','!','?','.','?','.','?','.','?','!','?'},
+                    {'.','.','.','.','!','.','!','.','.','.','.'},
+                    {'?','!','?','.','?','!','?','.','?','.','?'},
+                    {'.','.','!','.','.','.','!','.','!','.','!'},
+                    {'?','!','?','!','?','.','?','.','?','.','?'},
+                    {'.','.','.','.','!','.','!','.','!','.','!'},
+                    {'?','.','?','.','?','.','?','.','?','.','?'}
+                };
             }
 
-            else if ((markerRow == 2 && markerColumn == 3) || (markerRow == 5 && markerColumn == 1))
+            else
             {
-                maze[1, 2] = "!";
-
-                maze[2, 2] = "!";
-                maze[2, 4] = "!";
-                maze[2, 5] = "!";
-                maze[2, 6] = "!";
-                maze[2, 2] = "!";
-                maze[2, 7] = "!";
-                maze[2, 8] = "!";
-                maze[2, 10] = "!";
-
-                maze[3, 2] = "!";
-                maze[3, 4] = "!";
-                maze[3, 8] = "!";
-                maze[3, 10] = "!";
-
-                maze[4, 2] = "!";
-                maze[4, 4] = "!";
-                maze[4, 6] = "!";
-                maze[4, 7] = "!";
-                maze[4, 8] = "!";
-                maze[4, 10] = "!";
-
-                maze[5, 6] = "!";
-                maze[5, 10] = "!";
-
-                maze[6, 2] = "!";
-                maze[6, 3] = "!";
-                maze[6, 4] = "!";
-                maze[6, 5] = "!";
-                maze[6, 6] = "!";
-                maze[6, 8] = "!";
-                maze[6, 9] = "!";
-                maze[6, 10] = "!";
-
-                maze[7, 2] = "!";
-                maze[7, 4] = "!";
-                maze[7, 8] = "!";
-
-                maze[8, 2] = "!";
-                maze[8, 4] = "!";
-                maze[8, 6] = "!";
-                maze[8, 7] = "!";
-                maze[8, 8] = "!";
-                maze[8, 9] = "!";
-                maze[8, 10] = "!";
-
-                maze[9, 2] = "!";
-                maze[9, 4] = "!";
-                maze[9, 6] = "!";
-                maze[9, 10] = "!";
-
-                maze[10, 2] = "!";
-                maze[10, 4] = "!";
-                maze[10, 6] = "!";
-                maze[10, 8] = "!";
-                maze[10, 10] = "!";
-                maze[10, 11] = "!";
-
-                maze[11, 4] = "!";
-                maze[11, 8] = "!";
+                mazeIndex = 9;
+                maze = new char[,]
+                {
+                    {'?','!','?','.','?','.','?','.','?','.','?'},
+                    {'.','.','.','.','!','.','!','.','.','.','.'},
+                    {'?','!','?','!','?','.','?','!','?','!','?'},
+                    {'.','.','.','.','.','.','!','.','.','.','.'},
+                    {'?','!','?','.','?','!','?','.','?','!','?'},
+                    {'.','.','!','.','!','.','.','.','!','.','.'},
+                    {'?','!','?','!','?','.','?','!','?','.','?'},
+                    {'.','.','.','.','.','.','!','.','!','.','.'},
+                    {'?','!','?','!','?','!','?','.','?','!','?'},
+                    {'.','.','.','.','.','.','.','.','.','.','!'},
+                    {'?','.','?','!','?','.','?','!','?','.','?'}
+                };
             }
 
             //converts the player and goal coordinates
             //so it fits on the program's maze
-            playerRow = ConvertCoordinate(playerRow);
-            playerColumn = ConvertCoordinate(playerColumn);
+            playerRow = ConvertCoordinate(startingPlayerRow);
+            playerColumn = ConvertCoordinate(startingPlayerColumn);
 
-            goalRow = ConvertCoordinate(goalRow);
-            goalColumn = ConvertCoordinate(goalColumn);
+            goalRow = ConvertCoordinate(startingGoalRow);
+            goalColumn = ConvertCoordinate(startingGoalColumn);
 
             directionList = new List<string>();
         }
@@ -682,11 +269,12 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
-            LogFileWriter.WriteLine("======================MAZE======================");
+            PrintDebugLine("======================MAZE======================");
 
-            LogFileWriter.WriteLine($"Player: ({playerRow},{playerColumn})\n");
-            LogFileWriter.WriteLine($"Goal: ({goalRow},{goalColumn})\n");
-            LogFileWriter.WriteLine($"Marker: ({markerRow},{markerColumn})\n");
+            PrintDebugLine($"Player: ({startingPlayerRow},{startingPlayerColumn})\n");
+            PrintDebugLine($"Goal: ({startingGoalRow},{startingGoalColumn})\n");
+            PrintDebugLine($"Marker: ({markerRow},{markerColumn})\n");
+            PrintDebugLine($"Maze Index: {mazeIndex}\n");
 
             //if the player finds the goal
 
@@ -695,35 +283,19 @@ namespace KTANE_Solver
                 //simplifly the directions and show them
                 directionList = SimplifyDirections();
 
-                String caption = "Maze Answer";
-                String text = "";
+                String answer = string.Join(", ", directionList);
 
-                for (int i = 0; i < directionList.Count; i++)
-                {
-                    if (i == directionList.Count() - 1)
-                    {
-                        text += directionList[i];
-                    }
-                    else
-                    { 
-                        text += directionList[i] + ", ";
-                    }
-                }
+                PrintDebugLine($"Answer: {answer}");
 
-                ShowAnswer(text, caption);
+                ShowAnswer(answer, "Maze Answer");
             }
 
             //otherwise tell them this module is unsolvable
             //and show the coordinates
             else
             {
-                String caption = "Maze Answer Error";
-                String text = "There was an error finding the answer. Show developer this message: \n" + 
-                              $"Player (row, column): {playerRow},{playerColumn} \n" +
-                              $"Goal (row, column): {goalRow},{goalColumn} \n" +
-                              $"Marker (row, column): {markerRow},{markerColumn}";
-
-                ShowErrorMessage(text, caption);
+                PrintDebugLine("Unable to find answer");
+                ShowErrorMessage("Unable to find answer", "Maze Answer Error");
             }
         }
 
@@ -758,26 +330,7 @@ namespace KTANE_Solver
         /// <returns>the new coordiante</returns>
         private int ConvertCoordinate(int coordinate)
         {
-            switch (coordinate)
-            {
-                case 2:
-                    coordinate = 3;
-                    break;
-                case 3:
-                    coordinate = 5;
-                    break;
-                case 4:
-                    coordinate = 7;
-                    break;
-                case 5:
-                    coordinate = 9;
-                    break;
-                case 6:
-                    coordinate = 11;
-                    break;
-            }
-
-            return coordinate;
+            return coordinate + (coordinate - 2);
         }
 
         /// <summary>
@@ -786,13 +339,14 @@ namespace KTANE_Solver
         /// <returns>true if that's the right way to the goal</returns>
         private bool MoveNorth()
         {
+            PrintDebugLine($"Attempting to move up. Starting at ({playerRow},{playerColumn})\n");
             //if there is a path and an available space going up, and the last direction went wasn't down, go up
-            if (playerRow > 2 && maze[playerRow - 1, playerColumn] != "!" && maze[playerRow - 2, playerColumn] == "?"
+            if (playerRow > 0 && maze[playerRow - 1, playerColumn] != '!' && maze[playerRow - 2, playerColumn] == '?'
                 && (directionList.Count == 0 || directionList[directionList.Count - 1] != "DOWN"))
             {
 
                 playerRow -= 2;
-                LogFileWriter.WriteLine($"Moving up. Player is now at ({playerRow},{playerColumn})\n");
+                PrintDebugLine($"Moving up. Player is now at ({playerRow},{playerColumn})\n");
                 directionList.Add("UP");
 
 
@@ -828,11 +382,11 @@ namespace KTANE_Solver
                             //unavailable and move back down
                             if (!goal)
                             {
-                                maze[playerRow, playerColumn] = "X";
+                                maze[playerRow, playerColumn] = 'X';
                                 playerRow += 2;
                                 directionList.RemoveAt(directionList.Count - 1);
 
-                                LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                PrintDebugLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                             }
                         }
 
@@ -844,6 +398,7 @@ namespace KTANE_Solver
             //otherwise, set goal as false
             else
             {
+                PrintDebugLine($"Unable to move up\n");
                 goal = false;
             }
 
@@ -855,13 +410,14 @@ namespace KTANE_Solver
         /// <returns>true if that's the right way to the goal</returns>
         private bool MoveEast()
         {
+            PrintDebugLine($"Attempting to move right. Starting at ({playerRow},{playerColumn})\n");
             //if there is a path and an available space going right, and the last direction went wasn't left, go right
-            if (playerColumn < 10 && maze[playerRow, playerColumn + 1] != "!" && maze[playerRow, playerColumn + 2] == "?" 
+            if (playerColumn < 10 && maze[playerRow, playerColumn + 1] != '!' && maze[playerRow, playerColumn + 2] == '?'
                 && (directionList.Count == 0 || directionList[directionList.Count - 1] != "LEFT"))
             {
                 playerColumn += 2;
                 directionList.Add("RIGHT");
-                LogFileWriter.WriteLine($"Moving right. Player is now at ({playerRow},{playerColumn})\n");
+                PrintDebugLine($"Moving right. Player is now at ({playerRow},{playerColumn})\n");
 
 
 
@@ -896,10 +452,10 @@ namespace KTANE_Solver
                                 //unavailable and move back left
                                 if (!goal)
                                 {
-                                    maze[playerRow, playerColumn] = "X";
+                                    maze[playerRow, playerColumn] = 'X';
                                     playerColumn -= 2;
                                     directionList.RemoveAt(directionList.Count - 1);
-                                    LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                    PrintDebugLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                                 }
                             }
                         }
@@ -910,6 +466,7 @@ namespace KTANE_Solver
             else
             {
                 goal = false;
+                PrintDebugLine($"Unable to move right\n");
             }
 
             return goal;
@@ -923,14 +480,16 @@ namespace KTANE_Solver
         private bool MoveSouth()
 
         {
+            PrintDebugLine($"Attempting to move down. Starting at ({playerRow},{playerColumn})\n");
+
             //if there is a path and an available space going down, and the last direction went wasn't up, go down
-            if (playerRow < 10 && maze[playerRow + 1, playerColumn] != "!" && maze[playerRow + 2, playerColumn] == "?"
+            if (playerRow < 10 && maze[playerRow + 1, playerColumn] != '!' && maze[playerRow + 2, playerColumn] == '?'
                 && (directionList.Count == 0 || directionList[directionList.Count - 1] != "UP"))
             {
                 directionList.Add("DOWN");
 
                 playerRow += 2;
-                LogFileWriter.WriteLine($"Moving down. Player is now at ({playerRow},{playerColumn})\n");
+                PrintDebugLine($"Moving down. Player is now at ({playerRow},{playerColumn})\n");
 
 
                 //if the player is at the goal,
@@ -965,10 +524,10 @@ namespace KTANE_Solver
                             //unavailable and move back up
                             if (!goal)
                             {
-                                maze[playerRow, playerColumn] = "X";
+                                maze[playerRow, playerColumn] = 'X';
                                 playerRow -= 2;
                                 directionList.RemoveAt(directionList.Count - 1);
-                                LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                PrintDebugLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                             }
                         }
 
@@ -981,6 +540,7 @@ namespace KTANE_Solver
             else
             {
                 goal = false;
+                PrintDebugLine($"Unable to move down\n");
             }
 
             return goal;
@@ -993,13 +553,15 @@ namespace KTANE_Solver
         private bool MoveWest()
 
         {
+            PrintDebugLine($"Attempting to move left. Starting at ({playerRow},{playerColumn})\n");
+
             //if there is a path and an available space going left, and the last direction went wasn't right, go left
-            if (playerColumn > 2 && maze[playerRow, playerColumn - 1] != "!" && maze[playerRow, playerColumn - 2] == "?" && 
+            if (playerColumn > 0 && maze[playerRow, playerColumn - 1] != '!' && maze[playerRow, playerColumn - 2] == '?' && 
                (directionList.Count == 0 || directionList[directionList.Count - 1] != "RIGHT"))
             {
                 playerColumn -= 2;
                 directionList.Add("LEFT");
-                LogFileWriter.WriteLine($"Moving left. Player is now at ({playerRow},{playerColumn})\n");
+                PrintDebugLine($"Moving left. Player is now at ({playerRow},{playerColumn})\n");
 
 
 
@@ -1034,10 +596,10 @@ namespace KTANE_Solver
                                 //unavailable and move back right
                                 if (!goal)
                                 {
-                                    maze[playerRow, playerColumn] = "X";
+                                    maze[playerRow, playerColumn] = 'X';
                                     playerColumn += 2;
                                     directionList.RemoveAt(directionList.Count - 1);
-                                    LogFileWriter.WriteLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
+                                    PrintDebugLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
                                 }
                             }
                         }
@@ -1048,6 +610,7 @@ namespace KTANE_Solver
             else
             {
                 goal = false;
+                PrintDebugLine($"Unable to move left\n");
             }
 
             return goal;
