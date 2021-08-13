@@ -104,7 +104,7 @@ namespace KTANE_Solver
             PrintPiece(5, piece5, position5);
             PrintPiece(6, piece6, position6);
 
-            LogFileWriter.WriteLine("");
+            PrintDebugLine("");
         }
 
         //METHODS
@@ -125,9 +125,7 @@ namespace KTANE_Solver
             //print the board
             PrintBoard();
 
-            //find the unchecked piece
-            int row = -1;
-            int column = -1;
+            List<String> answerList = new List<string>();
 
             for (int i = 0; i < 6; i++)
             {
@@ -136,29 +134,39 @@ namespace KTANE_Solver
 
                     if (board[i, j] == '.')
                     {
-                        row = i;
-                        column = j;
-                        break;
+                        answerList.Add("" + i + j);
                     }
                 }
-
-                if (row != -1)
-                    break;
             }
 
             //convert the location back to the module
 
             String answer = "";
 
-            if (row == -1)
+            if (answerList.Count > 1)
+            {
+                answer = "Unable to find answer. Mutiple possible answers found\n\n";
+                List<String> newAnwerList = new List<string>();
+
+                foreach (String a in answerList)
+                {
+                    newAnwerList.Add($"{(char)(int.Parse("" + a[1]) + 97)}{Math.Abs(6 - int.Parse("" + a[0]))}");
+                }
+
+                answer += string.Join(", ", newAnwerList);
+            }
+
+            else if (answerList.Count == 0)
             {
                 answer = "Couldn't find answer";
             }
 
             else
             { 
-                answer = $"{(char)(column + 97)}{Math.Abs(6 - row)}";
+                answer = $"{(char)(int.Parse("" + answerList[0][1]) + 97)}{Math.Abs(6 - int.Parse("" + answerList[0][0]))}";
             }
+
+            PrintDebug($"Answer: {answer}\n");
 
             ShowAnswer(answer, "Chess Answer");
 
@@ -517,13 +525,13 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    LogFileWriter.Write(board[i, j] + " ");
+                    PrintDebug(board[i, j] + " ");
                 }
 
-                LogFileWriter.WriteLine("");
+                PrintDebugLine("");
             }
 
-            LogFileWriter.WriteLine("");
+            PrintDebugLine("");
         }
 
         /// <summary>
@@ -533,7 +541,7 @@ namespace KTANE_Solver
         /// <param name="piece"></param>
         private void PrintPiece(int num, char piece, String locattion)
         {
-            LogFileWriter.WriteLine($"{num}. Location {locattion}: {piece}");
+            PrintDebugLine($"{num}. Location {locattion}: {piece}");
         }
 
         /// <summary>
