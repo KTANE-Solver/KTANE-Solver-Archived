@@ -11,9 +11,12 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 3/5/21
     //Purpose: Solves the Maze module
-    class Maze : Module
+    public class Maze : Module
     {
         //==============FIELDS==============
+
+        private List<Coordinate> visitedNodes;
+
 
         //the maze itself
         private char[,] maze;
@@ -49,6 +52,7 @@ namespace KTANE_Solver
         //==============CONSTRUCTORS==============
         public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter LogFileWriter) : base(null, LogFileWriter)
         {
+            visitedNodes = new List<Coordinate>();
             //sets up the coordiantes
             startingPlayerRow = playerRow;
             startingPlayerColumn = playerColumn;
@@ -87,7 +91,7 @@ namespace KTANE_Solver
                 {
                         {'?','.','?','.','?','!','?','.','?','.','?'},
                         {'.','.','!','.','.','.','.','.','!','.','!'},
-                        {'?','!','?','!','?','!','?','.','?','.','?'},
+                        {'?','!','?','.','?','!','?','.','?','.','?'},
                         {'.','.','.','.','!','.','!','.','!','.','.'},
                         {'?','!','?','.','?','!','?','.','?','.','?'},
                         {'.','.','!','.','.','.','.','.','!','.','.'},
@@ -162,11 +166,11 @@ namespace KTANE_Solver
                 maze = new char[,]
                 {
                     {'?','.','?','.','?','.','?','.','?','.','?'},
-                    {'!',' ','!','.','!','.','!','.','.','.','.'},
+                    {'!','.','!','.','!','.','!','.','.','.','.'},
                     {'?','.','?','.','?','.','?','.','?','!','?'},
                     {'.','.','!','.','!','.','.','.','!','.','!'},
-                    {'?','.','?','!','?','!','?','!','?','.','?'},
-                    {'.','.','.','.','.','.','!','.','.','.','.'},
+                    {'?','.','?','!','?','.','?','!','?','.','?'},
+                    {'.','.','.','.','!','.','!','.','.','.','.'},
                     {'?','!','?','.','?','.','?','!','?','!','?'},
                     {'.','.','!','.','!','.','.','.','!','.','.'},
                     {'?','!','?','.','?','.','?','.','?','!','?'},
@@ -201,9 +205,9 @@ namespace KTANE_Solver
                 {
                     {'?','.','?','.','?','.','?','!','?','.','?'},
                     {'.','.','!','.','!','.','.','.','.','.','.'},
-                    {'?','!','?','.','?','!','?','!','?','!','?'},
+                    {'?','!','?','.','?','!','?','.','?','!','?'},
                     {'.','.','.','.','!','.','!','.','!','.','.'},
-                    {'?','.','?','!','?','.','?','.','?','.','?'},
+                    {'?','.','?','!','?','.','?','!','?','.','?'},
                     {'!','.','!','.','.','.','!','.','.','.','!'},
                     {'?','.','?','!','?','.','?','.','?','!','?'},
                     {'.','.','.','.','.','.','!','.','!','.','.'},
@@ -241,7 +245,7 @@ namespace KTANE_Solver
                     {'.','.','.','.','!','.','!','.','.','.','.'},
                     {'?','!','?','!','?','.','?','!','?','!','?'},
                     {'.','.','.','.','.','.','!','.','.','.','.'},
-                    {'?','!','?','.','?','!','?','.','?','!','?'},
+                    {'?','.','?','.','?','!','?','.','?','!','?'},
                     {'.','.','!','.','!','.','.','.','!','.','.'},
                     {'?','!','?','!','?','.','?','!','?','.','?'},
                     {'.','.','.','.','.','.','!','.','!','.','.'},
@@ -267,7 +271,7 @@ namespace KTANE_Solver
         /// Shows a list of directions
         /// in a message box
         /// </summary>
-        public void Solve()
+        public List<Coordinate> Solve()
         {
             PrintDebugLine("======================MAZE======================");
 
@@ -278,6 +282,8 @@ namespace KTANE_Solver
 
             //if the player finds the goal
 
+            visitedNodes.Add(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
+
             if (MoveNorth() || MoveEast() || MoveSouth() || MoveWest())
             {
                 //simplifly the directions and show them
@@ -287,7 +293,7 @@ namespace KTANE_Solver
 
                 PrintDebugLine($"Answer: {answer}");
 
-                ShowAnswer(answer, "Maze Answer");
+                return visitedNodes;
             }
 
             //otherwise tell them this module is unsolvable
@@ -296,6 +302,7 @@ namespace KTANE_Solver
             {
                 PrintDebugLine("Unable to find answer");
                 ShowErrorMessage("Unable to find answer", "Maze Answer Error");
+                return null;
             }
         }
 
@@ -333,6 +340,11 @@ namespace KTANE_Solver
             return coordinate + (coordinate - 2);
         }
 
+        private int RevertCoordinate(int coordiante)
+        {
+            return coordiante /2;
+        }
+
         /// <summary>
         /// Moves up if that's possible
         /// </summary>
@@ -346,6 +358,8 @@ namespace KTANE_Solver
             {
 
                 playerRow -= 2;
+                visitedNodes.Add(new Coordinate (RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
+
                 PrintDebugLine($"Moving up. Player is now at ({playerRow},{playerColumn})\n");
                 directionList.Add("UP");
 
@@ -383,6 +397,12 @@ namespace KTANE_Solver
                             if (!goal)
                             {
                                 maze[playerRow, playerColumn] = 'X';
+                                if (playerRow == 0 && playerColumn == 10)
+                                {
+                                    Console.WriteLine();
+                                }
+                                
+                                RemoveCoordiante(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
                                 playerRow += 2;
                                 directionList.RemoveAt(directionList.Count - 1);
 
@@ -416,6 +436,7 @@ namespace KTANE_Solver
                 && (directionList.Count == 0 || directionList[directionList.Count - 1] != "LEFT"))
             {
                 playerColumn += 2;
+                visitedNodes.Add(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
                 directionList.Add("RIGHT");
                 PrintDebugLine($"Moving right. Player is now at ({playerRow},{playerColumn})\n");
 
@@ -453,6 +474,7 @@ namespace KTANE_Solver
                                 if (!goal)
                                 {
                                     maze[playerRow, playerColumn] = 'X';
+                                    RemoveCoordiante(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
                                     playerColumn -= 2;
                                     directionList.RemoveAt(directionList.Count - 1);
                                     PrintDebugLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
@@ -489,6 +511,7 @@ namespace KTANE_Solver
                 directionList.Add("DOWN");
 
                 playerRow += 2;
+                visitedNodes.Add(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
                 PrintDebugLine($"Moving down. Player is now at ({playerRow},{playerColumn})\n");
 
 
@@ -525,6 +548,7 @@ namespace KTANE_Solver
                             if (!goal)
                             {
                                 maze[playerRow, playerColumn] = 'X';
+                                RemoveCoordiante(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
                                 playerRow -= 2;
                                 directionList.RemoveAt(directionList.Count - 1);
                                 PrintDebugLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
@@ -551,7 +575,6 @@ namespace KTANE_Solver
         /// </summary>
         /// <returns>true if that's the right way to the goal</returns>
         private bool MoveWest()
-
         {
             PrintDebugLine($"Attempting to move left. Starting at ({playerRow},{playerColumn})\n");
 
@@ -560,6 +583,7 @@ namespace KTANE_Solver
                (directionList.Count == 0 || directionList[directionList.Count - 1] != "RIGHT"))
             {
                 playerColumn -= 2;
+                visitedNodes.Add(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
                 directionList.Add("LEFT");
                 PrintDebugLine($"Moving left. Player is now at ({playerRow},{playerColumn})\n");
 
@@ -597,6 +621,7 @@ namespace KTANE_Solver
                                 if (!goal)
                                 {
                                     maze[playerRow, playerColumn] = 'X';
+                                    RemoveCoordiante(new Coordinate(RevertCoordinate(playerRow), RevertCoordinate(playerColumn)));
                                     playerColumn += 2;
                                     directionList.RemoveAt(directionList.Count - 1);
                                     PrintDebugLine($"Not the right way to go. Backtracking to ({playerRow},{playerColumn})\n");
@@ -625,6 +650,31 @@ namespace KTANE_Solver
         private bool AtGoal()
         {
             return playerRow == goalRow && playerColumn == goalColumn;
+        }
+
+        public class Coordinate
+        {
+            public int Row { get; set; }
+            public int Column { get; set; }
+
+            public Coordinate(int row, int column)
+            {
+                Row = row;
+                Column = column;
+            }
+
+        }
+
+        private void RemoveCoordiante(Coordinate coordianate)
+        {
+            for (int i = 0; i < visitedNodes.Count; i++)
+            {
+                if (visitedNodes[i].Row == coordianate.Row && visitedNodes[i].Column == coordianate.Column)
+                {
+                    visitedNodes.RemoveAt(i);
+                    return;
+                }
+            }
         }
     }
 }

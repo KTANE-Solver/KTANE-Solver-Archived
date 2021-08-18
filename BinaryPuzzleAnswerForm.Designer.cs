@@ -71,7 +71,7 @@ namespace KTANE_Solver
             // row1button1
             // 
             this.row1button1.Enabled = false;
-            this.row1button1.Location = new System.Drawing.Point(12, 12);
+            this.row1button1.Location = new System.Drawing.Point(7, 12);
             this.row1button1.Name = "row1button1";
             this.row1button1.Size = new System.Drawing.Size(60, 59);
             this.row1button1.TabIndex = 1;
@@ -80,7 +80,7 @@ namespace KTANE_Solver
             // row1button2
             // 
             this.row1button2.Enabled = false;
-            this.row1button2.Location = new System.Drawing.Point(78, 12);
+            this.row1button2.Location = new System.Drawing.Point(73, 12);
             this.row1button2.Name = "row1button2";
             this.row1button2.Size = new System.Drawing.Size(60, 59);
             this.row1button2.TabIndex = 2;
@@ -89,7 +89,7 @@ namespace KTANE_Solver
             // row1button3
             // 
             this.row1button3.Enabled = false;
-            this.row1button3.Location = new System.Drawing.Point(144, 12);
+            this.row1button3.Location = new System.Drawing.Point(139, 12);
             this.row1button3.Name = "row1button3";
             this.row1button3.Size = new System.Drawing.Size(60, 59);
             this.row1button3.TabIndex = 3;
@@ -98,7 +98,7 @@ namespace KTANE_Solver
             // row1button4
             // 
             this.row1button4.Enabled = false;
-            this.row1button4.Location = new System.Drawing.Point(210, 12);
+            this.row1button4.Location = new System.Drawing.Point(205, 12);
             this.row1button4.Name = "row1button4";
             this.row1button4.Size = new System.Drawing.Size(60, 59);
             this.row1button4.TabIndex = 4;
@@ -107,7 +107,7 @@ namespace KTANE_Solver
             // row1button5
             // 
             this.row1button5.Enabled = false;
-            this.row1button5.Location = new System.Drawing.Point(276, 12);
+            this.row1button5.Location = new System.Drawing.Point(271, 12);
             this.row1button5.Name = "row1button5";
             this.row1button5.Size = new System.Drawing.Size(60, 59);
             this.row1button5.TabIndex = 5;
@@ -116,7 +116,7 @@ namespace KTANE_Solver
             // row1button6
             // 
             this.row1button6.Enabled = false;
-            this.row1button6.Location = new System.Drawing.Point(342, 12);
+            this.row1button6.Location = new System.Drawing.Point(337, 12);
             this.row1button6.Name = "row1button6";
             this.row1button6.Size = new System.Drawing.Size(60, 59);
             this.row1button6.TabIndex = 6;
@@ -125,7 +125,7 @@ namespace KTANE_Solver
             // row2button6
             // 
             this.row2button6.Enabled = false;
-            this.row2button6.Location = new System.Drawing.Point(342, 77);
+            this.row2button6.Location = new System.Drawing.Point(337, 77);
             this.row2button6.Name = "row2button6";
             this.row2button6.Size = new System.Drawing.Size(60, 59);
             this.row2button6.TabIndex = 12;
@@ -134,7 +134,7 @@ namespace KTANE_Solver
             // row2button5
             // 
             this.row2button5.Enabled = false;
-            this.row2button5.Location = new System.Drawing.Point(276, 77);
+            this.row2button5.Location = new System.Drawing.Point(271, 77);
             this.row2button5.Name = "row2button5";
             this.row2button5.Size = new System.Drawing.Size(60, 59);
             this.row2button5.TabIndex = 11;
@@ -143,7 +143,7 @@ namespace KTANE_Solver
             // row2button4
             // 
             this.row2button4.Enabled = false;
-            this.row2button4.Location = new System.Drawing.Point(210, 77);
+            this.row2button4.Location = new System.Drawing.Point(205, 77);
             this.row2button4.Name = "row2button4";
             this.row2button4.Size = new System.Drawing.Size(60, 59);
             this.row2button4.TabIndex = 10;
@@ -152,7 +152,7 @@ namespace KTANE_Solver
             // row2button3
             // 
             this.row2button3.Enabled = false;
-            this.row2button3.Location = new System.Drawing.Point(144, 77);
+            this.row2button3.Location = new System.Drawing.Point(139, 77);
             this.row2button3.Name = "row2button3";
             this.row2button3.Size = new System.Drawing.Size(60, 59);
             this.row2button3.TabIndex = 9;
@@ -160,7 +160,7 @@ namespace KTANE_Solver
             // 
             // row2button2
             // 
-            this.row2button2.Location = new System.Drawing.Point(78, 77);
+            this.row2button2.Location = new System.Drawing.Point(73, 77);
             this.row2button2.Name = "row2button2";
             this.row2button2.Size = new System.Drawing.Size(60, 59);
             this.row2button2.TabIndex = 8;
@@ -169,7 +169,7 @@ namespace KTANE_Solver
             // row2button1
             // 
             this.row2button1.Enabled = false;
-            this.row2button1.Location = new System.Drawing.Point(12, 77);
+            this.row2button1.Location = new System.Drawing.Point(7, 77);
             this.row2button1.Name = "row2button1";
             this.row2button1.Size = new System.Drawing.Size(60, 59);
             this.row2button1.TabIndex = 7;
@@ -178,7 +178,7 @@ namespace KTANE_Solver
             // row3button6
             // 
             this.row3button6.Enabled = false;
-            this.row3button6.Location = new System.Drawing.Point(342, 142);
+            this.row3button6.Location = new System.Drawing.Point(337, 142);
             this.row3button6.Name = "row3button6";
             this.row3button6.Size = new System.Drawing.Size(60, 59);
             this.row3button6.TabIndex = 18;
@@ -187,7 +187,7 @@ namespace KTANE_Solver
             // row3button5
             // 
             this.row3button5.Enabled = false;
-            this.row3button5.Location = new System.Drawing.Point(276, 142);
+            this.row3button5.Location = new System.Drawing.Point(271, 142);
             this.row3button5.Name = "row3button5";
             this.row3button5.Size = new System.Drawing.Size(60, 59);
             this.row3button5.TabIndex = 17;
@@ -196,7 +196,7 @@ namespace KTANE_Solver
             // row3button4
             // 
             this.row3button4.Enabled = false;
-            this.row3button4.Location = new System.Drawing.Point(210, 142);
+            this.row3button4.Location = new System.Drawing.Point(205, 142);
             this.row3button4.Name = "row3button4";
             this.row3button4.Size = new System.Drawing.Size(60, 59);
             this.row3button4.TabIndex = 16;
@@ -205,7 +205,7 @@ namespace KTANE_Solver
             // row3button3
             // 
             this.row3button3.Enabled = false;
-            this.row3button3.Location = new System.Drawing.Point(144, 142);
+            this.row3button3.Location = new System.Drawing.Point(139, 142);
             this.row3button3.Name = "row3button3";
             this.row3button3.Size = new System.Drawing.Size(60, 59);
             this.row3button3.TabIndex = 15;
@@ -214,7 +214,7 @@ namespace KTANE_Solver
             // row3button2
             // 
             this.row3button2.Enabled = false;
-            this.row3button2.Location = new System.Drawing.Point(78, 142);
+            this.row3button2.Location = new System.Drawing.Point(73, 142);
             this.row3button2.Name = "row3button2";
             this.row3button2.Size = new System.Drawing.Size(60, 59);
             this.row3button2.TabIndex = 14;
@@ -223,7 +223,7 @@ namespace KTANE_Solver
             // row3button1
             // 
             this.row3button1.Enabled = false;
-            this.row3button1.Location = new System.Drawing.Point(12, 142);
+            this.row3button1.Location = new System.Drawing.Point(7, 142);
             this.row3button1.Name = "row3button1";
             this.row3button1.Size = new System.Drawing.Size(60, 59);
             this.row3button1.TabIndex = 13;
@@ -232,7 +232,7 @@ namespace KTANE_Solver
             // row4button6
             // 
             this.row4button6.Enabled = false;
-            this.row4button6.Location = new System.Drawing.Point(342, 207);
+            this.row4button6.Location = new System.Drawing.Point(337, 207);
             this.row4button6.Name = "row4button6";
             this.row4button6.Size = new System.Drawing.Size(60, 59);
             this.row4button6.TabIndex = 24;
@@ -241,7 +241,7 @@ namespace KTANE_Solver
             // row4button5
             // 
             this.row4button5.Enabled = false;
-            this.row4button5.Location = new System.Drawing.Point(276, 207);
+            this.row4button5.Location = new System.Drawing.Point(271, 207);
             this.row4button5.Name = "row4button5";
             this.row4button5.Size = new System.Drawing.Size(60, 59);
             this.row4button5.TabIndex = 23;
@@ -250,7 +250,7 @@ namespace KTANE_Solver
             // row4button4
             // 
             this.row4button4.Enabled = false;
-            this.row4button4.Location = new System.Drawing.Point(210, 207);
+            this.row4button4.Location = new System.Drawing.Point(205, 207);
             this.row4button4.Name = "row4button4";
             this.row4button4.Size = new System.Drawing.Size(60, 59);
             this.row4button4.TabIndex = 22;
@@ -259,7 +259,7 @@ namespace KTANE_Solver
             // row4button3
             // 
             this.row4button3.Enabled = false;
-            this.row4button3.Location = new System.Drawing.Point(144, 207);
+            this.row4button3.Location = new System.Drawing.Point(139, 207);
             this.row4button3.Name = "row4button3";
             this.row4button3.Size = new System.Drawing.Size(60, 59);
             this.row4button3.TabIndex = 21;
@@ -268,7 +268,7 @@ namespace KTANE_Solver
             // row4button2
             // 
             this.row4button2.Enabled = false;
-            this.row4button2.Location = new System.Drawing.Point(78, 207);
+            this.row4button2.Location = new System.Drawing.Point(73, 207);
             this.row4button2.Name = "row4button2";
             this.row4button2.Size = new System.Drawing.Size(60, 59);
             this.row4button2.TabIndex = 20;
@@ -277,7 +277,7 @@ namespace KTANE_Solver
             // row4button1
             // 
             this.row4button1.Enabled = false;
-            this.row4button1.Location = new System.Drawing.Point(12, 207);
+            this.row4button1.Location = new System.Drawing.Point(7, 207);
             this.row4button1.Name = "row4button1";
             this.row4button1.Size = new System.Drawing.Size(60, 59);
             this.row4button1.TabIndex = 19;
@@ -286,7 +286,7 @@ namespace KTANE_Solver
             // row5button6
             // 
             this.row5button6.Enabled = false;
-            this.row5button6.Location = new System.Drawing.Point(342, 272);
+            this.row5button6.Location = new System.Drawing.Point(337, 272);
             this.row5button6.Name = "row5button6";
             this.row5button6.Size = new System.Drawing.Size(60, 59);
             this.row5button6.TabIndex = 30;
@@ -295,7 +295,7 @@ namespace KTANE_Solver
             // row5button5
             // 
             this.row5button5.Enabled = false;
-            this.row5button5.Location = new System.Drawing.Point(276, 272);
+            this.row5button5.Location = new System.Drawing.Point(271, 272);
             this.row5button5.Name = "row5button5";
             this.row5button5.Size = new System.Drawing.Size(60, 59);
             this.row5button5.TabIndex = 29;
@@ -304,7 +304,7 @@ namespace KTANE_Solver
             // row5button4
             // 
             this.row5button4.Enabled = false;
-            this.row5button4.Location = new System.Drawing.Point(210, 272);
+            this.row5button4.Location = new System.Drawing.Point(205, 272);
             this.row5button4.Name = "row5button4";
             this.row5button4.Size = new System.Drawing.Size(60, 59);
             this.row5button4.TabIndex = 28;
@@ -313,7 +313,7 @@ namespace KTANE_Solver
             // row5button3
             // 
             this.row5button3.Enabled = false;
-            this.row5button3.Location = new System.Drawing.Point(144, 272);
+            this.row5button3.Location = new System.Drawing.Point(139, 272);
             this.row5button3.Name = "row5button3";
             this.row5button3.Size = new System.Drawing.Size(60, 59);
             this.row5button3.TabIndex = 27;
@@ -322,7 +322,7 @@ namespace KTANE_Solver
             // row5button2
             // 
             this.row5button2.Enabled = false;
-            this.row5button2.Location = new System.Drawing.Point(78, 272);
+            this.row5button2.Location = new System.Drawing.Point(73, 272);
             this.row5button2.Name = "row5button2";
             this.row5button2.Size = new System.Drawing.Size(60, 59);
             this.row5button2.TabIndex = 26;
@@ -331,7 +331,7 @@ namespace KTANE_Solver
             // row5button1
             // 
             this.row5button1.Enabled = false;
-            this.row5button1.Location = new System.Drawing.Point(12, 272);
+            this.row5button1.Location = new System.Drawing.Point(7, 272);
             this.row5button1.Name = "row5button1";
             this.row5button1.Size = new System.Drawing.Size(60, 59);
             this.row5button1.TabIndex = 25;
@@ -340,7 +340,7 @@ namespace KTANE_Solver
             // row6button6
             // 
             this.row6button6.Enabled = false;
-            this.row6button6.Location = new System.Drawing.Point(342, 337);
+            this.row6button6.Location = new System.Drawing.Point(337, 337);
             this.row6button6.Name = "row6button6";
             this.row6button6.Size = new System.Drawing.Size(60, 59);
             this.row6button6.TabIndex = 36;
@@ -349,7 +349,7 @@ namespace KTANE_Solver
             // row6button5
             // 
             this.row6button5.Enabled = false;
-            this.row6button5.Location = new System.Drawing.Point(276, 337);
+            this.row6button5.Location = new System.Drawing.Point(271, 337);
             this.row6button5.Name = "row6button5";
             this.row6button5.Size = new System.Drawing.Size(60, 59);
             this.row6button5.TabIndex = 35;
@@ -358,7 +358,7 @@ namespace KTANE_Solver
             // row6button4
             // 
             this.row6button4.Enabled = false;
-            this.row6button4.Location = new System.Drawing.Point(210, 337);
+            this.row6button4.Location = new System.Drawing.Point(205, 337);
             this.row6button4.Name = "row6button4";
             this.row6button4.Size = new System.Drawing.Size(60, 59);
             this.row6button4.TabIndex = 34;
@@ -367,7 +367,7 @@ namespace KTANE_Solver
             // row6button3
             // 
             this.row6button3.Enabled = false;
-            this.row6button3.Location = new System.Drawing.Point(144, 337);
+            this.row6button3.Location = new System.Drawing.Point(139, 337);
             this.row6button3.Name = "row6button3";
             this.row6button3.Size = new System.Drawing.Size(60, 59);
             this.row6button3.TabIndex = 33;
@@ -376,7 +376,7 @@ namespace KTANE_Solver
             // row6button2
             // 
             this.row6button2.Enabled = false;
-            this.row6button2.Location = new System.Drawing.Point(78, 337);
+            this.row6button2.Location = new System.Drawing.Point(73, 337);
             this.row6button2.Name = "row6button2";
             this.row6button2.Size = new System.Drawing.Size(60, 59);
             this.row6button2.TabIndex = 32;
@@ -385,7 +385,7 @@ namespace KTANE_Solver
             // row6button1
             // 
             this.row6button1.Enabled = false;
-            this.row6button1.Location = new System.Drawing.Point(12, 337);
+            this.row6button1.Location = new System.Drawing.Point(7, 337);
             this.row6button1.Name = "row6button1";
             this.row6button1.Size = new System.Drawing.Size(60, 59);
             this.row6button1.TabIndex = 31;
@@ -444,7 +444,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.row1button2);
             this.Controls.Add(this.row1button1);
             this.Name = "BinaryPuzzleAnswerForm";
-            this.Text = "BinaryPuzzleAnswerForm";
             this.ResumeLayout(false);
 
         }

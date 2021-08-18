@@ -120,6 +120,7 @@ namespace KTANE_Solver
         {
             moduleComboBox.Items.Clear();
 
+
             String[] modules = new String[] {"3D Maze", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
