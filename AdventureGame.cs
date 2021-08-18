@@ -35,6 +35,27 @@ namespace KTANE_Solver
             this.gravity = gravity;
             this.pressure = pressure;
 
+            PrintDebugLine("======================ADVENTURE GAME======================\n");
+
+            PrintDebugLine($"Enemy: {enemyString}\n");
+
+            PrintDebugLine("Strength: " + strength);
+            PrintDebugLine("Dexterity: " + dexterity);
+            PrintDebugLine("Intelligence: " + intelligence);
+            PrintDebugLine("Height: " + height);
+            PrintDebugLine("Temperature: " + temperature);
+            PrintDebugLine("Gravity: " + gravity);
+            PrintDebugLine($"Pressure: {pressure}\n");
+
+            PrintDebugLine("Items\n");
+            PrintDebugLine(item1.ToString());
+            PrintDebugLine(item2.ToString());
+            PrintDebugLine(item3.ToString());
+            PrintDebugLine(item4.ToString());
+            PrintDebugLine(item5.ToString());
+
+
+
             weapon1 = new Weapon(weapon1String);
             weapon2 = new Weapon(weapon2String);
             weapon3 = new Weapon(weapon3String);
@@ -51,10 +72,19 @@ namespace KTANE_Solver
             CheckItem(item5);
 
 
+
+
+            
+
             //check which weapon does most damage
             int damage1 = DamageDealt(weapon1);
             int damage2 = DamageDealt(weapon2);
             int damage3 = DamageDealt(weapon3);
+
+            PrintDebugLine("Weapons\n");
+            PrintDebugLine($"{weapon1String}: {damage1}");
+            PrintDebugLine($"{weapon2String}: {damage2}");
+            PrintDebugLine($"{weapon3String}: {damage3}\n");
 
             if (damage1 <= damage2 && damage1 <= damage3)
             {
@@ -70,6 +100,8 @@ namespace KTANE_Solver
             {
                 answer += weapon3.Name;
             }
+
+            PrintDebugLine($"Answer:\n\n{answer}\n");
 
             ShowAnswer(answer, "Adventure Game");
         }
@@ -90,7 +122,7 @@ namespace KTANE_Solver
                 case Item.BALLOON: return (gravity < 9.3 || pressure > 110) && enemy.Name != "EAGLE";
 
                 //There is at most 1 battery on the bomb, and fighting an enemy other than a Golem or a Wizard.
-                case Item.BATTERY: return Bomb.Battery <= 1 && enemy.Name != "GOLEM" && enemy.Name == "WIZARD";
+                case Item.BATTERY: return Bomb.Battery <= 1 && enemy.Name != "GOLEM" && enemy.Name != "WIZARD";
 
                 //If fighting a Dragon or an Eagle, use if pressure is greater than 105 kPa. If fighting a different enemy, use if pressure is less than 95 kPa.
                 case Item.BELLOWS:
@@ -119,7 +151,7 @@ namespace KTANE_Solver
                            Bomb.Serial.Num > 1 || Bomb.Stereo.Num > 1;
 
                 //Temperature is less than 12°C, and not fighting a Lizard.
-                case Item.LAMP: return temperature < 12 && enemy.Name == "LIZARD";
+                case Item.LAMP: return temperature < 12 && enemy.Name != "LIZARD";
 
                 //There are at least two unlit indicators on the bomb.
                 case Item.MOONSTONE: return Bomb.IndicatorUnlitNum >= 2;
