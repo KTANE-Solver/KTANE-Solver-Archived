@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -31,9 +32,47 @@ namespace KTANE_Solver
         private static AdventureGame.Item item3;
         private static AdventureGame.Item item4;
         private static AdventureGame.Item item5;
-        public AdventureGameItemForm()
+        public AdventureGameItemForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
+        }
+
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        {
+            string[] enemies = new string[] { "Demon", "Dragon", "Eagle", "Goblin", "Golem", "Troll", "Lizard", "Wizard" };
+
+            enemyComboBox.Items.Clear();
+            enemyComboBox.Items.AddRange(enemies);
+            enemyComboBox.Text = enemies[0]; 
+            enemyComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
+            broadswoardCheckBox.Checked = false;
+            caberCheckBox.Checked = false;
+            nastyKnifeCheckBox.Checked = false;
+            longbowCheckBox.Checked = false;
+            magicOrbCheckBox.Checked = false;
+            grimoireCheckBox.Checked = false;
+
+            balloonCheckBox.Checked = false;
+            batteryCheckBox.Checked = false;
+            bellowsCheckBox.Checked = false;
+            cheatCodeCheckBox.Checked = false;
+            crystalBallCheckBox.Checked = false;
+            featherCheckBox.Checked = false;
+            hardDriveCheckBox.Checked = false;
+            lampCheckBox.Checked = false;
+            moonstoneCheckBox.Checked = false;
+            potionCheckBox.Checked = false;
+            smallDogCheckBox.Checked = false;
+            stepladderCheckBox.Checked = false;
+            sunstoneCheckBox.Checked = false;
+            symbolCheckBox.Checked = false;
+            ticketCheckBox.Checked = false;
+            trophyCheckBox.Checked = false;
+
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -99,6 +138,12 @@ namespace KTANE_Solver
                 ShowAnswer("Use the potion", "Adventure game");
             }
 
+            AdventureGameStatForm statForm = new AdventureGameStatForm(weapon1, weapon2, weapon3, item1, item2, item3, item4, item5, 
+                                                                       enemy, Bomb, LogFileWriter, ModuleSelectionForm, this);
+
+            this.Hide();
+            statForm.Show();
+
         }
 
         private void SetWeapon(CheckBox weaponCheckBox)
@@ -130,33 +175,34 @@ namespace KTANE_Solver
         {
             if (itemCheckBox.Checked)
             {
+                string itemName = itemCheckBox.Text.ToUpper().Replace(" ", "");
                 if (!item1SlotTaken)
                 {
                     item1SlotTaken = true;
-                    item1 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemCheckBox.Text);
+                    item1 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
 
                 else if (!item2SlotTaken)
                 {
                     item2SlotTaken = true;
-                    item2 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemCheckBox.Text);
+                    item2 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
 
                 else if (!item3SlotTaken)
                 {
                     item3SlotTaken = true;
-                    item3 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemCheckBox.Text);
+                    item3 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
 
                 else if (!item4SlotTaken)
                 {
                     item4SlotTaken = true;
-                    item4 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemCheckBox.Text);
+                    item4 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
 
                 else
                 {
-                    item5 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemCheckBox.Text);
+                    item5 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
             }
         }

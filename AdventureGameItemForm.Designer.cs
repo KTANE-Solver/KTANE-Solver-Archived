@@ -345,7 +345,7 @@ namespace KTANE_Solver
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // AdventureGameForm
+            // AdventureGameItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -379,7 +379,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "AdventureGameForm";
+            this.Name = "AdventureGameItemForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

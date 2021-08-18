@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KTANE_Solver
 {
-    class AdventureGame : Module
+    public class AdventureGame : Module
     { 
 
         Weapon weapon1;

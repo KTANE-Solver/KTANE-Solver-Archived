@@ -36,13 +36,13 @@ namespace KTANE_Solver
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.strengthTextBox = new System.Windows.Forms.TextBox();
+            this.dexterityTextBox = new System.Windows.Forms.TextBox();
+            this.intelligenceTextBox = new System.Windows.Forms.TextBox();
+            this.heightTextBox = new System.Windows.Forms.TextBox();
+            this.temperatureTextBox = new System.Windows.Forms.TextBox();
+            this.gravityTextBox = new System.Windows.Forms.TextBox();
+            this.pressureTextBox = new System.Windows.Forms.TextBox();
             this.moduleSelectionButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
             this.strikeButton = new System.Windows.Forms.Button();
@@ -112,54 +112,54 @@ namespace KTANE_Solver
             this.label7.TabIndex = 6;
             this.label7.Text = "Pressure:";
             // 
-            // textBox1
+            // strengthTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(187, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 20);
-            this.textBox1.TabIndex = 7;
+            this.strengthTextBox.Location = new System.Drawing.Point(187, 28);
+            this.strengthTextBox.Name = "strengthTextBox";
+            this.strengthTextBox.Size = new System.Drawing.Size(128, 20);
+            this.strengthTextBox.TabIndex = 7;
             // 
-            // textBox2
+            // dexterityTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(187, 79);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(128, 20);
-            this.textBox2.TabIndex = 8;
+            this.dexterityTextBox.Location = new System.Drawing.Point(187, 79);
+            this.dexterityTextBox.Name = "dexterityTextBox";
+            this.dexterityTextBox.Size = new System.Drawing.Size(128, 20);
+            this.dexterityTextBox.TabIndex = 8;
             // 
-            // textBox3
+            // intelligenceTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(187, 133);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(128, 20);
-            this.textBox3.TabIndex = 9;
+            this.intelligenceTextBox.Location = new System.Drawing.Point(187, 133);
+            this.intelligenceTextBox.Name = "intelligenceTextBox";
+            this.intelligenceTextBox.Size = new System.Drawing.Size(128, 20);
+            this.intelligenceTextBox.TabIndex = 9;
             // 
-            // textBox4
+            // heightTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(187, 183);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(128, 20);
-            this.textBox4.TabIndex = 10;
+            this.heightTextBox.Location = new System.Drawing.Point(187, 183);
+            this.heightTextBox.Name = "heightTextBox";
+            this.heightTextBox.Size = new System.Drawing.Size(128, 20);
+            this.heightTextBox.TabIndex = 10;
             // 
-            // textBox5
+            // temperatureTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(187, 228);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(128, 20);
-            this.textBox5.TabIndex = 11;
+            this.temperatureTextBox.Location = new System.Drawing.Point(187, 228);
+            this.temperatureTextBox.Name = "temperatureTextBox";
+            this.temperatureTextBox.Size = new System.Drawing.Size(128, 20);
+            this.temperatureTextBox.TabIndex = 11;
             // 
-            // textBox6
+            // gravityTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(187, 275);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(128, 20);
-            this.textBox6.TabIndex = 12;
+            this.gravityTextBox.Location = new System.Drawing.Point(187, 275);
+            this.gravityTextBox.Name = "gravityTextBox";
+            this.gravityTextBox.Size = new System.Drawing.Size(128, 20);
+            this.gravityTextBox.TabIndex = 12;
             // 
-            // textBox7
+            // pressureTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(187, 325);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(128, 20);
-            this.textBox7.TabIndex = 13;
+            this.pressureTextBox.Location = new System.Drawing.Point(187, 325);
+            this.pressureTextBox.Name = "pressureTextBox";
+            this.pressureTextBox.Size = new System.Drawing.Size(128, 20);
+            this.pressureTextBox.TabIndex = 13;
             // 
             // moduleSelectionButton
             // 
@@ -210,13 +210,13 @@ namespace KTANE_Solver
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.backButton);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.pressureTextBox);
+            this.Controls.Add(this.gravityTextBox);
+            this.Controls.Add(this.temperatureTextBox);
+            this.Controls.Add(this.heightTextBox);
+            this.Controls.Add(this.intelligenceTextBox);
+            this.Controls.Add(this.dexterityTextBox);
+            this.Controls.Add(this.strengthTextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -225,7 +225,6 @@ namespace KTANE_Solver
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AdventureGameStatForm";
-            this.Text = "AdventureGameStatForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,13 +239,13 @@ namespace KTANE_Solver
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox strengthTextBox;
+        private System.Windows.Forms.TextBox dexterityTextBox;
+        private System.Windows.Forms.TextBox intelligenceTextBox;
+        private System.Windows.Forms.TextBox heightTextBox;
+        private System.Windows.Forms.TextBox temperatureTextBox;
+        private System.Windows.Forms.TextBox gravityTextBox;
+        private System.Windows.Forms.TextBox pressureTextBox;
         private System.Windows.Forms.Button moduleSelectionButton;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button strikeButton;
