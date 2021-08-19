@@ -62,6 +62,7 @@ namespace KTANE_Solver
         private RubixCubeForm rubikCubeForm;
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
+        private SwitchesForm switchesForm;
         private TwoBitsStage1Form twoBitsForm;
         private WhosOnFirstFirstStageForm whosOnFirstForm;
         private WiresForm wiresForm;
@@ -123,7 +124,7 @@ namespace KTANE_Solver
             moduleComboBox.Items.Clear();
 
 
-            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -556,6 +557,22 @@ namespace KTANE_Solver
 
                     morseCodeForm.Show();
                     break;
+
+                case "Murder":
+
+                    if (murderForm == null)
+                    {
+                        murderForm = new MurderForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        murderForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    murderForm.Show();
+                    break;
+
                 case "Number Pad":
 
                     if (numberPadForm == null)
@@ -661,31 +678,21 @@ namespace KTANE_Solver
                     simonSaysForm.Show();
                     break;
 
-                case "Murder":
+                case "Switches":
 
-                    if (murderForm == null)
+                    if (switchesForm == null)
                     {
-                        murderForm = new MurderForm(bomb, logFileWriter, this);
+                        switchesForm = new SwitchesForm(logFileWriter, this);
                     }
 
                     else
                     {
-                        murderForm.UpdateForm(bomb, logFileWriter, this);
+                        switchesForm.UpdateForm(logFileWriter, this);
                     }
 
-                    murderForm.Show();
+                    switchesForm.Show();
                     break;
 
-                case "Who's on First":
-
-                    if (whosOnFirstForm == null)
-                        whosOnFirstForm = new WhosOnFirstFirstStageForm(bomb, logFileWriter, this);
-
-                    else
-                        whosOnFirstForm.UpdateForm(bomb, logFileWriter, this);
-
-                    whosOnFirstForm.Show();
-                    break;
 
                 case "Two Bits":
 
@@ -701,6 +708,18 @@ namespace KTANE_Solver
 
                     twoBitsForm.Show();
                     break;
+
+                case "Who's on First":
+
+                    if (whosOnFirstForm == null)
+                        whosOnFirstForm = new WhosOnFirstFirstStageForm(bomb, logFileWriter, this);
+
+                    else
+                        whosOnFirstForm.UpdateForm(bomb, logFileWriter, this);
+
+                    whosOnFirstForm.Show();
+                    break;
+
 
                 case "Wires":
 

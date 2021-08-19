@@ -175,6 +175,12 @@
     <Compile Include="FizzBuzzForm.Designer.cs">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SwitchesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SwitchesForm.Designer.cs">
+      <DependentUpon>SwitchesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gamepad.cs" />
     <Compile Include="GamepadForm.cs">
       <SubType>Form</SubType>
@@ -359,6 +365,7 @@
     <Compile Include="SimonSaysForm.Designer.cs">
       <DependentUpon>SimonSaysForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Switches.cs" />
     <Compile Include="TwoBits.cs" />
     <Compile Include="TwoBitsOtherStageForm.cs">
       <SubType>Form</SubType>
@@ -468,6 +475,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FizzBuzzForm.resx">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchesForm.resx">
+      <DependentUpon>SwitchesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GamepadForm.resx">
       <DependentUpon>GamepadForm.cs</DependentUpon>
