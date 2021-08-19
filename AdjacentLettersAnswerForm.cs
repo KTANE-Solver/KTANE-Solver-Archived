@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class AdjacentLettersAnswerForm : Form
+    public partial class AdjacentLettersAnswerForm : ModuleForm
     {
-        public AdjacentLettersAnswerForm(bool[,] answer)
+        public AdjacentLettersAnswerForm(bool[,] answer, StreamWriter logFileWriter)
         {
+            LogFileWriter = logFileWriter;
+
             InitializeComponent();
 
             row1Button1.BackColor = GetColor(answer[0, 0]);
@@ -30,6 +33,27 @@ namespace KTANE_Solver
             row3Button2.BackColor = GetColor(answer[2, 1]);
             row3Button3.BackColor = GetColor(answer[2, 2]);
             row3Button4.BackColor = GetColor(answer[2, 3]);
+
+            for (int row = 0; row < 3; row++)
+            {
+                for (int column = 0; column < 4; column++)
+                {
+                    if (answer[row, column])
+                    {
+                        PrintDebug("* ");
+                    }
+
+                    else
+                    { 
+                        PrintDebug(". ");
+                    }
+
+                }
+
+                PrintDebugLine("");
+            }
+
+            PrintDebugLine("");
         }
 
         private Color GetColor(bool b)

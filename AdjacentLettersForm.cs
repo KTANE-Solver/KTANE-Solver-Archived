@@ -55,26 +55,27 @@ namespace KTANE_Solver
 
             for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     if (i == 0)
                     {
-                        grid[0, j] = row1TextBox.Text[j];
+                        grid[0, j] = row1TextBox.Text.ToUpper()[j];
                     }
 
                     if (i == 1)
                     {
-                        grid[1, j] = row2TextBox.Text[j];
+                        grid[1, j] = row2TextBox.Text.ToUpper()[j];
                     }
 
                     else
                     {
-                        grid[2, j] = row3TextBox.Text[j];
+                        grid[2, j] = row3TextBox.Text.ToUpper()[j];
                     }
                 }
             }
 
             new AdjacentLetters(grid, Bomb, LogFileWriter);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         private bool ContainsOnlyLetters(String str)

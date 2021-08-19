@@ -126,15 +126,7 @@ namespace KTANE_Solver
 
                 //If fighting a Dragon or an Eagle, use if pressure is greater than 105 kPa. If fighting a different enemy, use if pressure is less than 95 kPa.
                 case Item.BELLOWS:
-                    if (enemy.Name == "DRAGON" || enemy.Name == "EAGLE")
-                    {
-                        return pressure > 105;
-                    }
-
-                    else
-                    {
-                        return pressure < 95;
-                    }
+                    return enemy.Name == "DRAGON" || enemy.Name == "EAGLE" ? pressure > 105 : pressure < 95;
 
                 //cheat codes are never used, potions were already used at this point (can't use them twice)
                 case Item.CHEATCODE: case Item.POTION: return false;

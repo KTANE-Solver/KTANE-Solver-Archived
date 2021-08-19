@@ -12,19 +12,29 @@ namespace KTANE_Solver
         private bool [,] answer;
         public AdjacentLetters(char[,] grid, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter)
         {
+            PrintDebugLine("===================Adjacent Letters===================\n");
+
+
+                
             this.grid = grid;
+
             answer = new bool[3, 4];
 
             for (int row = 0; row < 3; row++)
             {
                 for (int column = 0; column < 4; column++)
                 {
+                    PrintDebug(grid[row, column] + " ");
                     answer[row, column] = Left(row, column) || Right(row, column) || Up(row, column) || Down(row, column);
                 }
+
+                PrintDebugLine("");
             }
 
+            PrintDebugLine("");
 
-                
+            AdjacentLettersAnswerForm answerForm = new AdjacentLettersAnswerForm(answer, LogFileWriter);
+            answerForm.Show();
         }
 
         private bool Left(int row, int column)
@@ -203,175 +213,176 @@ namespace KTANE_Solver
 
         private bool Down(int row, int column)
         {
-            if (column == 3)
+
+            if (row == 2)
                 return false;
 
             switch (grid[row,column])
             {
                 case 'A':
-                    return ContainsLetter(row, column + 1, "HKPRW");
+                    return ContainsLetter(row + 1, column, "HKPRW");
 
                 case 'B':
-                    return ContainsLetter(row, column + 1, "CDFYZ");
+                    return ContainsLetter(row + 1, column, "CDFYZ");
 
                 case 'C':
-                    return ContainsLetter(row, column + 1, "DEMTU");
+                    return ContainsLetter(row + 1, column, "DEMTU");
 
                 case 'D':
-                    return ContainsLetter(row, column + 1, "CJTUW");
+                    return ContainsLetter(row + 1, column, "CJTUW");
 
                 case 'E':
-                    return ContainsLetter(row, column + 1, "KSUWZ");
+                    return ContainsLetter(row + 1, column, "KSUWZ");
 
                 case 'F':
-                    return ContainsLetter(row, column + 1, "AGJPQ");
+                    return ContainsLetter(row + 1, column, "AGJPQ");
 
                 case 'G':
-                    return ContainsLetter(row, column + 1, "HOQYZ");
+                    return ContainsLetter(row + 1, column, "HOQYZ");
 
                 case 'H':
-                    return ContainsLetter(row, column + 1, "DKMPS");
+                    return ContainsLetter(row + 1, column, "DKMPS");
 
                 case 'I':
-                    return ContainsLetter(row, column + 1, "EFNUV");
+                    return ContainsLetter(row + 1, column, "EFNUV");
 
                 case 'J':
-                    return ContainsLetter(row, column + 1, "EHIOS");
+                    return ContainsLetter(row + 1, column, "EHIOS");
 
                 case 'K':
-                    return ContainsLetter(row, column + 1, "DIORZ");
+                    return ContainsLetter(row + 1, column, "DIORZ");
 
                 case 'L':
-                    return ContainsLetter(row, column + 1, "ABRVX");
+                    return ContainsLetter(row + 1, column, "ABRVX");
 
                 case 'M':
-                    return ContainsLetter(row, column + 1, "BFPWX");
+                    return ContainsLetter(row + 1, column, "BFPWX");
 
                 case 'N':
-                    return ContainsLetter(row, column + 1, "AFGHL");
+                    return ContainsLetter(row + 1, column, "AFGHL");
 
                 case 'O':
-                    return ContainsLetter(row, column + 1, "IQSTX");
+                    return ContainsLetter(row + 1, column, "IQSTX");
 
                 case 'P':
-                    return ContainsLetter(row, column + 1, "CFHKR");
+                    return ContainsLetter(row + 1, column, "CFHKR");
 
                 case 'Q':
-                    return ContainsLetter(row, column + 1, "BDIKN");
+                    return ContainsLetter(row + 1, column, "BDIKN");
 
                 case 'R':
-                    return ContainsLetter(row, column + 1, "BNOXY");
+                    return ContainsLetter(row + 1, column, "BNOXY");
 
                 case 'S':
-                    return ContainsLetter(row, column + 1, "GMVYZ");
+                    return ContainsLetter(row + 1, column, "GMVYZ");
 
                 case 'T':
-                    return ContainsLetter(row, column + 1, "GVXYZ");
+                    return ContainsLetter(row + 1, column, "CJLSU");
 
                 case 'U':
-                    return ContainsLetter(row, column + 1, "BILNY");
+                    return ContainsLetter(row + 1, column, "BILNY");
 
                 case 'V':
-                    return ContainsLetter(row, column + 1, "AEJQX");
+                    return ContainsLetter(row + 1, column, "AEJQX");
 
                 case 'W':
-                    return ContainsLetter(row, column + 1, "GLQRT");
+                    return ContainsLetter(row + 1, column, "GLQRT");
 
                 case 'X':
-                    return ContainsLetter(row, column + 1, "AJNOV");
+                    return ContainsLetter(row + 1, column, "AJNOV");
 
                 case 'Y':
-                    return ContainsLetter(row, column + 1, "EGMTW");
+                    return ContainsLetter(row + 1, column, "EGMTW");
 
                 default:
-                    return ContainsLetter(row, column + 1, "CLMPV");
+                    return ContainsLetter(row + 1, column, "CLMPV");
             }
         }
 
         private bool Up(int row, int column)
         {
-            if (column == 0)
+            if (row == 0)
                 return false;
 
             switch (grid[row,column])
             {
                 case 'A':
-                    return ContainsLetter(row, column - 1, "HKPRW");
+                    return ContainsLetter(row - 1, column, "HKPRW");
 
                 case 'B':
-                    return ContainsLetter(row, column - 1, "CDFYZ");
+                    return ContainsLetter(row - 1, column, "CDFYZ");
 
                 case 'C':
-                    return ContainsLetter(row, column - 1, "DEMTU");
+                    return ContainsLetter(row - 1, column, "DEMTU");
 
                 case 'D':
-                    return ContainsLetter(row, column - 1, "CJTUW");
+                    return ContainsLetter(row - 1, column, "CJTUW");
 
                 case 'E':
-                    return ContainsLetter(row, column - 1, "KSUWZ");
+                    return ContainsLetter(row - 1, column, "KSUWZ");
 
                 case 'F':
-                    return ContainsLetter(row, column - 1, "AGJPQ");
+                    return ContainsLetter(row - 1, column, "AGJPQ");
 
                 case 'G':
-                    return ContainsLetter(row, column - 1, "HOQYZ");
+                    return ContainsLetter(row - 1, column, "HOQYZ");
 
                 case 'H':
-                    return ContainsLetter(row, column - 1, "DKMPS");
+                    return ContainsLetter(row - 1, column, "DKMPS");
 
                 case 'I':
-                    return ContainsLetter(row, column - 1, "EFNUV");
+                    return ContainsLetter(row - 1, column, "EFNUV");
 
                 case 'J':
-                    return ContainsLetter(row, column - 1, "EHIOS");
+                    return ContainsLetter(row - 1, column, "EHIOS");
 
                 case 'K':
-                    return ContainsLetter(row, column - 1, "DIORZ");
+                    return ContainsLetter(row - 1, column, "DIORZ");
 
                 case 'L':
-                    return ContainsLetter(row, column - 1, "ABRVX");
+                    return ContainsLetter(row - 1, column, "ABRVX");
 
                 case 'M':
-                    return ContainsLetter(row, column - 1, "BFPWX");
+                    return ContainsLetter(row - 1, column, "BFPWX");
 
                 case 'N':
-                    return ContainsLetter(row, column - 1, "AFGHL");
+                    return ContainsLetter(row - 1, column, "AFGHL");
 
                 case 'O':
-                    return ContainsLetter(row, column - 1, "IQSTX");
+                    return ContainsLetter(row - 1, column, "IQSTX");
 
                 case 'P':
-                    return ContainsLetter(row, column - 1, "CFHKR");
+                    return ContainsLetter(row - 1, column, "CFHKR");
 
                 case 'Q':
-                    return ContainsLetter(row, column - 1, "BDIKN");
+                    return ContainsLetter(row - 1, column, "BDIKN");
 
                 case 'R':
-                    return ContainsLetter(row, column - 1, "BNOXY");
+                    return ContainsLetter(row - 1, column, "BNOXY");
 
                 case 'S':
-                    return ContainsLetter(row, column - 1, "GMVYZ");
+                    return ContainsLetter(row - 1, column, "GMVYZ");
 
                 case 'T':
-                    return ContainsLetter(row, column - 1, "GVXYZ");
+                    return ContainsLetter(row - 1, column, "CJLSU");
 
                 case 'U':
-                    return ContainsLetter(row, column - 1, "BILNY");
+                    return ContainsLetter(row - 1, column, "BILNY");
 
                 case 'V':
-                    return ContainsLetter(row, column - 1, "AEJQX");
+                    return ContainsLetter(row - 1, column, "AEJQX");
 
                 case 'W':
-                    return ContainsLetter(row, column - 1, "GLQRT");
+                    return ContainsLetter(row - 1, column, "GLQRT");
 
                 case 'X':
-                    return ContainsLetter(row, column - 1, "AJNOV");
+                    return ContainsLetter(row - 1, column, "AJNOV");
 
                 case 'Y':
-                    return ContainsLetter(row, column - 1, "EGMTW");
+                    return ContainsLetter(row - 1, column, "EGMTW");
 
                 default:
-                    return ContainsLetter(row, column - 1, "CLMPV");
+                    return ContainsLetter(row - 1, column, "CLMPV");
             }
         }
 
