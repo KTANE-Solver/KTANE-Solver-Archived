@@ -35,17 +35,6 @@ namespace KTANE_Solver
 
         char letter;
 
-        public ColorMath(Color leftColor1, Color leftColor2, Color leftColor3, Color leftColor4, char letter, 
-                         Bomb bomb, StreamWriter logfileWriter) : base(bomb, logfileWriter)
-        {
-            this.leftColor1 = leftColor1;
-            this.leftColor2 = leftColor2;
-            this.leftColor3 = leftColor3;
-            this.leftColor4 = leftColor4;
-
-            this.letter = letter;
-        }
-
         public ColorMath(Color leftColor1, Color leftColor2, Color leftColor3, Color leftColor4,
                          Color rightColor1, Color rightColor2, Color rightColor3, Color rightColor4, char letter, 
                          Bomb bomb, StreamWriter logfileWriter) : base(bomb, logfileWriter)

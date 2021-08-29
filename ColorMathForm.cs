@@ -115,25 +115,21 @@ namespace KTANE_Solver
 
 
             //if not all of the right is filled, assume that the letter is red
-            if (rightFilled == 4)
+
+            bool filled = rightFilled == 4;
+
+            if (filled)
             {
                 right1 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox1.Text);
                 right2 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox2.Text);
                 right3 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox3.Text);
                 right4 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox4.Text);
 
-                ColorMath module = new ColorMath(left1, left2, left3, left4, right1, right2, right3, right4, letter, Bomb, LogFileWriter);
-                module.SolveGreen();
-                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
 
-            else
-            {
-                ColorMath module = new ColorMath(left1, left2, left3, left4, letter, Bomb, LogFileWriter);
-                module.SolveRed();
-                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-            }
-
+            ColorMath module = new ColorMath(left1, left2, left3, left4, right1, right2, right3, right4, letter, Bomb, LogFileWriter);
+            module.Solve(filled);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         /// <summary>
