@@ -20,6 +20,19 @@ namespace KTANE_Solver
         Color rightColor3;
         Color rightColor4;
 
+        int leftNumberThousand;
+        int leftNumberHundred;
+        int leftNumberTen;
+        int leftNumberOne;
+        int leftNumber;
+
+        int rightNumberThousand;
+        int rightNumberHundred;
+        int rightNumberTen;
+        int rightNumberOne;
+        int rightNumber;
+
+
         char letter;
 
         public ColorMath(Color leftColor1, Color leftColor2, Color leftColor3, Color leftColor4, char letter, 
@@ -50,22 +63,64 @@ namespace KTANE_Solver
             this.letter = letter;
         }
 
-        public void SolveGreen()
+        private void GetLeftNumbers()
+        { 
+            leftNumberThousand = GetLeftSideNumber(1, leftColor1);
+            leftNumberHundred = GetLeftSideNumber(2, leftColor2);
+            leftNumberTen = GetLeftSideNumber(3, leftColor3);
+            leftNumberOne = GetLeftSideNumber(4, leftColor4);
+
+            leftNumber = leftNumberThousand * 1000 + leftNumberHundred * 100 + leftNumberTen * 10 + leftNumberOne;
+
+            PrintDebugLine($"Left Color 1: {leftColor1}");
+            PrintDebugLine($"Left Color 2: {leftColor2}");
+            PrintDebugLine($"Left Color 3: {leftColor3}");
+            PrintDebugLine($"Left Color 4: {leftColor4}\n");
+
+            PrintDebugLine($"Left Number: {leftNumber}\n");
+        }
+
+        private void GetRightNumbers(bool red)
+        { 
+            //if the letter is red, use edgework
+
+            if(red)
+            { 
+                PrintDebugLine($"Number of batteries: {Bomb.Battery}\n");
+                
+                redThousandPlace = GetRightSideNumber(1);
+                redHundredPlace = GetRightSideNumber(2);
+                redTenPlace = GetRightSideNumber(3);
+                redOnePlace = GetRightSideNumber(4);
+            }
+            
+            else
+            { 
+                redThousandPlace = GetRightSideNumber(1, rightColor1);
+                redHundredPlace = GetRightSideNumber(2, rightColor2);
+                rightTenPlace = GetRightSideNumber(3, rightColor3);
+                rightOnePlace = GetRightSideNumber(4, rightColor4);
+
+
+                PrintDebugLine($"Right Color 1: {rightColor1}");
+                PrintDebugLine($"Right Color 2: {rightColor2}");
+                PrintDebugLine($"Right Color 3: {rightColor3}");
+                PrintDebugLine($"Right Color 4: {rightColor4}\n");
+            }
+            
+            rightNumber = rightNumberThousand * 1000 + rightNumberHundred * 100 + rightNumberTen * 10 + rightNumberOne;
+
+            PrintDebugLine($"Right Number: {rightNumber}\n");
+        }
+
+        public void Solve(bool red)
         {
-            int thousandPlace = GetLeftSideNumber(1, leftColor1);
-            int hundredPlace = GetLeftSideNumber(2, leftColor2);
-            int tenPlace = GetLeftSideNumber(3, leftColor3);
-            int onePlace = GetLeftSideNumber(4, leftColor4);
+            GetLeftNumbers();
+            GetRightNumbers(red);
 
-            int leftNumber = thousandPlace * 1000 + hundredPlace * 100 + tenPlace * 10 + onePlace;
+            string color = red ? "Red" : "Green";
 
-            thousandPlace = GetRightSideNumber(1, rightColor1);
-            hundredPlace = GetRightSideNumber(2, rightColor2);
-            tenPlace = GetRightSideNumber(3, rightColor3);
-            onePlace = GetRightSideNumber(4, rightColor4);
-
-            int rightNumber = thousandPlace * 1000 + hundredPlace * 100 + tenPlace * 10 + onePlace;
-
+            PrintDebugLine($"{color} {letter}\n");
             int answer = -1;
 
             switch (letter)
@@ -95,53 +150,6 @@ namespace KTANE_Solver
             answer %= 10000;
 
             ShowAnswer(ConvertAnswerToColor(answer), "Color Math Answer");
-        }
-
-        public void SolveRed()
-        {
-            int thousandPlace = GetLeftSideNumber(1, leftColor1);
-            int hundredPlace = GetLeftSideNumber(2, leftColor2);
-            int tenPlace = GetLeftSideNumber(3, leftColor3);
-            int onePlace = GetLeftSideNumber(4, leftColor4);
-
-            int leftNumber = thousandPlace * 1000 + hundredPlace * 100 + tenPlace * 10 + onePlace;
-
-            thousandPlace = GetRightSideNumber(1);
-            hundredPlace = GetRightSideNumber(2);
-            tenPlace = GetRightSideNumber(3);
-            onePlace = GetRightSideNumber(4);
-
-            int rightNumber = thousandPlace * 1000 + hundredPlace * 100 + tenPlace * 10 + onePlace;
-
-            int number = -1;
-
-            switch (letter)
-            {
-                case 'A':
-                    number = leftNumber + rightNumber;
-                    break;
-
-                case 'M':
-                    number = leftNumber * rightNumber;
-                    break;
-
-                case 'D':
-                    number = leftNumber / rightNumber;
-                    break;
-
-                case 'S':
-                    number = leftNumber - rightNumber;
-                    break;
-            }
-
-            if (number < 0)
-            {
-                number *= -1;
-            }
-
-            number %= 10000;
-
-            ShowAnswer(ConvertAnswerToColor(number), "Color Math Answer");
         }
 
         public int GetLeftSideNumber(int place, Color color)
