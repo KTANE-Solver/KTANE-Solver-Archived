@@ -76,27 +76,26 @@ namespace KTANE_Solver
             if(red)
             { 
                 PrintDebugLine($"Number of batteries: {Bomb.Battery}\n");
-                
-                redThousandPlace = GetRightSideNumber(1);
-                redHundredPlace = GetRightSideNumber(2);
-                redTenPlace = GetRightSideNumber(3);
-                redOnePlace = GetRightSideNumber(4);
+
+                rightNumberThousand = GetRightSideNumber(1);
+                rightNumberHundred = GetRightSideNumber(2);
+                rightNumberTen = GetRightSideNumber(3);
+                rightNumberOne = GetRightSideNumber(4);
             }
             
             else
-            { 
-                redThousandPlace = GetRightSideNumber(1, rightColor1);
-                redHundredPlace = GetRightSideNumber(2, rightColor2);
-                rightTenPlace = GetRightSideNumber(3, rightColor3);
-                rightOnePlace = GetRightSideNumber(4, rightColor4);
-
+            {
+                rightNumberThousand = GetRightSideNumber(1, rightColor1);
+                rightNumberHundred = GetRightSideNumber(2, rightColor2);
+                rightNumberTen = GetRightSideNumber(3, rightColor3);
+                rightNumberOne = GetRightSideNumber(4, rightColor4);
 
                 PrintDebugLine($"Right Color 1: {rightColor1}");
                 PrintDebugLine($"Right Color 2: {rightColor2}");
                 PrintDebugLine($"Right Color 3: {rightColor3}");
                 PrintDebugLine($"Right Color 4: {rightColor4}\n");
             }
-            
+
             rightNumber = rightNumberThousand * 1000 + rightNumberHundred * 100 + rightNumberTen * 10 + rightNumberOne;
 
             PrintDebugLine($"Right Number: {rightNumber}\n");
@@ -112,21 +111,26 @@ namespace KTANE_Solver
             PrintDebugLine($"{color} {letter}\n");
             int answer = -1;
 
+            char operation;
             switch (letter)
             {
                 case 'A':
+                    operation = '+';
                     answer = leftNumber + rightNumber;
                     break;
 
                 case 'M':
+                    operation = '*';
                     answer = leftNumber * rightNumber;
                     break;
 
                 case 'D':
+                    operation = '/';
                     answer = leftNumber / rightNumber;
                     break;
 
-                case 'S':
+                default:
+                    operation = '-';
                     answer = leftNumber - rightNumber;
                     break;
             }
@@ -138,7 +142,13 @@ namespace KTANE_Solver
 
             answer %= 10000;
 
-            ShowAnswer(ConvertAnswerToColor(answer), "Color Math Answer");
+            PrintDebugLine($"{leftNumber} {operation} {rightNumber} = {answer}\n");
+
+            string colorAnswer = ConvertAnswerToColor(answer);
+
+            PrintDebugLine($"Color Answer:\n{colorAnswer}\n");
+
+            ShowAnswer(colorAnswer, "Color Math Answer");
         }
 
         public int GetLeftSideNumber(int place, Color color)

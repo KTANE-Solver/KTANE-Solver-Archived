@@ -74,10 +74,10 @@ namespace KTANE_Solver
             ColorMath.Color left3;
             ColorMath.Color left4;
 
-            ColorMath.Color right1;
-            ColorMath.Color right2;
-            ColorMath.Color right3;
-            ColorMath.Color right4;
+            ColorMath.Color right1 = ColorMath.Color.Red;
+            ColorMath.Color right2 = ColorMath.Color.Red;
+            ColorMath.Color right3 = ColorMath.Color.Red;
+            ColorMath.Color right4 = ColorMath.Color.Red;
 
             //if at least one, but not all are filled, throw an error
             int rightFilled = RightTextBoxFilled();
@@ -128,7 +128,7 @@ namespace KTANE_Solver
             }
 
             ColorMath module = new ColorMath(left1, left2, left3, left4, right1, right2, right3, right4, letter, Bomb, LogFileWriter);
-            module.Solve(filled);
+            module.Solve(!filled);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
