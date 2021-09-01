@@ -167,12 +167,12 @@ namespace KTANE_Solver
                     //Change each occurrence of the largest digit in the price with the smallest digit
                     //in the price, and vice versa.
 
-                    item1.price = WackyWedmesday(item1.price);
-                    item2.price = WackyWedmesday(item2.price);
-                    item3.price = WackyWedmesday(item3.price);
-                    item4.price = WackyWedmesday(item4.price);
-                    item5.price = WackyWedmesday(item5.price);
-                    item6.price = WackyWedmesday(item6.price);
+                    item1.price = WackyWednesday(item1.price);
+                    item2.price = WackyWednesday(item2.price);
+                    item3.price = WackyWednesday(item3.price);
+                    item4.price = WackyWednesday(item4.price);
+                    item5.price = WackyWednesday(item5.price);
+                    item6.price = WackyWednesday(item6.price);
                     break;
 
                 case Day.Thursday:
@@ -232,7 +232,7 @@ namespace KTANE_Solver
             }
         }
 
-        private Decimal WackyWedmesday(Decimal price)
+        private Decimal WackyWednesday(Decimal price)
         {
             //convert price to string
             String priceString = ("" + price);

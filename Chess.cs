@@ -17,46 +17,17 @@ namespace KTANE_Solver
         //a 6x6 2d char array that represents the board
         private char[,] board;
 
-        //the character for piece 1
-        private char piece1;
-
-        //the location for piece 1
-        private int[] piece1Location;
-
-        //the character for piece 2
-        private char piece2;
-
-        //the location for piece 2
-        private int[] piece2Location;
-
-        //the character for piece 3
-        private char piece3;
-
-        //the location for piece 3
-        private int[] piece3Location;
-
-        //the character for piece 4
-        private char piece4;
-
-        //the location for piece 4
-        private int[] piece4Location;
-
-        //the character for piece 5
-        private char piece5;
-
-        //the location for piece 5
-        private int[] piece5Location;
-
-        //the character for piece 6
-        private char piece6;
-
-        //the location for piece 6
-        private int[] piece6Location;
+        private Piece piece1;
+        private Piece piece2;
+        private Piece piece3;
+        private Piece piece4;
+        private Piece piece5;
+        private Piece piece6;
 
         //CONSTRUCTOR
 
         //will take 6 positions for the pieces, the bomb, and the streamwriter
-        public Chess(String position1, String position2, String position3, String position4, String position5, String position6, Bomb bomb, StreamWriter logWriterFile) : base (bomb, logWriterFile)
+        public Chess(String position1, String position2, String position3, String position4, String position5, String position6, Bomb bomb, StreamWriter logWriterFile) : base(bomb, logWriterFile)
         {
             board = new char[,]
                 {
@@ -69,40 +40,40 @@ namespace KTANE_Solver
                 };
 
             //determine all the piece locations
-            piece1Location = ConvertLocation(position1);
-            piece2Location = ConvertLocation(position2);
-            piece3Location = ConvertLocation(position3);
-            piece4Location = ConvertLocation(position4);
-            piece5Location = ConvertLocation(position5);
-            piece6Location = ConvertLocation(position6);
+            piece1 = new Piece (ConvertLocation(position1));
+            piece2 = new Piece (ConvertLocation(position2));
+            piece3 = new Piece (ConvertLocation(position3));
+            piece4 = new Piece (ConvertLocation(position4));
+            piece5 = new Piece (ConvertLocation(position5));
+            piece6 = new Piece (ConvertLocation(position6));
 
 
             //determine and place all the pieces
-            piece4 = DeterminePiece(piece4Location, 4);
-            PlacePiece(piece4, piece4Location);
+            piece4.PieceChar = DeterminePiece(piece4.PieceLocation, 4);
+            PlacePiece(piece4);
 
-            piece5 = DeterminePiece(piece5Location, 5);
-            PlacePiece(piece5, piece5Location);
+            piece5.PieceChar = DeterminePiece(piece5.PieceLocation, 5);
+            PlacePiece(piece5);
 
-            piece1 = DeterminePiece(piece1Location, 1);
-            PlacePiece(piece1, piece1Location);
+            piece1.PieceChar = DeterminePiece(piece1.PieceLocation, 1);
+            PlacePiece(piece1);
 
-            piece2 = DeterminePiece(piece2Location, 2);
-            PlacePiece(piece2, piece2Location);
+            piece2.PieceChar = DeterminePiece(piece2.PieceLocation, 2);
+            PlacePiece(piece2);
 
-            piece3 = DeterminePiece(piece3Location, 3);
-            PlacePiece(piece3, piece3Location);
+            piece3.PieceChar = DeterminePiece(piece3.PieceLocation, 3);
+            PlacePiece(piece3);
 
-            piece6 = DeterminePiece(piece6Location, 6);
-            PlacePiece(piece6, piece6Location);
+            piece6.PieceChar = DeterminePiece(piece6.PieceLocation, 6);
+            PlacePiece(piece6);
 
             //print information about all the pieces
-            PrintPiece(1, piece1, position1);
-            PrintPiece(2, piece2, position2);
-            PrintPiece(3, piece3, position3);
-            PrintPiece(4, piece4, position4);
-            PrintPiece(5, piece5, position5);
-            PrintPiece(6, piece6, position6);
+            PrintPiece(1, piece1.PieceChar, position1);
+            PrintPiece(2, piece2.PieceChar, position2);
+            PrintPiece(3, piece3.PieceChar, position3);
+            PrintPiece(4, piece4.PieceChar, position4);
+            PrintPiece(5, piece5.PieceChar, position5);
+            PrintPiece(6, piece6.PieceChar, position6);
 
             PrintDebugLine("");
         }
@@ -115,12 +86,12 @@ namespace KTANE_Solver
         public void Solve()
         {
             //sees which tiles are covered by the pieces
-            ConverArea(piece1, piece1Location);
-            ConverArea(piece2, piece2Location);
-            ConverArea(piece3, piece3Location);
-            ConverArea(piece4, piece4Location);
-            ConverArea(piece5, piece5Location);
-            ConverArea(piece6, piece6Location);
+            ConverArea(piece1);
+            ConverArea(piece2);
+            ConverArea(piece3);
+            ConverArea(piece4);
+            ConverArea(piece5);
+            ConverArea(piece6);
 
             //print the board
             PrintBoard();
@@ -145,7 +116,7 @@ namespace KTANE_Solver
 
             if (answerList.Count > 1)
             {
-                answer = "Unable to find answer. Mutiple possible answers found\n\n";
+                answer = "Unable to find answer. Mutiple possible answers found:\n\n";
                 List<String> newAnwerList = new List<string>();
 
                 foreach (String a in answerList)
@@ -162,7 +133,7 @@ namespace KTANE_Solver
             }
 
             else
-            { 
+            {
                 answer = $"{(char)(int.Parse("" + answerList[0][1]) + 97)}{Math.Abs(6 - int.Parse("" + answerList[0][0]))}";
             }
 
@@ -171,6 +142,8 @@ namespace KTANE_Solver
             ShowAnswer(answer, "Chess Answer");
 
         }
+
+        
 
         /// <summary>
         /// Will tell which piece is what
@@ -183,7 +156,7 @@ namespace KTANE_Solver
             {
                 case 1:
                     //Occupied by a king if Position #5 is occupied by a queen.
-                    if (piece5 == 'Q')
+                    if (piece5.PieceChar == 'Q')
                         return 'K';
 
                     //Otherwise, the field is occupied by a bishop.
@@ -220,11 +193,11 @@ namespace KTANE_Solver
 
                 case 6:
                     //Occupied by a queen if there are no other queens on the board.
-                    if (piece5 != 'Q' && piece3 != 'Q')
+                    if (piece5.PieceChar != 'Q' && piece3.PieceChar != 'Q')
                         return 'Q';
 
                     //Otherwise, occupied by a knight if there are no other knights on the board.
-                    if (piece2 != 'N')
+                    if (piece2.PieceChar != 'N')
                         return 'N';
 
 
@@ -264,13 +237,18 @@ namespace KTANE_Solver
         /// <returns></returns>
         private int[] ConvertLocation(String location)
         {
-            return new int[] {Math.Abs((int)location[1] - 54), (int)location[0] - 97 };
+            return new int[] { Math.Abs((int)location[1] - 54), (int)location[0] - 97 };
+        }
+
+        private string ConvertLocation(int[] pieceLication)
+        {
+            return $"{(char)(int.Parse("" + pieceLication[1]) + 97)}{Math.Abs(6 - int.Parse("" + pieceLication[0]))}";
         }
 
         //a method that places all the pieces on the board
-        private void PlacePiece(char piece, int[] position)
+        private void PlacePiece(Piece piece)
         {
-            board[position[0], position[1]] = piece;
+            board[piece.PieceLocation[0], piece.PieceLocation[1]] = piece.PieceChar;
         }
 
         /// <summary>
@@ -296,8 +274,6 @@ namespace KTANE_Solver
 
             }
         }
-
-
 
         //a method that will tell where a king will go
 
@@ -375,41 +351,41 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="position"></param>
         private void KnightArea(int[] position)
-    {
-        //left twice and up once
-        if (ValidCoordinate(position[0] - 1, position[1] - 2))
-            CoverTile(position[0] - 1, position[1] - 2);
+        {
+            //left twice and up once
+            if (ValidCoordinate(position[0] - 1, position[1] - 2))
+                CoverTile(position[0] - 1, position[1] - 2);
 
 
-        //left twice and down once
-        if (ValidCoordinate(position[0] + 1, position[1] - 2))
-            CoverTile(position[0] + 1, position[1] - 2);
+            //left twice and down once
+            if (ValidCoordinate(position[0] + 1, position[1] - 2))
+                CoverTile(position[0] + 1, position[1] - 2);
 
-        //right twice and up once
-        if (ValidCoordinate(position[0] - 1, position[1] + 2))
-            CoverTile(position[0] - 1, position[1] + 2);
+            //right twice and up once
+            if (ValidCoordinate(position[0] - 1, position[1] + 2))
+                CoverTile(position[0] - 1, position[1] + 2);
 
-        //right twice and down once
-        if (ValidCoordinate(position[0] + 1, position[1] + 2))
-            CoverTile(position[0] + 1, position[1] + 2);
+            //right twice and down once
+            if (ValidCoordinate(position[0] + 1, position[1] + 2))
+                CoverTile(position[0] + 1, position[1] + 2);
 
-        //up twice and left once
-        if (ValidCoordinate(position[0] - 2, position[1] - 1))
-            CoverTile(position[0] - 2, position[1] - 1);
+            //up twice and left once
+            if (ValidCoordinate(position[0] - 2, position[1] - 1))
+                CoverTile(position[0] - 2, position[1] - 1);
 
-        //up twice and right once
-        if (ValidCoordinate(position[0] - 2, position[1] + 1))
-            CoverTile(position[0] - 2, position[1] + 1);
+            //up twice and right once
+            if (ValidCoordinate(position[0] - 2, position[1] + 1))
+                CoverTile(position[0] - 2, position[1] + 1);
 
 
-        //down twice and left once
-        if (ValidCoordinate(position[0] + 2, position[1] - 1))
-            CoverTile(position[0] + 2, position[1] - 1);
+            //down twice and left once
+            if (ValidCoordinate(position[0] + 2, position[1] - 1))
+                CoverTile(position[0] + 2, position[1] - 1);
 
-        //down twice and right once
-        if (ValidCoordinate(position[0] + 2, position[1] + 1))
-            CoverTile(position[0] + 2, position[1] + 1);
-    }
+            //down twice and right once
+            if (ValidCoordinate(position[0] + 2, position[1] + 1))
+                CoverTile(position[0] + 2, position[1] + 1);
+        }
 
         //a method that will 
 
@@ -483,28 +459,28 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="piece">the piece itself</param>
         /// <param name="position">the position of the piece</param>
-        private void ConverArea(char piece, int[] position)
+        private void ConverArea(Piece piece)
         {
-            switch (piece)
+            switch (piece.PieceChar)
             {
                 case 'K':
-                    KingArea(position);
+                    KingArea(piece.PieceLocation);
                     break;
 
                 case 'N':
-                    KnightArea(position);
+                    KnightArea(piece.PieceLocation);
                     break;
 
                 case 'R':
-                    RookArea(position);
+                    RookArea(piece.PieceLocation);
                     break;
 
                 case 'B':
-                    BishopArea(position);
+                    BishopArea(piece.PieceLocation);
                     break;
 
                 case 'Q':
-                    QueenArea(position);
+                    QueenArea(piece.PieceLocation);
                     break;
             }
         }
@@ -553,6 +529,20 @@ namespace KTANE_Solver
         {
             if (board[row, column] == '.')
                 board[row, column] = '*';
+        }
+
+        private class Piece
+        {
+            //tells what the piece is 
+            public char PieceChar { get; set;  }
+
+            //the location for piece 1
+            public int[] PieceLocation { get; }
+
+            public Piece(int [] pieceLocation)
+            {
+                PieceLocation = pieceLocation;
+            }
         }
 
     }
