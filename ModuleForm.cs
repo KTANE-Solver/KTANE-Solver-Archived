@@ -63,10 +63,12 @@ namespace KTANE_Solver
         /// <summary>
         /// Adds one strike to the bomb
         /// </summary>
-        public void IncrementStrike()
+        public void IncrementStrike(string source)
         {
             Bomb.Strike++;
-            MessageBox.Show($"A stike has been added. Currently at {Bomb.Strike} strike(s)", "Strike Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string info = $"A stike has been added by {source}. Currently at {Bomb.Strike} strike(s)";
+            PrintDebugLine(info + "\n");
+            MessageBox.Show(info, "Strike Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>

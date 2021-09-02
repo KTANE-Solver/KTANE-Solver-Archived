@@ -40,7 +40,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Morse Code");
         }
 
         private void submitButton_Click(object sender, EventArgs e)

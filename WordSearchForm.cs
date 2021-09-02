@@ -90,7 +90,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Word Search");
         }
 
         private void backButton_Click(object sender, EventArgs e)

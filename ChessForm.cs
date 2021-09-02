@@ -53,7 +53,7 @@ namespace KTANE_Solver
         /// <param name="e"></param>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Chess");
         }
 
         /// <summary>

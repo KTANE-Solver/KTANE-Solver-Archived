@@ -76,7 +76,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Monsplode Trading Card");
         }
 
         private void moduleSelectionButton_Click(object sender, EventArgs e)

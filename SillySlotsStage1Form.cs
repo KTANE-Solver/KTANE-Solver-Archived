@@ -115,7 +115,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Silly Slots");
         }
 
 

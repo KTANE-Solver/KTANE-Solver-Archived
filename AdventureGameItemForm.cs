@@ -82,7 +82,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Adventure Game");
         }
 
         private void submitButton_Click(object sender, EventArgs e)

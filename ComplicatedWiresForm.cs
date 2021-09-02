@@ -98,7 +98,7 @@ namespace KTANE_Solver
         /// </summary>
         private void Strike_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Complicated Wires");
         }
 
         /// <summary>

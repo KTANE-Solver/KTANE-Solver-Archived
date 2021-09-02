@@ -48,7 +48,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("3D Maze");
         }
 
         private void submitButton_Click(object sender, EventArgs e)

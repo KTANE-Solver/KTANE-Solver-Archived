@@ -70,7 +70,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike();
+            IncrementStrike("Switches");
         }
 
         private void submitButton_Click(object sender, EventArgs e)
