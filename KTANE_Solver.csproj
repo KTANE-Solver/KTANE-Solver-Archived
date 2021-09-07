@@ -76,17 +76,11 @@
       <DependentUpon>AdjacentLettersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdventureGame.cs" />
-    <Compile Include="AdventureGameItemForm.cs">
+    <Compile Include="AdventureGameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdventureGameItemForm.Designer.cs">
-      <DependentUpon>AdventureGameItemForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdventureGameStatForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdventureGameStatForm.Designer.cs">
-      <DependentUpon>AdventureGameStatForm.cs</DependentUpon>
+    <Compile Include="AdventureGameForm.Designer.cs">
+      <DependentUpon>AdventureGameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="BinaryPuzzleAnswerForm.cs">
@@ -431,11 +425,8 @@
     <EmbeddedResource Include="AdjacentLettersForm.resx">
       <DependentUpon>AdjacentLettersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdventureGameItemForm.resx">
-      <DependentUpon>AdventureGameItemForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdventureGameStatForm.resx">
-      <DependentUpon>AdventureGameStatForm.cs</DependentUpon>
+    <EmbeddedResource Include="AdventureGameForm.resx">
+      <DependentUpon>AdventureGameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BinaryPuzzleAnswerForm.resx">
       <DependentUpon>BinaryPuzzleAnswerForm.cs</DependentUpon>

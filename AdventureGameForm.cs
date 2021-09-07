@@ -11,7 +11,7 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class AdventureGameItemForm : ModuleForm
+    public partial class AdventureGameForm : ModuleForm
     {
         //tell if a weapon slot is taken
         private static bool weapon1SlotTaken;
@@ -32,7 +32,9 @@ namespace KTANE_Solver
         private static AdventureGame.Item item3;
         private static AdventureGame.Item item4;
         private static AdventureGame.Item item5;
-        public AdventureGameItemForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+
+
+        public AdventureGameForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -44,7 +46,7 @@ namespace KTANE_Solver
 
             enemyComboBox.Items.Clear();
             enemyComboBox.Items.AddRange(enemies);
-            enemyComboBox.Text = enemies[0]; 
+            enemyComboBox.Text = enemies[0];
             enemyComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
 
@@ -72,6 +74,14 @@ namespace KTANE_Solver
             ticketCheckBox.Checked = false;
             trophyCheckBox.Checked = false;
 
+            strengthTextBox.Text = "";
+            intelligenceTextBox.Text = "";
+            dexterityTextBox.Text = "";
+            heightTextBox.Text = "";
+            temperatureTextBox.Text = "";
+            gravityTextBox.Text = "";
+            pressureTextBox.Text = "";
+
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
 
@@ -87,6 +97,31 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            int strength;
+            int intelligence;
+            int dexterity;
+            int height;
+            int temp;
+            double gravity;
+            int pressure;
+
+            try
+            {
+                strength = int.Parse(strengthTextBox.Text);
+                intelligence = int.Parse(intelligenceTextBox.Text);
+                dexterity = int.Parse(dexterityTextBox.Text);
+                height = int.Parse(heightTextBox.Text);
+                temp = int.Parse(temperatureTextBox.Text);
+                gravity = double.Parse(gravityTextBox.Text);
+                pressure = int.Parse(pressureTextBox.Text);
+            }
+
+            catch
+            {
+                ShowErrorMessage("Only numbers can go in these text box", "Adventure game Error");
+                return;
+            }
+
             //needs to be 3 weapons
             if (SelectedWeaponNum() != 3)
             {
@@ -130,19 +165,9 @@ namespace KTANE_Solver
             SetItem(ticketCheckBox);
             SetItem(trophyCheckBox);
 
-            //use potion now if avaiable
-            if (item1 == AdventureGame.Item.POTION || item2 == AdventureGame.Item.POTION ||
-                item3 == AdventureGame.Item.POTION || item4 == AdventureGame.Item.POTION ||
-                item5 == AdventureGame.Item.POTION)
-            {
-                ShowAnswer("Use the potion", "Adventure game");
-            }
-
-            AdventureGameStatForm statForm = new AdventureGameStatForm(weapon1, weapon2, weapon3, item1, item2, item3, item4, item5, 
-                                                                       enemy, Bomb, LogFileWriter, ModuleSelectionForm, this);
-
-            this.Hide();
-            statForm.Show();
+            new AdventureGame(strength, dexterity, intelligence, height, temp, gravity, pressure, 
+                              weapon1, weapon2, weapon3, item1, item2, item3, item4, item5, 
+                              enemy, Bomb, LogFileWriter);
 
         }
 
@@ -204,6 +229,7 @@ namespace KTANE_Solver
                 {
                     item5 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
+
             }
         }
 

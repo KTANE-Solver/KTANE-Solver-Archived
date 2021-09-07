@@ -36,7 +36,7 @@ namespace KTANE_Solver
         //module forms
         private _3DMazeForm threeDMazeForm;
         private AdjacentLettersForm adjacentLettersForm;
-        private AdventureGameItemForm adventureGameForm;
+        private AdventureGameForm adventureGameForm;
         private BinaryPuzzleForm binaryForm;
         private BulbForm bulbForm;
         private ButtonForm buttonForm;
@@ -297,7 +297,7 @@ namespace KTANE_Solver
                 case "Adventure Game":
                     if (adventureGameForm == null)
                     {
-                        adventureGameForm = new AdventureGameItemForm(bomb, logFileWriter, this);
+                        adventureGameForm = new AdventureGameForm(bomb, logFileWriter, this);
                     }
 
                     else
