@@ -82,6 +82,11 @@ namespace KTANE_Solver
             gravityTextBox.Text = "";
             pressureTextBox.Text = "";
 
+            item1SlotTaken = false;
+            item2SlotTaken = false;
+            item3SlotTaken = false;
+            item4SlotTaken = false;
+
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
 
@@ -168,6 +173,8 @@ namespace KTANE_Solver
             new AdventureGame(strength, dexterity, intelligence, height, temp, gravity, pressure, 
                               weapon1, weapon2, weapon3, item1, item2, item3, item4, item5, 
                               enemy, Bomb, LogFileWriter);
+
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
 
         }
 

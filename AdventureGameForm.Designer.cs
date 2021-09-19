@@ -118,7 +118,7 @@ namespace KTANE_Solver
             this.enemyComboBox.Location = new System.Drawing.Point(442, 57);
             this.enemyComboBox.Name = "enemyComboBox";
             this.enemyComboBox.Size = new System.Drawing.Size(121, 24);
-            this.enemyComboBox.TabIndex = 4;
+            this.enemyComboBox.TabIndex = 0;
             // 
             // label5
             // 
@@ -135,7 +135,7 @@ namespace KTANE_Solver
             this.broadswoardCheckBox.Location = new System.Drawing.Point(175, 151);
             this.broadswoardCheckBox.Name = "broadswoardCheckBox";
             this.broadswoardCheckBox.Size = new System.Drawing.Size(105, 21);
-            this.broadswoardCheckBox.TabIndex = 6;
+            this.broadswoardCheckBox.TabIndex = 1;
             this.broadswoardCheckBox.Text = "Broadsword";
             this.broadswoardCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -145,7 +145,7 @@ namespace KTANE_Solver
             this.caberCheckBox.Location = new System.Drawing.Point(403, 151);
             this.caberCheckBox.Name = "caberCheckBox";
             this.caberCheckBox.Size = new System.Drawing.Size(68, 21);
-            this.caberCheckBox.TabIndex = 7;
+            this.caberCheckBox.TabIndex = 3;
             this.caberCheckBox.Text = "Caber";
             this.caberCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -155,7 +155,7 @@ namespace KTANE_Solver
             this.grimoireCheckBox.Location = new System.Drawing.Point(641, 151);
             this.grimoireCheckBox.Name = "grimoireCheckBox";
             this.grimoireCheckBox.Size = new System.Drawing.Size(84, 21);
-            this.grimoireCheckBox.TabIndex = 8;
+            this.grimoireCheckBox.TabIndex = 5;
             this.grimoireCheckBox.Text = "Grimoire";
             this.grimoireCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -165,7 +165,7 @@ namespace KTANE_Solver
             this.nastyKnifeCheckBox.Location = new System.Drawing.Point(641, 188);
             this.nastyKnifeCheckBox.Name = "nastyKnifeCheckBox";
             this.nastyKnifeCheckBox.Size = new System.Drawing.Size(102, 21);
-            this.nastyKnifeCheckBox.TabIndex = 11;
+            this.nastyKnifeCheckBox.TabIndex = 6;
             this.nastyKnifeCheckBox.Text = "Nasty Knife";
             this.nastyKnifeCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +175,7 @@ namespace KTANE_Solver
             this.magicOrbCheckBox.Location = new System.Drawing.Point(403, 188);
             this.magicOrbCheckBox.Name = "magicOrbCheckBox";
             this.magicOrbCheckBox.Size = new System.Drawing.Size(95, 21);
-            this.magicOrbCheckBox.TabIndex = 10;
+            this.magicOrbCheckBox.TabIndex = 4;
             this.magicOrbCheckBox.Text = "Magic Orb";
             this.magicOrbCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -185,7 +185,7 @@ namespace KTANE_Solver
             this.longbowCheckBox.Location = new System.Drawing.Point(175, 188);
             this.longbowCheckBox.Name = "longbowCheckBox";
             this.longbowCheckBox.Size = new System.Drawing.Size(87, 21);
-            this.longbowCheckBox.TabIndex = 9;
+            this.longbowCheckBox.TabIndex = 2;
             this.longbowCheckBox.Text = "Longbow";
             this.longbowCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -195,7 +195,7 @@ namespace KTANE_Solver
             this.bellowsCheckBox.Location = new System.Drawing.Point(243, 277);
             this.bellowsCheckBox.Name = "bellowsCheckBox";
             this.bellowsCheckBox.Size = new System.Drawing.Size(77, 21);
-            this.bellowsCheckBox.TabIndex = 14;
+            this.bellowsCheckBox.TabIndex = 11;
             this.bellowsCheckBox.Text = "Bellows";
             this.bellowsCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -205,7 +205,7 @@ namespace KTANE_Solver
             this.batteryCheckBox.Location = new System.Drawing.Point(130, 277);
             this.batteryCheckBox.Name = "batteryCheckBox";
             this.batteryCheckBox.Size = new System.Drawing.Size(75, 21);
-            this.batteryCheckBox.TabIndex = 13;
+            this.batteryCheckBox.TabIndex = 9;
             this.batteryCheckBox.Text = "Battery";
             this.batteryCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -215,7 +215,7 @@ namespace KTANE_Solver
             this.balloonCheckBox.Location = new System.Drawing.Point(12, 277);
             this.balloonCheckBox.Name = "balloonCheckBox";
             this.balloonCheckBox.Size = new System.Drawing.Size(77, 21);
-            this.balloonCheckBox.TabIndex = 12;
+            this.balloonCheckBox.TabIndex = 7;
             this.balloonCheckBox.Text = "Balloon";
             this.balloonCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -235,7 +235,7 @@ namespace KTANE_Solver
             this.crystalBallCheckBox.Location = new System.Drawing.Point(465, 277);
             this.crystalBallCheckBox.Name = "crystalBallCheckBox";
             this.crystalBallCheckBox.Size = new System.Drawing.Size(100, 21);
-            this.crystalBallCheckBox.TabIndex = 16;
+            this.crystalBallCheckBox.TabIndex = 15;
             this.crystalBallCheckBox.Text = "Crystal Ball";
             this.crystalBallCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -245,7 +245,7 @@ namespace KTANE_Solver
             this.cheatCodeCheckBox.Location = new System.Drawing.Point(347, 277);
             this.cheatCodeCheckBox.Name = "cheatCodeCheckBox";
             this.cheatCodeCheckBox.Size = new System.Drawing.Size(104, 21);
-            this.cheatCodeCheckBox.TabIndex = 15;
+            this.cheatCodeCheckBox.TabIndex = 13;
             this.cheatCodeCheckBox.Text = "Cheat Code";
             this.cheatCodeCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -255,7 +255,7 @@ namespace KTANE_Solver
             this.lampCheckBox.Location = new System.Drawing.Point(803, 277);
             this.lampCheckBox.Name = "lampCheckBox";
             this.lampCheckBox.Size = new System.Drawing.Size(65, 21);
-            this.lampCheckBox.TabIndex = 19;
+            this.lampCheckBox.TabIndex = 21;
             this.lampCheckBox.Text = "Lamp";
             this.lampCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -265,7 +265,7 @@ namespace KTANE_Solver
             this.hardDriveCheckBox.Location = new System.Drawing.Point(690, 277);
             this.hardDriveCheckBox.Name = "hardDriveCheckBox";
             this.hardDriveCheckBox.Size = new System.Drawing.Size(98, 21);
-            this.hardDriveCheckBox.TabIndex = 18;
+            this.hardDriveCheckBox.TabIndex = 19;
             this.hardDriveCheckBox.Text = "Hard Drive";
             this.hardDriveCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -275,7 +275,7 @@ namespace KTANE_Solver
             this.trophyCheckBox.Location = new System.Drawing.Point(803, 313);
             this.trophyCheckBox.Name = "trophyCheckBox";
             this.trophyCheckBox.Size = new System.Drawing.Size(75, 21);
-            this.trophyCheckBox.TabIndex = 27;
+            this.trophyCheckBox.TabIndex = 22;
             this.trophyCheckBox.Text = "Trophy";
             this.trophyCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -285,7 +285,7 @@ namespace KTANE_Solver
             this.ticketCheckBox.Location = new System.Drawing.Point(690, 313);
             this.ticketCheckBox.Name = "ticketCheckBox";
             this.ticketCheckBox.Size = new System.Drawing.Size(68, 21);
-            this.ticketCheckBox.TabIndex = 26;
+            this.ticketCheckBox.TabIndex = 20;
             this.ticketCheckBox.Text = "Ticket";
             this.ticketCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -295,7 +295,7 @@ namespace KTANE_Solver
             this.symbolCheckBox.Location = new System.Drawing.Point(578, 313);
             this.symbolCheckBox.Name = "symbolCheckBox";
             this.symbolCheckBox.Size = new System.Drawing.Size(76, 21);
-            this.symbolCheckBox.TabIndex = 25;
+            this.symbolCheckBox.TabIndex = 18;
             this.symbolCheckBox.Text = "Symbol";
             this.symbolCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -305,7 +305,7 @@ namespace KTANE_Solver
             this.sunstoneCheckBox.Location = new System.Drawing.Point(465, 313);
             this.sunstoneCheckBox.Name = "sunstoneCheckBox";
             this.sunstoneCheckBox.Size = new System.Drawing.Size(90, 21);
-            this.sunstoneCheckBox.TabIndex = 24;
+            this.sunstoneCheckBox.TabIndex = 16;
             this.sunstoneCheckBox.Text = "Sunstone";
             this.sunstoneCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -315,7 +315,7 @@ namespace KTANE_Solver
             this.stepladderCheckBox.Location = new System.Drawing.Point(347, 313);
             this.stepladderCheckBox.Name = "stepladderCheckBox";
             this.stepladderCheckBox.Size = new System.Drawing.Size(108, 21);
-            this.stepladderCheckBox.TabIndex = 23;
+            this.stepladderCheckBox.TabIndex = 14;
             this.stepladderCheckBox.Text = "Step Ladder";
             this.stepladderCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -325,7 +325,7 @@ namespace KTANE_Solver
             this.smallDogCheckBox.Location = new System.Drawing.Point(243, 313);
             this.smallDogCheckBox.Name = "smallDogCheckBox";
             this.smallDogCheckBox.Size = new System.Drawing.Size(94, 21);
-            this.smallDogCheckBox.TabIndex = 22;
+            this.smallDogCheckBox.TabIndex = 12;
             this.smallDogCheckBox.Text = "Small Dog";
             this.smallDogCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -335,7 +335,7 @@ namespace KTANE_Solver
             this.potionCheckBox.Location = new System.Drawing.Point(130, 313);
             this.potionCheckBox.Name = "potionCheckBox";
             this.potionCheckBox.Size = new System.Drawing.Size(70, 21);
-            this.potionCheckBox.TabIndex = 21;
+            this.potionCheckBox.TabIndex = 10;
             this.potionCheckBox.Text = "Potion";
             this.potionCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -345,7 +345,7 @@ namespace KTANE_Solver
             this.moonstoneCheckBox.Location = new System.Drawing.Point(12, 313);
             this.moonstoneCheckBox.Name = "moonstoneCheckBox";
             this.moonstoneCheckBox.Size = new System.Drawing.Size(100, 21);
-            this.moonstoneCheckBox.TabIndex = 20;
+            this.moonstoneCheckBox.TabIndex = 8;
             this.moonstoneCheckBox.Text = "Moonstone";
             this.moonstoneCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -354,7 +354,7 @@ namespace KTANE_Solver
             this.backButton.Location = new System.Drawing.Point(89, 495);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(139, 45);
-            this.backButton.TabIndex = 35;
+            this.backButton.TabIndex = 30;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -364,7 +364,7 @@ namespace KTANE_Solver
             this.strikeButton.Location = new System.Drawing.Point(384, 495);
             this.strikeButton.Name = "strikeButton";
             this.strikeButton.Size = new System.Drawing.Size(139, 45);
-            this.strikeButton.TabIndex = 36;
+            this.strikeButton.TabIndex = 31;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
             this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
@@ -374,7 +374,7 @@ namespace KTANE_Solver
             this.submitButton.Location = new System.Drawing.Point(690, 495);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(139, 45);
-            this.submitButton.TabIndex = 37;
+            this.submitButton.TabIndex = 32;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -393,7 +393,7 @@ namespace KTANE_Solver
             this.strengthTextBox.Location = new System.Drawing.Point(116, 393);
             this.strengthTextBox.Name = "strengthTextBox";
             this.strengthTextBox.Size = new System.Drawing.Size(49, 22);
-            this.strengthTextBox.TabIndex = 39;
+            this.strengthTextBox.TabIndex = 23;
             // 
             // label7
             // 
@@ -409,14 +409,14 @@ namespace KTANE_Solver
             this.dexterityTextBox.Location = new System.Drawing.Point(393, 393);
             this.dexterityTextBox.Name = "dexterityTextBox";
             this.dexterityTextBox.Size = new System.Drawing.Size(49, 22);
-            this.dexterityTextBox.TabIndex = 39;
+            this.dexterityTextBox.TabIndex = 24;
             // 
             // intelligenceTextBox
             // 
             this.intelligenceTextBox.Location = new System.Drawing.Point(587, 390);
             this.intelligenceTextBox.Name = "intelligenceTextBox";
             this.intelligenceTextBox.Size = new System.Drawing.Size(49, 22);
-            this.intelligenceTextBox.TabIndex = 41;
+            this.intelligenceTextBox.TabIndex = 25;
             // 
             // label8
             // 
@@ -432,7 +432,7 @@ namespace KTANE_Solver
             this.heightTextBox.Location = new System.Drawing.Point(856, 390);
             this.heightTextBox.Name = "heightTextBox";
             this.heightTextBox.Size = new System.Drawing.Size(49, 22);
-            this.heightTextBox.TabIndex = 43;
+            this.heightTextBox.TabIndex = 26;
             // 
             // label9
             // 
@@ -448,7 +448,7 @@ namespace KTANE_Solver
             this.gravityTextBox.Location = new System.Drawing.Point(463, 433);
             this.gravityTextBox.Name = "gravityTextBox";
             this.gravityTextBox.Size = new System.Drawing.Size(49, 22);
-            this.gravityTextBox.TabIndex = 45;
+            this.gravityTextBox.TabIndex = 28;
             // 
             // label10
             // 
@@ -464,7 +464,7 @@ namespace KTANE_Solver
             this.pressureTextBox.Location = new System.Drawing.Point(709, 435);
             this.pressureTextBox.Name = "pressureTextBox";
             this.pressureTextBox.Size = new System.Drawing.Size(49, 22);
-            this.pressureTextBox.TabIndex = 47;
+            this.pressureTextBox.TabIndex = 29;
             // 
             // label11
             // 
@@ -480,7 +480,7 @@ namespace KTANE_Solver
             this.temperatureTextBox.Location = new System.Drawing.Point(252, 431);
             this.temperatureTextBox.Name = "temperatureTextBox";
             this.temperatureTextBox.Size = new System.Drawing.Size(49, 22);
-            this.temperatureTextBox.TabIndex = 49;
+            this.temperatureTextBox.TabIndex = 27;
             // 
             // label12
             // 

@@ -86,12 +86,12 @@ namespace KTANE_Solver
             PrintDebugLine($"{weapon2String}: {damage2}");
             PrintDebugLine($"{weapon3String}: {damage3}\n");
 
-            if (damage1 <= damage2 && damage1 <= damage3)
+            if (damage1 >= damage2 && damage1 >= damage3)
             {
                 answer += weapon1.Name;
             }
 
-            else if (damage2 <= damage1 && damage2 <= damage3)
+            else if (damage2 >= damage1 && damage2 >= damage3)
             {
                 answer += weapon2.Name;
             }
@@ -176,24 +176,24 @@ namespace KTANE_Solver
         /// <returns></returns>
         private int DamageDealt(Weapon weapon)
         {
-            int healthRemaining;
+            int damageDelt;
 
             if (weapon.Name == "BROADSWORD" || weapon.Name == "CABER")
             {
-                healthRemaining = enemy.Strength - weapon.Strength - strength;
+                damageDelt = weapon.Strength + strength - enemy.Strength;
             }
 
             else if (weapon.Name == "NASTY KNIFE" || weapon.Name == "LONGBOW")
             {
-                healthRemaining = enemy.Dexterity - weapon.Dexterity - dexterity;
+                damageDelt = weapon.Dexterity + dexterity - enemy.Dexterity;
             }
 
             else
             {
-                healthRemaining = enemy.Intelligence - weapon.Intelligence - intelligence;
+                damageDelt = weapon.Intelligence + intelligence - enemy.Intelligence;
             }
 
-            return healthRemaining;
+            return damageDelt;
         }
 
         public enum Item
@@ -271,7 +271,7 @@ namespace KTANE_Solver
             public Enemy(string name)
             {
                 Name = name.ToUpper();
-                switch (name)
+                switch (Name)
                 {
                     case "DEMON":
                         Strength = 50;
