@@ -141,7 +141,6 @@ namespace KTANE_Solver
         }
 
 
-
         /// <summary>
         /// Finds the suspect row
         /// </summary>

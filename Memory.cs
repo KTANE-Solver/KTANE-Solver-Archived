@@ -30,6 +30,13 @@ namespace KTANE_Solver
 
         public void Solve(int stage, int display, int num1, int num2, int num3, int num4)
         {
+            PrintDebugLine($"Stage: {stage}\n");
+
+            PrintDebugLine($"Display: {display}\n");
+
+            PrintDebugLine($"Numbers: {num1}{num2}{num3}{num4}\n");
+
+
             if (stage == 1)
             {
                 stage1 = new int[] { num1, num2, num3, num4 };
@@ -56,6 +63,9 @@ namespace KTANE_Solver
                         ShowAnswer($"Press {num4}", "Memory Stage 1 Answer");
                         break;
                 }
+
+                PrintDebugLine($"Stage 1 position: {stage1Position + 1}");
+                PrintDebugLine($"Stage 1 num: {stage1[stage1Position]}\n");
             }
 
             else if (stage == 2)
@@ -83,6 +93,9 @@ namespace KTANE_Solver
                         ShowAnswer($"Press {stage2[stage1Position]}", "Memory Stage 2 Answer");
                         break;
                 }
+
+                PrintDebugLine($"Stage 2 position: {stage2Position + 1}");
+                PrintDebugLine($"Stage 2 num: {stage2[stage2Position]}\n");
             }
 
             else if (stage == 3)
@@ -115,6 +128,9 @@ namespace KTANE_Solver
                         ShowAnswer($"Press 4", "Memory Stage 3 Answer");
                         break;
                 }
+
+                PrintDebugLine($"Stage 3 position: {stage3Position + 1}");
+                PrintDebugLine($"Stage 3 num: {stage3[stage3Position]}\n");
             }
 
             else if(stage == 4)
@@ -142,6 +158,8 @@ namespace KTANE_Solver
                         ShowAnswer($"Press {stage4[stage4Position]}", "Memory Stage 4 Answer");
                         break;
                 }
+                PrintDebugLine($"Stage 4 position: {stage4Position + 1}");
+                PrintDebugLine($"Stage 4 num: {stage4[stage4Position]}\n");
             }
 
             else
@@ -174,6 +192,8 @@ namespace KTANE_Solver
                         ShowAnswer($"Press {stage5[stage5Position]}", "Memory Stage 5 Answer");
                         break;
                 }
+                PrintDebugLine($"Stage 5 position: {stage5Position + 1}");
+                PrintDebugLine($"Stage 5 num: {stage5[stage5Position]}\n");
             }
         }
     }

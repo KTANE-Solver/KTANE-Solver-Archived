@@ -20,7 +20,7 @@ namespace KTANE_Solver
         {
             InitializeComponent();
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
-            stage = 2;
+            UpdateForm(2);
             this.firstStage = firstStage;
             this.module = module;
         }
@@ -30,9 +30,11 @@ namespace KTANE_Solver
             displayTextBox.Text = "";
             numberTextBox.Text = "";
             this.stage = stage;
+            stageLabel.Text = $"Stage {stage}";
         }
         private void backButton_Click(object sender, EventArgs e)
         {
+            PrintDebugLine($"User reverted back to Stage {stage - 1}");
             if (stage == 2)
             {
                 this.Hide();
@@ -42,7 +44,10 @@ namespace KTANE_Solver
                 firstStage.Show();
             }
 
-            UpdateForm(stage - 1);
+            else
+            {
+                UpdateForm(stage - 1);
+            }
         }
         private void moduleSelectionButton_Click(object sender, EventArgs e)
         {
