@@ -35,9 +35,20 @@ namespace KTANE_Solver
             this.gravity = gravity;
             this.pressure = pressure;
 
+            weapon1 = new Weapon(weapon1String);
+            weapon2 = new Weapon(weapon2String);
+            weapon3 = new Weapon(weapon3String);
+
+            enemy = new Enemy(enemyString);
+
+            answer = "";
+
             PrintDebugLine("======================ADVENTURE GAME======================\n");
 
-            PrintDebugLine($"Enemy: {enemyString}\n");
+            PrintDebugLine("Enemy: " + enemyString);
+            PrintDebugLine("Strength: " + enemy.Strength);
+            PrintDebugLine("Dexterity: " + enemy.Dexterity);
+            PrintDebugLine($"Intelligence: {enemy.Intelligence}\n");
 
             PrintDebugLine("Strength: " + strength);
             PrintDebugLine("Dexterity: " + dexterity);
@@ -53,16 +64,6 @@ namespace KTANE_Solver
             PrintDebugLine(item3.ToString());
             PrintDebugLine(item4.ToString());
             PrintDebugLine(item5.ToString());
-
-
-
-            weapon1 = new Weapon(weapon1String);
-            weapon2 = new Weapon(weapon2String);
-            weapon3 = new Weapon(weapon3String);
-
-            enemy = new Enemy(enemyString);
-
-            answer = "";
 
             //check which Items to use
             CheckItem(item1);
@@ -132,7 +133,7 @@ namespace KTANE_Solver
                 case Item.CHEATCODE: case Item.POTION: return false;
 
                 //INT is greater than the last digit of the serial number, and not fighting a Wizard.
-                case Item.CRYSTALBALL: return enemy.Name == "WIZARD" && intelligence > Bomb.LastDigit;
+                case Item.CRYSTALBALL: return enemy.Name != "WIZARD" && intelligence > Bomb.LastDigit;
 
                 //DEX is greater than either STR or INT.
                 case Item.FEATHER: return dexterity > strength || dexterity > intelligence;
