@@ -72,7 +72,7 @@ namespace KTANE_Solver
             // 
             this.row6button6.Enabled = false;
             this.row6button6.Location = new System.Drawing.Point(497, 433);
-            this.row6button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row6button6.Margin = new System.Windows.Forms.Padding(4);
             this.row6button6.Name = "row6button6";
             this.row6button6.Size = new System.Drawing.Size(72, 72);
             this.row6button6.TabIndex = 72;
@@ -82,7 +82,7 @@ namespace KTANE_Solver
             // 
             this.row6button5.Enabled = false;
             this.row6button5.Location = new System.Drawing.Point(409, 433);
-            this.row6button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row6button5.Margin = new System.Windows.Forms.Padding(4);
             this.row6button5.Name = "row6button5";
             this.row6button5.Size = new System.Drawing.Size(72, 72);
             this.row6button5.TabIndex = 71;
@@ -92,7 +92,7 @@ namespace KTANE_Solver
             // 
             this.row6button4.Enabled = false;
             this.row6button4.Location = new System.Drawing.Point(321, 433);
-            this.row6button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row6button4.Margin = new System.Windows.Forms.Padding(4);
             this.row6button4.Name = "row6button4";
             this.row6button4.Size = new System.Drawing.Size(72, 72);
             this.row6button4.TabIndex = 70;
@@ -102,7 +102,7 @@ namespace KTANE_Solver
             // 
             this.row6button3.Enabled = false;
             this.row6button3.Location = new System.Drawing.Point(233, 433);
-            this.row6button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row6button3.Margin = new System.Windows.Forms.Padding(4);
             this.row6button3.Name = "row6button3";
             this.row6button3.Size = new System.Drawing.Size(72, 72);
             this.row6button3.TabIndex = 69;
@@ -112,7 +112,7 @@ namespace KTANE_Solver
             // 
             this.row6button2.Enabled = false;
             this.row6button2.Location = new System.Drawing.Point(145, 433);
-            this.row6button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row6button2.Margin = new System.Windows.Forms.Padding(4);
             this.row6button2.Name = "row6button2";
             this.row6button2.Size = new System.Drawing.Size(72, 72);
             this.row6button2.TabIndex = 68;
@@ -122,7 +122,7 @@ namespace KTANE_Solver
             // 
             this.row6button1.Enabled = false;
             this.row6button1.Location = new System.Drawing.Point(57, 433);
-            this.row6button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row6button1.Margin = new System.Windows.Forms.Padding(4);
             this.row6button1.Name = "row6button1";
             this.row6button1.Size = new System.Drawing.Size(72, 72);
             this.row6button1.TabIndex = 67;
@@ -132,7 +132,7 @@ namespace KTANE_Solver
             // 
             this.row5button6.Enabled = false;
             this.row5button6.Location = new System.Drawing.Point(497, 353);
-            this.row5button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row5button6.Margin = new System.Windows.Forms.Padding(4);
             this.row5button6.Name = "row5button6";
             this.row5button6.Size = new System.Drawing.Size(72, 72);
             this.row5button6.TabIndex = 66;
@@ -142,7 +142,7 @@ namespace KTANE_Solver
             // 
             this.row5button5.Enabled = false;
             this.row5button5.Location = new System.Drawing.Point(409, 353);
-            this.row5button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row5button5.Margin = new System.Windows.Forms.Padding(4);
             this.row5button5.Name = "row5button5";
             this.row5button5.Size = new System.Drawing.Size(72, 72);
             this.row5button5.TabIndex = 65;
@@ -152,7 +152,7 @@ namespace KTANE_Solver
             // 
             this.row5button4.Enabled = false;
             this.row5button4.Location = new System.Drawing.Point(321, 353);
-            this.row5button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row5button4.Margin = new System.Windows.Forms.Padding(4);
             this.row5button4.Name = "row5button4";
             this.row5button4.Size = new System.Drawing.Size(72, 72);
             this.row5button4.TabIndex = 64;
@@ -162,7 +162,7 @@ namespace KTANE_Solver
             // 
             this.row5button3.Enabled = false;
             this.row5button3.Location = new System.Drawing.Point(233, 353);
-            this.row5button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row5button3.Margin = new System.Windows.Forms.Padding(4);
             this.row5button3.Name = "row5button3";
             this.row5button3.Size = new System.Drawing.Size(72, 72);
             this.row5button3.TabIndex = 63;
@@ -172,7 +172,7 @@ namespace KTANE_Solver
             // 
             this.row5button2.Enabled = false;
             this.row5button2.Location = new System.Drawing.Point(145, 353);
-            this.row5button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row5button2.Margin = new System.Windows.Forms.Padding(4);
             this.row5button2.Name = "row5button2";
             this.row5button2.Size = new System.Drawing.Size(72, 72);
             this.row5button2.TabIndex = 62;
@@ -182,7 +182,7 @@ namespace KTANE_Solver
             // 
             this.row5button1.Enabled = false;
             this.row5button1.Location = new System.Drawing.Point(57, 353);
-            this.row5button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row5button1.Margin = new System.Windows.Forms.Padding(4);
             this.row5button1.Name = "row5button1";
             this.row5button1.Size = new System.Drawing.Size(72, 72);
             this.row5button1.TabIndex = 61;
@@ -192,7 +192,7 @@ namespace KTANE_Solver
             // 
             this.row4button6.Enabled = false;
             this.row4button6.Location = new System.Drawing.Point(497, 273);
-            this.row4button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row4button6.Margin = new System.Windows.Forms.Padding(4);
             this.row4button6.Name = "row4button6";
             this.row4button6.Size = new System.Drawing.Size(72, 72);
             this.row4button6.TabIndex = 60;
@@ -203,7 +203,7 @@ namespace KTANE_Solver
             // 
             this.row4button5.Enabled = false;
             this.row4button5.Location = new System.Drawing.Point(409, 273);
-            this.row4button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row4button5.Margin = new System.Windows.Forms.Padding(4);
             this.row4button5.Name = "row4button5";
             this.row4button5.Size = new System.Drawing.Size(72, 72);
             this.row4button5.TabIndex = 59;
@@ -213,7 +213,7 @@ namespace KTANE_Solver
             // 
             this.row4button4.Enabled = false;
             this.row4button4.Location = new System.Drawing.Point(321, 273);
-            this.row4button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row4button4.Margin = new System.Windows.Forms.Padding(4);
             this.row4button4.Name = "row4button4";
             this.row4button4.Size = new System.Drawing.Size(72, 72);
             this.row4button4.TabIndex = 58;
@@ -223,7 +223,7 @@ namespace KTANE_Solver
             // 
             this.row4button3.Enabled = false;
             this.row4button3.Location = new System.Drawing.Point(233, 273);
-            this.row4button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row4button3.Margin = new System.Windows.Forms.Padding(4);
             this.row4button3.Name = "row4button3";
             this.row4button3.Size = new System.Drawing.Size(72, 72);
             this.row4button3.TabIndex = 57;
@@ -233,7 +233,7 @@ namespace KTANE_Solver
             // 
             this.row4button2.Enabled = false;
             this.row4button2.Location = new System.Drawing.Point(145, 273);
-            this.row4button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row4button2.Margin = new System.Windows.Forms.Padding(4);
             this.row4button2.Name = "row4button2";
             this.row4button2.Size = new System.Drawing.Size(72, 72);
             this.row4button2.TabIndex = 56;
@@ -243,7 +243,7 @@ namespace KTANE_Solver
             // 
             this.row4button1.Enabled = false;
             this.row4button1.Location = new System.Drawing.Point(57, 273);
-            this.row4button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row4button1.Margin = new System.Windows.Forms.Padding(4);
             this.row4button1.Name = "row4button1";
             this.row4button1.Size = new System.Drawing.Size(72, 72);
             this.row4button1.TabIndex = 55;
@@ -253,7 +253,7 @@ namespace KTANE_Solver
             // 
             this.row3button6.Enabled = false;
             this.row3button6.Location = new System.Drawing.Point(497, 193);
-            this.row3button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row3button6.Margin = new System.Windows.Forms.Padding(4);
             this.row3button6.Name = "row3button6";
             this.row3button6.Size = new System.Drawing.Size(72, 72);
             this.row3button6.TabIndex = 54;
@@ -264,7 +264,7 @@ namespace KTANE_Solver
             // 
             this.row3button5.Enabled = false;
             this.row3button5.Location = new System.Drawing.Point(409, 193);
-            this.row3button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row3button5.Margin = new System.Windows.Forms.Padding(4);
             this.row3button5.Name = "row3button5";
             this.row3button5.Size = new System.Drawing.Size(72, 72);
             this.row3button5.TabIndex = 53;
@@ -274,7 +274,7 @@ namespace KTANE_Solver
             // 
             this.row3button4.Enabled = false;
             this.row3button4.Location = new System.Drawing.Point(321, 193);
-            this.row3button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row3button4.Margin = new System.Windows.Forms.Padding(4);
             this.row3button4.Name = "row3button4";
             this.row3button4.Size = new System.Drawing.Size(72, 72);
             this.row3button4.TabIndex = 52;
@@ -284,7 +284,7 @@ namespace KTANE_Solver
             // 
             this.row3button3.Enabled = false;
             this.row3button3.Location = new System.Drawing.Point(233, 193);
-            this.row3button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row3button3.Margin = new System.Windows.Forms.Padding(4);
             this.row3button3.Name = "row3button3";
             this.row3button3.Size = new System.Drawing.Size(72, 72);
             this.row3button3.TabIndex = 51;
@@ -294,7 +294,7 @@ namespace KTANE_Solver
             // 
             this.row3button2.Enabled = false;
             this.row3button2.Location = new System.Drawing.Point(145, 193);
-            this.row3button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row3button2.Margin = new System.Windows.Forms.Padding(4);
             this.row3button2.Name = "row3button2";
             this.row3button2.Size = new System.Drawing.Size(72, 72);
             this.row3button2.TabIndex = 50;
@@ -304,7 +304,7 @@ namespace KTANE_Solver
             // 
             this.row3button1.Enabled = false;
             this.row3button1.Location = new System.Drawing.Point(57, 193);
-            this.row3button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row3button1.Margin = new System.Windows.Forms.Padding(4);
             this.row3button1.Name = "row3button1";
             this.row3button1.Size = new System.Drawing.Size(72, 72);
             this.row3button1.TabIndex = 49;
@@ -314,7 +314,7 @@ namespace KTANE_Solver
             // 
             this.row2button6.Enabled = false;
             this.row2button6.Location = new System.Drawing.Point(497, 113);
-            this.row2button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row2button6.Margin = new System.Windows.Forms.Padding(4);
             this.row2button6.Name = "row2button6";
             this.row2button6.Size = new System.Drawing.Size(72, 72);
             this.row2button6.TabIndex = 48;
@@ -325,7 +325,7 @@ namespace KTANE_Solver
             // 
             this.row2button5.Enabled = false;
             this.row2button5.Location = new System.Drawing.Point(409, 113);
-            this.row2button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row2button5.Margin = new System.Windows.Forms.Padding(4);
             this.row2button5.Name = "row2button5";
             this.row2button5.Size = new System.Drawing.Size(72, 72);
             this.row2button5.TabIndex = 47;
@@ -335,7 +335,7 @@ namespace KTANE_Solver
             // 
             this.row2button4.Enabled = false;
             this.row2button4.Location = new System.Drawing.Point(321, 113);
-            this.row2button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row2button4.Margin = new System.Windows.Forms.Padding(4);
             this.row2button4.Name = "row2button4";
             this.row2button4.Size = new System.Drawing.Size(72, 72);
             this.row2button4.TabIndex = 46;
@@ -345,7 +345,7 @@ namespace KTANE_Solver
             // 
             this.row2button3.Enabled = false;
             this.row2button3.Location = new System.Drawing.Point(233, 113);
-            this.row2button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row2button3.Margin = new System.Windows.Forms.Padding(4);
             this.row2button3.Name = "row2button3";
             this.row2button3.Size = new System.Drawing.Size(72, 72);
             this.row2button3.TabIndex = 45;
@@ -353,8 +353,9 @@ namespace KTANE_Solver
             // 
             // row2button2
             // 
+            this.row2button2.Enabled = false;
             this.row2button2.Location = new System.Drawing.Point(145, 113);
-            this.row2button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row2button2.Margin = new System.Windows.Forms.Padding(4);
             this.row2button2.Name = "row2button2";
             this.row2button2.Size = new System.Drawing.Size(72, 72);
             this.row2button2.TabIndex = 44;
@@ -364,7 +365,7 @@ namespace KTANE_Solver
             // 
             this.row2button1.Enabled = false;
             this.row2button1.Location = new System.Drawing.Point(57, 113);
-            this.row2button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row2button1.Margin = new System.Windows.Forms.Padding(4);
             this.row2button1.Name = "row2button1";
             this.row2button1.Size = new System.Drawing.Size(72, 72);
             this.row2button1.TabIndex = 43;
@@ -374,7 +375,7 @@ namespace KTANE_Solver
             // 
             this.row1button6.Enabled = false;
             this.row1button6.Location = new System.Drawing.Point(497, 33);
-            this.row1button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row1button6.Margin = new System.Windows.Forms.Padding(4);
             this.row1button6.Name = "row1button6";
             this.row1button6.Size = new System.Drawing.Size(72, 72);
             this.row1button6.TabIndex = 42;
@@ -384,7 +385,7 @@ namespace KTANE_Solver
             // 
             this.row1button5.Enabled = false;
             this.row1button5.Location = new System.Drawing.Point(409, 33);
-            this.row1button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row1button5.Margin = new System.Windows.Forms.Padding(4);
             this.row1button5.Name = "row1button5";
             this.row1button5.Size = new System.Drawing.Size(72, 72);
             this.row1button5.TabIndex = 41;
@@ -394,7 +395,7 @@ namespace KTANE_Solver
             // 
             this.row1button4.Enabled = false;
             this.row1button4.Location = new System.Drawing.Point(321, 33);
-            this.row1button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row1button4.Margin = new System.Windows.Forms.Padding(4);
             this.row1button4.Name = "row1button4";
             this.row1button4.Size = new System.Drawing.Size(72, 72);
             this.row1button4.TabIndex = 40;
@@ -404,7 +405,7 @@ namespace KTANE_Solver
             // 
             this.row1button3.Enabled = false;
             this.row1button3.Location = new System.Drawing.Point(233, 33);
-            this.row1button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row1button3.Margin = new System.Windows.Forms.Padding(4);
             this.row1button3.Name = "row1button3";
             this.row1button3.Size = new System.Drawing.Size(72, 72);
             this.row1button3.TabIndex = 39;
@@ -414,7 +415,7 @@ namespace KTANE_Solver
             // 
             this.row1button2.Enabled = false;
             this.row1button2.Location = new System.Drawing.Point(145, 33);
-            this.row1button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row1button2.Margin = new System.Windows.Forms.Padding(4);
             this.row1button2.Name = "row1button2";
             this.row1button2.Size = new System.Drawing.Size(72, 72);
             this.row1button2.TabIndex = 38;
@@ -424,7 +425,7 @@ namespace KTANE_Solver
             // 
             this.row1button1.Enabled = false;
             this.row1button1.Location = new System.Drawing.Point(57, 33);
-            this.row1button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.row1button1.Margin = new System.Windows.Forms.Padding(4);
             this.row1button1.Name = "row1button1";
             this.row1button1.Size = new System.Drawing.Size(72, 72);
             this.row1button1.TabIndex = 37;
@@ -433,7 +434,7 @@ namespace KTANE_Solver
             // okButton
             // 
             this.okButton.Location = new System.Drawing.Point(233, 540);
-            this.okButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okButton.Margin = new System.Windows.Forms.Padding(4);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(153, 46);
             this.okButton.TabIndex = 73;
@@ -483,7 +484,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.row1button3);
             this.Controls.Add(this.row1button2);
             this.Controls.Add(this.row1button1);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MazeAnswerForm";
             this.ResumeLayout(false);
 
