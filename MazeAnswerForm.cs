@@ -13,18 +13,18 @@ namespace KTANE_Solver
 {
     public partial class MazeAnswerForm : ModuleForm
     {
-        List<Maze.Coordinate> grid;
+        List<Maze.Coordinate> correctSpots;
 
         Image leftArrowImage = Image.FromFile("Maze Arrows/left arrow.png");
         Image rightArrowImage = Image.FromFile("Maze Arrows/right arrow.png");
         Image upArrowImage = Image.FromFile("Maze Arrows/up arrow.png");
         Image downArrowImage = Image.FromFile("Maze Arrows/down arrow.png");
 
-        public MazeAnswerForm(List<Maze.Coordinate> grid, StreamWriter logFileWriter)
+        public MazeAnswerForm(List<Maze.Coordinate> correctSpots, StreamWriter logFileWriter)
         {
             InitializeComponent();
 
-            this.grid = grid;
+            this.correctSpots = correctSpots;
 
             row1button1.Image = GetImage(0, 0);
             row1button2.Image = GetImage(0, 1);
@@ -123,20 +123,20 @@ namespace KTANE_Solver
 
         private Image GetImage(int row, int column)
         {
-            for (int i = grid.Count() - 2; i >= 0; i--)
+            for (int i = correctSpots.Count() - 2; i >= 0; i--)
             {
-                if (AreEqual(grid[i], new Maze.Coordinate(row, column)))
+                if (AreEqual(correctSpots[i], new Maze.Coordinate(row, column)))
                 {
-                    if (grid[i].Row + 1 == grid[i + 1].Row)
+                    if (row != 5 && correctSpots[i].Row + 1 == correctSpots[i + 1].Row && correctSpots[i].Column == correctSpots[i + 1].Column)
                         return downArrowImage;
 
-                    if (grid[i].Row - 1 == grid[i + 1].Row)
+                    if (row != 0 && correctSpots[i].Row - 1 == correctSpots[i + 1].Row && correctSpots[i].Column == correctSpots[i + 1].Column)
                         return upArrowImage;
 
-                    if (grid[i].Column + 1 == grid[i + 1].Column)
+                    if (column != 5 && correctSpots[i].Column + 1 == correctSpots[i + 1].Column && correctSpots[i].Row == correctSpots[i + 1].Row)
                         return rightArrowImage;
 
-                    if (grid[i].Column - 1 == grid[i + 1].Column)
+                    if (column != 0 && correctSpots[i].Column - 1 == correctSpots[i + 1].Column && correctSpots[i].Row == correctSpots[i + 1].Row)
                         return leftArrowImage;
                 }
             }
@@ -146,18 +146,18 @@ namespace KTANE_Solver
 
         private Color GetColor(int row, int column)
         {
-                if (AreEqual(grid[0], new Maze.Coordinate( row, column )))
+                if (AreEqual(correctSpots[0], new Maze.Coordinate( row, column )))
                 {
                     return Color.White;
                 }
 
-                if (AreEqual(grid[grid.Count - 1], new Maze.Coordinate(row, column)))
+                if (AreEqual(correctSpots[correctSpots.Count - 1], new Maze.Coordinate(row, column)))
                 {
                     return Color.Red;
                 }
 
                 
-                foreach (Maze.Coordinate pair in grid)
+                foreach (Maze.Coordinate pair in correctSpots)
                 {
                     if (AreEqual(pair, new Maze.Coordinate(row, column)))
                     {
