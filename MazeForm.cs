@@ -124,30 +124,30 @@ namespace KTANE_Solver
 
             if (button.BackColor == Color.Blue)
             {
+                button.BackColor = Color.Green;
+            }
+
+            else if (button.BackColor == Color.Green)
+            { 
+                button.BackColor = Color.White;
+            }
+
+            else if (button.BackColor == Color.White)
+            {
                 button.BackColor = Color.Red;
             }
 
             else if (button.BackColor == Color.Red)
-            { 
-                button.BackColor = Color.Orange;
-            }
-
-            else if (button.BackColor == Color.Orange)
             {
                 button.BackColor = Color.Yellow;
             }
 
             else if (button.BackColor == Color.Yellow)
             {
-                button.BackColor = Color.Green;
+                button.BackColor = Color.Orange;
             }
 
-            else if (button.BackColor == Color.Green)
-            {
-                button.BackColor = Color.White;
-            }
-
-            else if (button.BackColor == Color.White)
+            else if (button.BackColor == Color.Orange)
             {
                 button.BackColor = Color.Blue;
             }
