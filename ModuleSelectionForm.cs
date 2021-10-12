@@ -683,12 +683,12 @@ namespace KTANE_Solver
 
                     if (switchesForm == null)
                     {
-                        switchesForm = new SwitchesForm(logFileWriter, this);
+                        switchesForm = new SwitchesForm(bomb, logFileWriter, this);
                     }
 
                     else
                     {
-                        switchesForm.UpdateForm(logFileWriter, this);
+                        switchesForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     switchesForm.Show();

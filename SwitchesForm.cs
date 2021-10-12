@@ -12,10 +12,10 @@ namespace KTANE_Solver
 {
     public partial class SwitchesForm : ModuleForm
     {
-        public SwitchesForm(StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public SwitchesForm(Bomb bomb,StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            UpdateForm(logFileWriter, moduleSelectionForm);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
 
             start1.Click += Tile_Click;
             start2.Click += Tile_Click;
@@ -30,10 +30,9 @@ namespace KTANE_Solver
             end5.Click += Tile_Click;
         }
 
-        public void UpdateForm(StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
-            ModuleSelectionForm = moduleSelectionForm;
-            LogFileWriter = logFileWriter;
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             start1.BackColor = Color.White;
             start2.BackColor = Color.White;
@@ -84,8 +83,8 @@ namespace KTANE_Solver
                 return;
             }
 
-            new Switches(start, end, LogFileWriter);
-            UpdateForm(LogFileWriter, ModuleSelectionForm);
+            new Switches(start, end, Bomb, LogFileWriter);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
         private bool SameSwitches(bool[] start, bool[] end)

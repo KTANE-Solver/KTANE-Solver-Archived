@@ -11,7 +11,7 @@ namespace KTANE_Solver
         private bool[] start;
         private bool[] end;
         private List<int> directions;
-        public Switches(bool[] start, bool[] end, StreamWriter logFileWriter) : base(null, logFileWriter)
+        public Switches(bool[] start, bool[] end, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
             this.start = start;
             this.end = end;
