@@ -49,7 +49,7 @@ namespace KTANE_Solver
 
             //all maze arrows
             if (!MazeFileExists("up arrow") || !MazeFileExists("up arrow") || !MazeFileExists("up arrow") || !MazeFileExists("up arrow"))
-            {
+            { 
                 return;
             }
 

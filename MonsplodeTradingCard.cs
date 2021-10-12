@@ -59,7 +59,7 @@ namespace KTANE_Solver
 
             else
             { 
-                ShowAnswer($"Trade Card {position + 1}", "Monosplode Trading Cards Answer");
+                ShowAnswer($"Trade Card {position + 1} ({lowestCard.Name})", "Monosplode Trading Cards Answer");
                 hand[position] = offeredCard;
             }
         }
