@@ -147,7 +147,16 @@ namespace KTANE_Solver
                 n /= 10;
             }
 
-            return int.Parse((string)newNum.Reverse());
+            //reverse the string
+
+            string str = "";
+
+            for (int i = newNum.Length - 1; i > -1; i--)
+            {
+                str += newNum[i];
+            }
+
+            return int.Parse(str);
         }
 
         class Condition
