@@ -11,6 +11,18 @@ namespace KTANE_Solver
     {
         public FizzBuzz(String firstColor, int firstNumber, String secondColor, int secondNumber, String thirdColor, int thirdNumber, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
+            //FIX THIS
+            //FIX THIS
+            //FIX THIS
+            //KEEP LEADING ZEROS
+            //FIX THIS
+            //FIX THIS
+            //FIX THIS
+
+            PrintDebugLine($"First Number {firstColor} {firstNumber}");
+            PrintDebugLine($"Second Number {secondColor} {secondNumber}");
+            PrintDebugLine($"Third Number {thirdColor} {thirdNumber}\n");
+
             //For each number, find the column corresponding to the color of the number in the table below.
             Condition firstCondition = SetCondition(firstColor);
             Condition secondCondition = SetCondition(secondColor);
@@ -27,6 +39,8 @@ namespace KTANE_Solver
             //3 or more battery holders are present on the bomb.
             if (Bomb.BatteryHolder >= 3)
             {
+                PrintDebugLine("3 or more battery holders are present on the bomb\n");
+
                 firstAdditionNumber += firstCondition.ThreeBatteryHolder;
                 secondAdditionNumber += secondCondition.ThreeBatteryHolder;
                 thirdAdditionNumber += thirdCondition.ThreeBatteryHolder;
@@ -36,6 +50,8 @@ namespace KTANE_Solver
 
             if (Bomb.Serial.Visible && Bomb.Parallel.Visible)
             {
+                PrintDebugLine("At least one Serial and Parallel port are present on the bomb\n");
+
                 firstAdditionNumber += firstCondition.SerialParallelPort;
                 secondAdditionNumber += secondCondition.SerialParallelPort;
                 thirdAdditionNumber += thirdCondition.SerialParallelPort;
@@ -45,6 +61,8 @@ namespace KTANE_Solver
 
             if (Bomb.LetterNum == 3 && Bomb.DigitNum == 3)
             {
+                PrintDebugLine("3 letters and 3 digits are present in the serial number\n");
+
                 firstAdditionNumber += firstCondition.ThreeLetterDigit;
                 secondAdditionNumber += secondCondition.ThreeLetterDigit;
                 thirdAdditionNumber += thirdCondition.ThreeLetterDigit;
@@ -53,6 +71,8 @@ namespace KTANE_Solver
             //At least one DVI-D and Stereo RCA port are present on the bomb
             if (Bomb.Dvid.Visible && Bomb.Stereo.Visible)
             {
+                PrintDebugLine("At least one DVI-D and Stereo RCA port are present on the bomb\n");
+
                 firstAdditionNumber += firstCondition.DvidStereoPort;
                 secondAdditionNumber += secondCondition.DvidStereoPort;
                 thirdAdditionNumber += thirdCondition.DvidStereoPort;
@@ -61,6 +81,8 @@ namespace KTANE_Solver
             //2 or more strikes are present on the bomb.
             if (Bomb.Strike >= 2)
             {
+                PrintDebugLine("2 or more strikes are present on the bomb\n");
+
                 firstAdditionNumber += firstCondition.Strikes;
                 secondAdditionNumber += secondCondition.Strikes;
                 thirdAdditionNumber += thirdCondition.Strikes;
@@ -69,6 +91,8 @@ namespace KTANE_Solver
             //5 or more batteries are present on the bomb.
             if (Bomb.Battery >= 5)
             {
+                PrintDebugLine("5 or more batteries are present on the bomb\n");
+
                 firstAdditionNumber += firstCondition.Strikes;
                 secondAdditionNumber += secondCondition.Strikes;
                 thirdAdditionNumber += thirdCondition.Strikes;
@@ -77,6 +101,8 @@ namespace KTANE_Solver
             //None of the above apply.
             if (firstAdditionNumber == 0)
             {
+                PrintDebugLine("None of the previous conditions apply\n");
+
                 firstAdditionNumber += firstCondition.None;
                 secondAdditionNumber += secondCondition.None;
                 thirdAdditionNumber += thirdCondition.None;
@@ -86,15 +112,24 @@ namespace KTANE_Solver
             secondAdditionNumber %= 10;
             thirdAdditionNumber %= 10;
 
+            PrintDebugLine($"First Addition Number: {firstAdditionNumber}");
+            PrintDebugLine($"Second Addition Number: {secondAdditionNumber}");
+            PrintDebugLine($"Third Addition Number: {thirdAdditionNumber}\n");
+
+
             firstNumber = GetNewNumber(firstNumber, firstAdditionNumber);
             secondNumber = GetNewNumber(secondNumber, secondAdditionNumber);
             thirdNumber = GetNewNumber(thirdNumber, thirdAdditionNumber);
+
+            PrintDebugLine($"New First Number: {firstNumber}");
+            PrintDebugLine($"New Second Number:{secondNumber}");
+            PrintDebugLine($"New Third Number: {thirdNumber}\n");
 
             String firstNumAnswer = GetAnswer(firstNumber);
             String secondNumAnswer = GetAnswer(secondNumber);
             String thirdNumAnswer = GetAnswer(thirdNumber);
 
-
+            PrintDebugLine($"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}\n");
             ShowAnswer($"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}", "FizzBuzz Answer");
         }
 
