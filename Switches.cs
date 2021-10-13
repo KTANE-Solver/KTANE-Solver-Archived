@@ -123,9 +123,11 @@ namespace KTANE_Solver
 
                     turnSwitchOff(4);
 
-                  
-                    ShowAnswer(Answer(), "Switches Answer");
-                    return;
+                    if (IsComplete())
+                    {
+                        ShowAnswer(Answer(), "Switches Answer");
+                        return;
+                    }
                 }
 
                 //13 - 31
@@ -161,8 +163,11 @@ namespace KTANE_Solver
 
                     turnSwitchOff(1);
 
-                    ShowAnswer(Answer(), "Switches Answer");
-                    return;
+                    if (IsComplete())
+                    {
+                        ShowAnswer(Answer(), "Switches Answer");
+                        return;
+                    }
                 }
 
                 //1245 - 4125
@@ -335,10 +340,13 @@ namespace KTANE_Solver
             if (directions.Count != 0 && directions[directions.Count - 1] == num + 1)
             {
                 directions.RemoveAt(directions.Count - 1);
-                return;
             }
 
-            directions.Add(num + 1);
+            else
+            {
+                directions.Add(num + 1);
+            }
+
             start[num] = true;
         }
 
