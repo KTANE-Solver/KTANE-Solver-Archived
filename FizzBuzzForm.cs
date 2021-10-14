@@ -35,7 +35,7 @@ namespace KTANE_Solver
         {
             comboBox.Items.Clear();
 
-            String[] colors = { "Red", "Blue", "Green", "Yellow", "White" };
+            String[] colors = { "Blue", "Green", "Red", "White", "Yellow" };
 
             comboBox.Items.AddRange(colors);
 
@@ -56,9 +56,6 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            int num1;
-            int num2;
-            int num3;
 
             if (numberTextBox1.Text.Length != 7 || numberTextBox2.Text.Length != 7 || numberTextBox3.Text.Length != 7)
             {
@@ -68,9 +65,9 @@ namespace KTANE_Solver
 
             try
             {
-                num1 = int.Parse(numberTextBox1.Text);
-                num2 = int.Parse(numberTextBox2.Text);
-                num3 = int.Parse(numberTextBox3.Text);
+                int.Parse(numberTextBox1.Text);
+                int.Parse(numberTextBox2.Text);
+                int.Parse(numberTextBox3.Text);
             }
 
             catch
@@ -79,7 +76,7 @@ namespace KTANE_Solver
                 return;
             }
 
-            new FizzBuzz(colorComboBox1.Text, num1, colorComboBox2.Text, num2, colorComboBox3.Text, num3, Bomb, LogFileWriter);
+            new FizzBuzz(colorComboBox1.Text, numberTextBox1.Text, colorComboBox2.Text, numberTextBox2.Text, colorComboBox3.Text, numberTextBox3.Text, Bomb, LogFileWriter);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }

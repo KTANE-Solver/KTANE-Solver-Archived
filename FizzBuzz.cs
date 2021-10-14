@@ -9,19 +9,11 @@ namespace KTANE_Solver
 {
     public class FizzBuzz : Module
     {
-        public FizzBuzz(String firstColor, int firstNumber, String secondColor, int secondNumber, String thirdColor, int thirdNumber, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public FizzBuzz(string firstColor, string firstNumber, string secondColor, string secondNumber, string thirdColor, string thirdNumber, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
-            //FIX THIS
-            //FIX THIS
-            //FIX THIS
-            //KEEP LEADING ZEROS
-            //FIX THIS
-            //FIX THIS
-            //FIX THIS
-
-            PrintDebugLine($"First Number {firstColor} {firstNumber}");
-            PrintDebugLine($"Second Number {secondColor} {secondNumber}");
-            PrintDebugLine($"Third Number {thirdColor} {thirdNumber}\n");
+            PrintDebugLine($"First Number: {firstColor} {firstNumber}");
+            PrintDebugLine($"Second Number: {secondColor} {secondNumber}");
+            PrintDebugLine($"Third Number: {thirdColor} {thirdNumber}\n");
 
             //For each number, find the column corresponding to the color of the number in the table below.
             Condition firstCondition = SetCondition(firstColor);
@@ -93,9 +85,9 @@ namespace KTANE_Solver
             {
                 PrintDebugLine("5 or more batteries are present on the bomb\n");
 
-                firstAdditionNumber += firstCondition.Strikes;
-                secondAdditionNumber += secondCondition.Strikes;
-                thirdAdditionNumber += thirdCondition.Strikes;
+                firstAdditionNumber += firstCondition.FiveBattery;
+                secondAdditionNumber += secondCondition.FiveBattery;
+                thirdAdditionNumber += thirdCondition.FiveBattery;
             }
 
             //None of the above apply.
@@ -117,17 +109,17 @@ namespace KTANE_Solver
             PrintDebugLine($"Third Addition Number: {thirdAdditionNumber}\n");
 
 
-            firstNumber = GetNewNumber(firstNumber, firstAdditionNumber);
-            secondNumber = GetNewNumber(secondNumber, secondAdditionNumber);
-            thirdNumber = GetNewNumber(thirdNumber, thirdAdditionNumber);
+            int first = GetNewNumber(firstNumber, firstAdditionNumber);
+            int second = GetNewNumber(secondNumber, secondAdditionNumber);
+            int third = GetNewNumber(thirdNumber, thirdAdditionNumber);
 
-            PrintDebugLine($"New First Number: {firstNumber}");
-            PrintDebugLine($"New Second Number:{secondNumber}");
-            PrintDebugLine($"New Third Number: {thirdNumber}\n");
+            PrintDebugLine($"New First Number: {first}");
+            PrintDebugLine($"New Second Number:{second}");
+            PrintDebugLine($"New Third Number: {third}\n");
 
-            String firstNumAnswer = GetAnswer(firstNumber);
-            String secondNumAnswer = GetAnswer(secondNumber);
-            String thirdNumAnswer = GetAnswer(thirdNumber);
+            String firstNumAnswer = GetAnswer(first);
+            String secondNumAnswer = GetAnswer(second);
+            String thirdNumAnswer = GetAnswer(third);
 
             PrintDebugLine($"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}\n");
             ShowAnswer($"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}", "FizzBuzz Answer");
@@ -168,30 +160,18 @@ namespace KTANE_Solver
             }
         }
 
-        private int GetNewNumber(int n, int addition)
+        private int GetNewNumber(string n, int addition)
         {
-            String newNum = "";
-            while (n != 0)
+            if (addition == 0)
+                return int.Parse(n);
+            
+            string newNum = "";
+            foreach(char c in n)
             {
-                int temp = n % 10;
-
-                temp = (addition + temp) % 10;
-
-                newNum += temp;
-
-                n /= 10;
+                newNum += "" + (int.Parse("" + c) + addition) % 10;
             }
 
-            //reverse the string
-
-            string str = "";
-
-            for (int i = newNum.Length - 1; i > -1; i--)
-            {
-                str += newNum[i];
-            }
-
-            return int.Parse(str);
+            return int.Parse(newNum);
         }
 
         class Condition
