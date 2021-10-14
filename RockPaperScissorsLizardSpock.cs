@@ -25,12 +25,19 @@ namespace KTANE_Solver
         public RockPaperScissorsLizardSpock(Symbol decoy, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
             this.decoy = decoy;
+            
+            PrintDebugLine($"Decoy is {decoy}\n");
+
             counter = new Dictionary<Symbol, int> ();
             ResetValues();
 
             bombSymbol = FindBombSymbol();
 
-            ShowAnswer(string.Join(",", FindAnswer()), "RPSLS Answer");
+            string answer = string.Join(",", FindAnswer());
+
+            PrintDebugLine($"Answer: {answer}\n");
+
+            ShowAnswer(answer, "RPSLS Answer");
         }
 
         private Symbol[] FindAnswer()
@@ -38,19 +45,19 @@ namespace KTANE_Solver
             switch (bombSymbol)
             {
                 case Symbol.Rock:
-                    return new Symbol[] { Symbol.Lizard, Symbol.Scissors };
+                    return new Symbol[] { Symbol.Paper, Symbol.Spock };
                 
                 case Symbol.Paper:
-                    return new Symbol[] { Symbol.Rock, Symbol.Spock };
+                    return new Symbol[] { Symbol.Lizard, Symbol.Scissors};
                 
                 case Symbol.Scissors:
-                    return new Symbol[] { Symbol.Paper, Symbol.Lizard };
+                    return new Symbol[] { Symbol.Spock, Symbol.Rock};
                 
                 case Symbol.Lizard:
-                    return new Symbol[] { Symbol.Spock, Symbol.Paper };
+                    return new Symbol[] { Symbol.Rock, Symbol.Scissors};
                 
                 case Symbol.Spock:
-                    return new Symbol[] { Symbol.Scissors, Symbol.Rock};
+                    return new Symbol[] { Symbol.Paper, Symbol.Lizard};
 
                 default:
                     List<Symbol> list = new List<Symbol>();
@@ -71,21 +78,25 @@ namespace KTANE_Solver
 
             if (highestSymbol == Symbol.Null || highestSymbol == decoy)
             {
+                PrintDebugLine("Unable to find winning symbol in row 1\n");
                 ResetValues();
                 highestSymbol = Port();
 
                 if (highestSymbol == Symbol.Null || highestSymbol == decoy)
                 {
+                    PrintDebugLine("Unable to find winning symbol in row 2\n");
                     ResetValues();
                     highestSymbol = LitIndicator();
 
                     if (highestSymbol == Symbol.Null || highestSymbol == decoy)
                     {
+                        PrintDebugLine("Unable to find winning symbol in row 3\n");
                         ResetValues();
                         highestSymbol = UnlitIndicator();
 
                         if (highestSymbol == Symbol.Null || highestSymbol == decoy)
                         {
+                            PrintDebugLine("Unable to find winning symbol in row 4\n");
                             ResetValues();
                             highestSymbol = SerialNumberDigit();
                         }
@@ -93,19 +104,33 @@ namespace KTANE_Solver
                 }
             }
 
+            PrintDebugLine($"Highest Symbol is {highestSymbol}\n");
+
             return highestSymbol;
         }
 
         private Symbol SerialNumberLetter()
         {
             if (Bomb.SerialNumber.Contains('X') || Bomb.SerialNumber.Contains('Y'))
+            {
+                PrintDebugLine("Skipping Serial Number Letter Row\n");
                 return Symbol.Null;
+            }
+
+            PrintDebugLine("Serial Number Letter Row:");
 
             counter[Symbol.Rock] = CharacterCountInSerialNum('R') + CharacterCountInSerialNum('O');
             counter[Symbol.Paper] = CharacterCountInSerialNum('P') + CharacterCountInSerialNum('A');
             counter[Symbol.Scissors] = CharacterCountInSerialNum('S') + CharacterCountInSerialNum('I');
-            counter[Symbol.Lizard] = CharacterCountInSerialNum('L') + CharacterCountInSerialNum('I');
-            counter[Symbol.Spock] = CharacterCountInSerialNum('S') + CharacterCountInSerialNum('P');
+            counter[Symbol.Lizard] = CharacterCountInSerialNum('L') + CharacterCountInSerialNum('Z');
+            counter[Symbol.Spock] = CharacterCountInSerialNum('C') + CharacterCountInSerialNum('K');
+
+            PrintDebugLine($"Rock: {counter[Symbol.Rock]}");
+            PrintDebugLine($"Paper: {counter[Symbol.Paper]}");
+            PrintDebugLine($"Scissors: {counter[Symbol.Scissors]}");
+            PrintDebugLine($"Lizard: {counter[Symbol.Lizard]}");
+            PrintDebugLine($"Spock: {counter[Symbol.Spock]}\n");
+
 
             return FindHieghestValue();
         }
@@ -113,7 +138,12 @@ namespace KTANE_Solver
         private Symbol Port()
         {
             if (Bomb.Ps.Visible)
+            { 
+                PrintDebugLine("Skipping Port Row\n");
                 return Symbol.Null;
+            }
+
+            PrintDebugLine("Port Row\n");
 
             counter[Symbol.Rock] = Bomb.Rj.Num;
             counter[Symbol.Paper] = Bomb.Parallel.Num;
@@ -121,13 +151,22 @@ namespace KTANE_Solver
             counter[Symbol.Lizard] = Bomb.Dvid.Num;
             counter[Symbol.Spock] = Bomb.Stereo.Num;
 
+            PrintDebugLine($"Rock: {counter[Symbol.Rock]}");
+            PrintDebugLine($"Paper: {counter[Symbol.Paper]}");
+            PrintDebugLine($"Scissors: {counter[Symbol.Scissors]}");
+            PrintDebugLine($"Lizard: {counter[Symbol.Lizard]}");
+            PrintDebugLine($"Spock: {counter[Symbol.Spock]}\n");
+
             return FindHieghestValue();
         }
 
         private Symbol LitIndicator()
         {
             if (Bomb.Trn.Lit)
+            {
+                PrintDebugLine("Skipping Lit Indicator Row\n");
                 return Symbol.Null;
+            }
 
             if (Bomb.Frk.Lit)
                 counter[Symbol.Rock]++;
@@ -159,13 +198,22 @@ namespace KTANE_Solver
             if (Bomb.Msa.Lit)
                 counter[Symbol.Spock]++;
 
+            PrintDebugLine($"Rock: {counter[Symbol.Rock]}");
+            PrintDebugLine($"Paper: {counter[Symbol.Paper]}");
+            PrintDebugLine($"Scissors: {counter[Symbol.Scissors]}");
+            PrintDebugLine($"Lizard: {counter[Symbol.Lizard]}");
+            PrintDebugLine($"Spock: {counter[Symbol.Spock]}\n");
+
             return FindHieghestValue();
         }
 
         private Symbol UnlitIndicator()
         {
             if (Bomb.Trn.VisibleNotLit)
+            { 
+                PrintDebugLine("Skipping unlit Indicator Row\n");
                 return Symbol.Null;
+            }
 
             if (Bomb.Frk.VisibleNotLit)
                 counter[Symbol.Rock]++;
@@ -197,17 +245,28 @@ namespace KTANE_Solver
             if (Bomb.Msa.VisibleNotLit)
                 counter[Symbol.Spock]++;
 
+            PrintDebugLine($"Rock: {counter[Symbol.Rock]}");
+            PrintDebugLine($"Paper: {counter[Symbol.Paper]}");
+            PrintDebugLine($"Scissors: {counter[Symbol.Scissors]}");
+            PrintDebugLine($"Lizard: {counter[Symbol.Lizard]}");
+            PrintDebugLine($"Spock: {counter[Symbol.Spock]}\n");
+
             return FindHieghestValue();
         }
 
         private Symbol SerialNumberDigit()
-
         {
             counter[Symbol.Rock] = CharacterCountInSerialNum('0') + CharacterCountInSerialNum('5');
             counter[Symbol.Paper] = CharacterCountInSerialNum('3') + CharacterCountInSerialNum('6');
             counter[Symbol.Scissors] = CharacterCountInSerialNum('1') + CharacterCountInSerialNum('9');
             counter[Symbol.Lizard] = CharacterCountInSerialNum('2') + CharacterCountInSerialNum('8');
             counter[Symbol.Spock] = CharacterCountInSerialNum('4') + CharacterCountInSerialNum('7');
+
+            PrintDebugLine($"Rock: {counter[Symbol.Rock]}");
+            PrintDebugLine($"Paper: {counter[Symbol.Paper]}");
+            PrintDebugLine($"Scissors: {counter[Symbol.Scissors]}");
+            PrintDebugLine($"Lizard: {counter[Symbol.Lizard]}");
+            PrintDebugLine($"Spock: {counter[Symbol.Spock]}\n");
 
             return FindHieghestValue();
         }

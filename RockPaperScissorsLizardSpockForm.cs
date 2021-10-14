@@ -21,6 +21,12 @@ namespace KTANE_Solver
         public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             String[] symbols = new String[] { "", "Lizard", "Paper", "Rock", "Scissors", "Spock"};
+
+            decoyComboBox.Items.Clear();
+            decoyComboBox.Items.AddRange(symbols);
+            decoyComboBox.Text = symbols[0];
+            decoyComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
 
@@ -40,12 +46,13 @@ namespace KTANE_Solver
 
             if (decoyComboBox.Text == "")
             {
-                symbol = (RockPaperScissorsLizardSpock.Symbol)Enum.Parse(typeof(RockPaperScissorsLizardSpock.Symbol), decoyComboBox.Text);
+                symbol = RockPaperScissorsLizardSpock.Symbol.Null;
             }
 
             else
             {
-                symbol = RockPaperScissorsLizardSpock.Symbol.Null;
+                symbol = (RockPaperScissorsLizardSpock.Symbol)Enum.Parse(typeof(RockPaperScissorsLizardSpock.Symbol), decoyComboBox.Text);
+
             }
 
 
