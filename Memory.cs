@@ -48,24 +48,22 @@ namespace KTANE_Solver
                         //If the display is 1, press the button in the second position.
                         //If the display is 2, press the button in the second position.
                         stage1Position = 1;
-                        ShowAnswer($"Press {num2}", "Memory Stage 1 Answer");
                         break;
 
                     case 3:
                         //If the display is 3, press the button in the third position.'
                         stage1Position = 2;
-                        ShowAnswer($"Press {num3}", "Memory Stage 1 Answer");
                         break;
 
                     default:
                         //If the display is 4, press the button in the fourth position.
                         stage1Position = 3;
-                        ShowAnswer($"Press {num4}", "Memory Stage 1 Answer");
                         break;
                 }
 
-                PrintDebugLine($"Stage 1 position: {stage1Position + 1}");
-                PrintDebugLine($"Stage 1 num: {stage1[stage1Position]}\n");
+                PrintStageAnswerInfo(stage1, 1, stage1Position);
+                ShowAnswer($"Press {stage1[stage1Position]}", "Memory Stage 1 Answer");
+
             }
 
             else if (stage == 2)
@@ -77,25 +75,23 @@ namespace KTANE_Solver
                     case 1:
                         //If the display is 1, press the button labeled "4".
                         stage2Position = Array.IndexOf(stage2, 4);
-                        ShowAnswer($"Press 4", "Memory Stage 2 Answer");
                         break;
 
                     case 3:
                         //If the display is 3, press the button in the first position.
                         stage2Position = 0;
-                        ShowAnswer($"Press {num1}", "Memory Stage 2 Answer");
                         break;
 
                     default:
                         //If the display is 2, press the button in the same position as you pressed in stage 1.
                         //If the display is 4, press the button in the same position as you pressed in stage 1.
                         stage2Position = stage1Position;
-                        ShowAnswer($"Press {stage2[stage1Position]}", "Memory Stage 2 Answer");
                         break;
                 }
 
-                PrintDebugLine($"Stage 2 position: {stage2Position + 1}");
-                PrintDebugLine($"Stage 2 num: {stage2[stage2Position]}\n");
+                PrintStageAnswerInfo(stage2, 2, stage2Position);
+                ShowAnswer($"Press {stage2[stage2Position]}", "Memory Stage 2 Answer");
+
             }
 
             else if (stage == 3)
@@ -107,30 +103,27 @@ namespace KTANE_Solver
                     case 1:
                         //If the display is 1, press the button with the same label you pressed in stage 2.
                         stage3Position = Array.IndexOf(stage3,stage2[stage2Position]);
-                        ShowAnswer($"Press {stage2[stage2Position]}", "Memory Stage 3 Answer");
                         break;
 
                     case 2:
                         //If the display is 2, press the button with the same label you pressed in stage 1.
                         stage3Position = Array.IndexOf(stage3, stage1[stage1Position]);
-                        ShowAnswer($"Press {stage1[stage1Position]}", "Memory Stage 3 Answer");
                         break;
 
                     case 3:
                         //If the display is 3, press the button in the third position.
-                        stage2Position = 2;
-                        ShowAnswer($"Press {num3}", "Memory Stage 3 Answer");
+                        stage3Position = 2;
                         break;
 
                     default:
                         //If the display is 4, press the button labeled "4".
-                        stage2Position = Array.IndexOf(stage3, 4);
-                        ShowAnswer($"Press 4", "Memory Stage 3 Answer");
+                        stage3Position = Array.IndexOf(stage3, 4);
                         break;
                 }
 
-                PrintDebugLine($"Stage 3 position: {stage3Position + 1}");
-                PrintDebugLine($"Stage 3 num: {stage3[stage3Position]}\n");
+                PrintStageAnswerInfo(stage3, 3, stage3Position);
+                ShowAnswer($"Press {stage3[stage3Position]}", "Memory Stage 3 Answer");
+
             }
 
             else if(stage == 4)
@@ -142,24 +135,22 @@ namespace KTANE_Solver
                     case 1:
                         //If the display is 1, press the button in the same position as you pressed in stage 1.
                         stage4Position = stage1Position;
-                        ShowAnswer($"Press {stage4[stage1Position]}", "Memory Stage 4 Answer");
                         break;
 
                     case 2:
                         //If the display is 2, press the button in the first position.
                         stage4Position = 0;
-                        ShowAnswer($"Press {stage4[0]}", "Memory Stage 4 Answer");
                         break;
 
                     default:
                         //If the display is 3, press the button in the same position as you pressed in stage 2.
                         //If the display is 4, press the button in the same position as you pressed in stage 2.
                         stage4Position = stage2Position;
-                        ShowAnswer($"Press {stage4[stage4Position]}", "Memory Stage 4 Answer");
                         break;
                 }
-                PrintDebugLine($"Stage 4 position: {stage4Position + 1}");
-                PrintDebugLine($"Stage 4 num: {stage4[stage4Position]}\n");
+
+                PrintStageAnswerInfo(stage4, 4, stage4Position);
+                ShowAnswer($"Press {stage4[stage4Position]}", "Memory Stage 4 Answer");
             }
 
             else
@@ -171,30 +162,34 @@ namespace KTANE_Solver
                     case 1:
                         //If the display is 1, press the button with the same label you pressed in stage 1.
                         stage5Position = Array.IndexOf(stage5, stage1[stage1Position]);
-                        ShowAnswer($"Press {stage5[stage5Position]}", "Memory Stage 5 Answer");
                         break;
 
                     case 2:
                         //If the display is 2, press the button with the same label you pressed in stage 2.
                         stage5Position = Array.IndexOf(stage5, stage2[stage2Position]);
-                        ShowAnswer($"Press {stage5[stage5Position]}", "Memory Stage 5 Answer");
                         break;
+
 
                     case 3:
                         //If the display is 3, press the button with the same label you pressed in stage 4.
                         stage5Position = Array.IndexOf(stage5, stage4[stage4Position]);
-                        ShowAnswer($"Press {stage5[stage5Position]}", "Memory Stage 5 Answer");
                         break;
+
 
                     default:
                         //If the display is 4, press the button with the same label you pressed in stage 3.
-                        stage5Position = Array.IndexOf(stage5, stage4[stage4Position]);
-                        ShowAnswer($"Press {stage5[stage5Position]}", "Memory Stage 5 Answer");
+                        stage5Position = Array.IndexOf(stage5, stage3[stage3Position]);
                         break;
                 }
-                PrintDebugLine($"Stage 5 position: {stage5Position + 1}");
-                PrintDebugLine($"Stage 5 num: {stage5[stage5Position]}\n");
+
+                PrintStageAnswerInfo(stage5, 5, stage5Position);
+                ShowAnswer($"Press {stage5[stage5Position]}", "Memory Stage 5 Answer");
             }
+        }
+
+        private void PrintStageAnswerInfo(int[] arr, int stage, int position)
+        {
+            PrintDebugLine($"Stage {stage} position: {position + 1}\nStage {stage} num: {arr[position]}\n");
         }
     }
 }

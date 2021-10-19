@@ -121,8 +121,10 @@ namespace KTANE_Solver
             String secondNumAnswer = GetAnswer(second);
             String thirdNumAnswer = GetAnswer(third);
 
-            PrintDebugLine($"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}\n");
-            ShowAnswer($"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}", "FizzBuzz Answer");
+            string answer = $"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}\n";
+
+            PrintDebugLine(answer);
+            ShowAnswer(answer, "FizzBuzz Answer");
         }
 
         private String GetAnswer(int num)
