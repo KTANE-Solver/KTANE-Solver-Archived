@@ -127,16 +127,18 @@ namespace KTANE_Solver
 
         private String GetAnswer(int num)
         {
-            if (num % 3 == 0 && num % 5 == 0)
-                return "FizzBuzz";
+            string str = "";
 
             if (num % 3 == 0)
-                return "Fizz";
+                str += "Fizz";
 
             if (num % 5 == 0)
-                return "Buzz";
+                str += "Buzz";
 
-            return "#";
+            if(str.Length == 0)
+                return "#";
+
+            return str;
         }
 
         private Condition SetCondition(String color)
