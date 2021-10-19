@@ -62,11 +62,9 @@ namespace KTANE_Solver
             int white = 0;
             int yellow = 0;
 
-            List<char> list = new List<char>();
+            string cycle = "" + colorComboBox1.Text[0] + colorComboBox2.Text[0] + colorComboBox3.Text[0] + colorComboBox4.Text[0] + colorComboBox5.Text[0];
 
-            list.AddRange(new char[] { colorComboBox1.Text[0], colorComboBox2.Text[0], colorComboBox3.Text[0], colorComboBox4.Text[0], colorComboBox5.Text[0] } );
-
-            foreach (char character in list)
+            foreach (char character in cycle)
             {
                 switch (character)
                 {
@@ -94,6 +92,7 @@ namespace KTANE_Solver
                         yellow++;
                         break;
                 }
+            }
 
                 if (blue > 1 || green > 1 || magenta > 1 || red > 1 || white > 1 || yellow > 1)
                 {
@@ -101,11 +100,40 @@ namespace KTANE_Solver
                     return;
                 }
 
-                new LightCycle(Bomb, LogFileWriter, string.Join("", list));
-                UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-            }
+                //find the missing letter
 
+                if (blue == 0)
+                {
+                    cycle += "B";
+                }
 
+                else if (green == 0)
+                {
+                    cycle += "G";
+                }
+
+                else if (magenta == 0)
+                {
+                    cycle += "M";
+                }
+
+                else if (red == 0)
+                {
+                    cycle += "R";
+                }
+
+                else if (white == 0)
+                {
+                    cycle += "W";
+                }
+
+                else
+                {
+                    cycle += "Y";
+                }
+
+            new LightCycle(Bomb, LogFileWriter, cycle);
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }
 }
