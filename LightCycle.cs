@@ -28,6 +28,8 @@ namespace KTANE_Solver
 
             PrintSequenceInformation(sequence1, 1, pair1);
 
+            sequence2 = GetSequence(pair2);
+
             PrintDebugLine(sequence2 + "\n");
 
             PrintSequenceInformation(sequence2, 2, pair2);

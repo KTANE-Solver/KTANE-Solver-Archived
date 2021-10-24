@@ -51,16 +51,16 @@ namespace KTANE_Solver
             // 
             // displayTextBox
             // 
-            this.displayTextBox.Location = new System.Drawing.Point(184, 103);
-            this.displayTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.displayTextBox.Location = new System.Drawing.Point(184, 208);
+            this.displayTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.displayTextBox.Name = "displayTextBox";
             this.displayTextBox.Size = new System.Drawing.Size(180, 22);
-            this.displayTextBox.TabIndex = 0;
+            this.displayTextBox.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 68);
+            this.label2.Location = new System.Drawing.Point(215, 170);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 17);
@@ -69,16 +69,16 @@ namespace KTANE_Solver
             // 
             // numberTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(184, 210);
-            this.numberTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numberTextBox.Location = new System.Drawing.Point(184, 97);
+            this.numberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.Size = new System.Drawing.Size(180, 22);
-            this.numberTextBox.TabIndex = 1;
+            this.numberTextBox.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(152, 170);
+            this.label3.Location = new System.Drawing.Point(150, 67);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(244, 17);
@@ -88,7 +88,7 @@ namespace KTANE_Solver
             // backButton
             // 
             this.backButton.Location = new System.Drawing.Point(16, 276);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(129, 50);
             this.backButton.TabIndex = 5;
@@ -99,7 +99,7 @@ namespace KTANE_Solver
             // strikeButton
             // 
             this.strikeButton.Location = new System.Drawing.Point(204, 276);
-            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4);
             this.strikeButton.Name = "strikeButton";
             this.strikeButton.Size = new System.Drawing.Size(129, 50);
             this.strikeButton.TabIndex = 6;
@@ -110,7 +110,7 @@ namespace KTANE_Solver
             // submitButton
             // 
             this.submitButton.Location = new System.Drawing.Point(392, 276);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(129, 50);
             this.submitButton.TabIndex = 2;
@@ -131,7 +131,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.label2);
             this.Controls.Add(this.displayTextBox);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MemoryStage1Form";
             this.ResumeLayout(false);
             this.PerformLayout();

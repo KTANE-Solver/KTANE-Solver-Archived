@@ -53,7 +53,7 @@ namespace KTANE_Solver
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 68);
+            this.label2.Location = new System.Drawing.Point(213, 172);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 17);
@@ -62,16 +62,16 @@ namespace KTANE_Solver
             // 
             // displayTextBox
             // 
-            this.displayTextBox.Location = new System.Drawing.Point(184, 103);
+            this.displayTextBox.Location = new System.Drawing.Point(181, 207);
             this.displayTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.displayTextBox.Name = "displayTextBox";
             this.displayTextBox.Size = new System.Drawing.Size(180, 22);
-            this.displayTextBox.TabIndex = 0;
+            this.displayTextBox.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(152, 170);
+            this.label3.Location = new System.Drawing.Point(153, 65);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(244, 17);
@@ -80,11 +80,11 @@ namespace KTANE_Solver
             // 
             // numberTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(184, 210);
+            this.numberTextBox.Location = new System.Drawing.Point(185, 105);
             this.numberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.Size = new System.Drawing.Size(180, 22);
-            this.numberTextBox.TabIndex = 1;
+            this.numberTextBox.TabIndex = 0;
             // 
             // backButton
             // 
