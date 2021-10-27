@@ -22,11 +22,22 @@ namespace KTANE_Solver
             c = y / 10;
             d = y % 10;
 
+            PrintDebugLine($"X: {x}");
+            PrintDebugLine($"Y: {y}\n");
+
+
             SetFirstSubcommand();
             setSecondSubcommand();
+
+            PrintDebugLine($"Answer (before overrides): {string.Join(", ",firstSubcommand)}, {string.Join(",", secondSubcommand)}\n");
+
             setOverrides();
 
-            ShowAnswer(string.Join(",", command), "Gamepad Answer");
+            String answer = string.Join(", ", command);
+
+            PrintDebugLine($"Answer: {answer}\n");
+
+            ShowAnswer(answer, "Gamepad Answer");
         }
 
         private void SetFirstSubcommand()
