@@ -41,26 +41,29 @@ namespace KTANE_Solver
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 53);
+            this.label1.Location = new System.Drawing.Point(117, 65);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.Size = new System.Drawing.Size(21, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "X:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 117);
+            this.label2.Location = new System.Drawing.Point(117, 144);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 13);
+            this.label2.Size = new System.Drawing.Size(21, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Y:";
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 186);
+            this.backButton.Location = new System.Drawing.Point(16, 229);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(93, 43);
+            this.backButton.Size = new System.Drawing.Size(124, 53);
             this.backButton.TabIndex = 2;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
@@ -68,9 +71,10 @@ namespace KTANE_Solver
             // 
             // StrikeButton
             // 
-            this.StrikeButton.Location = new System.Drawing.Point(146, 186);
+            this.StrikeButton.Location = new System.Drawing.Point(195, 229);
+            this.StrikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StrikeButton.Name = "StrikeButton";
-            this.StrikeButton.Size = new System.Drawing.Size(93, 43);
+            this.StrikeButton.Size = new System.Drawing.Size(124, 53);
             this.StrikeButton.TabIndex = 3;
             this.StrikeButton.Text = "Strike";
             this.StrikeButton.UseVisualStyleBackColor = true;
@@ -78,33 +82,36 @@ namespace KTANE_Solver
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(281, 186);
+            this.submitButton.Location = new System.Drawing.Point(375, 229);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(93, 43);
-            this.submitButton.TabIndex = 4;
+            this.submitButton.Size = new System.Drawing.Size(124, 53);
+            this.submitButton.TabIndex = 2;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // xTextBox
             // 
-            this.xTextBox.Location = new System.Drawing.Point(155, 50);
+            this.xTextBox.Location = new System.Drawing.Point(207, 62);
+            this.xTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xTextBox.Name = "xTextBox";
-            this.xTextBox.Size = new System.Drawing.Size(121, 20);
-            this.xTextBox.TabIndex = 5;
+            this.xTextBox.Size = new System.Drawing.Size(160, 22);
+            this.xTextBox.TabIndex = 0;
             // 
             // yTextBox
             // 
-            this.yTextBox.Location = new System.Drawing.Point(155, 114);
+            this.yTextBox.Location = new System.Drawing.Point(207, 140);
+            this.yTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.yTextBox.Name = "yTextBox";
-            this.yTextBox.Size = new System.Drawing.Size(121, 20);
-            this.yTextBox.TabIndex = 6;
+            this.yTextBox.Size = new System.Drawing.Size(160, 22);
+            this.yTextBox.TabIndex = 1;
             // 
             // GamepadForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 241);
+            this.ClientSize = new System.Drawing.Size(515, 297);
             this.Controls.Add(this.yTextBox);
             this.Controls.Add(this.xTextBox);
             this.Controls.Add(this.submitButton);
@@ -112,8 +119,8 @@ namespace KTANE_Solver
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "GamepadForm";
-            this.Text = "GamepadForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
