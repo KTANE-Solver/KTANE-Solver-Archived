@@ -13,6 +13,8 @@ namespace KTANE_Solver
         String sequence1, sequence2, sequence3, sequence4, sequence5, sequence6;
         public LightCycle(Bomb bomb, StreamWriter logFileWriter, String cycle) : base(bomb, logFileWriter)
         {
+            String orignalcycle = cycle;
+
             pair1 = "" + bomb.SerialNumber[0] + bomb.SerialNumber[bomb.SerialNumber.Length - 1];
             pair2 = "" + bomb.SerialNumber[1] + bomb.SerialNumber[bomb.SerialNumber.Length - 2];
             pair3 = "" + bomb.SerialNumber[2] + bomb.SerialNumber[bomb.SerialNumber.Length - 3];
@@ -20,61 +22,57 @@ namespace KTANE_Solver
             pair5 = "" + bomb.SerialNumber[4] + bomb.SerialNumber[bomb.SerialNumber.Length - 5];
             pair6 = "" + bomb.SerialNumber[5] + bomb.SerialNumber[bomb.SerialNumber.Length - 6];
 
-            PrintDebugLine($"Starting cycle: {cycle}");
-
-            PrintDebugLine("Pairs");
+            PrintDebugLine($"Starting cycle: {cycle}\n");
 
             sequence1 = GetSequence(pair1);
 
+            cycle = SwapCycle(cycle, sequence1);
+
             PrintSequenceInformation(sequence1, 1, pair1);
+
+            PrintCycle(cycle);
 
             sequence2 = GetSequence(pair2);
 
-            PrintDebugLine(sequence2 + "\n");
-
             PrintSequenceInformation(sequence2, 2, pair2);
+
+            cycle = SwapCycle(cycle, sequence2);
+
+            PrintCycle(cycle);
 
             sequence3 = GetSequence(pair3);
 
             PrintSequenceInformation(sequence3, 3, pair3);
 
+            cycle = SwapCycle(cycle, sequence3);
+
+            PrintCycle(cycle);
+
             sequence4 = GetSequence(pair4);
 
             PrintSequenceInformation(sequence4, 4, pair4);
+
+            cycle = SwapCycle(cycle, sequence4);
+
+            PrintCycle(cycle);
 
             sequence5 = GetSequence(pair5);
 
             PrintSequenceInformation(sequence5, 5, pair5);
 
+            cycle = SwapCycle(cycle, sequence5);
+
+            PrintCycle(cycle);
+
             sequence6 = GetSequence(pair6);
 
             PrintSequenceInformation(sequence6, 6, pair6);
-
-            cycle = SwapCycle(cycle, sequence1);
-
-            PrintDebugLine($"Cycle now: {cycle}");
-
-            cycle = SwapCycle(cycle, sequence2);
-
-            PrintDebugLine($"Cycle now: {cycle}");
-
-            cycle = SwapCycle(cycle, sequence3);
-
-            PrintDebugLine($"Cycle now: {cycle}");
-
-            cycle = SwapCycle(cycle, sequence4);
-
-            PrintDebugLine($"Cycle now: {cycle}");
-
-            cycle = SwapCycle(cycle, sequence5);
-
-            PrintDebugLine($"Cycle now: {cycle}");
 
             cycle = SwapCycle(cycle, sequence6);
 
             String answer = GetAnswer(cycle);
 
-            PrintDebugLine($"Answer: {answer}\n");
+            PrintDebugLine($"\nAnswer: {answer}\n");
 
             ShowAnswer(answer, "Light Cycle Answer");
         }
@@ -1818,6 +1816,11 @@ namespace KTANE_Solver
         private void PrintSequenceInformation(string sequence, int num, string pair)
         {
             PrintDebugLine($"Pair {num}: {sequence[0]}/{sequence[1]} ({pair})");
+        }
+
+        private void PrintCycle(String cycle)
+        {
+            PrintDebugLine($"Cycle now: {cycle}\n");
         }
 
         private String GetAnswer(String cycle)
