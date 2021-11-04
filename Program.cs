@@ -48,12 +48,11 @@ namespace KTANE_Solver
             }
 
             //all maze arrows
-            if (!MazeFileExists("up arrow") || !MazeFileExists("up arrow") || !MazeFileExists("up arrow") || !MazeFileExists("up arrow"))
+            if (!MazeFileExists("up arrow") || !MazeFileExists("left arrow") || !MazeFileExists("right arrow") || !MazeFileExists("down arrow"))
             { 
                 return;
             }
 
-            
             Application.Run(new EdgeworkSelectionForm());
         }
 
