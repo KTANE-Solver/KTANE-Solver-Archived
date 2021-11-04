@@ -70,7 +70,7 @@ namespace KTANE_Solver
 
             cycle = SwapCycle(cycle, sequence6);
 
-            String answer = GetAnswer(cycle);
+            String answer = GetAnswer(cycle, orignalcycle);
 
             PrintDebugLine($"\nAnswer: {answer}\n");
 
@@ -1823,38 +1823,42 @@ namespace KTANE_Solver
             PrintDebugLine($"Cycle now: {cycle}\n");
         }
 
-        private String GetAnswer(String cycle)
+        private String GetAnswer(String cycle, String orignalCycle)
         {
             List<string> list = new List<string>();
 
-            foreach (char character in cycle)
+            for(int i = 0; i < 6; i++)
             {
-                switch (character)
+                string str = "";
+
+                switch (cycle[i])
                 { 
                     case 'R':
-                        list.Add("Red");
+                        str = "Red"; 
                         break;
 
                     case 'B':
-                        list.Add("Blue");
+                        str = "Blue";
                         break;
 
                     case 'Y':
-                        list.Add("Yellow");
+                        str = "Yellow";
                         break;
 
                     case 'G':
-                        list.Add("Green");
+                        str = "Green";
                         break;
 
                     case 'W':
-                        list.Add("Whtie");
+                        str = "White";
                         break;
 
-                    case 'M':
-                        list.Add("Magenta");
+                    default:
+                        str = "Magenta";
                         break;
                 }
+
+                list.Add($"{str} ({orignalCycle.IndexOf(cycle[i]) + 1})");
             }
 
         return string.Join(", ", list);
