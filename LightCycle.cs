@@ -1858,7 +1858,7 @@ namespace KTANE_Solver
                         break;
                 }
 
-                list.Add($"{str} ({orignalCycle.IndexOf(cycle[i]) + 1})");
+                list.Add($"({orignalCycle.IndexOf(cycle[i]) + 1}) {str}");
             }
 
         return string.Join(", ", list);
