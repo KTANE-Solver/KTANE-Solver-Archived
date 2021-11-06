@@ -1861,9 +1861,6 @@ namespace KTANE_Solver
                 list.Add($"({orignalCycle.IndexOf(cycle[i]) + 1}) {str}");
             }
 
-            int listCount;
-            int newListCount;
-            
             //tells where the new lines need to be placed
             List<int> newLineList = new List<int>();
 
@@ -1871,24 +1868,29 @@ namespace KTANE_Solver
             {
                 if (orignalCycle.IndexOf(cycle[i]) > orignalCycle.IndexOf(cycle[i + 1]))
                 {
-                    list.Insert(i + 1, "\n");
-                    break;
+                    newLineList.Add(i + 1);
                 }
             }
-
-            
 
             string answer = "";
 
             for(int i = 0; i < list.Count; i++)
             {
+
+                bool newLine = newLineList.Contains(i);
+
+                if (newLine)
+                {
+                    answer += "\n";
+                }
+
                 answer += list[i];
 
-                if ("" + answer[answer.Length - 1] != "\n" && i < list.Count - 1)
+                
+                if(!newLine && i != list.Count - 1)
                 {
                     answer += ", ";
                 }
-                    
             }
 
             return answer;
