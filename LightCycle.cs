@@ -1887,7 +1887,7 @@ namespace KTANE_Solver
                 answer += list[i];
 
                 
-                if(!newLine && i != list.Count - 1)
+                if(i != list.Count - 1)
                 {
                     answer += ", ";
                 }
