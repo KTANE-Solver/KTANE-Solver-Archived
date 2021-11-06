@@ -1863,39 +1863,18 @@ namespace KTANE_Solver
 
             int listCount;
             int newListCount;
+            
+            //tells where the new lines need to be placed
+            List<int> newLineList = new List<int>();
 
-            do
+            for (int i = 0; i < cycle.Length - 1; i++)
             {
-                listCount = list.Count;
-
-                int index = -1;
-
-                for (int i = list.Count - 1; i > -1; i--)
+                if (orignalCycle.IndexOf(cycle[i]) > orignalCycle.IndexOf(cycle[i + 1]))
                 {
-                    if ("" + list[i] == "\n")
-                    {
-                        index = i;
-                        break;
-                    }
+                    list.Insert(i + 1, "\n");
+                    break;
                 }
-
-                if (index == -1)
-                {
-                    index = 0;
-                }
-
-                for (int i = index; i < cycle.Length - 1; i++)
-                {
-                    if (orignalCycle.IndexOf(cycle[i]) > orignalCycle.IndexOf(cycle[i + 1]))
-                    {
-                        list.Insert(i + 1, "\n");
-                        break;
-                    }
-                }
-
-                newListCount = list.Count;
-
-            } while (listCount != newListCount);
+            }
 
             
 
