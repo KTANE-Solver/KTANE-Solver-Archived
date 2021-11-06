@@ -1861,7 +1861,58 @@ namespace KTANE_Solver
                 list.Add($"({orignalCycle.IndexOf(cycle[i]) + 1}) {str}");
             }
 
-        return string.Join(", ", list);
+            int listCount;
+            int newListCount;
+
+            do
+            {
+                listCount = list.Count;
+
+                int index = -1;
+
+                for (int i = list.Count - 1; i > -1; i--)
+                {
+                    if ("" + list[i] == "\n")
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+
+                if (index == -1)
+                {
+                    index = 0;
+                }
+
+                for (int i = index; i < cycle.Length - 1; i++)
+                {
+                    if (orignalCycle.IndexOf(cycle[i]) > orignalCycle.IndexOf(cycle[i + 1]))
+                    {
+                        list.Insert(i + 1, "\n");
+                        break;
+                    }
+                }
+
+                newListCount = list.Count;
+
+            } while (listCount != newListCount);
+
+            
+
+            string answer = "";
+
+            for(int i = 0; i < list.Count; i++)
+            {
+                answer += list[i];
+
+                if ("" + answer[answer.Length - 1] != "\n" && i < list.Count - 1)
+                {
+                    answer += ", ";
+                }
+                    
+            }
+
+            return answer;
         }
     }
 }
