@@ -252,7 +252,7 @@ namespace KTANE_Solver
 
             if (possibleAnswer.Count <= 3)
             {
-                ShowAnswer(string.Join(",", possibleAnswer), "Password Answer");
+                ShowAnswer(string.Join(", ", possibleAnswer), "Password Answer");
                 return true;
             }
 

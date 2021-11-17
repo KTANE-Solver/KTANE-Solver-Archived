@@ -92,6 +92,14 @@ namespace KTANE_Solver
                 return;
             }
 
+            if (!RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6) ||
+                !RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6) ||
+                !RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6))
+            {
+                ShowErrorMessage("Each row must have different letters", "Password Error");
+                return;
+            }
+
             Password module = new Password(Bomb, LogFileWriter);
 
             module.FillRow(firstRow1[0], firstRow2[0], firstRow3[0], firstRow4[0], firstRow5[0], firstRow6[0], 1);
@@ -126,6 +134,42 @@ namespace KTANE_Solver
         private bool ContainsOneLetter(String str)
         {
             return str.Length == 1 && str[0] >= 65 && str[0] <= 90;
+        }
+        
+        /// <summary>
+        /// Tells if all letters are different
+        /// </summary>
+        /// <param name="let1"></param>
+        /// <param name="let2"></param>
+        /// <param name="let3"></param>
+        /// <param name="let4"></param>
+        /// <param name="let5"></param>
+        /// <param name="let6"></param>
+        /// <returns></returns>
+        private bool RowHasDifferentLetters(string let1, string let2, string let3, string let4, string let5, string let6)
+        {
+            List<string> letters =  new List<string>();
+
+            letters.Add(let1);
+            letters.Add(let2);
+            letters.Add(let3);
+            letters.Add(let4);
+            letters.Add(let5);
+            letters.Add(let6);
+
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (i == j)
+                        continue;
+
+                    if (letters[i] == letters[j])
+                        return false;
+                }
+            }
+
+            return true;
         }
     }
 }
