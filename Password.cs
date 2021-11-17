@@ -250,9 +250,9 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Possible words: {string.Join(", ", possibleAnswer)}\n");
 
-            if (possibleAnswer.Count == 1)
+            if (possibleAnswer.Count <= 3)
             {
-                ShowAnswer(possibleAnswer[0], "Password Answer");
+                ShowAnswer(string.Join(",", possibleAnswer), "Password Answer");
                 return true;
             }
 
@@ -268,6 +268,8 @@ namespace KTANE_Solver
         private bool ContainsWord(String word, int numRows)
         {
             //this may be a terrible way to inplement, but it looks cleaner
+
+            //depending on the number of rows filled, check to see if you can spell word 
             switch (numRows)
             {
                 case 3:
