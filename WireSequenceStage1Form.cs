@@ -70,20 +70,21 @@ namespace KTANE_Solver
 
             String answer = "";
 
+            PrintDebugLine("Stage 1\n");
 
             if (wire1ColorComboBox.Text != "" && wire1LetterComboBox.Text != "")
             {
-                answer += "1. " + module.Solve(wire1ColorComboBox.Text, wire1LetterComboBox.Text[0]);
+                answer += "1. " + module.Solve(1, wire1ColorComboBox.Text, wire1LetterComboBox.Text[0]);
             }
 
             if (wire2ColorComboBox.Text != "" && wire2LetterComboBox.Text != "")
             {
-                answer += "\n2. " + module.Solve(wire2ColorComboBox.Text, wire2LetterComboBox.Text[0]);
+                answer += "\n2. " + module.Solve(2, wire2ColorComboBox.Text, wire2LetterComboBox.Text[0]);
             }
 
             if (wire3ColorComboBox.Text != "" && wire3LetterComboBox.Text != "")
             {
-                answer += "\n3. " + module.Solve(wire3ColorComboBox.Text, wire3LetterComboBox.Text[0]);
+                answer += "\n3. " + module.Solve(3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0]);
             }
 
             ShowAnswer(answer, "Wire Sequence Answer");

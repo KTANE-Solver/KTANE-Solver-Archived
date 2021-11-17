@@ -105,20 +105,26 @@ namespace KTANE_Solver
         {
             String answer = "";
 
+            PrintDebugLine($"Stage {stage}\n");
+
+            int wireNum1 = (stage - 1) * 3 + 1;
+            int wireNum2 = (stage - 1) * 3 + 2;
+            int wireNum3 = (stage - 1) * 3 + 3;
+
 
             if (wire1ColorComboBox.Text != "" && wire1LetterComboBox.Text != "")
             {
-                answer += $"{firstWireIndex}. {module.Solve(wire1ColorComboBox.Text, wire1LetterComboBox.Text[0])}";
+                answer += $"{firstWireIndex}. {module.Solve(wireNum1, wire1ColorComboBox.Text, wire1LetterComboBox.Text[0])}";
             }
 
             if (wire2ColorComboBox.Text != "" && wire2LetterComboBox.Text != "")
             {
-                answer += $"\n{secondWireIndex}. {module.Solve(wire2ColorComboBox.Text, wire2LetterComboBox.Text[0])}";
+                answer += $"\n{secondWireIndex}. {module.Solve(wireNum2, wire2ColorComboBox.Text, wire2LetterComboBox.Text[0])}";
             }
 
             if (wire3ColorComboBox.Text != "" && wire3LetterComboBox.Text != "")
             {
-                answer += $"\n{thirdWireIndex}. {module.Solve(wire3ColorComboBox.Text, wire3LetterComboBox.Text[0])}";
+                answer += $"\n{thirdWireIndex}. {module.Solve(wireNum3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0])}";
             }
 
             ShowAnswer(answer, "Wire Sequence Answer");
