@@ -45,7 +45,9 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            MorseCode.Solve(wordComboBox.Text);
+            MorseCode module = new MorseCode(Bomb, LogFileWriter);
+
+            module.Solve(wordComboBox.Text);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }

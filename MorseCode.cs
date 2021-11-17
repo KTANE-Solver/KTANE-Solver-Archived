@@ -12,7 +12,7 @@ namespace KTANE_Solver
         { 
         
         }
-        public static void Solve(String word)
+        public void Solve(String word)
         {
             double answer;
             switch (word.ToLower())
@@ -79,6 +79,8 @@ namespace KTANE_Solver
                     break;
 
             }
+
+            PrintDebugLine($"Word: {word}\nAnswer: {answer}\n");
 
             ShowAnswer("" + answer, "Morse Code Answer");
         }
