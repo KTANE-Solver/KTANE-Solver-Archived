@@ -233,6 +233,23 @@ namespace KTANE_Solver
                 possibleAnswer.Add("WRITE");
             }
 
+            PrintDebugLine($"First Row [{string.Join(", ", firstRow)}]\n");
+            PrintDebugLine($"Second Row [{string.Join(", ", secondRow)}]\n");
+            PrintDebugLine($"Third Row [{string.Join(", ", thirdRow)}]\n");
+
+
+            if (fourthRow.Count != 0)
+            {
+                PrintDebugLine($"Fourth Row [{string.Join(", ", fourthRow)}]\n");
+            }
+
+            if (fifthRow.Count != 0)
+            {
+                PrintDebugLine($"Fifth Row [{string.Join(", ", fifthRow)}]\n");
+            }
+
+            PrintDebugLine($"Possible words: {string.Join(", ", possibleAnswer)}\n");
+
             if (possibleAnswer.Count == 1)
             {
                 ShowAnswer(possibleAnswer[0], "Password Answer");
