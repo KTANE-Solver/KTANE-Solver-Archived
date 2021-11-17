@@ -47,6 +47,12 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
+            PrintDebugLine($"Up: {upFace}");
+            PrintDebugLine($"Left: {leftFace}");
+            PrintDebugLine($"Front: {frontFace}");
+            PrintDebugLine($"Right: {rightFace}");
+            PrintDebugLine($"Bottom: {bottomFace}\n");
+
             //figure out if we're getting both moves
 
             //If the R face is red, green or blue, take both moves for each serial number character in order.
@@ -60,153 +66,115 @@ namespace KTANE_Solver
                 //skip bottom face's num
                 if (i == (int)bottomFace)
                 {
+                    PrintDebugLine($"Skipping index {i} ({Bomb.SerialNumber[i]})\n");
                     continue;
                 }
 
                 //get the starting character
                 char startingChar = Bomb.SerialNumber[i];
 
+                PrintDebugLine($"Starting character: {startingChar}");
+
                 //find the starting row
                 int startingRow = GetStartingRow(startingChar);
 
+                PrintDebugLine($"Starting Row: {startingRow}");
+
                 //find which face belongs to the starting row
                 Face startingFace = GetStartingFace(startingChar);
+
+                PrintDebugLine($"Starting Face: {startingFace}");
 
                 //find the row to take the moves from
 
                 int endingRow = (startingRow + (int)startingFace + 1) % 12;
 
-                //take both moves, 
-                if (bothMoves)
-                {
-                    switch (endingRow)
-                    {
-                        case 0:
-                            directions.Add("L'");
-                            directions.Add("F'");
-                            break;
-                        case 1:
-                            directions.Add("D'");
-                            directions.Add("U'");
-                            break;
-                        case 2:
-                            directions.Add("U");
-                            directions.Add("B'");
-                            break;
-                        case 3:
-                            directions.Add("F");
-                            directions.Add("B");
-                            break;
-                        case 4:
-                            directions.Add("L");
-                            directions.Add("D");
-                            break;
-                        case 5:
-                            directions.Add("R'");
-                            directions.Add("U");
-                            break;
-                        case 6:
-                            directions.Add("U'");
-                            directions.Add("F");
-                            break;
-                        case 7:
-                            directions.Add("B'");
-                            directions.Add("L'");
-                            break;
-                        case 8:
-                            directions.Add("B");
-                            directions.Add("R");
-                            break;
-                        case 9:
-                            directions.Add("D");
-                            directions.Add("L");
-                            break;
-                        case 10:
-                            directions.Add("R");
-                            directions.Add("D'");
-                            break;
-                        case 11:
-                            directions.Add("F'");
-                            directions.Add("R'");
-                            break;
+                PrintDebugLine($"Ending Row: {endingRow}");
 
-                    }
+                //find the respective moves
+                string firstMove = "";
+                string secondMove = "";
+
+                switch (endingRow)
+                {
+                    case 0:
+
+                        firstMove = "L'";
+                        secondMove = "F'";
+                        break;
+                    case 1:
+                        firstMove = "D'";
+                        secondMove = "U'";
+                        break;
+                    case 2:
+                        firstMove = "U";
+                        secondMove = "B'";
+                        break;
+                    case 3:
+                        firstMove = "F";
+                        secondMove = "B";
+                        break;
+                    case 4:
+                        firstMove = "L";
+                        secondMove = "D";
+                        break;
+                    case 5:
+                        firstMove = "R'";
+                        secondMove = "U";
+                        break;
+                    case 6:
+                        firstMove = "U'";
+                        secondMove = "F";
+                        break;
+                    case 7:
+                        firstMove = "B'";
+                        secondMove = "L'";
+                        break;
+                    case 8:
+                        firstMove = "B";
+                        secondMove = "R";
+                        break;
+                    case 9:
+                        firstMove = "D";
+                        secondMove = "L";
+                        break;
+                    case 10:
+                        firstMove = "R";
+                        secondMove = "D'";
+                        break;
+                    case 11:
+                        firstMove = "F'";
+                        secondMove = "R'";
+                        break;
                 }
 
-                //or take seprate each moves into their own directions and combine later
+                PrintDebugLine($"First Move: {firstMove}");
+                PrintDebugLine($"Second Move: {secondMove}");
+
+                //eiter add the moves next to each other
+                if (bothMoves)
+                {
+                    directions.Add(firstMove);
+                    directions.Add(secondMove);
+
+                    PrintDebugLine($"Directions are now: [{string.Join(", ", directions)}]\n");
+                }
+
+                //or put them in sperate lists
                 else
                 {
-                    switch (endingRow)
-                    {
-                        case 0:
-                            directions.Add("L'");
-                            directions2.Add("F'");
-                            break;
-                        case 1:
-                            directions.Add("D'");
-                            directions2.Add("U'");
-                            break;
-                        case 2:
-                            directions.Add("U");
-                            directions2.Add("B'");
-                            break;
-                        case 3:
-                            directions.Add("F");
-                            directions2.Add("B");
-                            break;
-                        case 4:
-                            directions.Add("L");
-                            directions2.Add("D");
-                            break;
-                        case 5:
-                            directions.Add("R'");
-                            directions2.Add("U");
-                            break;
-                        case 6:
-                            directions.Add("U'");
-                            directions2.Add("F");
-                            break;
-                        case 7:
-                            directions.Add("B'");
-                            directions2.Add("L'");
-                            break;
-                        case 8:
-                            directions.Add("B");
-                            directions2.Add("R");
-                            break;
-                        case 9:
-                            directions.Add("D");
-                            directions2.Add("L");
-                            break;
-                        case 10:
-                            directions.Add("R");
-                            directions2.Add("D'");
-                            break;
-                        case 11:
-                            directions.Add("F'");
-                            directions2.Add("R'");
-                            break;
+                    directions.Add(firstMove);
+                    directions2.Add(secondMove);
 
-                    }
+                    PrintDebugLine($"Direction 1 is now: [{string.Join(", ", directions)}]\n");
+                    PrintDebugLine($"Direction 2 is now: [{string.Join(", ", directions2)}]\n");
                 }
             }
 
             //if moves were taken seperatly, then combine them now
             if (!bothMoves)
             {
-                System.Diagnostics.Debug.Write("Direction 1 List: ");
-
-                foreach(String str in directions)
-                {
-                    System.Diagnostics.Debug.Write(str + " ");
-                }
-
-                System.Diagnostics.Debug.Write("\nDirection 2 List: ");
-
-                foreach (String str in directions2)
-                {
-                    System.Diagnostics.Debug.Write(str + " ");
-                }
+                PrintDebugLine($"Directions are now: [{string.Join(", ", directions)}, {string.Join(", ", directions2)}]\n");
 
                 directions.AddRange(directions2);
             }
@@ -214,19 +182,30 @@ namespace KTANE_Solver
             //If the R face is red or yellow, change the first five moves to their opposites.
             if (rightFace == Face.RED || rightFace == Face.YELLOW)
             {
+                PrintDebugLine($"Right face is {rightFace}, changing first five moves to their opposite\n");
+
                 for (int i = 0; i < 5; i++)
                 {
                     directions[i] = GetOppositeMove(directions[i]);
                 }
+
+                PrintDebugLine($"Directions are now: [{string.Join(", ", directions)}]\n");
             }
 
             //If the R face is green or white, reverse the order of all the moves.
             else if (rightFace == Face.GREEN || rightFace == Face.WHITE)
             {
+                PrintDebugLine($"Right face is {rightFace}, reversing direction order\n");
+
                 directions.Reverse();
+
+                PrintDebugLine($"Directions are now: [{string.Join(", ", directions)}]\n");
             }
 
             //updating the directions so unnessary moves aren't made
+
+            PrintDebugLine($"Removing unnessary moves\n");
+
             for (int i = directions.Count - 1; i > 0; i--)
             {
                 if (MovesAreOpposite(directions[i], directions[i - 1]))
@@ -237,14 +216,10 @@ namespace KTANE_Solver
                 }
             }
 
-            String answer = "";
+            String answer = string.Join(", ", directions);
 
-            foreach (String str in directions)
-            {
-                answer += str + ", ";
-            }
 
-            answer = answer.Substring(0, answer.Length - 2);
+            PrintDebugLine($"Answer is [{answer}]\n");
 
             ShowAnswer(answer, "Rubik's Cube Answer");
         }
