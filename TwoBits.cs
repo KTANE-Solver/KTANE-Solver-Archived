@@ -18,7 +18,7 @@ namespace KTANE_Solver
 
         }
 
-        public String GetInitalCode()
+        public int GetInitalCode()
         {
             //get initial code and show the user
 
@@ -39,334 +39,445 @@ namespace KTANE_Solver
             }
 
             //** Note: Use the last two digits if the value is greater than 99. Prepend with a zero if less than 10.
-            String answer = ConvertCode(initalCode);
+            if (initalCode >= 100)
+            {
+                initalCode %= 100;
+            }
 
-            initalCode %= 100;
-
-            return answer;
+            return initalCode;
         }
 
         public void Solve(int stage, int response)
         {
-            String answer = ConvertCode(response);
+            PrintDebugLine($"Stage {stage}:\n");
+
+            PrintDebugLine($"Response was {response}\n");
+
+            String answer = ConvertCode(response, stage);
+            string action;
 
             if (stage == 4)
             {
-                ShowAnswer($"Insert {answer} and press submit", "Two Bits Stage 4");
+                action = $"Insert {answer} and press submit";
             }
 
             else
-            { 
-                ShowAnswer($"Insert {answer} and press query", $"Two Bits Stage {response}");
+            {
+                action = $"Insert {answer} and press query";
             }
+
+            PrintDebugLine(action + "\n");
+
+            ShowAnswer(action, $"Two Bits Stage {stage}");
         }
 
-        public String ConvertCode(int code)
+        public String ConvertCode(int code, int stage)
         {
+            string answer;
+
             switch (code)
             {
                 case 0:
-                    return "KB";
+                    answer = "KB";
+                    break;
 
                 case 1:
-                    return "DK";
+                    answer = "DK";
+                    break;
 
                 case 2:
-                    return "GV";
+                    answer = "GV";
+                    break;
 
                 case 3:
-                    return "TK";
+                    answer = "TK";
+                    break;
 
                 case 4:
-                    return "PV";
+                    answer = "PV";
+                    break;
 
                 case 5:
-                    return "KP";
+                    answer = "KP";
+                    break;
 
                 case 6:
-                    return "BV";
+                    answer = "BV";
+                    break;
 
                 case 7:
-                    return "VT";
+                    answer = "VT";
+                    break;
 
                 case 8:
-                    return "PZ";
+                    answer = "PZ";
+                    break;
 
                 case 9:
-                    return "DT";
+                    answer = "DT";
+                    break;
 
                 case 10:
-                    return "EE";
+                    answer = "EE";
+                    break;
 
                 case 11:
-                    return "ZK";
+                    answer = "ZK";
+                    break;
 
                 case 12:
-                    return "KE";
+                    answer = "KE";
+                    break;
 
                 case 13:
-                    return "CK";
+                    answer = "CK";
+                    break;
 
                 case 14:
-                    return "ZP";
+                    answer = "ZP";
+                    break;
 
                 case 15:
-                    return "PP";
+                    answer = "PP";
+                    break;
 
                 case 16:
-                    return "TP";
+                    answer = "TP";
+                    break;
 
                 case 17:
-                    return "TG";
+                    answer = "TG";
+                    break;
 
                 case 18:
-                    return "PD";
+                    answer = "PD";
+                    break;
 
                 case 19:
-                    return "PT";
+                    answer = "PT";
+                    break;
 
                 case 20:
-                    return "TZ";
+                    answer = "TZ";
+                    break;
 
                 case 21:
-                    return "EB";
+                    answer = "EB";
+                    break;
 
                 case 22:
-                    return "EC";
+                    answer = "EC";
+                    break;
 
                 case 23:
-                    return "CC";
+                    answer = "CC";
+                    break;
 
                 case 24:
-                    return "CZ";
+                    answer = "CZ";
+                    break;
 
                 case 25:
-                    return "ZV";
+                    answer = "ZV";
+                    break;
 
                 case 26:
-                    return "CV";
+                    answer = "CV";
+                    break;
 
                 case 27:
-                    return "GC";
+                    answer = "GC";
+                    break;
 
                 case 28:
-                    return "BT";
+                    answer = "BT";
+                    break;
 
                 case 29:
-                    return "GT";
+                    answer = "GT";
+                    break;
 
                 case 30:
-                    return "BZ";
+                    answer = "BZ";
+                    break;
 
                 case 31:
-                    return "PK";
+                    answer = "PK";
+                    break;
 
                 case 32:
-                    return "KZ";
+                    answer = "KZ";
+                    break;
 
                 case 33:
-                    return "KG";
+                    answer = "KG";
+                    break;
 
                 case 34:
-                    return "VD";
+                    answer = "VD";
+                    break;
 
                 case 35:
-                    return "CE";
+                    answer = "CE";
+                    break;
 
                 case 36:
-                    return "VB";
+                    answer = "VB";
+                    break;
 
                 case 37:
-                    return "KD";
+                    answer = "KD";
+                    break;
 
                 case 38:
-                    return "GG";
+                    answer = "GG";
+                    break;
 
                 case 39:
-                    return "DG";
+                    answer = "DG";
+                    break;
 
                 case 40:
-                    return "PB";
+                    answer = "PB";
+                    break;
 
                 case 41:
-                    return "VV";
+                    answer = "VV";
+                    break;
 
                 case 42:
-                    return "GE";
+                    answer = "GE";
+                    break;
 
                 case 43:
-                    return "KV";
+                    answer = "KV";
+                    break;
 
                 case 44:
-                    return "DZ";
+                    answer = "DZ";
+                    break;
 
                 case 45:
-                    return "PE";
+                    answer = "PE";
+                    break;
 
                 case 46:
-                    return "DB";
+                    answer = "DB";
+                    break;
 
                 case 47:
-                    return "CD";
+                    answer = "CD";
+                    break;
 
                 case 48:
-                    return "TD";
+                    answer = "TD";
+                    break;
 
                 case 49:
-                    return "CB";
+                    answer = "CB";
+                    break;
 
                 case 50:
-                    return "GB";
+                    answer = "GB";
+                    break;
 
                 case 51:
-                    return "TV";
+                    answer = "TV";
+                    break;
 
                 case 52:
-                    return "KK";
-
+                    answer = "KK";
+                    break;
                 case 53:
-                    return "BG";
+                    answer = "BG";
+                    break;
 
                 case 54:
-                    return "BP";
+                    answer = "BP";
+                    break;
 
                 case 55:
-                    return "VP";
+                    answer = "VP";
+                    break;
 
                 case 56:
-                    return "EP";
+                    answer = "EP";
+                    break;
 
                 case 57:
-                    return "TT";
+                    answer = "TT";
+                    break;
 
                 case 58:
-                    return "ED";
+                    answer = "ED";
+                    break;
 
                 case 59:
-                    return "ZG";
+                    answer = "ZG";
+                    break;
 
                 case 60:
-                    return "DE";
+                    answer = "DE";
+                    break;
 
                 case 61:
-                    return "DD";
+                    answer = "DD";
+                    break;
 
                 case 62:
-                    return "EV";
+                    answer = "EV";
+                    break;
 
                 case 63:
-                    return "TE";
+                    answer = "TE";
+                    break;
 
                 case 64:
-                    return "ZD";
+                    answer = "ZD";
+                    break;
 
                 case 65:
-                    return "BB";
+                    answer = "BB";
+                    break;
 
                 case 66:
-                    return "PC";
+                    answer = "PC";
+                    break;
 
                 case 67:
-                    return "BD";
+                    answer = "BD";
+                    break;
 
                 case 68:
-                    return "KC";
+                    answer = "KC";
+                    break;
 
                 case 69:
-                    return "ZB";
+                    answer = "ZB";
+                    break;
 
                 case 70:
-                    return "DE";
+                    answer = "DE";
+                    break;
 
                 case 71:
-                    return "BC";
+                    answer = "BC";
+                    break;
 
                 case 72:
-                    return "TC";
+                    answer = "TC";
+                    break;
 
                 case 73:
-                    return "ZE";
+                    answer = "ZE";
+                    break;
 
                 case 74:
-                    return "ZC";
+                    answer = "ZC";
+                    break;
 
                 case 75:
-                    return "GP";
+                    answer = "GP";
+                    break;
 
                 case 76:
-                    return "ET";
+                    answer = "ET";
+                    break;
 
                 case 77:
-                    return "VC";
+                    answer = "VC";
+                    break;
 
                 case 78:
-                    return "TB";
+                    answer = "TB";
+                    break;
 
                 case 79:
-                    return "VZ";
+                    answer = "VZ";
+                    break;
 
                 case 80:
-                    return "EZ";
+                    answer = "EZ";
+                    break;
 
                 case 81:
-                    return "EK";
+                    answer = "EK";
+                    break;
 
                 case 82:
-                    return "DV";
+                    answer = "DV";
+                    break;
 
                 case 83:
-                    return "CG";
+                    answer = "CG";
+                    break;
 
                 case 84:
-                    return "VE";
+                    answer = "VE";
+                    break;
 
                 case 85:
-                    return "DP";
+                    answer = "DP";
+                    break;
 
                 case 86:
-                    return "BK";
+                    answer = "BK";
+                    break;
 
                 case 87:
-                    return "PG";
+                    answer = "PG";
+                    break;
 
                 case 88:
-                    return "GK";
+                    answer = "GK";
+                    break;
 
                 case 89:
-                    return "GZ";
+                    answer = "GZ";
+                    break;
 
                 case 90:
-                    return "KT";
+                    answer = "KT";
+                    break;
 
                 case 91:
-                    return "CT";
+                    answer = "CT";
+                    break;
 
                 case 92:
-                    return "ZZ";
+                    answer = "ZZ";
+                    break;
 
                 case 93:
-                    return "VG";
+                    answer = "VG";
+                    break;
 
                 case 94:
-                    return "GD";
+                    answer = "GD";
+                    break;
 
                 case 95:
-                    return "CP";
+                    answer = "CP";
+                    break;
 
                 case 96:
-                    return "BE";
+                    answer = "BE";
+                    break;
 
                 case 97:
-                    return "ZT";
+                    answer = "ZT";
+                    break;
 
                 case 98:
-                    return "VK";
+                    answer = "VK";
+                    break;
 
                 default:
-                    return "GZ";
-
-
+                    answer = "GZ";
+                    break;
             }
+
+            return answer;
         }
     }
 }
