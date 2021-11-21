@@ -357,7 +357,7 @@ namespace KTANE_Solver
                     break;
 
                 case 70:
-                    answer = "DE";
+                    answer = "EG";
                     break;
 
                 case 71:
