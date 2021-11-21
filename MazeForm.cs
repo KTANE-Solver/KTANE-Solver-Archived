@@ -19,14 +19,18 @@ namespace KTANE_Solver
     {
         //used to solve the module
         private Maze maze;
-        
+        Color[] mazeColors;
+
         /// <summary>
         /// Creates the maze form
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public MazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm): base(bomb, logFileWriter, moduleSelectionForm)
+        public MazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Color [] mazeColors) : base(bomb, logFileWriter, moduleSelectionForm)
         {
             InitializeComponent();
+
+            this.mazeColors = mazeColors;
+
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
 
             row1Button1.Click += button_Click;
@@ -76,42 +80,42 @@ namespace KTANE_Solver
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
-            row1Button1.BackColor = Color.Blue;
-            row1Button2.BackColor = Color.Blue;
-            row1Button3.BackColor = Color.Blue;
-            row1Button4.BackColor = Color.Blue;
-            row1Button5.BackColor = Color.Blue;
-            row1Button6.BackColor = Color.Blue;
-            row2Button1.BackColor = Color.Blue;
-            row2Button2.BackColor = Color.Blue;
-            row2Button3.BackColor = Color.Blue;
-            row2Button4.BackColor = Color.Blue;
-            row2Button5.BackColor = Color.Blue;
-            row2Button6.BackColor = Color.Blue;
-            row3Button1.BackColor = Color.Blue;
-            row3Button2.BackColor = Color.Blue;
-            row3Button3.BackColor = Color.Blue;
-            row3Button4.BackColor = Color.Blue;
-            row3Button5.BackColor = Color.Blue;
-            row3Button6.BackColor = Color.Blue;
-            row4Button1.BackColor = Color.Blue;
-            row4Button2.BackColor = Color.Blue;
-            row4Button3.BackColor = Color.Blue;
-            row4Button4.BackColor = Color.Blue;
-            row4Button5.BackColor = Color.Blue;
-            row4Button6.BackColor = Color.Blue;
-            row5Button1.BackColor = Color.Blue;
-            row5Button2.BackColor = Color.Blue;
-            row5Button3.BackColor = Color.Blue;
-            row5Button4.BackColor = Color.Blue;
-            row5Button5.BackColor = Color.Blue;
-            row5Button6.BackColor = Color.Blue;
-            row6Button1.BackColor = Color.Blue;
-            row6Button2.BackColor = Color.Blue;
-            row6Button3.BackColor = Color.Blue;
-            row6Button4.BackColor = Color.Blue;
-            row6Button5.BackColor = Color.Blue;
-            row6Button6.BackColor = Color.Blue;
+            row1Button1.BackColor = mazeColors[0];
+            row1Button2.BackColor = mazeColors[0];
+            row1Button3.BackColor = mazeColors[0];
+            row1Button4.BackColor = mazeColors[0];
+            row1Button5.BackColor = mazeColors[0];
+            row1Button6.BackColor = mazeColors[0];
+            row2Button1.BackColor = mazeColors[0];
+            row2Button2.BackColor = mazeColors[0];
+            row2Button3.BackColor = mazeColors[0];
+            row2Button4.BackColor = mazeColors[0];
+            row2Button5.BackColor = mazeColors[0];
+            row2Button6.BackColor = mazeColors[0];
+            row3Button1.BackColor = mazeColors[0];
+            row3Button2.BackColor = mazeColors[0];
+            row3Button3.BackColor = mazeColors[0];
+            row3Button4.BackColor = mazeColors[0];
+            row3Button5.BackColor = mazeColors[0];
+            row3Button6.BackColor = mazeColors[0];
+            row4Button1.BackColor = mazeColors[0];
+            row4Button2.BackColor = mazeColors[0];
+            row4Button3.BackColor = mazeColors[0];
+            row4Button4.BackColor = mazeColors[0];
+            row4Button5.BackColor = mazeColors[0];
+            row4Button6.BackColor = mazeColors[0];
+            row5Button1.BackColor = mazeColors[0];
+            row5Button2.BackColor = mazeColors[0];
+            row5Button3.BackColor = mazeColors[0];
+            row5Button4.BackColor = mazeColors[0];
+            row5Button5.BackColor = mazeColors[0];
+            row5Button6.BackColor = mazeColors[0];
+            row6Button1.BackColor = mazeColors[0];
+            row6Button2.BackColor = mazeColors[0];
+            row6Button3.BackColor = mazeColors[0];
+            row6Button4.BackColor = mazeColors[0];
+            row6Button5.BackColor = mazeColors[0];
+            row6Button6.BackColor = mazeColors[0];
         }
 
         /// <summary>
@@ -122,34 +126,34 @@ namespace KTANE_Solver
             System.Windows.Forms.Button button = (System.Windows.Forms.Button) sender;
 
 
-            if (button.BackColor == Color.Blue)
+            if (button.BackColor == mazeColors[0])
             {
-                button.BackColor = Color.Green;
+                button.BackColor = mazeColors[1];
             }
 
-            else if (button.BackColor == Color.Green)
+            else if (button.BackColor == mazeColors[1])
             { 
-                button.BackColor = Color.White;
+                button.BackColor = mazeColors[2];
             }
 
-            else if (button.BackColor == Color.White)
+            else if (button.BackColor == mazeColors[2])
             {
-                button.BackColor = Color.Red;
+                button.BackColor = mazeColors[3];
             }
 
-            else if (button.BackColor == Color.Red)
+            else if (button.BackColor == mazeColors[3])
             {
-                button.BackColor = Color.Yellow;
+                button.BackColor = mazeColors[4];
             }
 
-            else if (button.BackColor == Color.Yellow)
+            else if (button.BackColor == mazeColors[4])
             {
-                button.BackColor = Color.Orange;
+                button.BackColor = mazeColors[5];
             }
 
-            else if (button.BackColor == Color.Orange)
+            else if (button.BackColor == mazeColors[5])
             {
-                button.BackColor = Color.Blue;
+                button.BackColor = mazeColors[1];
             }
         }
 
@@ -337,7 +341,7 @@ namespace KTANE_Solver
             }
 
             //solving maze
-            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, LogFileWriter);
+            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, LogFileWriter, mazeColors);
             MazeAnswerForm answerForm = new MazeAnswerForm (maze.Solve(), LogFileWriter);
             answerForm.ShowDialog();
 

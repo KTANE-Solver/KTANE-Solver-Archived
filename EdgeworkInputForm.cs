@@ -27,6 +27,9 @@ namespace KTANE_Solver
         //used to write to the log file
         private StreamWriter logFileWriter;
 
+        //Maze Colors
+        private Color[] mazeColors;
+
         //PROPERTIES
 
         //CONSTRUCTOR
@@ -48,9 +51,10 @@ namespace KTANE_Solver
         /// input edgework
         /// </summary>
         /// <param name="confirmationForm">the confirm form the user will go to</param>
-        public EdgeworkInputForm(EdgeworkConfirmationForm confirmationForm, StreamWriter logFileWriter)
+        public EdgeworkInputForm(EdgeworkConfirmationForm confirmationForm, StreamWriter logFileWriter, Color [] mazeColors)
         {
             InitializeComponent();
+            this.mazeColors = mazeColors;
             this.logFileWriter = logFileWriter;
             UpdateForm();
             this.confirmationForm = confirmationForm;

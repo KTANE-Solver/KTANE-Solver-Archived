@@ -69,6 +69,9 @@ namespace KTANE_Solver
         private WireSequenceStage1Form wireSequenceForm;
         private WordSearchForm wordSearchForm;
 
+        //Preferences
+        private Color[] mazeColors;
+
 
         //===========CONSTRUCTORS===========
 
@@ -81,9 +84,10 @@ namespace KTANE_Solver
         /// <param name="bomb">the current bomb</param>
         /// <param name="confirmationForm">the form used if the player wants to check the edgework</param>
         /// <param name="inputForm">the form used if the player want to change the edgework</param>
-        public ModuleSelectionForm(Bomb bomb, EdgeworkConfirmationForm confirmationForm, EdgeworkInputForm inputForm, StreamWriter logFileWriter)
+        public ModuleSelectionForm(Bomb bomb, EdgeworkConfirmationForm confirmationForm, EdgeworkInputForm inputForm, StreamWriter logFileWriter, Color [] mazeColors)
         {
             InitializeComponent();
+            this.mazeColors = mazeColors;
             this.logFileWriter = logFileWriter;
             this.bomb = bomb;
             this.confirmationForm = confirmationForm;
@@ -504,7 +508,7 @@ namespace KTANE_Solver
 
                     if (mazeForm == null)
                     {
-                        mazeForm = new MazeForm(bomb, logFileWriter, this);
+                        mazeForm = new MazeForm(bomb, logFileWriter, this, mazeColors);
                     }
 
                     else

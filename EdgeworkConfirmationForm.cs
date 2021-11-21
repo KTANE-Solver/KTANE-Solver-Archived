@@ -30,13 +30,17 @@ namespace KTANE_Solver
         //used to write to the log file
         private StreamWriter logFileWriter;
 
+        //Maze colors
+        Color[] mazeColors;
+
         /// <summary>
         /// Tells the user what the edgework is
         /// </summary>
         /// <param name="bomb">the bomb that was created</param>
-        public EdgeworkConfirmationForm(Bomb bomb, StreamWriter logFileWriter)
+        public EdgeworkConfirmationForm(Bomb bomb, StreamWriter logFileWriter, Color [] mazeColors)
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            this.mazeColors = mazeColors;
             this.logFileWriter = logFileWriter;
             inputForm = new EdgeworkInputForm(logFileWriter);
             UpdateForm(bomb);
@@ -83,9 +87,6 @@ namespace KTANE_Solver
 
             //writing out information for the log file
             WriteLog();
-
-
-
         }
 
         /// <summary>
@@ -259,7 +260,7 @@ namespace KTANE_Solver
         {
             if (inputForm == null)
             {
-                inputForm = new EdgeworkInputForm(this, logFileWriter);
+                inputForm = new EdgeworkInputForm(this, logFileWriter, mazeColors);
             }
 
             this.Hide();
@@ -274,7 +275,7 @@ namespace KTANE_Solver
         {
             if (moduleSelectionForm == null)
             {
-                moduleSelectionForm = new ModuleSelectionForm(bomb, this, inputForm, logFileWriter);
+                moduleSelectionForm = new ModuleSelectionForm(bomb, this, inputForm, logFileWriter, mazeColors);
             }
 
             else

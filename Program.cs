@@ -28,7 +28,7 @@ namespace KTANE_Solver
 
             //maze arrow folder and all its images
 
-            if (!FileExists("Edgework.txt") || !FileExists("LogFile.txt") || !DirectoryExists("Keypad Pictures") || !DirectoryExists("Maze Arrows") || !FileExists("Preferences"))
+            if (!FileExists("Edgework.txt") || !FileExists("LogFile.txt") || !DirectoryExists("Keypad Pictures") || !DirectoryExists("Maze Arrows") || !FileExists("Preferences.txt"))
             {
                 return;
             }

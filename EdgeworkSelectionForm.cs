@@ -19,6 +19,18 @@ namespace KTANE_Solver
             
     public partial class EdgeworkSelectionForm : Form
     {
+        //tells whether or not preferences are valid
+        bool validPref = false;
+
+        //default Maze Colors
+        Color[] defaultMazeColors = {Color.Blue, Color.Green, Color.White, Color.Red, Color.Yellow, Color.Orange };
+
+        //preference maze Colors
+        Color[] mazeColors;
+
+        //the one the bomb is going to use
+        Color[] bombMazeColors;
+
         EdgeworkConfirmationForm confirmationForm;
         EdgeworkInputForm inputForm;
 
@@ -34,6 +46,17 @@ namespace KTANE_Solver
 
             logFileWriter.WriteLine("======================EDGEWORK SELECTION======================");
             System.Diagnostics.Debug.WriteLine("======================EDGEWORK SELECTION======================");
+            EnablePreferences();
+
+            if (validPref)
+            {
+                bombMazeColors = mazeColors;
+            }
+
+            else
+            {
+                bombMazeColors = defaultMazeColors;
+            }
         }
 
         /// <summary>
@@ -598,7 +621,7 @@ namespace KTANE_Solver
                                     bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, 
                                     emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
 
-                confirmationForm = new EdgeworkConfirmationForm(bomb, logFileWriter);
+                confirmationForm = new EdgeworkConfirmationForm(bomb, logFileWriter, bombMazeColors);
                 this.Hide();
                 confirmationForm.Show();
             }
@@ -642,6 +665,104 @@ namespace KTANE_Solver
                     this.Visible = false;
                     Application.Exit();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Enables preferences based on Preferences.txt
+        /// </summary>
+        private void EnablePreferences()
+        {
+            StreamReader reader = new StreamReader("Preferences.txt");
+
+            //seeing if looking at custom preferences
+            string enablePref = reader.ReadLine().ToUpper().Substring(20);
+
+            if (enablePref == "OFF")
+            {
+                return;
+            }
+
+            else if (enablePref != "ON")
+            {
+                MessageBox.Show($"Invalid \"Enable Preferences\" value ({enablePref}). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            else
+            {
+                //the number of preferences being loocked for
+                const int MAX_PREFERENCES = 1;
+
+                for (int i = 1; i < MAX_PREFERENCES + 1; i++)
+                {
+                    switch (i)
+                    {
+                        //order of button colors being clicked
+                        case 1:
+                            string[] colors = reader.ReadLine().ToUpper().Substring(13).Trim(new Char[] { '[', ']' }).Split(',');
+
+                            //make sure there are 6 elements
+                            if (colors.Length != 6)
+                            {
+                                MessageBox.Show($"Invalid \"Maze Colors\" (Counted {colors.Length} items instead of 6). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            
+                            for (int j = 0; j < 6; j++)
+                            {
+                                colors[j] = colors[j].Trim();
+                            }
+
+                            //make sure there is a blue, green, white, red, yellow, orange
+
+                            if (!colors.Contains("BLUE"))
+                            { 
+                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing BLUE). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+
+                            if (!colors.Contains("GREEN"))
+                            {
+                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing GREEN). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            if (!colors.Contains("WHITE"))
+                            {
+                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing WHITE). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+
+                            if (!colors.Contains("RED"))
+                            {
+                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing RED). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            if (!colors.Contains("YELLOW"))
+                            {
+                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing YELLOW). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+
+                            if (!colors.Contains("ORANGE"))
+                            {
+                                MessageBox.Show($"Invalid \"Maze Colors\" value (Missing ORANGE). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            //convert the arr from a string to a color enum
+                            mazeColors = new Color [] { Color.FromName(colors[0]), Color.FromName(colors[1]), Color.FromName(colors[2]), Color.FromName(colors[3]), Color.FromName(colors[4]), Color.FromName(colors[5])};
+
+                            break;
+                    }
+                }
+
+                validPref = true;
             }
         }
     }
