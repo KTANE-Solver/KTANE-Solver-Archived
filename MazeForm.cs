@@ -341,7 +341,7 @@ namespace KTANE_Solver
             }
 
             //solving maze
-            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, LogFileWriter, mazeColors);
+            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, LogFileWriter);
             MazeAnswerForm answerForm = new MazeAnswerForm (maze.Solve(), LogFileWriter);
             answerForm.ShowDialog();
 

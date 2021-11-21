@@ -48,15 +48,11 @@ namespace KTANE_Solver
         //tells if the player is at the goal
         private bool goal;
 
-        Color[] mazeColors;
-
         //==============PROPERTIES==============
 
         //==============CONSTRUCTORS==============
-        public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter LogFileWriter, Color [] mazeColors) : base(null, LogFileWriter)
+        public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter LogFileWriter) : base(null, LogFileWriter)
         {
-            this.mazeColors = mazeColors;
-
             visitedNodes = new List<Coordinate>();
             //sets up the coordiantes
             startingPlayerRow = playerRow;
