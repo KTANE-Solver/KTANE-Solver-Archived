@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Alphabet.cs" />
     <Compile Include="Battleship.cs" />
+    <Compile Include="BinaryLED.cs" />
     <Compile Include="BinaryPuzzle.cs" />
     <Compile Include="BinaryPuzzleAnswerForm.cs">
       <SubType>Form</SubType>
