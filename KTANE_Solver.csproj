@@ -87,6 +87,7 @@
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Bitmaps.cs" />
+    <Compile Include="BlindAlley.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Bulb.cs" />
     <Compile Include="BulbForm.cs">
