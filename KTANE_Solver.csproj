@@ -86,6 +86,7 @@
     <Compile Include="BinaryPuzzleForm.Designer.cs">
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bitmaps.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Bulb.cs" />
     <Compile Include="BulbForm.cs">
