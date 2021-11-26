@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3DMaze.cs" />
     <Compile Include="AdjacentLetters.cs" />
     <Compile Include="AdjacentLettersAnswerForm.cs">
       <SubType>Form</SubType>
