@@ -7,7 +7,12 @@ using System.IO;
 namespace KTANE_Solver
 {
     public class AdventureGame : Module
-    { 
+    {
+        Item item1;
+        Item item2;
+        Item item3;
+        Item item4;
+        Item item5;
 
         Weapon weapon1;
         Weapon weapon2;
@@ -35,6 +40,13 @@ namespace KTANE_Solver
             this.gravity = gravity;
             this.pressure = pressure;
 
+            this.item1 = item1;
+            this.item2 = item2;
+            this.item3 = item3;
+            this.item4 = item4;
+            this.item5 = item5;
+
+
             weapon1 = new Weapon(weapon1String);
             weapon2 = new Weapon(weapon2String);
             weapon3 = new Weapon(weapon3String);
@@ -43,9 +55,15 @@ namespace KTANE_Solver
 
             answer = "";
 
+
+            
+        }
+
+        public void Solve()
+        {
             PrintDebugLine("======================ADVENTURE GAME======================\n");
 
-            PrintDebugLine("Enemy: " + enemyString);
+            PrintDebugLine("Enemy: " + enemy.Name);
             PrintDebugLine("Strength: " + enemy.Strength);
             PrintDebugLine("Dexterity: " + enemy.Dexterity);
             PrintDebugLine($"Intelligence: {enemy.Intelligence}\n");
@@ -72,20 +90,15 @@ namespace KTANE_Solver
             CheckItem(item4);
             CheckItem(item5);
 
-
-
-
-            
-
             //check which weapon does most damage
             int damage1 = DamageDealt(weapon1);
             int damage2 = DamageDealt(weapon2);
             int damage3 = DamageDealt(weapon3);
 
             PrintDebugLine("Weapons\n");
-            PrintDebugLine($"{weapon1String}: {damage1}");
-            PrintDebugLine($"{weapon2String}: {damage2}");
-            PrintDebugLine($"{weapon3String}: {damage3}\n");
+            PrintDebugLine($"{weapon1.Name}: {damage1}");
+            PrintDebugLine($"{weapon2.Name}: {damage2}");
+            PrintDebugLine($"{weapon3.Name}: {damage3}\n");
 
             if (damage1 >= damage2 && damage1 >= damage3)
             {

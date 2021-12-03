@@ -170,9 +170,11 @@ namespace KTANE_Solver
             SetItem(ticketCheckBox);
             SetItem(trophyCheckBox);
 
-            new AdventureGame(strength, dexterity, intelligence, height, temp, gravity, pressure, 
-                              weapon1, weapon2, weapon3, item1, item2, item3, item4, item5, 
-                              enemy, Bomb, LogFileWriter);
+            AdventureGame module = new AdventureGame(strength, dexterity, intelligence, height, temp, gravity, pressure, 
+                                                     weapon1, weapon2, weapon3, item1, item2, item3, item4, item5, 
+                                                     enemy, Bomb, LogFileWriter);
+
+            module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
 
