@@ -12,12 +12,11 @@ namespace KTANE_Solver
         private bool [,] answer;
         public AdjacentLetters(char[,] grid, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter)
         {
-            PrintDebugLine("===================Adjacent Letters===================\n");
+            this.grid = grid;            
+        }
 
-
-                
-            this.grid = grid;
-
+        public void Solve()
+        {
             answer = new bool[3, 4];
 
             for (int row = 0; row < 3; row++)

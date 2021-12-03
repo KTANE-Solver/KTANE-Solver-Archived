@@ -74,7 +74,8 @@ namespace KTANE_Solver
                 }
             }
 
-            new AdjacentLetters(grid, Bomb, LogFileWriter);
+            AdjacentLetters module = new AdjacentLetters(grid, Bomb, LogFileWriter);
+            module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
