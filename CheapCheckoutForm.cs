@@ -88,12 +88,12 @@ namespace KTANE_Solver
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
             GoToMoudleSelectionForm();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void strikeButton_Click(object sender, EventArgs e)
         {
             IncrementStrike("Cheap Checkout");
         }

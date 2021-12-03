@@ -137,6 +137,7 @@
     <Compile Include="ComplicatedWiresForm.Designer.cs">
       <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Creation.cs" />
     <Compile Include="EdgeworkConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>
