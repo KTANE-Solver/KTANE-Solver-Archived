@@ -11,15 +11,27 @@ namespace KTANE_Solver
     public class SimonSays : Module
     {
         //a "list" of all the lights that lit up
-        String lights;
+        public String lights;
 
-        public SimonSays(String lights, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public SimonSays(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
-            this.lights = lights;
+            this.lights = "";
         }
 
-        public void Solve()
+        public void Solve(int stage, char newLight)
         {
+            lights += newLight;
+
+            PrintDebugLine($"Stage: {stage}\n");
+
+            PrintDebugLine($"Vowel: {Bomb.HasVowel}\n");
+
+            PrintDebugLine($"Strikes: {Bomb.Strike}\n");
+
+            PrintDebugLine($"New Light: {newLight}\n");
+
+            PrintDebugLine($"Full input: {lights}\n");
+
             List<String> answerList = new List<string>();
 
             switch (Bomb.Strike)
@@ -141,14 +153,9 @@ namespace KTANE_Solver
                     break;
             }
 
-            String answer = "";
+            string answer = string.Join(", ", answerList);
 
-            foreach (String str in answerList)
-            {
-                answer += str + ", ";
-            }
-
-            answer = answer.Remove(answer.Length - 2, 2);
+            PrintDebugLine($"Answer: {answer}\n");
 
             ShowAnswer(answer, "Simon Says Answer");
         }

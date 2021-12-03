@@ -13,6 +13,8 @@ namespace KTANE_Solver
 {
     public partial class SimonSaysForm : ModuleForm
     {
+
+        private SimonSaysOtherStageForm secondStage;
         public SimonSaysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
@@ -23,8 +25,7 @@ namespace KTANE_Solver
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
-            instructionLabel.Text = "B - Blue\nG - Green\nR - Red\nY - Yellow";
-            textBox1.Text = "";
+            inputTextBox.Text = "";
 
         }
 
@@ -35,30 +36,44 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            //textbox can only contain the character b, r, g, and y
+            String input = inputTextBox.Text.ToUpper();
 
-            String input = textBox1.Text.ToUpper();
-
-            foreach (char character in input)
+            //there can only be one char in the textbox
+            if (input.Length != 1)
             {
-                switch (character)
-                {
-                    case 'B':
-                    case 'G':
-                    case 'R':
-                    case 'Y':
-                        break;
-
-                    default:
-                        ShowErrorMessage("Textbox can only contain the character b, r, g, and y", "Simon Says Error");
-                        return;
-
-                }
+                ShowErrorMessage("There can only be 1 character", "Simon Says Error");
+                return;
             }
 
-            SimonSays module = new SimonSays(input, Bomb, LogFileWriter);
-            module.Solve();
-            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            //textbox can only contain the character b, r, g, or y
+            switch (input[0])
+            {
+                case 'B':
+                case 'G':
+                case 'R':
+                case 'Y':
+                    break;
+
+                default:
+                    ShowErrorMessage("Textbox can only contain the character b, r, g, or y", "Simon Says Error");
+                    return;
+
+            }
+            
+
+            SimonSays module = new SimonSays(Bomb, LogFileWriter);
+            module.Solve(1, input[0]);
+
+            this.Hide();
+
+            if (secondStage == null)
+            {
+                secondStage = new SimonSaysOtherStageForm(2, this, module, Bomb, LogFileWriter, ModuleSelectionForm);
+            }
+
+            secondStage.UpdateForm(2, module, Bomb, LogFileWriter, ModuleSelectionForm);
+
+            secondStage.Show();
         }
 
         private void strikeButton_Click(object sender, EventArgs e)
