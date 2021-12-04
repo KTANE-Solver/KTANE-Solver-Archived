@@ -24,6 +24,7 @@ namespace KTANE_Solver
         private String Step3Direction;
 
         private List<string> list;
+
         public Bulb(Bomb bomb, StreamWriter logFileWriter, bool lit, bool opaque, String color) : base(bomb, logFileWriter)
         {
             list = new List<string>();
@@ -39,11 +40,14 @@ namespace KTANE_Solver
             Step1Direction = null;
             Step2Direction = null;
             Step3Direction = null;
+        }
 
+        public void Solve()
+        {
             String bulbLit;
             String bulbOpaque;
 
-            if (lit)
+            if (Lit)
             {
                 bulbLit = "lit";
             }
@@ -53,7 +57,7 @@ namespace KTANE_Solver
                 bulbLit = "unlit";
             }
 
-            if (opaque)
+            if (Opaque)
             {
                 bulbOpaque = "opqaue";
             }
@@ -63,7 +67,7 @@ namespace KTANE_Solver
                 bulbOpaque = "translucent";
             }
 
-            PrintDebugLine($"Bulb is {color}, {bulbLit}, and {bulbOpaque}\n");
+            PrintDebugLine($"Bulb is {Color}, {bulbLit}, and {bulbOpaque}\n");
 
             Step1();
         }

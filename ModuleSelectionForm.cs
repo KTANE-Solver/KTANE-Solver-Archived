@@ -128,7 +128,7 @@ namespace KTANE_Solver
 
 
             String[] modules = new String[] {"Adjacent Letters", "Adventure Game", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
-            //String[] modules = new String[] { "Binary Puzzle", "Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires"};
+            //String[] modules = new String[] { "Binary Puzzle", "Cheap Checkout", "Chess", "Complicated Wires", "Ice Cream", "Keypad", "Logic", "Maze", "Murder", "Poker", "Silly Slots", "Who's on First", "Wires", "Word Search"};
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
