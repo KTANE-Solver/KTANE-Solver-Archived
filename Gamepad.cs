@@ -23,13 +23,19 @@ namespace KTANE_Solver
             d = y % 10;
 
             PrintDebugLine($"X: {x}");
-            PrintDebugLine($"Y: {y}\n");
+            PrintDebugLine($"Y: {y}");
+            PrintDebugLine($"A: {a}");
+            PrintDebugLine($"B: {b}");
+            PrintDebugLine($"C: {c}");
+            PrintDebugLine($"D: {d}\n");
+        }
 
-
+        public void Solve()
+        {
             SetFirstSubcommand();
             setSecondSubcommand();
 
-            PrintDebugLine($"Answer (before overrides): {string.Join(", ",firstSubcommand)}, {string.Join(",", secondSubcommand)}\n");
+            PrintDebugLine($"Answer (before overrides): {string.Join(", ", firstSubcommand)}, {string.Join(",", secondSubcommand)}\n");
 
             setOverrides();
 

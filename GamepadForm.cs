@@ -59,7 +59,8 @@ namespace KTANE_Solver
                 return;
             }
 
-            new Gamepad(x, y, Bomb, LogFileWriter);
+            Gamepad module = new Gamepad(x, y, Bomb, LogFileWriter);
+            module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }
