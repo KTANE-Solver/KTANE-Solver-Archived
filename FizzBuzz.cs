@@ -9,16 +9,32 @@ namespace KTANE_Solver
 {
     public class FizzBuzz : Module
     {
+        Condition firstCondition, secondCondition, thirdCondition;
+        
+        string firstColor, secondColor, thirdColor;
+        string firstNumber, secondNumber, thirdNumber;
+
         public FizzBuzz(string firstColor, string firstNumber, string secondColor, string secondNumber, string thirdColor, string thirdNumber, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        {
+            this.firstColor = firstColor;
+            this.secondColor = secondColor;
+            this.thirdColor = thirdColor;
+
+            this.firstNumber = firstNumber;
+            this.secondNumber = secondNumber;
+            this.thirdNumber = thirdNumber;
+
+            //For each number, find the column corresponding to the color of the number in the table below.
+            firstCondition = SetCondition(firstColor);
+            secondCondition = SetCondition(secondColor);
+            thirdCondition = SetCondition(thirdColor);
+        }
+
+        public void Solve()
         {
             PrintDebugLine($"First Number: {firstColor} {firstNumber}");
             PrintDebugLine($"Second Number: {secondColor} {secondNumber}");
             PrintDebugLine($"Third Number: {thirdColor} {thirdNumber}\n");
-
-            //For each number, find the column corresponding to the color of the number in the table below.
-            Condition firstCondition = SetCondition(firstColor);
-            Condition secondCondition = SetCondition(secondColor);
-            Condition thirdCondition = SetCondition(thirdColor);
 
             //Go through that column and take a note of each integer whose condition applies.
 
