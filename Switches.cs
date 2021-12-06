@@ -18,6 +18,11 @@ namespace KTANE_Solver
 
             directions = new List<int>();
 
+            
+        }
+
+        public void Solve()
+        {
             //if the initial start is not special, all the switches down from left to right
             if (!Special(start))
             {
@@ -263,7 +268,7 @@ namespace KTANE_Solver
 
                     ShowAnswer(Answer(), "Switches Answer");
                     return;
-                    
+
                 }
             }
 
