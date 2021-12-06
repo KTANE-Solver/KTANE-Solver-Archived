@@ -30,10 +30,13 @@ namespace KTANE_Solver
 
             counter = new Dictionary<Symbol, int> ();
             ResetValues();
+        }
 
+        public void Solve()
+        {
             bombSymbol = FindBombSymbol();
 
-            string answer = string.Join(",", FindAnswer());
+            string answer = string.Join(", ", FindAnswer());
 
             PrintDebugLine($"Answer: {answer}\n");
 

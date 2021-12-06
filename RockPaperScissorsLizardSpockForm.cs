@@ -57,7 +57,8 @@ namespace KTANE_Solver
 
 
 
-            new RockPaperScissorsLizardSpock(symbol, Bomb, LogFileWriter);
+            RockPaperScissorsLizardSpock module = new RockPaperScissorsLizardSpock(symbol, Bomb, LogFileWriter);
+            module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
