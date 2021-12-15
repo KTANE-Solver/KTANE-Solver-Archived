@@ -8,23 +8,23 @@ namespace KTANE_Solver
 {
     class AdjacentLetters : Module
     {
-        private char[,] grid;
-        private bool [,] answer;
+        private char[,] Grid { get; }
+        private bool[,] Answer { get; set; }
         public AdjacentLetters(char[,] grid, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter)
         {
-            this.grid = grid;            
+            Grid = grid;            
         }
 
         public void Solve()
         {
-            answer = new bool[3, 4];
+            Answer = new bool[3, 4];
 
             for (int row = 0; row < 3; row++)
             {
                 for (int column = 0; column < 4; column++)
                 {
-                    PrintDebug(grid[row, column] + " ");
-                    answer[row, column] = Left(row, column) || Right(row, column) || Up(row, column) || Down(row, column);
+                    PrintDebug(Grid[row, column] + " ");
+                    Answer[row, column] = Left(row, column) || Right(row, column) || Up(row, column) || Down(row, column);
                 }
 
                 PrintDebugLine("");
@@ -32,7 +32,7 @@ namespace KTANE_Solver
 
             PrintDebugLine("");
 
-            AdjacentLettersAnswerForm answerForm = new AdjacentLettersAnswerForm(answer, LogFileWriter);
+            AdjacentLettersAnswerForm answerForm = new AdjacentLettersAnswerForm(Answer, LogFileWriter);
             answerForm.Show();
         }
 
@@ -41,7 +41,7 @@ namespace KTANE_Solver
             if (column == 0)
                 return false;
 
-            switch (grid[row,column])
+            switch (Grid[row,column])
             {
                 case 'A':
                     return ContainsLetter(row, column - 1, "GJMOY");
@@ -128,7 +128,7 @@ namespace KTANE_Solver
             if (column == 3)
                 return false;
 
-            switch (grid[row, column])
+            switch (Grid[row, column])
             {
                 case 'A':
                     return ContainsLetter(row, column + 1, "GJMOY");
@@ -216,7 +216,7 @@ namespace KTANE_Solver
             if (row == 2)
                 return false;
 
-            switch (grid[row,column])
+            switch (Grid[row,column])
             {
                 case 'A':
                     return ContainsLetter(row + 1, column, "HKPRW");
@@ -303,7 +303,7 @@ namespace KTANE_Solver
             if (row == 0)
                 return false;
 
-            switch (grid[row,column])
+            switch (Grid[row,column])
             {
                 case 'A':
                     return ContainsLetter(row - 1, column, "HKPRW");
@@ -391,7 +391,7 @@ namespace KTANE_Solver
         {
             foreach (char c in str)
             {
-                if (grid[row, column] == c)
+                if (Grid[row, column] == c)
                     return true;
             }
 
