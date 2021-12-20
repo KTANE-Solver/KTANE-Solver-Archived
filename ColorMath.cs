@@ -135,10 +135,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            if(answer < 0)
-            {
-                answer *= -1;
-            }
+            answer = Math.Abs(answer);
 
             answer %= 10000;
 
