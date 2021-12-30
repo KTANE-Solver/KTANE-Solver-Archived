@@ -96,8 +96,8 @@ namespace KTANE_Solver
                 Maze[4, 1] = new Node(4, 1, '.');
                 Maze[4, 2] = new Node(4, 2, '.');
                 Maze[4, 3] = new Node(4, 3, '.');
-                Maze[4, 4] = new Node(4, 4, '.');
-                Maze[4, 5] = new Node(4, 5, 'A');
+                Maze[4, 4] = new Node(4, 4, 'A');
+                Maze[4, 5] = new Node(4, 5, '.');
                 Maze[4, 6] = new Node(4, 6, '.');
                 Maze[4, 7] = new Node(4, 7, '.');
 
