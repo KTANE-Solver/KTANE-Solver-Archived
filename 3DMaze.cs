@@ -347,7 +347,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[7, 7], Walls.South);
             }
 
-            else if (str.Contains('A') && str.Contains('C') && str.Contains('H'))
+            else if (str.Contains('A') && str.Contains('B') && str.Contains('H'))
             {
                 Maze[0, 0] = new Node(0, 0, 'B');
                 Maze[0, 1] = new Node(0, 1, '.');
@@ -422,10 +422,10 @@ namespace KTANE_Solver
                 Maze[7, 7] = new Node(7, 7, '.');
 
                 SetMazeConnection(Maze[0, 0], Walls.NorthWestWall);
-                SetMazeConnection(Maze[0, 1], Walls.Horizontal);
+                SetMazeConnection(Maze[0, 1], Walls.SouthEastWall);
                 SetMazeConnection(Maze[0, 2], Walls.NorthEastWall);
                 SetMazeConnection(Maze[0, 3], Walls.SouthWestWall);
-                SetMazeConnection(Maze[0, 4], Walls.Vertical);
+                SetMazeConnection(Maze[0, 4], Walls.Horizontal);
                 SetMazeConnection(Maze[0, 5], Walls.None);
                 SetMazeConnection(Maze[0, 6], Walls.North);
                 SetMazeConnection(Maze[0, 7], Walls.NorthEastWall);
@@ -449,7 +449,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[2, 7], Walls.West);
 
                 SetMazeConnection(Maze[3, 0], Walls.Vertical);
-                SetMazeConnection(Maze[3, 1], Walls.NorthEastWall);
+                SetMazeConnection(Maze[3, 1], Walls.NorthWestWall);
                 SetMazeConnection(Maze[3, 2], Walls.East);
                 SetMazeConnection(Maze[3, 3], Walls.NorthWestWall);
                 SetMazeConnection(Maze[3, 4], Walls.SouthEastWall);
@@ -494,7 +494,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[7, 7], Walls.SouthEastWall);
             }
 
-            else if (str.Contains('A') && str.Contains('B') && str.Contains('H'))
+            else if (str.Contains('A') && str.Contains('C') && str.Contains('D'))
             {
                 Maze[0, 0] = new Node(0, 0, 'D');
                 Maze[0, 1] = new Node(0, 1, '.');
