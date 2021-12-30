@@ -49,7 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="3DMaze.cs" />
+    <Compile Include="3DMazeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3DMazeForm.Designer.cs">
+      <DependentUpon>3DMazeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdjacentLetters.cs" />
     <Compile Include="AdjacentLettersAnswerForm.cs">
       <SubType>Form</SubType>
@@ -163,6 +168,7 @@
     <Compile Include="FizzBuzzForm.Designer.cs">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="3DMaze.cs" />
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +419,9 @@
     <Compile Include="WordSearchForm.Designer.cs">
       <DependentUpon>WordSearchForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="3DMazeForm.resx">
+      <DependentUpon>3DMazeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdjacentLettersAnswerForm.resx">
       <DependentUpon>AdjacentLettersAnswerForm.cs</DependentUpon>
     </EmbeddedResource>

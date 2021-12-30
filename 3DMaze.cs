@@ -12,7 +12,7 @@ namespace KTANE_Solver
         /* a 2D Node array that will represent the maze
          */
 
-        Node[,] Maze { get; }
+        public Node[,] Maze { get; }
 
         public _3DMaze()
         {
@@ -20,7 +20,7 @@ namespace KTANE_Solver
         }
 
         private enum Walls
-        { 
+        {
             //1 walls
 
             Up,
@@ -145,6 +145,15 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[1, 5], Walls.SouthWestWall);
                 SetMazeConnection(Maze[1, 6], Walls.None);
                 SetMazeConnection(Maze[1, 7], Walls.Right);
+
+                SetMazeConnection(Maze[2, 0], Walls.None);
+                SetMazeConnection(Maze[2, 1], Walls.Up);
+                SetMazeConnection(Maze[2, 2], Walls.SouthEastWall);
+                SetMazeConnection(Maze[2, 3], Walls.NorthWestWall);
+                SetMazeConnection(Maze[2, 4], Walls.Up);
+                SetMazeConnection(Maze[2, 5], Walls.Up);
+                SetMazeConnection(Maze[2, 6], Walls.SouthEastWall);
+                SetMazeConnection(Maze[2, 7], Walls.SouthWestWall);
 
                 SetMazeConnection(Maze[3, 0], Walls.None);
                 SetMazeConnection(Maze[3, 1], Walls.Right);
@@ -1036,7 +1045,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[3, 6], Walls.Horizontal);
                 SetMazeConnection(Maze[3, 7], Walls.Horizontal);
 
-                
+
 
                 SetMazeConnection(Maze[4, 0], Walls.Horizontal);
                 SetMazeConnection(Maze[4, 1], Walls.Right);
@@ -1636,6 +1645,7 @@ namespace KTANE_Solver
                     east = true;
                     break;
             }
+
             if (north)
             {
                 if (node.Row == 0)
@@ -1644,7 +1654,7 @@ namespace KTANE_Solver
                 }
 
                 else
-                { 
+                {
                     node.North = Maze[node.Row - 1, node.Colunm];
                 }
             }
@@ -1671,7 +1681,7 @@ namespace KTANE_Solver
 
                 else
                 {
-                    node.North = Maze[node.Row + 1, node.Colunm];
+                    node.South = Maze[node.Row + 1, node.Colunm];
                 }
             }
 
@@ -1684,29 +1694,32 @@ namespace KTANE_Solver
 
                 else
                 {
-                    node.East = Maze[node.Row, node.Colunm - 1];
+                    node.West = Maze[node.Row, node.Colunm - 1];
                 }
             }
         }
 
+        public void PrintGrid()
+        {
+            for (int row = 0; row < 8; row++)
+            {
+                for (int column = 0; column < 8; column++)
+                {
+                    Console.Write(Maze[row, column].Character + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+        }
+
         /*
-
-        
-
            Method that will find find where the user needs to go (Dijkstra)
            -Paramaters (starting position (and where user is facing), ending position)
            -Returns a list of directions
-           
          */
         public class Node
         {
-            public Node(int row, int column, char character)
-            {
-                Row = row;
-                Colunm = column;
-                Character = character;
-            }
-
             public int Row { get; }
             public int Colunm { get; }
             public char Character { get; }
@@ -1715,6 +1728,17 @@ namespace KTANE_Solver
             public Node South { get; set; }
             public Node West { get; set; }
 
+            public Node(int row, int column, char character)
+            {
+                Row = row;
+                Colunm = column;
+                Character = character;
+
+                North = null;
+                East = null;
+                South = null;
+                West = null;
+            }
         }
         //CLASSES
         /* Node class that contains the following fields:
