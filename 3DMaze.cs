@@ -1780,7 +1780,14 @@ namespace KTANE_Solver
             if (node.West == null)
             {
                 PrintDebug("|");
+
+                if (node.Colunm != 0)
+                { 
+                    PrintDebug(" ");
+                }
             }
+
+
 
             else
             {
