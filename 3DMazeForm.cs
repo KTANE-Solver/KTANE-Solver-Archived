@@ -20,7 +20,7 @@ namespace KTANE_Solver
             InitializeComponent();
             UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
             module = new _3DMaze(bomb, logFile);
-            module.SetMaze('A', 'H', 'C');
+            module.SetMaze('A', 'H', 'D');
         }
 
         public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
