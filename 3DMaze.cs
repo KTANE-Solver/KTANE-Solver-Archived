@@ -1531,10 +1531,7 @@ namespace KTANE_Solver
         /// Method that tells what other nodes current node is connected to
         /// </summary>
         /// <param name="node">the node that may have connections</param>
-        /// <param name="north">If there is a north node</param>
-        /// <param name="east">If there is a east node</param>
-        /// <param name="south">If there is a south node</param>
-        /// <param name="west">If there is a west node</param>
+        /// <param name="wall">What type of wall is around the node</param>
         private void SetMazeConnection(Node node, Walls wall)
         {
             bool north, east, south, west;
@@ -1701,16 +1698,67 @@ namespace KTANE_Solver
 
         public void PrintGrid()
         {
-            for (int row = 0; row < 8; row++)
+            for (int row = 0; row < 15; row++)
             {
-                for (int column = 0; column < 8; column++)
+                for (int column = 0; column < 15; column++)
                 {
-                    Console.Write(Maze[row, column].Character + " ");
+                    //printing the north walls
+                    if (row % 2 == 0)
+                    {
+                        if (column % 2 == 0)
+                        {
+                            Console.Write(" ");
+                        }
+
+                        else  
+                        { 
+                            PrintNorthWall(Maze[row / 2, column / 2]);
+                        }
+                    }
+
+                    //printing west walls or letters
+                    else
+                    {
+                        if (column % 2 == 0)
+                        {
+                            PrintWestWall(Maze[row / 2, (column + 1) / 2 ]);
+                        }
+
+                        else
+                        { 
+                            Console.Write(Maze[row / 2, column / 2].Character + " ");
+                        }
+                    }
                 }
+
                 Console.WriteLine();
             }
+        }
 
-            Console.WriteLine();
+        private void PrintNorthWall(Node node)
+        {
+            if (node.North == null)
+            {
+                Console.Write("_ ");
+            }
+
+            else
+            {
+                Console.Write("  ");
+            }
+        }
+
+        private void PrintWestWall(Node node)
+        {
+            if (node.West == null)
+            {
+                Console.Write("| ");
+            }
+
+            else
+            {
+                Console.Write("  ");
+            }
         }
 
         /*

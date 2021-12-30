@@ -35,11 +35,28 @@ namespace KTANE_Solver
                     start = module.Maze[row, column];
 
                     string info =  "Start: " + GetNodeInformation(start);
-                            info += "North: " + GetNodeInformation(start.North);
-                            info += "East: " + GetNodeInformation(start.East);
-                            info += "South: " + GetNodeInformation(start.South);
-                            info += "West: " + GetNodeInformation(start.West);
-                            info += "Is this correct?";  
+
+                    if (start.North != null)
+                    { 
+                        info += "North: " + GetNodeInformation(start.North);
+                    }
+
+                    if (start.East != null)
+                    { 
+                        info += "East: " + GetNodeInformation(start.East);
+                    }
+
+                    if (start.South != null)
+                    { 
+                        info += "South: " + GetNodeInformation(start.South);
+                    }
+
+                    if (start.West != null)
+                    { 
+                        info += "West: " + GetNodeInformation(start.West);
+                    }
+
+                    info += "Is this correct?";  
 
                     if (MessageBox.Show(info, "3D Maze Debug", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
@@ -63,7 +80,7 @@ namespace KTANE_Solver
                 return "No information found\n";
             }
 
-            return $"Row {node.Row} Column {node.Colunm} Char {node.Character}\n";
+            return $"Row {node.Row}, Column {node.Colunm}, Char {node.Character}\n";
         }
     }
 }
