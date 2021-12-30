@@ -259,8 +259,8 @@ namespace KTANE_Solver
 
                 Maze[6, 0] = new Node(6, 0, '.');
                 Maze[6, 1] = new Node(6, 1, '.');
-                Maze[6, 2] = new Node(6, 2, '.');
-                Maze[6, 3] = new Node(6, 3, 'B');
+                Maze[6, 2] = new Node(6, 2, 'B');
+                Maze[6, 3] = new Node(6, 3, '.');
                 Maze[6, 4] = new Node(6, 4, '.');
                 Maze[6, 5] = new Node(6, 5, 'D');
                 Maze[6, 6] = new Node(6, 6, '.');
@@ -275,9 +275,9 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.');
                 Maze[7, 7] = new Node(7, 7, 'B');
 
-                SetMazeConnection(Maze[0, 0], Walls.NorthEastWall);
+                SetMazeConnection(Maze[0, 0], Walls.NorthWestWall);
                 SetMazeConnection(Maze[0, 1], Walls.South);
-                SetMazeConnection(Maze[0, 2], Walls.Vertical);
+                SetMazeConnection(Maze[0, 2], Walls.Horizontal);
                 SetMazeConnection(Maze[0, 3], Walls.None);
                 SetMazeConnection(Maze[0, 4], Walls.None);
                 SetMazeConnection(Maze[0, 5], Walls.SouthEastWall);
@@ -285,13 +285,13 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[0, 7], Walls.NorthEastWall);
 
                 SetMazeConnection(Maze[1, 0], Walls.Vertical);
-                SetMazeConnection(Maze[1, 1], Walls.NorthEastWall);
+                SetMazeConnection(Maze[1, 1], Walls.NorthWestWall);
                 SetMazeConnection(Maze[1, 2], Walls.North);
                 SetMazeConnection(Maze[1, 3], Walls.South);
                 SetMazeConnection(Maze[1, 4], Walls.SouthEastWall);
                 SetMazeConnection(Maze[1, 5], Walls.NorthWestWall);
                 SetMazeConnection(Maze[1, 6], Walls.South);
-                SetMazeConnection(Maze[1, 7], Walls.West);
+                SetMazeConnection(Maze[1, 7], Walls.East);
 
                 SetMazeConnection(Maze[2, 0], Walls.None);
                 SetMazeConnection(Maze[2, 1], Walls.None);
@@ -311,7 +311,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[3, 6], Walls.South);
                 SetMazeConnection(Maze[3, 7], Walls.None);
 
-                SetMazeConnection(Maze[4, 0], Walls.NorthEastWall);
+                SetMazeConnection(Maze[4, 0], Walls.NorthWestWall);
                 SetMazeConnection(Maze[4, 1], Walls.North);
                 SetMazeConnection(Maze[4, 2], Walls.NorthEastWall);
                 SetMazeConnection(Maze[4, 3], Walls.SouthWestWall);
@@ -323,7 +323,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[5, 0], Walls.South);
                 SetMazeConnection(Maze[5, 1], Walls.None);
                 SetMazeConnection(Maze[5, 2], Walls.SouthEastWall);
-                SetMazeConnection(Maze[5, 3], Walls.NorthEastWall);
+                SetMazeConnection(Maze[5, 3], Walls.NorthWestWall);
                 SetMazeConnection(Maze[5, 4], Walls.East);
                 SetMazeConnection(Maze[5, 5], Walls.NorthWestWall);
                 SetMazeConnection(Maze[5, 6], Walls.None);
@@ -335,7 +335,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[6, 4], Walls.SouthEastWall);
                 SetMazeConnection(Maze[6, 5], Walls.West);
                 SetMazeConnection(Maze[6, 6], Walls.East);
-                SetMazeConnection(Maze[6, 7], Walls.NorthEastWall);
+                SetMazeConnection(Maze[6, 7], Walls.NorthWestWall);
 
                 SetMazeConnection(Maze[7, 0], Walls.South);
                 SetMazeConnection(Maze[7, 1], Walls.None);

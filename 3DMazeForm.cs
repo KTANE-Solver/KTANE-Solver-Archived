@@ -20,7 +20,7 @@ namespace KTANE_Solver
             InitializeComponent();
             UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
             module = new _3DMaze(bomb, logFile);
-            module.SetMaze('A', 'B', 'C');
+            module.SetMaze('A', 'B', 'D');
         }
 
         public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
@@ -31,16 +31,6 @@ namespace KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
             module.PrintGrid();
-        }
-
-        private string GetNodeInformation(_3DMaze.Node node)
-        {
-            if (node == null)
-            {
-                return "No information found\n";
-            }
-
-            return $"Row {node.Row}, Column {node.Colunm}, Char {node.Character}\n";
         }
     }
 }
