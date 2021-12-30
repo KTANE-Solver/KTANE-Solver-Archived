@@ -341,7 +341,7 @@ namespace KTANE_Solver
 
                 fourthNumber = temp;
 
-                System.Diagnostics.Debug.WriteLine($"Last digit is odd and even number of batteries. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
+                System.Diagnostics.Debug.WriteLine($"First two conditions not met. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
             }
 
             //Finally, if the sum of all the digits in the code is even, reverse the code.
