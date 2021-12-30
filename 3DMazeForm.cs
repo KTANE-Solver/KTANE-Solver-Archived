@@ -31,53 +31,6 @@ namespace KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
             module.PrintGrid();
-
-            bool progress = true;
-            _3DMaze.Node start;
-
-            for (int row = 0; row < 8; row++)
-            {
-                for (int column = 0; column < 8; column++)
-                {
-                    start = module.Maze[row, column];
-
-                    string info =  "Start: " + GetNodeInformation(start);
-
-                    if (start.North != null)
-                    { 
-                        info += "North: " + GetNodeInformation(start.North);
-                    }
-
-                    if (start.East != null)
-                    { 
-                        info += "East: " + GetNodeInformation(start.East);
-                    }
-
-                    if (start.South != null)
-                    { 
-                        info += "South: " + GetNodeInformation(start.South);
-                    }
-
-                    if (start.West != null)
-                    { 
-                        info += "West: " + GetNodeInformation(start.West);
-                    }
-
-                    info += "Is this correct?";  
-
-                    if (MessageBox.Show(info, "3D Maze Debug", MessageBoxButtons.YesNo) == DialogResult.No)
-                    {
-                        MessageBox.Show($"Fix Row {row} and Column {column}");
-                        progress = false;
-                        break;
-                    }
-                }
-
-                if (!progress)
-                {
-                    break;
-                }
-            }
         }
 
         private string GetNodeInformation(_3DMaze.Node node)
