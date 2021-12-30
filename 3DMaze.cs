@@ -1418,9 +1418,9 @@ namespace KTANE_Solver
 
                 Maze[4, 0] = new Node(4, 0, '.');
                 Maze[4, 1] = new Node(4, 1, '.');
-                Maze[4, 2] = new Node(4, 2, '.');
+                Maze[4, 2] = new Node(4, 2, 'C');
                 Maze[4, 3] = new Node(4, 3, '.');
-                Maze[4, 4] = new Node(4, 4, 'C');
+                Maze[4, 4] = new Node(4, 4, '.');
                 Maze[4, 5] = new Node(4, 5, '.');
                 Maze[4, 6] = new Node(4, 6, '.');
                 Maze[4, 7] = new Node(4, 7, '.');
@@ -1520,7 +1520,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[7, 2], Walls.NorthWestWall);
                 SetMazeConnection(Maze[7, 3], Walls.SouthEastWall);
                 SetMazeConnection(Maze[7, 4], Walls.SouthWestWall);
-                SetMazeConnection(Maze[7, 5], Walls.SouthEastWall);
+                SetMazeConnection(Maze[7, 5], Walls.NorthEastWall);
                 SetMazeConnection(Maze[7, 6], Walls.SouthWestWall);
                 SetMazeConnection(Maze[7, 7], Walls.North);
             }
