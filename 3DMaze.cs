@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace KTANE_Solver
 {
-    class _3DMaze
+    class _3DMaze : Module
     {
         //FIELDS
         /* a 2D Node array that will represent the maze
@@ -14,7 +14,7 @@ namespace KTANE_Solver
 
         public Node[,] Maze { get; }
 
-        public _3DMaze()
+        public _3DMaze(Bomb bomb, StreamWriter logFile) : base(bomb, logFile)
         {
             Maze = new Node[8, 8];
         }
@@ -1698,20 +1698,35 @@ namespace KTANE_Solver
 
         public void PrintGrid()
         {
-            for (int row = 0; row < 15; row++)
+            PrintDebug(" ");
+
+            for (int i = 0; i < 8; i++)
             {
-                for (int column = 0; column < 15; column++)
+                PrintDebug(" " + i + " ");
+            }
+
+            PrintDebugLine("");
+
+            for (int row = 0; row < 16; row++)
+            {
+                if(row % 2 == 0)
+                {
+                    PrintDebug(" ");
+                }
+
+                for (int column = 0; column < 16; column++)
                 {
                     //printing the north walls
+
                     if (row % 2 == 0)
                     {
                         if (column % 2 == 0)
                         {
-                            Console.Write(" ");
+                            PrintDebug(" ");
                         }
 
-                        else  
-                        { 
+                        else
+                        {
                             PrintNorthWall(Maze[row / 2, column / 2]);
                         }
                     }
@@ -1719,19 +1734,29 @@ namespace KTANE_Solver
                     //printing west walls or letters
                     else
                     {
+                        if (column == 0)
+                        {
+                            PrintDebug(row / 2 + " ");
+                        }
+
                         if (column % 2 == 0)
                         {
                             PrintWestWall(Maze[row / 2, (column + 1) / 2 ]);
                         }
 
                         else
-                        { 
-                            Console.Write(Maze[row / 2, column / 2].Character + " ");
+                        {
+                            if (row == 1 && column == 1)
+                            {
+
+                            }
+
+                            PrintDebug("" + Maze[row / 2, column / 2].Character);
                         }
                     }
                 }
 
-                Console.WriteLine();
+                PrintDebugLine("");
             }
         }
 
@@ -1739,12 +1764,12 @@ namespace KTANE_Solver
         {
             if (node.North == null)
             {
-                Console.Write("_ ");
+                PrintDebug("_");
             }
 
             else
             {
-                Console.Write("  ");
+                PrintDebug(" ");
             }
         }
 
@@ -1752,12 +1777,12 @@ namespace KTANE_Solver
         {
             if (node.West == null)
             {
-                Console.Write("| ");
+                PrintDebug("|");
             }
 
             else
             {
-                Console.Write("  ");
+                PrintDebug("  ");
             }
         }
 

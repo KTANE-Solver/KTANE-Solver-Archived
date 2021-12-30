@@ -7,18 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class _3DMazeForm : Form
+    public partial class _3DMazeForm : ModuleForm
     {
         _3DMaze module;
 
-        public _3DMazeForm()
+        public _3DMazeForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
-            module = new _3DMaze();
+            UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
+            module = new _3DMaze(bomb, logFile);
             module.SetMaze('A', 'B', 'C');
+        }
+
+        public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
+        { 
+            UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
         }
 
         private void submitButton_Click(object sender, EventArgs e)

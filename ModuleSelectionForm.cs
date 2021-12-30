@@ -272,7 +272,7 @@ namespace KTANE_Solver
                 case "3D Maze":
                     if (_3DMazeForm == null)
                     {
-                        _3DMazeForm = new _3DMazeForm();
+                        _3DMazeForm = new _3DMazeForm(bomb, logFileWriter, this);
                     }
 
                     _3DMazeForm.Show();
