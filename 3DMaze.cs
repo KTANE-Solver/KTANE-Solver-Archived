@@ -1716,13 +1716,20 @@ namespace KTANE_Solver
 
                 for (int column = 0; column < 16; column++)
                 {
+                    if (row == 5 && column == 0)
+                    { }
                     //printing the north walls
 
                     if (row % 2 == 0)
                     {
-                        if (column % 2 == 0)
+                        if (column == 0)
                         {
                             PrintDebug(" ");
+                        }
+
+                        else if (column % 2 == 0)
+                        {
+                            PrintDebug("  ");
                         }
 
                         else
@@ -1736,7 +1743,7 @@ namespace KTANE_Solver
                     {
                         if (column == 0)
                         {
-                            PrintDebug(row / 2 + " ");
+                            PrintDebug("" + row / 2);
                         }
 
                         if (column % 2 == 0)
@@ -1746,11 +1753,6 @@ namespace KTANE_Solver
 
                         else
                         {
-                            if (row == 1 && column == 1)
-                            {
-
-                            }
-
                             PrintDebug("" + Maze[row / 2, column / 2].Character);
                         }
                     }
@@ -1782,7 +1784,14 @@ namespace KTANE_Solver
 
             else
             {
-                PrintDebug("  ");
+                if (node.Colunm == 0)
+                {
+                    PrintDebug(" ");
+                }
+                else
+                { 
+                    PrintDebug("  ");
+                }
             }
         }
 
