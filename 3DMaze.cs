@@ -1702,7 +1702,7 @@ namespace KTANE_Solver
 
             for (int i = 0; i < 8; i++)
             {
-                PrintDebug(" " + i + " ");
+                PrintDebug(" " + i);
             }
 
             PrintDebugLine("");
@@ -1722,14 +1722,10 @@ namespace KTANE_Solver
 
                     if (row % 2 == 0)
                     {
-                        if (column == 0)
+
+                        if (column % 2 == 0)
                         {
                             PrintDebug(" ");
-                        }
-
-                        else if (column % 2 == 0)
-                        {
-                            PrintDebug("  ");
                         }
 
                         else
@@ -1780,26 +1776,12 @@ namespace KTANE_Solver
             if (node.West == null)
             {
                 PrintDebug("|");
-
-                if (node.Colunm != 0)
-                { 
-                    PrintDebug(" ");
-                }
             }
-
-
 
             else
-            {
-                if (node.Colunm == 0)
-                {
-                    PrintDebug(" ");
-                }
-                else
-                { 
-                    PrintDebug("  ");
-                }
-            }
+            { 
+                PrintDebug(" ");
+            }       
         }
 
         /*
