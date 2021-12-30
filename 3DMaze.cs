@@ -50,10 +50,8 @@ namespace KTANE_Solver
         /* Method that will fill in the 2d array
            -Parameters (the three letters in the maze)
         */
-        public void SetMaze(char char1, char char2, char char3)
-        {
-            string str = "" + char1 + char2 + char3;
-
+        public void SetMaze(string str)
+        { 
             if (str.Contains('A') && str.Contains('B') && str.Contains('C'))
             {
                 Maze[0, 0] = new Node(0, 0, '.');
