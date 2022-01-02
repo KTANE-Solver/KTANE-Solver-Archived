@@ -184,6 +184,11 @@ namespace KTANE_Solver
                 possibleAnswer.Add("THEIR");
             }
 
+            if (ContainsWord("THERE", num))
+            {
+                possibleAnswer.Add("THERE");
+            }
+
             if (ContainsWord("THESE", num))
             {
                 possibleAnswer.Add("THESE");
