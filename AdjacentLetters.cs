@@ -39,7 +39,9 @@ namespace KTANE_Solver
         private bool Left(int row, int column)
         {
             if (column == 0)
+            { 
                 return false;
+            }
 
             switch (Grid[row,column])
             {
