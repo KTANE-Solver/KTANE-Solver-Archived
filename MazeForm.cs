@@ -153,7 +153,7 @@ namespace KTANE_Solver
 
             else if (button.BackColor == mazeColors[5])
             {
-                button.BackColor = mazeColors[1];
+                button.BackColor = mazeColors[0];
             }
         }
 
