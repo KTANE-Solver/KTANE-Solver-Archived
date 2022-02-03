@@ -165,7 +165,7 @@ namespace KTANE_Solver
                 SetMazeConnection(Maze[4, 0], Walls.NorthEastWall);
                 SetMazeConnection(Maze[4, 1], Walls.West);
                 SetMazeConnection(Maze[4, 2], Walls.East);
-                SetMazeConnection(Maze[4, 3], Walls.East);
+                SetMazeConnection(Maze[4, 3], Walls.NorthEastWall);
                 SetMazeConnection(Maze[4, 4], Walls.North);
                 SetMazeConnection(Maze[4, 5], Walls.South);
                 SetMazeConnection(Maze[4, 6], Walls.East);
