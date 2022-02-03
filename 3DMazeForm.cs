@@ -31,6 +31,7 @@ namespace KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
             module.PrintGrid();
+            PrintDebugInfo();
         }
 
         private void PrintDebugInfo()
