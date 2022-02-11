@@ -265,8 +265,8 @@ namespace KTANE_Solver
                 Maze[6, 7] = new Node(6, 7, '.');
 
                 Maze[7, 0] = new Node(7, 0, '.');
-                Maze[7, 1] = new Node(7, 1, '.');
-                Maze[7, 2] = new Node(7, 2, 'D');
+                Maze[7, 1] = new Node(7, 1, 'D');
+                Maze[7, 2] = new Node(7, 2, '.');
                 Maze[7, 3] = new Node(7, 3, '.');
                 Maze[7, 4] = new Node(7, 4, '*');
                 Maze[7, 5] = new Node(7, 5, '.');
