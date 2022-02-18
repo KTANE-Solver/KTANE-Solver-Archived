@@ -133,5 +133,14 @@ namespace KTANE_Solver
         {
             Text = "KTANE Bot by Hawker";
         }
+
+        /// <summary>
+        /// Prints a header for whenever a module is solved (or it's first stage is)
+        /// </summary>
+        /// <param name="name"></param>
+        public void PrintHeader(string name)
+        {
+            PrintDebugLine($"================={name.ToUpper()}=================\n");
+        }
     }
 }

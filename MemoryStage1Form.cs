@@ -116,6 +116,7 @@ namespace KTANE_Solver
 
             Memory module = new Memory(Bomb, LogFileWriter);
 
+            PrintHeader("Memory");
             module.Solve(1, display, num1, num2, num3, num4);
 
             this.Hide();
