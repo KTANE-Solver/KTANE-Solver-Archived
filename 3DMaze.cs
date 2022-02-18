@@ -381,50 +381,50 @@ namespace KTANE_Solver
                 Maze[2, 6] = new Node(2, 6, '*', Walls.NorthEast);
                 Maze[2, 7] = new Node(2, 7, 'C', Walls.West);
 
-                Maze[3, 0] = new Node(3, 0, '.');
-                Maze[3, 1] = new Node(3, 1, 'A');
-                Maze[3, 2] = new Node(3, 2, '.');
-                Maze[3, 3] = new Node(3, 3, '.');
-                Maze[3, 4] = new Node(3, 4, '.');
-                Maze[3, 5] = new Node(3, 5, 'H');
-                Maze[3, 6] = new Node(3, 6, '.');
-                Maze[3, 7] = new Node(3, 7, '.');
+                Maze[3, 0] = new Node(3, 0, '.', Walls.West);
+                Maze[3, 1] = new Node(3, 1, 'A', Walls.South);
+                Maze[3, 2] = new Node(3, 2, '.', Walls.None);
+                Maze[3, 3] = new Node(3, 3, '.', Walls.None);
+                Maze[3, 4] = new Node(3, 4, '.', Walls.None);
+                Maze[3, 5] = new Node(3, 5, 'H', Walls.South);
+                Maze[3, 6] = new Node(3, 6, '.', Walls.East);
+                Maze[3, 7] = new Node(3, 7, '.', Walls.Vertical);
 
-                Maze[4, 0] = new Node(4, 0, 'C');
-                Maze[4, 1] = new Node(4, 1, '.');
-                Maze[4, 2] = new Node(4, 2, 'H');
-                Maze[4, 3] = new Node(4, 3, '.');
-                Maze[4, 4] = new Node(4, 4, 'C');
-                Maze[4, 5] = new Node(4, 5, '.');
-                Maze[4, 6] = new Node(4, 6, 'A');
-                Maze[4, 7] = new Node(4, 7, '.');
+                Maze[4, 0] = new Node(4, 0, 'C', Walls.Vertical);
+                Maze[4, 1] = new Node(4, 1, '.', Walls.NorthWest);
+                Maze[4, 2] = new Node(4, 2, 'H', Walls.None);
+                Maze[4, 3] = new Node(4, 3, '.', Walls.None);
+                Maze[4, 4] = new Node(4, 4, 'C', Walls.None);
+                Maze[4, 5] = new Node(4, 5, '.', Walls.North);
+                Maze[4, 6] = new Node(4, 6, 'A', Walls.None);
+                Maze[4, 7] = new Node(4, 7, '.', Walls.SouthEast);
 
-                Maze[5, 0] = new Node(5, 0, '.');
-                Maze[5, 1] = new Node(5, 1, '*');
-                Maze[5, 2] = new Node(5, 2, '.');
-                Maze[5, 3] = new Node(5, 3, '.');
-                Maze[5, 4] = new Node(5, 4, '.');
-                Maze[5, 5] = new Node(5, 5, '.');
-                Maze[5, 6] = new Node(5, 6, '.');
-                Maze[5, 7] = new Node(5, 7, 'A');
+                Maze[5, 0] = new Node(5, 0, '.', Walls.SouthEast);
+                Maze[5, 1] = new Node(5, 1, '*', Walls.SouthWest);
+                Maze[5, 2] = new Node(5, 2, '.', Walls.SouthEast);
+                Maze[5, 3] = new Node(5, 3, '.', Walls.West);
+                Maze[5, 4] = new Node(5, 4, '.', Walls.East);
+                Maze[5, 5] = new Node(5, 5, '.', Walls.West);
+                Maze[5, 6] = new Node(5, 6, '.', Walls.SouthEast);
+                Maze[5, 7] = new Node(5, 7, 'A', Walls.NorthWest);
 
-                Maze[6, 0] = new Node(6, 0, '.');
-                Maze[6, 1] = new Node(6, 1, '.');
-                Maze[6, 2] = new Node(6, 2, '.');
-                Maze[6, 3] = new Node(6, 3, 'C');
-                Maze[6, 4] = new Node(6, 4, '.');
-                Maze[6, 5] = new Node(6, 5, 'H');
-                Maze[6, 6] = new Node(6, 6, '.');
-                Maze[6, 7] = new Node(6, 7, '.');
+                Maze[6, 0] = new Node(6, 0, '.', Walls.NorthWest);
+                Maze[6, 1] = new Node(6, 1, '.', Walls.Horizontal);
+                Maze[6, 2] = new Node(6, 2, '.', Walls.NorthEast);
+                Maze[6, 3] = new Node(6, 3, 'C', Walls.SouthWest);
+                Maze[6, 4] = new Node(6, 4, '.', Walls.South);
+                Maze[6, 5] = new Node(6, 5, 'H', Walls.None);
+                Maze[6, 6] = new Node(6, 6, '.', Walls.Horizontal);
+                Maze[6, 7] = new Node(6, 7, '.', Walls.NorthEast);
 
-                Maze[7, 0] = new Node(7, 0, '.');
-                Maze[7, 1] = new Node(7, 1, '.');
-                Maze[7, 2] = new Node(7, 2, 'A');
-                Maze[7, 3] = new Node(7, 3, '.');
-                Maze[7, 4] = new Node(7, 4, '.');
-                Maze[7, 5] = new Node(7, 5, '.');
-                Maze[7, 6] = new Node(7, 6, '.');
-                Maze[7, 7] = new Node(7, 7, '.');
+                Maze[7, 0] = new Node(7, 0, '.', Walls.East);
+                Maze[7, 1] = new Node(7, 1, '.', Walls.NorthWest);
+                Maze[7, 2] = new Node(7, 2, 'A', Walls.South);
+                Maze[7, 3] = new Node(7, 3, '.', Walls.Horizontal);
+                Maze[7, 4] = new Node(7, 4, '.', Walls.Horizontal);
+                Maze[7, 5] = new Node(7, 5, '.', Walls.SouthEast);
+                Maze[7, 6] = new Node(7, 6, '.', Walls.NorthWest);
+                Maze[7, 7] = new Node(7, 7, '.', Walls.North);
 
             }
 
