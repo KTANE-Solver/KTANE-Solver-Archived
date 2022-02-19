@@ -20,7 +20,7 @@ namespace KTANE_Solver
             InitializeComponent();
             UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
             module = new _3DMaze(bomb, logFile);
-            module.SetMaze("ABC");
+            module.SetMaze("ACD");
         }
 
         public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
@@ -34,41 +34,82 @@ namespace KTANE_Solver
 
             PrintDebugLine("");
 
-            PrintDebugInfo();
+            VerifyNodes();
+
+            //PrintDebugInfo();
+        }
+
+        private void VerifyNodes()
+        {
+            int counter = 0;
+
+            foreach (_3DMaze.Node start in module.Maze)
+            {
+                //verify that start's north has south set to start
+                if (start.North != null && start.North.South != start)
+                {
+                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.North.Row},{start.North.Colunm}\n");
+                    counter++;
+                }
+
+                //verify that start's south has north set to start
+                if (start.South != null && start.South.North!= start)
+                {
+                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.South.Row},{start.South.Colunm}\n");
+                    counter++;
+                }
+
+                //verify that start's east has west set to start
+                if (start.East != null && start.East.West != start)
+                {
+                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.East.Row},{start.East.Colunm}\n");
+                    counter++;
+                }
+
+                //verify that start's west has east set to start
+                if (start.West != null && start.West.East != start)
+                {
+                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.North.West},{start.West.Colunm}\n");
+                    counter++;
+                }
+            }
+
+            if (counter == 0)
+            {
+                PrintDebugLine("No inconsistencies found\n");
+            }
+
         }
 
         private void PrintDebugInfo()
         { 
-            for (int i = 0; i < 8; i++)
+            foreach(_3DMaze.Node start in module.Maze)
             {
-                for (int j = 0; j < 8; j++)
+
+                PrintDebugLine("Start: " + GetNodeInformation(start));
+
+                if (start.North != null)
                 {
-                    _3DMaze.Node start = module.Maze[i, j];
-
-                    PrintDebugLine("Start: " + GetNodeInformation(start));
-
-                    if (start.North != null)
-                    {
-                        PrintDebugLine("North: " + GetNodeInformation(start.North));
-                    }
-
-                    if (start.East != null)
-                    {
-                        PrintDebugLine("East: " + GetNodeInformation(start.East));
-                    }
-
-                    if (start.South != null)
-                    {
-                        PrintDebugLine("South: " + GetNodeInformation(start.South));
-                    }
-
-                    if (start.West != null)
-                    {
-                        PrintDebugLine("West: " + GetNodeInformation(start.West));
-                    }
-
-                    PrintDebugLine("");
+                    PrintDebugLine("North: " + GetNodeInformation(start.North));
                 }
+
+                if (start.East != null)
+                {
+                    PrintDebugLine("East: " + GetNodeInformation(start.East));
+                }
+
+                if (start.South != null)
+                {
+                    PrintDebugLine("South: " + GetNodeInformation(start.South));
+                }
+
+                if (start.West != null)
+                {
+                    PrintDebugLine("West: " + GetNodeInformation(start.West));
+                }
+
+                PrintDebugLine("");
+                
             }
 
         }

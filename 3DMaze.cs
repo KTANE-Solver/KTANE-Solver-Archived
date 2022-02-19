@@ -229,7 +229,7 @@ namespace KTANE_Solver
                 Maze[2, 4] = new Node(2, 4, 'B', Walls.North);
                 Maze[2, 5] = new Node(2, 5, '.', Walls.NorthEast);
                 Maze[2, 6] = new Node(2, 6, '.', Walls.Vertical);
-                Maze[2, 7] = new Node(2, 7, '.', Walls.West);
+                Maze[2, 7] = new Node(2, 7, '.', Walls.NorthWest);
 
                 Maze[3, 0] = new Node(3, 0, '.', Walls.Vertical);
                 Maze[3, 1] = new Node(3, 1, '.', Walls.NorthWest);
@@ -273,8 +273,8 @@ namespace KTANE_Solver
                 Maze[7, 3] = new Node(7, 3, 'H', Walls.None);
                 Maze[7, 4] = new Node(7, 4, '.', Walls.South);
                 Maze[7, 5] = new Node(7, 5, '.', Walls.None);
-                Maze[7, 6] = new Node(7, 6, '.', Walls.SouthWest);
-                Maze[7, 7] = new Node(7, 7, '.', Walls.SouthEast);
+                Maze[7, 6] = new Node(7, 6, '.', Walls.SouthEast);
+                Maze[7, 7] = new Node(7, 7, '.', Walls.SouthWest);
             }
 
             else if (str.Contains('A') && str.Contains('C') && str.Contains('D'))
@@ -810,8 +810,6 @@ namespace KTANE_Solver
 
         }
 
-
-
         public void PrintGrid()
         {
             PrintDebug(" ");
@@ -1100,17 +1098,5 @@ namespace KTANE_Solver
             }
 
         }
-        //CLASSES
-        /* Node class that contains the following fields:
-        
-        
-         -Row (int)
-         -Column (int)
-         -Charater (char)
-         -North neighbor (Node)
-         -East neighbor (Node)
-         -South neighbor (Node)
-         -West neighbor (Node)
-        */
     }
 }
