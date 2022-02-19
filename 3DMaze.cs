@@ -82,7 +82,7 @@ namespace KTANE_Solver
                 Maze[2, 7] = new Node(2, 7, '.', Walls.SouthWest);
 
                 Maze[3, 0] = new Node(3, 0, '.', Walls.SouthEast);
-                Maze[3, 1] = new Node(3, 1, 'C', Walls.East);
+                Maze[3, 1] = new Node(3, 1, 'C', Walls.West);
                 Maze[3, 2] = new Node(3, 2, '.', Walls.NorthEast);
                 Maze[3, 3] = new Node(3, 3, '.', Walls.SouthWest);
                 Maze[3, 4] = new Node(3, 4, '*', Walls.SouthEast);
@@ -93,7 +93,7 @@ namespace KTANE_Solver
                 Maze[4, 0] = new Node(4, 0, '.', Walls.NorthEast);
                 Maze[4, 1] = new Node(4, 1, '.', Walls.West);
                 Maze[4, 2] = new Node(4, 2, '.', Walls.East);
-                Maze[4, 3] = new Node(4, 3, '.', Walls.NorthEast);
+                Maze[4, 3] = new Node(4, 3, '.', Walls.NorthWest);
                 Maze[4, 4] = new Node(4, 4, 'A', Walls.North);
                 Maze[4, 5] = new Node(4, 5, '.', Walls.South);
                 Maze[4, 6] = new Node(4, 6, '.', Walls.East);
@@ -108,7 +108,7 @@ namespace KTANE_Solver
                 Maze[5, 6] = new Node(5, 6, 'B', Walls.South);
                 Maze[5, 7] = new Node(5, 7, '.', Walls.None);
 
-                Maze[6, 0] = new Node(6, 0, '*', Walls.East);
+                Maze[6, 0] = new Node(6, 0, '*', Walls.SouthEast);
                 Maze[6, 1] = new Node(6, 1, '.', Walls.SouthWest);
                 Maze[6, 2] = new Node(6, 2, 'C', Walls.North);
                 Maze[6, 3] = new Node(6, 3, '.', Walls.NorthEast);
