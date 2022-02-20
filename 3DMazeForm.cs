@@ -69,7 +69,7 @@ namespace KTANE_Solver
                 //verify that start's west has east set to start
                 if (start.West != null && start.West.East != start)
                 {
-                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.North.West},{start.West.Colunm}\n");
+                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.West.Row},{start.West.Colunm}\n");
                     counter++;
                 }
             }
