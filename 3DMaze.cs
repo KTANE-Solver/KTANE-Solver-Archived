@@ -466,11 +466,11 @@ namespace KTANE_Solver
                 Maze[3, 6] = new Node(3, 6, '.', Walls.None);
                 Maze[3, 7] = new Node(3, 7, '.', Walls.South);
 
-                Maze[4, 0] = new Node(4, 0, '.', Walls.West);
+                Maze[4, 0] = new Node(4, 0, '.', Walls.SouthWest);
                 Maze[4, 1] = new Node(4, 1, '.', Walls.South);
                 Maze[4, 2] = new Node(4, 2, '.', Walls.Horizontal);
-                Maze[4, 3] = new Node(4, 3, '.', Walls.East);
-                Maze[4, 4] = new Node(4, 4, 'H', Walls.Vertical);
+                Maze[4, 3] = new Node(4, 3, '.', Walls.North);
+                Maze[4, 4] = new Node(4, 4, 'H', Walls.East);
                 Maze[4, 5] = new Node(4, 5, 'D', Walls.NorthWest);
                 Maze[4, 6] = new Node(4, 6, '.', Walls.East);
                 Maze[4, 7] = new Node(4, 7, '.', Walls.NorthU);
