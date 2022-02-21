@@ -131,58 +131,56 @@ namespace KTANE_Solver
         public void Solve()
         {
             //setting the statements
-            topFirstStatement = SetStatement("Top", "First", topFirstLetter);
+            topFirstStatement = SetStatement(topFirstLetter);
 
-            topSecondStatement = SetStatement("Top", "Second", topSecondLetter);
+            topSecondStatement = SetStatement(topSecondLetter);
 
-            topThirdStatement = SetStatement("Top", "Third", topThirdLetter);
+            topThirdStatement = SetStatement(topThirdLetter);
 
-            bottomFirstStatement = SetStatement("Bottom", "First", bottomFirstLetter);
+            bottomFirstStatement = SetStatement(bottomFirstLetter);
 
-            bottomSecondStatement = SetStatement("Bottom", "Second", bottomSecondLetter);
+            bottomSecondStatement = SetStatement(bottomSecondLetter);
 
-            bottomThirdStatement = SetStatement("Bottom", "Third", bottomThirdLetter);
+            bottomThirdStatement = SetStatement(bottomThirdLetter);
 
             //updating statements
-            topFirstStatement = UpdateStatement("Top First", topFirstStatement, topFirstNotStatement);
-            topSecondStatement = UpdateStatement("Top Second", topSecondStatement, topSecondNotStatement);
-            topThirdStatement = UpdateStatement("Top Third", topThirdStatement, topThirdNotStatement);
+            topFirstStatement = UpdateStatement(topFirstStatement, topFirstNotStatement);
+            topSecondStatement = UpdateStatement(topSecondStatement, topSecondNotStatement);
+            topThirdStatement = UpdateStatement(topThirdStatement, topThirdNotStatement);
 
-            bottomFirstStatement = UpdateStatement("Bottom First", bottomFirstStatement, bottomFirstNotStatement);
-            bottomSecondStatement = UpdateStatement("Bottom Second", bottomSecondStatement, bottomSecondNotStatement);
-            bottomThirdStatement = UpdateStatement("Bottom Third", bottomThirdStatement, bottomThirdNotStatement);
+            bottomFirstStatement = UpdateStatement(bottomFirstStatement, bottomFirstNotStatement);
+            bottomSecondStatement = UpdateStatement(bottomSecondStatement, bottomSecondNotStatement);
+            bottomThirdStatement = UpdateStatement(bottomThirdStatement, bottomThirdNotStatement);
 
             //evaluating the statements
 
             bool topEvaluation;
             if (topFirstTwoFirst)
             {
-                topEvaluation = EvaluateStatement(topFirstStatement, topSecondStatement, topFirstOperation, "Top", "first");
-                topEvaluation = EvaluateStatement(topEvaluation, topThirdStatement, topSecondOperation, "Top", "second");
+                topEvaluation = EvaluateStatement(topFirstStatement, topSecondStatement, topFirstOperation);
+                topEvaluation = EvaluateStatement(topEvaluation, topThirdStatement, topSecondOperation);
             }
 
             else
             {
-                topEvaluation = EvaluateStatement(topSecondStatement, topThirdStatement, topSecondOperation, "Top", "second");
-                topEvaluation = EvaluateStatement(topFirstStatement, topEvaluation, topFirstOperation, "Top", "first");
+                topEvaluation = EvaluateStatement(topSecondStatement, topThirdStatement, topSecondOperation);
+                topEvaluation = EvaluateStatement(topFirstStatement, topEvaluation, topFirstOperation);
             }
 
             bool bottomEvaluation;
             if (bottomFirstTwoFirst)
             {
-                bottomEvaluation = EvaluateStatement(bottomFirstStatement, bottomSecondStatement, bottomFirstOperation, "Bottom", "first");
-                bottomEvaluation = EvaluateStatement(bottomEvaluation, bottomThirdStatement, bottomSecondOperation, "Bottom", "second");
+                bottomEvaluation = EvaluateStatement(bottomFirstStatement, bottomSecondStatement, bottomFirstOperation);
+                bottomEvaluation = EvaluateStatement(bottomEvaluation, bottomThirdStatement, bottomSecondOperation);
             }
 
             else
             {
-                bottomEvaluation = EvaluateStatement(bottomSecondStatement, bottomThirdStatement, bottomSecondOperation, "Bottom", "second");
-                bottomEvaluation = EvaluateStatement(bottomFirstStatement, bottomEvaluation, bottomFirstOperation, "Bottom", "first");
+                bottomEvaluation = EvaluateStatement(bottomSecondStatement, bottomThirdStatement, bottomSecondOperation);
+                bottomEvaluation = EvaluateStatement(bottomFirstStatement, bottomEvaluation, bottomFirstOperation);
             }
 
-            String text = $"Top: {topEvaluation} \nBottom: {bottomEvaluation}";
-
-            ShowAnswer(text, "Logic Answer");
+            ShowAnswer($"Top: {topEvaluation} \nBottom: {bottomEvaluation}", "Logic Answer");
         }
 
         //=========METHODS=========
@@ -191,15 +189,11 @@ namespace KTANE_Solver
         /// Tells if a statement if true or false
         /// based on a character
         /// </summary>
-        /// <param name="top">the placement vertically of the letter</param>
-        /// <param name="place">the placement horizontally of the letter</param>
         /// <param name="character">the charcter the statement will be based on</param>
         /// <returns>if the statement is true or false</returns>
-        private bool SetStatement(String top, String place, char character)
+        private bool SetStatement(char character)
         {
             bool statement = false;
-            String statementString = "";
-
             switch (character)
             {
                 //A - Number of batteries = number of indicators
@@ -207,161 +201,138 @@ namespace KTANE_Solver
                     
 
                     statement = Bomb.Battery == Bomb.IndicatorNum;
-                    statementString = "Number of batteries = number of indicators";
                     break;
 
                 //B - Serial number has more letters than digits
                 case 'B':
 
                     statement = Bomb.LetterNum > Bomb.DigitNum;
-                    statementString = "Serial number has more letters than digits";
                     break;
 
                 //C - Has IND indicator
                 case 'C':
 
                     statement = Bomb.Ind.Visible;
-                    statementString = "Has IND indicator";
                     break;
 
                 //D - Has FRK indicator
                 case 'D':
 
                     statement = Bomb.Frk.Visible;
-                    statementString = "Has FRK indicator";
                     break;
 
                 //E - Exactly 1 unlit indicator
                 case 'E':
 
                     statement = Bomb.IndicatorUnlitNum == 1;
-                    statementString = "Exactly 1 unlit indicator";
                     break;
 
                 //F - More than 1 port type
                 case 'F':
 
                     statement = Bomb.UniquePortNum > 1;
-                    statementString = "More than 1 port type";
                     break;
 
                 //G - 2 batteries or more
                 case 'G':
 
                     statement = Bomb.Battery >= 2;
-                    statementString = "2 batteries or more";
                     break;
 
                 //H - Less than 2 batteries
                 case 'H':
 
                     statement = Bomb.Battery < 2;
-                    statementString = "Less than 2 batteries";
                     break;
 
                 //I - Last digit of serial number is odd
                 case 'I':
 
                     statement = Bomb.LastDigit % 2 == 1;
-                    statementString = "Last digit of serial number is odd";
                     break;
 
                 //J - More than 4 batteries
                 case 'J':
 
                     statement = Bomb.Battery > 4;
-                    statementString = "More than 4 batteries";
                     break;
 
                 //K - Exactly 1 lit indicator
                 case 'K':
 
                     statement = Bomb.IndicatorLitNum == 1;
-                    statementString = "Exactly 1 lit indicator";
                     break;
 
                 //L - More than 2 indicators
                 case 'L':
 
                     statement = Bomb.IndicatorNum > 2;
-                    statementString = "More than 2 indicators";
                     break;
 
                 //M - No duplicate ports
                 case 'M':
 
                     statement = Bomb.UniquePortNum == Bomb.PortNum;
-                    statementString = "No duplicate ports";
                     break;
 
                 //N - More than 2 battery holders
                 case 'N':
 
                     statement = Bomb.BatteryHolder > 2;
-                    statementString = "More than 2 battery holders";
                     break;
 
                 //O - Has both lit and unlit indicators
                 case 'O':
 
                     statement = Bomb.IndicatorLitNum > 0 && Bomb.IndicatorUnlitNum > 0;
-                    statementString = "Has both lit and unlit indicators";
                     break;
 
                 //P - Has parallel port
                 case 'P':
 
                     statement = Bomb.Parallel.Visible;
-                    statementString = "Has parallel port";
                     break;
 
                 //Q - Exactly 2 ports
                 case 'Q':
 
                     statement = Bomb.PortNum == 2;
-                    statementString = "Exactly 2 ports";
                     break;
 
                 //R - Has PS/2 port
                 case 'R':
 
                     statement = Bomb.Ps.Visible;
-                    statementString = "Has PS/2 port";
                     break;
 
                 //S - Sum of digits in serial number > 10
                 case 'S':
 
                     statement = Bomb.DigitSum > 10;
-                    statementString = "2 batteries or more";
                     break;
 
                 //T - Has MSA indicator
                 case 'T':
 
                     statement = Bomb.Msa.Visible;
-                    statementString = "Has MSA indicator";
                     break;
 
                 //U - Exactly 1 battery holder
                 case 'U':
 
                     statement = Bomb.BatteryHolder == 1;
-                    statementString = "Exactly 1 battery holder";
                     break;
 
                 //V - Serial number contains vowels
                 case 'V':
 
                     statement = Bomb.HasVowel;
-                    statementString = "Serial number contains vowels";
                     break;
 
                 //W - No indicators
                 case 'W':
 
                     statement = Bomb.IndicatorNum == 0;
-                    statementString = "No indicators";
                     break;
 
                 //X - Exactly 1 indicator
@@ -385,12 +356,11 @@ namespace KTANE_Solver
             return statement;
         }
 
-        private bool UpdateStatement(String letterPosition, bool statement, bool notStatement)
+        private bool UpdateStatement(bool statement, bool notStatement)
         {
             if (notStatement)
             {
                 statement = !statement;
-                PrintDebugLine($"Not statement detected. {letterPosition} Statement is now {statement}\n");
             }
 
             return statement;
@@ -402,74 +372,45 @@ namespace KTANE_Solver
         /// <param name="bool1">the first boolean</param>
         /// <param name="bool2">the second boolean</param>
         /// <param name="operation">the operation used to evaulate the statement</param>
-        /// <param name="topBottom">if the statement is on the top or bottom</param>
-        /// <param name="firstSecond">if the statement is using the first or second operation</param>
         /// <returns>the evauluated statement</returns>
 
-        private bool EvaluateStatement(bool bool1, bool bool2, String operation, String topBottom, String firstSecond)
+        private bool EvaluateStatement(bool bool1, bool bool2, String operation)
         {
-            bool statement = false;
-            String opeartionString = "";
-
             switch (operation)
             {
                 //AND
                 case "∧":
-                    statement = bool1 && bool2;
-                    opeartionString = "AND";
-                    break;
+                    return bool1 && bool2;
 
                 //OR
                 case "∨":
-                    statement = bool1 || bool2;
-                    opeartionString = "OR";
-                    break;
+                    return bool1 || bool2;
 
                 //XOR
                 case "⊻":
-                    statement = bool1 ^ bool2;
-                    opeartionString = "XOR";
-
-                    break;
+                    return bool1 ^ bool2;
 
                 //NAND
                 case "|":
-                    statement = !(bool1 && bool2);
-                    opeartionString = "NAND";
-                    break;
+                    return !(bool1 && bool2);
 
                 //NOR
                 case "↓":
-                    statement = !(bool1 || bool2);
-                    opeartionString = "NOR";
-                    break;
+                    return !(bool1 || bool2);
 
                 //XNOR
                 case "↔":
-                    statement = !(bool1 ^ bool2);
-                    opeartionString = "XNOR";
-                    break;
+                    return !(bool1 ^ bool2);
 
                 //NOT 1 OR 2
                 case "→":
-                    statement = !bool1 || bool2;
-                    opeartionString = "IMPLIES LEFT";
-                    break;
+                    return !bool1 || bool2;
 
                 //NOT 2 OR 1
-                case "←":
-                    statement = bool1 || !bool2;
-                    opeartionString = "IMPLIES RIGHT";
-                    break;
-
                 default:
-                    statement = false;
-                    opeartionString = "INVALID";
-                    break;
+                    return bool1 || !bool2;
             }
 
-            PrintDebugLine($"{topBottom} {firstSecond} statement: {bool1} {opeartionString} {bool2} returns {statement}\n");
-            return statement;
         }
     }
 }
