@@ -132,6 +132,8 @@ namespace KTANE_Solver
                     cycle += "Y";
                 }
 
+            PrintHeader("Light Cycle");
+
             new LightCycle(Bomb, LogFileWriter, cycle);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
