@@ -503,7 +503,7 @@ namespace KTANE_Solver
                 Maze[7, 7] = new Node(7, 7, '.', Walls.SouthU);
             }
 
-            else if (str.Contains('D') && str.Contains('C') && str.Contains('B'))
+            else if (str.Contains('B') && str.Contains('C') && str.Contains('D'))
             {
                 Maze[0, 0] = new Node(0, 0, '.', Walls.West);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.Horizontal);
@@ -662,7 +662,7 @@ namespace KTANE_Solver
                 Maze[0, 4] = new Node(0, 4, 'B', Walls.West);
                 Maze[0, 5] = new Node(0, 5, '.', Walls.None);
                 Maze[0, 6] = new Node(0, 6, '.', Walls.None);
-                Maze[0, 7] = new Node(0, 7, 'H', Walls.North);
+                Maze[0, 7] = new Node(0, 7, 'H', Walls.Horizontal);
 
                 Maze[1, 0] = new Node(1, 0, '.', Walls.SouthU);
                 Maze[1, 1] = new Node(1, 1, '.', Walls.SouthWest);
@@ -679,7 +679,7 @@ namespace KTANE_Solver
                 Maze[2, 3] = new Node(2, 3, '.', Walls.Horizontal);
                 Maze[2, 4] = new Node(2, 4, '*', Walls.EastU);
                 Maze[2, 5] = new Node(2, 5, '.', Walls.Vertical);
-                Maze[2, 6] = new Node(2, 6, 'B', Walls.SouthEast);
+                Maze[2, 6] = new Node(2, 6, 'B', Walls.SouthWest);
                 Maze[2, 7] = new Node(2, 7, '.', Walls.South);
 
                 Maze[3, 0] = new Node(3, 0, 'D', Walls.North);
@@ -694,7 +694,7 @@ namespace KTANE_Solver
                 Maze[4, 0] = new Node(4, 0, '.', Walls.South);
                 Maze[4, 1] = new Node(4, 1, '.', Walls.East);
                 Maze[4, 2] = new Node(4, 2, '.', Walls.Vertical);
-                Maze[4, 3] = new Node(4, 3, '.', Walls.NorthEast);
+                Maze[4, 3] = new Node(4, 3, '.', Walls.NorthWest);
                 Maze[4, 4] = new Node(4, 4, 'D', Walls.East);
                 Maze[4, 5] = new Node(4, 5, '.', Walls.West);
                 Maze[4, 6] = new Node(4, 6, '.', Walls.North);
@@ -710,7 +710,7 @@ namespace KTANE_Solver
                 Maze[5, 7] = new Node(5, 7, '.', Walls.East);
 
                 Maze[6, 0] = new Node(6, 0, '.', Walls.Vertical);
-                Maze[6, 1] = new Node(6, 1, '.', Walls.EastU);
+                Maze[6, 1] = new Node(6, 1, '.', Walls.WestU);
                 Maze[6, 2] = new Node(6, 2, '.', Walls.North);
                 Maze[6, 3] = new Node(6, 3, 'H', Walls.None);
                 Maze[6, 4] = new Node(6, 4, '.', Walls.Horizontal);
