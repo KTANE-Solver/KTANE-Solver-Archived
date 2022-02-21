@@ -354,13 +354,13 @@ namespace KTANE_Solver
 
             else if (str.Contains('A') && str.Contains('C') && str.Contains('H'))
             {
-                Maze[0, 0] = new Node(0, 0, 'H', Walls.East);
+                Maze[0, 0] = new Node(0, 0, 'H', Walls.SouthWest);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.South);
                 Maze[0, 2] = new Node(0, 2, 'C', Walls.North);
                 Maze[0, 3] = new Node(0, 3, '.', Walls.Horizontal);
                 Maze[0, 4] = new Node(0, 4, '.', Walls.NorthEast);
                 Maze[0, 5] = new Node(0, 5, '.', Walls.NorthU);
-                Maze[0, 6] = new Node(0, 6, 'A', Walls.SouthWest);
+                Maze[0, 6] = new Node(0, 6, 'A', Walls.West);
                 Maze[0, 7] = new Node(0, 7, '.', Walls.East);
 
                 Maze[1, 0] = new Node(1, 0, '*', Walls.NorthWest);
@@ -415,7 +415,7 @@ namespace KTANE_Solver
                 Maze[6, 4] = new Node(6, 4, '.', Walls.South);
                 Maze[6, 5] = new Node(6, 5, 'H', Walls.None);
                 Maze[6, 6] = new Node(6, 6, '.', Walls.Horizontal);
-                Maze[6, 7] = new Node(6, 7, '.', Walls.NorthEast);
+                Maze[6, 7] = new Node(6, 7, '.', Walls.SouthEast);
 
                 Maze[7, 0] = new Node(7, 0, '.', Walls.East);
                 Maze[7, 1] = new Node(7, 1, '.', Walls.NorthWest);
