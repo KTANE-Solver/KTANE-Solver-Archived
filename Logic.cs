@@ -130,8 +130,6 @@ namespace KTANE_Solver
 
         public void Solve()
         {
-            LogFileWriter.WriteLine("======================LOGIC======================");
-
             //setting the statements
             topFirstStatement = SetStatement("Top", "First", topFirstLetter);
 
@@ -370,26 +368,20 @@ namespace KTANE_Solver
                 case 'X':
 
                     statement = Bomb.IndicatorNum == 1;
-                    statementString = "Exactly 1 indicator";
                     break;
 
                 //Y - More than 5 ports
                 case 'Y':
 
                     statement = Bomb.PortNum > 5;
-                    statementString = "More than 5 ports";
                     break;
                     
                 //Z - Less than 2 ports
                 case 'Z':
 
                     statement = Bomb.PortNum < 2;
-                    statementString = "Less than 2 ports";
                     break;
             }
-
-            LogFileWriter.WriteLine($"{top} {place}: {character} - {statementString}: {statement} \n");
-
             return statement;
         }
 
@@ -398,7 +390,7 @@ namespace KTANE_Solver
             if (notStatement)
             {
                 statement = !statement;
-                LogFileWriter.WriteLine($"Not statement detected. {letterPosition} Statement is now {statement}\n");
+                PrintDebugLine($"Not statement detected. {letterPosition} Statement is now {statement}\n");
             }
 
             return statement;
@@ -476,7 +468,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            LogFileWriter.WriteLine($"{topBottom} {firstSecond} statement: {bool1} {opeartionString} {bool2} returns {statement}\n");
+            PrintDebugLine($"{topBottom} {firstSecond} statement: {bool1} {opeartionString} {bool2} returns {statement}\n");
             return statement;
         }
     }

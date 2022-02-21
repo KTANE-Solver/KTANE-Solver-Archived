@@ -105,7 +105,7 @@ namespace KTANE_Solver
             comboBox.Items.Clear();
             String [] operations = new String [] { "∧", "∨", "	⊻", "|", "↓", "↔", "→", "←" };
             comboBox.Items.AddRange(operations);
-            comboBox.Text = "∧";
+            comboBox.Text = operations[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -317,6 +317,7 @@ namespace KTANE_Solver
             bottomSecondOperation = bottomSecondOperation.Replace(tab.ToString(), "");
 
 
+            PrintHeader("Logic");
             logicModule = new Logic(Bomb, topFirstNotCheckBox.Checked, topFirstChar, 
                                     topSecondNotCheckBox.Checked, topSecondChar, 
                                     topThirdNotCheckBox.Checked, topThirdChar, 
