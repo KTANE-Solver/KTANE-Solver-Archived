@@ -143,6 +143,8 @@ namespace KTANE_Solver
 
             bottomThirdStatement = SetStatement(bottomThirdLetter);
 
+            PrintLetterInfo(new List<char> {topFirstLetter, topSecondLetter, topThirdLetter, bottomFirstLetter, bottomFirstLetter, bottomThirdLetter}.Distinct().ToList());
+
             //updating statements
             topFirstStatement = UpdateStatement(topFirstStatement, topFirstNotStatement);
             topSecondStatement = UpdateStatement(topSecondStatement, topSecondNotStatement);
@@ -184,6 +186,20 @@ namespace KTANE_Solver
         }
 
         //=========METHODS=========
+
+        /// <summary>
+        /// Prints if each letter is true or not
+        /// </summary>
+        /// <param name="list">the list of letters</param>
+        private void PrintLetterInfo(List<char> list)
+        {
+            PrintDebugLine("Letters:");
+            foreach (char c in list)
+            {
+                PrintDebugLine($"{c}: ");
+            }
+
+        }
 
         /// <summary>
         /// Tells if a statement if true or false
