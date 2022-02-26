@@ -54,9 +54,6 @@ namespace KTANE_Solver
             enemy = new Enemy(enemyString);
 
             answer = "";
-
-
-            
         }
 
         public void Solve()
