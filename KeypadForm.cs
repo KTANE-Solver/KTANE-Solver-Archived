@@ -335,6 +335,7 @@ namespace KTANE_Solver
                 return;
             }
 
+            PrintHeader("Keypad");
 
             Keypad module = new Keypad(image1Name, image2Name, image3Name, image4Name, Bomb, LogFileWriter);
 

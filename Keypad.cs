@@ -71,7 +71,12 @@ namespace KTANE_Solver
 
         public void Solve()
         {
-            
+
+            //Debug information
+            PrintSymbol(1, symbol1);
+            PrintSymbol(2, symbol2);
+            PrintSymbol(3, symbol3);
+            PrintSymbol(4, symbol4);
 
             //check which row contains all symbols
             Symbol[] row = FindCorrectRow();
@@ -79,6 +84,7 @@ namespace KTANE_Solver
             if (row == null)
             {
                 ShowErrorMessage("Can't find answer", "Keypad Error");
+                PrintDebugLine("\nUnable to find answer\n");
                 return;
             }
 
@@ -175,11 +181,7 @@ namespace KTANE_Solver
             else
                 answerForm = new KeypadFormAnswer(symbol4, symbol3, symbol2, symbol1);
 
-            //Debug information
-            PrintSymbol(1, symbol1);
-            PrintSymbol(2, symbol2);
-            PrintSymbol(3, symbol3);
-            PrintSymbol(4, symbol4);
+            
 
 
             int rowIndex;
