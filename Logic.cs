@@ -15,21 +15,14 @@ namespace KTANE_Solver
     {
         //=========FIELDS=========
 
-        //the letters for the top evaluation
-        private char topFirstLetter;
-        private char topSecondLetter;
-        private char topThirdLetter;
+        //the letters for the top row
+        private char[] topLetters;
 
         //tells if the statement for each top letter is true or false
-        private bool topFirstStatement;
-        private bool topSecondStatement;
-        private bool topThirdStatement;
+        private bool[] topStatements;
 
         //tells if the top statments are the opposite
-        private bool topFirstNotStatement;
-        private bool topSecondNotStatement;
-        private bool topThirdNotStatement;
-
+        private bool[] topNotStatements;
 
         //the operations for the top evaluation
         private String topFirstOperation;
@@ -40,19 +33,13 @@ namespace KTANE_Solver
         private bool topFirstTwoFirst;
 
         //the letters for the bottom evaluation
-        private char bottomFirstLetter;
-        private char bottomSecondLetter;
-        private char bottomThirdLetter;
+        private char[] bottomLetters;
 
         //tells if the statement for each bottom letter is true or false
-        private bool bottomFirstStatement;
-        private bool bottomSecondStatement;
-        private bool bottomThirdStatement;
+        private bool[] bottomStatements;
 
         //tells if the bottom statments are the opposite
-        private bool bottomFirstNotStatement;
-        private bool bottomSecondNotStatement;
-        private bool bottomThirdNotStatement;
+        private bool[] bottomNotStatements;
 
         //the operations for the top evaluation
         private String bottomFirstOperation;
@@ -101,26 +88,18 @@ namespace KTANE_Solver
                      bool bottomFirstTwoFirst, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter)
         {
 
-            this.topFirstNotStatement = topFirstNotStatement;
-            this.topSecondNotStatement = topSecondNotStatement;
-            this.topThirdNotStatement = topThirdNotStatement;
-
-            this.topFirstLetter = topFirstLetter;
-            this.topSecondLetter = topSecondLetter;
-            this.topThirdLetter = topThirdLetter;
+            topLetters =  new char[3] { topFirstLetter, topSecondLetter, topThirdLetter};
+            topNotStatements = new bool[3] { topFirstNotStatement, topSecondNotStatement, topThirdNotStatement};
+            topStatements = new bool[3];
 
             this.topFirstOperation = topFirstOperation;
             this.topSecondOperation = topSecondOperation;
 
             this.topFirstTwoFirst = topFirstTwoFirst;
 
-            this.bottomFirstNotStatement = bottomFirstNotStatement;
-            this.bottomSecondNotStatement = bottomSecondNotStatement;
-            this.bottomThirdNotStatement = bottomThirdNotStatement;
-
-            this.bottomFirstLetter = bottomFirstLetter;
-            this.bottomSecondLetter = bottomSecondLetter;
-            this.bottomThirdLetter = bottomThirdLetter;
+            bottomLetters = new char[3] { bottomFirstLetter, bottomSecondLetter, bottomThirdLetter};
+            bottomNotStatements = new bool[3] { bottomFirstNotStatement, bottomSecondNotStatement, bottomThirdNotStatement };
+            bottomStatements = new bool[3];
 
             this.bottomFirstOperation = bottomFirstOperation;
             this.bottomSecondOperation = bottomSecondOperation;
@@ -131,75 +110,156 @@ namespace KTANE_Solver
         public void Solve()
         {
             //setting the statements
-            topFirstStatement = SetStatement(topFirstLetter);
+            for (int i = 0; i < 3; i++)
+            {
+                topStatements[i] = SetStatement(topLetters[i]);
+                bottomStatements[i] = SetStatement(bottomLetters[i]);
 
-            topSecondStatement = SetStatement(topSecondLetter);
 
-            topThirdStatement = SetStatement(topThirdLetter);
+            }
 
-            bottomFirstStatement = SetStatement(bottomFirstLetter);
+            PrintTruthTable(1, topLetters, topStatements);
+            PrintTruthTable(2, bottomLetters, bottomStatements);
 
-            bottomSecondStatement = SetStatement(bottomSecondLetter);
+            for (int i = 0; i < 3; i++)
+            {
+                //updating statements
+                topStatements[i] = UpdateStatement(topStatements[i], topNotStatements[i]);
+                bottomStatements[i] = UpdateStatement(bottomStatements[i], bottomNotStatements[i]);
+            }
 
-            bottomThirdStatement = SetStatement(bottomThirdLetter);
 
-            PrintLetterInfo(new List<char> {topFirstLetter, topSecondLetter, topThirdLetter, bottomFirstLetter, bottomFirstLetter, bottomThirdLetter}.Distinct().ToList());
-
-            //updating statements
-            topFirstStatement = UpdateStatement(topFirstStatement, topFirstNotStatement);
-            topSecondStatement = UpdateStatement(topSecondStatement, topSecondNotStatement);
-            topThirdStatement = UpdateStatement(topThirdStatement, topThirdNotStatement);
-
-            bottomFirstStatement = UpdateStatement(bottomFirstStatement, bottomFirstNotStatement);
-            bottomSecondStatement = UpdateStatement(bottomSecondStatement, bottomSecondNotStatement);
-            bottomThirdStatement = UpdateStatement(bottomThirdStatement, bottomThirdNotStatement);
 
             //evaluating the statements
 
             bool topEvaluation;
             if (topFirstTwoFirst)
             {
-                topEvaluation = EvaluateStatement(topFirstStatement, topSecondStatement, topFirstOperation);
-                topEvaluation = EvaluateStatement(topEvaluation, topThirdStatement, topSecondOperation);
+                topEvaluation = EvaluateStatement(topStatements[0], topStatements[1], topFirstOperation);
+                topEvaluation = EvaluateStatement(topEvaluation, topStatements[2], topSecondOperation);
             }
 
             else
             {
-                topEvaluation = EvaluateStatement(topSecondStatement, topThirdStatement, topSecondOperation);
-                topEvaluation = EvaluateStatement(topFirstStatement, topEvaluation, topFirstOperation);
+                topEvaluation = EvaluateStatement(topStatements[1], topStatements[2], topSecondOperation);
+                topEvaluation = EvaluateStatement(topStatements[0], topEvaluation, topFirstOperation);
             }
 
             bool bottomEvaluation;
             if (bottomFirstTwoFirst)
             {
-                bottomEvaluation = EvaluateStatement(bottomFirstStatement, bottomSecondStatement, bottomFirstOperation);
-                bottomEvaluation = EvaluateStatement(bottomEvaluation, bottomThirdStatement, bottomSecondOperation);
+                bottomEvaluation = EvaluateStatement(bottomStatements[0], bottomStatements[1], bottomFirstOperation);
+                bottomEvaluation = EvaluateStatement(bottomEvaluation, bottomStatements[2], bottomSecondOperation);
             }
 
             else
             {
-                bottomEvaluation = EvaluateStatement(bottomSecondStatement, bottomThirdStatement, bottomSecondOperation);
-                bottomEvaluation = EvaluateStatement(bottomFirstStatement, bottomEvaluation, bottomFirstOperation);
+                bottomEvaluation = EvaluateStatement(bottomStatements[1], bottomStatements[2], bottomSecondOperation);
+                bottomEvaluation = EvaluateStatement(bottomStatements[0], bottomEvaluation, bottomFirstOperation);
             }
 
-            ShowAnswer($"Top: {topEvaluation} \nBottom: {bottomEvaluation}", "Logic Answer");
+            //Debug info
+
+            PrintEvaluation(1, topLetters, topNotStatements, topFirstTwoFirst, topFirstOperation, topSecondOperation, topEvaluation);
+            PrintEvaluation(2, bottomLetters, bottomNotStatements, bottomFirstTwoFirst, bottomFirstOperation, bottomSecondOperation, bottomEvaluation);
+
+            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}", "Logic Answer");
+        }
+
+        /// <summary>
+        /// Prints what each letters evaluates to
+        /// </summary>
+        /// <param name="row">the row the letters are in</param>
+        /// <param name="letters">the latters</param>
+        /// <param name="statements">the evaulation of each letter</param>
+        private void PrintTruthTable(int row, char[] letters, bool[] statements)
+        { 
+            PrintDebug($"(Row #{row}): ");
+
+            for (int i = 0; i < 3; i++)
+            {
+                PrintDebug($"{letters[i]} = {statements[i]} ");
+            }
+
+            PrintDebugLine("");
+        }
+
+        private void PrintEvaluation(int row, char[] letters, bool[] notStatements, bool firstTwoFirst, string operation1, string operation2, bool totalEvaluation)
+        {
+            string actualOperation1 = CovertSymbol(operation1);
+            string actualOperation2 = CovertSymbol(operation2);
+
+            string letter1 = "" + letters[0];
+            string letter2 = "" + letters[1];
+            string letter3 = "" + letters[2];
+
+            if (notStatements[0])
+            {
+                letter1 = "¬" + letter1;
+            }
+
+            if (notStatements[1])
+            {
+                letter2 = "¬" + letter2;
+            }
+
+            if (notStatements[2])
+            {
+                letter3 = "¬" + letter3;
+            }
+
+
+
+            PrintDebug($"Row {row}: ");
+
+            if (firstTwoFirst)
+            {
+                PrintDebugLine($"({letter1} {actualOperation1} {letter2}) {actualOperation2} {letter3} = {totalEvaluation}");
+            }
+
+            else
+            {
+                PrintDebugLine($"{letter1} {actualOperation1} ({letter2} {actualOperation2} {letter3}) = {totalEvaluation}");
+            }
+
+        }
+
+        private string CovertSymbol(string symbol)
+        {
+            switch (symbol)
+            {
+                //AND
+                case "∧":
+                    return "AND";
+
+                //OR
+                case "∨":
+                    return "OR";
+
+                //XOR
+                case "⊻":
+                    return "XOR";
+
+                //NAND
+                case "|":
+                    return "NAND";
+
+                //NOR
+                case "↓":
+                    return "NOR";
+
+                //XNOR
+                case "↔":
+                    return "XNOR";
+
+                //NOT 1 OR 2
+                //NOT 2 OR 1
+                default:
+                    return symbol;
+            }
         }
 
         //=========METHODS=========
-
-        /// <summary>
-        /// Prints if each letter is true or not
-        /// </summary>
-        /// <param name="list">the list of letters</param>
-        private void PrintLetterInfo(List<char> list)
-        {
-            PrintDebugLine("Letters:");
-            foreach (char c in list)
-            {
-                PrintDebugLine($"{c}: ");
-            }
-
-        }
 
         /// <summary>
         /// Tells if a statement if true or false
