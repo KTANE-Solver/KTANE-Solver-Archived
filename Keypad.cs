@@ -71,6 +71,8 @@ namespace KTANE_Solver
 
         public void Solve()
         {
+            
+
             //check which row contains all symbols
             Symbol[] row = FindCorrectRow();
 
@@ -173,7 +175,62 @@ namespace KTANE_Solver
             else
                 answerForm = new KeypadFormAnswer(symbol4, symbol3, symbol2, symbol1);
 
+            //Debug information
+            PrintSymbol(1, symbol1);
+            PrintSymbol(2, symbol2);
+            PrintSymbol(3, symbol3);
+            PrintSymbol(4, symbol4);
+
+
+            int rowIndex;
+
+            if (row1 == row)
+            {
+                rowIndex = 1;
+            }
+
+            else if (row2 == row)
+            {
+                rowIndex = 2;
+            }
+
+            else if (row3 == row)
+            {
+                rowIndex = 3;
+            }
+
+            else if (row4 == row)
+            {
+                rowIndex = 4;
+            }
+
+            else if (row5 == row)
+            {
+                rowIndex = 5;
+            }
+
+            else
+            {
+                rowIndex = 6;
+            }
+
+            PrintDebugLine("\nFound sybmols in row " + rowIndex);
+
+            PrintDebug("\nAnswer: ");
+            for (int i = 0; i < 3; i++)
+            {
+                PrintDebug($"{i + 1}. {row[i]}, ");
+            }
+
+            PrintDebugLine($"4. {row[3]}\n");
+
+
             answerForm.ShowDialog();
+        }
+
+        private void PrintSymbol(int num, Symbol symbol)
+        {
+            PrintDebugLine($"Symbol {num}: " + symbol);
         }
 
 
