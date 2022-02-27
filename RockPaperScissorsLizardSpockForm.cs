@@ -42,6 +42,8 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader("Rock Paper Scissors Lizard Spock");
+
             RockPaperScissorsLizardSpock.Symbol symbol;
 
             if (decoyComboBox.Text == "")
