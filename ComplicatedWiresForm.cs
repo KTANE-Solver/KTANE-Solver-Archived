@@ -75,12 +75,12 @@ namespace KTANE_Solver
         /// <param name="comboBox"></param>
         private void ResetLateComboBox(ComboBox comboBox)
         {
-            string[] items = new string[] {"*Blank*", "Blue", "Purple", "Red", "White", };
+            string[] items = new string[] {"", "Blue", "Purple", "Red", "White", };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
 
-            comboBox.Text = "*Blank*";
+            comboBox.Text = items[0];
 
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -108,7 +108,7 @@ namespace KTANE_Solver
         {
 
             //wire 6 can't not be blank when 5 isn't
-            if (wireComboBox6.Text != "*Blank*" && wireComboBox5.Text == "*Blank*")
+            if (wireComboBox6.Text != "" && wireComboBox5.Text == "")
             {
                 ShowErrorMessage("Wire 6 can't not be blank when 5 is", "Complicated Wires Error");
                 return;
@@ -151,7 +151,7 @@ namespace KTANE_Solver
         {
             String colorString = color.Text.ToUpper();
 
-            if (colorString == "*BLANK*")
+            if (colorString == "")
                 return null;
 
             ComplicatedWire.Color colorEnum = (ComplicatedWire.Color)Enum.Parse(typeof(ComplicatedWire.Color), colorString);
