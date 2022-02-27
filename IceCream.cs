@@ -57,19 +57,19 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve()
         {
-            LogFileWriter.WriteLine($"Customer: {customer}\n");
+            PrintDebugLine($"Customer: {customer}\n");
 
             //find out what the customer is allergic to
             SetCustomerAllergies();
 
-            LogFileWriter.WriteLine("Allergy List");
+            PrintDebugLine("Allergy List");
 
             foreach (IceCreamFlavor.Ingredient ingredient in allergyList)
             {
-                LogFileWriter.WriteLine(ingredient);
+                PrintDebugLine(ingredient.ToString());
             }
 
-            LogFileWriter.WriteLine();
+            PrintDebugLine("");
 
 
 
@@ -99,15 +99,15 @@ namespace KTANE_Solver
             }
 
             //print out the heriearcy of flavors
-            LogFileWriter.WriteLine("Hierarchy of Flavors:");
+            PrintDebugLine("Hierarchy of Flavors:");
 
             for (int i = 0; i < 4; i++)
             {
-                LogFileWriter.WriteLine(flavors[i].FlavorProperty.ToString() + " " + flavors[i].place);
+                PrintDebugLine(flavors[i].FlavorProperty.ToString() + " " + flavors[i].place);
 
                 if (i == 3)
                 {
-                    LogFileWriter.WriteLine();
+                    PrintDebugLine("");
                 } 
             }
 
@@ -120,10 +120,14 @@ namespace KTANE_Solver
                 {
                     String message = ConvertFlavorEnumToString(flavor.FlavorProperty);
 
+                    PrintDebugLine($"Answer: {message}\n");
+
                     ShowAnswer(message, "Ice Cream Answer");
                     return;
                 }
             }
+
+            PrintDebugLine($"Answer: Vanilla\n");
 
             ShowAnswer("Vanilla", "Ice Cream Answer");
 
@@ -140,7 +144,7 @@ namespace KTANE_Solver
             {
                 if (allergyList.Contains(ingredient))
                 {
-                    LogFileWriter.WriteLine($"Cant have {flavor.FlavorProperty} since allergic to {ingredient}");
+                    PrintDebugLine($"Cant have {flavor.FlavorProperty} since allergic to {ingredient}");
                     return true;
                 }
             }
