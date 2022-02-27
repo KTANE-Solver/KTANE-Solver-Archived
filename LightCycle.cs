@@ -11,9 +11,10 @@ namespace KTANE_Solver
     {
         String pair1, pair2, pair3, pair4, pair5, pair6;
         String sequence1, sequence2, sequence3, sequence4, sequence5, sequence6;
+        private string cycle;
         public LightCycle(Bomb bomb, StreamWriter logFileWriter, String cycle) : base(bomb, logFileWriter)
         {
-            String orignalcycle = cycle;
+            this.cycle = cycle;
 
             pair1 = "" + bomb.SerialNumber[0] + bomb.SerialNumber[bomb.SerialNumber.Length - 1];
             pair2 = "" + bomb.SerialNumber[1] + bomb.SerialNumber[bomb.SerialNumber.Length - 2];
@@ -21,6 +22,13 @@ namespace KTANE_Solver
             pair4 = "" + bomb.SerialNumber[3] + bomb.SerialNumber[bomb.SerialNumber.Length - 4];
             pair5 = "" + bomb.SerialNumber[4] + bomb.SerialNumber[bomb.SerialNumber.Length - 5];
             pair6 = "" + bomb.SerialNumber[5] + bomb.SerialNumber[bomb.SerialNumber.Length - 6];
+
+        }
+
+        public void Solve()
+        {
+
+             string orignalcycle = cycle;
 
             PrintDebugLine($"Starting cycle: {cycle}\n");
 
