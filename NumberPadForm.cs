@@ -100,6 +100,8 @@ namespace KTANE_Solver
             Color eightColor = eightButton.BackColor;
             Color nineColor = nineButton.BackColor;
 
+            PrintHeader("Number Pad");
+
             NumberPad module = new NumberPad(zeroColor, oneColor, twoColor, threeColor, fourColor, fiveColor, sixColor, sevenColor, eightColor, nineColor, Bomb, LogFileWriter);
             module.Solve();
 
