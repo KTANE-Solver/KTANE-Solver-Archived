@@ -63,6 +63,8 @@ namespace KTANE_Solver
             if (IsLowerCase(bottomRight[0]))
                 bottomRight = bottomRight.ToUpper();
 
+            PrintHeader("Word Search");
+
             WordSearch module = new WordSearch(Bomb, LogFileWriter, topLeft[0], topRight[0], bottomLeft[0], bottomRight[0]);
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
