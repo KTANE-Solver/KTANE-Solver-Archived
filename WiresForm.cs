@@ -111,6 +111,8 @@ namespace KTANE_Solver
                 return;
             }
 
+            PrintHeader("Wires");
+
             Wires wireModule = new Wires(wire1, wire2, wire3, wire4, wire5, wire6, Bomb, LogFileWriter);
             wireModule.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

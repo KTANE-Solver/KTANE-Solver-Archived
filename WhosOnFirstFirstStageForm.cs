@@ -133,8 +133,9 @@ namespace KTANE_Solver
                     
                 }
             }
-            
 
+
+            PrintHeader("Who's on First");
             WhosOnFirst module = new WhosOnFirst(1, displayComboBox.Text, topLeft, topRight, midLeft, midRight, bottomLeft, bottomRight, Bomb, LogFileWriter);
             module.Solve();
 

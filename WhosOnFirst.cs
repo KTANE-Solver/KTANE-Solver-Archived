@@ -66,8 +66,6 @@ namespace KTANE_Solver
 
         public void Solve()
         {
-            System.Diagnostics.Debug.WriteLine("======================WHO'S ON FIRST======================");
-
             System.Diagnostics.Debug.WriteLine($"Stage {stage}\n");
 
             System.Diagnostics.Debug.WriteLine($"Display: {display}\n");

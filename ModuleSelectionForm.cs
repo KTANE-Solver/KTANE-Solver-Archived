@@ -697,6 +697,8 @@ namespace KTANE_Solver
 
                 case "Two Bits":
 
+                    SuccessfulModuleOpening(module);
+
                     if (twoBitsForm == null)
                     {
                         twoBitsForm = new TwoBitsStage1Form(bomb, logFileWriter, this);
@@ -773,7 +775,10 @@ namespace KTANE_Solver
                 break;
             }
 
-            SuccessfulModuleOpening(module);
+            if (module != "Two Bits")
+            { 
+                SuccessfulModuleOpening(module);
+            }
         }
 
 
