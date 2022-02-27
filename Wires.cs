@@ -26,10 +26,10 @@ namespace KTANE_Solver
 
         //A list of all the wires
 
-        private List<Wire> wireList;
+        private List<Wire> WireList { get; set; }
 
         //the number of wires on the bomb
-        private int WireNum { get { return wireList.Count; } }
+        private int WireNum { get { return WireList.Count; } }
 
 
 
@@ -51,7 +51,7 @@ namespace KTANE_Solver
         /// <param name="logFileWriter">writes to the logfile</param>
         public Wires(String color1, String color2, String color3, String color4, String color5, String color6, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
-            wireList = new List<Wire>();
+            WireList = new List<Wire>();
 
             AddWire(color1);
             AddWire(color2);
@@ -60,16 +60,16 @@ namespace KTANE_Solver
             AddWire(color5);
             AddWire(color6);
 
-            for (int i = 0; i < wireList.Count; i++)
+            for (int i = 0; i < WireList.Count; i++)
             {
-                Console.WriteLine($"Wire {i + 1}: {wireList[i]}\n");
+                Console.WriteLine($"Wire {i + 1}: {WireList[i]}\n");
             }
         }
 
         //=========METHODS=========
 
         /// <summary>
-        /// Converts string and adds color to wireList
+        /// Converts string and adds color to WireList
         /// </summary>
         /// <param name="color">the string that will be converted</param>
         private void AddWire(String color)
@@ -81,7 +81,7 @@ namespace KTANE_Solver
 
             Wire wire = (Wire)Enum.Parse(typeof(Wire), color);
 
-            wireList.Add(wire);
+            WireList.Add(wire);
         }
 
         /// <summary>
@@ -100,14 +100,14 @@ namespace KTANE_Solver
                         place = "2nd";
 
                     //Otherwise, if the last wire is white, cut the last wire.
-                    else if (wireList[2] == Wire.WHITE)
+                    else if (WireList[2] == Wire.WHITE)
                         place = "3rd";
 
                     //Otherwise, if there is more than one blue wire, cut the last blue wire.
                     else if (ColorCount(Wire.BLUE) > 1)
                     {
                         //if the last wire is blue, cut that one
-                        if (wireList[2] == Wire.BLUE)
+                        if (WireList[2] == Wire.BLUE)
                             place = "3rd";
 
                         //else cut the second one
@@ -125,7 +125,7 @@ namespace KTANE_Solver
                         place = "4th";
 
                     //Otherwise, if the last wire is yellow and there are no red wires, cut the first wire.
-                    else if (wireList[3] == Wire.YELLOW && ColorCount(Wire.RED) == 0)
+                    else if (WireList[3] == Wire.YELLOW && ColorCount(Wire.RED) == 0)
                         place = "1st";
 
                     //Otherwise, if there is exactly one blue wire, cut the first wire.
@@ -143,7 +143,7 @@ namespace KTANE_Solver
 
                 case 5:
                     //If the last wire is black and the last digit of the serial number is odd, cut the fourth wire.
-                    if (wireList[4] == Wire.BLACK && Bomb.LastDigit % 2 == 1)
+                    if (WireList[4] == Wire.BLACK && Bomb.LastDigit % 2 == 1)
                         place = "4th";
 
                     //Otherwise, if there is exactly one red wire and there is more than one yellow wire, cut the first wire.
@@ -197,7 +197,7 @@ namespace KTANE_Solver
         {
             int num = 0;
 
-            foreach (Wire wire in wireList)
+            foreach (Wire wire in WireList)
             {
                 if (wire == color)
                     num++;

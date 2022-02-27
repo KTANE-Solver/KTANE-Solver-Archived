@@ -9,14 +9,14 @@ namespace KTANE_Solver
 {
     public class WireSequence : Module
     {
-        private int redColor;
-        private int blueColor;
-        private int blackColor;
+        private int RedColor { get; set; }
+        private int BlueColor { get; set; }
+        private int BlackColor { get; set; }
         public WireSequence(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
         {
-            redColor = 0;
-            blueColor = 0;
-            blackColor = 0;
+            RedColor = 0;
+            BlueColor = 0;
+            BlackColor = 0;
         }
 
         public String Solve(int wireNum, String color, char letter)
@@ -30,13 +30,13 @@ namespace KTANE_Solver
             {
                 case "Red":
                     
-                    redColor++;
+                    RedColor++;
                     
-                    colorNum = redColor;
+                    colorNum = RedColor;
 
                     if (letter == 'A')
                     {
-                        if (redColor == 3 || redColor == 4 || redColor == 6 || redColor == 7 || redColor == 8)
+                        if (RedColor == 3 || RedColor == 4 || RedColor == 6 || RedColor == 7 || RedColor == 8)
                         {
                             answer = "Cut";
                         }
@@ -49,7 +49,7 @@ namespace KTANE_Solver
 
                     else if (letter == 'B')
                     {
-                        if (redColor == 2 || redColor == 5 || redColor == 7 || redColor == 8 || redColor == 9)
+                        if (RedColor == 2 || RedColor == 5 || RedColor == 7 || RedColor == 8 || RedColor == 9)
                         {
                             answer = "Cut";
                         }
@@ -62,7 +62,7 @@ namespace KTANE_Solver
 
                     else
                     {
-                        if (redColor == 1 || redColor == 4 || redColor == 6 || redColor == 7)
+                        if (RedColor == 1 || RedColor == 4 || RedColor == 6 || RedColor == 7)
                         {
                             answer = "Cut";
                         }
@@ -77,13 +77,13 @@ namespace KTANE_Solver
 
                 case "Blue":
 
-                    blueColor++;
+                    BlueColor++;
 
-                    colorNum = blueColor;
+                    colorNum = BlueColor;
 
                     if (letter == 'A')
                     {
-                        if (blueColor == 2 || blueColor == 4 || blueColor == 8 || blueColor == 9)
+                        if (BlueColor == 2 || BlueColor == 4 || BlueColor == 8 || BlueColor == 9)
                         {
                             answer = "Cut";
                         }
@@ -96,7 +96,7 @@ namespace KTANE_Solver
 
                     else if (letter == 'B')
                     {
-                        if (blueColor == 1 || blueColor == 3 || blueColor == 5 || blueColor == 6)
+                        if (BlueColor == 1 || BlueColor == 3 || BlueColor == 5 || BlueColor == 6)
                         {
                             answer = "Cut";
                         }
@@ -109,7 +109,7 @@ namespace KTANE_Solver
 
                     else
                     {
-                        if (blueColor == 2 || blueColor == 7 || blueColor == 8 || blueColor == 6)
+                        if (BlueColor == 2 || BlueColor == 7 || BlueColor == 8 || BlueColor == 6)
                         {
                             answer = "Cut";
                         }
@@ -124,13 +124,13 @@ namespace KTANE_Solver
 
                 default:
 
-                    blackColor++;
+                    BlackColor++;
 
-                    colorNum = blackColor;
+                    colorNum = BlackColor;
 
                     if (letter == 'A')
                     {
-                        if (blackColor == 1 || blackColor == 2 || blackColor == 4 || blackColor == 7)
+                        if (BlackColor == 1 || BlackColor == 2 || BlackColor == 4 || BlackColor == 7)
                         {
                             answer = "Cut";
                         }
@@ -143,7 +143,7 @@ namespace KTANE_Solver
 
                     else if (letter == 'B')
                     {
-                        if (blackColor == 1 || blackColor == 3 || blackColor == 5 || blackColor == 6 || blackColor == 7)
+                        if (BlackColor == 1 || BlackColor == 3 || BlackColor == 5 || BlackColor == 6 || BlackColor == 7)
                         {
                             answer = "Cut";
                         }
@@ -156,7 +156,7 @@ namespace KTANE_Solver
 
                     else
                     {
-                        if (blackColor == 1 || blackColor == 2 || blackColor == 4 || blackColor == 6 || blackColor == 8 || blackColor == 9)
+                        if (BlackColor == 1 || BlackColor == 2 || BlackColor == 4 || BlackColor == 6 || BlackColor == 8 || BlackColor == 9)
                         {
                             answer = "Cut";
                         }
