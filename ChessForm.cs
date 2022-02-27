@@ -74,7 +74,7 @@ namespace KTANE_Solver
                 return;
             }
 
-            LogFileWriter.WriteLine("======================CHESS======================\n");
+            PrintHeader("Chess");
 
             Chess module = new Chess(piece1, piece2, piece3, piece4, piece5, piece6, Bomb, LogFileWriter);
 
