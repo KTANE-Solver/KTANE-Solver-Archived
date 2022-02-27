@@ -76,6 +76,8 @@ namespace KTANE_Solver
                 return;
             }
 
+            PrintHeader("FizzBuzz");
+
             FizzBuzz module = new FizzBuzz(colorComboBox1.Text, numberTextBox1.Text, colorComboBox2.Text, numberTextBox2.Text, colorComboBox3.Text, numberTextBox3.Text, Bomb, LogFileWriter);
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
