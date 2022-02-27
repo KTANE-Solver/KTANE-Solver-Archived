@@ -100,6 +100,8 @@ namespace KTANE_Solver
                 return;
             }
 
+            PrintHeader("Password");
+
             Password module = new Password(Bomb, LogFileWriter);
 
             module.FillRow(firstRow1[0], firstRow2[0], firstRow3[0], firstRow4[0], firstRow5[0], firstRow6[0], 1);
