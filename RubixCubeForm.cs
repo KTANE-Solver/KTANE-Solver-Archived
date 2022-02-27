@@ -47,7 +47,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Rubix Cube");
+            IncrementStrike("Rubik's Cube");
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -67,6 +67,8 @@ namespace KTANE_Solver
                 ShowErrorMessage("Can't have duplicate colors", "Rubik Cube Error");
                 return;
             }
+
+            PrintHeader("Rubik's Cube");
 
             RubikCube.Face topFace = (RubikCube.Face)Enum.Parse(typeof(RubikCube.Face), top);
             RubikCube.Face leftFace = (RubikCube.Face)Enum.Parse(typeof(RubikCube.Face), left);
