@@ -10,20 +10,20 @@ namespace KTANE_Solver
 {
     public class WordSearch : Module
     {
-        char topLeftLetter;
-        char topRightLetter;
-        char bottomLeftLetter;
-        char bottomRightLetter;
+        private char TopLeftLetter { get; set;}
+        private char TopRightLetter { get; set; }
+        private char BottomLeftLetter { get; set; }
+        private char BottomRightLetter { get; set; }
 
         Dictionary<char, Letter> dictionary = new Dictionary<char, Letter>();
 
         public WordSearch(Bomb bomb, StreamWriter logFileWriter,
                           char topLeftLetter, char topRightLetter, char bottomLeftLetter, char bottomRightLetter) : base(bomb, logFileWriter)
         {
-            this.topLeftLetter = topLeftLetter;
-            this.topRightLetter = topRightLetter;
-            this.bottomLeftLetter = bottomLeftLetter;
-            this.bottomRightLetter = bottomRightLetter;
+            TopLeftLetter = topLeftLetter;
+            TopRightLetter = topRightLetter;
+            BottomLeftLetter = bottomLeftLetter;
+            BottomRightLetter = bottomRightLetter;
 
             dictionary.Add('V', new Letter("Hotel", "Search", "Boom", "Line", "Done", "Quebec", "Submit", "Blue"));
             dictionary.Add('U', new Letter("Search", "Add", "Line", "Kaboom", "Quebec", "Check", "Blue", "Echo"));
@@ -62,18 +62,18 @@ namespace KTANE_Solver
 
             if (Bomb.LastDigit % 2 == 0)
             {
-                topLeftWord = dictionary[topLeftLetter].topLeftWordEven;
-                topRightWord = dictionary[topRightLetter].topRightWordEven;
-                bottomLeftWord = dictionary[bottomLeftLetter].bottomLeftWordEven;
-                bottomRightWord = dictionary[bottomRightLetter].bottomRightWordEven;
+                topLeftWord = dictionary[TopLeftLetter].topLeftWordEven;
+                topRightWord = dictionary[TopRightLetter].topRightWordEven;
+                bottomLeftWord = dictionary[BottomLeftLetter].bottomLeftWordEven;
+                bottomRightWord = dictionary[BottomRightLetter].bottomRightWordEven;
             }
 
             else
             {
-                topLeftWord = dictionary[topLeftLetter].topLeftWordOdd;
-                topRightWord = dictionary[topRightLetter].topRightWordOdd;
-                bottomLeftWord = dictionary[bottomLeftLetter].bottomLeftWordOdd;
-                bottomRightWord = dictionary[bottomRightLetter].bottomRightWordOdd;
+                topLeftWord = dictionary[TopLeftLetter].topLeftWordOdd;
+                topRightWord = dictionary[TopRightLetter].topRightWordOdd;
+                bottomLeftWord = dictionary[BottomLeftLetter].bottomLeftWordOdd;
+                bottomRightWord = dictionary[BottomRightLetter].bottomRightWordOdd;
             }
 
             topLeftWord = topLeftWord.ToUpper();
