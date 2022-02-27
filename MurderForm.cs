@@ -167,6 +167,9 @@ namespace KTANE_Solver
                     return;
                 }
             }
+
+            PrintHeader("Murder");
+
             Murder murder = new Murder(suspects, weapons, room, Bomb, LogFileWriter);
             murder.Solve();
 
