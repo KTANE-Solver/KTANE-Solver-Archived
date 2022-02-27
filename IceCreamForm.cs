@@ -66,7 +66,7 @@ namespace KTANE_Solver
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(names);
-            comboBox.Text = "Adam";
+            comboBox.Text = names[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -115,8 +115,12 @@ namespace KTANE_Solver
             }
 
             iceCream = new IceCream(customerComboBox.Text, flavor1, flavor2, flavor3, flavor4, Bomb, LogFileWriter);
-            LogFileWriter.WriteLine("======================ICE CREAM======================");
-            LogFileWriter.WriteLine($"{stageLabel.Text}\n");
+            if (stageLabel.Text == "Stage 1")
+            { 
+                PrintHeader("Ice Cream");
+            }
+
+            PrintDebugLine($"{stageLabel.Text}\n");
 
             iceCream.Solve();
 
