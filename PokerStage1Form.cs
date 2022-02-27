@@ -52,6 +52,8 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader("Poker");
+
             Poker module = new Poker(Bomb, LogFileWriter, cardComboBox.Text);
 
             module.SetHand();
