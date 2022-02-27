@@ -104,8 +104,7 @@ namespace KTANE_Solver
         /// </summary>
         public void UpdateForm()
         {
-            logFileWriter.WriteLine("======================MODULE SELECTION======================");
-            System.Diagnostics.Debug.WriteLine("======================MODULE SELECTION======================");
+            PrintDebugLine("=================MODULE SELECTION=================");
             SetUpModuleComboBox();
         }
 
@@ -141,8 +140,7 @@ namespace KTANE_Solver
         /// </summary>
         private void changeEdgeworkButton_Click(object sender, EventArgs e)
         {
-            logFileWriter.WriteLine("User is changing edgework...\n");
-            System.Diagnostics.Debug.WriteLine("User is changing edgework...\n");
+            PrintDebugLine("User is changing edgework...\n");
             this.Hide();
             inputForm.UpdateForm();
             inputForm.Show();
@@ -153,8 +151,7 @@ namespace KTANE_Solver
         /// </summary>
         private void checkEdgeworkButton_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("User is checking edgework...\n");
-            logFileWriter.WriteLine("User is checking edgework...\n");
+            PrintDebugLine("User is checking edgework...\n");
             this.Hide();
             confirmationForm.UpdateForm(bomb, inputForm);
             confirmationForm.Show();
@@ -180,8 +177,7 @@ namespace KTANE_Solver
 
                 else
                 {
-                    logFileWriter.Write("User closed program...");
-                    System.Diagnostics.Debug.Write("User closed program...");
+                    PrintDebug("User closed program...");
                     this.Visible = false;
                     Application.Exit();
                 }
@@ -193,8 +189,7 @@ namespace KTANE_Solver
         /// </summary>
         private void saveEdgeworkButton_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("User is trying to save edgework...\n");
-            logFileWriter.WriteLine("User is trying to save edgework...\n");
+            PrintDebugLine("User is trying to save edgework...\n");
 
             StreamWriter writer = new StreamWriter("Edgework.txt");
 
@@ -228,8 +223,7 @@ namespace KTANE_Solver
                 writer.Close();
 
                 MessageBox.Show("Edgework saved successfully", "Edgework Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                logFileWriter.WriteLine("User has successfully saved edgeork\n");
-                System.Diagnostics.Debug.WriteLine("User has successfully saved edgeork\n");
+                PrintDebugLine("User has successfully saved edgeork\n");
 
             }
 
@@ -239,8 +233,7 @@ namespace KTANE_Solver
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                logFileWriter.WriteLine("User has unsuccessfully saved edgeork\n");
-                System.Diagnostics.Debug.WriteLine("User has unsuccessfully saved edgeork\n");
+                PrintDebugLine("User has unsuccessfully saved edgeork\n");
             }
         }
 
@@ -263,8 +256,7 @@ namespace KTANE_Solver
         {
             String module = moduleComboBox.Text;
 
-            logFileWriter.WriteLine($"User selected {module}. Attempting to open...\n");
-            System.Diagnostics.Debug.WriteLine($"User selected {module}. Attempting to open...\n");
+            PrintDebugLine($"User selected {module}. Attempting to open...\n");
 
 
             this.Hide();
@@ -788,8 +780,18 @@ namespace KTANE_Solver
         /// <param name="module"></param>
         private void SuccessfulModuleOpening(String module)
         {
-            logFileWriter.WriteLine($"{module} opened successfully\n");
-            System.Diagnostics.Debug.WriteLine($"{module} opened successfully\n");
+            PrintDebugLine($"{module} opened successfully\n");
+        }
+
+        private void PrintDebugLine(String message)
+        {
+            PrintDebug(message + "\n");
+        }
+
+        private void PrintDebug(String message)
+        {
+            logFileWriter.Write(message);
+            System.Diagnostics.Debug.Write(message);
         }
     }
 }
