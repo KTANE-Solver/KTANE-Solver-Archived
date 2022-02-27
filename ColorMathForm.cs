@@ -69,6 +69,7 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+
             ColorMath.Color left1;
             ColorMath.Color left2;
             ColorMath.Color left3;
@@ -110,6 +111,7 @@ namespace KTANE_Solver
                 return;
             }
 
+
             //capitalize letter
             char letter = letterTextBox.Text.ToUpper()[0];
 
@@ -128,6 +130,7 @@ namespace KTANE_Solver
             }
 
             ColorMath module = new ColorMath(left1, left2, left3, left4, right1, right2, right3, right4, letter, Bomb, LogFileWriter);
+            PrintHeader("Color Math");
             module.Solve(!filled);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
