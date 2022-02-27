@@ -46,6 +46,8 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader("Bulb");
+
             Bulb module = new Bulb(Bomb, LogFileWriter, litCheckBox.Checked, opaqueCheckBox.Checked, colorComboBox.Text);
             module.Solve();
 
