@@ -92,8 +92,7 @@ namespace KTANE_Solver
 
                 else
                 {
-                    LogFileWriter.Write("User closed program...");
-                    System.Diagnostics.Debug.Write("User closed program...");
+                    PrintDebug("User closed program...");
                     LogFileWriter.Close();
                     this.Visible = false;
                     Application.Exit();
@@ -124,6 +123,7 @@ namespace KTANE_Solver
 
         public void GoToMoudleSelectionForm()
         {
+            PrintDebugLine("User is going back to module selection\n");
             this.Hide();
             ModuleSelectionForm.UpdateForm();
             ModuleSelectionForm.Show();
