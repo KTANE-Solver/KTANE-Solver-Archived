@@ -124,6 +124,8 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader("Silly Slots");
+
             SillySlots.Slot slot1 = new SillySlots.Slot(slot1ColorComboBox.Text, slot1ObjectComboBox.Text);
             SillySlots.Slot slot2 = new SillySlots.Slot(slot2ColorComboBox.Text, slot2ObjectComboBox.Text);
             SillySlots.Slot slot3 = new SillySlots.Slot(slot3ColorComboBox.Text, slot3ObjectComboBox.Text);

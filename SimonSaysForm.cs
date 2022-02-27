@@ -59,7 +59,8 @@ namespace KTANE_Solver
                     return;
 
             }
-            
+
+            PrintHeader("Simon Says");
 
             SimonSays module = new SimonSays(Bomb, LogFileWriter);
             module.Solve(1, input[0]);

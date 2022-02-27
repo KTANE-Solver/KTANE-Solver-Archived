@@ -71,11 +71,6 @@ namespace KTANE_Solver
         /// <returns>true if the user presses keep</returns>
         public bool Solve(int stage)
         {
-            if (stage == 1)
-            {
-                PrintDebugLine("=======================SILLY SLOTS=======================\n");
-            }
-
             PrintDebugLine($"Stage {stage}\n");
             PrintDebugLine($"Keyword: {keyword}\n");
 
