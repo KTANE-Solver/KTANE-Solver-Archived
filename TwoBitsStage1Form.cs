@@ -36,9 +36,13 @@ namespace KTANE_Solver
 
             answerLabel.Text = $"Insert {firstAnswer} and press query";
 
-
-
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
+            PrintHeader("Two Bits");
+
+            PrintDebugLine($"Stage 1:\n");
+            PrintDebugLine($"Initial Code is {initalCode}\n");
+            PrintDebugLine($"User must query {firstAnswer}\n");
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -53,9 +57,7 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            PrintDebugLine($"Stage 1:\n");
-            PrintDebugLine($"Initial Code is {initalCode}\n");
-            PrintDebugLine($"User must query {firstAnswer}\n");
+            
 
             this.Hide();
 
