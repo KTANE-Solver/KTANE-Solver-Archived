@@ -134,6 +134,8 @@ namespace KTANE_Solver
 
             ComplicatedWires module = new ComplicatedWires(wireList, Bomb, LogFileWriter);
 
+            PrintHeader("Complicated Wires");
+
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
