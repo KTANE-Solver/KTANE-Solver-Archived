@@ -28,6 +28,11 @@ namespace KTANE_Solver
         {
             this.wires = wires;
 
+            
+        }
+
+        public void Solve()
+        {
             directions = new List<string>();
 
             for (int i = 0; i < wires.Count; i++)
@@ -35,11 +40,8 @@ namespace KTANE_Solver
                 PrintWire(i + 1, wires[i]);
             }
 
-            LogFileWriter.WriteLine();
-        }
+            PrintDebugLine("");
 
-        public void Solve()
-        {
             //find which wire needs to be cut
             foreach (ComplicatedWire wire in wires)
             {
@@ -136,6 +138,8 @@ namespace KTANE_Solver
                 answer += $"{i + 1}. {directions[i]}\n";
             }
 
+            PrintDebugLine("Answer:\n" + answer);
+
             ShowAnswer(answer, "Complicated Wires");
             
         }
@@ -177,7 +181,7 @@ namespace KTANE_Solver
         /// <param name="wire">the wire itself</param>
         private void PrintWire(int num, ComplicatedWire wire)
         {
-            LogFileWriter.WriteLine($"Wire {num} Color: {wire.ColorPropety} Light: {wire.Lit} Star: {wire.Star}");
+            PrintDebugLine($"Wire {num} Color: {wire.ColorPropety} Light: {wire.Lit} Star: {wire.Star}");
         }
     }
 
