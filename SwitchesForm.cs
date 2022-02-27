@@ -83,6 +83,8 @@ namespace KTANE_Solver
                 return;
             }
 
+            PrintHeader("Switches");
+
             Switches module = new Switches(start, end, Bomb, LogFileWriter);
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
