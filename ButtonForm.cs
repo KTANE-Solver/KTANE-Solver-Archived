@@ -50,6 +50,8 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader("Button");
+
             Button module = new Button(Bomb, LogFileWriter);
 
             Button.Color color = (Button.Color)Enum.Parse(typeof(Button.Color), colorComboBox.Text);

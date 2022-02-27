@@ -16,8 +16,6 @@ namespace KTANE_Solver
 
         public void Solve(Color color, String word)
         {
-            PrintDebugLine("===========================BUTTON===========================\n");
-
             PrintDebugLine($"{color} {word}\n");
 
             switch (color)
@@ -117,11 +115,13 @@ namespace KTANE_Solver
 
         private void PressAnswer()
         {
+            PrintDebugLine("Answer: Press\n");
             ShowAnswer("Press", "Button Answer");
         }
 
         private void HoldAnswer()
         {
+            PrintDebugLine("Answer: Hold\n");
             ShowAnswer("Hold Button\nBlue: 4\nYellow: 5\nElse: 1", "Button Answer");
         }
 
