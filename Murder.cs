@@ -46,23 +46,22 @@ namespace KTANE_Solver
         /// <param name="logFileWriter">used to write to the log file</param>
         public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter) : base(bomb,logFileWriter)
         {
-            logFileWriter.WriteLine("======================MURDER======================");
             this.suspects = new List<Suspect>();
             this.weapons = new List<Weapon>();
 
             for (int i = 0; i < 4; i++)
             {
                 this.suspects.Add(new Suspect(Suspect.ConvertNameStringToEnum(suspects[i])));
-                logFileWriter.WriteLine($"Suspect {i + 1}: {suspects[i]}\n");
+                PrintDebugLine($"Suspect {i + 1}: {suspects[i]}\n");
             }
 
             for (int i = 0; i < 4; i++)
             {
                 this.weapons.Add(new Weapon(Weapon.ConverStringToEnum(weapons[i])));
-                logFileWriter.WriteLine($"Weapon {i + 1}: {weapons[i]}\n");
+                PrintDebugLine($"Weapon {i + 1}: {weapons[i]}\n");
             }
 
-            logFileWriter.WriteLine($"Body found: {bodyRoom}\n");
+            PrintDebugLine($"Body found: {bodyRoom}\n");
 
             this.bodyRoom = Suspect.ConvertRoomToEnum(bodyRoom);
         }
@@ -81,7 +80,7 @@ namespace KTANE_Solver
             //the row to figure out where suspects were
             int suspectRow = FindSuspectRow();
 
-            LogFileWriter.WriteLine("Suspect Row: " + suspectRow);
+            PrintDebugLine("Suspect Row: " + suspectRow);
 
             //find where each suspect was
             foreach (Suspect suspect in suspects)
@@ -92,7 +91,7 @@ namespace KTANE_Solver
             //the row to figure out where weapon was
             int weaponRow = FindWeaponRow();
 
-            LogFileWriter.WriteLine("Weapon Row: " + weaponRow + "\n");
+            PrintDebugLine("Weapon Row: " + weaponRow + "\n");
 
 
             //find where each weapon was
@@ -131,7 +130,7 @@ namespace KTANE_Solver
             {
                 String answer = $"{murderer} with the {killingItem} in the {room}";
 
-                LogFileWriter.WriteLine(answer + "\n");
+                PrintDebugLine(answer + "\n");
 
                 ShowAnswer(answer, "Murder answer");
             }
