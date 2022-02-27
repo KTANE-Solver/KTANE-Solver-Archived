@@ -70,6 +70,8 @@ namespace KTANE_Solver
 
             String answer = "";
 
+            PrintHeader("Wires Sequence");
+
             PrintDebugLine("Stage 1\n");
 
             if (wire1ColorComboBox.Text != "" && wire1LetterComboBox.Text != "")
@@ -86,6 +88,7 @@ namespace KTANE_Solver
             {
                 answer += "\n3. " + module.Solve(3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0]);
             }
+
 
             ShowAnswer(answer, "Wire Sequence Answer");
 
