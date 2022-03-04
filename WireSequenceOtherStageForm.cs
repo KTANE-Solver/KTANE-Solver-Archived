@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 namespace KTANE_Solver
 {
-    public partial class WireSequenceOtherStageForm : ModuleForm
+    public partial class WireSequenceOtherStageForm : MultiStageModuleForm
     {
         int stage;
         WireSequence module;
@@ -22,6 +22,7 @@ namespace KTANE_Solver
 
 
         public WireSequenceOtherStageForm(WireSequence module, WireSequenceStage1Form firstStage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, firstStage)
         {
             InitializeComponent();
 
@@ -80,14 +81,16 @@ namespace KTANE_Solver
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            GoToStage1();
+            firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            ResetModule();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             if (stage == 2)
             {
-                GoToStage1();
+                firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+                ResetModule();
             }
 
             else
@@ -130,14 +133,6 @@ namespace KTANE_Solver
             ShowAnswer(answer, "Wire Sequence Answer");
 
             UpdateForm(stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);
-        }
-
-        private void GoToStage1()
-        {
-            this.Hide();
-
-            firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-            firstStage.Show();
         }
     }
 }

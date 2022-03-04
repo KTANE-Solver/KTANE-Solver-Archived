@@ -11,12 +11,14 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class TwoBitsOtherStageForm : ModuleForm
+    public partial class TwoBitsOtherStageForm : MultiStageModuleForm
     {
         int stage;
         TwoBits module;
         TwoBitsStage1Form stage1Form;
-        public TwoBitsOtherStageForm(TwoBits module, TwoBitsStage1Form stage1Form, int stage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
+
+        public TwoBitsOtherStageForm(TwoBits module, TwoBitsStage1Form stage1Form, int stage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
+        : base(bomb, logFileWriter, moduleSelectionForm, stage1Form)
         {
             InitializeComponent();
             UpdateForm(stage1Form, stage, bomb, logFileWriter, moduleSelectionForm);
@@ -41,8 +43,8 @@ namespace KTANE_Solver
         {
             if (stage == 2)
             {
-                this.Hide();
-                stage1Form.Show();
+                stage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+                ResetModule();
             }
 
             else
@@ -97,6 +99,12 @@ namespace KTANE_Solver
             {
                 UpdateForm(stage1Form, stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);
             }
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            stage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            ResetModule();
         }
     }
 }

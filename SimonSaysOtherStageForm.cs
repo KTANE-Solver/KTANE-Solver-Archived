@@ -11,13 +11,14 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class SimonSaysOtherStageForm : ModuleForm
+    public partial class SimonSaysOtherStageForm : MultiStageModuleForm
     {
         SimonSays module;
         SimonSaysForm firstStage;
         int stage;
 
-        public SimonSaysOtherStageForm(int stage, SimonSaysForm firstStage, SimonSays module, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm):base(bomb,logFileWriter,moduleSelectionForm)
+        public SimonSaysOtherStageForm(int stage, SimonSaysForm firstStage, SimonSays module, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        :base(bomb,logFileWriter,moduleSelectionForm, firstStage)
         {
             InitializeComponent();
             this.firstStage = firstStage;
@@ -48,9 +49,8 @@ namespace KTANE_Solver
 
             if (stage == 2)
             {
-                this.Hide();
                 firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-                firstStage.Show();
+                ResetModule();
             }
 
             else
@@ -61,9 +61,8 @@ namespace KTANE_Solver
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
             firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-            firstStage.Show();
+            ResetModule();
         }
 
         private void strikeButton_Click(object sender, EventArgs e)

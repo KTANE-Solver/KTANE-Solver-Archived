@@ -48,22 +48,25 @@ namespace KTANE_Solver
             this.topLeftLabel = new System.Windows.Forms.Label();
             this.displayLabel = new System.Windows.Forms.Label();
             this.moduleSelectionButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // stageLabel
             // 
             this.stageLabel.AutoSize = true;
-            this.stageLabel.Location = new System.Drawing.Point(175, 21);
+            this.stageLabel.Location = new System.Drawing.Point(233, 26);
+            this.stageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stageLabel.Name = "stageLabel";
-            this.stageLabel.Size = new System.Drawing.Size(44, 13);
+            this.stageLabel.Size = new System.Drawing.Size(57, 17);
             this.stageLabel.TabIndex = 1;
             this.stageLabel.Text = "Stage 0";
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(299, 373);
+            this.submitButton.Location = new System.Drawing.Point(425, 482);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(89, 48);
+            this.submitButton.Size = new System.Drawing.Size(95, 59);
             this.submitButton.TabIndex = 35;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -71,9 +74,10 @@ namespace KTANE_Solver
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(202, 373);
+            this.strikeButton.Location = new System.Drawing.Point(322, 482);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(89, 48);
+            this.strikeButton.Size = new System.Drawing.Size(95, 59);
             this.strikeButton.TabIndex = 34;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
@@ -81,9 +85,10 @@ namespace KTANE_Solver
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(107, 373);
+            this.backButton.Location = new System.Drawing.Point(116, 482);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(89, 48);
+            this.backButton.Size = new System.Drawing.Size(95, 59);
             this.backButton.TabIndex = 33;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
@@ -92,137 +97,164 @@ namespace KTANE_Solver
             // bottomRightComboBox
             // 
             this.bottomRightComboBox.FormattingEnabled = true;
-            this.bottomRightComboBox.Location = new System.Drawing.Point(284, 303);
+            this.bottomRightComboBox.Location = new System.Drawing.Point(379, 373);
+            this.bottomRightComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.bottomRightComboBox.Name = "bottomRightComboBox";
-            this.bottomRightComboBox.Size = new System.Drawing.Size(102, 21);
+            this.bottomRightComboBox.Size = new System.Drawing.Size(135, 24);
             this.bottomRightComboBox.TabIndex = 32;
             // 
             // bottomRightLabel
             // 
             this.bottomRightLabel.AutoSize = true;
-            this.bottomRightLabel.Location = new System.Drawing.Point(202, 307);
+            this.bottomRightLabel.Location = new System.Drawing.Point(269, 378);
+            this.bottomRightLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bottomRightLabel.Name = "bottomRightLabel";
-            this.bottomRightLabel.Size = new System.Drawing.Size(71, 13);
+            this.bottomRightLabel.Size = new System.Drawing.Size(93, 17);
             this.bottomRightLabel.TabIndex = 31;
             this.bottomRightLabel.Text = "Bottom Right:";
             // 
             // bottomLeftComboBox
             // 
             this.bottomLeftComboBox.FormattingEnabled = true;
-            this.bottomLeftComboBox.Location = new System.Drawing.Point(74, 303);
+            this.bottomLeftComboBox.Location = new System.Drawing.Point(99, 373);
+            this.bottomLeftComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.bottomLeftComboBox.Name = "bottomLeftComboBox";
-            this.bottomLeftComboBox.Size = new System.Drawing.Size(102, 21);
+            this.bottomLeftComboBox.Size = new System.Drawing.Size(135, 24);
             this.bottomLeftComboBox.TabIndex = 30;
             // 
             // bottomLeftLabel
             // 
             this.bottomLeftLabel.AutoSize = true;
-            this.bottomLeftLabel.Location = new System.Drawing.Point(2, 307);
+            this.bottomLeftLabel.Location = new System.Drawing.Point(3, 378);
+            this.bottomLeftLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bottomLeftLabel.Name = "bottomLeftLabel";
-            this.bottomLeftLabel.Size = new System.Drawing.Size(64, 13);
+            this.bottomLeftLabel.Size = new System.Drawing.Size(84, 17);
             this.bottomLeftLabel.TabIndex = 29;
             this.bottomLeftLabel.Text = "Bottom Left:";
             // 
             // midRightComboBox
             // 
             this.midRightComboBox.FormattingEnabled = true;
-            this.midRightComboBox.Location = new System.Drawing.Point(281, 200);
+            this.midRightComboBox.Location = new System.Drawing.Point(375, 246);
+            this.midRightComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.midRightComboBox.Name = "midRightComboBox";
-            this.midRightComboBox.Size = new System.Drawing.Size(102, 21);
+            this.midRightComboBox.Size = new System.Drawing.Size(135, 24);
             this.midRightComboBox.TabIndex = 28;
             // 
             // midRightLabel
             // 
             this.midRightLabel.AutoSize = true;
-            this.midRightLabel.Location = new System.Drawing.Point(215, 204);
+            this.midRightLabel.Location = new System.Drawing.Point(287, 251);
+            this.midRightLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.midRightLabel.Name = "midRightLabel";
-            this.midRightLabel.Size = new System.Drawing.Size(55, 13);
+            this.midRightLabel.Size = new System.Drawing.Size(71, 17);
             this.midRightLabel.TabIndex = 27;
             this.midRightLabel.Text = "Mid Right:";
             // 
             // midLeftComboBox
             // 
             this.midLeftComboBox.FormattingEnabled = true;
-            this.midLeftComboBox.Location = new System.Drawing.Point(70, 200);
+            this.midLeftComboBox.Location = new System.Drawing.Point(93, 246);
+            this.midLeftComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.midLeftComboBox.Name = "midLeftComboBox";
-            this.midLeftComboBox.Size = new System.Drawing.Size(102, 21);
+            this.midLeftComboBox.Size = new System.Drawing.Size(135, 24);
             this.midLeftComboBox.TabIndex = 26;
             // 
             // midLeftLabel
             // 
             this.midLeftLabel.AutoSize = true;
-            this.midLeftLabel.Location = new System.Drawing.Point(4, 204);
+            this.midLeftLabel.Location = new System.Drawing.Point(5, 251);
+            this.midLeftLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.midLeftLabel.Name = "midLeftLabel";
-            this.midLeftLabel.Size = new System.Drawing.Size(48, 13);
+            this.midLeftLabel.Size = new System.Drawing.Size(62, 17);
             this.midLeftLabel.TabIndex = 25;
             this.midLeftLabel.Text = "Mid Left:";
             // 
             // topRightComboBox
             // 
             this.topRightComboBox.FormattingEnabled = true;
-            this.topRightComboBox.Location = new System.Drawing.Point(280, 99);
+            this.topRightComboBox.Location = new System.Drawing.Point(373, 122);
+            this.topRightComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.topRightComboBox.Name = "topRightComboBox";
-            this.topRightComboBox.Size = new System.Drawing.Size(102, 21);
+            this.topRightComboBox.Size = new System.Drawing.Size(135, 24);
             this.topRightComboBox.TabIndex = 24;
             // 
             // topRightLabel
             // 
             this.topRightLabel.AutoSize = true;
-            this.topRightLabel.Location = new System.Drawing.Point(214, 103);
+            this.topRightLabel.Location = new System.Drawing.Point(285, 127);
+            this.topRightLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.topRightLabel.Name = "topRightLabel";
-            this.topRightLabel.Size = new System.Drawing.Size(57, 13);
+            this.topRightLabel.Size = new System.Drawing.Size(74, 17);
             this.topRightLabel.TabIndex = 23;
             this.topRightLabel.Text = "Top Right:";
             // 
             // displayComboBox
             // 
             this.displayComboBox.FormattingEnabled = true;
-            this.displayComboBox.Location = new System.Drawing.Point(178, 52);
+            this.displayComboBox.Location = new System.Drawing.Point(237, 64);
+            this.displayComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.displayComboBox.Name = "displayComboBox";
-            this.displayComboBox.Size = new System.Drawing.Size(102, 21);
+            this.displayComboBox.Size = new System.Drawing.Size(135, 24);
             this.displayComboBox.TabIndex = 22;
             // 
             // topLeftComboBox
             // 
             this.topLeftComboBox.FormattingEnabled = true;
-            this.topLeftComboBox.Location = new System.Drawing.Point(69, 99);
+            this.topLeftComboBox.Location = new System.Drawing.Point(92, 122);
+            this.topLeftComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.topLeftComboBox.Name = "topLeftComboBox";
-            this.topLeftComboBox.Size = new System.Drawing.Size(102, 21);
+            this.topLeftComboBox.Size = new System.Drawing.Size(135, 24);
             this.topLeftComboBox.TabIndex = 21;
             // 
             // topLeftLabel
             // 
             this.topLeftLabel.AutoSize = true;
-            this.topLeftLabel.Location = new System.Drawing.Point(3, 103);
+            this.topLeftLabel.Location = new System.Drawing.Point(4, 127);
+            this.topLeftLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.topLeftLabel.Name = "topLeftLabel";
-            this.topLeftLabel.Size = new System.Drawing.Size(50, 13);
+            this.topLeftLabel.Size = new System.Drawing.Size(65, 17);
             this.topLeftLabel.TabIndex = 20;
             this.topLeftLabel.Text = "Top Left:";
             // 
             // displayLabel
             // 
             this.displayLabel.AutoSize = true;
-            this.displayLabel.Location = new System.Drawing.Point(128, 55);
+            this.displayLabel.Location = new System.Drawing.Point(171, 68);
+            this.displayLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.displayLabel.Name = "displayLabel";
-            this.displayLabel.Size = new System.Drawing.Size(44, 13);
+            this.displayLabel.Size = new System.Drawing.Size(58, 17);
             this.displayLabel.TabIndex = 19;
             this.displayLabel.Text = "Display:";
             // 
             // moduleSelectionButton
             // 
-            this.moduleSelectionButton.Location = new System.Drawing.Point(12, 373);
+            this.moduleSelectionButton.Location = new System.Drawing.Point(13, 482);
+            this.moduleSelectionButton.Margin = new System.Windows.Forms.Padding(4);
             this.moduleSelectionButton.Name = "moduleSelectionButton";
-            this.moduleSelectionButton.Size = new System.Drawing.Size(89, 48);
+            this.moduleSelectionButton.Size = new System.Drawing.Size(95, 59);
             this.moduleSelectionButton.TabIndex = 36;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
             this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(219, 482);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(4);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(95, 59);
+            this.resetButton.TabIndex = 37;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // WhosOnFirstOtherStageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 450);
+            this.ClientSize = new System.Drawing.Size(533, 554);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.moduleSelectionButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.strikeButton);
@@ -242,8 +274,9 @@ namespace KTANE_Solver
             this.Controls.Add(this.topLeftLabel);
             this.Controls.Add(this.displayLabel);
             this.Controls.Add(this.stageLabel);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "WhosOnFirstOtherStageForm";
-            this.Text = "WhosOnFirstOtherStageForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +303,6 @@ namespace KTANE_Solver
         private System.Windows.Forms.Label topLeftLabel;
         private System.Windows.Forms.Label displayLabel;
         private System.Windows.Forms.Button moduleSelectionButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }

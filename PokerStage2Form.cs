@@ -11,12 +11,13 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class PokerStage2Form : ModuleForm
+    public partial class PokerStage2Form : MultiStageModuleForm
     {
         PokerStage1Form pokerStage1Form;
         public Poker module;
 
         public PokerStage2Form(PokerStage1Form pokerStage1Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, moduleSelectionForm, pokerStage1Form)
         {
             InitializeComponent();
             UpdateForm(pokerStage1Form, moduleSelectionForm, module, bomb, logFileWriter);
@@ -42,9 +43,8 @@ namespace KTANE_Solver
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
             pokerStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-            pokerStage1Form.Show();
+            ResetModule();
         }
 
         private void strikeButton_Click(object sender, EventArgs e)
@@ -67,6 +67,12 @@ namespace KTANE_Solver
 
             PokerStage3Form stage3 = new PokerStage3Form(pokerStage1Form, this, ModuleSelectionForm, module, Bomb, LogFileWriter);
             stage3.Show();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            pokerStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            ResetModule();
         }
     }
 }

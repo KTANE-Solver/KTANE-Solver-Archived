@@ -14,7 +14,7 @@ namespace KTANE_Solver
     //Author: Nya Bentley
     //Date: 3/25/21
     //Purpose: Used to get the information needed to solve stage 2-4
-    public partial class SillySlotsOtherStageForm : ModuleForm
+    public partial class SillySlotsOtherStageForm : MultiStageModuleForm
     {
 
         //=========FEILDS=========
@@ -50,7 +50,7 @@ namespace KTANE_Solver
         public SillySlotsOtherStageForm(SillySlotsStage1Form sillySlotsStage1Form,
                                         ModuleSelectionForm moduleSelectionForm,
                                         Bomb bomb, StreamWriter logFileWriter,
-                                        SillySlots sillySlotsModule, int stage) : base(bomb, logFileWriter,moduleSelectionForm)
+                                        SillySlots sillySlotsModule, int stage) : base(bomb, logFileWriter,moduleSelectionForm, sillySlotsStage1Form)
         {
             InitializeComponent();
             UpdateForm(sillySlotsStage1Form, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, stage);
@@ -196,9 +196,8 @@ namespace KTANE_Solver
         {
             if (stage == 2)
             {
-                this.Hide();
                 sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-                sillySlotsStage1Form.Show();
+                ResetModule();
             }
 
             else
@@ -234,11 +233,8 @@ namespace KTANE_Solver
             if (presskeep)
             {
                 ShowAnswer("Press Keep", $"Silly Slot Stage {stage} Answer");
-
-                this.Hide();
-
                 sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-                sillySlotsStage1Form.Show();
+                ResetModule();
             }
 
             else
@@ -248,10 +244,8 @@ namespace KTANE_Solver
                 //if the stage is 4 then go to the first stage
                 if (stage == 4)
                 {
-                    this.Hide();
-
                     sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-                    sillySlotsStage1Form.Show();
+                    ResetModule();
                 }
 
                 else
@@ -259,6 +253,12 @@ namespace KTANE_Solver
                     UpdateForm(stage + 1);
                 }
             }
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            ResetModule();
         }
     }
 }

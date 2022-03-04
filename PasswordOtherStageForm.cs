@@ -11,7 +11,7 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class PasswordOtherStageForm : ModuleForm
+    public partial class PasswordOtherStageForm : MultiStageModuleForm
     {
         private int stage;
         private PasswordFirstStageForm firstStage;
@@ -19,6 +19,7 @@ namespace KTANE_Solver
         private Password module;
 
         public PasswordOtherStageForm(int stage, List<char> previousLetters, PasswordFirstStageForm firstStage, Password module, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+            : base(bomb, logFileWriter, moduleSelectionForm, firstStage)
         {
             InitializeComponent();
             UpdateForm(stage, previousLetters, firstStage, module, bomb, logFileWriter, moduleSelectionForm);
@@ -62,8 +63,8 @@ namespace KTANE_Solver
         {
             if (stage == 2)
             {
-                this.Hide();
-                firstStage.Show();
+                firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+                ResetModule();
             }
 
             else
@@ -134,9 +135,8 @@ namespace KTANE_Solver
 
                 else
                 {
-                    this.Hide();
                     firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-                    firstStage.Show();
+                    ResetModule();
                 }
             }
         }
@@ -151,7 +151,8 @@ namespace KTANE_Solver
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            firstStage.Hide();
+            firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            ResetModule();
         }
     }
 }

@@ -44,13 +44,14 @@
             this.slot3ObjectComboBox = new System.Windows.Forms.ComboBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // moduleSelectionButton
             // 
-            this.moduleSelectionButton.Location = new System.Drawing.Point(111, 231);
+            this.moduleSelectionButton.Location = new System.Drawing.Point(102, 226);
             this.moduleSelectionButton.Name = "moduleSelectionButton";
-            this.moduleSelectionButton.Size = new System.Drawing.Size(134, 38);
+            this.moduleSelectionButton.Size = new System.Drawing.Size(83, 43);
             this.moduleSelectionButton.TabIndex = 15;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
@@ -58,9 +59,9 @@
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(251, 231);
+            this.strikeButton.Location = new System.Drawing.Point(280, 226);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(81, 38);
+            this.strikeButton.Size = new System.Drawing.Size(83, 43);
             this.strikeButton.TabIndex = 22;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
@@ -169,9 +170,9 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(338, 231);
+            this.submitButton.Location = new System.Drawing.Point(369, 226);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(81, 38);
+            this.submitButton.Size = new System.Drawing.Size(83, 43);
             this.submitButton.TabIndex = 35;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -179,19 +180,30 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(24, 231);
+            this.backButton.Location = new System.Drawing.Point(13, 226);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(81, 38);
+            this.backButton.Size = new System.Drawing.Size(83, 43);
             this.backButton.TabIndex = 36;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(191, 226);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(83, 43);
+            this.resetButton.TabIndex = 37;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // SillySlotsOtherStageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 281);
+            this.ClientSize = new System.Drawing.Size(464, 281);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.slot3ObjectComboBox);
@@ -233,5 +245,6 @@
         private System.Windows.Forms.ComboBox slot3ObjectComboBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }

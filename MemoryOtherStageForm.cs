@@ -11,15 +11,15 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class MemoryOtherStageForm : ModuleForm
+    public partial class MemoryOtherStageForm : MultiStageModuleForm
     {
         MemoryStage1Form firstStage;
         Memory module;
         int stage;
-        public MemoryOtherStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Memory module, MemoryStage1Form firstStage)
+        public MemoryOtherStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Memory module, MemoryStage1Form firstStage) 
+        : base(bomb, logFileWriter, moduleSelectionForm, firstStage)
         {
             InitializeComponent();
-            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
             UpdateForm(2);
             this.firstStage = firstStage;
             this.module = module;
@@ -170,9 +170,8 @@ namespace KTANE_Solver
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
             firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-            firstStage.Show();
+            ResetModule();
         }
     }
 }

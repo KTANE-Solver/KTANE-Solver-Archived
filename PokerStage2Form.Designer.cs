@@ -42,7 +42,7 @@ namespace KTANE_Solver
             // 
             this.responseComboBox.FormattingEnabled = true;
             this.responseComboBox.Location = new System.Drawing.Point(280, 47);
-            this.responseComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.responseComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.responseComboBox.Name = "responseComboBox";
             this.responseComboBox.Size = new System.Drawing.Size(160, 24);
             this.responseComboBox.TabIndex = 0;
@@ -60,7 +60,7 @@ namespace KTANE_Solver
             // moduleSelectionButton
             // 
             this.moduleSelectionButton.Location = new System.Drawing.Point(16, 100);
-            this.moduleSelectionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.moduleSelectionButton.Margin = new System.Windows.Forms.Padding(4);
             this.moduleSelectionButton.Name = "moduleSelectionButton";
             this.moduleSelectionButton.Size = new System.Drawing.Size(94, 52);
             this.moduleSelectionButton.TabIndex = 2;
@@ -71,7 +71,7 @@ namespace KTANE_Solver
             // backButton
             // 
             this.backButton.Location = new System.Drawing.Point(118, 100);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(94, 52);
             this.backButton.TabIndex = 3;
@@ -82,7 +82,7 @@ namespace KTANE_Solver
             // strikeButton
             // 
             this.strikeButton.Location = new System.Drawing.Point(357, 100);
-            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4);
             this.strikeButton.Name = "strikeButton";
             this.strikeButton.Size = new System.Drawing.Size(105, 52);
             this.strikeButton.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace KTANE_Solver
             // submitButton
             // 
             this.submitButton.Location = new System.Drawing.Point(470, 100);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(99, 52);
             this.submitButton.TabIndex = 5;
@@ -110,6 +110,7 @@ namespace KTANE_Solver
             this.resetButton.TabIndex = 6;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // PokerStage2Form
             // 
@@ -123,7 +124,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.moduleSelectionButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.responseComboBox);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "PokerStage2Form";
             this.ResumeLayout(false);
             this.PerformLayout();

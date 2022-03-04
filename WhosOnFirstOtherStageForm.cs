@@ -13,7 +13,7 @@ namespace KTANE_Solver
 {
     //Purpose: Get information needed to solve Stage 2 and 3 of
     // "Who's on First"
-    public partial class WhosOnFirstOtherStageForm : ModuleForm
+    public partial class WhosOnFirstOtherStageForm : MultiStageModuleForm
     {
         //the form that handles the first stage of "Who's on First"
         WhosOnFirstFirstStageForm whosOnFirstFirstStageForm;
@@ -26,6 +26,7 @@ namespace KTANE_Solver
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
         public WhosOnFirstOtherStageForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter, WhosOnFirstFirstStageForm whosOnFirstFirstStageForm)
+            :base(bomb, logFileWriter, moduleSelectionForm, whosOnFirstFirstStageForm)
         {
             this.whosOnFirstFirstStageForm = whosOnFirstFirstStageForm;
             InitializeComponent();
@@ -101,10 +102,8 @@ namespace KTANE_Solver
         {
             if (stageLabel.Text == "Stage 2")
             {
-                this.Hide();
-
                 whosOnFirstFirstStageForm.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-                whosOnFirstFirstStageForm.Show();
+                ResetModule();
             }
 
             else
@@ -168,6 +167,13 @@ namespace KTANE_Solver
         private void moduleSelectionButton_Click(object sender, EventArgs e)
         {
             GoToMoudleSelectionForm();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            whosOnFirstFirstStageForm.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            ResetModule();
+            whosOnFirstFirstStageForm.Show();
         }
     }
 }
