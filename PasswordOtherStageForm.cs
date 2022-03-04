@@ -148,5 +148,10 @@ namespace KTANE_Solver
         {
             return str.Length == 1 && str[0] >= 65 && str[0] <= 90;
         }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            firstStage.Hide();
+        }
     }
 }
