@@ -140,5 +140,17 @@ namespace KTANE_Solver
 
             return new MonsplodeTradingCard.Card(name.Text, printVersion, rarity, shiny.Checked, bentNumber, Bomb);
         }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            stage1.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            stage1.Show();
+        }
+
+        private void moduleSelectionButton_Click(object sender, EventArgs e)
+        {
+            GoToMoudleSelectionForm();
+        }
     }
 }
