@@ -38,6 +38,7 @@ namespace KTANE_Solver
             this.moduleSelectionButton = new System.Windows.Forms.Button();
             this.strikeButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // stageLabel
@@ -88,10 +89,10 @@ namespace KTANE_Solver
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(16, 276);
+            this.backButton.Location = new System.Drawing.Point(106, 278);
             this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(111, 50);
+            this.backButton.Size = new System.Drawing.Size(90, 50);
             this.backButton.TabIndex = 7;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
@@ -99,10 +100,10 @@ namespace KTANE_Solver
             // 
             // moduleSelectionButton
             // 
-            this.moduleSelectionButton.Location = new System.Drawing.Point(156, 276);
+            this.moduleSelectionButton.Location = new System.Drawing.Point(8, 278);
             this.moduleSelectionButton.Margin = new System.Windows.Forms.Padding(4);
             this.moduleSelectionButton.Name = "moduleSelectionButton";
-            this.moduleSelectionButton.Size = new System.Drawing.Size(111, 50);
+            this.moduleSelectionButton.Size = new System.Drawing.Size(90, 50);
             this.moduleSelectionButton.TabIndex = 8;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
@@ -110,10 +111,10 @@ namespace KTANE_Solver
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(281, 276);
+            this.strikeButton.Location = new System.Drawing.Point(325, 278);
             this.strikeButton.Margin = new System.Windows.Forms.Padding(4);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(111, 50);
+            this.strikeButton.Size = new System.Drawing.Size(90, 50);
             this.strikeButton.TabIndex = 9;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
@@ -121,20 +122,32 @@ namespace KTANE_Solver
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(411, 276);
+            this.submitButton.Location = new System.Drawing.Point(434, 278);
             this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(111, 50);
+            this.submitButton.Size = new System.Drawing.Size(90, 50);
             this.submitButton.TabIndex = 2;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(216, 278);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(4);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(90, 50);
+            this.resetButton.TabIndex = 10;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // MemoryOtherStageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 341);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.moduleSelectionButton);
@@ -162,5 +175,6 @@ namespace KTANE_Solver
         private System.Windows.Forms.Button moduleSelectionButton;
         private System.Windows.Forms.Button strikeButton;
         private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }

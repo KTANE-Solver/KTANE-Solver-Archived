@@ -167,5 +167,12 @@ namespace KTANE_Solver
                     return false;
             }
         }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+            firstStage.Show();
+        }
     }
 }
