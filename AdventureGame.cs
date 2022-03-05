@@ -61,6 +61,9 @@ namespace KTANE_Solver
             answer = "";
         }
 
+        /// <summary>
+        /// Solve the Advenuture Game module
+        /// </summary>
         public void Solve()
         {
             PrintDebugLine("======================ADVENTURE GAME======================\n");
@@ -130,6 +133,11 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Figures out if an item needs to be used
+        /// </summary>
+        /// <param name="item">the targeted item</param>
+        /// <returns>true if the item is being used</returns>
         private bool UseItem(Item item)
         {
             switch (item)
@@ -188,8 +196,8 @@ namespace KTANE_Solver
         /// <summary>
         /// Tells how much damage a weapon deals
         /// </summary>
-        /// <param name="weapon"></param>
-        /// <returns></returns>
+        /// <param name="weapon">the weapon in question</param>
+        /// <returns>how much damage the weapon does</returns>
         private int DamageDealt(Weapon weapon)
         {
             int damageDelt;

@@ -185,6 +185,10 @@ namespace KTANE_Solver
 
         }
 
+        /// <summary>
+        /// Figures out which weapon is being used
+        /// </summary>
+        /// <param name="weaponCheckBox">the check box of the weapon that was selected</param>
         private void SetWeapon(CheckBox weaponCheckBox)
         {
             if (weaponCheckBox.Checked)
@@ -209,6 +213,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Figures out which item is being used
+        /// </summary>
+        /// <param name="itemCheckBox">the check box of the item that was selected</param>
         private void SetItem(CheckBox itemCheckBox)
 
         {
@@ -247,6 +255,10 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Checks how many weapons were selected
+        /// </summary>
+        /// <returns>how many weapon check box were selected</returns>
         private int SelectedWeaponNum()
         {
             int num = 0;
@@ -284,6 +296,10 @@ namespace KTANE_Solver
             return num;
         }
 
+        /// <summary>
+        /// Checks how many items were selected
+        /// </summary>
+        /// <returns>how many items check box were selected</returns>
         private int SelectedItemNum()
         {
             int num = 0;
