@@ -255,7 +255,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Possible words: {string.Join(", ", possibleAnswer)}\n");
 
-            if (possibleAnswer.Count <= 3)
+            if (possibleAnswer.Count <= 3 && possibleAnswer.Count != 0)
             {
                 ShowAnswer(string.Join(", ", possibleAnswer), "Password Answer");
             }
