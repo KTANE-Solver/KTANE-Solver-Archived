@@ -8,9 +8,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 4/9/21
-    //Purpose: Solves the murder moudle
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 4/9/21 
+    /// Purpose: Solves the murder moudle
+    /// </summary>
     class Murder : Module
     {
         //all the rooms

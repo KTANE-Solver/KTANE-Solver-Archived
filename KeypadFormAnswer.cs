@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Shows the answer of keypad
+    /// </summary>
+
     public partial class KeypadFormAnswer : ModuleForm
     {
 

@@ -11,6 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Shows the answer of maze
+    /// </summary>
+
     public partial class MazeAnswerForm : ModuleForm
     {
         List<Maze.Coordinate> correctSpots;

@@ -11,9 +11,12 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/1/21
-    //Purpose: Prompts the user to give edgework
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/1/21
+    /// Purpose: Prompts the user to give edgework
+    /// </summary>
     public partial class EdgeworkInputForm : Form
     {
         //FIELDS

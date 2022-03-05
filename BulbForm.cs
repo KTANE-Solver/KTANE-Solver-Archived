@@ -11,6 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the Bulb module
+    /// </summary>
+
     public partial class BulbForm : ModuleForm
     {
         public BulbForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, string name) 

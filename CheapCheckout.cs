@@ -5,6 +5,10 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Cheap Checkout module
+    /// </summary>
     public class CheapCheckout : Module
     {
 

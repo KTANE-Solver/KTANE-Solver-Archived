@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Shows the answer for Adjacent Letters
+    /// </summary>
     public partial class AdjacentLettersAnswerForm : ModuleForm
     {
         public AdjacentLettersAnswerForm(bool[,] answer, StreamWriter logFileWriter) :

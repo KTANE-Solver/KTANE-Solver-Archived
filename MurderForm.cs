@@ -11,10 +11,12 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 4/9/21
-    //Purpose: Gets information needed to
-    //         solve the murder module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 4/9/21
+    /// Purpose: Gets information needed to
+    ///          solve the murder module
+    /// </summary>
     public partial class MurderForm : ModuleForm
     {
         public MurderForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 

@@ -11,10 +11,12 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/4/21
-    //Purpose: Allows the player to choose which module
-    //         they want to be solved
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/4/21
+    /// Purpose: Allows the player to choose which module
+    ///          they want to be solved
+    /// </summary>
     public partial class ModuleSelectionForm : Form
     {
 

@@ -11,10 +11,14 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/1/21
-    //Purpose: Shows the edgework the user inputted
-    //         and asks for confirmation
+
+
+    /// <summary>
+    ///Author: Nya Bentley
+    /// Date: 3/1/21
+    /// Purpose: Shows the edgework the user inputted
+    /// and asks for confirmation
+    /// </summary>
     public partial class EdgeworkConfirmationForm : Form
     {
         //FIELDS

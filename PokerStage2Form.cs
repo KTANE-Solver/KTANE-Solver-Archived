@@ -11,6 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the poker module
+    /// </summary>
+
     public partial class PokerStage2Form : MultiStageModuleForm
     {
         PokerStage1Form pokerStage1Form;

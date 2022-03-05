@@ -11,9 +11,12 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //AUTHOR: Nya Bentley
-    //DATE: 3/14/21
-    //PURPOSE: Gets the informtion needed to solve the ice cream module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// DATE: 3/14/21
+    /// Purpose: Gets information needed to solve the ice cream module
+    /// </summary>
+
     public partial class IceCreamForm : ModuleForm
     {
         //used to solve the ice cream do

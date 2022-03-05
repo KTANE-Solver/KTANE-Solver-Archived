@@ -11,6 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the button module
+    /// </summary>
+
     public partial class ButtonForm : ModuleForm
     {
         public ButtonForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

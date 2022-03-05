@@ -8,6 +8,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the two bits module
+    /// </summary>
     public class TwoBits : Module
     {
 

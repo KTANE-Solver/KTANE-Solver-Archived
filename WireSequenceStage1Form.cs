@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the wire sequence module
+    /// </summary>
     public partial class WireSequenceStage1Form : ModuleForm
     {
         public WireSequenceStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

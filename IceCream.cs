@@ -8,9 +8,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/14/21
-    //Purpose: Solves the Ice Cream module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/14/21
+    /// Purpose: Solves the ice cream module
+    /// </summary>
     public class IceCream : Module
     {
         //=======================FIELDS=======================

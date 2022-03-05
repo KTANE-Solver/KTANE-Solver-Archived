@@ -11,7 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Purpose: gets the information needed to solve "Keypad"
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the keypad module
+    /// </summary>
+
     public partial class KeypadForm : ModuleForm
     {
         //the name of the selected images

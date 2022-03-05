@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Button Module
+    /// </summary>
     class Button : Module
     {
         public Button(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Button")

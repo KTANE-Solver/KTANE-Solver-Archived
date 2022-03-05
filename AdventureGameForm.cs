@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets inforamtion needed to solve the Adventure Game module
+    /// </summary>
     public partial class AdventureGameForm : ModuleForm
     {
         //tell if a weapon slot is taken

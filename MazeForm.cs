@@ -11,10 +11,14 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/4/21
-    //Purpose: Gets the infomration needed 
-    //to solve the Maze module
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/4/21
+    /// Purpose: Gets the infomration needed 
+    /// to solve the Maze module
+    /// </summary>
     public partial class MazeForm : ModuleForm
     {
         //used to solve the module

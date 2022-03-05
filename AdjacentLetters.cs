@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Adjacent Letters module
+    /// </summary>
     class AdjacentLetters : Module
     {
         private char[,] Grid { get; }

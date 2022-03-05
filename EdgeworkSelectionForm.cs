@@ -11,12 +11,15 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 2/27/21
-    //Purpose: Used to prompt the user if they want to get 
-    //         the edgework from the Edgework.txt or type 
-    //         it in manually
-            
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 2/27/21
+    /// Purpose: Used to prompt the user if they want to get 
+    ///          the edgework from the Edgework.txt or type 
+    ///          it in manually
+    /// </summary>
     public partial class EdgeworkSelectionForm : Form
     {
         //tells whether or not preferences are valid

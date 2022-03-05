@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the memory module
+    /// </summary>
     public partial class MemoryStage1Form : ModuleForm
     {
         public MemoryStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

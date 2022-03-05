@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 2/27/21
-    //Purpose: Represnts a indicator
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 2/27/21
+    /// Purpose: Represnts a indicator
+    /// </summary>
     public class Indicator
     {
         //===============FIELDS===============

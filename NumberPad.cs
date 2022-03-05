@@ -9,6 +9,10 @@ using System.Drawing;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the number pad module
+    /// </summary>
     public class NumberPad : Module
     {
         int firstNumber;

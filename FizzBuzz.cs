@@ -7,6 +7,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the fizzbuzz module
+    /// </summary>
     public class FizzBuzz : Module
     {
         Condition firstCondition, secondCondition, thirdCondition;

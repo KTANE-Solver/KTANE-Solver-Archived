@@ -8,8 +8,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    //Date: 4/27/21
-    //Purpose: Solves the "Complicated Wires" module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 4/27/21
+    /// Purpose: Solves the complicated module
+    /// </summary>
     class ComplicatedWires : Module
     {
         //the list of wires on the module

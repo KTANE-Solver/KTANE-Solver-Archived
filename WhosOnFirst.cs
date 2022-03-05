@@ -8,8 +8,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    //Date: 5/4/21
-    //Purpose: Solves the "Who's on First" module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 5/4/21
+    /// Purpose: Solves the "Who's on First" module
+    /// </summary>
     class WhosOnFirst : Module
     {
         //FIELDS

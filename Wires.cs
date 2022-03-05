@@ -5,9 +5,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 4/25/21
-    //Purpose: Sovles the Wires module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 4/25/21 
+    /// Purpose: Sovles the Wires module
+    /// </summary>
     class Wires : Module
     {
         //=========ENUMS=========

@@ -11,6 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the gamepad module
+    /// </summary>
+
     public partial class GamepadForm : ModuleForm
     {
         public GamepadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

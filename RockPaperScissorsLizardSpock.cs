@@ -7,6 +7,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the rock paper scissors lizard spock module
+    /// </summary>
     public class RockPaperScissorsLizardSpock : Module
     {
         Symbol decoy;

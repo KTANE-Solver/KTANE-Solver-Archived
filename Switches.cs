@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the switches module
+    /// </summary>
     class Switches : Module
     {
         private bool[] start;

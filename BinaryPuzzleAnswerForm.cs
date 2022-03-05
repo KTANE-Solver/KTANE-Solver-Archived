@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Shows the Binary Puzzle Answer
+    /// </summary>
     public partial class BinaryPuzzleAnswerForm : ModuleForm
     {
         public BinaryPuzzleAnswerForm(char[,] grid, StreamWriter logFileWriter)

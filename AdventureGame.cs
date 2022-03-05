@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Adventure Game module
+    /// </summary>
     public class AdventureGame : Module
     {
         Item item1;

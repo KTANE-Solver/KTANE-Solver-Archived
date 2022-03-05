@@ -9,9 +9,13 @@ using System.Drawing;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/5/21
-    //Purpose: Solves the Maze module
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/5/21
+    /// Purpose: Solves the Maze module
+    /// </summary>
     public class Maze : Module
     {
         //==============FIELDS==============

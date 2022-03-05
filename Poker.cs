@@ -7,8 +7,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Date: 5/30/21
-    //Purpose: Solves the Poker module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 5/30/21
+    /// Purpose: Solves the poker module
+    /// </summary>
     public class Poker : Module
     {
         //ace tree

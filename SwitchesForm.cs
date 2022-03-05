@@ -10,6 +10,11 @@ using System.Windows.Forms;
 using System.IO;
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the switches module
+    /// </summary>
+
     public partial class SwitchesForm : ModuleForm
     {
         public SwitchesForm(Bomb bomb,StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

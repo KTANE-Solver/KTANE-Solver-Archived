@@ -11,9 +11,13 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/6/21
-    //Purpose: Gets the information needed to solve the Logic module
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/6/21
+    /// Purpose: Gets the information needed to solve the Logic module
+    /// </summary>
     public partial class LogicForm : ModuleForm
     {
         //the logic module

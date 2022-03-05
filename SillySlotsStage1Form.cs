@@ -11,10 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/23/21
-    //Purpose: Gets the information needed to solve the fisrt stage of Silly Slots
-
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/23/21
+    /// Purpose: Gets the information needed to solve the fisrt stage of Silly Slots
+    /// </summary>
     public partial class SillySlotsStage1Form : ModuleForm
     {
         //used to solve the module

@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information from the user that is needed to solve 3D Maze
+    /// </summary>
     public partial class _3DMazeForm : ModuleForm
     {
         _3DMaze module;

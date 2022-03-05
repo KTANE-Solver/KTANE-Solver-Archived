@@ -9,8 +9,13 @@ using System.Drawing;
 
 namespace KTANE_Solver
 {
-    //Date: 5/20/21
-    //Purpose: Solves the "Keypad" module
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 5/20/21
+    /// Purpose: Solves the "Keypad" module
+    /// </summary>
     public class Keypad : Module
     {
         //the 4 symbols on the bomb

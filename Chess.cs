@@ -8,8 +8,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    //Date: 4/30/21
-    //Purpose: solves the "chess" module 
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 4/30/21
+    /// Purpose: Solves the chess module
+    /// </summary>
     class Chess : Module
     {
         //FIELDS

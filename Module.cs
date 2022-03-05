@@ -8,10 +8,14 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 4/8/21
-    //Purpose: Keeps all the information that
-    //          all modules have here
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 4/8/21
+    /// Purpose: Keeps all the information that
+    ///          all modules have here
+    /// </summary>
     public class Module
     {
         //where the information of the bomb is stored

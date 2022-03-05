@@ -8,6 +8,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the memory module
+    /// </summary>
     public class Memory : Module
     {
         private int[] stage1;

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the alphabet module
+    /// </summary>
     class Alphabet
     {
         //FIELDS

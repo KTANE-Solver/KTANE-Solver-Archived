@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the two bits module
+    /// </summary>
     public partial class TwoBitsStage1Form : ModuleForm
     {
         TwoBits module;

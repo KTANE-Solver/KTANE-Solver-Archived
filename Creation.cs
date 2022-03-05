@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Creation module
+    /// </summary>
     class Creation
     {
         //**FIELDS**

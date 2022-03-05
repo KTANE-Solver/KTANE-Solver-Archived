@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Simon Says module
+    /// </summary>
     public class SimonSays : Module
     {
         //a "list" of all the lights that lit up

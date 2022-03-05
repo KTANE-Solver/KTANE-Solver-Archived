@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Monsplode Trading Cards module
+    /// </summary>
     public class MonsplodeTradingCard : Module
     {
         public Card[] hand { get; }

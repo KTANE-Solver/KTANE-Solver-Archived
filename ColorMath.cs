@@ -8,7 +8,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    class ColorMath: Module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the color math module
+    /// </summary>
+    class ColorMath : Module
     {
         Color leftColor1;
         Color leftColor2;

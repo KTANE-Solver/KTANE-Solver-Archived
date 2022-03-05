@@ -11,8 +11,12 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Date: 5/1/21
-    //Purpose: Gets information needed to solve the Chess module
+    /// <summary>
+    /// Author: Nya Bentley\
+    /// Date: 5/1/21
+    /// Purpose: Gets information needed to solve the chess module
+    /// </summary>
+
     public partial class ChessForm : ModuleForm
     {
         public ChessForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

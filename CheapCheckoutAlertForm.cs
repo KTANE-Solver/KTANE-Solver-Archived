@@ -11,6 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Tells the user to alert the customer and give a new cash amout
+    /// </summary>
+
     public partial class CheapCheckoutAlertForm : ModuleForm
     {
         decimal total;

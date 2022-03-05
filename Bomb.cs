@@ -7,9 +7,11 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 2/27/21
-    //Purpose: Represnts the bomb, will hold all of the edgework
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 2/27/21
+    /// Purpose: Represnts the bomb, will hold all of the edgework
+    /// </summary>
     public class Bomb
     {
         //===============ENUM===============

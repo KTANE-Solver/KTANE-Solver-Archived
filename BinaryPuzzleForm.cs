@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the Binary Puzzle module
+    /// </summary>
     public partial class BinaryPuzzleForm : ModuleForm
     {
         public BinaryPuzzleForm(ModuleSelectionForm moduleSelection, StreamWriter logFileWriter) 

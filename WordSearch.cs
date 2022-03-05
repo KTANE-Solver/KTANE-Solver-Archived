@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the word search module
+    /// </summary>
     public class WordSearch : Module
     {
         private char TopLeftLetter { get; set;}

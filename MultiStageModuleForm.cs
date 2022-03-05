@@ -11,9 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/4/22
-    //Purpose: Used for modules that have more than one stage
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/4/22
+    /// Purpose: Used for modules that have more than one stage
+    /// </summary>
     public partial class MultiStageModuleForm : ModuleForm
     {
         private ModuleForm firstStageForm;

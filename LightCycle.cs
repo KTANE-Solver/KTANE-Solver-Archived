@@ -7,6 +7,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the light cycle module
+    /// </summary>
     class LightCycle : Module
     {
         String pair1, pair2, pair3, pair4, pair5, pair6;

@@ -11,10 +11,12 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 4/9/21
-    //Purpose: Keeps all the information that
-    //          all module forms have here
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 4/9/21
+    /// Purpose: Keeps all the information that
+    ///           all module forms have here
+    /// </summary>
     public partial class ModuleForm : Form
     {
         protected Bomb Bomb { get; set; }

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/15/21
-    //Purpose: Solves Binary Puzzle Module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/15/21
+    /// Purpose: Solves Binary Puzzle Module
+    /// </summary>
     class BinaryPuzzle : Module
     {
 

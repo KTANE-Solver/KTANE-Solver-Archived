@@ -11,8 +11,12 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Date 6/9/21
-    //Purpose: Gets the information needed to solve "Cheap Checkout"
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date 6/9/21
+    /// Purpose: Gets information needed to solve the Cheap Checkout module
+    /// </summary>
+
     public partial class CheapCheckoutForm : ModuleForm
     {
         public CheapCheckoutForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

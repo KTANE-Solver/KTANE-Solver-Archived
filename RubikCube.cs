@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the Rubik cube module
+    /// </summary>
     class RubikCube : Module
     {
         //all the possible colors of each face

@@ -7,9 +7,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/23/21
-    //Purpose: Solves the silly slot module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/23/21
+    /// Purpose: Solves the silly slot module
+    /// </summary>
     public class SillySlots : Module
     {
         //============FIELDS============

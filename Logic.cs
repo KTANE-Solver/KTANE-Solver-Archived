@@ -8,9 +8,13 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 3/6/21
-    //Purpose: Solves the logic module
+
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 3/6/21
+    /// Purpose: Solves the logic module
+    /// </summary>
     public class Logic : Module
     {
         //=========FIELDS=========

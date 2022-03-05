@@ -8,6 +8,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the password module
+    /// </summary>
     public class Password : Module
     {
        public List<char> firstRow;

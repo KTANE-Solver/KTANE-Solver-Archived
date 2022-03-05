@@ -11,6 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the simon says module
+    /// </summary>
     public partial class SimonSaysOtherStageForm : MultiStageModuleForm
     {
         SimonSays module;

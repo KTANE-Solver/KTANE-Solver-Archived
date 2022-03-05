@@ -11,8 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Purpose: Gets the information needed to solve the
-    //"Complicated Wires" module
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the complicated wires module
+    /// </summary>
+
     public partial class ComplicatedWiresForm : ModuleForm
     {
 

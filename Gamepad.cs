@@ -7,6 +7,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the gamepad module
+    /// </summary>
     class Gamepad : Module
     {
         private int x, y, a, b, c, d;

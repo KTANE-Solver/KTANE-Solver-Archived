@@ -11,8 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    //Purpose: Get information needed to solve Stage 1 of
-    // "Who's on First"
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Get information needed to solve Stage 1 of
+    ///          "Who's on First"
+    /// </summary>
     public partial class WhosOnFirstFirstStageForm : ModuleForm
     {
         //the form used for stage 2 and 3

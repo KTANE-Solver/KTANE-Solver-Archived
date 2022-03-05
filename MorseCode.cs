@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the morse code module
+    /// </summary>
     public class MorseCode : Module
     {
         public MorseCode(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Morse Code")

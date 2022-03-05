@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Gets information needed to solve the morse code module
+    /// </summary>
     public partial class MorseCodeForm : ModuleForm
     {
         public MorseCodeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)

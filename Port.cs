@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace KTANE_Solver
 {
-    //Author: Nya Bentley
-    //Date: 2/27/21
-    //Purpose: Represnts a port
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Date: 2/27/21
+    /// Purpose: Represnts a port
+    /// </summary>
     public class Port
     {
         //===============FIELDS===============

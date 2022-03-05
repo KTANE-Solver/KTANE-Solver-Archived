@@ -7,6 +7,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
+    /// <summary>
+    /// Author: Nya Bentley
+    /// Purpose: Solves the wire sequence module
+    /// </summary>
     public class WireSequence : Module
     {
         private int RedColor { get; set; }
