@@ -108,7 +108,15 @@ namespace KTANE_Solver
             module.FillRow(secondRow1[0], secondRow2[0], secondRow3[0], secondRow4[0], secondRow5[0], secondRow6[0], 2);
             module.FillRow(thirdRow1[0], thirdRow2[0], thirdRow3[0], thirdRow4[0], thirdRow5[0], thirdRow6[0], 3);
 
-            if (module.Solve(3))
+            List<string> possibleAnswers = module.Solve(3);
+
+            if (possibleAnswers.Count == 0)
+            {
+                ShowErrorMessage("Unable to find answer", "Password Error");
+                return;
+            }
+
+            if (possibleAnswers.Count <= 3)
             {
                 UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }

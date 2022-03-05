@@ -83,7 +83,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Word: {word}\nAnswer: {answer:0.000}\n");
 
-            ShowAnswer("" + answer, "Morse Code Answer");
+            ShowAnswer($"{answer:0.000}", "Morse Code Answer");
         }
     }
 }

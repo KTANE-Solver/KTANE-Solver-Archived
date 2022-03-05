@@ -101,27 +101,37 @@ namespace KTANE_Solver
                 ShowErrorMessage("Each text box must contain only 1 letter", "Password Error");
                 return;
             }
+            List<string> possibleAnswers;
 
             if (stage == 3)
             {
                 module.FillRow(letter1[0], letter2[0], letter3[0], letter4[0], letter5[0], letter6[0], 5);
 
-                if (!module.Solve(5))
+                possibleAnswers = module.Solve(5);
+
+                if (possibleAnswers.Count == 0)
                 {
                     ShowErrorMessage("Unable to find answer", "Password Error");
+                    return;
                 }
 
-                this.Hide();
                 firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-                firstStage.Show();
+                ResetModule();
             }
 
             else
             {
                 module.FillRow(letter1[0], letter2[0], letter3[0], letter4[0], letter5[0], letter6[0], 4);
 
+                possibleAnswers = module.Solve(4);
 
-                if (!module.Solve(4))
+                if (possibleAnswers.Count == 0)
+                {
+                    ShowErrorMessage("Unable to find answer", "Password Error");
+                    return;
+                }
+
+                if (possibleAnswers.Count > 3)
                 {
                     previousLetters.Add(textBox1.Text[0]);
                     previousLetters.Add(textBox2.Text[0]);

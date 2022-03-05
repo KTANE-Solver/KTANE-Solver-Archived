@@ -59,7 +59,7 @@ namespace KTANE_Solver
         /// only the first three rows
         /// </summary>
         /// <returns></returns>
-        public bool Solve(int num)
+        public List<String> Solve(int num)
         {
             //a list of all the possible answers
             List<String> possibleAnswer = new List<string>();
@@ -258,10 +258,9 @@ namespace KTANE_Solver
             if (possibleAnswer.Count <= 3)
             {
                 ShowAnswer(string.Join(", ", possibleAnswer), "Password Answer");
-                return true;
             }
 
-            return false;
+            return possibleAnswer;
         }
 
         /// <summary>
