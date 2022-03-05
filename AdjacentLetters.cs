@@ -20,6 +20,9 @@ namespace KTANE_Solver
             Grid = grid;            
         }
 
+        /// <summary>
+        /// Solves the Adjacent Letters module
+        /// </summary>
         public void Solve()
         {
             Answer = new bool[3, 4];
@@ -41,6 +44,12 @@ namespace KTANE_Solver
             answerForm.Show();
         }
 
+        /// <summary>
+        /// Check to see if the letter to the left of the current letter allows the current letter to be pressed
+        /// </summary>
+        /// <param name="row">the row of the current letter</param>
+        /// <param name="column">the column of the current letter</param>
+        /// <returns>true if the current letter is being pressed</returns>
         private bool Left(int row, int column)
         {
             if (column == 0)
@@ -130,6 +139,12 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Check to see if the letter to the right of the current letter allows the current letter to be pressed
+        /// </summary>
+        /// <param name="row">the row of the current letter</param>
+        /// <param name="column">the column of the current letter</param>
+        /// <returns>true if the current letter is being pressed</returns>
         private bool Right(int row, int column)
         {
             if (column == 3)
@@ -217,6 +232,12 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Check to see if the letter below the current letter allows the current letter to be pressed
+        /// </summary>
+        /// <param name="row">the row of the current letter</param>
+        /// <param name="column">the column of the current letter</param>
+        /// <returns>true if the current letter is being pressed</returns>
         private bool Down(int row, int column)
         {
 
@@ -305,6 +326,12 @@ namespace KTANE_Solver
             }
         }
 
+        /// <summary>
+        /// Check to see if the letter above the current letter allows the current letter to be pressed
+        /// </summary>
+        /// <param name="row">the row of the current letter</param>
+        /// <param name="column">the column of the current letter</param>
+        /// <returns>true if the current letter is being pressed</returns>
         private bool Up(int row, int column)
         {
             if (row == 0)
@@ -393,7 +420,13 @@ namespace KTANE_Solver
         }
 
 
-
+        /// <summary>
+        /// Tells if a string contains a target letter
+        /// </summary>
+        /// <param name="row">the row of the target letter</param>
+        /// <param name="column">the column of the target letter</param>
+        /// <param name="str">the string that may have the target letter</param>
+        /// <returns></returns>
         private bool ContainsLetter(int row, int column, string str)
         {
             foreach (char c in str)
