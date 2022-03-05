@@ -59,7 +59,7 @@ namespace KTANE_Solver
         private PasswordFirstStageForm passwordForm;
         private PokerStage1Form pokerForm;
         private RockPaperScissorsLizardSpockForm rockPaperScissorsLizardSpockForm;
-        private RubixCubeForm rubikCubeForm;
+        private RubikCubeForm rubikCubeForm;
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
         private SwitchesForm switchesForm;
@@ -630,7 +630,7 @@ namespace KTANE_Solver
 
                     if (rubikCubeForm == null)
                     {
-                        rubikCubeForm = new RubixCubeForm(bomb, logFileWriter, this);
+                        rubikCubeForm = new RubikCubeForm(bomb, logFileWriter, this);
                     }
 
                     else

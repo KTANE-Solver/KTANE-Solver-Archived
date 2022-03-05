@@ -345,11 +345,11 @@
       <DependentUpon>RockPaperScissorsLizardSpockForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RubikCube.cs" />
-    <Compile Include="RubixCubeForm.cs">
+    <Compile Include="RubikCubeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RubixCubeForm.Designer.cs">
-      <DependentUpon>RubixCubeForm.cs</DependentUpon>
+    <Compile Include="RubikCubeForm.Designer.cs">
+      <DependentUpon>RubikCubeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SillySlots.cs" />
     <Compile Include="SillySlotsOtherStageForm.cs">
@@ -560,8 +560,8 @@
     <EmbeddedResource Include="RockPaperScissorsLizardSpockForm.resx">
       <DependentUpon>RockPaperScissorsLizardSpockForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RubixCubeForm.resx">
-      <DependentUpon>RubixCubeForm.cs</DependentUpon>
+    <EmbeddedResource Include="RubikCubeForm.resx">
+      <DependentUpon>RubikCubeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SillySlotsOtherStageForm.resx">
       <DependentUpon>SillySlotsOtherStageForm.cs</DependentUpon>

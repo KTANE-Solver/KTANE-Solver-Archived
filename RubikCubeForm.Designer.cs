@@ -1,7 +1,7 @@
 ﻿
 namespace KTANE_Solver
 {
-    partial class RubixCubeForm
+    partial class RubikCubeForm
     {
         /// <summary>
         /// Required designer variable.

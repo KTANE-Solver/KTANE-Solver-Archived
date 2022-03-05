@@ -11,9 +11,9 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    public partial class RubixCubeForm : ModuleForm
+    public partial class RubikCubeForm : ModuleForm
     {
-        public RubixCubeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public RubikCubeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
