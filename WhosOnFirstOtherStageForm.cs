@@ -65,7 +65,7 @@ namespace KTANE_Solver
         /// </summary>
         private void UpdateDisplay()
         {
-            String[] display = new string[] { "*BLANK*", "BLANK", "C", "CEE", "DISPLAY", "FIRST", "HOLD ON", "LEAD", "LED", "LEED", "NO", "NOTHING", "OKAY", "READ",
+            String[] display = new string[] { "", "BLANK", "C", "CEE", "DISPLAY", "FIRST", "HOLD ON", "LEAD", "LED", "LEED", "NO", "NOTHING", "OKAY", "READ",
                                               "RED", "REED", "SAYS", "SEE", "THEIR", "THERE", "THEY ARE", "THEY'RE", "UR", "YES", "YOU", "YOU ARE", "YOU'RE", "YOUR" };
 
             displayComboBox.Items.Clear();

@@ -115,7 +115,7 @@ namespace KTANE_Solver
                     break;
 
                 //bottom left
-                case "*BLANK*":
+                case "":
                 case "REED":
                 case "LEED":
                 case "THEY'RE":
