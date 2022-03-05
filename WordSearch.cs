@@ -70,6 +70,8 @@ namespace KTANE_Solver
                 topRightWord = dictionary[TopRightLetter].topRightWordEven;
                 bottomLeftWord = dictionary[BottomLeftLetter].bottomLeftWordEven;
                 bottomRightWord = dictionary[BottomRightLetter].bottomRightWordEven;
+
+                PrintDebugLine("Last digit is even\n");
             }
 
             else
@@ -78,12 +80,16 @@ namespace KTANE_Solver
                 topRightWord = dictionary[TopRightLetter].topRightWordOdd;
                 bottomLeftWord = dictionary[BottomLeftLetter].bottomLeftWordOdd;
                 bottomRightWord = dictionary[BottomRightLetter].bottomRightWordOdd;
+
+                PrintDebugLine("Last digit is odd\n");
             }
 
             topLeftWord = topLeftWord.ToUpper();
             topRightWord = topRightWord.ToUpper();
             bottomLeftWord = bottomLeftWord.ToUpper();
             bottomRightWord = bottomRightWord.ToUpper();
+
+            PrintDebugLine($"Possible Answers:\n{topLeftWord}\n{topRightWord}\n{bottomLeftWord}\n{bottomRightWord}\n");
 
 
             List<string> words = new List<string>() { topLeftWord, topRightWord, bottomLeftWord, bottomRightWord };
