@@ -46,7 +46,7 @@ namespace KTANE_Solver
             String[] items = new String[] {"Black", "Blue", "Red", "White", "Yellow" };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
-            comboBox.Text = "Black";
+            comboBox.Text = items[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -56,10 +56,10 @@ namespace KTANE_Solver
         /// <param name="comboBox"></param>
         private void SetUpComboBox(ComboBox comboBox)
         {
-            String[] items = new String[] { "*Blank*", "Black", "Blue", "Red", "White", "Yellow" };
+            String[] items = new String[] { "", "Black", "Blue", "Red", "White", "Yellow" };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
-            comboBox.Text = "*Blank*";
+            comboBox.Text = items[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -83,26 +83,26 @@ namespace KTANE_Solver
 
 
             //if 5th or 6th wire are not blank, but 4th is, then there's an error
-            if (wire5 != "*Blank*" && wire4 == "*Blank*")
+            if (wire5 != "" && wire4 == "")
             {
                 error = "Can't havae 5th wire be not blank while 4th wire is";
                 errorFound = true;
             }
 
-            if (wire6 != "*Blank*" && wire4 == "*Blank*")
+            if (wire6 != "" && wire4 == "")
             {
                 error = "Can't havae 6th wire be not blank while 4th wire is";
                 errorFound = true;
             }
 
             //can't have 4th or 5th wire be blank while 6th wire isn't
-            if (wire4 == "*Blank*" && wire6 != "*Blank*")
+            if (wire4 == "" && wire6 != "")
             {
                 error = "Can't havae 4th wire be blank while 6th wire isn't";
                 errorFound = true;
             }
 
-            if (wire5 == "*Blank*" && wire6 != "*Blank*")
+            if (wire5 == "" && wire6 != "")
             {
                 error = "Can't havae 6th wire be not blank while 5th wire is";
                 errorFound = true;

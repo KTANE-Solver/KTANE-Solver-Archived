@@ -78,7 +78,7 @@ namespace KTANE_Solver
         {
             color = color.ToUpper();
 
-            if (color == null || color == "*BLANK*")
+            if (color == null || color == "")
                 return;
 
             Wire wire = (Wire)Enum.Parse(typeof(Wire), color);
