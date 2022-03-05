@@ -26,7 +26,7 @@ namespace KTANE_Solver
 
             wordComboBox.Items.AddRange(words);
 
-            wordComboBox.Text = "beats";
+            wordComboBox.Text = words[0];
 
             wordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             
