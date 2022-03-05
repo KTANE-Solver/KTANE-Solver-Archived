@@ -30,7 +30,7 @@ namespace KTANE_Solver
 
         List<String> directions = new List<string>();
 
-        public RubikCube(Face upFace, Face leftFace, Face frontFace, Face rightFace, Face bottomFace, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public RubikCube(Face upFace, Face leftFace, Face frontFace, Face rightFace, Face bottomFace, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Rubik Cube")
         {
             this.upFace = upFace;
             this.leftFace = leftFace;
@@ -221,7 +221,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer is [{answer}]\n");
 
-            ShowAnswer(answer, "Rubik's Cube Answer");
+            ShowAnswer(answer);
         }
 
         /// <summary>

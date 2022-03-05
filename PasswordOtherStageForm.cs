@@ -19,7 +19,7 @@ namespace KTANE_Solver
         private Password module;
 
         public PasswordOtherStageForm(int stage, List<char> previousLetters, PasswordFirstStageForm firstStage, Password module, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-            : base(bomb, logFileWriter, moduleSelectionForm, firstStage)
+            : base(bomb, logFileWriter, moduleSelectionForm, firstStage, "Password", false)
         {
             InitializeComponent();
             UpdateForm(stage, previousLetters, firstStage, module, bomb, logFileWriter, moduleSelectionForm);
@@ -81,7 +81,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Password");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -98,7 +98,7 @@ namespace KTANE_Solver
             if (!(ContainsOneLetter(letter1) || ContainsOneLetter(letter2) || ContainsOneLetter(letter3) ||
                   ContainsOneLetter(letter4) || ContainsOneLetter(letter5) || ContainsOneLetter(letter6)))
             {
-                ShowErrorMessage("Each text box must contain only 1 letter", "Password Error");
+                ShowErrorMessage("Each text box must contain only 1 letter");
                 return;
             }
             List<string> possibleAnswers;
@@ -111,7 +111,7 @@ namespace KTANE_Solver
 
                 if (possibleAnswers.Count == 0)
                 {
-                    ShowErrorMessage("Unable to find answer", "Password Error");
+                    ShowErrorMessage("Unable to find answer");
                     return;
                 }
 
@@ -127,7 +127,7 @@ namespace KTANE_Solver
 
                 if (possibleAnswers.Count == 0)
                 {
-                    ShowErrorMessage("Unable to find answer", "Password Error");
+                    ShowErrorMessage("Unable to find answer");
                     return;
                 }
 

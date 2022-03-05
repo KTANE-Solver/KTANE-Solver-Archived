@@ -35,6 +35,7 @@ namespace KTANE_Solver
 
 
         public AdventureGameForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Adventure Game", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -97,7 +98,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Adventure Game");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -123,21 +124,21 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("Only numbers can go in these text box", "Adventure game Error");
+                ShowErrorMessage("Only numbers can go in these text box");
                 return;
             }
 
             //needs to be 3 weapons
             if (SelectedWeaponNum() != 3)
             {
-                ShowErrorMessage("There can only be 3 weapons selected", "Adventure Game Error");
+                ShowErrorMessage("There can only be 3 weapons selected");
                 return;
             }
 
             //needs to be 5 items
             if (SelectedItemNum() != 5)
             {
-                ShowErrorMessage("There can only be 5 items selected", "Adventure Game Error");
+                ShowErrorMessage("There can only be 5 items selected");
                 return;
             }
 

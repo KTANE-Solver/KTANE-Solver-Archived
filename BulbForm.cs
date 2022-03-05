@@ -13,7 +13,8 @@ namespace KTANE_Solver
 {
     public partial class BulbForm : ModuleForm
     {
-        public BulbForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public BulbForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, string name) 
+        : base(bomb, logFileWriter, moduleSelectionForm, name, false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -41,12 +42,12 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Bulb");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            PrintHeader("Bulb");
+            PrintHeader();
 
             Bulb module = new Bulb(Bomb, LogFileWriter, litCheckBox.Checked, opaqueCheckBox.Checked, colorComboBox.Text);
             module.Solve();

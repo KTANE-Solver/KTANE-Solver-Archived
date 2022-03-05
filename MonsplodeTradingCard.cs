@@ -12,7 +12,7 @@ namespace KTANE_Solver
     {
         public Card[] hand { get; }
 
-        public MonsplodeTradingCard(Bomb bomb, StreamWriter logfileWriter, Card card1, Card card2, Card card3) : base(bomb, logfileWriter)
+        public MonsplodeTradingCard(Bomb bomb, StreamWriter logfileWriter, Card card1, Card card2, Card card3) : base(bomb, logfileWriter, "Monsplode Trading Cards")
         {
             hand = new Card [] { card1, card2, card3 };
         }
@@ -54,12 +54,12 @@ namespace KTANE_Solver
             //see if the lowest card is worse than the offered card, if yes then trade, if not then keep
             if (lowestCard.Value >= offeredCard.Value)
             {
-                ShowAnswer("Press Keep", "Monosplode Trading Cards Answer");
+                ShowAnswer("Press Keep");
             }
 
             else
             { 
-                ShowAnswer($"Trade Card {position + 1} ({lowestCard.Name})", "Monosplode Trading Cards Answer");
+                ShowAnswer($"Trade Card {position + 1} ({lowestCard.Name})");
                 hand[position] = offeredCard;
             }
         }

@@ -17,6 +17,7 @@ namespace KTANE_Solver
     public partial class WiresForm : ModuleForm
     {
         public WiresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Wires", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -107,11 +108,11 @@ namespace KTANE_Solver
 
             if (errorFound)
             {
-                ShowErrorMessage(error, "Wires Error");
+                ShowErrorMessage(error);
                 return;
             }
 
-            PrintHeader("Wires");
+            PrintHeader();
 
             Wires wireModule = new Wires(wire1, wire2, wire3, wire4, wire5, wire6, Bomb, LogFileWriter);
             wireModule.Solve();
@@ -123,7 +124,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Wires");
+            IncrementStrike();
         }
 
         /// <summary>

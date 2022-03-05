@@ -22,7 +22,7 @@ namespace KTANE_Solver
             Spock,
             Null
         }
-        public RockPaperScissorsLizardSpock(Symbol decoy, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public RockPaperScissorsLizardSpock(Symbol decoy, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Rock Paper Scissors Lizard Spock")
         {
             this.decoy = decoy;
             
@@ -40,7 +40,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer, "RPSLS Answer");
+            ShowAnswer(answer);
         }
 
         private Symbol[] FindAnswer()

@@ -13,6 +13,7 @@ namespace KTANE_Solver
     public partial class MorseCodeForm : ModuleForm
     {
         public MorseCodeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base (bomb, logFileWriter, moduleSelectionForm, "Morse Code", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -40,12 +41,12 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Morse Code");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            PrintHeader("Morse Code");
+            PrintHeader();
             MorseCode module = new MorseCode(Bomb, LogFileWriter);
 
             module.Solve(wordComboBox.Text);

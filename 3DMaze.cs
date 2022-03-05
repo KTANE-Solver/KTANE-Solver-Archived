@@ -14,7 +14,7 @@ namespace KTANE_Solver
 
         public Node[,] Maze { get; }
 
-        public _3DMaze(Bomb bomb, StreamWriter logFile) : base(bomb, logFile)
+        public _3DMaze(Bomb bomb, StreamWriter logFile) : base(bomb, logFile, "3D Maze")
         {
             Maze = new Node[8, 8];
         }

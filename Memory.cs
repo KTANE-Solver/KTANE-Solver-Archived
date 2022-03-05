@@ -25,7 +25,7 @@ namespace KTANE_Solver
         private int[] stage5;
         private int stage5Position;
 
-        public Memory(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public Memory(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Memory")
         {}
 
         public void Solve(int stage, int display, int num1, int num2, int num3, int num4)
@@ -62,7 +62,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage1, 1, stage1Position);
-                ShowAnswer($"Press {stage1[stage1Position]}", "Memory Stage 1 Answer");
+                ShowAnswer($"Press {stage1[stage1Position]}");
 
             }
 
@@ -90,7 +90,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage2, 2, stage2Position);
-                ShowAnswer($"Press {stage2[stage2Position]}", "Memory Stage 2 Answer");
+                ShowAnswer($"Press {stage2[stage2Position]}");
 
             }
 
@@ -122,7 +122,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage3, 3, stage3Position);
-                ShowAnswer($"Press {stage3[stage3Position]}", "Memory Stage 3 Answer");
+                ShowAnswer($"Press {stage3[stage3Position]}");
 
             }
 
@@ -150,7 +150,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage4, 4, stage4Position);
-                ShowAnswer($"Press {stage4[stage4Position]}", "Memory Stage 4 Answer");
+                ShowAnswer($"Press {stage4[stage4Position]}");
             }
 
             else
@@ -183,7 +183,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage5, 5, stage5Position);
-                ShowAnswer($"Press {stage5[stage5Position]}", "Memory Stage 5 Answer");
+                ShowAnswer($"Press {stage5[stage5Position]}");
             }
         }
 

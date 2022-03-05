@@ -22,7 +22,7 @@ namespace KTANE_Solver
 
 
         public WireSequenceOtherStageForm(WireSequence module, WireSequenceStage1Form firstStage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, firstStage)
+        : base(bomb, logFileWriter, moduleSelectionForm, firstStage, "Wire Sequence", false)
         {
             InitializeComponent();
 
@@ -101,7 +101,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Wire Sequence");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace KTANE_Solver
                 answer += $"\n{thirdWireIndex}. {module.Solve(wireNum3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0])}";
             }
 
-            ShowAnswer(answer, "Wire Sequence Answer");
+            ShowAnswer(answer);
 
             UpdateForm(stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);
         }

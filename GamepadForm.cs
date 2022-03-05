@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class GamepadForm : ModuleForm
     {
         public GamepadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Gamepad", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -34,7 +35,7 @@ namespace KTANE_Solver
 
         private void StrikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Gamepad");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -49,17 +50,17 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("X and Y text boxes must only contain numbers", "Gamepad Error");
+                ShowErrorMessage("X and Y text boxes must only contain numbers");
                 return;
             }
 
             if (x < 0 || x > 99 || y < 0 || y > 99)
             {
-                ShowErrorMessage("X and Y can only be between 0 and 99", "Gamepad Error");
+                ShowErrorMessage("X and Y can only be between 0 and 99");
                 return;
             }
 
-            PrintHeader("Gamepad");
+            PrintHeader();
 
             Gamepad module = new Gamepad(x, y, Bomb, LogFileWriter);
             module.Solve();

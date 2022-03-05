@@ -13,7 +13,7 @@ namespace KTANE_Solver
 
         public int initalCode;
 
-        public TwoBits(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public TwoBits(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Two Bits")
         {
 
         }
@@ -68,7 +68,7 @@ namespace KTANE_Solver
 
             PrintDebugLine(action + "\n");
 
-            ShowAnswer(action, $"Two Bits Stage {stage}");
+            ShowAnswer(action);
         }
 
         public String ConvertCode(int code, int stage)

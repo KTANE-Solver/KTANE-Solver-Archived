@@ -85,7 +85,7 @@ namespace KTANE_Solver
                      bool bottomSecondNotStatement, char bottomSecondLetter,
                      bool bottomThirdNotStatement,  char bottomThirdLetter, 
                      String bottomFirstOperation, String bottomSecondOperation, 
-                     bool bottomFirstTwoFirst, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter)
+                     bool bottomFirstTwoFirst, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter, "Logic")
         {
 
             topLetters =  new char[3] { topFirstLetter, topSecondLetter, topThirdLetter};
@@ -163,7 +163,7 @@ namespace KTANE_Solver
             PrintEvaluation(1, topLetters, topNotStatements, topFirstTwoFirst, topFirstOperation, topSecondOperation, topEvaluation);
             PrintEvaluation(2, bottomLetters, bottomNotStatements, bottomFirstTwoFirst, bottomFirstOperation, bottomSecondOperation, bottomEvaluation);
 
-            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}", "Logic Answer");
+            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}");
         }
 
         /// <summary>

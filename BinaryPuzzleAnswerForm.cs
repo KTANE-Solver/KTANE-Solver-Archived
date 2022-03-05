@@ -13,6 +13,8 @@ namespace KTANE_Solver
     public partial class BinaryPuzzleAnswerForm : ModuleForm
     {
         public BinaryPuzzleAnswerForm(char[,] grid, StreamWriter logFileWriter)
+        : base (null, logFileWriter, null, "Binary Puzzle", true)
+
         {
             InitializeComponent();
 
@@ -61,6 +63,8 @@ namespace KTANE_Solver
             row6button4.BackColor = GetColor(grid[5, 3]);
             row6button5.BackColor = GetColor(grid[5, 4]);
             row6button6.BackColor = GetColor(grid[5, 5]);
+
+            Text = ModuleName + " Answer";
         }
 
         private void okButton_Click(object sender, EventArgs e)

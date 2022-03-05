@@ -21,8 +21,11 @@ namespace KTANE_Solver
         Image downArrowImage = Image.FromFile("Maze Arrows/down arrow.png");
 
         public MazeAnswerForm(List<Maze.Coordinate> correctSpots, StreamWriter logFileWriter)
+        : base(null, logFileWriter, null, "Maze", true)
+
         {
             InitializeComponent();
+
 
             this.correctSpots = correctSpots;
 
@@ -114,6 +117,8 @@ namespace KTANE_Solver
 
             this.ControlBox = false;
             LogFileWriter = logFileWriter;
+
+            Text = ModuleName + " Answer";
         }
 
         private void okButton_Click(object sender, EventArgs e)

@@ -10,7 +10,8 @@ namespace KTANE_Solver
     {
         private char[,] Grid { get; }
         private bool[,] Answer { get; set; }
-        public AdjacentLetters(char[,] grid, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter)
+        public AdjacentLetters(char[,] grid, Bomb bomb, StreamWriter logFileWriter) 
+        : base (bomb, logFileWriter, "Adjacent Letters")
         {
             Grid = grid;            
         }

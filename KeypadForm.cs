@@ -22,6 +22,8 @@ namespace KTANE_Solver
 
 
         public KeypadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Keypad", false)
+
         {
             InitializeComponent();
 
@@ -331,11 +333,11 @@ namespace KTANE_Solver
             //must have 4 image
             if (SelectedImageNum() != 4)
             {
-                ShowErrorMessage("Must have 4 images to continue", "KeyPad Error");
+                ShowErrorMessage("Must have 4 images to continue");
                 return;
             }
 
-            PrintHeader("Keypad");
+            PrintHeader();
 
             Keypad module = new Keypad(image1Name, image2Name, image3Name, image4Name, Bomb, LogFileWriter);
 
@@ -347,7 +349,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Keypad");
+            IncrementStrike();
         }
     }
 }

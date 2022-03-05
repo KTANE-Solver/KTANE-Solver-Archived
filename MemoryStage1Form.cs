@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class MemoryStage1Form : ModuleForm
     {
         public MemoryStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base (bomb, logFileWriter, moduleSelectionForm, "Memory", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -33,7 +34,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Memory");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -48,13 +49,13 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("Display can only be 1 - 4", "Memory Error");
+                ShowErrorMessage("Display can only be 1 - 4");
                 return;
             }
 
             if (display <= 0 || display >= 5)
             {
-                ShowErrorMessage("Display can only be 1 - 4", "Memory Error");
+                ShowErrorMessage("Display can only be 1 - 4");
                 return;
             }
 
@@ -67,7 +68,7 @@ namespace KTANE_Solver
 
             if(numberTextBox.Text.Length != 4)
             {
-                ShowErrorMessage("The second textbox can only hold 4 numbers", "Memory Error");
+                ShowErrorMessage("The second textbox can only hold 4 numbers");
                 return;
             }
 
@@ -79,7 +80,7 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("The second textbox can only hold 4 numbers", "Memory Error");
+                ShowErrorMessage("The second textbox can only hold 4 numbers");
                 return;
             }
 
@@ -99,7 +100,7 @@ namespace KTANE_Solver
 
             if (!(ValidNumber(num4) || ValidNumber(num3) || ValidNumber(num1) || ValidNumber(num2)))
             {
-                ShowErrorMessage("The second textbox can only hold 4 numbers", "Memory Error");
+                ShowErrorMessage("The second textbox can only hold 4 numbers");
                 return;
             }
 
@@ -110,13 +111,13 @@ namespace KTANE_Solver
                 num2 == num4 ||
                 num3 == num4)
             {
-                ShowErrorMessage("Can't have duplicate messages", "Memory Error");
+                ShowErrorMessage("Can't have duplicate messages");
                 return;   
             }
 
             Memory module = new Memory(Bomb, LogFileWriter);
 
-            PrintHeader("Memory");
+            PrintHeader();
             module.Solve(1, display, num1, num2, num3, num4);
 
             this.Hide();

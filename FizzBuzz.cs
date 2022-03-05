@@ -14,7 +14,8 @@ namespace KTANE_Solver
         string firstColor, secondColor, thirdColor;
         string firstNumber, secondNumber, thirdNumber;
 
-        public FizzBuzz(string firstColor, string firstNumber, string secondColor, string secondNumber, string thirdColor, string thirdNumber, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public FizzBuzz(string firstColor, string firstNumber, string secondColor, string secondNumber, string thirdColor, string thirdNumber, Bomb bomb, StreamWriter logFileWriter)
+        : base(bomb, logFileWriter, "FizzBuzz")
         {
             this.firstColor = firstColor;
             this.secondColor = secondColor;
@@ -140,7 +141,7 @@ namespace KTANE_Solver
             string answer = $"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}\n";
 
             PrintDebugLine(answer);
-            ShowAnswer(answer, "FizzBuzz Answer");
+            ShowAnswer(answer);
         }
 
         private String GetAnswer(int num)

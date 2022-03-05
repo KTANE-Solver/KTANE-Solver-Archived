@@ -17,6 +17,7 @@ namespace KTANE_Solver
     {
 
         public ComplicatedWiresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Complicated Wires", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -98,7 +99,7 @@ namespace KTANE_Solver
         /// </summary>
         private void Strike_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Complicated Wires");
+            IncrementStrike();
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace KTANE_Solver
             //wire 6 can't not be blank when 5 isn't
             if (wireComboBox6.Text != "" && wireComboBox5.Text == "")
             {
-                ShowErrorMessage("Wire 6 can't not be blank when 5 is", "Complicated Wires Error");
+                ShowErrorMessage("Wire 6 can't not be blank when 5 is");
                 return;
             }
 
@@ -134,7 +135,7 @@ namespace KTANE_Solver
 
             ComplicatedWires module = new ComplicatedWires(wireList, Bomb, LogFileWriter);
 
-            PrintHeader("Complicated Wires");
+            PrintHeader();
 
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

@@ -50,7 +50,7 @@ namespace KTANE_Solver
         /// <param name="keyword">the keyword at the top</param>
         /// <param name="logFile">used to write to the log file</param>
         public SillySlots(String keyword, Slot slot1, Slot slot2, Slot slot3, StreamWriter logFile) 
-            : base(null, logFile)
+            : base(null, logFile, "Silly Slots")
         {
             //setting the variables depending on the stage
             this.keyword = keyword;

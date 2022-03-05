@@ -14,6 +14,8 @@ namespace KTANE_Solver
     public partial class LightCycleForm : ModuleForm
     {
         public LightCycleForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Light Cycle", false)
+
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -48,7 +50,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Light Cycle");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -96,7 +98,7 @@ namespace KTANE_Solver
 
                 if (blue > 1 || green > 1 || magenta > 1 || red > 1 || white > 1 || yellow > 1)
                 {
-                    ShowErrorMessage("Can't have duplicate colors", "Light Cycle Error");
+                    ShowErrorMessage("Can't have duplicate colors");
                     return;
                 }
 
@@ -132,7 +134,7 @@ namespace KTANE_Solver
                     cycle += "Y";
                 }
 
-            PrintHeader("Light Cycle");
+            PrintHeader();
 
             LightCycle module = new LightCycle(Bomb, LogFileWriter, cycle);
             module.Solve();

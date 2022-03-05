@@ -13,7 +13,8 @@ namespace KTANE_Solver
 {
     public partial class AdjacentLettersAnswerForm : ModuleForm
     {
-        public AdjacentLettersAnswerForm(bool[,] answer, StreamWriter logFileWriter)
+        public AdjacentLettersAnswerForm(bool[,] answer, StreamWriter logFileWriter) :
+        base (null, logFileWriter, null, "Adjacent Letters", true)
         {
             LogFileWriter = logFileWriter;
 
@@ -54,6 +55,8 @@ namespace KTANE_Solver
             }
 
             PrintDebugLine("");
+
+            Text = ModuleName + " Answer";
         }
 
         private Color GetColor(bool b)

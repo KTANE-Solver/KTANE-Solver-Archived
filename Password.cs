@@ -16,7 +16,7 @@ namespace KTANE_Solver
        public List<char> fourthRow;
        public List<char> fifthRow;
 
-        public Password(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public Password(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Password")
         {
             firstRow = new List<char>();
             secondRow = new List<char>();
@@ -257,7 +257,7 @@ namespace KTANE_Solver
 
             if (possibleAnswer.Count <= 3 && possibleAnswer.Count != 0)
             {
-                ShowAnswer(string.Join(", ", possibleAnswer), "Password Answer");
+                ShowAnswer(string.Join(", ", possibleAnswer));
             }
 
             return possibleAnswer;

@@ -16,6 +16,7 @@ namespace KTANE_Solver
     public partial class CheapCheckoutForm : ModuleForm
     {
         public CheapCheckoutForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Cheap Checkout", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -95,7 +96,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Cheap Checkout");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -121,7 +122,7 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("Invalid amount", "Cheap Checkout Error");
+                ShowErrorMessage("Invalid amount");
                 return;
             }
 
@@ -129,7 +130,7 @@ namespace KTANE_Solver
 
             if (Decimal.Round(amount, 2) != amount)
             {
-                ShowErrorMessage("Amount should only have 2 decimals", "Cheap Checkout Error");
+                ShowErrorMessage("Amount should only have 2 decimals");
                 return;
             }
 
@@ -143,7 +144,7 @@ namespace KTANE_Solver
                 item3 == item4 ||
                 item5 == item6)
             {
-                ShowErrorMessage("Can't have duplicate items", "Cheap Checkout Error");
+                ShowErrorMessage("Can't have duplicate items");
                 return;
             }
 

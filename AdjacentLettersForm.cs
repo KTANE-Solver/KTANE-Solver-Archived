@@ -13,7 +13,8 @@ namespace KTANE_Solver
 {
     public partial class AdjacentLettersForm : ModuleForm
     {
-        public AdjacentLettersForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public AdjacentLettersForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
+        : base(bomb, logFileWriter, moduleSelectionForm, "Adjacent Letters", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -35,20 +36,20 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Adjacent Letters");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
             if (row1TextBox.Text.Length != 4 || row2TextBox.Text.Length != 4 || row3TextBox.Text.Length != 4)
             {
-                ShowErrorMessage("Text boxes must conatain 4 letters", "Adjacent Letters Error");
+                ShowErrorMessage("Text boxes must conatain 4 letters");
                 return;
             }
 
             if (!ContainsOnlyLetters(row1TextBox.Text) || !ContainsOnlyLetters(row2TextBox.Text) || !ContainsOnlyLetters(row3TextBox.Text))
             {
-                ShowErrorMessage("Text boxes can only contain letters", "Adjacent Letters Error");
+                ShowErrorMessage("Text boxes can only contain letters");
                 return;
             }
             char[,] grid = new char[3, 4];
@@ -74,7 +75,7 @@ namespace KTANE_Solver
                 }
             }
 
-            PrintHeader("Adjacent Letters");
+            PrintHeader();
 
             AdjacentLetters module = new AdjacentLetters(grid, Bomb, LogFileWriter);
             module.Solve();

@@ -23,27 +23,46 @@ namespace KTANE_Solver
 
         protected ModuleSelectionForm ModuleSelectionForm;
 
+        protected string ModuleName { get; set; }
+
         //this should never be used
         public ModuleForm()
         {
             InitializeComponent();
 
-            Text = "KTANE Bot by Hawker";
 
             FormClosing += CloseProgram;
+
             Shown += ChangeTitle;
 
         }
 
         public ModuleForm(Bomb bomb, StreamWriter logFileWriter,
-               ModuleSelectionForm moduleSelectionForm)
+               ModuleSelectionForm moduleSelectionForm, string name, bool answerForm)
         {
             InitializeComponent();
 
             FormClosing += CloseProgram;
-            Shown += ChangeTitle;
+
+            string[] wordList = name.Split(' ');
+
+            name = "";
+
+            foreach (string word in wordList)
+            {
+                name += ("" + word[0]).ToUpper();
+                name += word.Substring(1).ToLower();
+                name += " ";
+            }
+
+            ModuleName = name.Trim();
 
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
+            if (!answerForm)
+            {
+                Shown += ChangeTitle;
+            }
         }
 
         /// <summary>
@@ -63,10 +82,10 @@ namespace KTANE_Solver
         /// <summary>
         /// Adds one strike to the bomb
         /// </summary>
-        public void IncrementStrike(string source)
+        public void IncrementStrike()
         {
             Bomb.Strike++;
-            string info = $"A stike has been added by {source}. Currently at {Bomb.Strike} strike(s)";
+            string info = $"A stike has been added by {ModuleName}. Currently at {Bomb.Strike} strike(s)";
             PrintDebugLine(info + "\n");
             MessageBox.Show(info, "Strike Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -100,14 +119,19 @@ namespace KTANE_Solver
             }
         }
 
-        public void ShowErrorMessage(String message, String captions)
+        public void ChangeTitle(object sender, EventArgs e)
         {
-            MessageBox.Show(message, captions, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Text = "KTANE Bot by Hawker";
         }
 
-        public void ShowAnswer(String message, String captions)
+        public void ShowErrorMessage(String message)
         {
-            MessageBox.Show(message, captions, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(message, $"{ModuleName} Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ShowAnswer(String message)
+        {
+            MessageBox.Show(message, $"{ModuleName} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void PrintDebugLine(String message)
@@ -129,18 +153,13 @@ namespace KTANE_Solver
             ModuleSelectionForm.Show();
         }
 
-        private void ChangeTitle(object sender, EventArgs e)
-        {
-            Text = "KTANE Bot by Hawker";
-        }
-
         /// <summary>
         /// Prints a header for whenever a module is solved (or it's first stage is)
         /// </summary>
         /// <param name="name"></param>
-        public void PrintHeader(string name)
+        public void PrintHeader()
         {
-            PrintDebugLine($"================={name.ToUpper()}=================\n");
+            PrintDebugLine($"================={ModuleName.ToUpper()}=================\n");
         }
     }
 }

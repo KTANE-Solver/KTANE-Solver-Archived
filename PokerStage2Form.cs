@@ -17,7 +17,7 @@ namespace KTANE_Solver
         public Poker module;
 
         public PokerStage2Form(PokerStage1Form pokerStage1Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
-            : base(bomb, logFileWriter, moduleSelectionForm, pokerStage1Form)
+        : base(bomb, logFileWriter, moduleSelectionForm, pokerStage1Form, "Poker", false)
         {
             InitializeComponent();
             UpdateForm(pokerStage1Form, moduleSelectionForm, module, bomb, logFileWriter);
@@ -49,7 +49,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Poker");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace KTANE_Solver
 
             String answer = module.BluffTruth();
 
-            ShowAnswer($"Press {answer}", "Poker Part 2 Answer");
+            ShowAnswer($"Press {answer}");
 
             this.Hide();
 

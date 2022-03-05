@@ -13,6 +13,8 @@ namespace KTANE_Solver
     public partial class SwitchesForm : ModuleForm
     {
         public SwitchesForm(Bomb bomb,StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Switches", false)
+
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -69,7 +71,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Switches");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -79,11 +81,11 @@ namespace KTANE_Solver
 
             if (SameSwitches(start, end))
             {
-                ShowErrorMessage("Really?", "Switches Error");
+                ShowErrorMessage("Really?");
                 return;
             }
 
-            PrintHeader("Switches");
+            PrintHeader();
 
             Switches module = new Switches(start, end, Bomb, LogFileWriter);
             module.Solve();

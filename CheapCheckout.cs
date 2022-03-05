@@ -23,7 +23,8 @@ namespace KTANE_Solver
         public CheapCheckout(Bomb bomb, StreamWriter logFileWriter,
                              Decimal amount, String item1Name, String item2Name,
                              String item3Name, String item4Name, double item5Weight,
-                             String item5Name, double item6Wieght, String item6Name) : base(bomb, logFileWriter)
+                             String item5Name, double item6Wieght, String item6Name)
+        : base(bomb, logFileWriter, "Cheap Checkout")
         {
             item1 = new Item(item1Name, 1);
             item2 = new Item(item2Name, 1);
@@ -82,7 +83,7 @@ namespace KTANE_Solver
 
                 PrintDebugLine($"Answer: ${answer}\n");
 
-                ShowAnswer($"${string.Format("{0:0.00}", answer)}", "Cheap Checkout Answer");
+                ShowAnswer($"${string.Format("{0:0.00}", answer)}");
             }
 
             else

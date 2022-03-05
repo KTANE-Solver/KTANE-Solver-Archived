@@ -13,7 +13,8 @@ namespace KTANE_Solver
 {
     public partial class BinaryPuzzleForm : ModuleForm
     {
-        public BinaryPuzzleForm(ModuleSelectionForm moduleSelection, StreamWriter logFileWriter)
+        public BinaryPuzzleForm(ModuleSelectionForm moduleSelection, StreamWriter logFileWriter) 
+        : base (null, logFileWriter, moduleSelection, "Binary Puzzle", false)
         {
             InitializeComponent();
 
@@ -194,7 +195,7 @@ namespace KTANE_Solver
 
             if (grid == null)
             {
-                ShowErrorMessage("Unable to solve", "Binary Puzzle Error");
+                ShowErrorMessage("Unable to solve");
             }
 
             else

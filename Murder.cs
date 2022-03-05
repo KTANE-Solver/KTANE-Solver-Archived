@@ -44,7 +44,7 @@ namespace KTANE_Solver
         /// <param name="bodyRoom">the room the body was found</param>
         /// <param name="bomb">used for edgoework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter) : base(bomb,logFileWriter)
+        public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter) : base(bomb,logFileWriter, "Murder")
         {
             this.suspects = new List<Suspect>();
             this.weapons = new List<Weapon>();
@@ -123,7 +123,7 @@ namespace KTANE_Solver
 
             if (!answerFound)
             {
-                ShowErrorMessage("Something went wrong", "Murder answer");
+                ShowErrorMessage("Something went wrong");
             }
 
             else
@@ -132,7 +132,7 @@ namespace KTANE_Solver
 
                 PrintDebugLine(answer + "\n");
 
-                ShowAnswer(answer, "Murder answer");
+                ShowAnswer(answer);
             }
 
 

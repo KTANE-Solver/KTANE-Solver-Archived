@@ -60,7 +60,7 @@ namespace KTANE_Solver
         Symbol[] row5 = new Symbol[] { Symbol.Trident, Symbol.SmilyFace, Symbol.B, Symbol.C, Symbol.Paragraph, Symbol.Three, Symbol.BlackStar };
         Symbol[] row6 = new Symbol[] { Symbol.Six, Symbol.E, Symbol.Hashtag, Symbol.Ae, Symbol.Trident, Symbol.N, Symbol.Omega };
 
-        public Keypad(String image1, String image2, String image3, String image4, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public Keypad(String image1, String image2, String image3, String image4, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Keypad")
         {
             symbol1 = SetUpSymbol(image1);
             symbol2 = SetUpSymbol(image2);
@@ -83,7 +83,7 @@ namespace KTANE_Solver
 
             if (row == null)
             {
-                ShowErrorMessage("Can't find answer", "Keypad Error");
+                ShowErrorMessage("Can't find answer");
                 PrintDebugLine("\nUnable to find answer\n");
                 return;
             }

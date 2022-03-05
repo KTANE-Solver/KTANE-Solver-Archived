@@ -49,7 +49,7 @@ namespace KTANE_Solver
         /// <param name="color6">the color of the sixth wire (if appicalbe)</param>
         /// <param name="bomb">holds edgework needed to solve bomb</param>
         /// <param name="logFileWriter">writes to the logfile</param>
-        public Wires(String color1, String color2, String color3, String color4, String color5, String color6, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public Wires(String color1, String color2, String color3, String color4, String color5, String color6, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Wires")
         {
             WireList = new List<Wire>();
 
@@ -179,10 +179,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            String caption = $"Cut the {place} wire";
-            String title = "Wire Answer";
-
-            ShowAnswer(caption, title);
+            ShowAnswer($"Cut the {place} wire");
 
             Console.WriteLine($"Cutting the {place} wire\n");
         }

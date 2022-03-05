@@ -18,7 +18,8 @@ namespace KTANE_Solver
         int initalCode;
         String firstAnswer;
 
-        public TwoBitsStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
+        public TwoBitsStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
+        : base(bomb, logFileWriter, moduleSelectionForm, "Two Bits", false)
         {
             InitializeComponent();
             
@@ -38,7 +39,7 @@ namespace KTANE_Solver
 
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
-            PrintHeader("Two Bits");
+            PrintHeader();
 
             PrintDebugLine($"Stage 1:\n");
             PrintDebugLine($"Initial Code is {initalCode}\n");
@@ -52,7 +53,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Two Bits");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)

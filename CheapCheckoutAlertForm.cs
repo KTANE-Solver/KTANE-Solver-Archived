@@ -34,7 +34,7 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("Invalid amount", "Cheap Checkout Error");
+                ShowErrorMessage("Invalid amount");
                 return;
             }
 
@@ -42,21 +42,21 @@ namespace KTANE_Solver
 
             if (Decimal.Round(amount, 2) != amount)
             {
-                ShowErrorMessage("Amount should only have 2 decimals", "Cheap Checkout Error");
+                ShowErrorMessage("Amount should only have 2 decimals");
                 return;
             }
 
             //new amount cant be lower than total
             if (amount < total)
             {
-                ShowErrorMessage("New amount can't be less than total", "Cheap Checkout Error");
+                ShowErrorMessage("New amount can't be less than total");
                 return;
             }
 
             decimal answer = RoundPrice(amount - total);
 
             PrintDebugLine($"Answer: ${answer}\n");
-            ShowAnswer($"${string.Format("{0:0.00}", answer)}", "Cheap Checkout Answer");
+            ShowAnswer($"${string.Format("{0:0.00}", answer)}");
 
             this.Hide();
         }

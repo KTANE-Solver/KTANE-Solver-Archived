@@ -17,7 +17,8 @@ namespace KTANE_Solver
     //         solve the murder module
     public partial class MurderForm : ModuleForm
     {
-        public MurderForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
+        public MurderForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
+        : base(bomb, logFileWriter, moduleSelectionForm, "Murder", false)
         {
             InitializeComponent();
 
@@ -103,7 +104,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Murder");
+            IncrementStrike();
         }
 
         /// <summary>
@@ -157,18 +158,18 @@ namespace KTANE_Solver
 
                 if (duplicateWeapons)
                 {
-                    ShowErrorMessage("Can't have duplicate weapons", "Murder Error");
+                    ShowErrorMessage("Can't have duplicate weapons");
                     return;
                 }
 
                 if (duplicateSuspects)
                 {
-                    ShowErrorMessage("Can't have duplicate suspects", "Murder Error");
+                    ShowErrorMessage("Can't have duplicate suspects");
                     return;
                 }
             }
 
-            PrintHeader("Murder");
+            PrintHeader();
 
             Murder murder = new Murder(suspects, weapons, room, Bomb, LogFileWriter);
             murder.Solve();

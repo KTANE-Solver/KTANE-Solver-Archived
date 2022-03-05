@@ -51,7 +51,7 @@ namespace KTANE_Solver
         //==============PROPERTIES==============
 
         //==============CONSTRUCTORS==============
-        public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter LogFileWriter) : base(null, LogFileWriter)
+        public Maze(int playerRow, int playerColumn, int goalRow, int goalColumn, int markerRow, int markerColumn, StreamWriter LogFileWriter) : base(null, LogFileWriter, "Maze")
         {
             visitedNodes = new List<Coordinate>();
             //sets up the coordiantes
@@ -302,7 +302,7 @@ namespace KTANE_Solver
             else
             {
                 PrintDebugLine("Unable to find answer");
-                ShowErrorMessage("Unable to find answer", "Maze Answer Error");
+                ShowErrorMessage("Unable to find answer");
                 return null;
             }
         }

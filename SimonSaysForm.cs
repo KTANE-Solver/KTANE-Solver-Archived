@@ -16,6 +16,7 @@ namespace KTANE_Solver
 
         private SimonSaysOtherStageForm secondStage;
         public SimonSaysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter , moduleSelectionForm, "Simon Says", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -41,7 +42,7 @@ namespace KTANE_Solver
             //there can only be one char in the textbox
             if (input.Length != 1)
             {
-                ShowErrorMessage("There can only be 1 character", "Simon Says Error");
+                ShowErrorMessage("There can only be 1 character");
                 return;
             }
 
@@ -55,12 +56,12 @@ namespace KTANE_Solver
                     break;
 
                 default:
-                    ShowErrorMessage("Textbox can only contain the character b, r, g, or y", "Simon Says Error");
+                    ShowErrorMessage("Textbox can only contain the character b, r, g, or y");
                     return;
 
             }
 
-            PrintHeader("Simon Says");
+            PrintHeader();
 
             SimonSays module = new SimonSays(Bomb, LogFileWriter);
             module.Solve(1, input[0]);
@@ -79,7 +80,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Simon Says");
+            IncrementStrike();
         }
     }
 }

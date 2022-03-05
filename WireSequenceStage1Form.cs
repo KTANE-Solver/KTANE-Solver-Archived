@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class WireSequenceStage1Form : ModuleForm
     {
         public WireSequenceStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Wire Sequence", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -61,7 +62,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Wires Sequence");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -70,7 +71,7 @@ namespace KTANE_Solver
 
             String answer = "";
 
-            PrintHeader("Wires Sequence");
+            PrintHeader();
 
             PrintDebugLine("Stage 1\n");
 
@@ -90,7 +91,7 @@ namespace KTANE_Solver
             }
 
 
-            ShowAnswer(answer, "Wire Sequence Answer");
+            ShowAnswer(answer);
 
 
             this.Hide();

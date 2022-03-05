@@ -16,6 +16,7 @@ namespace KTANE_Solver
     public partial class ChessForm : ModuleForm
     {
         public ChessForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Chess", false)
         { 
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -53,7 +54,7 @@ namespace KTANE_Solver
         /// <param name="e"></param>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Chess");
+            IncrementStrike();
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace KTANE_Solver
                 return;
             }
 
-            PrintHeader("Chess");
+            PrintHeader();
 
             Chess module = new Chess(piece1, piece2, piece3, piece4, piece5, piece6, Bomb, LogFileWriter);
 
@@ -87,21 +88,21 @@ namespace KTANE_Solver
             //str has to be only two charcters
             if (str.Length != 2)
             {
-                ShowErrorMessage("There can only be two characters", "Chess Error");
+                ShowErrorMessage("There can only be two characters");
                 return false;
             }
 
             //first character has to be a-f
             if ((int)str[0] < 97 || (int)str[1] > 102)
             {
-                ShowErrorMessage("First charcter has to be \"a-f\"", "Chess Error");
+                ShowErrorMessage("First charcter has to be \"a-f\"");
                 return false;
             }
 
             //second character has to be 1-6
             if ((int)str[1] < 49 || (int)str[1] > 57)
             {
-                ShowErrorMessage("Second charcter has to be \"1-6\"", "Chess Error");
+                ShowErrorMessage("Second charcter has to be \"1-6\"");
                 return false;
             }
 

@@ -12,7 +12,7 @@ namespace KTANE_Solver
         private int RedColor { get; set; }
         private int BlueColor { get; set; }
         private int BlackColor { get; set; }
-        public WireSequence(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public WireSequence(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Wire Sequence")
         {
             RedColor = 0;
             BlueColor = 0;

@@ -13,7 +13,7 @@ namespace KTANE_Solver
         //a "list" of all the lights that lit up
         public String lights;
 
-        public SimonSays(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public SimonSays(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Simon Says")
         {
             this.lights = "";
         }
@@ -157,7 +157,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer, "Simon Says Answer");
+            ShowAnswer(answer);
         }
     }
 }

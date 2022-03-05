@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class MonsplodeTradingCardForm1 : ModuleForm
     {
         public MonsplodeTradingCardForm1(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base (bomb, logFileWriter, moduleSelectionForm, "Monsplode Trading Cards", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -76,7 +77,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Monsplode Trading Card");
+            IncrementStrike();
         }
 
         private void moduleSelectionButton_Click(object sender, EventArgs e)
@@ -114,6 +115,8 @@ namespace KTANE_Solver
                 return;
             }
 
+            PrintHeader();
+
             MonsplodeTradingCard module = new MonsplodeTradingCard(Bomb, LogFileWriter, card1, card2, card3);
 
             module.Solve(offeringCard);
@@ -129,19 +132,19 @@ namespace KTANE_Solver
 
             if (printVersion.Length != 2)
             {
-                ShowErrorMessage("Print Version can only be two charcters", "Monosplode Trading Cards Error");
+                ShowErrorMessage("Print Version can only be two charcters");
                 return null;
             }
 
             if (printVersion[0] < 65 || printVersion[0] > 90)
             {
-                ShowErrorMessage("First character of Print Version must be a letter", "Monosplode Trading Cards Error");
+                ShowErrorMessage("First character of Print Version must be a letter");
                 return null;
             }
 
             if (printVersion[1] < 48 || printVersion[1] > 57)
             {
-                ShowErrorMessage("Second character of Print Version must be a number", "Monosplode Trading Cards Error");
+                ShowErrorMessage("Second character of Print Version must be a number");
                 return null;
             }
 
@@ -153,13 +156,13 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("Bent Corners must be a number", "Monosplode Trading Cards Error");
+                ShowErrorMessage("Bent Corners must be a number");
                 return null;
             }
 
             if (bentNumber < 0 || bentNumber > 4)
             {
-                ShowErrorMessage("Bent corners can only be between 0 - 4", "Monosplode Trading Cards Error");
+                ShowErrorMessage("Bent corners can only be between 0 - 4");
                 return null;
             }
 

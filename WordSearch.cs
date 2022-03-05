@@ -18,7 +18,7 @@ namespace KTANE_Solver
         Dictionary<char, Letter> dictionary = new Dictionary<char, Letter>();
 
         public WordSearch(Bomb bomb, StreamWriter logFileWriter,
-                          char topLeftLetter, char topRightLetter, char bottomLeftLetter, char bottomRightLetter) : base(bomb, logFileWriter)
+                          char topLeftLetter, char topRightLetter, char bottomLeftLetter, char bottomRightLetter) : base(bomb, logFileWriter, "Word Search")
         {
             TopLeftLetter = topLeftLetter;
             TopRightLetter = topRightLetter;
@@ -86,7 +86,7 @@ namespace KTANE_Solver
 
             words = words.Distinct().ToList();
 
-            ShowAnswer($"{string.Join("\n", words)}", "Word Search Answer");
+            ShowAnswer($"{string.Join("\n", words)}");
         }
 
         public class Letter

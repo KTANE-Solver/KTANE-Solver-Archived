@@ -23,7 +23,8 @@ namespace KTANE_Solver
         }
 
         public MultiStageModuleForm(Bomb bomb, StreamWriter logFileWriter,
-              ModuleSelectionForm moduleSelectionForm, ModuleForm firstStageForm) : base(bomb, logFileWriter, moduleSelectionForm)
+               ModuleSelectionForm moduleSelectionForm, ModuleForm firstStageForm, string name, bool answerForm)
+                 : base(bomb, logFileWriter, moduleSelectionForm, name, answerForm)
         {
             InitializeComponent();
             this.firstStageForm = firstStageForm;

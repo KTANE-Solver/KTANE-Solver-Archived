@@ -28,6 +28,8 @@ namespace KTANE_Solver
         /// <param name="bomb">used to get the edgework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
         public SillySlotsStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Silly Slots", false)
+
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -115,7 +117,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Silly Slots");
+            IncrementStrike();
         }
 
 
@@ -124,7 +126,7 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-            PrintHeader("Silly Slots");
+            PrintHeader();
 
             SillySlots.Slot slot1 = new SillySlots.Slot(slot1ColorComboBox.Text, slot1ObjectComboBox.Text);
             SillySlots.Slot slot2 = new SillySlots.Slot(slot2ColorComboBox.Text, slot2ObjectComboBox.Text);
@@ -138,7 +140,7 @@ namespace KTANE_Solver
             //if the user has to press keep, then send them to the first stage again
             if (pressKeep)
             {
-                ShowAnswer("Press Keep","Silly Slots Stage 1 answer");
+                ShowAnswer("Press Keep");
                 
                 UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
@@ -146,7 +148,7 @@ namespace KTANE_Solver
             //otherwise send them to stage 2
             else
             {
-                ShowAnswer("Pull the lever", "Silly Slots Stage 1 answer");
+                ShowAnswer("Pull the lever");
 
                 SillySlotsOtherStageForm sillySlotsOtherStageForm = new SillySlotsOtherStageForm(this,
                     ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, 2);

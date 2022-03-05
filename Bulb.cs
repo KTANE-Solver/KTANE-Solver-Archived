@@ -25,7 +25,8 @@ namespace KTANE_Solver
 
         private List<string> list;
 
-        public Bulb(Bomb bomb, StreamWriter logFileWriter, bool lit, bool opaque, String color) : base(bomb, logFileWriter)
+        public Bulb(Bomb bomb, StreamWriter logFileWriter, bool lit, bool opaque, String color)
+        : base(bomb, logFileWriter, "Bulb")
         {
             list = new List<string>();
             Lit = lit;
@@ -544,7 +545,7 @@ namespace KTANE_Solver
 
         private void PrintList()
         {
-            ShowAnswer(string.Join(", ", list), "Bulb Answer");
+            ShowAnswer(string.Join(", ", list));
             list.Clear();
         }
 

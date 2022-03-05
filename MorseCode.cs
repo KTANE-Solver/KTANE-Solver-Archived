@@ -8,7 +8,7 @@ namespace KTANE_Solver
 {
     public class MorseCode : Module
     {
-        public MorseCode(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public MorseCode(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Morse Code")
         { 
         
         }
@@ -83,7 +83,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Word: {word}\nAnswer: {answer:0.000}\n");
 
-            ShowAnswer($"{answer:0.000}", "Morse Code Answer");
+            ShowAnswer($"{answer:0.000}");
         }
     }
 }

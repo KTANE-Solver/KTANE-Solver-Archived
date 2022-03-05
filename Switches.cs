@@ -11,7 +11,7 @@ namespace KTANE_Solver
         private bool[] start;
         private bool[] end;
         private List<int> directions;
-        public Switches(bool[] start, bool[] end, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public Switches(bool[] start, bool[] end, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Switches")
         {
             this.start = start;
             this.end = end;
@@ -34,7 +34,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -45,7 +45,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -56,7 +56,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -67,7 +67,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -78,7 +78,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -98,7 +98,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -106,7 +106,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -114,7 +114,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -122,7 +122,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -130,7 +130,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -142,7 +142,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -150,7 +150,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -162,7 +162,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -170,7 +170,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -182,7 +182,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -190,7 +190,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -198,7 +198,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
 
@@ -206,7 +206,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -223,7 +223,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -234,7 +234,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -245,7 +245,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -256,7 +256,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer(), "Switches Answer");
+                        ShowAnswer(Answer());
                         return;
                     }
                 }
@@ -266,7 +266,7 @@ namespace KTANE_Solver
                 {
                     turnSwitchOn(0);
 
-                    ShowAnswer(Answer(), "Switches Answer");
+                    ShowAnswer(Answer());
                     return;
 
                 }
@@ -282,7 +282,7 @@ namespace KTANE_Solver
                     turnSwitchOn(0);
                     turnSwitchOn(2);
 
-                    ShowAnswer(Answer(), "Switches Answer");
+                    ShowAnswer(Answer());
                     return;
                 }
 
@@ -292,7 +292,7 @@ namespace KTANE_Solver
                     turnSwitchOn(1);
                     turnSwitchOn(2);
 
-                    ShowAnswer(Answer(), "Switches Answer");
+                    ShowAnswer(Answer());
                     return;
                 }
 
@@ -304,7 +304,7 @@ namespace KTANE_Solver
                     turnSwitchOn(0);
                     turnSwitchOn(3);
 
-                    ShowAnswer(Answer(), "Switches Answer");
+                    ShowAnswer(Answer());
                     return;
                 }
 
@@ -317,7 +317,7 @@ namespace KTANE_Solver
                     turnSwitchOn(3);
                     turnSwitchOn(2);
 
-                    ShowAnswer(Answer(), "Switches Answer");
+                    ShowAnswer(Answer());
                     return;
                 }
             }

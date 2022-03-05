@@ -24,7 +24,8 @@ namespace KTANE_Solver
         /// <param name="wires">the list of wires</param>
         /// <param name="bomb">used for edgework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public ComplicatedWires(List<ComplicatedWire> wires, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public ComplicatedWires(List<ComplicatedWire> wires, Bomb bomb, StreamWriter logFileWriter) 
+        : base(bomb, logFileWriter, "Complicated Wires")
         {
             this.wires = wires;
 
@@ -140,7 +141,7 @@ namespace KTANE_Solver
 
             PrintDebugLine("Answer:\n" + answer);
 
-            ShowAnswer(answer, "Complicated Wires");
+            ShowAnswer(answer);
             
         }
 

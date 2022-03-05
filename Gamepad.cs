@@ -12,7 +12,7 @@ namespace KTANE_Solver
         private int x, y, a, b, c, d;
         private String[] firstSubcommand, secondSubcommand, command;
 
-        public Gamepad(int x, int y, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter)
+        public Gamepad(int x, int y, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter, "Gamepad")
         {
             this.x = x;
             this.y = y;
@@ -43,7 +43,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer, "Gamepad Answer");
+            ShowAnswer(answer);
         }
 
         private void SetFirstSubcommand()

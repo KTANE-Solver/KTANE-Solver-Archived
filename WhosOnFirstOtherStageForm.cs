@@ -26,7 +26,7 @@ namespace KTANE_Solver
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
         public WhosOnFirstOtherStageForm(ModuleSelectionForm moduleSelectionForm, Bomb bomb, StreamWriter logFileWriter, WhosOnFirstFirstStageForm whosOnFirstFirstStageForm)
-            :base(bomb, logFileWriter, moduleSelectionForm, whosOnFirstFirstStageForm)
+        :base(bomb, logFileWriter, moduleSelectionForm, whosOnFirstFirstStageForm, "Who's on First", false)
         {
             this.whosOnFirstFirstStageForm = whosOnFirstFirstStageForm;
             InitializeComponent();
@@ -114,7 +114,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Who's on First");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace KTANE_Solver
 
                     if (words[i] == words[j])
                     {
-                        ShowAnswer("Can't have duplicate words", "Who's on First Error");
+                        ShowAnswer("Can't have duplicate words");
                         return;
                     }
 

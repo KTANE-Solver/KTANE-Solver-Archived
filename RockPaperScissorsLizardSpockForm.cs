@@ -13,6 +13,8 @@ namespace KTANE_Solver
     public partial class RockPaperScissorsLizardSpockForm : ModuleForm
     {
         public RockPaperScissorsLizardSpockForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Rock Paper Scissors Lizard Spock", false)
+
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -37,12 +39,12 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Rock Paper Scissors Lizard Spock");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            PrintHeader("Rock Paper Scissors Lizard Spock");
+            PrintHeader();
 
             RockPaperScissorsLizardSpock.Symbol symbol;
 

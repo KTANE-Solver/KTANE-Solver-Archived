@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    public partial class KeypadFormAnswer : Form
+    public partial class KeypadFormAnswer : ModuleForm
     {
 
         //all of the images
@@ -48,9 +48,12 @@ namespace KTANE_Solver
         }
 
         public KeypadFormAnswer(Keypad.Symbol symbol1, Keypad.Symbol symbol2, Keypad.Symbol symbol3, Keypad.Symbol symbol4)
+        : base(null, null, null, "Keypad", true)
         {
             InitializeComponent();
             UpdateForm(symbol1, symbol2, symbol3, symbol4);
+
+            Text = ModuleName + " Answer";
         }
 
         public void UpdateForm(Keypad.Symbol symbol1, Keypad.Symbol symbol2, Keypad.Symbol symbol3, Keypad.Symbol symbol4)

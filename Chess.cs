@@ -27,7 +27,8 @@ namespace KTANE_Solver
         //CONSTRUCTOR
 
         //will take 6 positions for the pieces, the bomb, and the streamwriter
-        public Chess(String position1, String position2, String position3, String position4, String position5, String position6, Bomb bomb, StreamWriter logWriterFile) : base(bomb, logWriterFile)
+        public Chess(String position1, String position2, String position3, String position4, String position5, String position6, Bomb bomb, StreamWriter logWriterFile)
+        : base(bomb, logWriterFile, "Chess")
         {
             board = new char[,]
                 {
@@ -139,7 +140,7 @@ namespace KTANE_Solver
 
             PrintDebug($"Answer: {answer}\n");
 
-            ShowAnswer(answer, "Chess Answer");
+            ShowAnswer(answer);
 
         }
 

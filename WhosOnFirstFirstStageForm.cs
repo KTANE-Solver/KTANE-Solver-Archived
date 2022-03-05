@@ -26,6 +26,8 @@ namespace KTANE_Solver
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
         public WhosOnFirstFirstStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Who's on First", false)
+
         {
             InitializeComponent();
 
@@ -101,7 +103,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Who's on first");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -127,7 +129,7 @@ namespace KTANE_Solver
 
                     if (words[i] == words[j])
                     {
-                        ShowErrorMessage("Can't have duplicate words", "Who's on First Error");
+                        ShowErrorMessage("Can't have duplicate words");
                         return;
                     }
                     
@@ -135,7 +137,7 @@ namespace KTANE_Solver
             }
 
 
-            PrintHeader("Who's on First");
+            PrintHeader();
             WhosOnFirst module = new WhosOnFirst(1, displayComboBox.Text, topLeft, topRight, midLeft, midRight, bottomLeft, bottomRight, Bomb, LogFileWriter);
             module.Solve();
 

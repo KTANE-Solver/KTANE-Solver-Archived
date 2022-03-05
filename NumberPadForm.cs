@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class NumberPadForm : ModuleForm
     {
         public NumberPadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base (bomb, logFileWriter, moduleSelectionForm, "Number Pad", false)
         {
             InitializeComponent();
 
@@ -84,7 +85,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Number Pad");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -100,7 +101,7 @@ namespace KTANE_Solver
             Color eightColor = eightButton.BackColor;
             Color nineColor = nineButton.BackColor;
 
-            PrintHeader("Number Pad");
+            PrintHeader();
 
             NumberPad module = new NumberPad(zeroColor, oneColor, twoColor, threeColor, fourColor, fiveColor, sixColor, sevenColor, eightColor, nineColor, Bomb, LogFileWriter);
             module.Solve();

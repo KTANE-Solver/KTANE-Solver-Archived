@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class PasswordFirstStageForm : ModuleForm
     {
         public PasswordFirstStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base (bomb, logFileWriter, moduleSelectionForm, "Password", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -54,7 +55,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Password");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -88,7 +89,7 @@ namespace KTANE_Solver
                   ContainsOneLetter(secondRow1) || ContainsOneLetter(secondRow2) || ContainsOneLetter(secondRow3) || ContainsOneLetter(secondRow4) || ContainsOneLetter(secondRow5) || ContainsOneLetter(secondRow6) ||
                   ContainsOneLetter(thirdRow1) || ContainsOneLetter(thirdRow2) || ContainsOneLetter(thirdRow3) || ContainsOneLetter(thirdRow4) || ContainsOneLetter(thirdRow5) || ContainsOneLetter(thirdRow6)))
             {
-                ShowErrorMessage("Each text box must contain only 1 letter", "Password Error");
+                ShowErrorMessage("Each text box must contain only 1 letter");
                 return;
             }
 
@@ -96,11 +97,11 @@ namespace KTANE_Solver
                 !RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6) ||
                 !RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6))
             {
-                ShowErrorMessage("Each row must have different letters", "Password Error");
+                ShowErrorMessage("Each row must have different letters");
                 return;
             }
 
-            PrintHeader("Password");
+            PrintHeader();
 
             Password module = new Password(Bomb, LogFileWriter);
 
@@ -112,7 +113,7 @@ namespace KTANE_Solver
 
             if (possibleAnswers.Count == 0)
             {
-                ShowErrorMessage("Unable to find answer", "Password Error");
+                ShowErrorMessage("Unable to find answer");
                 return;
             }
 

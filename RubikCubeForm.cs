@@ -14,6 +14,8 @@ namespace KTANE_Solver
     public partial class RubikCubeForm : ModuleForm
     {
         public RubikCubeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Rubik Cube", false)
+
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -47,7 +49,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Rubik's Cube");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -64,11 +66,11 @@ namespace KTANE_Solver
                right == front || right == bottom ||
                front == bottom)
             {
-                ShowErrorMessage("Can't have duplicate colors", "Rubik Cube Error");
+                ShowErrorMessage("Can't have duplicate colors");
                 return;
             }
 
-            PrintHeader("Rubik's Cube");
+            PrintHeader();
 
             RubikCube.Face topFace = (RubikCube.Face)Enum.Parse(typeof(RubikCube.Face), top);
             RubikCube.Face leftFace = (RubikCube.Face)Enum.Parse(typeof(RubikCube.Face), left);

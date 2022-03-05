@@ -37,7 +37,7 @@ namespace KTANE_Solver
 
         public ColorMath(Color leftColor1, Color leftColor2, Color leftColor3, Color leftColor4,
                          Color rightColor1, Color rightColor2, Color rightColor3, Color rightColor4, char letter, 
-                         Bomb bomb, StreamWriter logfileWriter) : base(bomb, logfileWriter)
+                         Bomb bomb, StreamWriter logfileWriter) : base(bomb, logfileWriter, "Color Math")
         {
             this.leftColor1 = leftColor1;
             this.leftColor2 = leftColor2;
@@ -145,7 +145,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Color Answer:\n{colorAnswer}\n");
 
-            ShowAnswer(colorAnswer, "Color Math Answer");
+            ShowAnswer(colorAnswer);
         }
 
         public int GetLeftSideNumber(int place, Color color)

@@ -40,7 +40,7 @@ namespace KTANE_Solver
         /// <param name="flavor3">one of the ice cream flavors</param>
         /// <param name="flavor4">one of the ice cream flavors</param>
         /// <param name="Bomb">used to get the edgework</param>
-        public IceCream(String customer, String flavor1, String flavor2, String flavor3, String flavor4, Bomb Bomb, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter)
+        public IceCream(String customer, String flavor1, String flavor2, String flavor3, String flavor4, Bomb Bomb, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter, "Ice Cream")
         {
             this.customer = customer;
 
@@ -122,14 +122,14 @@ namespace KTANE_Solver
 
                     PrintDebugLine($"Answer: {message}\n");
 
-                    ShowAnswer(message, "Ice Cream Answer");
+                    ShowAnswer(message);
                     return;
                 }
             }
 
             PrintDebugLine($"Answer: Vanilla\n");
 
-            ShowAnswer("Vanilla", "Ice Cream Answer");
+            ShowAnswer("Vanilla");
 
         }
 

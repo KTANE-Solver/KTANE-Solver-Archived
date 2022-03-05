@@ -18,7 +18,7 @@ namespace KTANE_Solver
         TwoBitsStage1Form stage1Form;
 
         public TwoBitsOtherStageForm(TwoBits module, TwoBitsStage1Form stage1Form, int stage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm, stage1Form)
+        : base(bomb, logFileWriter, moduleSelectionForm, stage1Form, "Two Bits", false)
         {
             InitializeComponent();
             UpdateForm(stage1Form, stage, bomb, logFileWriter, moduleSelectionForm);
@@ -60,7 +60,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Two Bits");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -74,13 +74,13 @@ namespace KTANE_Solver
 
             catch
             {
-                ShowErrorMessage("Text box can only hold numbers", "Two Bits Error");
+                ShowErrorMessage("Text box can only hold numbers");
                 return;
             }
 
             if (code < 0 && code > 99)
             {
-                ShowErrorMessage("Text box can only hold numbers that are between 0 and 99", "Two Bits Error");
+                ShowErrorMessage("Text box can only hold numbers that are between 0 and 99");
                 return;
             }
 

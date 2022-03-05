@@ -10,7 +10,7 @@ namespace KTANE_Solver
 {
     class Button : Module
     {
-        public Button(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public Button(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Button")
         { 
         }
 
@@ -116,13 +116,13 @@ namespace KTANE_Solver
         private void PressAnswer()
         {
             PrintDebugLine("Answer: Press\n");
-            ShowAnswer("Press", "Button Answer");
+            ShowAnswer("Press");
         }
 
         private void HoldAnswer()
         {
             PrintDebugLine("Answer: Hold\n");
-            ShowAnswer("Hold Button\nBlue: 4\nYellow: 5\nElse: 1", "Button Answer");
+            ShowAnswer("Hold Button\nBlue: 4\nYellow: 5\nElse: 1");
         }
 
         public enum Color

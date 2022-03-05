@@ -13,14 +13,15 @@ namespace KTANE_Solver
 {
     public partial class ButtonForm : ModuleForm
     {
-        public ButtonForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionFrom)
+        public ButtonForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base (bomb, logFileWriter, moduleSelectionForm, "Button", false)
         {
             InitializeComponent();
-            UpdateForm(bomb, logFileWriter, moduleSelectionFrom);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm);
 
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionFrom)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
         {
             String[] colors = { "Blue", "Red", "White", "Yellow" };
             String[] words = { "Abort", "Detonate", "Hold", "Press" };
@@ -35,7 +36,7 @@ namespace KTANE_Solver
             wordComboBox.Text = words[0];
             wordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionFrom);
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -45,12 +46,12 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Button");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            PrintHeader("Button");
+            PrintHeader();
 
             Button module = new Button(Bomb, LogFileWriter);
 

@@ -25,7 +25,8 @@ namespace KTANE_Solver
         /// Creates the maze form
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public MazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Color [] mazeColors) : base(bomb, logFileWriter, moduleSelectionForm)
+        public MazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Color [] mazeColors) 
+        : base(bomb, logFileWriter, moduleSelectionForm, "Maze", false)
         {
             InitializeComponent();
 
@@ -229,21 +230,21 @@ namespace KTANE_Solver
             //if there isn't 1 player, the maze is invalid
             if (playersFound != 1)
             {
-                ShowErrorMessage("There needs to be 1 player. Found " + playersFound, "Maze Error");
+                ShowErrorMessage("There needs to be 1 player. Found " + playersFound);
                 return;
             }
 
             //if there isn't 1 goal, the maze is invalid
             if (goalsFound != 1)
             {
-                ShowErrorMessage("There needs to be 1 goal. Found " + goalsFound, "Invalid Goal Number");
+                ShowErrorMessage("There needs to be 1 goal. Found " + goalsFound);
                 return;
             }
 
             //if there isn't 1 or 2 markers, the maze is invalid
             if (markersFound != 1 && markersFound != 2)
             {
-                ShowErrorMessage($"There needs to be 1 or 2 markers. Found " + markersFound, "Maze Error");
+                ShowErrorMessage($"There needs to be 1 or 2 markers. Found " + markersFound);
                 return;
             }
 
@@ -258,7 +259,7 @@ namespace KTANE_Solver
                 row5Button5.BackColor == Color.Green || row5Button6.BackColor == Color.Green || row6Button1.BackColor == Color.Green ||
                 row6Button3.BackColor == Color.Green || row6Button5.BackColor == Color.Green || row6Button6.BackColor == Color.Green)
             {
-                ShowErrorMessage("There is an invalid marker inputted on the maze", "Invalid Marker");
+                ShowErrorMessage("There is an invalid marker inputted on the maze");
                 return;
             }
 
@@ -287,7 +288,7 @@ namespace KTANE_Solver
                     (row2Button3.BackColor == Color.Green && row5Button1.BackColor != Color.Green))
 
                 {
-                    ShowErrorMessage("There is an invalid pair of markers", "Invalid Marker Pair");
+                    ShowErrorMessage("There is an invalid pair of markers");
                     return;
                 }
             }
@@ -353,7 +354,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Maze");
+            IncrementStrike();
         }
     }
 }

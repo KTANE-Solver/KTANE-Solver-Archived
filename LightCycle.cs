@@ -12,7 +12,7 @@ namespace KTANE_Solver
         String pair1, pair2, pair3, pair4, pair5, pair6;
         String sequence1, sequence2, sequence3, sequence4, sequence5, sequence6;
         private string cycle;
-        public LightCycle(Bomb bomb, StreamWriter logFileWriter, String cycle) : base(bomb, logFileWriter)
+        public LightCycle(Bomb bomb, StreamWriter logFileWriter, String cycle) : base(bomb, logFileWriter, "Light Cycle")
         {
             this.cycle = cycle;
 
@@ -82,7 +82,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"\nAnswer: {answer}\n");
 
-            ShowAnswer(answer, "Light Cycle Answer");
+            ShowAnswer(answer);
         }
 
         private String GetSequence(String pair)

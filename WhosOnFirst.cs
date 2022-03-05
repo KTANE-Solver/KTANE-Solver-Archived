@@ -49,7 +49,7 @@ namespace KTANE_Solver
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
         public WhosOnFirst(int stage, String display, String topLeft, String topRight, String midLeft, String midRight, String bottomLeft, String bottomRight, Bomb bomb, StreamWriter logFileWriter)
-        : base(bomb, logFileWriter)
+        : base(bomb, logFileWriter, "Who's on First")
         {
             this.stage = stage;
 
@@ -303,7 +303,7 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer, $"Who's on first Stage {stage}");
+            ShowAnswer(answer);
         }
 
 

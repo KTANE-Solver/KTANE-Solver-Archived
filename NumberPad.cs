@@ -32,7 +32,7 @@ namespace KTANE_Solver
         NumberPadTree tree3;
         NumberPadTree tree4;
 
-        public NumberPad(Color zeroColor, Color oneColor, Color twoColor, Color threeColor, Color fourColor, Color fiveColor, Color sixColor, Color sevenColor, Color eightColor, Color nineColor, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter)
+        public NumberPad(Color zeroColor, Color oneColor, Color twoColor, Color threeColor, Color fourColor, Color fiveColor, Color sixColor, Color sevenColor, Color eightColor, Color nineColor, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Number Pad")
         {
             this.zeroColor = zeroColor;
             this.oneColor = oneColor;
@@ -365,7 +365,7 @@ namespace KTANE_Solver
             int answer = firstNumber * 1000 + secondNumber * 100 + thirdNumber * 10 + fourthNumber;
             answer %= 10000;
 
-            ShowAnswer(answer.ToString("D4"), "NumberPad Answer");
+            ShowAnswer(answer.ToString("D4"));
         }
 
         private int AddDigit(int digit)

@@ -30,7 +30,8 @@ namespace KTANE_Solver
 
 
         Enemy enemy;
-        public AdventureGame(int strength, int dexterity, int intelligence, int height, int temperature, double gravity, int pressure, string weapon1String, string weapon2String, string weapon3String, Item item1, Item item2, Item item3, Item item4, Item item5, string enemyString, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter)
+        public AdventureGame(int strength, int dexterity, int intelligence, int height, int temperature, double gravity, int pressure, string weapon1String, string weapon2String, string weapon3String, Item item1, Item item2, Item item3, Item item4, Item item5, string enemyString, Bomb bomb, StreamWriter logFileWriter)
+        : base (bomb, logFileWriter, "Adventure Game")
         {
             this.strength = strength;
             this.dexterity = dexterity;
@@ -114,7 +115,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer:\n\n{answer}\n");
 
-            ShowAnswer(answer, "Adventure Game");
+            ShowAnswer(answer);
         }
 
         private void CheckItem(Item item)

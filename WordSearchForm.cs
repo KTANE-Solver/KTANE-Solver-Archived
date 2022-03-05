@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class WordSearchForm : ModuleForm
     {
         public WordSearchForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Word Search", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -63,7 +64,7 @@ namespace KTANE_Solver
             if (IsLowerCase(bottomRight[0]))
                 bottomRight = bottomRight.ToUpper();
 
-            PrintHeader("Word Search");
+            PrintHeader();
 
             WordSearch module = new WordSearch(Bomb, LogFileWriter, topLeft[0], topRight[0], bottomLeft[0], bottomRight[0]);
             module.Solve();
@@ -92,7 +93,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Word Search");
+            IncrementStrike();
         }
 
         private void backButton_Click(object sender, EventArgs e)

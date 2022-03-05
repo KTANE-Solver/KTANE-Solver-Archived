@@ -30,7 +30,8 @@ namespace KTANE_Solver
 
         //opponent's response
         public String response;
-        public Poker(Bomb bomb, StreamWriter logFileWriter, String startingCard) : base(bomb, logFileWriter)
+        public Poker(Bomb bomb, StreamWriter logFileWriter, String startingCard)
+        : base(bomb, logFileWriter, "Poker")
         {
             //find the starting card
             switch (startingCard)

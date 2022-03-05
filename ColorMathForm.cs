@@ -13,7 +13,8 @@ namespace KTANE_Solver
 {
     public partial class ColorMathForm : ModuleForm
     {
-        public ColorMathForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm)
+        public ColorMathForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
+        : base(bomb, logFileWriter, moduleSelectionForm, "Color Math", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -64,7 +65,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Color Math");
+            IncrementStrike();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -85,7 +86,7 @@ namespace KTANE_Solver
 
             if (rightFilled != 0 && rightFilled != 4)
             {
-                ShowErrorMessage("Either all or none of the right text boxes must be filled", "Color Math Error");
+                ShowErrorMessage("Either all or none of the right text boxes must be filled");
                 return;
             }
 
@@ -101,13 +102,13 @@ namespace KTANE_Solver
 
             if (letterTextBox.Text.Length != 1)
             {
-                ShowErrorMessage("Letter text box can only have 1 letter", "Color Math Error");
+                ShowErrorMessage("Letter text box can only have 1 letter");
                 return;
             }
 
             if (!((letterTextBox.Text[0] >= 65 && letterTextBox.Text[0] <= 90) || (letterTextBox.Text[0] >= 97 && letterTextBox.Text[0] <= 122)))
             {
-                ShowErrorMessage("Letter text box can only have 1 letter", "Color Math Error");
+                ShowErrorMessage("Letter text box can only have 1 letter");
                 return;
             }
 
@@ -130,7 +131,7 @@ namespace KTANE_Solver
             }
 
             ColorMath module = new ColorMath(left1, left2, left3, left4, right1, right2, right3, right4, letter, Bomb, LogFileWriter);
-            PrintHeader("Color Math");
+            PrintHeader();
             module.Solve(!filled);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }

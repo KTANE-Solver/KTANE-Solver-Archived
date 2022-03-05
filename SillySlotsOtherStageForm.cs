@@ -50,7 +50,8 @@ namespace KTANE_Solver
         public SillySlotsOtherStageForm(SillySlotsStage1Form sillySlotsStage1Form,
                                         ModuleSelectionForm moduleSelectionForm,
                                         Bomb bomb, StreamWriter logFileWriter,
-                                        SillySlots sillySlotsModule, int stage) : base(bomb, logFileWriter,moduleSelectionForm, sillySlotsStage1Form)
+                                        SillySlots sillySlotsModule, int stage)
+        : base(bomb, logFileWriter,moduleSelectionForm, sillySlotsStage1Form, "Silly Slots", false)
         {
             InitializeComponent();
             UpdateForm(sillySlotsStage1Form, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, stage);
@@ -178,7 +179,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Silly Slots");
+            IncrementStrike();
         }
 
         /// <summary>
@@ -232,14 +233,14 @@ namespace KTANE_Solver
 
             if (presskeep)
             {
-                ShowAnswer("Press Keep", $"Silly Slot Stage {stage} Answer");
+                ShowAnswer("Press Keep");
                 sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 ResetModule();
             }
 
             else
             {
-                ShowAnswer("Pull the lever", $"Silly Slot Stage {stage} Answer");
+                ShowAnswer("Pull the lever");
 
                 //if the stage is 4 then go to the first stage
                 if (stage == 4)

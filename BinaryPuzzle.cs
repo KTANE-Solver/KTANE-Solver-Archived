@@ -18,7 +18,8 @@ namespace KTANE_Solver
         public char[,] Grid;
 
         //============================CONSTRUCTORS============================
-        public BinaryPuzzle(char[,] grid, StreamWriter logFileWriter) : base(null, logFileWriter)
+        public BinaryPuzzle(char[,] grid, StreamWriter logFileWriter)
+        : base(null, logFileWriter, "Binary Puzzle")
         {
             Grid = grid;
         }

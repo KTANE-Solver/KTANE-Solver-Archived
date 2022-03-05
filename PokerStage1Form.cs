@@ -14,6 +14,7 @@ namespace KTANE_Solver
     public partial class PokerStage1Form : ModuleForm
     {
         public PokerStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base (bomb, logFileWriter, moduleSelectionForm, "Poker", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -36,7 +37,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Poker");
+            IncrementStrike();
         }
 
         private void PrintCards(List<Poker.Card> hand)
@@ -52,7 +53,7 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            PrintHeader("Poker");
+            PrintHeader();
 
             Poker module = new Poker(Bomb, LogFileWriter, cardComboBox.Text);
 
@@ -95,7 +96,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            ShowAnswer($"Press {answer}", "Poker Part 1 Answer");
+            ShowAnswer($"Press {answer}");
             
             this.Hide();
 

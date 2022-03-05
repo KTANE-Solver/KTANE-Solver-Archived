@@ -336,7 +336,7 @@ namespace KTANE_Solver
 
                     if (bulbForm == null)
                     {
-                        bulbForm = new BulbForm(bomb, logFileWriter, this);
+                        bulbForm = new BulbForm(bomb, logFileWriter, this, "Bulb");
                     }
 
                     else

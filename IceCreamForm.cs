@@ -26,6 +26,8 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
         /// <param name="bomb">used for the edgework</param>
         public IceCreamForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Ice Cream", false)
+
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm, 1);
@@ -110,14 +112,14 @@ namespace KTANE_Solver
                 flavor2 == flavor3 || flavor2 == flavor4 ||
                 flavor3 == flavor4)
             {
-                ShowErrorMessage("Can't have duplicate flavors", "Invalid Ice Cream");
+                ShowErrorMessage("Can't have duplicate flavors");
                 return;
             }
 
             iceCream = new IceCream(customerComboBox.Text, flavor1, flavor2, flavor3, flavor4, Bomb, LogFileWriter);
             if (stageLabel.Text == "Stage 1")
             { 
-                PrintHeader("Ice Cream");
+                PrintHeader();
             }
 
             PrintDebugLine($"{stageLabel.Text}\n");
@@ -143,7 +145,7 @@ namespace KTANE_Solver
 
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Ice Cream");
+            IncrementStrike();
         }
     }
 }

@@ -25,6 +25,7 @@ namespace KTANE_Solver
         /// <param name="bomb">where the edgework will come from</param>
         /// <param name="moduleSelectionForm">the form used to get here</param>
         public LogicForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Logic", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -283,7 +284,7 @@ namespace KTANE_Solver
             if (topFirst.Length != 1 || topSecond.Length != 1 || topThird.Length != 1 ||
                 bottomFirst.Length != 1 || bottomSecond.Length != 1 || bottomThird.Length != 1)
             {
-                ShowErrorMessage("Invalid Character Count", "Each textbox should only have 1 character");
+                ShowErrorMessage("Invalid Character Count");
                 return;
             }
 
@@ -299,7 +300,7 @@ namespace KTANE_Solver
             if (!(IsLetter(topFirstChar) && IsLetter(topSecondChar) && IsLetter(topThirdChar) &&
                   IsLetter(bottomFirstChar) && IsLetter(bottomSecondChar) && IsLetter(bottomThirdChar)))
             {
-                ShowErrorMessage("Invalid Character", "Each textbox should only have letters");
+                ShowErrorMessage("Invalid Character");
                 return;
             }
 
@@ -317,7 +318,7 @@ namespace KTANE_Solver
             bottomSecondOperation = bottomSecondOperation.Replace(tab.ToString(), "");
 
 
-            PrintHeader("Logic");
+            PrintHeader();
             logicModule = new Logic(Bomb, topFirstNotCheckBox.Checked, topFirstChar, 
                                     topSecondNotCheckBox.Checked, topSecondChar, 
                                     topThirdNotCheckBox.Checked, topThirdChar, 
@@ -348,7 +349,7 @@ namespace KTANE_Solver
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
-            IncrementStrike("Logic");
+            IncrementStrike();
         }
     }
 }
