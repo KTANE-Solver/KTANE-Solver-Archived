@@ -82,7 +82,11 @@ namespace KTANE_Solver
             bottomRightWord = bottomRightWord.ToUpper();
 
 
-            ShowAnswer($"{topLeftWord}\n{topRightWord}\n{bottomLeftWord}\n{bottomRightWord}", "Word Search Answer");
+            List<string> words = new List<string>() { topLeftWord, topRightWord, bottomLeftWord, bottomRightWord };
+
+            words = words.Distinct().ToList();
+
+            ShowAnswer($"{string.Join("\n", words)}", "Word Search Answer");
         }
 
         public class Letter
