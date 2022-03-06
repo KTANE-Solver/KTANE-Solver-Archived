@@ -28,6 +28,10 @@ namespace KTANE_Solver
 
         //============================METHONDS============================
 
+        /// <summary>
+        /// Solves the Binary Puzzle module
+        /// </summary>
+        /// <returns>the answer to the puzzle</returns>
         public char[,] Solve()
         {
             PrintDebugLine("Original Grid\n");
@@ -258,6 +262,11 @@ namespace KTANE_Solver
             PrintGrid(grid);
         }
 
+        /// <summary>
+        /// Checks to see if the puzzle is solvable
+        /// </summary>
+        /// <param name="grid">the puzzle that'll be check</param>
+        /// <returns>true if the puzzle doesn't have any mistakes</returns>
         private bool ValidPuzzle(char[,] grid)
         {
             for (int i = 0; i < 6; i++)
@@ -327,6 +336,12 @@ namespace KTANE_Solver
             return true;
         }
 
+        /// <summary>
+        /// Guesses one of the tiles and figures out what is correct
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="startingNum">the number that placed is the tile</param>
+        /// <returns>true if the puzzle </returns>
         private bool GuessGrid(char[,] grid, char startingNum)
         {
             //check if there are any blank spaces
@@ -490,6 +505,11 @@ namespace KTANE_Solver
             return true;
         }
 
+        /// <summary>
+        /// Checks to see if there are any blanks in the puzzle
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <returns>true if the puzzle is filled</returns>
         private bool PuzzledFilled(char [,] grid)
         {
             foreach (char character in grid)
@@ -501,6 +521,13 @@ namespace KTANE_Solver
             return true;
         }
 
+        /// <summary>
+        /// Checks to see if two rows are exactly the same
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="row1">one of the rows in the puzzle</param>
+        /// <param name="row2">the other row in the puzzle</param>
+        /// <returns>true if both rows are the same</returns>
         private bool SameRow(char[,] grid, int row1, int row2)
         {
             if (!RowFilled(grid, row1) || !RowFilled(grid, row2))
@@ -518,6 +545,13 @@ namespace KTANE_Solver
             return true;
         }
 
+        /// <summary>
+        /// Checks to see if two columns are exactly the same
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="row1">one of the columns in the puzzle</param>
+        /// <param name="row2">the other column in the puzzle</param>
+        /// <returns>true if both columns are the same</returns>
         private bool SameColumn(char[,] grid, int column1, int column2)
         {
             if (!ColumnFilled(grid, column1) || !ColumnFilled(grid, column2))
@@ -621,6 +655,13 @@ namespace KTANE_Solver
             return blocked;
         }
 
+        /// <summary>
+        /// Fills a row with the opposite number if there are three of the same number
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if row has been filled</returns>
         private bool FillRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             //tells if this method did anything
@@ -668,6 +709,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// Fills a column with the opposite number if there are three of the same number
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if column has been filled</returns>
         private bool FillColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
 
@@ -718,10 +766,10 @@ namespace KTANE_Solver
         /// <summary>
         /// Tells how many of a certain char is in a certain row
         /// </summary>
-        /// <param name="grid"></param>
-        /// <param name="character"></param>
-        /// <param name="row"></param>
-        /// <returns></returns>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="character">the target character</param>
+        /// <param name="row">the index row we are looking in</param>
+        /// <returns>how many times that charcter was found</returns>
         private int NumRowCount(char[,] grid, char character, int row)
         {
             int num = 0;
@@ -739,10 +787,10 @@ namespace KTANE_Solver
         /// <summary>
         /// Tells how many of a certain char is in a certain column
         /// </summary>
-        /// <param name="grid"></param>
-        /// <param name="character"></param>
-        /// <param name="column"></param>
-        /// <returns></returns>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="character">the target character</param>
+        /// <param name="column">the index column we are looking in</param>
+        /// <returns>how many times that charcter was found</returns>
         private int NumCoulmnCount(char[,] grid, char character, int column)
         {
             int num = 0;
@@ -760,8 +808,8 @@ namespace KTANE_Solver
         /// <summary>
         /// Tells if there are 3 numbers in a row
         /// </summary>
-        /// <param name="grid"></param>
-        /// <returns></returns>
+        /// <param name="grid">the puzzle</param>
+        /// <returns>true of three munbers are in a row</returns>
         private bool ThreeNumInARow(char[,] grid)
         { 
             for(int row = 0; row < 6; row++)
@@ -779,6 +827,11 @@ namespace KTANE_Solver
             return false;
         }
 
+        /// <summary>
+        /// Tells if there are 3 numbers in a column
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <returns>true of three munbers are in a column</returns>
         private bool ThreeNumInAColumn(char[,] grid)
         {
             for (int column = 0; column < 6; column++)
@@ -796,8 +849,12 @@ namespace KTANE_Solver
             return false;
         }
 
-
-
+        /// <summary>
+        /// Tells if a row has been filled
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="row">the index of the row</param>
+        /// <returns>true if the row doesn't have any blanks</returns>
         private bool RowFilled(char[,] grid, int row)
         {
             for (int column = 0; column < 6; column++)
@@ -810,6 +867,12 @@ namespace KTANE_Solver
             return true;
         }
 
+        /// <summary>
+        /// Tells if a column has been filled
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="column">the index of the column</param>
+        /// <returns>true if the column doesn't have any blanks</returns>
         private bool ColumnFilled(char[,] grid, int column)
         {
             for (int row = 0; row < 6; row++)
@@ -830,10 +893,10 @@ namespace KTANE_Solver
         ///    - 1 1 - - - will become 0 1 1 - - -
         ///
         /// </summary>
-        /// <param name="grid"></param>
-        /// <param name="isGuessing"></param>
-        /// <param name="filledTiles"></param>
-        /// <returns></returns>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>        /// 
+        /// <returns>true if was able to block left</returns>
         private bool BlockLeft(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             //tells whether block has occured or not
@@ -862,6 +925,13 @@ namespace KTANE_Solver
             return blocked;
         }
 
+        /// <summary>
+        /// Attemopts to block a three in a row downwards
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if block downwards was successeful</returns>
         private bool BlockDown(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             //tells whether block has occured or not
@@ -888,6 +958,13 @@ namespace KTANE_Solver
             return blocked;
         }
 
+        /// <summary>
+        /// try to block a three in the row in the middle
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if block middle was successful</returns>
         private bool BlockMiddleRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool blocked = false;
@@ -913,6 +990,13 @@ namespace KTANE_Solver
             return blocked;
         }
 
+        /// <summary>
+        /// try to block a three in the column in the middle
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if block middle was successful</returns>
         private bool BlockMiddleColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool blocked = false;
@@ -938,14 +1022,20 @@ namespace KTANE_Solver
             return blocked;
         }
 
+        /// <summary>
+        /// if either the second or fifth tile if blank and the first and sixth tile is the same number,
+        /// the second or fifth tile is the opposite number
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>        
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param> 
+        /// <returns>true if blocking was successful</returns>
         private bool FillSecondAndFifthColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
 
             for (int column = 0; column < 6; column++)
             {
-                //if either the second or fifth tile if blank and the first and sixth tile is the same number,
-                //the second or fifth tile is the opposite number
                 if ((!IsFilled(grid[1, column]) || !IsFilled(grid[4, column])) && IsFilled(grid[0, column]) && grid[0, column] == (grid[5, column]))
                 {
                     if (isGuessing && !IsFilled(grid[1, column]))
@@ -970,10 +1060,10 @@ namespace KTANE_Solver
         /// <summary>
         /// 1 - - - - 1 will become 1 0 - - 0 1
         /// </summary>
-        /// <param name="grid"></param>
-        /// <param name="isGuessing"></param>
-        /// <param name="filledTiles"></param>
-        /// <returns></returns>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>                
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>        
+        /// <returns>true if blocking was successful</returns>      
         private bool FilledSecondAndFifthRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1003,6 +1093,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// Fills the first tile in a row if the second and sixth one are the same
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if blocking was successful</returns>      
         private bool FillFirstTileRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1025,6 +1122,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// Fills the first tile in a column if the second and sixth one are the same
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if blocking was successful</returns>
         private bool FilledFirstTileColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1047,6 +1151,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// Fill sixth tile in a row if the first and fifth one are the same number
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if blocking was successful</returns>
         private bool FillSixthTileRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1069,6 +1180,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// Fill sixth tile in a column if the first and fifth one are the same number
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if blocking was successful</returns>
         private bool FillSixthTileColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1091,14 +1209,20 @@ namespace KTANE_Solver
             return filled;
         }
 
-
+        /// <summary>
+        /// if the first tile is blank and the fifth and sixth tile is the same number,
+        /// the first tile is the opposite number (in a column)
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if blocking was successful</returns>
         private bool FillFirstCornerColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
 
             for (int column = 0; column < 6; column++)
-                //if the first tile is blank and the fifth and sixth tile is the same number,
-                //the first tile is the opposite number
+
                 if (!IsFilled(grid[0, column]) && IsFilled(grid[4, column]) && grid[4, column] == (grid[5, column]))
                 {
                     grid[0, column] = GetOppositeNumber(grid[4, column]);
@@ -1113,6 +1237,14 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// if the first tile is blank and the fifth and sixth tile is the same number,
+        /// the first tile is the opposite number (in a row)
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if blocking was successful</returns>
         private bool FilledFirstCornerRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1134,6 +1266,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// Fills in one row based on the information of another one
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if filling was successful</returns>
         private bool FillComparableRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1271,6 +1410,13 @@ namespace KTANE_Solver
 
         }
 
+        /// <summary>
+        /// Fills in one column based on the information of another one
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if filling was successful</returns>
         private bool FillComparableColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1408,6 +1554,13 @@ namespace KTANE_Solver
         }
 
 
+        /// <summary>
+        /// Fills 6th tile if first and second are the same in a column
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if filling was successful</returns>
         private bool FillSixthCornerColumn(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1429,6 +1582,13 @@ namespace KTANE_Solver
             return filled;
         }
 
+        /// <summary>
+        /// Fills 6th tile if first and second are the same in a row
+        /// </summary>
+        /// <param name="grid">the puzzle</param>
+        /// <param name="isGuessing">if the current puzzle has guessed yet</param>         
+        /// <param name="filledTiles">the tiles that has been filled since guessing</param>
+        /// <returns>true if filling was successful</returns>
         private bool FillSixthCornerRow(char[,] grid, bool isGuessing, List<Tile> filledTiles)
         {
             bool filled = false;
@@ -1466,7 +1626,7 @@ namespace KTANE_Solver
         /// Tells wheter or not a tile is filled
         /// </summary>
         /// <param name="num"></param>
-        /// <returns></returns>
+        /// <returns>true if the tile isn't blank</returns>
         private static bool IsFilled(char num)
         {
             return num == '0' || num == '1';
@@ -1475,7 +1635,7 @@ namespace KTANE_Solver
         /// <summary>
         /// Prints the grid in a 6x6 array
         /// </summary>
-        /// <param name="grid"></param>
+        /// <param name="grid">the puzzle</param>
         private void PrintGrid(char[,] grid)
         {
             for (int i = 0; i < 6; i++)

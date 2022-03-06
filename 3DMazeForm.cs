@@ -19,7 +19,11 @@ namespace KTANE_Solver
     {
         _3DMaze module;
 
-        public _3DMazeForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
+        //if the user is currently facing a wall
+        bool facingWall;
+
+        public _3DMazeForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm) 
+        : base(bomb, logFile, moduleSelectionForm, "3D Maze", false)
         {
             InitializeComponent();
             UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
@@ -32,6 +36,8 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader();
+
             string mazeText = mazeTextBox.Text.ToUpper();
 
 
@@ -63,18 +69,74 @@ namespace KTANE_Solver
 
             //make sure user puts in valid path input
 
-            string pathText = pathTextBox.Text;
+            string pathText = pathTextBox.Text.ToUpper();
+
+            //can only put in the maze letters, *, ?, N, E, S, or W
+
 
             char[] mazeLetters = module.mazeLetters;
 
-            //find where the user is going
+            foreach (char c in pathText)
+            {
+                if (c != '*' && c != '?' && c != 'N' && c != 'E' && c != 'S' && c != 'W' && c != mazeLetters[0] && c != mazeLetters[1] && c != mazeLetters[2])
+                {
+                    ShowErrorMessage("Path has at least one invalid character: " + c);
+                    return;
+                }
+            }
+
+            facingWall = facingWallCheckBox.Checked;
+
+            List<int[]>possiblePaths = ValidPathText(pathText, module);
+
+            //print all possilbe locations
+            PrintDebugLine("Possible locations:");
+
+            foreach (int[] possibleLocation in possiblePaths)
+            {
+                string direction = "";
+
+                switch (possibleLocation[2])
+                {
+                    case 0:
+                        direction = "North";
+                        break;
+                    case 1:
+                        direction = "East";
+                        break;
+                    case 2:
+                        direction = "South";
+                        break;
+                    case 3:
+                        direction = "West";
+                        break;
+                }
+
+                PrintDebugLine($"Location [{possibleLocation[0]},{possibleLocation[1]}] Direction: {direction}");
+            }
+            
+            PrintDebugLine("");
+
+            if (possiblePaths.Count == 0)
+            {
+                ShowErrorMessage("Unable to find any paths");
+                return;
+            }
+
+            else if (possiblePaths.Count != 1)
+            { 
+                ShowErrorMessage("Found multiple paths");
+            }
+
+            //find where the goal is
             int row = module.FindRow();
 
             int column = module.FindColumn();
 
-            PrintDebugLine($"Goal: {row},{column}\n");
+            PrintDebugLine($"Goal: ({row},{column})\n");
 
-            //PrintDebugInfo();
+
+
         }
 
         private void VerifyNodes()
@@ -166,11 +228,11 @@ namespace KTANE_Solver
         /// Verifies is path is on current maze
         /// </summary>
         /// <param name="path">the path the user gave</param>
-        /// <param name="mazeLetters">the letters on the maze</param>
         /// <param name="module">the module</param>
-        /// <returns>if the program can find where the user is</returns>
-        private bool ValidPathText(string path, char[] mazeLetters, _3DMaze module)
+        /// <returns>All of the possible paths</returns>
+        private List<int[]> ValidPathText(string path, _3DMaze module)
         {
+
             string newPath = "";
 
             //convert all N, E, S, W to *
@@ -181,6 +243,12 @@ namespace KTANE_Solver
                 if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
                 {
                     newPath += "*";
+                }
+
+                //convert all ? to .
+                else if (c == '?')
+                {
+                    newPath += ".";
                 }
 
                 else
@@ -213,7 +281,14 @@ namespace KTANE_Solver
                         //North
                         if (NorthValid(newPath, row, col))
                         {
-                            possiblePaths.Add(new int[3] { (row - (newPath.Length - 1)) % 8, col , 0 });
+                            int newRow = (row - (newPath.Length - 1));
+
+                            while (newRow < 0)
+                            {
+                                newRow += 8;
+                            }
+
+                            possiblePaths.Add(new int[3] { newRow, col , 0 });
                         }
 
                         //East
@@ -231,48 +306,22 @@ namespace KTANE_Solver
                         //West
                         if (WestValid(newPath, row, col))
                         {
-                            possiblePaths.Add(new int[3] { row, (col - (newPath.Length - 1)) % 8, 1 });
+                            int newCol = (col - (newPath.Length - 1));
+
+                            while (newCol < 0)
+                            {
+                                newCol += 8;
+                            }
+
+                            possiblePaths.Add(new int[3] { row, newCol, 3 });
                         }
 
                     }
-
-                    else
-                    {
-                        continue;
-                    }
                 }
             }
-
-
-            //print all possilbe locations
-            PrintDebugLine("Possible locations:");
-
-            foreach (int[] possibleLocation in possiblePaths)
-            {
-                string direction = "";
-
-                switch (possibleLocation[2])
-                {
-                    case 0:
-                        direction = "North";
-                        break;
-                    case 1:
-                        direction = "East";
-                        break;
-                    case 2:
-                        direction = "South";
-                        break;
-                    case 3:
-                        direction = "West";
-                        break;
-                }
-
-                PrintDebugLine($"Location [{possibleLocation[0]},{possibleLocation[1]}] Direction: {direction}");
-            }
-
 
             //if one path can't be found, then path user gave was invalid
-            return possiblePaths.Count == 1;
+            return possiblePaths;
         }
 
 
@@ -301,86 +350,117 @@ namespace KTANE_Solver
         /// <param name="col">the possible column the user started in</param>
         /// <returns>true if this is a valid position of where the user is</returns>
         private bool NorthValid(string path, int startingRow, int col)
-        { 
+        {
+            _3DMaze.Node neighbor = module.Maze[startingRow, col];
 
             for (int i = 1; i < path.Length; i++)
             {
+                neighbor = neighbor.North;
+
                 //check if ther is a wall between the spaces
-                if (module.Maze[startingRow - (i - 1), col].North == null)
+                if (neighbor == null)
                 {
                     return false;
                 }
 
-                //check to see if next pair of characters match
-                if(!CharacterMatch(module.Maze[startingRow - i, col], path[i]))
+                //check to see if neighbor characters match
+                if(!CharacterMatch(neighbor, path[i]))
                 {
                     return false;
                 }
             }
 
-            return true;
+            bool facingWallNorth = neighbor.North == null;
+
+            return facingWall == facingWallNorth;
         }
 
         private bool SouthValid(string path, int startingRow, int col)
         {
+            _3DMaze.Node neighbor = module.Maze[startingRow, col];
 
             for (int i = 1; i < path.Length; i++)
             {
+                neighbor = neighbor.South;
+
                 //check if ther is a wall between the spaces
-                if (module.Maze[startingRow + (i - 1), col].South == null)
+                if (neighbor == null)
                 {
                     return false;
                 }
 
                 //check to see if next pair of characters match
-                if (!CharacterMatch(module.Maze[startingRow + i, col], path[i]))
+                if (!CharacterMatch(neighbor, path[i]))
                 {
                     return false;
                 }
             }
 
-            return true;
+            bool facingWallSouth = neighbor.South == null;
+
+            return facingWall == facingWallSouth;
         }
 
         private bool EastValid(string path, int startingRow, int col)
         {
+            _3DMaze.Node neighbor = module.Maze[startingRow, col];
+
             for (int i = 1; i < path.Length; i++)
             {
+                neighbor = neighbor.East;
+
                 //check if ther is a wall between the spaces
-                if (module.Maze[startingRow, col + (i - 1)].East == null)
+                if (neighbor == null)
                 {
                     return false;
                 }
 
                 //check to see if next pair of characters match
-                if (!CharacterMatch(module.Maze[startingRow, col + i], path[i]))
+                if (!CharacterMatch(neighbor, path[i]))
                 {
                     return false;
                 }
             }
 
-            return true;
+            bool facingWallEast = neighbor.East == null;
+
+            return facingWall == facingWallEast;
         }
 
         private bool WestValid(string path, int startingRow, int col)
         {
+            _3DMaze.Node neighbor = module.Maze[startingRow, col];
+
             for (int i = 1; i < path.Length; i++)
             {
+                neighbor = neighbor.West;
+
                 //check if ther is a wall between the spaces
-                if (module.Maze[startingRow, col - (i - 1)].West == null)
+                if (neighbor == null)
                 {
                     return false;
                 }
 
                 //check to see if next pair of characters match
-                if (!CharacterMatch(module.Maze[startingRow, col - i], path[i]))
+                if (!CharacterMatch(neighbor, path[i]))
                 {
                     return false;
                 }
             }
 
-            return true;
+            bool facingWallWest = neighbor.West == null;
+
+            return facingWall == facingWallWest;
         }
 
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            GoToMoudleSelectionForm();
+        }
+
+        private void strikeButton_Click(object sender, EventArgs e)
+        {
+            IncrementStrike();
+        }
     }
 }

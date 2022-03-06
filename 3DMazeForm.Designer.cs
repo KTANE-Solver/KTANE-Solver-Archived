@@ -36,13 +36,15 @@ namespace KTANE_Solver
             this.mazeTextBox = new System.Windows.Forms.TextBox();
             this.pathTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.facingWallCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(337, 297);
+            this.submitButton.Location = new System.Drawing.Point(449, 366);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(82, 37);
+            this.submitButton.Size = new System.Drawing.Size(109, 46);
             this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -50,59 +52,78 @@ namespace KTANE_Solver
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(169, 297);
+            this.strikeButton.Location = new System.Drawing.Point(225, 366);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(82, 37);
+            this.strikeButton.Size = new System.Drawing.Size(109, 46);
             this.strikeButton.TabIndex = 5;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 297);
+            this.backButton.Location = new System.Drawing.Point(16, 366);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(82, 37);
+            this.backButton.Size = new System.Drawing.Size(109, 46);
             this.backButton.TabIndex = 6;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(130, 19);
+            this.label1.Location = new System.Drawing.Point(173, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 13);
+            this.label1.Size = new System.Drawing.Size(218, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "What are the letters in the maze?";
             // 
             // mazeTextBox
             // 
-            this.mazeTextBox.Location = new System.Drawing.Point(133, 49);
+            this.mazeTextBox.Location = new System.Drawing.Point(177, 60);
+            this.mazeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mazeTextBox.Name = "mazeTextBox";
-            this.mazeTextBox.Size = new System.Drawing.Size(145, 20);
+            this.mazeTextBox.Size = new System.Drawing.Size(192, 22);
             this.mazeTextBox.TabIndex = 8;
             // 
             // pathTextBox
             // 
-            this.pathTextBox.Location = new System.Drawing.Point(133, 225);
+            this.pathTextBox.Location = new System.Drawing.Point(177, 277);
+            this.pathTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(145, 20);
+            this.pathTextBox.Size = new System.Drawing.Size(192, 22);
             this.pathTextBox.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 188);
+            this.label2.Location = new System.Drawing.Point(117, 231);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(255, 13);
+            this.label2.Size = new System.Drawing.Size(343, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Find a straight path and tell what is there (blanks = ?)";
             // 
+            // facingWallCheckBox
+            // 
+            this.facingWallCheckBox.AutoSize = true;
+            this.facingWallCheckBox.Location = new System.Drawing.Point(229, 320);
+            this.facingWallCheckBox.Name = "facingWallCheckBox";
+            this.facingWallCheckBox.Size = new System.Drawing.Size(103, 21);
+            this.facingWallCheckBox.TabIndex = 11;
+            this.facingWallCheckBox.Text = "Facing Wall";
+            this.facingWallCheckBox.UseVisualStyleBackColor = true;
+            // 
             // _3DMazeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 346);
+            this.ClientSize = new System.Drawing.Size(575, 426);
+            this.Controls.Add(this.facingWallCheckBox);
             this.Controls.Add(this.pathTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.mazeTextBox);
@@ -110,6 +131,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.submitButton);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "_3DMazeForm";
             this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
@@ -125,5 +147,6 @@ namespace KTANE_Solver
         private System.Windows.Forms.TextBox mazeTextBox;
         private System.Windows.Forms.TextBox pathTextBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox facingWallCheckBox;
     }
 }
