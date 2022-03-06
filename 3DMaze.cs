@@ -18,6 +18,9 @@ namespace KTANE_Solver
 
         public Node[,] Maze { get; }
 
+        //the letters that are used to differentiate the maze
+        public char[] mazeLetters;
+
         public _3DMaze(Bomb bomb, StreamWriter logFile) : base(bomb, logFile, "3D Maze")
         {
             Maze = new Node[8, 8];
@@ -58,6 +61,8 @@ namespace KTANE_Solver
         { 
             if (str.Contains('A') && str.Contains('B') && str.Contains('C'))
             {
+                mazeLetters = new char[3] { 'A', 'B', 'C' };
+
                 Maze[0, 0] = new Node(0, 0, '.', Walls.NorthWest);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.NorthEast);
                 Maze[0, 2] = new Node(0, 2, '.', Walls.West);
@@ -133,6 +138,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('A') && str.Contains('B') && str.Contains('D'))
             {
+                mazeLetters = new char[3] { 'A', 'B', 'D' };
+
                 Maze[0, 0] = new Node(0, 0, 'A', Walls.NorthWest);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.South);
                 Maze[0, 2] = new Node(0, 2, '.', Walls.Horizontal);
@@ -208,6 +215,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('A') && str.Contains('B') && str.Contains('H'))
             {
+                mazeLetters = new char[3] { 'A', 'B', 'H' };
+
                 Maze[0, 0] = new Node(0, 0, 'B', Walls.NorthWest);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.Horizontal);
                 Maze[0, 2] = new Node(0, 2, '.', Walls.NorthEast);
@@ -283,6 +292,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('A') && str.Contains('C') && str.Contains('D'))
             {
+                mazeLetters = new char[3] { 'A', 'C', 'D' };
+
                 Maze[0, 0] = new Node(0, 0, 'D', Walls.North);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.South);
                 Maze[0, 2] = new Node(0, 2, '.', Walls.Horizontal);
@@ -358,6 +369,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('A') && str.Contains('C') && str.Contains('H'))
             {
+                mazeLetters = new char[3] { 'A', 'C', 'H' };
+
                 Maze[0, 0] = new Node(0, 0, 'H', Walls.SouthWest);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.South);
                 Maze[0, 2] = new Node(0, 2, 'C', Walls.North);
@@ -434,6 +447,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('A') && str.Contains('D') && str.Contains('H'))
             {
+                mazeLetters = new char[3] { 'A', 'D', 'H' };
+
                 Maze[0, 0] = new Node(0, 0, 'D', Walls.West);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.NorthEast);
                 Maze[0, 2] = new Node(0, 2, 'D', Walls.NorthWest);
@@ -509,6 +524,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('B') && str.Contains('C') && str.Contains('D'))
             {
+                mazeLetters = new char[3] { 'B', 'C', 'D' };
+
                 Maze[0, 0] = new Node(0, 0, '.', Walls.West);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.Horizontal);
                 Maze[0, 2] = new Node(0, 2, '.', Walls.SouthEast);
@@ -584,6 +601,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('B') && str.Contains('C') && str.Contains('H'))
             {
+                mazeLetters = new char[3] { 'B', 'C', 'H' };
+
                 Maze[0, 0] = new Node(0, 0, 'C', Walls.NorthWest);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.South);
                 Maze[0, 2] = new Node(0, 2, '.', Walls.North);
@@ -659,6 +678,8 @@ namespace KTANE_Solver
 
             else if (str.Contains('B') && str.Contains('D') && str.Contains('H'))
             {
+                mazeLetters = new char[3] { 'B', 'D', 'H' };
+
                 Maze[0, 0] = new Node(0, 0, '.', Walls.East);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.Vertical);
                 Maze[0, 2] = new Node(0, 2, 'D', Walls.NorthWest);
@@ -735,6 +756,8 @@ namespace KTANE_Solver
             //CDH maze
             else
             {
+                mazeLetters = new char[3] { 'C', 'D', 'H' };
+
                 Maze[0, 0] = new Node(0, 0, '.', Walls.Vertical);
                 Maze[0, 1] = new Node(0, 1, '.', Walls.NorthWest);
                 Maze[0, 2] = new Node(0, 2, 'H', Walls.South);
@@ -807,6 +830,9 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.SouthWest);
                 Maze[7, 7] = new Node(7, 7, 'C', Walls.North);
             }
+
+            PrintDebugLine($"Using {mazeLetters[0]}{mazeLetters[1]}{mazeLetters[2]} Maze\n");
+
 
             foreach (Node node in Maze)
             {
@@ -908,6 +934,69 @@ namespace KTANE_Solver
            -Paramaters (starting position (and where user is facing), ending position)
            -Returns a list of directions
          */
+
+        /// <summary>
+        /// Finds the row the of the goal
+        /// </summary>
+        /// <returns>the row the goal is in</returns>
+        public int FindRow()
+        {
+            int row = Bomb.FirstDigit;
+
+            foreach(Indicator indicator in Bomb.UnlitIndicatorsList)
+            {
+                if (ValidIndicator(indicator, "MAZE GAMER"))
+                {
+                    row++;
+                }
+            }
+
+            return row % 8;
+        }
+
+        /// <summary>
+        /// Finds the column the of the goal
+        /// </summary>
+        /// <returns>the column the goal is in</returns>
+        public int FindColumn()
+        {
+            int column = Bomb.LastDigit;
+
+            foreach (Indicator indicator in Bomb.LitIndicatorsList)
+            {
+                if (ValidIndicator(indicator, "HELP IM LOST"))
+                {
+                    column++;
+                }
+            }
+
+            return column % 8;
+        }
+
+
+        /// <summary>
+        /// Tells in an indicator is going to be used to find the goal
+        /// </summary>
+        /// <param name="indicator">the indicator in question</param>
+        /// <param name="phrase"></param>
+        /// <returns>true if the indicator's name shares a letter with the phrase</returns>
+        private bool ValidIndicator(Indicator indicator, string phrase)
+        {
+            foreach (char c in phrase)
+            {
+                if (c == ' ')
+                {
+                    continue;
+                }
+
+                if (indicator.Name.Contains(c))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
         public class Node
         {
             public int Row { get; }
