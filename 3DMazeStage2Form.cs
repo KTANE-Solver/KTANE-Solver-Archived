@@ -64,22 +64,25 @@ namespace KTANE_Solver
             //find the goal cardinal
             string goalCardinal = cardinalComboBox.Text.ToUpper();
 
-            module.CardinalGoal = goalCardinal;
-
-            PrintDebugLine($"Cardinal Direction: {goalCardinal}\n");
+            module.MainCardinalGoal = goalCardinal;
 
             //find the goal node
             int row = module.FindRow();
 
             int column = module.FindColumn();
 
-            module.Goal = module.Maze[row, column];
+            module.MainGoal = module.Maze[row, column];
 
-            PrintDebugLine($"Goal: [{row},{column}]");
+            PrintDebugLine($"Main Goal: [{row},{column}]");
 
             module.UpdateGoal();
 
-            PrintDebugLine($"Updated Goal: [{module.Goal.Row},{module.Goal.Colunm}]\n");
+            PrintDebugLine($"Main Updated Goal: [{module.MainGoal.Row},{module.MainGoal.Colunm}]");
+            PrintDebugLine($"Main Cardinal Direction: {module.MainCardinalGoal}\n");
+
+            PrintDebugLine($"Secondary Goal: [{module.SecondaryGoal.Row},{module.SecondaryGoal.Colunm}]");
+            PrintDebugLine($"Secondary Cardinal Direction: {module.SecondaryCardinalGoal}\n");
+
 
             module.Solve();
 

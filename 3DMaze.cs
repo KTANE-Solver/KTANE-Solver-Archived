@@ -22,9 +22,14 @@ namespace KTANE_Solver
         
         public string PlayerDirection { get; set; }
 
-        public Node Goal { get; set; }
+        public Node MainGoal { get; set; }
 
-        public string CardinalGoal { get; set; }
+        public Node SecondaryGoal { get; set; }
+
+        public string MainCardinalGoal { get; set; }
+
+        public string SecondaryCardinalGoal { get; set; }
+
 
         //the letters that are used to differentiate the maze
         public char[] mazeLetters;
@@ -321,8 +326,8 @@ namespace KTANE_Solver
                 Maze[1, 7] = new Node(1, 7, 'C', Walls.SouthEast);
 
                 Maze[2, 0] = new Node(2, 0, '.', Walls.East);
-                Maze[2, 1] = new Node(2, 1, '.', Walls.SouthU);
-                Maze[2, 2] = new Node(2, 2, '*', Walls.Vertical);
+                Maze[2, 1] = new Node(2, 1, '*', Walls.SouthU);
+                Maze[2, 2] = new Node(2, 2, '.', Walls.Vertical);
                 Maze[2, 3] = new Node(2, 3, '.', Walls.West);
                 Maze[2, 4] = new Node(2, 4, '.', Walls.None);
                 Maze[2, 5] = new Node(2, 5, 'C', Walls.NorthEast);
@@ -1029,12 +1034,7 @@ namespace KTANE_Solver
 
                 Node cardinal = cardinalVar.Key;
 
-                int rowDistanceSquared = (int)Math.Pow(PlayerPosition.Row - cardinal.Row, 2);
-                int columnDistanceSquared = (int)Math.Pow(PlayerPosition.Colunm - cardinal.Colunm, 2);
-
-                int distance = (int)Math.Sqrt(rowDistanceSquared + columnDistanceSquared);
-
-                cardinalList[cardinal] = distance;
+                cardinalList[cardinal] = FindDistance(PlayerPosition, cardinal);
             }
 
             //find the cardianal with the lowest value
@@ -1073,9 +1073,9 @@ namespace KTANE_Solver
         public void UpdateGoal()
         {
             //find the last node the player hits before htting the wall
-            Node currentGoal = Goal;
+            Node currentGoal = MainGoal;
 
-            switch (CardinalGoal)
+            switch (MainCardinalGoal)
             {
                 case "NORTH":
                     while (currentGoal.North != null)
@@ -1103,7 +1103,70 @@ namespace KTANE_Solver
                     break;
             }
             //change that node to the goal node
-            Goal = currentGoal;
+            MainGoal = currentGoal;
+
+            //find the second goal
+            if (MainCardinalGoal == "NORTH")
+            {
+                if (MainGoal.Row == 0)
+                {
+                    SecondaryGoal = Maze[7, MainGoal.Colunm];
+                }
+
+                else
+                {
+                    SecondaryGoal = Maze[MainGoal.Row - 1, MainGoal.Colunm];
+                }
+
+                SecondaryCardinalGoal = "SOUTH";
+            }
+
+            else if (MainCardinalGoal == "EAST")
+            {
+                if (MainGoal.Colunm == 7)
+                {
+                    SecondaryGoal = Maze[MainGoal.Row, 0];
+                }
+
+                else
+                {
+                    SecondaryGoal = Maze[MainGoal.Row, MainGoal.Colunm + 1];
+                }
+
+                SecondaryCardinalGoal = "WEST";
+            }
+
+            else if (MainCardinalGoal == "SOUTH")
+            {
+                if (MainGoal.Row == 7)
+                {
+                    SecondaryGoal = Maze[0, MainGoal.Colunm];
+                }
+
+                else
+                {
+                    SecondaryGoal = Maze[MainGoal.Row + 1, MainGoal.Colunm];
+                }
+
+                SecondaryCardinalGoal = "NORTH";
+            }
+
+            else
+            {
+                if (MainGoal.Colunm == 0)
+                {
+                    SecondaryGoal = Maze[MainGoal.Row, 7];
+                }
+
+                else
+                {
+                    SecondaryGoal = Maze[MainGoal.Row, MainGoal.Colunm - 1];
+                }
+
+                SecondaryCardinalGoal = "EAST";
+            }
+
+
         }
 
         /// <summary>
@@ -1116,16 +1179,49 @@ namespace KTANE_Solver
 
             //find the path to the goal
 
-            List<string> answerList = FindPath(PlayerPosition, Goal, false);
+            //figure out if it's faster to go to that main goal or the secondary one
+            int mainGoalDistance = FindDistance(PlayerPosition, MainGoal);
+
+            int secondaryGoalDistance = FindDistance(PlayerPosition, SecondaryGoal);
+
+
+            bool usingMainGoal = mainGoalDistance <= secondaryGoalDistance;
+
+            PrintDebugLine("Main Goal Distance: " + mainGoalDistance);
+            PrintDebugLine($"Secondary Goal Distance: {secondaryGoalDistance}\n");
+
+            if (usingMainGoal)
+            {
+                PrintDebugLine("Using main goal\n");
+                SolveMaze(MainGoal, MainCardinalGoal);
+            }
+
+            else
+            {
+                PrintDebugLine("Using secondary goal\n");
+                SolveMaze(SecondaryGoal, SecondaryCardinalGoal);
+            }
+
+
+        }
+
+        /// <summary>
+        /// Solves the maze based on what the goal and cardinal is
+        /// </summary>
+        /// <param name="goal"></param>
+        /// <param name="cardinal"></param>
+        private void SolveMaze(Node goal, string cardinal)
+        { 
+            List<string>answerList = FindPath(PlayerPosition, goal, false);
 
             //update player position
-            PlayerPosition = Goal;
+            PlayerPosition = goal;
 
             //make player face correct direction
 
             List<string> additionalDirections = new List<string>();
 
-            while (CardinalGoal != PlayerDirection)
+            while (cardinal != PlayerDirection)
             {
                 PlayerDirection = RotateClockWise();
                 additionalDirections.Add("Right");
@@ -1133,7 +1229,7 @@ namespace KTANE_Solver
 
             //keep moving Forward until player is about to hit wall
 
-            if (CardinalGoal == "NORTH")
+            if (cardinal == "NORTH")
             {
                 while (PlayerPosition.North != null)
                 {
@@ -1142,7 +1238,7 @@ namespace KTANE_Solver
                 }
             }
 
-            else if (CardinalGoal == "EAST")
+            else if (cardinal == "EAST")
             {
                 while (PlayerPosition.East != null)
                 {
@@ -1152,7 +1248,7 @@ namespace KTANE_Solver
                 }
             }
 
-            else if (CardinalGoal == "SOUTH")
+            else if (cardinal == "SOUTH")
             {
                 while (PlayerPosition.South != null)
                 {
@@ -1191,6 +1287,18 @@ namespace KTANE_Solver
             PrintDebugLine("Directions to goal: " + fullAnswer + "\n");
 
             ShowAnswer(fullAnswer);
+
+        }
+
+        /// <summary>
+        /// Finds the distance between two nodes
+        /// </summary>
+        private int FindDistance(Node start, Node end)
+        {
+            int distanceRow = (int)Math.Pow(start.Row - end.Row, 2);
+            int distanceColumn = (int)Math.Pow(start.Colunm - end.Colunm, 2);
+
+            return (int)Math.Sqrt(distanceRow + distanceColumn);
         }
 
         /// <summary>
