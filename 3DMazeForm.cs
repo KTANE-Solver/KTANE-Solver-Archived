@@ -22,6 +22,8 @@ namespace KTANE_Solver
         //if the user is currently facing a wall
         bool facingWall;
 
+        _3DMazeStage2Form secondStage;
+
         public _3DMazeForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm) 
         : base(bomb, logFile, moduleSelectionForm, "3D Maze", false)
         {
@@ -131,18 +133,28 @@ namespace KTANE_Solver
 
             int[] playerPosition = possiblePaths[0];
 
+            //update the player position
+            module.PlayerPosition = module.Maze[playerPosition[0], playerPosition[1]];
+
+            //update the player facing direction
+            module.PlayerDirection = module.ConvertPlayerDirection(playerPosition[2]);
+
             //find how to get to the closest cardinal
-            module.FindCardinal(playerPosition);
+            module.FindCardinal();
 
-            //find where the goal is
-            int row = module.FindRow();
+            this.Hide();
 
-            int column = module.FindColumn();
+            if (secondStage == null)
+            {
+                secondStage = new _3DMazeStage2Form(Bomb, LogFileWriter, ModuleSelectionForm, this, module);
+            }
 
-            PrintDebugLine($"Goal: ({row},{column})\n");
+            else
+            {
+                secondStage.UpdateForm();
+            }
 
-
-
+            secondStage.Show();
         }
 
         private void VerifyNodes()

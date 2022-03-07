@@ -10,13 +10,21 @@ namespace KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the 3D maze module
     /// </summary>
-    class _3DMaze : Module
+    public class _3DMaze : Module
     {
         //FIELDS
         /* a 2D Node array that will represent the maze
          */
 
         public Node[,] Maze { get; }
+
+        public Node PlayerPosition { get; set; }
+        
+        public string PlayerDirection { get; set; }
+
+        public Node Goal { get; set; }
+
+        public string CardinalGoal { get; set; }
 
         //the letters that are used to differentiate the maze
         public char[] mazeLetters;
@@ -1001,12 +1009,8 @@ namespace KTANE_Solver
         /// <summary>
         /// Find the closetest cardinal based on the player's current position and tell them how to get to that cardinal
         /// </summary>
-        /// <param name="playerPosition">where the player currently is and their facing direction</param>
-        /// <returns>where the player ends up and their facing direction</returns>
-        public int[] FindCardinal(int[] playerPosition)
+        public void FindCardinal()
         {
-            Node playerPositionNode = Maze[playerPosition[0], playerPosition[1]];
-
             //find all of the cardials
             Dictionary<Node, int> cardinalList = new Dictionary<Node, int>();
 
@@ -1025,8 +1029,8 @@ namespace KTANE_Solver
 
                 Node cardinal = cardinalVar.Key;
 
-                int rowDistanceSquared = (int)Math.Pow(playerPositionNode.Row - cardinal.Row, 2);
-                int columnDistanceSquared = (int)Math.Pow(playerPositionNode.Colunm - cardinal.Colunm, 2);
+                int rowDistanceSquared = (int)Math.Pow(PlayerPosition.Row - cardinal.Row, 2);
+                int columnDistanceSquared = (int)Math.Pow(PlayerPosition.Colunm - cardinal.Colunm, 2);
 
                 int distance = (int)Math.Sqrt(rowDistanceSquared + columnDistanceSquared);
 
@@ -1047,23 +1051,132 @@ namespace KTANE_Solver
             }
 
             //set up the maze to find smallest path from where the user started
-            Dijkstra(playerPositionNode);
-
-            string playerFacingDirection = ConvertPlayerDirection(playerPosition[2]);
-
+            Dijkstra(PlayerPosition);
 
             //find the path to find the cardinal
-            ShowAnswer(FindPath(playerPositionNode, smallestDistanceCardianl, playerFacingDirection));
+            string answer = FindPath(PlayerPosition, smallestDistanceCardianl);
 
-            int playerFacingDirectionInt = ConvertPlayerDirection(playerFacingDirection);
+            PlayerPosition = smallestDistanceCardianl;
 
-            return new int[3] {smallestDistanceCardianl.Row, smallestDistanceCardianl.Colunm, playerFacingDirectionInt };
+            ShowAnswer(answer);
+        }
+
+        public void UpdateGoal()
+        {
+            //find the last node the player hits before htting the wall
+            Node currentGoal = Goal;
+
+            switch (CardinalGoal)
+            {
+                case "NORTH":
+                    while (currentGoal.North != null)
+                    { 
+                        currentGoal = currentGoal.North;
+                    }
+                    break;
+                case "EAST":
+                    while (currentGoal.East != null)
+                    {
+                        currentGoal = currentGoal.East;
+                    }
+                    break;
+                case "SOUTH":
+                    while (currentGoal.South != null)
+                    {
+                        currentGoal = currentGoal.South;
+                    }
+                    break;
+                case "WEST":
+                    while (currentGoal.West != null)
+                    {
+                        currentGoal = currentGoal.West;
+                    }
+                    break;
+            }
+            //change that node to the goal node
+            Goal = currentGoal;
+        }
+
+        /// <summary>
+        /// Finds and where the user needs to go in order to solve the module
+        /// </summary>
+        public void Solve()
+        {
+            //set up the maze to find smallest path from where the user started
+            Dijkstra(PlayerPosition);
+
+            //find the path to the goal
+            string answer = FindPath(PlayerPosition, Goal);
+
+            //make player face correct direction
+
+            List<string> additionalDirections = new List<string>();
+
+            while (CardinalGoal != PlayerDirection)
+            {
+                PlayerDirection = RotateClockWise();
+                additionalDirections.Add("Right");
+            }
+
+            //keep moving foward until player is about to hit wall
+
+            if (CardinalGoal == "North")
+            {
+                while (PlayerPosition.North != null)
+                {
+                    additionalDirections.Add("Forward");
+                    PlayerPosition = PlayerPosition.North;
+                }
+            }
+
+            else if (CardinalGoal == "East")
+            {
+                while (PlayerPosition.East != null)
+                {
+                    additionalDirections.Add("Forward");
+                    PlayerPosition = PlayerPosition.East;
+
+                }
+            }
+
+            else if (CardinalGoal == "South")
+            {
+                while (PlayerPosition.South != null)
+                {
+                    additionalDirections.Add("Forward");
+                    PlayerPosition = PlayerPosition.South;
+                }
+            }
+
+            else
+            {
+                while (PlayerPosition.West != null)
+                {
+                    additionalDirections.Add("Forward");
+                    PlayerPosition = PlayerPosition.West;
+                }
+            }
+
+            //go foward one more time to run into wall
+            additionalDirections.Add("Forward");
+
+
+            //simplfy these set of directions
+            additionalDirections = SimplifyDirections(additionalDirections);
+
+            //add these directions to the old one
+
+            string additionAnswer = string.Join(", ", additionalDirections);
+
+            string fullAnswer = string.Join(", ", new string[2] { answer, additionAnswer });
+
+            ShowAnswer(fullAnswer);
         }
 
         /// <summary>
         /// Converts an int into the direction the player is facing
         /// </summary>
-        private string ConvertPlayerDirection(int i)
+        public string ConvertPlayerDirection(int i)
         {
             switch (i)
             {
@@ -1082,32 +1195,11 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Converts the player facing direction into an int
-        /// </summary>
-        private int ConvertPlayerDirection(string direction)
-        {
-            switch (direction)
-            {
-                case "NORTH":
-                    return 0;
-
-                case "EAST":
-                    return 1;
-
-                case "SOUTH":
-                    return 2;
-
-                default:
-                    return 3;
-            }
-        }
-
-        /// <summary>
         /// Finds a path from the starting position to the ending position
         /// </summary>
         /// <param name="startingPostion"></param>
         /// <param name="endingPosition"></param>
-        private string FindPath(Node startingPostion, Node endingPosition, string playerFacingDirection)
+        private string FindPath(Node startingPostion, Node endingPosition)
         {
             List<Node> directions = new List<Node>();
 
@@ -1124,16 +1216,15 @@ namespace KTANE_Solver
 
             directions.Reverse();
 
-            return ConvertDirections(directions, playerFacingDirection);
+            return ConvertDirections(directions);
         }
 
         /// <summary>
         /// Converts the direction from a list in to directions the user can user to manuver through the maze
         /// </summary>
         /// <param name="directions">the directions in nodes</param>
-        /// <param name="playerFacingDirection">which direction the user is currently facing</param>
         /// <returns></returns>
-        private string ConvertDirections(List<Node> directions, string playerFacingDirection)
+        private string ConvertDirections(List<Node> directions)
         {
             List<string> newDirections = new List<string>();
 
@@ -1149,16 +1240,16 @@ namespace KTANE_Solver
                 //North
                 if (currentNode.North == directions[currentNodeIndex + 1])
                 {
-                    if (playerFacingDirection == "NORTH")
+                    if (PlayerDirection == "NORTH")
                     {
                         newDirections.Add("Foward");
                     }
 
                     else
                     {
-                        while (playerFacingDirection != "NORTH")
+                        while (PlayerDirection != "NORTH")
                         {
-                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            PlayerDirection = RotateClockWise();
                             newDirections.Add("Right");
                         }
 
@@ -1169,16 +1260,16 @@ namespace KTANE_Solver
                 //East
                 else if (currentNode.East == directions[currentNodeIndex + 1])
                 {
-                    if (playerFacingDirection == "EAST")
+                    if (PlayerDirection == "EAST")
                     {
                         newDirections.Add("Foward");
                     }
 
                     else
                     {
-                        while (playerFacingDirection != "EAST")
+                        while (PlayerDirection != "EAST")
                         {
-                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            PlayerDirection = RotateClockWise();
                             newDirections.Add("Right");
                         }
 
@@ -1189,16 +1280,16 @@ namespace KTANE_Solver
                 //South
                 else if (currentNode.South == directions[currentNodeIndex + 1])
                 {
-                    if (playerFacingDirection == "SOUTH")
+                    if (PlayerDirection == "SOUTH")
                     {
                         newDirections.Add("Foward");
                     }
 
                     else
                     {
-                        while (playerFacingDirection != "SOUTH")
+                        while (PlayerDirection != "SOUTH")
                         {
-                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            PlayerDirection = RotateClockWise();
                             newDirections.Add("Right");
                         }
 
@@ -1209,16 +1300,16 @@ namespace KTANE_Solver
                 //West
                 else
                 {
-                    if (playerFacingDirection == "WEST")
+                    if (PlayerDirection == "WEST")
                     {
                         newDirections.Add("Foward");
                     }
 
                     else
                     {
-                        while (playerFacingDirection != "WEST")
+                        while (PlayerDirection != "WEST")
                         {
-                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            PlayerDirection = RotateClockWise();
                             newDirections.Add("Right");
                         }
 
@@ -1230,35 +1321,62 @@ namespace KTANE_Solver
                 currentNode = directions[currentNodeIndex + 1];
             }
 
+            List<string> finalDirections = SimplifyDirections(newDirections);
+
+            return string.Join(", ", finalDirections);
+        }
+
+        /// <summary>
+        /// simplifes directions so the user has an easier time reading them
+        /// </summary>
+        /// <param name="directions"></param>
+        /// <returns>the new set of directions</returns>
+        private List<string> SimplifyDirections(List<string> directions)
+        {
             //if there are three rights in a row, replace them with one left
 
-            for (int i = newDirections.Count - 4; i > -1 ; i--)
+            for (int i = directions.Count - 4; i > -1; i--)
             {
-                string str1 = newDirections[i];
-                string str2 = newDirections[i + 1];
-                string str3 = newDirections[i + 2];
+                string str1 = directions[i];
+                string str2 = directions[i + 1];
+                string str3 = directions[i + 2];
 
                 if (str1 == "Right" && str1 == str2 && str1 == str3)
                 {
-                    newDirections.RemoveAt(i + 2);
-                    newDirections.RemoveAt(i + 1);
-                    newDirections.RemoveAt(i);
+                    directions.RemoveAt(i + 2);
+                    directions.RemoveAt(i + 1);
+                    directions.RemoveAt(i);
 
-                    newDirections.Insert(i, "Left");
+                    directions.Insert(i, "Left");
                 }
             }
 
-            return string.Join(", ", newDirections);
+            //combine same words
+            List<String> finalDirections = new List<String>();
+
+            while (directions.Count != 0)
+            {
+                int counter = 0;
+                String word = directions[0];
+
+                while (directions.Count != 0 && word == directions[0])
+                {
+                    counter++;
+                    directions.RemoveAt(0);
+                }
+                finalDirections.Add(word + " x" + counter);
+            }
+
+            return finalDirections;
         }
 
         /// <summary>
         /// Changes the user to face 90 degrees clockwise
         /// </summary>
-        /// <param name="playerFacingDirection">what direction the user was facing before</param>
         /// <returns>what direction the user is currently facing</returns>
-        private string RotateClockWise(string playerFacingDirection)
+        private string RotateClockWise()
         {
-            switch (playerFacingDirection)
+            switch (PlayerDirection)
             {
                 case "NORTH":
                     return "EAST";

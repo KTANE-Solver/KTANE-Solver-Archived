@@ -55,6 +55,12 @@
     <Compile Include="3DMazeForm.Designer.cs">
       <DependentUpon>3DMazeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="3DMazeStage2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3DMazeStage2Form.Designer.cs">
+      <DependentUpon>3DMazeStage2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdjacentLetters.cs" />
     <Compile Include="AdjacentLettersAnswerForm.cs">
       <SubType>Form</SubType>
@@ -427,6 +433,9 @@
     </Compile>
     <EmbeddedResource Include="3DMazeForm.resx">
       <DependentUpon>3DMazeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3DMazeStage2Form.resx">
+      <DependentUpon>3DMazeStage2Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdjacentLettersAnswerForm.resx">
       <DependentUpon>AdjacentLettersAnswerForm.cs</DependentUpon>
