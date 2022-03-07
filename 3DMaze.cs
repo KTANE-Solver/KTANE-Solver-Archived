@@ -1054,7 +1054,9 @@ namespace KTANE_Solver
             Dijkstra(PlayerPosition);
 
             //find the path to find the cardinal
-            string answer = FindPath(PlayerPosition, smallestDistanceCardianl);
+            List<string> answerList = FindPath(PlayerPosition, smallestDistanceCardianl, true);
+
+            string answer = string.Join(", ", answerList);
 
             PlayerPosition = smallestDistanceCardianl;
 
@@ -1106,7 +1108,8 @@ namespace KTANE_Solver
             Dijkstra(PlayerPosition);
 
             //find the path to the goal
-            string answer = FindPath(PlayerPosition, Goal);
+
+            List<string> answerList = FindPath(PlayerPosition, Goal, false);
 
             //make player face correct direction
 
@@ -1162,13 +1165,18 @@ namespace KTANE_Solver
 
 
             //simplfy these set of directions
-            additionalDirections = SimplifyDirections(additionalDirections);
+            additionalDirections = SimplifyDirections(additionalDirections, false);
 
             //add these directions to the old one
 
-            string additionAnswer = string.Join(", ", additionalDirections);
+            List<string> fullAnswerList = new List<string>();
 
-            string fullAnswer = string.Join(", ", new string[2] { answer, additionAnswer });
+            fullAnswerList.AddRange(answerList);
+            fullAnswerList.AddRange(additionalDirections);
+
+            fullAnswerList = SimplifyDirections(fullAnswerList, true);
+
+            string fullAnswer = string.Join(", ", fullAnswerList);
 
             ShowAnswer(fullAnswer);
         }
@@ -1199,7 +1207,8 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="startingPostion"></param>
         /// <param name="endingPosition"></param>
-        private string FindPath(Node startingPostion, Node endingPosition)
+        /// <param name="clump">tells if progam should have multiple items in a row simplified</param>
+        private List<string> FindPath(Node startingPostion, Node endingPosition, bool clump)
         {
             List<Node> directions = new List<Node>();
 
@@ -1216,15 +1225,16 @@ namespace KTANE_Solver
 
             directions.Reverse();
 
-            return ConvertDirections(directions);
+            return ConvertDirections(directions, clump);
         }
 
         /// <summary>
         /// Converts the direction from a list in to directions the user can user to manuver through the maze
         /// </summary>
         /// <param name="directions">the directions in nodes</param>
+        /// <param name="clump">tells if progam should have multiple items in a row simplified</param>
         /// <returns></returns>
-        private string ConvertDirections(List<Node> directions)
+        private List<string> ConvertDirections(List<Node> directions, bool clump)
         {
             List<string> newDirections = new List<string>();
 
@@ -1321,17 +1331,18 @@ namespace KTANE_Solver
                 currentNode = directions[currentNodeIndex + 1];
             }
 
-            List<string> finalDirections = SimplifyDirections(newDirections);
+            List<string> finalDirections = SimplifyDirections(newDirections, clump);
 
-            return string.Join(", ", finalDirections);
+            return finalDirections;
         }
 
         /// <summary>
         /// simplifes directions so the user has an easier time reading them
         /// </summary>
         /// <param name="directions"></param>
+        /// <param name="clump">tells if progam should have multiple items in a row simplified</param>
         /// <returns>the new set of directions</returns>
-        private List<string> SimplifyDirections(List<string> directions)
+        private List<string> SimplifyDirections(List<string> directions, bool clump)
         {
             //if there are three rights in a row, replace them with one left
 
@@ -1354,20 +1365,25 @@ namespace KTANE_Solver
             //combine same words
             List<String> finalDirections = new List<String>();
 
-            while (directions.Count != 0)
+            if (clump)
             {
-                int counter = 0;
-                String word = directions[0];
-
-                while (directions.Count != 0 && word == directions[0])
+                while (directions.Count != 0)
                 {
-                    counter++;
-                    directions.RemoveAt(0);
+                    int counter = 0;
+                    String word = directions[0];
+
+                    while (directions.Count != 0 && word == directions[0])
+                    {
+                        counter++;
+                        directions.RemoveAt(0);
+                    }
+                    finalDirections.Add(word + " x" + counter);
                 }
-                finalDirections.Add(word + " x" + counter);
+
+                return finalDirections;
             }
 
-            return finalDirections;
+            return directions;
         }
 
         /// <summary>
