@@ -1118,6 +1118,9 @@ namespace KTANE_Solver
 
             List<string> answerList = FindPath(PlayerPosition, Goal, false);
 
+            //update player position
+            PlayerPosition = Goal;
+
             //make player face correct direction
 
             List<string> additionalDirections = new List<string>();
