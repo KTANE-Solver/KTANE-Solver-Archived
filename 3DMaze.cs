@@ -58,7 +58,7 @@ namespace KTANE_Solver
            -Parameters (the three letters in the maze)
         */
         public void SetMaze(string str)
-        { 
+        {
             if (str.Contains('A') && str.Contains('B') && str.Contains('C'))
             {
                 mazeLetters = new char[3] { 'A', 'B', 'C' };
@@ -854,7 +854,7 @@ namespace KTANE_Solver
 
             for (int row = 0; row < 16; row++)
             {
-                if(row % 2 == 0)
+                if (row % 2 == 0)
                 {
                     PrintDebug(" ");
                 }
@@ -889,7 +889,7 @@ namespace KTANE_Solver
 
                         if (column % 2 == 0)
                         {
-                            PrintWestWall(Maze[row / 2, (column + 1) / 2 ]);
+                            PrintWestWall(Maze[row / 2, (column + 1) / 2]);
                         }
 
                         else
@@ -924,9 +924,9 @@ namespace KTANE_Solver
             }
 
             else
-            { 
+            {
                 PrintDebug(" ");
-            }       
+            }
         }
 
         /*
@@ -943,7 +943,7 @@ namespace KTANE_Solver
         {
             int row = Bomb.FirstDigit;
 
-            foreach(Indicator indicator in Bomb.UnlitIndicatorsList)
+            foreach (Indicator indicator in Bomb.UnlitIndicatorsList)
             {
                 if (ValidIndicator(indicator, "MAZE GAMER"))
                 {
@@ -997,6 +997,417 @@ namespace KTANE_Solver
 
             return false;
         }
+
+        /// <summary>
+        /// Find the closetest cardinal based on the player's current position and tell them how to get to that cardinal
+        /// </summary>
+        /// <param name="playerPosition">where the player currently is and their facing direction</param>
+        /// <returns>where the player ends up and their facing direction</returns>
+        public int[] FindCardinal(int[] playerPosition)
+        {
+            Node playerPositionNode = Maze[playerPosition[0], playerPosition[1]];
+
+            //find all of the cardials
+            Dictionary<Node, int> cardinalList = new Dictionary<Node, int>();
+
+            foreach (Node node in Maze)
+            {
+                if (node.Character == '*')
+                {
+                    cardinalList.Add(node, 0);
+                }
+            }
+
+            //find the distance of each cardinal based on the player's current position
+            for (int i = 0; i < cardinalList.Keys.Count; i++)
+            {
+                var cardinalVar = cardinalList.ElementAt(i);
+
+                Node cardinal = cardinalVar.Key;
+
+                int rowDistanceSquared = (int)Math.Pow(playerPositionNode.Row - cardinal.Row, 2);
+                int columnDistanceSquared = (int)Math.Pow(playerPositionNode.Colunm - cardinal.Colunm, 2);
+
+                int distance = (int)Math.Sqrt(rowDistanceSquared + columnDistanceSquared);
+
+                cardinalList[cardinal] = distance;
+            }
+
+            //find the cardianal with the lowest value
+            var first = cardinalList.First();
+
+            Node smallestDistanceCardianl = first.Key;
+
+            foreach (Node cardinal in cardinalList.Keys)
+            { 
+                if(cardinalList[cardinal] < cardinalList[smallestDistanceCardianl])
+                {
+                    smallestDistanceCardianl = cardinal;
+                }
+            }
+
+            //set up the maze to find smallest path from where the user started
+            Dijkstra(playerPositionNode);
+
+            string playerFacingDirection = ConvertPlayerDirection(playerPosition[2]);
+
+
+            //find the path to find the cardinal
+            ShowAnswer(FindPath(playerPositionNode, smallestDistanceCardianl, playerFacingDirection));
+
+            int playerFacingDirectionInt = ConvertPlayerDirection(playerFacingDirection);
+
+            return new int[3] {smallestDistanceCardianl.Row, smallestDistanceCardianl.Colunm, playerFacingDirectionInt };
+        }
+
+        /// <summary>
+        /// Converts an int into the direction the player is facing
+        /// </summary>
+        private string ConvertPlayerDirection(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    return "NORTH";
+
+                case 1:
+                    return "EAST";
+
+                case 2:
+                    return "SOUTH";
+                
+                default:
+                    return "WEST";
+            }
+        }
+
+        /// <summary>
+        /// Converts the player facing direction into an int
+        /// </summary>
+        private int ConvertPlayerDirection(string direction)
+        {
+            switch (direction)
+            {
+                case "NORTH":
+                    return 0;
+
+                case "EAST":
+                    return 1;
+
+                case "SOUTH":
+                    return 2;
+
+                default:
+                    return 3;
+            }
+        }
+
+        /// <summary>
+        /// Finds a path from the starting position to the ending position
+        /// </summary>
+        /// <param name="startingPostion"></param>
+        /// <param name="endingPosition"></param>
+        private string FindPath(Node startingPostion, Node endingPosition, string playerFacingDirection)
+        {
+            List<Node> directions = new List<Node>();
+
+            Node currentNode = endingPosition;
+
+            directions.Add(currentNode);
+
+            while (currentNode != startingPostion)
+            {
+                currentNode = currentNode.PreviousNode;
+
+                directions.Add(currentNode);
+            }
+
+            directions.Reverse();
+
+            return ConvertDirections(directions, playerFacingDirection);
+        }
+
+        /// <summary>
+        /// Converts the direction from a list in to directions the user can user to manuver through the maze
+        /// </summary>
+        /// <param name="directions">the directions in nodes</param>
+        /// <param name="playerFacingDirection">which direction the user is currently facing</param>
+        /// <returns></returns>
+        private string ConvertDirections(List<Node> directions, string playerFacingDirection)
+        {
+            List<string> newDirections = new List<string>();
+
+            Node currentNode = directions[0];
+
+            while (currentNode != directions[directions.Count - 1])
+            {
+                int currentNodeIndex = directions.IndexOf(currentNode);
+
+                //rotate the user to face the next node (if neccessary)
+                //and go to the next node
+
+                //North
+                if (currentNode.North == directions[currentNodeIndex + 1])
+                {
+                    if (playerFacingDirection == "NORTH")
+                    {
+                        newDirections.Add("Foward");
+                    }
+
+                    else
+                    {
+                        while (playerFacingDirection != "NORTH")
+                        {
+                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            newDirections.Add("Right");
+                        }
+
+                        newDirections.Add("Foward");
+                    }
+                }
+
+                //East
+                else if (currentNode.East == directions[currentNodeIndex + 1])
+                {
+                    if (playerFacingDirection == "EAST")
+                    {
+                        newDirections.Add("Foward");
+                    }
+
+                    else
+                    {
+                        while (playerFacingDirection != "EAST")
+                        {
+                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            newDirections.Add("Right");
+                        }
+
+                        newDirections.Add("Foward");
+                    }
+                }
+
+                //South
+                else if (currentNode.South == directions[currentNodeIndex + 1])
+                {
+                    if (playerFacingDirection == "SOUTH")
+                    {
+                        newDirections.Add("Foward");
+                    }
+
+                    else
+                    {
+                        while (playerFacingDirection != "SOUTH")
+                        {
+                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            newDirections.Add("Right");
+                        }
+
+                        newDirections.Add("Foward");
+                    }
+                }
+
+                //West
+                else
+                {
+                    if (playerFacingDirection == "WEST")
+                    {
+                        newDirections.Add("Foward");
+                    }
+
+                    else
+                    {
+                        while (playerFacingDirection != "WEST")
+                        {
+                            playerFacingDirection = RotateClockWise(playerFacingDirection);
+                            newDirections.Add("Right");
+                        }
+
+                        newDirections.Add("Foward");
+                    }
+                }
+
+
+                currentNode = directions[currentNodeIndex + 1];
+            }
+
+            //if there are three rights in a row, replace them with one left
+
+            for (int i = newDirections.Count - 4; i > -1 ; i--)
+            {
+                string str1 = newDirections[i];
+                string str2 = newDirections[i + 1];
+                string str3 = newDirections[i + 2];
+
+                if (str1 == "Right" && str1 == str2 && str1 == str3)
+                {
+                    newDirections.RemoveAt(i + 2);
+                    newDirections.RemoveAt(i + 1);
+                    newDirections.RemoveAt(i);
+
+                    newDirections.Insert(i, "Left");
+                }
+            }
+
+            return string.Join(", ", newDirections);
+        }
+
+        /// <summary>
+        /// Changes the user to face 90 degrees clockwise
+        /// </summary>
+        /// <param name="playerFacingDirection">what direction the user was facing before</param>
+        /// <returns>what direction the user is currently facing</returns>
+        private string RotateClockWise(string playerFacingDirection)
+        {
+            switch (playerFacingDirection)
+            {
+                case "NORTH":
+                    return "EAST";
+                case "EAST":
+                    return "SOUTH";
+                case "SOUTH":
+                    return "WEST";
+                default:
+                    return "NORTH";
+            }
+        }
+
+
+        /// <summary>
+        /// Finds shortest distance of each Node from the starting Node
+        /// </summary>
+        /// <param name="startPosition">the starting position</param>
+        private void Dijkstra(Node startPosition)
+        {
+            //set all nodes to unvisted
+            //set the distance of those nodes to max value
+
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    Maze[i, j].Visted = false;
+                    Maze[i, j].Distance = int.MaxValue;
+                    Maze[i, j].PreviousNode = null;
+                }
+            }
+
+            //set the start point distance to 0 and visted
+            Maze[startPosition.Row, startPosition.Colunm].Distance = 0;
+            Maze[startPosition.Row, startPosition.Colunm].Visted = true;
+
+            Node currentNode = Maze[startPosition.Row, startPosition.Colunm];
+
+            //find a list of all the unvistedRooms
+            List<Node> unvistedNodes = FindAllUnvistedNodes();
+
+
+            while (unvistedNodes.Count != 0)
+            {
+                List<Node> unvistedNeighbors = GetUnvistedNeighbors(currentNode);
+
+                //set the distance of all the neighbors of currentNode
+                foreach (Node node in unvistedNeighbors)
+                {
+                    //find the potential ditance of this neighbor
+                    int potentialCost = Maze[currentNode.Row, currentNode.Colunm].Distance + 1;
+
+                    //set the ditance to the potential one if it is less than the current one
+                    if (potentialCost < Maze[node.Row, node.Colunm].Distance)
+                    {
+                        Maze[node.Row, node.Colunm].Distance = potentialCost;
+                        node.PreviousNode = currentNode;
+                    }
+                }
+
+                //find the node with the smallest distance and set that as fully visted
+                Node smallestDistanceNode = unvistedNodes[0];
+
+                for (int i = 1; i < unvistedNodes.Count; i++)
+                {
+                    if (smallestDistanceNode.Distance > unvistedNodes[i].Distance)
+                    {
+                        smallestDistanceNode = unvistedNodes[i];
+                    }
+                }
+
+                currentNode = smallestDistanceNode;
+
+                smallestDistanceNode.Visted = true;
+
+
+                //remove the node with the smallest distance
+                unvistedNodes.Remove(smallestDistanceNode);
+            }
+
+
+
+
+
+
+        }
+
+        private List<Node> FindAllUnvistedNodes()
+        {
+            List<Node> unvistedNodes = new List<Node>();
+
+                foreach(Node node in Maze)
+                {
+                    if (!node.Visted)
+                    {
+                        unvistedNodes.Add(node);
+                    }
+                }
+            
+
+            return unvistedNodes;
+        }
+
+        private List<Node> GetUnvistedNeighbors(Node currentNode)
+        {
+            List<Node> unvistedNeighbors = new List<Node>();
+
+            Node northNode = currentNode.North;
+            Node easthNode = currentNode.East;
+            Node westhNode = currentNode.West;
+            Node southhNode = currentNode.South;
+
+            if (northNode != null && !Maze[northNode.Row, northNode.Colunm].Visted)
+            {
+                unvistedNeighbors.Add(northNode);
+            }
+
+            if (easthNode != null && !Maze[easthNode.Row, easthNode.Colunm].Visted)
+            {
+                unvistedNeighbors.Add(easthNode);
+            }
+
+            if (westhNode != null && !Maze[westhNode.Row, westhNode.Colunm].Visted)
+            {
+                unvistedNeighbors.Add(westhNode);
+            }
+
+            if (southhNode != null && !Maze[southhNode.Row, southhNode.Colunm].Visted)
+            {
+                unvistedNeighbors.Add(southhNode);
+            }
+
+            return unvistedNeighbors;
+        }
+
+        private bool AllNodeVisited(bool[,] vistedNodes)
+        {
+            foreach (bool b in vistedNodes)
+            {
+                if (!b)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public class Node
         {
             public int Row { get; }
@@ -1007,6 +1418,10 @@ namespace KTANE_Solver
             public Node South { get; set; }
             public Node West { get; set; }
             public Walls Wall { get; set; }
+
+            public Node PreviousNode { get; set; }
+            public int Distance { get; set; }
+            public bool Visted { get; set; }
 
             public Node(int row, int column, char character, Walls wall)
             {
@@ -1019,6 +1434,10 @@ namespace KTANE_Solver
                 South = null;
                 West = null;
                 Wall = wall;
+
+                PreviousNode = null;
+                Distance = int.MaxValue;
+                Visted = true;
             }
 
             /// <summary>

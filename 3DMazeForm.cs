@@ -61,6 +61,7 @@ namespace KTANE_Solver
                 !(mazeText.Contains('C') && mazeText.Contains('D') && mazeText.Contains('H')))
             {
                 ShowErrorMessage("Unaable to find correct maze");
+                return;
             }
 
             module = new _3DMaze(Bomb, LogFileWriter);
@@ -127,6 +128,11 @@ namespace KTANE_Solver
             { 
                 ShowErrorMessage("Found multiple paths");
             }
+
+            int[] playerPosition = possiblePaths[0];
+
+            //find how to get to the closest cardinal
+            module.FindCardinal(playerPosition);
 
             //find where the goal is
             int row = module.FindRow();
