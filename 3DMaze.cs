@@ -712,8 +712,8 @@ namespace KTANE_Solver
                 Maze[2, 3] = new Node(2, 3, '.', Walls.Horizontal);
                 Maze[2, 4] = new Node(2, 4, '*', Walls.EastU);
                 Maze[2, 5] = new Node(2, 5, '.', Walls.Vertical);
-                Maze[2, 6] = new Node(2, 6, 'B', Walls.SouthWest);
-                Maze[2, 7] = new Node(2, 7, '.', Walls.South);
+                Maze[2, 6] = new Node(2, 6, '.', Walls.SouthWest);
+                Maze[2, 7] = new Node(2, 7, 'B', Walls.South);
 
                 Maze[3, 0] = new Node(3, 0, 'D', Walls.North);
                 Maze[3, 1] = new Node(3, 1, '.', Walls.NorthEast);
@@ -1062,8 +1062,10 @@ namespace KTANE_Solver
             string answer = string.Join(", ", answerList);
 
 
-            PrintDebugLine($"Closest Cardinal is at [{smallestDistanceCardianl.Row},{smallestDistanceCardianl.Colunm}]\n");
-            PrintDebugLine($"Direction to cardinal: {answer}");
+            PrintDebugLine($"Closest Cardinal is at [{smallestDistanceCardianl.Row},{smallestDistanceCardianl.Colunm}]");
+            PrintDebugLine($"Direction to cardinal: {answer}\n" +
+                $"" +
+                $"");
 
             ShowAnswer(answer);
         }
@@ -1182,6 +1184,8 @@ namespace KTANE_Solver
             fullAnswerList = SimplifyDirections(fullAnswerList, true);
 
             string fullAnswer = string.Join(", ", fullAnswerList);
+
+            PrintDebugLine("Directions to goal: " + fullAnswer + "\n");
 
             ShowAnswer(fullAnswer);
         }

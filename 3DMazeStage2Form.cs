@@ -66,6 +66,8 @@ namespace KTANE_Solver
 
             module.CardinalGoal = goalCardinal;
 
+            PrintDebugLine($"Cardinal Direction: {goalCardinal}\n");
+
             //find the goal node
             int row = module.FindRow();
 

@@ -93,16 +93,16 @@ namespace KTANE_Solver
 
             facingWall = facingWallCheckBox.Checked;
 
-            PrintDebug($"User path: {pathText}. ");
+            PrintDebug($"User path: {pathText} ");
 
             if (facingWall)
             {
-                PrintDebugLine("Facing wall\n");
+                PrintDebugLine("while facing wall\n");
             }
 
             else
             {
-                PrintDebugLine("Not facing wall\n"); 
+                PrintDebugLine("while not facing wall\n"); 
             }
 
             List<int[]>possiblePaths = ValidPathText(pathText, module);
@@ -144,6 +144,7 @@ namespace KTANE_Solver
             else if (possiblePaths.Count != 1)
             { 
                 ShowErrorMessage("Found multiple paths");
+                return;
             }
 
             int[] playerPosition = possiblePaths[0];
@@ -306,6 +307,10 @@ namespace KTANE_Solver
             {
                 for (int col = 0; col < 8; col++)
                 {
+                    if (row == 2 && col == 4)
+                    {
+                        PrintDebug("");
+                    }
                     if (CharacterMatch(module.Maze[row, col], newPath[0]))
                     {
                         //Pick a direction and continue to head in that direction for as many steps the user took
