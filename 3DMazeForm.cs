@@ -32,7 +32,10 @@ namespace KTANE_Solver
         }
 
         public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
-        { 
+        {
+            mazeTextBox.Text = "";
+            pathTextBox.Text = "";
+            facingWallCheckBox.Checked = false;
             UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
         }
 
@@ -89,6 +92,18 @@ namespace KTANE_Solver
             }
 
             facingWall = facingWallCheckBox.Checked;
+
+            PrintDebug($"User path: {pathText}. ");
+
+            if (facingWall)
+            {
+                PrintDebugLine("Facing wall\n");
+            }
+
+            else
+            {
+                PrintDebugLine("Not facing wall\n"); 
+            }
 
             List<int[]>possiblePaths = ValidPathText(pathText, module);
 

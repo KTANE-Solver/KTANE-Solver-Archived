@@ -80,6 +80,10 @@ namespace KTANE_Solver
             PrintDebugLine($"Updated Goal: [{module.Goal.Row},{module.Goal.Colunm}]\n");
 
             module.Solve();
+
+            this.Hide();
+            firstStageForm.UpdateForm(Bomb,LogFileWriter, ModuleSelectionForm);
+            firstStageForm.Show();
         }
     }
 }

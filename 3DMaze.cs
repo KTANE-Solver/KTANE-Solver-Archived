@@ -1050,15 +1050,20 @@ namespace KTANE_Solver
                 }
             }
 
+
             //set up the maze to find smallest path from where the user started
             Dijkstra(PlayerPosition);
 
             //find the path to find the cardinal
             List<string> answerList = FindPath(PlayerPosition, smallestDistanceCardianl, true);
 
-            string answer = string.Join(", ", answerList);
 
             PlayerPosition = smallestDistanceCardianl;
+            string answer = string.Join(", ", answerList);
+
+
+            PrintDebugLine($"Closest Cardinal is at [{smallestDistanceCardianl.Row},{smallestDistanceCardianl.Colunm}]\n");
+            PrintDebugLine($"Direction to cardinal: {answer}");
 
             ShowAnswer(answer);
         }
@@ -1121,9 +1126,9 @@ namespace KTANE_Solver
                 additionalDirections.Add("Right");
             }
 
-            //keep moving foward until player is about to hit wall
+            //keep moving Forward until player is about to hit wall
 
-            if (CardinalGoal == "North")
+            if (CardinalGoal == "NORTH")
             {
                 while (PlayerPosition.North != null)
                 {
@@ -1132,7 +1137,7 @@ namespace KTANE_Solver
                 }
             }
 
-            else if (CardinalGoal == "East")
+            else if (CardinalGoal == "EAST")
             {
                 while (PlayerPosition.East != null)
                 {
@@ -1142,7 +1147,7 @@ namespace KTANE_Solver
                 }
             }
 
-            else if (CardinalGoal == "South")
+            else if (CardinalGoal == "SOUTH")
             {
                 while (PlayerPosition.South != null)
                 {
@@ -1160,7 +1165,7 @@ namespace KTANE_Solver
                 }
             }
 
-            //go foward one more time to run into wall
+            //go Forward one more time to run into wall
             additionalDirections.Add("Forward");
 
 
@@ -1252,7 +1257,7 @@ namespace KTANE_Solver
                 {
                     if (PlayerDirection == "NORTH")
                     {
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
 
                     else
@@ -1263,7 +1268,7 @@ namespace KTANE_Solver
                             newDirections.Add("Right");
                         }
 
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
                 }
 
@@ -1272,7 +1277,7 @@ namespace KTANE_Solver
                 {
                     if (PlayerDirection == "EAST")
                     {
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
 
                     else
@@ -1283,7 +1288,7 @@ namespace KTANE_Solver
                             newDirections.Add("Right");
                         }
 
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
                 }
 
@@ -1292,7 +1297,7 @@ namespace KTANE_Solver
                 {
                     if (PlayerDirection == "SOUTH")
                     {
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
 
                     else
@@ -1303,7 +1308,7 @@ namespace KTANE_Solver
                             newDirections.Add("Right");
                         }
 
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
                 }
 
@@ -1312,7 +1317,7 @@ namespace KTANE_Solver
                 {
                     if (PlayerDirection == "WEST")
                     {
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
 
                     else
@@ -1323,7 +1328,7 @@ namespace KTANE_Solver
                             newDirections.Add("Right");
                         }
 
-                        newDirections.Add("Foward");
+                        newDirections.Add("Forward");
                     }
                 }
 
