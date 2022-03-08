@@ -114,7 +114,84 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader();
 
+            //must have 3 image
+            if (SelectedImageNum() != 3)
+            {
+                ShowErrorMessage("Must have 3 images to continue");
+                return;
+            }
+
+            //first symbol must be element
+            if (!IsElement(image1Name))
+            {
+                ShowErrorMessage("First symbol must be an element");
+                return;
+            }
+
+            //second symbol must be planet
+            if (!IsPlanet(image2Name))
+            {
+                ShowErrorMessage("Second symbol must be a planet");
+                return;
+            }
+
+            //third symbol must be zodiac
+            if (IsElement(image3Name) || IsPlanet(image3Name))
+            {
+                ShowErrorMessage("Third symbol must be a zodiac sign");
+                return;
+            }
+
+            Astrology module = new Astrology(Bomb, LogFileWriter, image1Name, image2Name, image3Name);
+            module.Solve();
+
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+        }
+
+        /// <summary>
+        /// tells if the name is an element
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private bool IsElement(string name)
+        {
+            switch (name)
+            {
+                case "Fire":
+                case "Water":
+                case "Earth":
+                case "Air":
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        /// <summary>
+        /// tells if the name is a planet
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private bool IsPlanet(string name)
+        {
+            switch (name)
+            {
+                case "Sun":
+                case "Moon":
+                case "Mercury":
+                case "Venus":
+                case "Mars":
+                case "Jupiter":
+                case "Saturn":
+                case "Uranus":
+                case "Neptune":
+                case "Pluto":
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         /// <summary>

@@ -89,6 +89,7 @@
     <Compile Include="AnagramsForm.Designer.cs">
       <DependentUpon>AnagramsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Astrology.cs" />
     <Compile Include="AstrologyForm.cs">
       <SubType>Form</SubType>
     </Compile>
