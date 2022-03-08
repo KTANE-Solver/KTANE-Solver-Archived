@@ -89,6 +89,12 @@
     <Compile Include="AnagramsForm.Designer.cs">
       <DependentUpon>AnagramsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AstrologyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AstrologyForm.Designer.cs">
+      <DependentUpon>AstrologyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Battleship.cs" />
     <Compile Include="BinaryLED.cs" />
     <Compile Include="BinaryPuzzle.cs" />
@@ -455,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnagramsForm.resx">
       <DependentUpon>AnagramsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AstrologyForm.resx">
+      <DependentUpon>AstrologyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BinaryPuzzleAnswerForm.resx">
       <DependentUpon>BinaryPuzzleAnswerForm.cs</DependentUpon>
