@@ -389,7 +389,7 @@ namespace KTANE_Solver
                 Maze[0, 2] = new Node(0, 2, 'C', Walls.North);
                 Maze[0, 3] = new Node(0, 3, '.', Walls.Horizontal);
                 Maze[0, 4] = new Node(0, 4, '.', Walls.East);
-                Maze[0, 5] = new Node(0, 5, '.', Walls.SouthWest);
+                Maze[0, 5] = new Node(0, 5, '.', Walls.NorthU);
                 Maze[0, 6] = new Node(0, 6, 'A', Walls.Horizontal);
                 Maze[0, 7] = new Node(0, 7, '.', Walls.East);
 
@@ -1058,7 +1058,6 @@ namespace KTANE_Solver
             List<string> answerList = FindPath(PlayerPosition, smallestDistanceCardianl, true);
 
             PlayerPosition = smallestDistanceCardianl;
-            PrintPlayerPosition();
 
             string answer = string.Join(", ", answerList);
 
@@ -1173,7 +1172,7 @@ namespace KTANE_Solver
         /// <summary>
         /// Prints where the player is
         /// </summary>
-        private void PrintPlayerPosition()
+        public void PrintPlayerPosition()
         {
             PrintDebugLine($"Player is at [{PlayerPosition.Row},{PlayerPosition.Colunm}]\n");
         }

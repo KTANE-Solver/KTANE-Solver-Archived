@@ -158,6 +158,8 @@ namespace KTANE_Solver
             //find how to get to the closest cardinal
             module.FindCardinal();
 
+            module.PrintPlayerPosition();
+
             this.Hide();
 
             if (secondStage == null)
