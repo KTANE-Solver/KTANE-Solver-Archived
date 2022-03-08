@@ -82,6 +82,13 @@
       <DependentUpon>AdventureGameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Alphabet.cs" />
+    <Compile Include="Anagrams.cs" />
+    <Compile Include="AnagramsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnagramsForm.Designer.cs">
+      <DependentUpon>AnagramsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Battleship.cs" />
     <Compile Include="BinaryLED.cs" />
     <Compile Include="BinaryPuzzle.cs" />
@@ -445,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdventureGameForm.resx">
       <DependentUpon>AdventureGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnagramsForm.resx">
+      <DependentUpon>AnagramsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BinaryPuzzleAnswerForm.resx">
       <DependentUpon>BinaryPuzzleAnswerForm.cs</DependentUpon>

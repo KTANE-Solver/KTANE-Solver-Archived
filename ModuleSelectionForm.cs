@@ -39,6 +39,7 @@ namespace KTANE_Solver
         private _3DMazeForm _3DMazeForm;
         private AdjacentLettersForm adjacentLettersForm;
         private AdventureGameForm adventureGameForm;
+        private AnagramsForm anagramsForm;
         private BinaryPuzzleForm binaryForm;
         private BulbForm bulbForm;
         private ButtonForm buttonForm;
@@ -129,7 +130,7 @@ namespace KTANE_Solver
             moduleComboBox.Items.Clear();
 
 
-            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Binary Puzzle", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
             //String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Poker", "Silly Slots", "Who's on First", "Wires", "Word Search"};
 
             moduleComboBox.Items.AddRange(modules);
@@ -302,6 +303,21 @@ namespace KTANE_Solver
 
                     adventureGameForm.Show();
                     
+                    break;
+
+                case "Anagrams":
+                    if (anagramsForm == null)
+                    {
+                        anagramsForm = new AnagramsForm(bomb, logFileWriter, this);
+                    }
+
+                    else
+                    {
+                        anagramsForm.UpdateForm(bomb, logFileWriter, this);
+                    }
+
+                    anagramsForm.Show();
+
                     break;
 
                 case "Binary Puzzle":
