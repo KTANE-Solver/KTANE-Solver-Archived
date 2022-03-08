@@ -19,7 +19,7 @@ namespace KTANE_Solver
         public Node[,] Maze { get; }
 
         public Node PlayerPosition { get; set; }
-        
+
         public string PlayerDirection { get; set; }
 
         public Node MainGoal { get; set; }
@@ -1043,8 +1043,8 @@ namespace KTANE_Solver
             Node smallestDistanceCardianl = first.Key;
 
             foreach (Node cardinal in cardinalList.Keys)
-            { 
-                if(cardinalList[cardinal] < cardinalList[smallestDistanceCardianl])
+            {
+                if (cardinalList[cardinal] < cardinalList[smallestDistanceCardianl])
                 {
                     smallestDistanceCardianl = cardinal;
                 }
@@ -1057,8 +1057,9 @@ namespace KTANE_Solver
             //find the path to find the cardinal
             List<string> answerList = FindPath(PlayerPosition, smallestDistanceCardianl, true);
 
-
             PlayerPosition = smallestDistanceCardianl;
+            PrintPlayerPosition();
+
             string answer = string.Join(", ", answerList);
 
 
@@ -1079,7 +1080,7 @@ namespace KTANE_Solver
             {
                 case "NORTH":
                     while (currentGoal.North != null)
-                    { 
+                    {
                         currentGoal = currentGoal.North;
                     }
                     break;
@@ -1170,10 +1171,20 @@ namespace KTANE_Solver
         }
 
         /// <summary>
+        /// Prints where the player is
+        /// </summary>
+        private void PrintPlayerPosition()
+        {
+            PrintDebugLine($"Player is at [{PlayerPosition.Row},{PlayerPosition.Colunm}]\n");
+        }
+
+        /// <summary>
         /// Finds and where the user needs to go in order to solve the module
         /// </summary>
         public void Solve()
         {
+            PrintPlayerPosition();
+
             //set up the maze to find smallest path from where the user started
             Dijkstra(PlayerPosition);
 
@@ -1290,6 +1301,7 @@ namespace KTANE_Solver
 
         }
 
+
         /// <summary>
         /// Finds the distance between two nodes
         /// </summary>
@@ -1345,7 +1357,19 @@ namespace KTANE_Solver
 
             directions.Reverse();
 
+            PrintDirectionList(directions);
+
             return ConvertDirections(directions, clump);
+        }
+
+        private void PrintDirectionList(List<Node> directions)
+        { 
+            foreach(Node n in directions)
+            {
+                PrintDebug($"[{n.Row},{n.Colunm}] ");
+            }
+
+            PrintDebugLine("\n");
         }
 
         /// <summary>

@@ -28,7 +28,7 @@ namespace KTANE_Solver
         : base(bomb, logFile, moduleSelectionForm, "3D Maze", false)
         {
             InitializeComponent();
-            UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
+            UpdateForm(bomb, logFile, moduleSelectionForm);
         }
 
         public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
@@ -167,7 +167,7 @@ namespace KTANE_Solver
 
             else
             {
-                secondStage.UpdateForm();
+                secondStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm, module);
             }
 
             secondStage.Show();

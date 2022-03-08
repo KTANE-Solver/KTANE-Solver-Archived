@@ -26,19 +26,22 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
-            this.module = module;
             this.firstStageForm = firstStageForm;
-            UpdateForm();
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm, module);
         }
 
-        public void UpdateForm()
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, _3DMaze module)
         {
+            UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
+
             string[] cardinals = new string[] { "North", "East", "South", "West"};
 
             cardinalComboBox.Items.Clear();
             cardinalComboBox.Items.AddRange(cardinals);
             cardinalComboBox.Text = cardinals[0];
             cardinalComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            this.module = module;
         }
 
         private void moduleSelectionButton_Click(object sender, EventArgs e)
