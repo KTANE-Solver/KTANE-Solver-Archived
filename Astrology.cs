@@ -843,7 +843,7 @@ namespace KTANE_Solver
 
                     else if (symbol2 == Symbol.Saturn)
                     {
-                        return 2;
+                        return -1;
                     }
 
                     else if (symbol2 == Symbol.Uranus)

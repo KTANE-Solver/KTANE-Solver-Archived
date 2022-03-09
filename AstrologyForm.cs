@@ -326,25 +326,6 @@ namespace KTANE_Solver
             System.Windows.Forms.Button selectedButton = (System.Windows.Forms.Button)sender;
 
             selectedButton.Image = null;
-
-            if (selectedButton == selectedImageButton2)
-            {
-                selectedImageButton2.Image = selectedImageButton3.Image;
-                image2Name = image3Name;
-
-                selectedImageButton3.Image = null;
-            }
-
-            else if (selectedButton == selectedImageButton1)
-            {
-                selectedImageButton1.Image = selectedImageButton2.Image;
-                image1Name = image2Name;
-
-                selectedImageButton2.Image = selectedImageButton3.Image;
-                image2Name = image3Name;
-
-                selectedImageButton3.Image = null;
-            }
         }
 
         /// <summary>
