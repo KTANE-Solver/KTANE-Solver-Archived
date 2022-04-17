@@ -168,6 +168,27 @@ namespace KTANE_Solver
             }
         }
 
+        //tells if there is an even digit in the serial number
+        public bool EvenDigit
+        {
+            get
+            {
+                foreach (char c in serialNumber)
+                {
+                    if (c >= 48 && c <= 57)
+                    {
+                        int num = int.Parse("" + c);
+
+                        if (num % 2 == 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+
         public char FirstLetter
         {
             get
