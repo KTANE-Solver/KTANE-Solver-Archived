@@ -195,6 +195,7 @@
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
     <Compile Include="3DMaze.cs" />
+    <Compile Include="Hexamazes.cs" />
     <Compile Include="MultiStageModuleForm.cs">
       <SubType>Form</SubType>
     </Compile>
