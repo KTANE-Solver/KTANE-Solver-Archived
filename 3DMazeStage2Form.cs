@@ -13,24 +13,24 @@ namespace KTANE_Solver
 {
     public partial class _3DMazeStage2Form : MultiStageModuleForm
     {
-        _3DMaze module;
         _3DMazeForm firstStageForm;
+
+        private _3DMaze Module { get { return firstStageForm.Module; } }
 
         public _3DMazeStage2Form()
         {
             InitializeComponent();
         }
 
-        public _3DMazeStage2Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, _3DMazeForm firstStageForm, _3DMaze module)
+        public _3DMazeStage2Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, _3DMazeForm firstStageForm)
         : base(bomb, logFileWriter, moduleSelectionForm, firstStageForm, "3D Maze", false)
         {
             InitializeComponent();
 
-            this.firstStageForm = firstStageForm;
-            UpdateForm(bomb, logFileWriter, moduleSelectionForm, module);
+            UpdateForm(bomb, logFileWriter, moduleSelectionForm, firstStageForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, _3DMaze module)
+        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, _3DMazeForm firstStageForm)
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -41,7 +41,7 @@ namespace KTANE_Solver
             cardinalComboBox.Text = cardinals[0];
             cardinalComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            this.module = module;
+            this.firstStageForm = firstStageForm;
         }
 
         private void moduleSelectionButton_Click(object sender, EventArgs e)
@@ -67,27 +67,27 @@ namespace KTANE_Solver
             //find the goal cardinal
             string goalCardinal = cardinalComboBox.Text.ToUpper();
 
-            module.MainCardinalGoal = goalCardinal;
+            Module.MainCardinalGoal = goalCardinal;
 
             //find the goal node
-            int row = module.FindRow();
+            int row = Module.FindRow();
 
-            int column = module.FindColumn();
+            int column = Module.FindColumn();
 
-            module.MainGoal = module.Maze[row, column];
+            Module.MainGoal = Module.Maze[row, column];
 
             PrintDebugLine($"Main Goal: [{row},{column}]");
 
-            module.UpdateGoal();
+            Module.UpdateGoal();
 
-            PrintDebugLine($"Main Updated Goal: [{module.MainGoal.Row},{module.MainGoal.Colunm}]");
-            PrintDebugLine($"Main Cardinal Direction: {module.MainCardinalGoal}\n");
+            PrintDebugLine($"Main Updated Goal: [{Module.MainGoal.Row},{Module.MainGoal.Colunm}]");
+            PrintDebugLine($"Main Cardinal Direction: {Module.MainCardinalGoal}\n");
 
-            PrintDebugLine($"Secondary Goal: [{module.SecondaryGoal.Row},{module.SecondaryGoal.Colunm}]");
-            PrintDebugLine($"Secondary Cardinal Direction: {module.SecondaryCardinalGoal}\n");
+            PrintDebugLine($"Secondary Goal: [{Module.SecondaryGoal.Row},{Module.SecondaryGoal.Colunm}]");
+            PrintDebugLine($"Secondary Cardinal Direction: {Module.SecondaryCardinalGoal}\n");
 
 
-            module.Solve();
+            Module.Solve();
 
             this.Hide();
             firstStageForm.UpdateForm(Bomb,LogFileWriter, ModuleSelectionForm);

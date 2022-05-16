@@ -1061,6 +1061,11 @@ namespace KTANE_Solver
 
             string answer = string.Join(", ", answerList);
 
+            if (answer == "")
+            {
+                answer = "Stay where you are";
+            }
+
 
             PrintDebugLine($"Closest Cardinal is at [{smallestDistanceCardianl.Row},{smallestDistanceCardianl.Colunm}]");
             PrintDebugLine($"Direction to cardinal: {answer}\n" +

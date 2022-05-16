@@ -17,12 +17,15 @@ namespace KTANE_Solver
     /// </summary>
     public partial class _3DMazeForm : ModuleForm
     {
-        _3DMaze module;
+        private _3DMaze module;
+
+        public _3DMaze Module { get { return module; } }
+
 
         //if the user is currently facing a wall
-        bool facingWall;
+        private bool facingWall;
 
-        _3DMazeStage2Form secondStage;
+        private _3DMazeStage2Form secondStage;
 
         public _3DMazeForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm) 
         : base(bomb, logFile, moduleSelectionForm, "3D Maze", false)
@@ -162,15 +165,8 @@ namespace KTANE_Solver
 
             this.Hide();
 
-            if (secondStage == null)
-            {
-                secondStage = new _3DMazeStage2Form(Bomb, LogFileWriter, ModuleSelectionForm, this, module);
-            }
 
-            else
-            {
-                secondStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm, module);
-            }
+            secondStage = new _3DMazeStage2Form(Bomb, LogFileWriter, ModuleSelectionForm, this);
 
             secondStage.Show();
         }

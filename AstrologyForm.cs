@@ -194,6 +194,11 @@ namespace KTANE_Solver
             }
         }
 
+        private bool IsZodiac(string name)
+        {
+            return !IsPlanet(name) && !IsElement(name);
+        }
+
         /// <summary>
         /// Adds the image the user selected as one of the selected 
         /// </summary>
@@ -206,115 +211,114 @@ namespace KTANE_Solver
             //the image that was selected
             Image selectedImage = selectedButton.Image;
 
+            string imageName = GetFileName(selectedButton);
 
 
-
-
-            //check to see if the selection is full and if the selected image is already selected,
-            //if neither add the selected image to the current selection
-            if (SelectedImageNum() != 3 && !ImageSelected(selectedImage))
+            if (IsElement(imageName) && selectedImageButton1.Image == null)
             {
-                String fileName = null;
+                //if there's no element in the element slot, add the selected image there
+                selectedImageButton1.Image = selectedImage;
+                image1Name = imageName;
 
-
-                //finding which button was selected
-                if (selectedButton == airButton)
-                    fileName = "Air";
-
-                else if (selectedButton == aquariusButton)
-                    fileName = "Aquarius";
-
-                else if (selectedButton == ariesButton)
-                    fileName = "Aries";
-
-                else if (selectedButton == cancerButton)
-                    fileName = "Cancer";
-
-                else if (selectedButton == capricornButton)
-                    fileName = "Capricorn";
-
-                else if (selectedButton == earthButton)
-                    fileName = "Earth";
-
-                else if (selectedButton == fireButton)
-                    fileName = "Fire";
-
-                else if (selectedButton == geminiButton)
-                    fileName = "Gemini";
-
-                else if (selectedButton == jupiterButton)
-                    fileName = "Jupiter";
-
-                else if (selectedButton == leoButton)
-                    fileName = "Leo";
-
-                else if (selectedButton == libraButton)
-                    fileName = "Libra";
-
-                else if (selectedButton == marsButton)
-                    fileName = "Mars";
-
-                else if (selectedButton == mercuryButton)
-                    fileName = "Mercury";
-
-                else if (selectedButton == moonButton)
-                    fileName = "Moon";
-
-                else if (selectedButton == neptuneButton)
-                    fileName = "Neptune";
-
-                else if (selectedButton == piscesButton)
-                    fileName = "Pisces";
-
-                else if (selectedButton == plutoButton)
-                    fileName = "Pluto";
-
-                else if (selectedButton == sagittariusButton)
-                    fileName = "Sagittarius";
-
-                else if (selectedButton == saturnButton)
-                    fileName = "Saturn";
-
-                else if (selectedButton == scorpioButton)
-                    fileName = "Scorpio";
-
-                else if (selectedButton == sunButton)
-                    fileName = "Sun";
-
-                else if (selectedButton == taurusButton)
-                    fileName = "Taurus";
-
-                else if (selectedButton == uranusButton)
-                    fileName = "Uranus";
-
-                else if (selectedButton == venusButton)
-                    fileName = "Venus";
-
-                else if (selectedButton == virgoButton)
-                    fileName = "Virgo";
-
-                else if (selectedButton == waterButton)
-                    fileName = "Water";
-
-
-                if (selectedImageButton1.Image == null)
-                {
-                    selectedImageButton1.Image = selectedImage;
-                    image1Name = fileName;
-                }
-
-                else if (selectedImageButton2.Image == null)
-                {
-                    selectedImageButton2.Image = selectedImage;
-                    image2Name = fileName;
-                }
-
-                else if (selectedImageButton3.Image == null)
-                {
-                    selectedImageButton3.Image = selectedImage;
-                    image3Name = fileName;
-                }
             }
+
+
+            //check to see if which slot the image belongs in
+            else if (IsPlanet(imageName) && selectedImageButton2.Image == null)
+            {
+                //if there's no planet in the planet slot, add the selected image there
+                selectedImageButton2.Image = selectedImage;
+                image2Name = imageName;
+            }
+
+            
+            else if(IsZodiac(imageName) && selectedImageButton3.Image == null)
+            {
+                //if there's no zodiac in the zodiac slot, add the selected image there
+                selectedImageButton3.Image = selectedImage;
+                image3Name = imageName;
+            }
+        }
+
+        private string GetFileName(System.Windows.Forms.Button selectedButton)
+        {
+            if (selectedButton == airButton)
+                return "Air";
+
+            if (selectedButton == aquariusButton)
+                return "Aquarius";
+
+            if (selectedButton == ariesButton)
+                return "Aries";
+
+            if (selectedButton == cancerButton)
+                return "Cancer";
+
+            if (selectedButton == capricornButton)
+                return "Capricorn";
+
+            if (selectedButton == earthButton)
+                return "Earth";
+
+            if (selectedButton == fireButton)
+                return "Fire";
+
+            if (selectedButton == geminiButton)
+                return "Gemini";
+
+            if (selectedButton == jupiterButton)
+                return "Jupiter";
+
+            if (selectedButton == leoButton)
+                return "Leo";
+
+            if (selectedButton == libraButton)
+                return "Libra";
+
+            if (selectedButton == marsButton)
+                return "Mars";
+
+            if (selectedButton == mercuryButton)
+                return "Mercury";
+
+            if (selectedButton == moonButton)
+                return "Moon";
+
+            if (selectedButton == neptuneButton)
+                return "Neptune";
+
+            if (selectedButton == piscesButton)
+                return "Pisces";
+
+            if (selectedButton == plutoButton)
+                return "Pluto";
+
+            if (selectedButton == sagittariusButton)
+                return "Sagittarius";
+
+            if (selectedButton == saturnButton)
+                return "Saturn";
+
+            if (selectedButton == scorpioButton)
+                return "Scorpio";
+
+            if (selectedButton == sunButton)
+                return "Sun";
+
+            if (selectedButton == taurusButton)
+                return "Taurus";
+
+            if (selectedButton == uranusButton)
+                return "Uranus";
+
+            if (selectedButton == venusButton)
+                return "Venus";
+
+            if (selectedButton == virgoButton)
+                return "Virgo";
+
+            
+                return "Water";
         }
 
         /// <summary>
