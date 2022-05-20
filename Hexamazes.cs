@@ -9,8 +9,29 @@ namespace KTANE_Solver
 {
     class Hexamazes : Module
     {
+        private Node[,] maze;
         Hexamazes(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Hexamazes")
         {
+
+        }
+
+        private void CreateMaze()
+        {
+            maze = new Node[45, 23];
+
+            for (int i = 0; i < 23; i++)
+            {
+                if (i == 11)
+                { 
+                    maze[0, i] = new Node(0, i, Symbol.None, )
+                }
+            }
+
+
+
+
+
+
 
         }
 
@@ -35,79 +56,140 @@ namespace KTANE_Solver
             NorthandSouthWest,
             NorthandNorthWest,
 
+            NorthEastandSouthEast,
+            NorthEastandSouth,
+            NorthEastandSouthWest,
+            NorthEastandNorthWest,
+
+            SouthEastandSouth,
+            SouthEastandSouthWest,
+            SouthEastandNorthWest,
+
+            SouthandSouthWest,
+            SouthandNorthWest,
+
+            SouthWestandNorthWest,
+
             //3 walls
             NorthandNorthEastandSouthEast,
             NorthandNorthEastandSouth,
             NorthandNorthEastandSouthWest,
             NorthandNorthEastandNorthWest,
-            
-            
+
+            NorthandSouthEastandSouth,
+            NorthandSouthEastandSouthWest,
+            NorthandSouthEastandNorthWest,
+
+            NorthandSouthandSouthWest,
+            NorthandSouthandNorthWest,
+
+            NorthandSouthWestandNorthWest,
+
             NorthEastandSouthEastandSouth,
             NorthEastandSouthEastandSouthWest,
             NorthEastandSouthEastandNorthWest,
-            NorthEastandSouthEastandNorth,
 
+            NorthEastandSouthandSouthWest,
+            NorthEastandSouthandNorthWest,
+
+            NorthEastandSouthWestandNorthWest,
 
             SouthEastandSouthandSouthWest,
             SouthEastandSouthandNorthWest,
-            SouthEastandSouthandNorth,
-            SouthEastandSouthandNorthEast,
-            
-            SouthandSouthWestandNorthWest,
-            SouthandSouthWestandNorth,
-            SouthandSouthWestandNorthEast,
-            SouthandSouthWestandSouthEast,
-            
-            SouthWestandNorthWestandNorth,
-            SouthWestandNorthWestandNorthEast,
-            SouthWestandNorthWestandSouthEast,
-            SouthWestandNorthWestandSouth,
 
+            SouthEastandSouthWestandNorthWest,
+
+            SouthandSouthWestandNorthWest,
 
             //4 walls
-            NorthandNorthEastandSouthEastandSouth,
-            NorthandNorthEastandSouthEastandSouthWest,
-            NorthandNorthEastandSouthEastandNorthWest,
-            
-            NorthEastandSouthEastandSouthandSouthWest,
-            NorthEastandSouthEastandSouthandNorthWest,
-            NorthEastandSouthEastandSouthandNorth,
-            
-            SouthEastandSouthandSouthWestandNorthWest,
-            SouthEastandSouthandSouthWestandNorth,
-            SouthEastandSouthandSouthWestandNorthEast,
-            
-            SouthandSouthWestandNorthWestandNorth,
-            SouthandSouthWestandNorthWestandNorthEast,
-            SouthandSouthWestandNorthWestandSouthEast,
-            
-            SouthWestandNorthWestandNorthandNorthEast,
-            SouthWestandNorthWestandNorthandSouthEast,
-            SouthWestandNorthWestandNorthandSouth,
+
+            NorthandNorthEastOpen,
+            NorthandSouthEastOpen,
+            NorthandSouthOpen,
+            NorthandSouthWestOpen,
+            NorthandNorthWestOpen,
+
+            NorthEastandSouthEastOpen,
+            NorthEastandSouthOpen,
+            NorthEastandSouthWestOpen,
+            NorthEastandNorthWestOpen,
+
+            SouthEastandSouthOpen,
+            SouthEastandSouthWestOpen,
+            SouthEastandNorthWestOpen,
+
+            SouthandSouthWestOpen,
+            SouthandNorthWestOpen,
+
+            SouthWestandNorthWestOpen,
 
             //5 walls
-            NorthFree,
-            NorthEastFree,
-            SouthEastFree,
-            SouthFree,
-            SouthWestFree,
-            NorthWestFree
+            NorthOpen,
+            NorthEastOpen,
+            SouthEastOpen,
+            SouthOpen,
+            SouthWestOpen,
+            NorthWestOpen
         }
 
+        public enum ExitColor
+        { 
+            Red,
+            Yellow,
+            Green,
+            Cyan,
+            Blue,
+            Pink
+        }
+
+        public enum ExitColorDirection
+        { 
+            North,
+            NorthEast,
+            SouthEast,
+            South,
+            SouthWest,
+            NorthWest,
+            None
+        }
+
+        public enum Symbol
+        { 
+            NorthTriangle,
+            NorthEastTriangle,
+            EastTriangle,
+            SouthEastTriangle,
+            SouthTriangle,
+            SouthWestTriangle,
+            NorthWestTriangle,
+            WestTriangle,
+            HorizontalHexagon,
+            VerticalHexagon,
+            Circle,
+            None
+        }
 
         public class Node
         {
             public int Row { get; }
             public int Colunm { get; }
-            public char Character { get; }
-            public Node North { get; set; }
-            public Node NorthEast { get; set; }
-            public Node SouthEast { get; set; }
-            public Node South { get; set; }
-            public Node SouthWest { get; set; }
-            public Node NorthWest { get; set; }
+            public Symbol Symbol  { get; }
+            public Node North { get;  }
+            public Node NorthEast { get; }
+            public Node SouthEast { get; }
+            public Node South { get; }
+            public Node SouthWest { get; }
+            public Node NorthWest { get; }
 
-            public Walls Wall { get; set; }
+            public Walls Walls { get; set; }
+
+            public Node(int row, int column, Symbol symbol, Walls walls)
+            {
+                Row = row;
+                Colunm = column;
+                Symbol = symbol;
+                Walls = walls;
+            }
         }
     }
 }
