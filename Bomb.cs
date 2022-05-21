@@ -476,30 +476,12 @@ namespace KTANE_Solver
             }
         }
 
-        //tells how many lit inidcators are on the bomb
-        public int IndicatorLitNum
-        {
-            get
-            {
-                return LitIndicatorsList.Count;
-            }
-        }
-
-        //tells how many unlit inidcators are on the bomb
-        public int IndicatorUnlitNum
-        {
-            get
-            {
-                return UnlitIndicatorsList.Count;
-            }
-        }
-
         //the number of indicaotrs on the bomb
         public int IndicatorNum
         {
             get
             { 
-                return IndicatorUnlitNum + IndicatorLitNum;
+                return LitIndicatorsList.Count + UnlitIndicatorsList.Count;
             }
         }
 

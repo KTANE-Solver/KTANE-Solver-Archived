@@ -112,6 +112,12 @@
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Bitmaps.cs" />
+    <Compile Include="BitmapsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BitmapsForm.Designer.cs">
+      <DependentUpon>BitmapsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BlindAlley.cs" />
     <Compile Include="BlindAlleyForm.cs">
       <SubType>Form</SubType>
@@ -478,6 +484,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BinaryPuzzleForm.resx">
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BitmapsForm.resx">
+      <DependentUpon>BitmapsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BlindAlleyForm.resx">
       <DependentUpon>BlindAlleyForm.cs</DependentUpon>
