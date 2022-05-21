@@ -15,7 +15,10 @@ namespace KTANE_Solver
 
         }
 
-        private void CreateMaze()
+        /// <summary>
+        /// Initializes all appropriate cells with data
+        /// </summary>
+        private void CreateBigMaze()
         {
             maze = new Node[45, 23];
 
@@ -1815,6 +1818,7 @@ namespace KTANE_Solver
                     }
                 }
 
+                //22nd column
                 else if (column == 42)
                 {
                     for (int row = 0; row < 45; row++)
@@ -1879,14 +1883,495 @@ namespace KTANE_Solver
                         }
                     }
                 }
+
+                //23rd column
+                else if (column == 44)
+                {
+                    for (int row = 0; row < 45; row++)
+                    {
+                        switch (row)
+                        {
+                            case 11:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandNorthWestOpen);
+                                break;
+
+                            case 13:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestandNorthWestOpen);
+                                break;
+
+                            case 15:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestOpen);
+                                break;
+
+                            case 17:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthEastandSouthWest);
+                                break;
+
+                            case 19:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthWestOpen);
+                                break;
+
+                            case 21:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestOpen);
+                                break;
+
+                            case 23:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestOpen);
+                                break;
+
+                            case 25:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandSouthWestOpen);
+                                break;
+
+                            case 27:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthEastandSouthWestOpen);
+                                break;
+
+                            case 29:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestOpen);
+                                break;
+
+                            case 31:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestOpen);
+                                break;
+
+                            case 33:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestOpen);
+                                break;
+
+                            default:
+                                maze[row, column] = null;
+                                break;
+                        }
+                    }
+                }
+
+                else
+                {
+                    for (int row = 0; row < 45; row++)
+                    {
+                        maze[row, column] = null;
+                    }
+                }
             }
 
+            AttachNeighbors();
+        }
+
+        /// <summary>
+        /// Conects all nodes together
+        /// </summary>
+        private void AttachNeighbors()
+        { 
+            maze = new Node[45, 23];
+            for (int row = 0; row < 45; row++)
+            {
+                for (int column = 23; column < 23; column++)
+                {
+                    Node node = maze[row, column];
+
+                    //dont try to connect null nodes
+                    if (node == null)
+                    {
+                        continue;
+                    }
+
+                    //find where nodes have openings
+                    bool north = false;
+                    bool northEast = false;
+                    bool southEast = false;
+                    bool south = false;
+                    bool southWest = false;
+                    bool northWest = false;
+
+                    switch (node.Walls)
+                    {
+                        case Walls.None:
+                            north = true;
+                            northEast = true;
+                            southEast = true;
+                            south = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.North:
+                            northEast = true;
+                            southEast = true;
+                            south = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthEast:
+                            north = true;
+                            southEast = true;
+                            south = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthEast:
+                            north = true;
+                            southEast = true;
+                            south = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.South:
+                            north = true;
+                            northEast = true;
+                            southEast = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthWest:
+                            north = true;
+                            northEast = true;
+                            southEast = true;
+                            south = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthWest:
+                            north = true;
+                            northEast = true;
+                            southEast = true;
+                            south = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthandNorthEast:
+                            north = true;
+                            northEast = true;
+                            break;
+
+                        case Walls.NorthandSouthEast:
+                            north = true;
+                            southEast = true;
+                            break;
+
+                        case Walls.NorthandSouth:
+                            north = true;
+                            south = true;
+                            break;
+
+                        case Walls.NorthandSouthWest:
+                            north = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthandNorthWest:
+                            north = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthEastandSouthEast:
+                            northEast = true;
+                            southEast = true;
+                            break;
+
+                        case Walls.NorthEastandSouth:
+                            northEast = true;
+                            south = true;
+                            break;
+
+                        case Walls.NorthEastandSouthWest:
+                            northEast = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthEastandNorthWest:
+                            northEast = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthEastandSouth:
+                            southEast = true;
+                            south = true;
+                            break;
+
+                        case Walls.SouthEastandSouthWest:
+                            southEast = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.SouthEastandNorthWest:
+                            southEast = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthandSouthWest:
+                            south = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.SouthandNorthWest:
+                            south = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthWestandNorthWest:
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthandNorthEastandSouthEast:
+                            north = true;
+                            northEast = true;
+                            southEast = true;
+                            break;
+
+                        case Walls.NorthandNorthEastandSouth:
+                            north = true;
+                            northEast = true;
+                            south = true;
+                            break;
+
+                        case Walls.NorthandNorthEastandSouthWest:
+                            north = true;
+                            northEast = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthandNorthEastandNorthWest:
+                            north = true;
+                            northEast = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthandSouthEastandSouth:
+                            north = true;
+                            southEast = true;
+                            south = true;
+                            break;
+
+                        case Walls.NorthandSouthEastandSouthWest:
+                            north = true;
+                            southEast = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthandSouthEastandNorthWest:
+                            north = true;
+                            southEast = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthandSouthandSouthWest:
+                            north = true;
+                            south = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthandSouthandNorthWest:
+                            north = true;
+                            south = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthandSouthWestandNorthWest:
+                            north = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthEastandSouthEastandSouth:
+                            northEast = true;
+                            southEast = true;
+                            south = true;
+                            break;
+
+                        case Walls.NorthEastandSouthEastandSouthWest:
+                            northEast = true;
+                            southEast = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthEastandSouthEastandNorthWest:
+                            northEast = true;
+                            southEast = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthEastandSouthandSouthWest:
+                            northEast = true;
+                            south = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthEastandSouthandNorthWest:
+                            northEast = true;
+                            south = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthEastandSouthWestandNorthWest:
+                            northEast = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthEastandSouthandSouthWest:
+                            southEast = true;
+                            south = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.SouthEastandSouthandNorthWest:
+                            southEast = true;
+                            south = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthEastandSouthWestandNorthWest:
+                            southEast = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthandSouthWestandNorthWest:
+                            south = true;
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthandNorthEastOpen:
+                            north = true;
+                            northEast = true;
+                            break;
+
+                        case Walls.NorthandSouthEastOpen:
+                            north = true;
+                            southEast = true;
+                            break;
+
+                        case Walls.NorthandSouthOpen:
+                            north = true;
+                            south = true;
+                            break;
+
+                        case Walls.NorthandSouthWestOpen:
+                            north = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthandNorthWestOpen:
+                            north = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthEastandSouthEastOpen:
+                            northEast = true;
+                            southEast = true;
+                            break;
+
+                        case Walls.NorthEastandSouthOpen:
+                            northEast = true;
+                            south = true;
+                            break;
+
+                        case Walls.NorthEastandSouthWestOpen:
+                            northEast = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthEastandNorthWestOpen:
+                            northEast = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthEastandSouthOpen:
+                            southEast = true;
+                            south = true;
+                            break;
+
+                        case Walls.SouthEastandSouthWestOpen:
+                            southEast = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.SouthEastandNorthWestOpen:
+                            southEast = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthandSouthWestOpen:
+                            south = true;
+                            southWest = true;
+                            break;
+
+                        case Walls.SouthandNorthWestOpen:
+                            south = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.SouthWestandNorthWestOpen:
+                            southWest = true;
+                            northWest = true;
+                            break;
+
+                        case Walls.NorthOpen:
+                            north = true;
+                            break;
+
+                        case Walls.NorthEastOpen:
+                            northEast = true;
+                            break;
+
+                        case Walls.SouthEastOpen:
+                            southEast = true;
+                            break;
+
+                        case Walls.SouthOpen:
+                            south = true;
+                            break;
+
+                        case Walls.SouthWestOpen:
+                            southWest = true;
+                            break;
+
+                        case Walls.NorthWestOpen:
+                            northWest = true;
+                            break;
+                    }
+
+                    //add neighbors to each node
 
 
+                    if (north && !(node.Row - 2 < 0)) //don't go out of bounds
+                    {
+                        node.North = maze[node.Row - 2, node.Column];
+                    }
 
+                    if (northEast && !(node.Row - 1 < 0 || node.Column + 1 > 22)) //don't go out of bounds
+                    { 
+                        node.NorthEast = maze[node.Row - 1, node.Column + 1];
+                    }
 
+                    if (southEast && !(node.Row + 1 > 44 || node.Column + 1 > 22)) //don't go out of bounds
+                    {
+                        node.SouthEast = maze[node.Row + 1, node.Column + 1];
+                    }
 
+                    if (south && !(node.Row + 2 > 22)) //don't go out of bounds
+                    {
+                        node.South = maze[node.Row + 2, node.Column];
+                    }
 
+                    if (southWest && !(node.Row + 1 > 44 || node.Column - 1 < 0)) //don't go out of bounds
+                    {
+                        node.SouthWest = maze[node.Row + 1, node.Column - 1];
+                    }
+
+                    if (northWest && !(node.Row - 1 < 0 || node.Column - 1 < 0)) //don't go out of bounds
+                    {
+                        node.NorthWest = maze[node.Row - 1, node.Column - 1];
+                    }
+                }
+            }
         }
 
         public enum Walls
@@ -2010,27 +2495,35 @@ namespace KTANE_Solver
 
         public class Node
         {
-            private int Row { get; }
-            private int Colunm { get; }
+            public int Row { get; }
+            public int Column { get; }
             private Symbol Symbol  { get; }
             public ExitColor ExitColor;
-            private Node North { get;  }
-            private Node NorthEast { get; }
-            private Node SouthEast { get; }
-            private Node South { get; }
-            private Node SouthWest { get; }
-            private Node NorthWest { get; }
+            public Node North;
+            public Node NorthEast;
+            public Node SouthEast;
+            public Node South;
+            public Node SouthWest;
+            public Node NorthWest;
 
             public Walls Walls { get; set; }
 
             public Node(int row, int column, Symbol symbol, Walls walls)
             {
                 Row = row;
-                Colunm = column;
+                Column = column;
                 Symbol = symbol;
                 Walls = walls;
                 ExitColor = ExitColor.None;
-            }
-        }
-    }
-}
+
+                North = null;
+                NorthEast = null;
+                SouthEast = null;
+                South = null;
+                SouthWest = null;
+                NorthWest = null;
+            }   
+        }       
+    }           
+}               
+                
