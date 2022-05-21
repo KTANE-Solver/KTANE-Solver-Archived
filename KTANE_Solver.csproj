@@ -126,6 +126,13 @@
       <DependentUpon>BlindAlleyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Bomb.cs" />
+    <Compile Include="BooleanVennDiagram.cs" />
+    <Compile Include="BooleanVennDiagramForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BooleanVennDiagramForm.Designer.cs">
+      <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bulb.cs" />
     <Compile Include="BulbForm.cs">
       <SubType>Form</SubType>
@@ -490,6 +497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BlindAlleyForm.resx">
       <DependentUpon>BlindAlleyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BooleanVennDiagramForm.resx">
+      <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BulbForm.resx">
       <DependentUpon>BulbForm.cs</DependentUpon>
