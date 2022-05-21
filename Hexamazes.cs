@@ -1744,6 +1744,141 @@ namespace KTANE_Solver
                         }
                     }
                 }
+
+                //21th column
+                else if (column == 40)
+                {
+                    for (int row = 0; row < 45; row++)
+                    {
+                        switch (row)
+                        {
+                            case 9:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthEastandSouthOpen);
+                                break;
+
+                            case 11:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandSouthandSouthWest);
+                                break;
+
+                            case 13:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthEastandNorthWestOpen);
+                                break;
+
+                            case 15:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthandNorthWest);
+                                break;
+
+                            case 17:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestandNorthWestOpen);
+                                break;
+
+                            case 19:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandNorthWestOpen);
+                                break;
+
+                            case 21:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandSouthWestOpen);
+                                break;
+
+                            case 23:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthandNorthWest);
+                                break;
+
+                            case 25:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestandNorthWestOpen);
+                                break;
+
+                            case 27:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandNorthWest);
+                                break;
+
+                            case 29:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthOpen);
+                                break;
+
+                            case 31:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthOpen);
+                                break;
+
+                            case 33:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthEastandSouthandSouthWest);
+                                break;
+
+                            case 35:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthEastandSouthWestOpen);
+                                break;
+
+                            default:
+                                maze[row, column] = null;
+                                break;
+                        }
+                    }
+                }
+
+                else if (column == 42)
+                {
+                    for (int row = 0; row < 45; row++)
+                    {
+                        switch (row)
+                        {
+                            case 10:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthEastandNorthWestOpen);
+                                break;
+
+                            case 12:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthEastandNorthWestOpen);
+                                break;
+
+                            case 14:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthEastandSouth);
+                                break;
+
+                            case 16:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthandSouthWest);
+                                break;
+
+                            case 18:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.SouthWestOpen);
+                                break;
+
+                            case 20:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandSouthWestOpen);
+                                break;
+
+                            case 22:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandSouthWestOpen);
+                                break;
+
+                            case 24:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandNorthWestOpen);
+                                break;
+
+                            case 26:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthEastandSouthWestOpen);
+                                break;
+
+                            case 28:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthEastandSouthWest);
+                                break;
+
+                            case 30:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthEastOpen);
+                                break;
+
+                            case 32:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandSouthEastandNorthWest);
+                                break;
+
+                            case 34:
+                                maze[row, column] = new Node(row, column, Symbol.None, Walls.NorthandNorthEastOpen);
+                                break;
+
+                            default:
+                                maze[row, column] = null;
+                                break;
+                        }
+                    }
+                }
             }
 
 
