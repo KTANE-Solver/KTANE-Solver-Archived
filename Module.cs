@@ -56,11 +56,15 @@ namespace KTANE_Solver
         public void ShowAnswer(String answer)
         {
             MessageBox.Show(answer, $"{Name} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            PrintDebugLine(answer + "\n");
         }
 
-        public void ShowErrorMessage(String answer)
+        public void ShowErrorMessage(String error)
         {
-            MessageBox.Show(answer, $"{Name} Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(error, $"{Name} Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            PrintDebugLine($"{Name} Error: {error}\n");
         }
 
         public void PrintDebugLine(String message)

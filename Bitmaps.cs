@@ -110,11 +110,14 @@ namespace KTANE_Solver
                         break;
                 }
 
+                PrintDebugLine($"Rule {ruleNumber}: {condition}\n");
+
                 if (!condition)
                 {
                     ruleNumber++;
                     ruleNumber %= 10;
                 }
+
             }
 
             switch (ruleNumber)
@@ -274,6 +277,7 @@ namespace KTANE_Solver
             ShowAnswer("Press " + answer);
         }
 
+        #region Rules
         /// <summary>
         /// If exactly one quadrant has 5 or fewer white pixels
         /// </summary>
@@ -455,6 +459,10 @@ namespace KTANE_Solver
             return MostlyWhiteQuadrantNum() == MostlyBlackQuadrantNum();
         }
 
+        #endregion
+
+
+        #region Helper Methods
         /// <summary>
         /// Find the three by three square
         /// </summary>
@@ -582,6 +590,8 @@ namespace KTANE_Solver
 
             return true;
         }
+
+        #endregion
 
         public class Quadrant
         {
