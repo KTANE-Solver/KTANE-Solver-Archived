@@ -489,16 +489,8 @@ namespace KTANE_Solver
 
                 case "Ice Cream":
 
-                    if (iceCreamForm == null)
-                    {
-                        iceCreamForm = new IceCreamForm(bomb, logFileWriter, this);
-                    }
-
-                    else
-                    {
-                        iceCreamForm.UpdateForm(bomb, logFileWriter, this, 1);
-                    }
-
+                    iceCreamForm = new IceCreamForm(bomb, logFileWriter, this);
+                    
                     iceCreamForm.Show();
                     break;
 
