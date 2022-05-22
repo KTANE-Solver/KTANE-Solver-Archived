@@ -174,6 +174,13 @@
     <Compile Include="ChessForm.Designer.cs">
       <DependentUpon>ChessForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ColoredSquares.cs" />
+    <Compile Include="ColoredSquaresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColoredSquaresForm.Designer.cs">
+      <DependentUpon>ColoredSquaresForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ColorMath.cs" />
     <Compile Include="ColorMathForm.cs">
       <SubType>Form</SubType>
@@ -525,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChessForm.resx">
       <DependentUpon>ChessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColoredSquaresForm.resx">
+      <DependentUpon>ColoredSquaresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ColorMathForm.resx">
       <DependentUpon>ColorMathForm.cs</DependentUpon>
