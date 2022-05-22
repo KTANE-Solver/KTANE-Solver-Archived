@@ -17,6 +17,7 @@ namespace KTANE_Solver
         public BrokenButtonsWordSelectionForm(string type, BrokenButtons module)
         {
             InitializeComponent();
+            this.module = module;
             UpdateForm(type);
         }
 

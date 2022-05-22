@@ -269,7 +269,7 @@ namespace KTANE_Solver
                 answer += 4;
             }
 
-            answer %= 4;
+            answer %= 5;
 
             ShowAnswer("Press " + answer);
         }

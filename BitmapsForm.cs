@@ -286,6 +286,8 @@ namespace KTANE_Solver
 
             Bitmaps module = new Bitmaps(grid, Bomb, LogFileWriter);
             module.Solve();
+
+            UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }
 }

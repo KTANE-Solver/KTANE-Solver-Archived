@@ -25,6 +25,14 @@ namespace KTANE_Solver
         : base(bomb, logFileWriter, moduleSelectionForm, stage1, "Monosplode Trading Cards", false)
         {
             InitializeComponent();
+
+
+            label17.TabStop = false;
+            label18.TabStop = false;
+            label19.TabStop = false;
+            label20.TabStop = false;
+            label21.TabStop = false;
+
             UpdateForm(stage, module, bomb, stage1, logFileWriter, moduleSelectionForm);
         }
 

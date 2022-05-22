@@ -235,7 +235,7 @@ namespace KTANE_Solver
             }
 
             //Otherwise, if there are no lit indicators on the bomb, use row 5.
-            if (Bomb.IndicatorLitNum == 0)
+            if (Bomb.LitIndicatorsList.Count == 0)
             {
                 return 5;
             }

@@ -159,7 +159,7 @@ namespace KTANE_Solver
         private void SetHeirarchy(IceCreamFlavor iceCreamFlavor)
         {
             //if there are more lit than until indicators
-            if (Bomb.IndicatorLitNum > Bomb.IndicatorUnlitNum)
+            if (Bomb.LitIndicatorsList.Count > Bomb.UnlitIndicatorsList.Count)
             {
                 //order of popularity:
 
