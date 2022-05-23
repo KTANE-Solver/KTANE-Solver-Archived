@@ -275,16 +275,19 @@ namespace KTANE_Solver
             grid[6, 6] = GetInput(row7Button7);
             grid[6, 7] = GetInput(row7Button8);
 
-            grid[7, 0] = GetInput(row7Button1);
-            grid[7, 1] = GetInput(row7Button2);
-            grid[7, 2] = GetInput(row7Button3);
-            grid[7, 3] = GetInput(row7Button4);
-            grid[7, 4] = GetInput(row7Button5);
-            grid[7, 5] = GetInput(row7Button6);
-            grid[7, 6] = GetInput(row7Button7);
-            grid[7, 7] = GetInput(row7Button8);
+            grid[7, 0] = GetInput(row8Button1);
+            grid[7, 1] = GetInput(row8Button2);
+            grid[7, 2] = GetInput(row8Button3);
+            grid[7, 3] = GetInput(row8Button4);
+            grid[7, 4] = GetInput(row8Button5);
+            grid[7, 5] = GetInput(row8Button6);
+            grid[7, 6] = GetInput(row8Button7);
+            grid[7, 7] = GetInput(row8Button8);
 
             Bitmaps module = new Bitmaps(grid, Bomb, LogFileWriter);
+
+            PrintHeader();
+
             module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

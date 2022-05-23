@@ -51,6 +51,8 @@ namespace KTANE_Solver
 
         public void Solve()
         {
+            PrintGrid();
+
             int answer = -1;
             int ruleNumber = Bomb.LastDigit;
             bool condition = false;
@@ -167,7 +169,7 @@ namespace KTANE_Solver
                     {
                         if (RowHasSameColor(i) || ColumnHasSameColor(i))
                         {
-                            answer = i + 1;
+                            answer = i;
                             break;
                         }
                     }
@@ -267,12 +269,13 @@ namespace KTANE_Solver
                     break;
             }
 
-            while (answer < 0)
+            answer %= 4;
+
+            while (answer <= 0)
             {
                 answer += 4;
             }
 
-            answer %= 5;
 
             ShowAnswer("Press " + answer);
         }
@@ -471,15 +474,15 @@ namespace KTANE_Solver
         /// <returns>the center x quordinate</returns>
         private int ThreeByThreeSquare(int row, int column)
         {
-            int[] coordiante = new int[2];
 
             bool color = grid[row, column];
 
-            for (int i = 1; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 1; j < 3; j++)
+                for (int j = 0; j < 3; j++)
                 {
-                    if (color != grid[i, j])
+
+                    if (color != grid[i + row, j + column])
                     {
                         return -1;
                     }
@@ -494,7 +497,7 @@ namespace KTANE_Solver
             return topLeftQuadrant.WhiteNum +
                    topRightQuadrant.WhiteNum +
                    bottomLeftQuadrant.WhiteNum +
-                   bottomLeftQuadrant.WhiteNum;
+                   bottomRightQuadrant.WhiteNum;
         }
 
         private int MostlyBlackQuadrantNum()
@@ -506,17 +509,17 @@ namespace KTANE_Solver
                 mostlyBlackNum++;
              }
 
-            else if (topRightQuadrant.MostlyBlack)
+            if (topRightQuadrant.MostlyBlack)
             {
                 mostlyBlackNum++;
             }
 
-            else if (bottomLeftQuadrant.MostlyBlack)
+            if (bottomLeftQuadrant.MostlyBlack)
             {
                 mostlyBlackNum++;
             }
 
-            else if (bottomRightQuadrant.MostlyBlack)
+            if (bottomRightQuadrant.MostlyBlack)
             {
                 mostlyBlackNum++;
             }
@@ -533,17 +536,17 @@ namespace KTANE_Solver
                 mostlyWhiteNum++;
             }
 
-            else if (topRightQuadrant.MostlyWhite)
+            if (topRightQuadrant.MostlyWhite)
             {
                 mostlyWhiteNum++;
             }
 
-            else if (bottomLeftQuadrant.MostlyWhite)
+            if (bottomLeftQuadrant.MostlyWhite)
             {
                 mostlyWhiteNum++;
             }
 
-            else if (bottomRightQuadrant.MostlyWhite)
+            if (bottomRightQuadrant.MostlyWhite)
             {
                 mostlyWhiteNum++;
             }
@@ -589,6 +592,29 @@ namespace KTANE_Solver
             }
 
             return true;
+        }
+
+        private void PrintGrid()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (grid[i, j])
+                    {
+                        PrintDebug("1 ");
+                    }
+
+                    else
+                    {
+                        PrintDebug("0 ");
+                    }
+                }
+
+                PrintDebugLine("");
+            }
+
+            PrintDebugLine("");
         }
 
         #endregion
