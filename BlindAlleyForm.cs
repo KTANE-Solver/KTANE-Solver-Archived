@@ -18,8 +18,8 @@ namespace KTANE_Solver
             InitializeComponent();
         }
 
-        public BlindAlleyForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, string name)
-        : base(bomb, logFileWriter, moduleSelectionForm, name, false)
+        public BlindAlleyForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        : base(bomb, logFileWriter, moduleSelectionForm, "Blind Alley", false)
         { 
             InitializeComponent();
 

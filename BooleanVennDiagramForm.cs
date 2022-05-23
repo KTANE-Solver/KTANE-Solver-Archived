@@ -20,7 +20,7 @@ namespace KTANE_Solver
             UpdateForm();
         }
 
-        public void UpdateForm()
+        private void UpdateForm()
         {
             SetComboBox(operationChoiceBox1);
             SetComboBox(operationChoiceBox2);
@@ -30,7 +30,7 @@ namespace KTANE_Solver
         private void SetComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            String[] operations = new String[] { "∧", "∨", "	⊻", "|", "↓", "↔", "→", "←" };
+            String[] operations = new String[] { "∧", "∨", "⊻", "|", "↓", "↔", "→", "←" };
             comboBox.Items.AddRange(operations);
             comboBox.Text = operations[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -48,8 +48,10 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            PrintHeader();
             BooleanVennDiagram module = new BooleanVennDiagram(operationChoiceBox1.Text, operationChoiceBox2.Text, checkBox.Checked, Bomb, LogFileWriter);
             module.Solve();
+            UpdateForm();
         }
     }
 }

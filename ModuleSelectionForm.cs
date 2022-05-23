@@ -44,6 +44,7 @@ namespace KTANE_Solver
         private BinaryPuzzleForm binaryForm;
         private BitmapsForm bitmapsForm;
         private BlindAlleyForm blindAlleyForm;
+        private BooleanVennDiagramForm booleanVennDiagramForm;
         private BulbForm bulbForm;
         private ButtonForm buttonForm;
         private CheapCheckoutForm cheapForm;
@@ -133,7 +134,7 @@ namespace KTANE_Solver
             moduleComboBox.Items.Clear();
 
 
-            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
             //String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Silly Slots", "Who's on First", "Wires", "Word Search"};
 
             moduleComboBox.Items.AddRange(modules);
@@ -366,11 +367,17 @@ namespace KTANE_Solver
 
                 case "Blind Alley":
 
-                    blindAlleyForm = new BlindAlleyForm(bomb, logFileWriter, this, "Blind Alley");
+                    blindAlleyForm = new BlindAlleyForm(bomb, logFileWriter, this);
 
                     blindAlleyForm.Show();
                     break;
 
+                case "Boolean Venn Diagram":
+
+                    booleanVennDiagramForm = new BooleanVennDiagramForm(bomb, logFileWriter, this);
+
+                    booleanVennDiagramForm.Show();
+                    break;
 
                 case "Button":
 

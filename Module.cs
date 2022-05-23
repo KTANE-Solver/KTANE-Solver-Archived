@@ -55,7 +55,7 @@ namespace KTANE_Solver
         /// </summary>
         public void ShowAnswer(String answer)
         {
-            PrintDebugLine(answer + "\n");
+            PrintDebugLine("Answer: " + answer + "\n");
 
             MessageBox.Show(answer, $"{Name} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
