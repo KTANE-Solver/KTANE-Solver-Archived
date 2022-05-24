@@ -277,7 +277,7 @@ namespace KTANE_Solver
             }
 
 
-            ShowAnswer("Press " + answer);
+            ShowAnswer("Press " + answer, true);
         }
 
         #region Rules

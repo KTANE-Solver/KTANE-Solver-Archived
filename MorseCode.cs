@@ -87,7 +87,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Word: {word}\nAnswer: {answer:0.000}\n");
 
-            ShowAnswer($"{answer:0.000}");
+            ShowAnswer($"{answer:0.000}", true);
         }
     }
 }

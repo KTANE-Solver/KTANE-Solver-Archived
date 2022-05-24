@@ -122,22 +122,19 @@ namespace KTANE_Solver
 
             if (omen == 0)
             {
-                PrintDebugLine("Answer: NO OMEN\n");
-                ShowAnswer("Press NO OMEN");
+                ShowAnswer("Press NO OMEN", true);
             }
 
             else if (omen < 0)
             {
                 omen = Math.Abs(omen);
 
-                PrintDebugLine($"Answer: POOR OMEN at {omen}\n");
-                ShowAnswer($"Press POOR OMEN when there is a {omen} anywhere in the timer");
+                ShowAnswer($"Press POOR OMEN when there is a {omen} anywhere in the timer", true);
             }
 
             else
             {
-                PrintDebugLine($"Answer: GOOD OMEN at {omen}\n");
-                ShowAnswer($"Press GOOD OMEN when there is a {omen} anywhere in the timer");
+                ShowAnswer($"Press GOOD OMEN when there is a {omen} anywhere in the timer", true);
             }
         }
 

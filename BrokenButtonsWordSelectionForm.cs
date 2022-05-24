@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KTANE_Solver
 {
@@ -14,7 +15,7 @@ namespace KTANE_Solver
     {
         private BrokenButtons module;
 
-        public BrokenButtonsWordSelectionForm(string type, BrokenButtons module)
+        public BrokenButtonsWordSelectionForm(string type, BrokenButtons module, StreamWriter logFileWriter) 
         {
             InitializeComponent();
             this.module = module;
@@ -42,20 +43,18 @@ namespace KTANE_Solver
                 "this", "that", "other", "submit", "abort", "drop",
                 "thing", "blank", "", "broken", "too", "to", "yes",
                 "see", "sea", "c", "wait", "word", "bob", "no",
-                "not", "first", "hold", "late", "fail" 
+                "not", "first", "hold", "late", "fail"
             });
-
-            for (int i = 0; i < words.Count; i++)
-            {
-                words[i] = words[i].ToUpper();
-            }
 
             switch (type)
             {
                 case "T":
-                    foreach (string word in words)
+
+                    for (int i = words.Count - 1; i > -1; i--)
                     {
-                        if (!word.Contains('T'))
+                        string word = words[i];
+
+                        if (word == "" || word[0] != 't')
                         {
                             words.Remove(word);
                         }
@@ -64,35 +63,28 @@ namespace KTANE_Solver
 
                 case "Port":
                     words = new string[]
-                    {
-                        // Explosion Related
-                        "bomb", "blast", "boom", "burst",
-
-                        // Bomb Components
-                        "wire", "button", "module", "light", "led", "switch",
-                        "RJ-45", "DVI-D", "RCA", "PS/2", "serial", "port",
-
-                        // Descriptions
-                        "row", "column", "one", "two", "three", "four", "five",
-                        "six", "seven", "eight", "size",
-
-                        // Misc
-                        "this", "that", "other", "submit", "abort", "drop",
-                        "thing", "blank", "", "broken", "too", "to", "yes",
-                        "see", "sea", "c", "wait", "word", "bob", "no",
-                        "not", "first", "hold", "late", "fail"
-                    }.ToList<string>();
+                    { "RJ-45", "DVI-D", "RCA", "PS/2", "serial"}.ToList<string>();
                     break;
 
                 case "threeLess":
-                    foreach (string word in words)
+
+                    for (int i = words.Count - 1; i > -1; i--)
                     {
+                        string word = words[i];
+
                         if (word.Length >= 3)
                         {
                             words.Remove(word);
                         }
                     }
                     break;
+            }
+
+            words.Sort((x, y) => string.Compare(x, y));
+
+            for (int i = 0; i < words.Count; i++)
+            {
+                words[i] = words[i].ToUpper();
             }
 
             comboBox.Items.Clear();
@@ -103,8 +95,20 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            module.tempAnswer = comboBox.Text;
+            string answer = comboBox.Text;
 
+            if (answer == "")
+            {
+                answer = "LITERALLY BLANK";
+            }
+
+            module.tempAnswer = answer;
+
+        }
+
+        public void CloseProgram(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

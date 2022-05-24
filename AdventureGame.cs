@@ -122,7 +122,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer:\n\n{answer}\n");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
 
         private void CheckItem(Item item)

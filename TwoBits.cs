@@ -72,7 +72,7 @@ namespace KTANE_Solver
 
             PrintDebugLine(action + "\n");
 
-            ShowAnswer(action);
+            ShowAnswer(action, true);
         }
 
         public String ConvertCode(int code, int stage)

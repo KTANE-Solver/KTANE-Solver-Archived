@@ -306,7 +306,7 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
 
 

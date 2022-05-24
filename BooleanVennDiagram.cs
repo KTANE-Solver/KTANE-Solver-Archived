@@ -69,7 +69,7 @@ namespace KTANE_Solver
                 }
             }
 
-            ShowAnswer(string.Join(", ", answers));
+            ShowAnswer(string.Join(", ", answers), true);
         }
 
         private string GetAnswer(bool a, bool b, bool c)

@@ -167,7 +167,7 @@ namespace KTANE_Solver
             PrintEvaluation(1, topLetters, topNotStatements, topFirstTwoFirst, topFirstOperation, topSecondOperation, topEvaluation);
             PrintEvaluation(2, bottomLetters, bottomNotStatements, bottomFirstTwoFirst, bottomFirstOperation, bottomSecondOperation, bottomEvaluation);
 
-            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}");
+            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}", true);
         }
 
         /// <summary>

@@ -86,7 +86,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"\nAnswer: {answer}\n");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
 
         private String GetSequence(String pair)

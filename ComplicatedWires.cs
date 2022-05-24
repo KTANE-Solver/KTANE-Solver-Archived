@@ -144,7 +144,7 @@ namespace KTANE_Solver
 
             PrintDebugLine("Answer:\n" + answer);
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
             
         }
 

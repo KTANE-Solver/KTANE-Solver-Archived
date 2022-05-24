@@ -143,7 +143,7 @@ namespace KTANE_Solver
 
             PrintDebug($"Answer: {answer}\n");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
 
         }
 

@@ -1072,7 +1072,7 @@ namespace KTANE_Solver
                 $"" +
                 $"");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
 
         public void UpdateGoal()
@@ -1301,7 +1301,7 @@ namespace KTANE_Solver
 
             PrintDebugLine("Directions to goal: " + fullAnswer + "\n");
 
-            ShowAnswer(fullAnswer);
+            ShowAnswer(fullAnswer, true);
 
         }
 

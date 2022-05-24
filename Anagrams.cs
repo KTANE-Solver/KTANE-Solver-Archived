@@ -57,7 +57,7 @@ namespace KTANE_Solver
         /// <param name="word"></param>
         public void Solve(string word)
         {
-            ShowAnswer(dictionary[word]);
+            ShowAnswer(dictionary[word], true);
         }
     }
 }

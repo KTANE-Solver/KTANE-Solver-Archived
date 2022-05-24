@@ -124,14 +124,14 @@ namespace KTANE_Solver
 
                     PrintDebugLine($"Answer: {message}\n");
 
-                    ShowAnswer(message);
+                    ShowAnswer(message, true);
                     return;
                 }
             }
 
             PrintDebugLine($"Answer: Vanilla\n");
 
-            ShowAnswer("Vanilla");
+            ShowAnswer("Vanilla", true);
 
         }
 

@@ -20,9 +20,8 @@ namespace KTANE_Solver
 
         private bool submitAndBuutonRule;
         private bool noAnswerFound;
-
         public string tempAnswer;
-        
+        public bool closeProgram;
 
         
         public BrokenButtons(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Broken Buttons")
@@ -36,6 +35,7 @@ namespace KTANE_Solver
             fifthButtonPressed = "";
             submitAndBuutonRule = false;
             noAnswerFound = false;
+            closeProgram = false;
         }
 
         public void Solve()
@@ -74,7 +74,7 @@ namespace KTANE_Solver
                 answer = "right";
             }
 
-            ShowAnswer($"Press the {answer} submit button");
+            ShowAnswer($"Press the {answer} submit button", false);
         }
 
 
@@ -89,12 +89,12 @@ namespace KTANE_Solver
 
             else if (AskQuestion("Is there a button on the third or first row starts with the letter T?"))
             {
-                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("T", this);
+                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("T", this, LogFileWriter);
                 wordSelectionForm.ShowDialog();
                 answer = tempAnswer;
             }
 
-            else if (AskMutipleWordAppearQuestion("ONE", "SUBMIT"))
+            else if (AskMutipleWordAppearQuestion("ONE", "SUBMIT", true))
             {
                 answer = "ONE";
                 leftSubmitButton = true;
@@ -113,47 +113,33 @@ namespace KTANE_Solver
 
             else if (AskQuestion("Is there a duplicate word?"))
             {
-                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("All", this);
+                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("All", this, LogFileWriter);
                 wordSelectionForm.ShowDialog();
                 answer = tempAnswer;
             }
 
-            else if (AskWordAppearQuestion("MODULE"))
+            else if (AskQuestion("Is there a button that has a port name on it?") && AskMutipleWordAppearQuestion("MODULE", "PORT", false))
             {
-                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("Port", this);
-                wordSelectionForm.ShowDialog();
-                answer = tempAnswer;
-            }
-
-            else if (AskQuestion("Is there a button that has a port name on it?"))
-            {
-                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("Port", this);
+                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("Port", this, LogFileWriter);
                 wordSelectionForm.ShowDialog();
                 answer = tempAnswer;
             }
 
             else if (AskQuestion("Is there a button that has less than 3 characters on it?"))
             {
-                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("threeLess", this);
+                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("threeLess", this, LogFileWriter);
                 wordSelectionForm.ShowDialog();
                 answer = tempAnswer;
             }
 
-            else if (AskMutipleWordAppearQuestion("SUBMIT", "BUTTON"))
+            else if (AskMutipleWordAppearQuestion("SUBMIT", "BUTTON", true))
             {
                 submitAndBuutonRule = true;
                 answer = "DON'T PRESS";
             }
 
-            else if (AskMutipleWordAppearQuestion("COLUMN", "SEVEN"))
+            else if (AskWordAppearQuestion("COLUMN") && AskMutipleWordAppearQuestion("SEVEN", "TWO", false))
             {
-                //may be wrong (may be an other button in the same row as column)
-                answer = "COLUMN";
-            }
-
-            else if (AskMutipleWordAppearQuestion("COLUMN", "TWO"))
-            {
-                //may be wrong (may be an other button in the same row as column)
                 answer = "COLUMN";
             }
 
@@ -163,13 +149,14 @@ namespace KTANE_Solver
                     fourthButtonPressed == "" &&
                     fifthButtonPressed == "")
             {
-                ShowAnswer("Find the word that is in the 2nd row and 3rd column");
-                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("All", this);
+                ShowAnswer("Find the word that is in the 2nd row and 3rd column", false);
+                BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("All", this, LogFileWriter);
                 wordSelectionForm.ShowDialog();
                 answer = tempAnswer;
             }
 
-            else if (firstButtonPressed.Contains('E'))
+
+            else if (firstButtonPressed != "" && firstButtonPressed.Contains('E'))
             {
                 answer = "NO ANSWER";
                 noAnswerFound = true;
@@ -178,12 +165,12 @@ namespace KTANE_Solver
 
             if (answer == "LITERALLY BLANK")
             {
-                ShowAnswer("Press the literally blank button");
+                ShowAnswer("Press the literally blank button", false);
             }
 
             else if (answer != "DON'T PRESS" && answer != "NO ANSWER")
             {
-                ShowAnswer($"Press \"{answer}\"");
+                ShowAnswer($"Press \"{answer}\"", false);
             }
 
             return answer;
@@ -194,9 +181,14 @@ namespace KTANE_Solver
             return AskQuestion($"Is there a button labled \"{word}\"?");
         }
 
-        private bool AskMutipleWordAppearQuestion(string word1, string word2)
+        private bool AskMutipleWordAppearQuestion(string word1, string word2, bool and)
         {
-            return AskQuestion($"Are there buttons labled \"{word1}\" and labled \"{word2}\"?");
+            if (and)
+            { 
+                return AskQuestion($"Are there buttons labled \"{word1}\" AND labled \"{word2}\"?");
+            }
+
+            return AskQuestion($"Are there buttons labled \"{word1}\" OR labled \"{word2}\"?");
         }
 
         private bool AskQuestion(string question)

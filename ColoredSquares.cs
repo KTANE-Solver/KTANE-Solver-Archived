@@ -63,7 +63,7 @@ namespace KTANE_Solver
                 color = Color.Magenta;
             }
 
-            ShowAnswer("" + color);
+            ShowAnswer("" + color, true);
 
             FillWhiteSquares(color);
 
@@ -73,7 +73,7 @@ namespace KTANE_Solver
         public Color Solve(Color color)
         {
             Color answer = FindButtonsToPress(color);
-            ShowAnswer("" + answer);
+            ShowAnswer("" + answer, true);
 
             return answer;
         }

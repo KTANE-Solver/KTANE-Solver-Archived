@@ -149,7 +149,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Color Answer:\n{colorAnswer}\n");
 
-            ShowAnswer(colorAnswer);
+            ShowAnswer(colorAnswer, true);
         }
 
         public int GetLeftSideNumber(int place, Color color)
