@@ -179,7 +179,7 @@ namespace KTANE_Solver
 
             //bob or unlit frq or sig
             //any lit indicators
-            fiveTree.SetChildren(fiveTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), Bomb.Bob.Lit || Bomb.Frq.VisibleNotLit || Bomb.Sig.Visible, Bomb.IndicatorLitNum > 0);
+            fiveTree.SetChildren(fiveTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), Bomb.Bob.Lit || Bomb.Frq.VisibleNotLit || Bomb.Sig.Visible, Bomb.LitIndicatorsList.Count > 0);
 
             //fourth card
 
@@ -189,7 +189,7 @@ namespace KTANE_Solver
             
             //any unlit indicator
             //ulit clr
-            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode, new Card(Card.Number.TEN, Card.Suite.SPADE), new Card(Card.Number.JACK, Card.Suite.SPADE), Bomb.IndicatorUnlitNum > 0, Bomb.Car.VisibleNotLit);
+            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode, new Card(Card.Number.TEN, Card.Suite.SPADE), new Card(Card.Number.JACK, Card.Suite.SPADE), Bomb.UnlitIndicatorsList.Count > 0, Bomb.Car.VisibleNotLit);
 
             //any port
             //parallel port
@@ -715,11 +715,11 @@ namespace KTANE_Solver
                         return 4;
 
                     //Otherwise, if there are no lit indicators and the first card is a heart, press the third card.
-                    if (Bomb.IndicatorLitNum == 0 && card1.suite == Card.Suite.HEART)
+                    if (Bomb.LitIndicatorsList.Count == 0 && card1.suite == Card.Suite.HEART)
                         return 3;
 
                     //Otherwise, if there is at least one unlit indicator and the second card is a club, press the second card.
-                    if (Bomb.IndicatorUnlitNum >= 1 && card2.suite == Card.Suite.CLUB)
+                    if (Bomb.UnlitIndicatorsList.Count >= 1 && card2.suite == Card.Suite.CLUB)
                         return 2;
 
                     //Otherwise, if your opponent said "Really?" and there are no black cards, press the first card.

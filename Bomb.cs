@@ -168,6 +168,27 @@ namespace KTANE_Solver
             }
         }
 
+        //tells if there is an even digit in the serial number
+        public bool EvenDigit
+        {
+            get
+            {
+                foreach (char c in serialNumber)
+                {
+                    if (c >= 48 && c <= 57)
+                    {
+                        int num = int.Parse("" + c);
+
+                        if (num % 2 == 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+
         public char FirstLetter
         {
             get
@@ -455,30 +476,12 @@ namespace KTANE_Solver
             }
         }
 
-        //tells how many lit inidcators are on the bomb
-        public int IndicatorLitNum
-        {
-            get
-            {
-                return LitIndicatorsList.Count;
-            }
-        }
-
-        //tells how many unlit inidcators are on the bomb
-        public int IndicatorUnlitNum
-        {
-            get
-            {
-                return UnlitIndicatorsList.Count;
-            }
-        }
-
         //the number of indicaotrs on the bomb
         public int IndicatorNum
         {
             get
             { 
-                return IndicatorUnlitNum + IndicatorLitNum;
+                return LitIndicatorsList.Count + UnlitIndicatorsList.Count;
             }
         }
 

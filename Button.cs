@@ -119,14 +119,12 @@ namespace KTANE_Solver
 
         private void PressAnswer()
         {
-            PrintDebugLine("Answer: Press\n");
-            ShowAnswer("Press");
+            ShowAnswer("Press", true);
         }
 
         private void HoldAnswer()
         {
-            PrintDebugLine("Answer: Hold\n");
-            ShowAnswer("Hold Button\nBlue: 4\nYellow: 5\nElse: 1");
+            ShowAnswer("Hold Button\nBlue: 4\nYellow: 5\nElse: 1", true);
         }
 
         public enum Color

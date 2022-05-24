@@ -225,7 +225,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer is [{answer}]\n");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
 
         /// <summary>

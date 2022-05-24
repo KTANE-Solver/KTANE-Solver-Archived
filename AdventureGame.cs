@@ -122,7 +122,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer:\n\n{answer}\n");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
 
         private void CheckItem(Item item)
@@ -170,7 +170,8 @@ namespace KTANE_Solver
                 case Item.LAMP: return temperature < 12 && enemy.Name != "LIZARD";
 
                 //There are at least two unlit indicators on the bomb.
-                case Item.MOONSTONE: return Bomb.IndicatorUnlitNum >= 2;
+                
+                case Item.MOONSTONE: return Bomb.UnlitIndicatorsList.Count >= 2;
 
                 //Fighting an enemy other than a Demon, a Dragon, or a Troll.
                 case Item.SMALLDOG: return !(enemy.Name == "DEMON" || enemy.Name == "DRAGON" || enemy.Name == "TROLL");
@@ -179,7 +180,7 @@ namespace KTANE_Solver
                 case Item.STEPLADDER: return height < 48 && !(enemy.Name == "GOBLIN" || enemy.Name == "LIZARD");
 
                 //There are at least two lit indicators on the bomb.
-                case Item.SUNSTONE: return Bomb.IndicatorLitNum >= 2;
+                case Item.SUNSTONE: return Bomb.LitIndicatorsList.Count >= 2;
 
                 //Fighting a Demon or a Golem, or if the temperature is greater than 31°C.
                 case Item.SYMBOL: return enemy.Name == "DEMON" || enemy.Name == "GOLEM" || temperature > 31;

@@ -161,7 +161,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
     }
 }

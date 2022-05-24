@@ -167,7 +167,7 @@ namespace KTANE_Solver
             PrintEvaluation(1, topLetters, topNotStatements, topFirstTwoFirst, topFirstOperation, topSecondOperation, topEvaluation);
             PrintEvaluation(2, bottomLetters, bottomNotStatements, bottomFirstTwoFirst, bottomFirstOperation, bottomSecondOperation, bottomEvaluation);
 
-            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}");
+            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}", true);
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace KTANE_Solver
                 //E - Exactly 1 unlit indicator
                 case 'E':
 
-                    statement = Bomb.IndicatorUnlitNum == 1;
+                    statement = Bomb.UnlitIndicatorsList.Count == 1;
                     break;
 
                 //F - More than 1 port type
@@ -340,7 +340,7 @@ namespace KTANE_Solver
                 //K - Exactly 1 lit indicator
                 case 'K':
 
-                    statement = Bomb.IndicatorLitNum == 1;
+                    statement = Bomb.LitIndicatorsList.Count == 1;
                     break;
 
                 //L - More than 2 indicators
@@ -364,7 +364,7 @@ namespace KTANE_Solver
                 //O - Has both lit and unlit indicators
                 case 'O':
 
-                    statement = Bomb.IndicatorLitNum > 0 && Bomb.IndicatorUnlitNum > 0;
+                    statement = Bomb.UnlitIndicatorsList.Count > 0 && Bomb.LitIndicatorsList.Count > 0;
                     break;
 
                 //P - Has parallel port

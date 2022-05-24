@@ -369,7 +369,7 @@ namespace KTANE_Solver
             int answer = firstNumber * 1000 + secondNumber * 100 + thirdNumber * 10 + fourthNumber;
             answer %= 10000;
 
-            ShowAnswer(answer.ToString("D4"));
+            ShowAnswer(answer.ToString("D4"), true);
         }
 
         private int AddDigit(int digit)

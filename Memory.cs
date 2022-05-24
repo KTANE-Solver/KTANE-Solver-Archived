@@ -66,7 +66,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage1, 1, stage1Position);
-                ShowAnswer($"Press {stage1[stage1Position]}");
+                ShowAnswer($"Press {stage1[stage1Position]}", true);
 
             }
 
@@ -94,7 +94,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage2, 2, stage2Position);
-                ShowAnswer($"Press {stage2[stage2Position]}");
+                ShowAnswer($"Press {stage2[stage2Position]}", true);
 
             }
 
@@ -126,7 +126,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage3, 3, stage3Position);
-                ShowAnswer($"Press {stage3[stage3Position]}");
+                ShowAnswer($"Press {stage3[stage3Position]}", true);
 
             }
 
@@ -154,7 +154,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage4, 4, stage4Position);
-                ShowAnswer($"Press {stage4[stage4Position]}");
+                ShowAnswer($"Press {stage4[stage4Position]}", true);
             }
 
             else
@@ -187,7 +187,7 @@ namespace KTANE_Solver
                 }
 
                 PrintStageAnswerInfo(stage5, 5, stage5Position);
-                ShowAnswer($"Press {stage5[stage5Position]}");
+                ShowAnswer($"Press {stage5[stage5Position]}", true);
             }
         }
 

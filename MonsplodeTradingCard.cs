@@ -58,12 +58,12 @@ namespace KTANE_Solver
             //see if the lowest card is worse than the offered card, if yes then trade, if not then keep
             if (lowestCard.Value >= offeredCard.Value)
             {
-                ShowAnswer("Press Keep");
+                ShowAnswer("Press Keep", true);
             }
 
             else
             { 
-                ShowAnswer($"Trade Card {position + 1} ({lowestCard.Name})");
+                ShowAnswer($"Trade Card {position + 1} ({lowestCard.Name})", true);
                 hand[position] = offeredCard;
             }
         }

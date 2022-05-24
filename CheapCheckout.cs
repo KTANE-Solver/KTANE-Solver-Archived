@@ -87,7 +87,7 @@ namespace KTANE_Solver
 
                 PrintDebugLine($"Answer: ${answer}\n");
 
-                ShowAnswer($"${string.Format("{0:0.00}", answer)}");
+                ShowAnswer($"${string.Format("{0:0.00}", answer)}", true);
             }
 
             else

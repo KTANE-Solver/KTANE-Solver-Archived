@@ -181,7 +181,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            ShowAnswer($"Cut the {place} wire");
+            ShowAnswer($"Cut the {place} wire", true);
 
             Console.WriteLine($"Cutting the {place} wire\n");
         }

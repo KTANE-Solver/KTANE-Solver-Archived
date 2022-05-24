@@ -124,14 +124,14 @@ namespace KTANE_Solver
 
                     PrintDebugLine($"Answer: {message}\n");
 
-                    ShowAnswer(message);
+                    ShowAnswer(message, true);
                     return;
                 }
             }
 
             PrintDebugLine($"Answer: Vanilla\n");
 
-            ShowAnswer("Vanilla");
+            ShowAnswer("Vanilla", true);
 
         }
 
@@ -159,7 +159,7 @@ namespace KTANE_Solver
         private void SetHeirarchy(IceCreamFlavor iceCreamFlavor)
         {
             //if there are more lit than until indicators
-            if (Bomb.IndicatorLitNum > Bomb.IndicatorUnlitNum)
+            if (Bomb.LitIndicatorsList.Count > Bomb.UnlitIndicatorsList.Count)
             {
                 //order of popularity:
 

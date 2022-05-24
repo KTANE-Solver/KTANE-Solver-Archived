@@ -149,7 +149,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Color Answer:\n{colorAnswer}\n");
 
-            ShowAnswer(colorAnswer);
+            ShowAnswer(colorAnswer, true);
         }
 
         public int GetLeftSideNumber(int place, Color color)
@@ -473,7 +473,7 @@ namespace KTANE_Solver
 
                     else if (place == 2)
                     {
-                        return Bomb.IndicatorUnlitNum;
+                        return Bomb.UnlitIndicatorsList.Count;
                     }
 
                     else if (place == 3)
@@ -542,7 +542,7 @@ namespace KTANE_Solver
                         return Bomb.SerialNumber.Length - (Bomb.VowelNum + Bomb.DigitNum);
                     }
 
-                    return Bomb.IndicatorLitNum;
+                    return Bomb.LitIndicatorsList.Count;
             }
         }
 

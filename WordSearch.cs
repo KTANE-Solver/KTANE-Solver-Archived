@@ -96,7 +96,7 @@ namespace KTANE_Solver
 
             words = words.Distinct().ToList();
 
-            ShowAnswer($"{string.Join("\n", words)}");
+            ShowAnswer($"{string.Join("\n", words)}", true);
         }
 
         public class Letter

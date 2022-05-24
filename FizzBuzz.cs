@@ -145,7 +145,7 @@ namespace KTANE_Solver
             string answer = $"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}\n";
 
             PrintDebugLine(answer);
-            ShowAnswer(answer);
+            ShowAnswer(answer, true);
         }
 
         private String GetAnswer(int num)

@@ -53,14 +53,22 @@ namespace KTANE_Solver
         /// <summary>
         /// A method that will show the answer in a messageBox 
         /// </summary>
-        public void ShowAnswer(String answer)
+        public void ShowAnswer(String answer, bool acutalAnswer)
         {
+            if (acutalAnswer)
+            {
+                PrintDebugLine("Answer: " + answer + "\n");
+            }
+
             MessageBox.Show(answer, $"{Name} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
-        public void ShowErrorMessage(String answer)
+        public void ShowErrorMessage(String error)
         {
-            MessageBox.Show(answer, $"{Name} Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            PrintDebugLine($"{Name} Error: {error}\n");
+
+            MessageBox.Show(error, $"{Name} Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void PrintDebugLine(String message)

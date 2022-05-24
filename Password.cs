@@ -261,7 +261,7 @@ namespace KTANE_Solver
 
             if (possibleAnswer.Count <= 3 && possibleAnswer.Count != 0)
             {
-                ShowAnswer(string.Join(", ", possibleAnswer));
+                ShowAnswer(string.Join(", ", possibleAnswer), true);
             }
 
             return possibleAnswer;

@@ -38,7 +38,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -49,7 +49,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -60,7 +60,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -71,7 +71,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -82,7 +82,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -102,7 +102,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -110,7 +110,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -118,7 +118,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -126,7 +126,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -134,7 +134,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -146,7 +146,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -154,7 +154,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -166,7 +166,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -174,7 +174,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -186,7 +186,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -194,7 +194,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -202,7 +202,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
 
@@ -210,7 +210,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -227,7 +227,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -238,7 +238,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -249,7 +249,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -260,7 +260,7 @@ namespace KTANE_Solver
 
                     if (IsComplete())
                     {
-                        ShowAnswer(Answer());
+                        ShowAnswer(Answer(), true);
                         return;
                     }
                 }
@@ -270,7 +270,7 @@ namespace KTANE_Solver
                 {
                     turnSwitchOn(0);
 
-                    ShowAnswer(Answer());
+                    ShowAnswer(Answer(), true);
                     return;
 
                 }
@@ -286,7 +286,7 @@ namespace KTANE_Solver
                     turnSwitchOn(0);
                     turnSwitchOn(2);
 
-                    ShowAnswer(Answer());
+                    ShowAnswer(Answer(), true);
                     return;
                 }
 
@@ -296,7 +296,7 @@ namespace KTANE_Solver
                     turnSwitchOn(1);
                     turnSwitchOn(2);
 
-                    ShowAnswer(Answer());
+                    ShowAnswer(Answer(), true);
                     return;
                 }
 
@@ -308,7 +308,7 @@ namespace KTANE_Solver
                     turnSwitchOn(0);
                     turnSwitchOn(3);
 
-                    ShowAnswer(Answer());
+                    ShowAnswer(Answer(), true);
                     return;
                 }
 
@@ -321,7 +321,7 @@ namespace KTANE_Solver
                     turnSwitchOn(3);
                     turnSwitchOn(2);
 
-                    ShowAnswer(Answer());
+                    ShowAnswer(Answer(), true);
                     return;
                 }
             }

@@ -49,120 +49,108 @@ namespace KTANE_Solver
             // 
             // offeringCardPrintVersionTextBox
             // 
-            this.offeringCardPrintVersionTextBox.Location = new System.Drawing.Point(299, 174);
-            this.offeringCardPrintVersionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.offeringCardPrintVersionTextBox.Location = new System.Drawing.Point(224, 141);
             this.offeringCardPrintVersionTextBox.Name = "offeringCardPrintVersionTextBox";
-            this.offeringCardPrintVersionTextBox.Size = new System.Drawing.Size(160, 22);
-            this.offeringCardPrintVersionTextBox.TabIndex = 92;
+            this.offeringCardPrintVersionTextBox.Size = new System.Drawing.Size(121, 20);
+            this.offeringCardPrintVersionTextBox.TabIndex = 1;
             // 
             // offeringCardShinyCheckBox
             // 
             this.offeringCardShinyCheckBox.AutoSize = true;
-            this.offeringCardShinyCheckBox.Location = new System.Drawing.Point(335, 330);
-            this.offeringCardShinyCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.offeringCardShinyCheckBox.Location = new System.Drawing.Point(251, 268);
             this.offeringCardShinyCheckBox.Name = "offeringCardShinyCheckBox";
-            this.offeringCardShinyCheckBox.Size = new System.Drawing.Size(65, 21);
-            this.offeringCardShinyCheckBox.TabIndex = 91;
+            this.offeringCardShinyCheckBox.Size = new System.Drawing.Size(52, 17);
+            this.offeringCardShinyCheckBox.TabIndex = 4;
             this.offeringCardShinyCheckBox.Text = "Shiny";
             this.offeringCardShinyCheckBox.UseVisualStyleBackColor = true;
             // 
             // offeringCardNameComboBox
             // 
             this.offeringCardNameComboBox.FormattingEnabled = true;
-            this.offeringCardNameComboBox.Location = new System.Drawing.Point(299, 133);
-            this.offeringCardNameComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.offeringCardNameComboBox.Location = new System.Drawing.Point(224, 108);
             this.offeringCardNameComboBox.Name = "offeringCardNameComboBox";
-            this.offeringCardNameComboBox.Size = new System.Drawing.Size(160, 24);
-            this.offeringCardNameComboBox.TabIndex = 90;
+            this.offeringCardNameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.offeringCardNameComboBox.TabIndex = 0;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(215, 137);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(161, 111);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 17);
+            this.label17.Size = new System.Drawing.Size(38, 13);
             this.label17.TabIndex = 89;
             this.label17.Text = "Name:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(168, 282);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(126, 229);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(122, 17);
+            this.label18.Size = new System.Drawing.Size(92, 13);
             this.label18.TabIndex = 88;
             this.label18.Text = "# of bent Corners:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(189, 182);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(142, 148);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(93, 17);
+            this.label19.Size = new System.Drawing.Size(69, 13);
             this.label19.TabIndex = 87;
             this.label19.Text = "Print Version:";
             // 
             // offeringCardRarityComboBox
             // 
             this.offeringCardRarityComboBox.FormattingEnabled = true;
-            this.offeringCardRarityComboBox.Location = new System.Drawing.Point(299, 219);
-            this.offeringCardRarityComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.offeringCardRarityComboBox.Location = new System.Drawing.Point(224, 178);
             this.offeringCardRarityComboBox.Name = "offeringCardRarityComboBox";
-            this.offeringCardRarityComboBox.Size = new System.Drawing.Size(160, 24);
-            this.offeringCardRarityComboBox.TabIndex = 86;
+            this.offeringCardRarityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.offeringCardRarityComboBox.TabIndex = 2;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(215, 223);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(161, 181);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 17);
+            this.label20.Size = new System.Drawing.Size(37, 13);
             this.label20.TabIndex = 85;
             this.label20.Text = "Rarity:";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(295, 79);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Location = new System.Drawing.Point(221, 64);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(97, 17);
+            this.label21.Size = new System.Drawing.Size(72, 13);
             this.label21.TabIndex = 84;
             this.label21.Text = "Offering Card:";
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(539, 385);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitButton.Location = new System.Drawing.Point(404, 313);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(113, 52);
-            this.submitButton.TabIndex = 54;
+            this.submitButton.Size = new System.Drawing.Size(85, 42);
+            this.submitButton.TabIndex = 5;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(418, 385);
-            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.strikeButton.Location = new System.Drawing.Point(314, 313);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(113, 52);
-            this.strikeButton.TabIndex = 53;
+            this.strikeButton.Size = new System.Drawing.Size(85, 42);
+            this.strikeButton.TabIndex = 6;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
             this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(134, 385);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.backButton.Location = new System.Drawing.Point(100, 313);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(113, 52);
-            this.backButton.TabIndex = 52;
+            this.backButton.Size = new System.Drawing.Size(85, 42);
+            this.backButton.TabIndex = 8;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -170,48 +158,44 @@ namespace KTANE_Solver
             // stageLabel
             // 
             this.stageLabel.AutoSize = true;
-            this.stageLabel.Location = new System.Drawing.Point(317, 30);
-            this.stageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.stageLabel.Location = new System.Drawing.Point(238, 24);
             this.stageLabel.Name = "stageLabel";
-            this.stageLabel.Size = new System.Drawing.Size(61, 17);
+            this.stageLabel.Size = new System.Drawing.Size(47, 13);
             this.stageLabel.TabIndex = 50;
             this.stageLabel.Text = "Stage ?:";
             // 
             // offeringCardBentCornerTextBox
             // 
-            this.offeringCardBentCornerTextBox.Location = new System.Drawing.Point(299, 273);
-            this.offeringCardBentCornerTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.offeringCardBentCornerTextBox.Location = new System.Drawing.Point(224, 222);
             this.offeringCardBentCornerTextBox.Name = "offeringCardBentCornerTextBox";
-            this.offeringCardBentCornerTextBox.Size = new System.Drawing.Size(160, 22);
-            this.offeringCardBentCornerTextBox.TabIndex = 93;
+            this.offeringCardBentCornerTextBox.Size = new System.Drawing.Size(121, 20);
+            this.offeringCardBentCornerTextBox.TabIndex = 3;
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(287, 385);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(4);
+            this.resetButton.Location = new System.Drawing.Point(215, 313);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(113, 52);
-            this.resetButton.TabIndex = 94;
+            this.resetButton.Size = new System.Drawing.Size(85, 42);
+            this.resetButton.TabIndex = 7;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // moduleSelectionButton
             // 
-            this.moduleSelectionButton.Location = new System.Drawing.Point(13, 385);
-            this.moduleSelectionButton.Margin = new System.Windows.Forms.Padding(4);
+            this.moduleSelectionButton.Location = new System.Drawing.Point(10, 313);
             this.moduleSelectionButton.Name = "moduleSelectionButton";
-            this.moduleSelectionButton.Size = new System.Drawing.Size(113, 52);
-            this.moduleSelectionButton.TabIndex = 95;
+            this.moduleSelectionButton.Size = new System.Drawing.Size(85, 42);
+            this.moduleSelectionButton.TabIndex = 9;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
             this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
             // MonsplodeTradingCardOtherStageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 448);
+            this.ClientSize = new System.Drawing.Size(499, 364);
             this.Controls.Add(this.moduleSelectionButton);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.offeringCardBentCornerTextBox);
@@ -228,8 +212,9 @@ namespace KTANE_Solver
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.stageLabel);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MonsplodeTradingCardOtherStageForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

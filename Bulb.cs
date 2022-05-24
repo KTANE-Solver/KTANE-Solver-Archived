@@ -549,7 +549,7 @@ namespace KTANE_Solver
 
         private void PrintList()
         {
-            ShowAnswer(string.Join(", ", list));
+            ShowAnswer(string.Join(", ", list), true);
             list.Clear();
         }
 

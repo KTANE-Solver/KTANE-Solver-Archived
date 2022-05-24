@@ -112,8 +112,34 @@
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Bitmaps.cs" />
+    <Compile Include="BitmapsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BitmapsForm.Designer.cs">
+      <DependentUpon>BitmapsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BlindAlley.cs" />
+    <Compile Include="BlindAlleyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlindAlleyForm.Designer.cs">
+      <DependentUpon>BlindAlleyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bomb.cs" />
+    <Compile Include="BooleanVennDiagram.cs" />
+    <Compile Include="BooleanVennDiagramForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BooleanVennDiagramForm.Designer.cs">
+      <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrokenButtons.cs" />
+    <Compile Include="BrokenButtonsWordSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrokenButtonsWordSelectionForm.Designer.cs">
+      <DependentUpon>BrokenButtonsWordSelectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bulb.cs" />
     <Compile Include="BulbForm.cs">
       <SubType>Form</SubType>
@@ -147,6 +173,13 @@
     </Compile>
     <Compile Include="ChessForm.Designer.cs">
       <DependentUpon>ChessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColoredSquares.cs" />
+    <Compile Include="ColoredSquaresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColoredSquaresForm.Designer.cs">
+      <DependentUpon>ColoredSquaresForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ColorMath.cs" />
     <Compile Include="ColorMathForm.cs">
@@ -189,6 +222,13 @@
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
     <Compile Include="3DMaze.cs" />
+    <Compile Include="Hexamazes.cs" />
+    <Compile Include="IceCreamStage2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IceCreamStage2Form.Designer.cs">
+      <DependentUpon>IceCreamStage2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="MultiStageModuleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,6 +512,18 @@
     <EmbeddedResource Include="BinaryPuzzleForm.resx">
       <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BitmapsForm.resx">
+      <DependentUpon>BitmapsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlindAlleyForm.resx">
+      <DependentUpon>BlindAlleyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BooleanVennDiagramForm.resx">
+      <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrokenButtonsWordSelectionForm.resx">
+      <DependentUpon>BrokenButtonsWordSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BulbForm.resx">
       <DependentUpon>BulbForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -486,6 +538,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChessForm.resx">
       <DependentUpon>ChessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColoredSquaresForm.resx">
+      <DependentUpon>ColoredSquaresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ColorMathForm.resx">
       <DependentUpon>ColorMathForm.cs</DependentUpon>
@@ -504,6 +559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FizzBuzzForm.resx">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IceCreamStage2Form.resx">
+      <DependentUpon>IceCreamStage2Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
