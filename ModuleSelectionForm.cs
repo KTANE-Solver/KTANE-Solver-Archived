@@ -135,8 +135,8 @@ namespace KTANE_Solver
             moduleComboBox.Items.Clear();
 
 
-            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
-            //String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Silly Slots", "Who's on First", "Wires", "Word Search"};
+            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            //String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Who's on First", "Wires", "Word Search"};
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -262,14 +262,16 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-            String module = moduleComboBox.Text;
+            String moduleName = moduleComboBox.Text;
 
-            PrintDebugLine($"User selected {module}. Attempting to open...\n");
+            PrintDebugLine($"User selected {moduleName}. Attempting to open...\n");
 
 
             this.Hide();
 
-            switch (module)
+            Hexamazes module;
+
+            switch (moduleName)
             {
                 case "3D Maze":
                     if (_3DMazeForm == null)
@@ -499,6 +501,10 @@ namespace KTANE_Solver
                     }
 
                     gamepadForm.Show();
+                    break;
+
+                case "Hexamaze":
+                    module = new Hexamazes(bomb, logFileWriter);
                     break;
 
                 case "Ice Cream":
@@ -750,7 +756,7 @@ namespace KTANE_Solver
 
                 case "Two Bits":
 
-                    SuccessfulModuleOpening(module);
+                    SuccessfulModuleOpening(moduleName);
 
                     if (twoBitsForm == null)
                     {
@@ -828,9 +834,9 @@ namespace KTANE_Solver
                 break;
             }
 
-            if (module != "Two Bits" || module != "Broken Buttons")
+            if (moduleName != "Two Bits" || moduleName != "Broken Buttons")
             { 
-                SuccessfulModuleOpening(module);
+                SuccessfulModuleOpening(moduleName);
             }
         }
 

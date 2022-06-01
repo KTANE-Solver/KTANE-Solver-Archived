@@ -169,7 +169,7 @@ namespace KTANE_Solver
                     {
                         if (RowHasSameColor(i) || ColumnHasSameColor(i))
                         {
-                            answer = i;
+                            answer = i + 1;
                             break;
                         }
                     }
@@ -255,7 +255,21 @@ namespace KTANE_Solver
                         {
                             for (int j = 0; j < 6; j++)
                             {
+                                if (i == 3 && j == 2)
+                                {
+                                    Console.Write("");
+                                }
                                 answer = ThreeByThreeSquare(i, j);
+
+                                if (answer != -1)
+                                {
+                                    break;
+                                }
+                            }
+
+                            if (answer != -1)
+                            {
+                                break;
                             }
                         }
 
@@ -489,7 +503,7 @@ namespace KTANE_Solver
                 }
             }
 
-            return  column + 1;
+            return  column + 2;
         }
 
         private int WhitePixelNum()
