@@ -32,6 +32,8 @@ namespace KTANE_Solver
         //the number of battery holders
         private int batteryHolder;
 
+        private int portPlateNum;
+
         //list of lit indicators
         public List<Indicator> LitIndicatorsList { get; }
 
@@ -485,6 +487,14 @@ namespace KTANE_Solver
             }
         }
 
+        public int PortPlateNum
+        {
+            get
+            {
+                return portPlateNum;
+            }
+        }
+
         public bool EmptyPortPlate
         {
             get
@@ -631,7 +641,7 @@ namespace KTANE_Solver
         /// <param name="stereo">the stereo port</param>
         public Bomb(Day day, String serialNumber, int battery, int batteryHolder, Indicator bob, Indicator car, 
                     Indicator clr, Indicator frk, Indicator frq, Indicator ind, Indicator msa, Indicator nsa, 
-                    Indicator sig, Indicator snd, Indicator trn, bool emptyPortPlate, Port dvid, Port parallel, 
+                    Indicator sig, Indicator snd, Indicator trn, bool emptyPortPlate, int portPlateNum, Port dvid, Port parallel, 
                     Port ps, Port rj, Port serial, Port stereo)
         {
             LitIndicatorsList = new List<Indicator>();
@@ -641,6 +651,7 @@ namespace KTANE_Solver
             this.serialNumber = serialNumber.ToUpper();
             this.battery = battery;
             this.batteryHolder = batteryHolder;
+            this.portPlateNum = portPlateNum;
             this.bob = bob;
             this.car = car;
             this.clr = clr;

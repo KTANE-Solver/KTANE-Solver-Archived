@@ -116,6 +116,8 @@ namespace KTANE_Solver
             PrintDebugLine($"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}", logFileWriter);
             PrintDebugLine($"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n", logFileWriter);
 
+            PrintDebugLine($"Empty Port Plate: {bomb.EmptyPortPlate}", logFileWriter);
+            PrintDebugLine($"# Port Plates: {bomb.PortPlateNum}", logFileWriter);
             PrintDebugLine("# of dvid ports: " + bomb.Dvid.Num, logFileWriter);
             PrintDebugLine("# of parallel ports: " + bomb.Parallel.Num, logFileWriter);
             PrintDebugLine("# of ps ports: " + bomb.Ps.Num, logFileWriter);
@@ -161,12 +163,14 @@ namespace KTANE_Solver
                 SetLabel(emptyPortPlateLabel, "There isn't an empty port plate", 18);
             }
 
-            SetPortLabel(dvidLabel, bomb.Dvid, 19);
-            SetPortLabel(parallelLabel, bomb.Parallel, 20);
-            SetPortLabel(psLabel, bomb.Ps, 21);
-            SetPortLabel(rjLabel, bomb.Rj, 22);
-            SetPortLabel(serialLabel, bomb.Serial, 23);
-            SetPortLabel(stereoLabel, bomb.Stereo, 24);
+            SetLabel(portPlateNumLabel, "# of port plates: " + bomb.PortPlateNum, 19);
+
+            SetPortLabel(dvidLabel, bomb.Dvid, 20);
+            SetPortLabel(parallelLabel, bomb.Parallel, 21);
+            SetPortLabel(psLabel, bomb.Ps, 22);
+            SetPortLabel(rjLabel, bomb.Rj, 23);
+            SetPortLabel(serialLabel, bomb.Serial, 24);
+            SetPortLabel(stereoLabel, bomb.Stereo, 25);
         }
 
         /// <summary>

@@ -604,6 +604,28 @@ namespace KTANE_Solver
             //seeing if there is an empty port plate
             bool emptyPortPlate = emptyPortPlateCheckBox.Checked;
 
+
+            //see if port plate num is valid
+            int portPlateNum;
+
+            try
+            {
+                portPlateNum = int.Parse(portPlateNumTextBox.Text);
+            }
+
+            catch
+            {
+                String text = "You entered an invalid port plate number";
+
+                String caption = "Invalid Port Plate Number";
+
+                ShowErrorMessageBox(caption, text);
+
+                return;
+            }
+
+            
+
             //make sure dvid text box is valid
             int dvidNum;
 
@@ -729,7 +751,7 @@ namespace KTANE_Solver
 
 
             //if this statement is reached, the bomb is valid.
-            bomb = new Bomb(day, serialNumber, battery, batteryHolder, bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
+            bomb = new Bomb(day, serialNumber, battery, batteryHolder, bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, emptyPortPlate, portPlateNum, dvid, parallel, ps, rj, serial, stereo);
 
             //going onto the confirmation page
 
@@ -837,6 +859,11 @@ namespace KTANE_Solver
             DeletePromptText(batteryHolderTextBox, "# of battery holders");
         }
 
+        private void portPlateNumTextBox_Enter(object sender, EventArgs e)
+        {
+            DeletePromptText(portPlateNumTextBox, "# of Port Plates");
+        }
+
         /// <summary>
         /// Deletes to prompt text
         /// and make the textbox
@@ -922,6 +949,14 @@ namespace KTANE_Solver
             }
         }
 
+        private void portPlateNumTextBox_Leave(object sender, EventArgs e)
+        {
+            if (portPlateNumTextBox.Text == "")
+            {
+                SetPromptText(portPlateNumTextBox, "# of Port Plates");
+            }
+        }
+
         /// <summary>
         /// Sets the prompt text
         /// back up if the text box is blank
@@ -993,5 +1028,7 @@ namespace KTANE_Solver
                 SetPromptText(stereoTextBox, "# of stereo RCA ports");
             }
         }
+
+        
     }  
 }

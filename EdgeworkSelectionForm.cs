@@ -90,6 +90,7 @@ namespace KTANE_Solver
             Indicator trn = null;
 
             bool emptyPortPlate = false;
+            int portPlateNum = 0;
 
             Port dvid = null;
             Port parallel = null;
@@ -108,7 +109,7 @@ namespace KTANE_Solver
 
             //the line the reader is reading
 
-            for (int lineReaing = 1; lineReaing <= 22; lineReaing++)
+            for (int lineReaing = 1; lineReaing <= 23; lineReaing++)
             {
                 String currentLine = reader.ReadLine();
 
@@ -401,8 +402,19 @@ namespace KTANE_Solver
 
                         break;
 
-                    //Port dvid
                     case 17:
+                        errorReached = !Int32.TryParse(currentLine, out portPlateNum);
+
+                        if (errorReached)
+                        {
+                            errorString = "Can't read portPlateNum. Read " + currentLine;
+                        }
+
+                        break;
+
+
+                    //Port dvid
+                    case 18:
                         int portNum;
 
                         errorReached = !Int32.TryParse(currentLine, out portNum);
@@ -417,7 +429,7 @@ namespace KTANE_Solver
                         break;
 
                     //Port parallel
-                    case 18:
+                    case 19:
 
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
@@ -431,7 +443,7 @@ namespace KTANE_Solver
                         break;
 
                     //Port ps/2
-                    case 19:
+                    case 20:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         if (errorReached)
@@ -444,7 +456,7 @@ namespace KTANE_Solver
                         break;
                         
                     //Port rj-45
-                    case 20:
+                    case 21:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         if (errorReached)
@@ -457,7 +469,7 @@ namespace KTANE_Solver
                         break;
 
                     //Port serial
-                    case 21:
+                    case 22:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         if (errorReached)
@@ -470,7 +482,7 @@ namespace KTANE_Solver
                         break;
 
                     //Port stereo
-                    case 22:
+                    case 23:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
 
                         if (errorReached)
@@ -495,7 +507,6 @@ namespace KTANE_Solver
             //no point in seeing if there is an error if there already is an error
             if (!errorReached)
             {
-
                 //make sure the serial number is valid
 
                 //the serial number must have at least one number
@@ -597,6 +608,20 @@ namespace KTANE_Solver
                     errorReached = true;
                     errorString = "Invalid trn";
                 }
+
+                //can't have a negative port plate num
+                if (portPlateNum < 0)
+                {
+                    errorReached = true;
+                    errorString = "Invalid port plate #";
+                }
+
+                //can't have no port plates but still have an empty port plate
+                if (portPlateNum == 0 && emptyPortPlate)
+                {
+                    errorReached = true;
+                    errorString = "Can't have no port plates but still have an empty port plate";
+                }
             }
             
             
@@ -622,7 +647,7 @@ namespace KTANE_Solver
             {
                 Bomb bomb = new Bomb(day, serialNumber, battery, batteryHolder, 
                                     bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, 
-                                    emptyPortPlate, dvid, parallel, ps, rj, serial, stereo);
+                                    emptyPortPlate, portPlateNum, dvid, parallel, ps, rj, serial, stereo);
 
                 confirmationForm = new EdgeworkConfirmationForm(bomb, logFileWriter, bombMazeColors);
                 this.Hide();
