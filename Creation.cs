@@ -18,27 +18,31 @@ namespace KTANE_Solver
         //goal (LifeForm)
         private LifeForm goal;
 
+        private int permutation;
+
         //directions (Lifeform)
-        private List<LifeForm> directions;
+        private List<LifeForm []> directions;
+        private List<LifeForm [][]> brokenUpDirections;
 
-        public int DirectionCount { get { return directions.Count;  } }
 
-        private LifeForm startingElement;
+        public int DirectionCount { get { return brokenUpDirections.Count;  } }
 
         private Weather startingWeather;
 
-        public int currentDirectionIndex { get; }
+        private LifeForm startingElement;
+
+        private string startingElementPostion;
 
         //a list of all lifeforms
         private Dictionary<string, LifeForm> lifeFormList;
 
-        public Creation(Bomb bomb, StreamWriter logFileWriter, Weather startingWeather) : base(bomb, logFileWriter, "Creation")
+        public Creation(Bomb bomb, StreamWriter logFileWriter, Weather startingWeather, string upperLeftElement, string lowerLeftElement) : base(bomb, logFileWriter, "Creation")
         {
-            currentDirectionIndex = 0;
             lifeFormList = new Dictionary<string, LifeForm>();
-            directions = new List<LifeForm>();
+            directions = new List<LifeForm[]>();
 
             this.startingWeather = startingWeather;
+            this.startingElementPostion = startingElementPostion;
 
             CreateLifeForms();
         }
@@ -158,39 +162,37 @@ namespace KTANE_Solver
             }
         }
 
-        private void FindGoal(string position)
+
+        private void FindPermutation()
         {
-            int goalIndex = -1;
-
-
             if (startingElement == null)
             {
-                goalIndex = 0;
+                permutation = 0;
             }
 
             else
             {
-                switch (position)
+                switch (startingElementPostion)
                 {
                     case "Upper Left":
                         if (startingElement == lifeFormList["Water"])
                         {
-                            goalIndex = 2;
+                            permutation = 2;
                         }
 
                         else if (startingElement == lifeFormList["Air"])
                         {
-                            goalIndex = 1;
+                            permutation = 1;
                         }
 
                         else if (startingElement == lifeFormList["Earth"])
                         {
-                            goalIndex = 4;
+                            permutation = 4;
                         }
 
                         else
                         {
-                            goalIndex = 3;
+                            permutation = 3;
                         }
 
                         break;
@@ -198,22 +200,22 @@ namespace KTANE_Solver
                     case "Upper Right":
                         if (startingElement == lifeFormList["Water"])
                         {
-                            goalIndex = 1;
+                            permutation = 1;
                         }
 
                         else if (startingElement == lifeFormList["Air"])
                         {
-                            goalIndex = 2;
+                            permutation = 2;
                         }
 
                         else if (startingElement == lifeFormList["Earth"])
                         {
-                            goalIndex = 3;
+                            permutation = 3;
                         }
 
                         else
                         {
-                            goalIndex = 4;
+                            permutation = 4;
                         }
 
                         break;
@@ -221,48 +223,53 @@ namespace KTANE_Solver
                     case "Bottom Left":
                         if (startingElement == lifeFormList["Water"])
                         {
-                            goalIndex = 4;
+                            permutation = 4;
                         }
 
                         else if (startingElement == lifeFormList["Air"])
                         {
-                            goalIndex = 3;
+                            permutation = 3;
                         }
 
                         else if (startingElement == lifeFormList["Earth"])
                         {
-                            goalIndex = 1;
+                            permutation = 1;
                         }
 
                         else
                         {
-                            goalIndex = 2;
+                            permutation = 2;
                         }
                         break;
 
                     case "Bottom Right":
                         if (startingElement == lifeFormList["Water"])
                         {
-                            goalIndex = 3;
+                            permutation = 3;
                         }
 
                         else if (startingElement == lifeFormList["Air"])
                         {
-                            goalIndex = 4;
+                            permutation = 4;
                         }
 
                         else if (startingElement == lifeFormList["Earth"])
                         {
-                            goalIndex = 2;
+                            permutation = 2;
                         }
 
                         else
                         {
-                            goalIndex = 1;
+                            permutation = 1;
                         }
                         break;
                 }
             }
+        }
+
+        private void FindGoal()
+        {
+            
 
             //Bomb has 3 or more battery holders:
             if (Bomb.Battery >= 3)
@@ -270,7 +277,7 @@ namespace KTANE_Solver
                 //If any lit indicators are present, AND all batteries are Double A
                 if (Bomb.LitIndicatorsList.Count > 0 && Bomb.BatteryHolder * 2 == Bomb.AABattery)
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                             goal = lifeFormList["Bird"];
@@ -297,7 +304,7 @@ namespace KTANE_Solver
                 //Otherwise, if any lit indicators are present
                 else if (Bomb.LitIndicatorsList.Count > 0)
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                             goal = lifeFormList["Dinosaur"];
@@ -324,7 +331,7 @@ namespace KTANE_Solver
                 //Otherwise, if any unlit indicators are present AND all batteries are D cell
                 else if (Bomb.UnlitIndicatorsList.Count > 0 && Bomb.BatteryHolder == Bomb.DBattery)
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                             goal = lifeFormList["Turtle"];
@@ -351,7 +358,7 @@ namespace KTANE_Solver
                 //Otherwise, if any unlit indicators are present
                 else if (Bomb.UnlitIndicatorsList.Count > 0)
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                             goal = lifeFormList["Lizard"];
@@ -377,7 +384,7 @@ namespace KTANE_Solver
 
                 else
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                             goal = lifeFormList["Worm"];
@@ -409,7 +416,7 @@ namespace KTANE_Solver
                 //If there are more port plates than battery holders:
                 if (Bomb.BatteryHolder < Bomb.PortPlateNum)
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                         case 4:
@@ -434,7 +441,7 @@ namespace KTANE_Solver
                 //Otherwise, if there are any duplicate ports:
                 else if (Bomb.Rj.Num > 1 || Bomb.Serial.Num > 1 || Bomb.Stereo.Num > 1 || Bomb.Dvid.Num > 1 || Bomb.Ps.Num > 1 || Bomb.Parallel.Num > 1)
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                         case 4:
@@ -458,7 +465,7 @@ namespace KTANE_Solver
                 //Otherwise, if there are more unlit Indicators than lit Indicators:
                 else if (Bomb.UnlitIndicatorsList.Count > Bomb.LitIndicatorsList.Count)
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                         case 4:
@@ -482,12 +489,13 @@ namespace KTANE_Solver
 
                 else
                 {
-                    switch (goalIndex)
+                    switch (permutation)
                     {
                         case 0:
                         case 4:
                             goal = lifeFormList["Mushroom"];
                             break;
+
 
                         case 1:
                             goal = lifeFormList["Ghost"];
@@ -522,7 +530,7 @@ namespace KTANE_Solver
                     FindRouteToGoal(lifeForm.Ingrediant2);
                 }
 
-                directions.Add(lifeForm);
+                directions.Add(new LifeForm[] {lifeForm, lifeForm.Ingrediant1, lifeForm.Ingrediant2 });
                 lifeForm.Created = true;
             }
         }
@@ -541,10 +549,10 @@ namespace KTANE_Solver
                 {
                     for (int j = 1; j < directions.Count; j++)
                     {
-                        LifeForm leftLifeForm = directions[i];
-                        LifeForm rightLifeForm = directions[j];
+                        LifeForm[] leftLifeForm = directions[i];
+                        LifeForm[] rightLifeForm = directions[j];
 
-                        if (leftLifeForm.Generiation > rightLifeForm.Generiation)
+                        if (leftLifeForm[0].Generiation > rightLifeForm[0].Generiation)
                         {
                             notSorted = true;
                             directions[j] = leftLifeForm;
@@ -562,11 +570,50 @@ namespace KTANE_Solver
             while (notSorted);
         }
 
-        public void Solve(Weather currentWeather)
+        private void BreakUpDirections()
+        {
+            List<LifeForm[]> segment = new List<LifeForm[]>();
+
+            do
+            {
+                int endIndex = 0;
+                for (int i = 0; i < directions.Count; i++)
+                {
+                    if (directions[i][0].Generiation == 0)
+                    {
+                        endIndex = i;
+                        break;
+                    }
+                }
+
+                if (endIndex == 0)
+                {
+                    brokenUpDirections.Add(new LifeForm[][] { directions[endIndex] });
+                }
+
+                else
+                {
+                    List<LifeForm[]> newArray = new List<LifeForm[]>();
+
+                    for (int i = 0; i <= endIndex; i++)
+                    {
+                        newArray.Add(directions[i]);
+                    }
+                    brokenUpDirections.Add(newArray.ToArray());
+                }
+
+                for (int i = endIndex; i >= 0; i--)
+                {
+                    directions.RemoveAt(i);
+                }
+
+            } while (directions.Count != 0);
+        }
+
+        public void Solve(Weather currentWeather, int index)
         {
             string affectedElement = null;
             string newElement = null;
-
 
             switch (currentWeather)
             {
@@ -591,23 +638,27 @@ namespace KTANE_Solver
                     break;
             }
 
-            LifeForm lifeFormAnswer = directions[currentDirectionIndex];
-            string element1 = lifeFormAnswer.Ingrediant1.Name;
-            string element2 = lifeFormAnswer.Ingrediant2.Name;
+            List<string> answerSegments = new List<string>();
 
-            if (lifeFormAnswer.Ingrediant1.Name == affectedElement)
+            foreach (LifeForm[] arr in brokenUpDirections[index])
             {
-                element1 = newElement;
+                string element1 = arr[1].Name;
+                string element2 = arr[2].Name;
+
+                if (element1 == affectedElement)
+                {
+                    element1 = newElement;
+                }
+
+                if (element2 == affectedElement)
+                {
+                    element2 = newElement;
+                }
+
+                answerSegments.Add($"{element1} + {element2}");
             }
 
-            if (lifeFormAnswer.Ingrediant2.Name == affectedElement)
-            {
-                element2 = newElement;
-            }
-
-            string answer = $"{element1} + {element2}";
-
-            ShowAnswer(answer, directions.Count - 1 == currentDirectionIndex);
+            string.Join(",\n", answerSegments);
         }
 
         public class LifeForm
