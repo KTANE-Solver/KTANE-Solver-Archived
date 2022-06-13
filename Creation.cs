@@ -660,7 +660,7 @@ namespace KTANE_Solver
             brokenUpDirections.Reverse();
         }
 
-        public string Solve(Weather currentWeather, int index)
+        public string SolveTest(Weather currentWeather, int index)
         {
             string affectedElement = null;
             string newElement = null;
@@ -709,6 +709,57 @@ namespace KTANE_Solver
             }
 
             return string.Join(",\n", answerSegments);
+        }
+
+        public void Solve(Weather currentWeather, int index)
+        {
+            string affectedElement = null;
+            string newElement = null;
+
+            switch (currentWeather)
+            {
+                case Weather.HeatWave:
+                    affectedElement = "Fire";
+                    newElement = "Water";
+                    break;
+
+                case Weather.Wind:
+                    affectedElement = "Air";
+                    newElement = "Earth";
+                    break;
+
+                case Weather.MeteorShower:
+                    affectedElement = "Earth";
+                    newElement = "Air";
+                    break;
+
+                case Weather.Rain:
+                    affectedElement = "Water";
+                    newElement = "Fire";
+                    break;
+            }
+
+            List<string> answerSegments = new List<string>();
+
+            foreach (LifeForm[] arr in brokenUpDirections[index])
+            {
+                string element1 = arr[1].Name;
+                string element2 = arr[2].Name;
+
+                if (element1 == affectedElement)
+                {
+                    element1 = newElement;
+                }
+
+                if (element2 == affectedElement)
+                {
+                    element2 = newElement;
+                }
+
+                answerSegments.Add($"{element1} + {element2}");
+            }
+
+             ShowAnswer(string.Join(",\n", answerSegments), true);
         }
 
         public class LifeForm

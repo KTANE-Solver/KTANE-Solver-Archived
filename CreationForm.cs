@@ -16,12 +16,17 @@ namespace KTANE_Solver
         public CreationForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Creation", false)
         {
             InitializeComponent();
+            UpdateForm();
+        }
+
+        public void UpdateForm()
+        {
             UpdateElementComboBox(upperLeftComboBox);
             UpdateElementComboBox(upperRightComboBox);
             UpdateElementComboBox(bottomLeftComboBox);
             UpdateElementComboBox(bottomRightComboBox);
 
-            String[] weather = new string[] { "Air", "Earth", "Fire", "Water", };
+            String[] weather = new string[] { "Rain", "Wind", "Heat Wave", "Meteor Shower" };
 
             weatherComboBox.Items.Clear();
             weatherComboBox.Items.AddRange(weather);
@@ -71,10 +76,11 @@ namespace KTANE_Solver
                 return;
             }
 
-            Creation.Weather startingWeather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weatherComboBox.Text);
-
+            Creation.Weather startingWeather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weatherComboBox.Text.Trim());
 
             module = new Creation(Bomb, LogFileWriter, startingWeather, upperLeft, lowerLeft, upperRight, lowerRight);
+            module.SetUpModule();
+            module.Solve(startingWeather, 0);
         }
     }
 }
