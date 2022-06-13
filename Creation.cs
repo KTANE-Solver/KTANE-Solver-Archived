@@ -107,7 +107,7 @@ namespace KTANE_Solver
             LifeForm lizard = new LifeForm("Lizard", 4, swamp, egg);
             LifeForm seeds = new LifeForm("Seeds", 4, weeds, egg);
             LifeForm turtle = new LifeForm("Turtle", 4, water, egg);
-            LifeForm mushroom = new LifeForm("Mushroom", 4, water, egg);
+            LifeForm mushroom = new LifeForm("Mushroom", 4, earth, weeds);
             LifeForm moss = new LifeForm("Moss", 4, swamp, weeds);
             LifeForm worm = new LifeForm("Worm", 4, swamp, bacteria);
             LifeForm plankton = new LifeForm("Plankton", 4, water, bacteria);
@@ -164,7 +164,7 @@ namespace KTANE_Solver
                     break;
 
                 case Weather.Wind:
-                    startingElement = lifeFormList["Wind"];
+                    startingElement = lifeFormList["Air"];
                     break;
 
                 case Weather.HeatWave:
@@ -172,7 +172,7 @@ namespace KTANE_Solver
                     break;
 
                 case Weather.MeteorShower:
-                    startingElement = lifeFormList["Wind"];
+                    startingElement = lifeFormList["Earth"];
                     break;
 
                 default:
