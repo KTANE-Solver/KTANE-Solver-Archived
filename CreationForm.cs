@@ -73,8 +73,7 @@ namespace KTANE_Solver
 
             Creation.Weather startingWeather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weatherComboBox.Text);
 
-
-            module = new Creation(Bomb, LogFileWriter, startingWeather, )
+            module = new Creation(Bomb, LogFileWriter, startingWeather, "", "", "", "");
         }
     }
 }

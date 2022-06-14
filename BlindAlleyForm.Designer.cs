@@ -37,17 +37,19 @@ namespace KTANE_Solver
             // answerLabel
             // 
             this.answerLabel.AutoSize = true;
-            this.answerLabel.Location = new System.Drawing.Point(181, 9);
+            this.answerLabel.Location = new System.Drawing.Point(257, 9);
+            this.answerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.answerLabel.Name = "answerLabel";
-            this.answerLabel.Size = new System.Drawing.Size(35, 104);
+            this.answerLabel.Size = new System.Drawing.Size(46, 136);
             this.answerLabel.TabIndex = 0;
             this.answerLabel.Text = "label1\r\nlabel1\r\nlabel1\r\nlabel1\r\nlabel1\r\nlabel1\r\nlabel1\r\nlabel1";
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 158);
+            this.backButton.Location = new System.Drawing.Point(16, 194);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(91, 47);
+            this.backButton.Size = new System.Drawing.Size(121, 58);
             this.backButton.TabIndex = 1;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@ namespace KTANE_Solver
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(320, 158);
+            this.strikeButton.Location = new System.Drawing.Point(427, 194);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(91, 47);
+            this.strikeButton.Size = new System.Drawing.Size(121, 58);
             this.strikeButton.TabIndex = 2;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
@@ -65,12 +68,13 @@ namespace KTANE_Solver
             // 
             // BlindAlleyForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 217);
+            this.ClientSize = new System.Drawing.Size(564, 267);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.answerLabel);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "BlindAlleyForm";
             this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);

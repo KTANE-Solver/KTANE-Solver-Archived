@@ -36,7 +36,7 @@ namespace KTANE_Solver
         //a list of all lifeforms
         private Dictionary<string, LifeForm> lifeFormList;
 
-        public Creation(Bomb bomb, StreamWriter logFileWriter, Weather startingWeather, string upperLeftElement, string lowerLeftElement) : base(bomb, logFileWriter, "Creation")
+        public Creation(Bomb bomb, StreamWriter logFileWriter, Weather startingWeather, string upperLeftElement, string lowerLeftElement, string a, string b) : base(bomb, logFileWriter, "Creation")
         {
             lifeFormList = new Dictionary<string, LifeForm>();
             directions = new List<LifeForm[]>();

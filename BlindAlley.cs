@@ -11,7 +11,7 @@ namespace KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the blind alley module
     /// </summary>
-    class BlindAlley : Module
+    public class BlindAlley : Module
     {
         //FIELDS
         private Section topLeft;
@@ -73,7 +73,7 @@ namespace KTANE_Solver
             //unlit msa
             //lit snd
             //stero visible
-            bottomRight = new Section("Bottom Right", bomb.Car.VisibleNotLit, "Unlit Car", bomb.Msa.VisibleNotLit, "Unlit Msa", bomb.Snd.Lit, "Lit Snd", bomb.Stereo.Visible, "Stereo Visible");
+            bottomRight = new Section("Bottom Right", bomb.Clr.VisibleNotLit, "Unlit CLR", bomb.Msa.VisibleNotLit, "Unlit Msa", bomb.Snd.Lit, "Lit Snd", bomb.Stereo.Visible, "Stereo Visible");
         }
 
         public string Solve()
@@ -112,10 +112,7 @@ namespace KTANE_Solver
             return string.Join("" + '\n', answer);
         }
 
-
-
-
-        public class Section
+        private class Section
         {
             private bool condition1;
             private bool condition2;
@@ -143,8 +140,6 @@ namespace KTANE_Solver
                 this.condition4String = condition4String;
 
                 Name = name;
-
-
             }
 
             public string GetTrueConditions()
