@@ -41,6 +41,8 @@ namespace KTANE_Solver
 
         public List<Color> Solve()
         {
+            SetUpModule();
+
             List<Color> answers = new List<Color>();
             int halfPinNum = pinNum / 2;
             switch (whiteDotCorner)
