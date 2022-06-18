@@ -37,6 +37,13 @@ namespace KTANE_Solver
             int greenColor = ColorNum(Color.Green);
             int magentaColor = ColorNum(Color.Magenta);
 
+            PrintDebugLine($"Blue Num: {blueColor}");
+            PrintDebugLine($"Red Num: {redColor}");
+            PrintDebugLine($"Yellow Num: {yellowColor}");
+            PrintDebugLine($"Green Num: {greenColor}");
+            PrintDebugLine($"Magenta Num: {magentaColor}\n");
+
+
             int smallest = blueColor;
             Color color = Color.Blue;
 
@@ -67,12 +74,19 @@ namespace KTANE_Solver
 
             FillWhiteSquares(color);
 
+            PrintGrid();
+
             return color;
         }
 
         public Color Solve(Color color)
         {
             Color answer = FindButtonsToPress(color);
+            
+            FillWhiteSquares(answer);
+
+            PrintGrid();
+
             ShowAnswer("" + answer, true);
 
             return answer;
@@ -149,7 +163,11 @@ namespace KTANE_Solver
 
         private Color FindButtonsToPress(Color color)
         {
-            switch (ColorNum(Color.White))
+            int whiteNum = ColorNum(Color.White);
+
+            PrintDebugLine($"White Num: {whiteNum}\n");
+
+            switch (whiteNum)
             {
                 case 1:
                     if (color == Color.Red)
@@ -626,6 +644,19 @@ namespace KTANE_Solver
             }
 
             return num;
+        }
+
+        public void PrintGrid()
+        {
+            for (int i = 0; i < grid.Length; i++)
+            {
+                for (int j = 0; j < grid.Length; j++)
+                {
+                     PrintDebug(grid[i, j].ToString()[0] + " ");
+                }
+
+                PrintDebugLine("");
+            }
         }
     }
 }
