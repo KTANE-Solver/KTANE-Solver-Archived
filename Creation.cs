@@ -161,22 +161,27 @@ namespace KTANE_Solver
             {
                 case Weather.Rain:
                     startingElement = lifeFormList["Water"];
+                    PrintDebugLine("Starting Element: Water\n");
                     break;
 
                 case Weather.Wind:
                     startingElement = lifeFormList["Air"];
+                    PrintDebugLine("Starting Element: Air\n");
                     break;
 
                 case Weather.HeatWave:
                     startingElement = lifeFormList["Fire"];
+                    PrintDebugLine("Starting Element: Fire\n");
                     break;
 
                 case Weather.MeteorShower:
                     startingElement = lifeFormList["Earth"];
+                    PrintDebugLine("Starting Element: Earth\n");
                     break;
 
                 default:
                     startingElement = null;
+                    PrintDebugLine("Starting Element: None\n");
                     break;
             }
         }
@@ -185,6 +190,7 @@ namespace KTANE_Solver
         {
             if (startingElement == null)
             {
+                PrintDebugLine("Starting Element Position: None\n");
                 return;
             }
 
@@ -209,6 +215,9 @@ namespace KTANE_Solver
             { 
                 startingElementPostion = "Bottom Right";
             }
+
+            PrintDebugLine($"Starting Element Position: {startingElementPostion}\n");
+
         }
 
 
@@ -314,6 +323,8 @@ namespace KTANE_Solver
                         break;
                 }
             }
+
+            PrintDebugLine($"Permutation: {permutation}\n");
         }
 
         private void FindGoal()
@@ -454,7 +465,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
             }
 
             //Bomb has 2 or fewer battery holders:
@@ -559,6 +569,8 @@ namespace KTANE_Solver
                 }
 
             }
+
+            PrintDebugLine($"Goal: {goal.Name}\n");
         }
 
         private void FindRouteToGoal(LifeForm lifeForm)
@@ -716,6 +728,8 @@ namespace KTANE_Solver
             string affectedElement = null;
             string newElement = null;
 
+            PrintDebugLine("Current Weather: " + currentWeather.ToString());
+
             switch (currentWeather)
             {
                 case Weather.HeatWave:
@@ -759,7 +773,9 @@ namespace KTANE_Solver
                 answerSegments.Add($"{element1} + {element2}");
             }
 
-             ShowAnswer(string.Join(",\n", answerSegments), true);
+
+
+             ShowAnswer($"Stage {index + 1}:" + string.Join(",\n", answerSegments), true);
         }
 
         public class LifeForm
