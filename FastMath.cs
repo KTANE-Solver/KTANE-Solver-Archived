@@ -923,7 +923,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            PrintDebugLine($"Initial Number is " + answer);
+            PrintDebugLine("Initial Number: " + answer + "\n");
         }
 
         private void ModifyNumber()
