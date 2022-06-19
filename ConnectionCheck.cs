@@ -13,8 +13,8 @@ namespace KTANE_Solver
         private int[] topRight;
         private int[] bottomLeft;
         private int[] bottomRight;
-        private int targetIndex;
-        List<Node> nodes;
+        public int targetIndex;
+        public List<Node> nodes;
 
 
         public ConnectionCheck(int[] topLeft, int[] topRight, int[] bottomLeft, int [] bottomRight, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Connection Check")
@@ -29,6 +29,7 @@ namespace KTANE_Solver
             PrintDebugLine($"Bottom Left Pair {bottomLeft[0]},{bottomLeft[1]}");
             PrintDebugLine($"Bottom Right Pair {bottomRight[0]},{bottomRight[1]}\n");
 
+            nodes = new List<Node>();
 
             for (int i = 1; i <= 8; i++)
             {
@@ -36,7 +37,7 @@ namespace KTANE_Solver
             }
         }
 
-        private void FindTargetIndex()
+        public void FindTargetIndex()
         {
             List<int> displayNumbers = new List<int>();
 
@@ -106,7 +107,7 @@ namespace KTANE_Solver
             PrintDebugLine("");
         }
 
-        private void CreateGraph()
+        public string CreateGraph()
         {
             char target = Bomb.SerialNumber[targetIndex];
 
@@ -134,6 +135,8 @@ namespace KTANE_Solver
                 nodes[6].AddNeighbor(nodes[7]);
 
                 PrintDebugLine("Using SLIM graph \n");
+
+                return "SLIM";
             }
 
             else if ("15BRO".Contains(target))
@@ -154,6 +157,8 @@ namespace KTANE_Solver
                 nodes[5].AddNeighbor(nodes[6]);
              
                 PrintDebugLine("Using 15BRO graph \n");
+
+                return "15BRO";
             }
 
             else if ("20DGT".Contains(target))
@@ -161,8 +166,8 @@ namespace KTANE_Solver
                 nodes[0].AddNeighbor(nodes[1]);
                 nodes[0].AddNeighbor(nodes[2]);
 
-                nodes[0].AddNeighbor(nodes[3]);
-                nodes[0].AddNeighbor(nodes[6]);
+                nodes[1].AddNeighbor(nodes[3]);
+                nodes[1].AddNeighbor(nodes[6]);
 
                 nodes[2].AddNeighbor(nodes[4]);
                 nodes[2].AddNeighbor(nodes[6]);
@@ -177,6 +182,8 @@ namespace KTANE_Solver
                 nodes[5].AddNeighbor(nodes[7]);
                 
                 PrintDebugLine("Using 20DGT graph \n");
+
+                return "20DGT";
             }
 
             else if ("34XYZ".Contains(target))
@@ -194,8 +201,13 @@ namespace KTANE_Solver
 
                 nodes[5].AddNeighbor(nodes[6]);
                 nodes[5].AddNeighbor(nodes[7]);
-                
+
+                nodes[6].AddNeighbor(nodes[7]);
+
+
                 PrintDebugLine("Using 34XYZ graph \n");
+
+                return "34XYZ";
             }
 
             else if ("7HPJ".Contains(target))
@@ -212,6 +224,8 @@ namespace KTANE_Solver
                 nodes[4].AddNeighbor(nodes[6]);
                 
                 PrintDebugLine("Using 7HPJ graph \n");
+
+                return "7HPJ";
             }
 
             else if ("6WUF".Contains(target))
@@ -240,6 +254,8 @@ namespace KTANE_Solver
                 nodes[6].AddNeighbor(nodes[7]);
                 
                 PrintDebugLine("Using 6WUF graph \n");
+
+                return "6WUF";
             }
 
             else if ("8CAKE".Contains(target))
@@ -267,6 +283,8 @@ namespace KTANE_Solver
                 nodes[6].AddNeighbor(nodes[7]);
                 
                 PrintDebugLine("Using 8CAKE graph \n");
+
+                return "8CAKE";
             }
 
             else
@@ -293,6 +311,8 @@ namespace KTANE_Solver
                 nodes[6].AddNeighbor(nodes[7]);
                 
                 PrintDebugLine("Using 9QVN graph \n");
+
+                return "9QVN";
             }
         }
 
@@ -319,7 +339,7 @@ namespace KTANE_Solver
             return node1.neighbors.Contains(node2) ? "Green" : "Red";
         }
 
-        private class Node
+        public class Node
         {
             public int Num { get; }
             public List<Node> neighbors;
@@ -327,6 +347,7 @@ namespace KTANE_Solver
             public Node(int num)
             {
                 Num = num;
+                neighbors = new List<Node>();
             }
 
             public void AddNeighbor(Node node)
