@@ -22,7 +22,7 @@ namespace KTANE_Solver
     public partial class EdgeworkConfirmationForm : Form
     {
         //FIELDS
-        
+
         //the form the user will go to if they press backButton
         private EdgeworkInputForm inputForm;
 
@@ -41,7 +41,7 @@ namespace KTANE_Solver
         /// Tells the user what the edgework is
         /// </summary>
         /// <param name="bomb">the bomb that was created</param>
-        public EdgeworkConfirmationForm(Bomb bomb, StreamWriter logFileWriter, Color [] mazeColors)
+        public EdgeworkConfirmationForm(Bomb bomb, StreamWriter logFileWriter, Color[] mazeColors)
         {
             InitializeComponent();
             this.mazeColors = mazeColors;
@@ -49,7 +49,7 @@ namespace KTANE_Solver
             inputForm = new EdgeworkInputForm(logFileWriter);
             UpdateForm(bomb);
 
-            
+
 
         }
 
@@ -131,11 +131,11 @@ namespace KTANE_Solver
         /// </summary>
         public void SetUpLabels()
         {
-            SetLabel(dayOfWeekLabel, "Day of the week: " +  bomb.Day, 1);
+            SetLabel(dayOfWeekLabel, "Day of the week: " + bomb.Day, 1);
             SetLabel(serialNumberLabel, "Serial Number: " + bomb.SerialNumber, 2);
             SetLabel(batteryLabel, "# of batteries: " + bomb.Battery, 3);
             SetLabel(batteryHolderLabel, "# battery holders:" + bomb.BatteryHolder, 4);
-           
+
             SetLabel(indicatorLabel, "Indicator", 5);
 
             SetIndicatorLabel(bobLabel, bomb.Bob, 6);
@@ -159,7 +159,7 @@ namespace KTANE_Solver
             }
 
             else
-            { 
+            {
                 SetLabel(emptyPortPlateLabel, "There isn't an empty port plate", 18);
             }
 
@@ -226,7 +226,7 @@ namespace KTANE_Solver
             int positionX = (this.Width - label.Width) / 2;
 
             //sets where the label is going to be vertically
-            int positionY = index * 23;
+            int positionY = index * 22;
 
 
             label.Location = new Point(positionX, positionY);
