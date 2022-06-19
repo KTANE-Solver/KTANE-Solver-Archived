@@ -1,7 +1,7 @@
 ﻿
 namespace KTANE_Solver
 {
-    partial class ConnectCheckForm
+    partial class ConnectionCheckForm
     {
         /// <summary>
         /// Required designer variable.
@@ -114,6 +114,7 @@ namespace KTANE_Solver
             this.backButton.TabIndex = 8;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // strikeButton
             // 
@@ -123,6 +124,7 @@ namespace KTANE_Solver
             this.strikeButton.TabIndex = 9;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -132,6 +134,7 @@ namespace KTANE_Solver
             this.submitButton.TabIndex = 10;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // ConnectCheckForm
             // 

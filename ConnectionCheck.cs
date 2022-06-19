@@ -322,10 +322,10 @@ namespace KTANE_Solver
 
             CreateGraph();
 
-            string answer = string.Join("\n", new string[] { "Top Left: " + GetAnswer(topLeft), 
+            string answer = string.Join("\n", new string[] { "\nTop Left: " + GetAnswer(topLeft), 
                                                              "Top Right: " + GetAnswer(topRight), 
                                                              "Bottom Left: " + GetAnswer(bottomLeft), 
-                                                             "Bottom Right: " + GetAnswer(topRight) });
+                                                             "Bottom Right: " + GetAnswer(bottomRight) });
 
 
             ShowAnswer(answer, true);

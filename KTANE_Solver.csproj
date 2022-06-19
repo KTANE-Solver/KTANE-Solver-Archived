@@ -195,11 +195,11 @@
     <Compile Include="ComplicatedWiresForm.Designer.cs">
       <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConnectCheckForm.cs">
+    <Compile Include="ConnectionCheckForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConnectCheckForm.Designer.cs">
-      <DependentUpon>ConnectCheckForm.cs</DependentUpon>
+    <Compile Include="ConnectionCheckForm.Designer.cs">
+      <DependentUpon>ConnectionCheckForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionCheck.cs" />
     <Compile Include="Creation.cs" />
@@ -561,8 +561,8 @@
     <EmbeddedResource Include="ComplicatedWiresForm.resx">
       <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConnectCheckForm.resx">
-      <DependentUpon>ConnectCheckForm.cs</DependentUpon>
+    <EmbeddedResource Include="ConnectionCheckForm.resx">
+      <DependentUpon>ConnectionCheckForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreationForm.resx">
       <DependentUpon>CreationForm.cs</DependentUpon>
