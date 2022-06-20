@@ -61,6 +61,7 @@ namespace KTANE_Solver
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MemoryStage1Form memoryForm;
+        private MicrocontrollerForm microcontrollerForm;
         private MonsplodeTradingCardForm1 monsplodeTradingCardForm;
         private MorseCodeForm morseCodeForm;
         private MurderForm murderForm;
@@ -134,6 +135,7 @@ namespace KTANE_Solver
         private void SetUpModuleComboBox()
         {
             moduleComboBox.Items.Clear();
+
 
 
             //String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Connection Check", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
@@ -594,6 +596,12 @@ namespace KTANE_Solver
                     }
 
                     memoryForm.Show();
+                    break;
+
+                case "Microcontroller":
+                    microcontrollerForm = new MicrocontrollerForm(bomb, logFileWriter, this);
+
+                    microcontrollerForm.Show();
                     break;
 
                 case "Monsplode Trading Cards":
