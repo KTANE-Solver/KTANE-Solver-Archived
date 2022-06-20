@@ -15,7 +15,7 @@ namespace KTANE_Solver
         private int pinNum; 
         private int secondDigit; 
         private int lastDigit;
-        private List<Pin> pinList;
+        public List<Pin> pinList;
         public Microcontroller(Bomb bomb, StreamWriter logFileWriter, string whiteDotCorner, string moduleType, int pinNum, int secondDigit, int lastDigit) : base(bomb, logFileWriter, "Microcontroller")
         {
             this.whiteDotCorner = whiteDotCorner;
@@ -26,8 +26,13 @@ namespace KTANE_Solver
             pinList = new List<Pin>();
         }
 
-        private void SetUpModule()
+        public void SetUpModule()
         {
+            PrintDebugLine($"Controller Type: {moduleType}");
+            PrintDebugLine($"White Dot Corner: {whiteDotCorner}");
+            PrintDebugLine($"Second Controller Digit: {secondDigit}");
+            PrintDebugLine($"Last Controller Digit: {lastDigit}\n");
+
             for (int i = 1; i <= pinNum; i++)
             {
                 pinList.Add(new Pin(i, moduleType, pinNum, secondDigit, lastDigit, Bomb));
@@ -105,15 +110,34 @@ namespace KTANE_Solver
         }
 
         private Color ConvertPin(Pin p)
-        { 
-            return (Color)Enum.Parse(typeof(Color), p.color.ToString());
+        {
+            switch (p.color)
+            {
+                case Pin.Color.Yellow:
+                    return Color.Yellow;
+
+                case Pin.Color.Magenta:
+                    return Color.Magenta;
+
+                case Pin.Color.Green:
+                    return Color.Green;
+
+                case Pin.Color.Blue:
+                    return Color.Blue;
+
+                case Pin.Color.Red:
+                    return Color.Red;
+
+                default:
+                    return Color.White;
+            }
         }
 
 
         public class Pin
         {
             private int index;
-            private string name;
+            public string name;
             public Color color { get { return c; } }
             private Color c;
 
@@ -158,7 +182,7 @@ namespace KTANE_Solver
 
                             else if (index == 4)
                             {
-                                name = "GND";
+                                name = "DIN";
                             }
 
                             else if (index == 5)
@@ -168,7 +192,7 @@ namespace KTANE_Solver
 
                             else
                             {
-                                name = "DIN";
+                                name = "GND";
                             }
                             break;
 
@@ -190,7 +214,7 @@ namespace KTANE_Solver
 
                             else if (index == 4)
                             {
-                                name = "GND";
+                                name = "DIN";
                             }
 
                             else if (index == 5)
@@ -200,7 +224,7 @@ namespace KTANE_Solver
 
                             else
                             {
-                                name = "DIN";
+                                name = "GND";
                             }
                             break;
 
@@ -222,7 +246,7 @@ namespace KTANE_Solver
 
                             else if (index == 4)
                             {
-                                name = "RST";
+                                name = "VCC";
                             }
 
                             else if (index == 5)
@@ -232,7 +256,7 @@ namespace KTANE_Solver
 
                             else
                             {
-                                name = "VCC";
+                                name = "RST";
                             }
                             break;
 
@@ -297,22 +321,22 @@ namespace KTANE_Solver
 
                             else if (index == 5)
                             {
-                                name = "GND";
+                                name = "VCC";
                             }
 
                             else if (index == 6)
                             {
-                                name = "RST";
+                                name = "GND";
                             }
 
                             else if (index == 7)
                             {
-                                name = "GND";
+                                name = "RST";
                             }
 
                             else
                             {
-                                name = "VCC";
+                                name = "GND";
                             }
                             break;
 
@@ -813,7 +837,7 @@ namespace KTANE_Solver
 
             public string PrintPin()
             {
-                return $"Index: {index}\nName{name}\nColor{color}";
+                return $"Index: {index}\nName: {name}\nColor: {color}";
             }
         }
     }
