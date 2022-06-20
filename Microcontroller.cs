@@ -16,6 +16,7 @@ namespace KTANE_Solver
         private int secondDigit; 
         private int lastDigit;
         public List<Pin> pinList;
+        public Dictionary<string, Pin.Color> colorDictionary;
         public Microcontroller(Bomb bomb, StreamWriter logFileWriter, string whiteDotCorner, string moduleType, int pinNum, int secondDigit, int lastDigit) : base(bomb, logFileWriter, "Microcontroller")
         {
             this.whiteDotCorner = whiteDotCorner;
@@ -24,6 +25,77 @@ namespace KTANE_Solver
             this.secondDigit = secondDigit;
             this.lastDigit = lastDigit;
             pinList = new List<Pin>();
+            colorDictionary = new Dictionary<string, Pin.Color>();
+        }
+
+        public void FindColor()
+        {
+            colorDictionary.Add("GND", Pin.Color.White);
+                //If the last digit of the controller's serial number is 1 or 4
+                if (lastDigit == 1 || lastDigit == 4)
+                {
+                    colorDictionary.Add("VCC", Pin.Color.Yellow);
+                    colorDictionary.Add("AIN", Pin.Color.Magenta);
+                    colorDictionary.Add("DIN", Pin.Color.Green);
+                    colorDictionary.Add("PWM", Pin.Color.Blue);
+                    colorDictionary.Add("RST", Pin.Color.Red);
+
+                    PrintDebugLine("The last digit of the controller's serial number is 1 or 4\n");
+                }
+
+                //Otherwise, if there is a lit indicator "SIG" or a RJ-45 port
+                else if (Bomb.Sig.Lit || Bomb.Rj.Visible)
+                {
+                    colorDictionary.Add("VCC", Pin.Color.Yellow);
+                    colorDictionary.Add("AIN", Pin.Color.Red);
+                    colorDictionary.Add("DIN", Pin.Color.Magenta);
+                    colorDictionary.Add("PWM", Pin.Color.Green);
+                    colorDictionary.Add("RST", Pin.Color.Blue);
+
+                    PrintDebugLine("There is a lit indicator SIG or a RJ-45 port\n");
+
+                }
+
+            //Otherwise, if the bomb's serial number contains C, L, R, X, 1 or 8
+            else if (Bomb.SerialNumber.Contains('C') ||
+                        Bomb.SerialNumber.Contains('L') ||
+                        Bomb.SerialNumber.Contains('R') ||
+                        Bomb.SerialNumber.Contains('X') ||
+                        Bomb.SerialNumber.Contains('1') ||
+                        Bomb.SerialNumber.Contains('8'))
+            {
+
+                colorDictionary.Add("VCC", Pin.Color.Red);
+                colorDictionary.Add("AIN", Pin.Color.Magenta);
+                colorDictionary.Add("DIN", Pin.Color.Green);
+                colorDictionary.Add("PWM", Pin.Color.Blue);
+                colorDictionary.Add("RST", Pin.Color.Yellow);
+
+                PrintDebugLine("The bomb's serial number contains C, L, R, X, 1 or 8\n");
+            }
+
+            //Otherwise, if the second numerical digit of the controller's serial number matches the number of batteries on the bomb
+            else if (secondDigit == Bomb.Battery)
+            {
+                colorDictionary.Add("VCC", Pin.Color.Red);
+                colorDictionary.Add("AIN", Pin.Color.Blue);
+                colorDictionary.Add("DIN", Pin.Color.Yellow);
+                colorDictionary.Add("PWM", Pin.Color.Green);
+                colorDictionary.Add("RST", Pin.Color.Magenta);
+
+                PrintDebugLine("The second numerical digit of the controller's serial number matches the number of batteries on the bomb\n");
+            }
+
+            else
+            {
+                colorDictionary.Add("VCC", Pin.Color.Green);
+                colorDictionary.Add("AIN", Pin.Color.Red);
+                colorDictionary.Add("DIN", Pin.Color.Yellow);
+                colorDictionary.Add("PWM", Pin.Color.Blue);
+                colorDictionary.Add("RST", Pin.Color.Magenta);
+
+                PrintDebugLine("No above color condition applies\n");
+            }
         }
 
         public void SetUpModule()
@@ -32,10 +104,12 @@ namespace KTANE_Solver
             PrintDebugLine($"White Dot Corner: {whiteDotCorner}");
             PrintDebugLine($"Second Controller Digit: {secondDigit}");
             PrintDebugLine($"Last Controller Digit: {lastDigit}\n");
+            
+            FindColor();
 
             for (int i = 1; i <= pinNum; i++)
             {
-                pinList.Add(new Pin(i, moduleType, pinNum, secondDigit, lastDigit, Bomb));
+                pinList.Add(new Pin(i, moduleType, pinNum, secondDigit, lastDigit, Bomb, colorDictionary));
             }
 
             foreach (Pin p in pinList)
@@ -81,12 +155,12 @@ namespace KTANE_Solver
                     return answers;
 
                 case "Bottom Left":
-                    for (int i = halfPinNum; i < pinNum; i++)
+                    for (int i = pinNum - 1; i >= halfPinNum; i--)
                     { 
                         answers.Add(ConvertPin(pinList[i]));
                     }
 
-                    for (int i = halfPinNum - 1; i >= 0; i--)
+                    for (int i = 0; i < halfPinNum; i++)
                     {
                         answers.Add(ConvertPin(pinList[i]));
                     }
@@ -151,11 +225,11 @@ namespace KTANE_Solver
                 White
             }
 
-            public Pin(int index, string moduleType, int pinNum, int secondDigit, int lastDigit, Bomb bomb)
+            public Pin(int index, string moduleType, int pinNum, int secondDigit, int lastDigit, Bomb bomb, Dictionary<string, Color> colorDictionary)
             {
                 this.index = index;
                 SetName(moduleType, pinNum);
-                SetColor(secondDigit, lastDigit, bomb);
+                SetColor(colorDictionary);
             }
 
             private void SetName(string moduleType, int pinNum)
@@ -278,7 +352,7 @@ namespace KTANE_Solver
 
                             else if (index == 4)
                             {
-                                name = "GND";
+                                name = "AIN";
                             }
 
                             else if (index == 5)
@@ -288,7 +362,7 @@ namespace KTANE_Solver
 
                             else
                             {
-                                name = "AIN";
+                                name = "GND";
                             }
                             break;
                     }
@@ -447,22 +521,22 @@ namespace KTANE_Solver
 
                             else if (index == 5)
                             {
-                                name = "PWM";
+                                name = "VCC";
                             }
 
                             else if (index == 6)
                             {
-                                name = "DIN";
+                                name = "GND";
                             }
 
                             else if (index == 7)
                             {
-                                name = "GND";
+                                name = "DIN";
                             }
 
                             else
                             {
-                                name = "VCC";
+                                name = "PWM";
                             }
                             break;
                     }
@@ -683,156 +757,9 @@ namespace KTANE_Solver
                 }
             }
 
-            private void SetColor(int secondDigit, int lastDigit, Bomb bomb)
+            private void SetColor(Dictionary<string, Color> colorDictionary)
             {
-                //GND is always white
-                if (name == "GND")
-                {
-                    c = Color.White;
-                }
-
-                else
-                {
-                    //If the last digit of the controller's serial number is 1 or 4
-                    if (lastDigit == 1 || lastDigit == 4)
-                    {
-                        switch (name)
-                        {
-                            case "VCC":
-                                c = Color.Yellow;
-                                break;
-
-                            case "AIN":
-                                c = Color.Magenta;
-                                break;
-
-                            case "DIN":
-                                c = Color.Green;
-                                break;
-
-                            case "PWM":
-                                c = Color.Blue;
-                                break;
-
-                            case "RST":
-                                c = Color.Red;
-                                break;
-                        }
-                    }
-
-                    //Otherwise, if there is a lit indicator "SIG" or a RJ-45 port
-                    else if (bomb.Sig.Lit || bomb.Rj.Visible)
-                    {
-                        switch (name)
-                        {
-                            case "VCC":
-                                c = Color.Yellow;
-                                break;
-
-                            case "AIN":
-                                c = Color.Red;
-                                break;
-
-                            case "DIN":
-                                c = Color.Magenta;
-                                break;
-
-                            case "PWM":
-                                c = Color.Green;
-                                break;
-
-                            case "RST":
-                                c = Color.Blue;
-                                break;
-                        }
-                    }
-
-                    //Otherwise, if the bomb's serial number contains C, L, R, X, 1 or 8
-                    else if (bomb.SerialNumber.Contains('C') ||
-                            bomb.SerialNumber.Contains('L') ||
-                            bomb.SerialNumber.Contains('R') ||
-                            bomb.SerialNumber.Contains('X') ||
-                            bomb.SerialNumber.Contains('1') ||
-                            bomb.SerialNumber.Contains('8'))
-                    {
-                        switch (name)
-                        {
-                            case "VCC":
-                                c = Color.Red;
-                                break;
-
-                            case "AIN":
-                                c = Color.Magenta;
-                                break;
-
-                            case "DIN":
-                                c = Color.Green;
-                                break;
-
-                            case "PWM":
-                                c = Color.Blue;
-                                break;
-
-                            case "RST":
-                                c = Color.Yellow;
-                                break;
-                        }
-                    }
-
-                    //Otherwise, if the second numerical digit of the controller's serial number matches the number of batteries on the bomb
-                    else if (secondDigit == bomb.Battery)
-                    {
-                        switch (name)
-                        {
-                            case "VCC":
-                                c = Color.Red;
-                                break;
-
-                            case "AIN":
-                                c = Color.Blue;
-                                break;
-
-                            case "DIN":
-                                c = Color.Yellow;
-                                break;
-
-                            case "PWM":
-                                c = Color.Green;
-                                break;
-
-                            case "RST":
-                                c = Color.Magenta;
-                                break;
-                        }
-                    }
-
-                    else
-                    {
-                        switch (name)
-                        {
-                            case "VCC":
-                                c = Color.Green;
-                                break;
-
-                            case "AIN":
-                                c = Color.Red;
-                                break;
-
-                            case "DIN":
-                                c = Color.Yellow;
-                                break;
-
-                            case "PWM":
-                                c = Color.Blue;
-                                break;
-
-                            case "RST":
-                                c = Color.Magenta;
-                                break;
-                        }
-                    }
-                }
-
+                c = colorDictionary[name];
             }
 
             public string PrintPin()

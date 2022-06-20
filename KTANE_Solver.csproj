@@ -254,11 +254,11 @@
     <Compile Include="MicrocontrollerForm.Designer.cs">
       <DependentUpon>MicrocontrollerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Microncontroller10PinAnswerForm.cs">
+    <Compile Include="Microcontroller10PinAnswerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Microncontroller10PinAnswerForm.Designer.cs">
-      <DependentUpon>Microncontroller10PinAnswerForm.cs</DependentUpon>
+    <Compile Include="Microcontroller10PinAnswerForm.Designer.cs">
+      <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MultiStageModuleForm.cs">
       <SubType>Form</SubType>
@@ -606,8 +606,8 @@
     <EmbeddedResource Include="MicrocontrollerForm.resx">
       <DependentUpon>MicrocontrollerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Microncontroller10PinAnswerForm.resx">
-      <DependentUpon>Microncontroller10PinAnswerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
+      <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>

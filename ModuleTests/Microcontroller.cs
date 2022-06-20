@@ -163,6 +163,54 @@ namespace ModuleTests
             Assert.AreEqual("GND", pinList[9].name);
             #endregion
 
+            #region EXPL 6
+            module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "", "EXPL", 6, 0, 0);
+            module.SetUpModule();
+
+            pinList = module.pinList;
+
+            Assert.AreEqual("PWM", pinList[0].name);
+            Assert.AreEqual("VCC", pinList[1].name);
+            Assert.AreEqual("RST", pinList[2].name);
+            Assert.AreEqual("AIN", pinList[3].name);
+            Assert.AreEqual("DIN", pinList[4].name);
+            Assert.AreEqual("GND", pinList[5].name);
+            #endregion
+
+            #region EXPL 8
+            module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "", "EXPL", 8, 0, 0);
+            module.SetUpModule();
+
+            pinList = module.pinList;
+
+            Assert.AreEqual("AIN", pinList[0].name);
+            Assert.AreEqual("GND", pinList[1].name);
+            Assert.AreEqual("RST", pinList[2].name);
+            Assert.AreEqual("GND", pinList[3].name);
+            Assert.AreEqual("VCC", pinList[4].name);
+            Assert.AreEqual("GND", pinList[5].name);
+            Assert.AreEqual("DIN", pinList[6].name);
+            Assert.AreEqual("PWM", pinList[7].name);
+            #endregion
+
+            #region EXPL 10
+            module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "", "EXPL", 10, 0, 0);
+            module.SetUpModule();
+
+            pinList = module.pinList;
+
+            Assert.AreEqual("RST", pinList[0].name);
+            Assert.AreEqual("DIN", pinList[1].name);
+            Assert.AreEqual("VCC", pinList[2].name);
+            Assert.AreEqual("GND", pinList[3].name);
+            Assert.AreEqual("GND", pinList[4].name);
+            Assert.AreEqual("GND", pinList[5].name);
+            Assert.AreEqual("AIN", pinList[6].name);
+            Assert.AreEqual("GND", pinList[7].name);
+            Assert.AreEqual("PWM", pinList[8].name);
+            Assert.AreEqual("GND", pinList[9].name);
+            #endregion
+
             streamWriter.Close();
         }
 
@@ -176,15 +224,15 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
             KTANE_Solver.Microcontroller module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "", "STRK", 6, 0, 1);
             
-            module.Solve();
-            List<KTANE_Solver.Microcontroller.Pin> pinList = module.pinList;
+            module.FindColor();
+            Dictionary<string,KTANE_Solver.Microcontroller.Pin.Color> colorList = module.colorDictionary;
 
-            Assert.AreEqual(pinList[0].color, KTANE_Solver.Microcontroller.Pin.Color.Magenta);
-            Assert.AreEqual(pinList[1].color, KTANE_Solver.Microcontroller.Pin.Color.Yellow);
-            Assert.AreEqual(pinList[2].color, KTANE_Solver.Microcontroller.Pin.Color.Red);
-            Assert.AreEqual(pinList[3].color, KTANE_Solver.Microcontroller.Pin.Color.Green);
-            Assert.AreEqual(pinList[4].color, KTANE_Solver.Microcontroller.Pin.Color.Blue);
-            Assert.AreEqual(pinList[5].color, KTANE_Solver.Microcontroller.Pin.Color.White);
+            Assert.AreEqual(colorList["VCC"], KTANE_Solver.Microcontroller.Pin.Color.Yellow);
+            Assert.AreEqual(colorList["AIN"], KTANE_Solver.Microcontroller.Pin.Color.Magenta);
+            Assert.AreEqual(colorList["DIN"], KTANE_Solver.Microcontroller.Pin.Color.Green);
+            Assert.AreEqual(colorList["PWM"], KTANE_Solver.Microcontroller.Pin.Color.Blue);
+            Assert.AreEqual(colorList["RST"], KTANE_Solver.Microcontroller.Pin.Color.Red);
+            Assert.AreEqual(colorList["GND"], KTANE_Solver.Microcontroller.Pin.Color.White);
 
 
             #endregion
@@ -195,15 +243,15 @@ namespace ModuleTests
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 1), new Port("serial", 1), new Port("setero", 0));
             module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "0", "STRK", 6, 0, 0);
-            module.Solve();
-            pinList = module.pinList;
+            module.FindColor();
+            colorList = module.colorDictionary;
 
-            Assert.AreEqual(pinList[0].color, KTANE_Solver.Microcontroller.Pin.Color.Red);
-            Assert.AreEqual(pinList[1].color, KTANE_Solver.Microcontroller.Pin.Color.Yellow);
-            Assert.AreEqual(pinList[2].color, KTANE_Solver.Microcontroller.Pin.Color.Blue);
-            Assert.AreEqual(pinList[3].color, KTANE_Solver.Microcontroller.Pin.Color.Magenta);
-            Assert.AreEqual(pinList[4].color, KTANE_Solver.Microcontroller.Pin.Color.Green);
-            Assert.AreEqual(pinList[5].color, KTANE_Solver.Microcontroller.Pin.Color.White);
+            Assert.AreEqual(colorList["VCC"], KTANE_Solver.Microcontroller.Pin.Color.Yellow);
+            Assert.AreEqual(colorList["AIN"], KTANE_Solver.Microcontroller.Pin.Color.Red);
+            Assert.AreEqual(colorList["DIN"], KTANE_Solver.Microcontroller.Pin.Color.Magenta);
+            Assert.AreEqual(colorList["PWM"], KTANE_Solver.Microcontroller.Pin.Color.Green);
+            Assert.AreEqual(colorList["RST"], KTANE_Solver.Microcontroller.Pin.Color.Blue);
+            Assert.AreEqual(colorList["GND"], KTANE_Solver.Microcontroller.Pin.Color.White);
             #endregion
 
             #region Bomb serial num has C
@@ -212,15 +260,15 @@ namespace ModuleTests
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
             module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "0", "STRK", 6, 0, 0);
-            module.Solve();
-            pinList = module.pinList;
+            module.FindColor();
+            colorList = module.colorDictionary;
 
-            Assert.AreEqual(pinList[0].color, KTANE_Solver.Microcontroller.Pin.Color.Magenta);
-            Assert.AreEqual(pinList[1].color, KTANE_Solver.Microcontroller.Pin.Color.Red);
-            Assert.AreEqual(pinList[2].color, KTANE_Solver.Microcontroller.Pin.Color.Yellow);
-            Assert.AreEqual(pinList[3].color, KTANE_Solver.Microcontroller.Pin.Color.Green);
-            Assert.AreEqual(pinList[4].color, KTANE_Solver.Microcontroller.Pin.Color.Blue);
-            Assert.AreEqual(pinList[5].color, KTANE_Solver.Microcontroller.Pin.Color.White);
+            Assert.AreEqual(colorList["VCC"], KTANE_Solver.Microcontroller.Pin.Color.Red);
+            Assert.AreEqual(colorList["AIN"], KTANE_Solver.Microcontroller.Pin.Color.Magenta);
+            Assert.AreEqual(colorList["DIN"], KTANE_Solver.Microcontroller.Pin.Color.Green);
+            Assert.AreEqual(colorList["PWM"], KTANE_Solver.Microcontroller.Pin.Color.Blue);
+            Assert.AreEqual(colorList["RST"], KTANE_Solver.Microcontroller.Pin.Color.Yellow);
+            Assert.AreEqual(colorList["GND"], KTANE_Solver.Microcontroller.Pin.Color.White);
             #endregion
 
             #region second digit of controller matches number of batteries
@@ -230,15 +278,15 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
             module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "0", "STRK", 6, 0, 0);
-            module.Solve();
-            pinList = module.pinList;
+            module.FindColor();
+            colorList = module.colorDictionary;
 
-            Assert.AreEqual(pinList[0].color, KTANE_Solver.Microcontroller.Pin.Color.Blue);
-            Assert.AreEqual(pinList[1].color, KTANE_Solver.Microcontroller.Pin.Color.Red);
-            Assert.AreEqual(pinList[2].color, KTANE_Solver.Microcontroller.Pin.Color.Magenta);
-            Assert.AreEqual(pinList[3].color, KTANE_Solver.Microcontroller.Pin.Color.Yellow);
-            Assert.AreEqual(pinList[4].color, KTANE_Solver.Microcontroller.Pin.Color.Green);
-            Assert.AreEqual(pinList[5].color, KTANE_Solver.Microcontroller.Pin.Color.White);
+            Assert.AreEqual(colorList["VCC"], KTANE_Solver.Microcontroller.Pin.Color.Red);
+            Assert.AreEqual(colorList["AIN"], KTANE_Solver.Microcontroller.Pin.Color.Blue);
+            Assert.AreEqual(colorList["DIN"], KTANE_Solver.Microcontroller.Pin.Color.Yellow);
+            Assert.AreEqual(colorList["PWM"], KTANE_Solver.Microcontroller.Pin.Color.Green);
+            Assert.AreEqual(colorList["RST"], KTANE_Solver.Microcontroller.Pin.Color.Magenta);
+            Assert.AreEqual(colorList["GND"], KTANE_Solver.Microcontroller.Pin.Color.White);
             #endregion
 
             #region else
@@ -248,15 +296,15 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             module = new KTANE_Solver.Microcontroller(bomb, streamWriter, "0", "STRK", 6, 7, 0);
-            module.Solve();
-            pinList = module.pinList;
+            module.FindColor();
+            colorList = module.colorDictionary;
 
-            Assert.AreEqual(pinList[0].color, KTANE_Solver.Microcontroller.Pin.Color.Red);
-            Assert.AreEqual(pinList[1].color, KTANE_Solver.Microcontroller.Pin.Color.Green);
-            Assert.AreEqual(pinList[2].color, KTANE_Solver.Microcontroller.Pin.Color.Magenta);
-            Assert.AreEqual(pinList[3].color, KTANE_Solver.Microcontroller.Pin.Color.Yellow);
-            Assert.AreEqual(pinList[4].color, KTANE_Solver.Microcontroller.Pin.Color.Blue);
-            Assert.AreEqual(pinList[5].color, KTANE_Solver.Microcontroller.Pin.Color.White);
+            Assert.AreEqual(colorList["VCC"], KTANE_Solver.Microcontroller.Pin.Color.Green);
+            Assert.AreEqual(colorList["AIN"], KTANE_Solver.Microcontroller.Pin.Color.Red);
+            Assert.AreEqual(colorList["DIN"], KTANE_Solver.Microcontroller.Pin.Color.Yellow);
+            Assert.AreEqual(colorList["PWM"], KTANE_Solver.Microcontroller.Pin.Color.Blue);
+            Assert.AreEqual(colorList["RST"], KTANE_Solver.Microcontroller.Pin.Color.Magenta);
+            Assert.AreEqual(colorList["GND"], KTANE_Solver.Microcontroller.Pin.Color.White);
             #endregion
             streamWriter.Close();
         }
