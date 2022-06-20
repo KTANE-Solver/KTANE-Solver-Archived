@@ -15,7 +15,15 @@ namespace KTANE_Solver
 
         }
 
-        private void Solve(char leftLetter, char rightLetter)
+        public int SolveDebug(char leftLetter, char rightLetter)
+        {
+            GetInitialNumber(leftLetter, rightLetter);
+            ModifyNumber();
+
+            return answer;
+        }
+
+        public void Solve(char leftLetter, char rightLetter)
         {
             GetInitialNumber(leftLetter, rightLetter);
             ModifyNumber();
@@ -23,6 +31,9 @@ namespace KTANE_Solver
 
         private void GetInitialNumber(char leftLetter, char rightLetter)
         {
+            PrintDebugLine($"Left Letter: {leftLetter}");
+            PrintDebugLine($"Right Letter: {rightLetter}\n");
+
             answer = -1;
             switch (leftLetter)
             {
@@ -35,62 +46,62 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 54;
+                            answer = 11;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 86;
+                            answer = 53;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 54;
+                            answer = 97;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 99;
+                            answer = 2;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 74;
+                            answer = 42;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 88;
+                            answer = 51;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 54;
+                            answer = 97;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 7;
+                            answer = 12;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 63;
+                            answer = 86;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 35;
+                            answer = 55;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 67;
+                            answer = 73;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 13;
+                            answer = 33;
                         }
                     }
                     break;
@@ -99,7 +110,7 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 11;
+                            answer = 54;
                         }
 
                         else if (rightLetter == 'B')
@@ -109,57 +120,57 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 37;
+                            answer = 32;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 28;
+                            answer = 19;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 36;
+                            answer = 84;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 95;
+                            answer = 33;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 46;
+                            answer = 27;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 43;
+                            answer = 78;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 33;
+                            answer = 26;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 64;
+                            answer = 46;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 39;
+                            answer = 9;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 30;
+                            answer = 13;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 23;
+                            answer = 58;
                         }
                     }
                     break;
@@ -168,12 +179,12 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 53;
+                            answer = 86;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 32;
+                            answer = 37;
                         }
 
                         else if (rightLetter == 'C')
@@ -183,52 +194,52 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 77;
+                            answer = 1;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 23;
+                            answer = 5;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 3;
+                            answer = 26;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 37;
+                            answer = 93;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 12;
+                            answer = 49;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 26;
+                            answer = 18;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 94;
+                            answer = 69;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 3;
+                            answer = 23;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 27;
+                            answer = 40;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 26;
+                            answer = 22;
                         }
                     }
                     break;
@@ -236,17 +247,17 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 97;
+                            answer = 54;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 19;
+                            answer = 28;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 1;
+                            answer = 77;
                         }
 
                         else if (rightLetter == 'D')
@@ -256,96 +267,27 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 95;
-                        }
-
-                        else if (rightLetter == 'G')
-                        {
-                            answer = 4;
-                        }
-
-                        else if (rightLetter == 'K')
-                        {
-                            answer = 96;
-                        }
-
-                        else if (rightLetter == 'N')
-                        {
-                            answer = 65;
-                        }
-
-                        else if (rightLetter == 'P')
-                        {
-                            answer = 1;
-                        }
-
-                        else if (rightLetter == 'S')
-                        {
-                            answer = 27;
-                        }
-
-                        else if (rightLetter == 'T')
-                        {
-                            answer = 25;
-                        }
-
-                        else if (rightLetter == 'X')
-                        {
-                            answer = 71;
-                        }
-
-                        else if (rightLetter == 'Z')
-                        {
-                            answer = 85;
-                        }
-                    }
-                    break;
-
-                case 'E':
-                    {
-                        if (rightLetter == 'A')
-                        {
-                            answer = 2;
-                        }
-
-                        else if (rightLetter == 'B')
-                        {
-                            answer = 84;
-                        }
-
-                        else if (rightLetter == 'C')
-                        {
-                            answer = 5;
-                        }
-
-                        else if (rightLetter == 'D')
-                        {
                             answer = 11;
                         }
 
-                        else if (rightLetter == 'E')
-                        {
-                            answer = 67;
-                        }
-
                         else if (rightLetter == 'G')
                         {
-                            answer = 56;
+                            answer = 0;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 2;
+                            answer = 35;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 94;
+                            answer = 61;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 67;
+                            answer = 27;
                         }
 
                         else if (rightLetter == 'S')
@@ -355,17 +297,86 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 47;
+                            answer = 13;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 9;
+                            answer = 72;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 92;
+                            answer = 80;
+                        }
+                    }
+                    break;
+
+                case 'E':
+                    {
+                        if (rightLetter == 'A')
+                        {
+                            answer = 99;
+                        }
+
+                        else if (rightLetter == 'B')
+                        {
+                            answer = 36;
+                        }
+
+                        else if (rightLetter == 'C')
+                        {
+                            answer = 23;
+                        }
+
+                        else if (rightLetter == 'D')
+                        {
+                            answer = 95;
+                        }
+
+                        else if (rightLetter == 'E')
+                        {
+                            answer = 67;
+                        }
+
+                        else if (rightLetter == 'G')
+                        {
+                            answer = 5;
+                        }
+
+                        else if (rightLetter == 'K')
+                        {
+                            answer = 26;
+                        }
+
+                        else if (rightLetter == 'N')
+                        {
+                            answer = 17;
+                        }
+
+                        else if (rightLetter == 'P')
+                        {
+                            answer = 44;
+                        }
+
+                        else if (rightLetter == 'S')
+                        {
+                            answer = 60;
+                        }
+
+                        else if (rightLetter == 'T')
+                        {
+                            answer = 26;
+                        }
+
+                        else if (rightLetter == 'X')
+                        {
+                            answer = 41;
+                        }
+
+                        else if (rightLetter == 'Z')
+                        {
+                            answer = 67;
                         }
                     }
                     break;
@@ -374,27 +385,27 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 42;
+                            answer = 74;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 33;
+                            answer = 95;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 26;
+                            answer = 3;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 0;
+                            answer = 4;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 5;
+                            answer = 56;
                         }
 
                         else if (rightLetter == 'G')
@@ -404,37 +415,37 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 52;
+                            answer = 54;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 3;
+                            answer = 29;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 26;
+                            answer = 52;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 84;
+                            answer = 38;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 62;
+                            answer = 10;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 11;
+                            answer = 76;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 12;
+                            answer = 98;
                         }
                     }
                     break;
@@ -443,32 +454,32 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 51;
+                            answer = 88;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 27;
+                            answer = 46;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 93;
+                            answer = 37;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 35;
+                            answer = 96;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 26;
+                            answer = 2;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 54;
+                            answer = 52;
                         }
 
                         else if (rightLetter == 'K')
@@ -478,32 +489,32 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 47;
+                            answer = 37;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 27;
+                            answer = 12;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 33;
+                            answer = 70;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 38;
+                            answer = 14;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 44;
+                            answer = 36;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 73;
+                            answer = 78;
                         }
                     }
                     break;
@@ -512,37 +523,37 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 97;
+                            answer = 54;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 78;
+                            answer = 43;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 49;
+                            answer = 12;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 61;
+                            answer = 65;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 17;
+                            answer = 94;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 29;
+                            answer = 3;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 37;
+                            answer = 47;
                         }
 
                         else if (rightLetter == 'N')
@@ -552,27 +563,27 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 77;
+                            answer = 16;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 10;
+                            answer = 62;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 45;
+                            answer = 73;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 37;
+                            answer = 46;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 56;
+                            answer = 21;
                         }
                     }
                     break;
@@ -581,42 +592,42 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 12;
+                            answer = 7;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 26;
+                            answer = 33;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 18;
+                            answer = 26;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 27;
+                            answer = 1;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 44;
+                            answer = 67;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 52;
+                            answer = 26;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 12;
+                            answer = 27;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 16;
+                            answer = 77;
                         }
 
                         else if (rightLetter == 'P')
@@ -626,22 +637,22 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 16;
+                            answer = 14;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 88;
+                            answer = 27;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 18;
+                            answer = 93;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 81;
+                            answer = 9;
                         }
                     }
                     break;
@@ -650,47 +661,47 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 86;
+                            answer = 63;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 46;
+                            answer = 64;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 69;
+                            answer = 94;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 48;
+                            answer = 27;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 60;
+                            answer = 48;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 38;
+                            answer = 84;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 70;
+                            answer = 33;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 62;
+                            answer = 10;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 14;
+                            answer = 16;
                         }
 
                         else if (rightLetter == 'S')
@@ -700,17 +711,17 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 48;
+                            answer = 43;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 40;
+                            answer = 99;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 7;
+                            answer = 4;
                         }
                     }
                     break;
@@ -719,52 +730,52 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 55;
+                            answer = 35;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 9;
+                            answer = 39;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 23;
+                            answer = 3;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 13;
+                            answer = 25;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 26;
+                            answer = 47;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 10;
+                            answer = 62;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 14;
+                            answer = 38;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 73;
+                            answer = 45;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 27;
+                            answer = 88;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 43;
+                            answer = 48;
                         }
 
                         else if (rightLetter == 'T')
@@ -774,12 +785,12 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 32;
+                            answer = 31;
                         }
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 75;
+                            answer = 27;
                         }
                     }
                     break;
@@ -788,57 +799,57 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 73;
+                            answer = 67;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 13;
+                            answer = 30;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 40;
+                            answer = 27;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 72;
+                            answer = 71;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 41;
+                            answer = 9;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 76;
+                            answer = 11;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 36;
+                            answer = 44;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 46;
+                            answer = 37;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 93;
+                            answer = 18;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 99;
+                            answer = 40;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 31;
+                            answer = 32;
                         }
 
                         else if (rightLetter == 'X')
@@ -848,7 +859,7 @@ namespace KTANE_Solver
 
                         else if (rightLetter == 'Z')
                         {
-                            answer = 47;
+                            answer = 78;
                         }
                     }
                     break;
@@ -857,62 +868,62 @@ namespace KTANE_Solver
                     {
                         if (rightLetter == 'A')
                         {
-                            answer = 33;
+                            answer = 13;
                         }
 
                         else if (rightLetter == 'B')
                         {
-                            answer = 58;
+                            answer = 23;
                         }
 
                         else if (rightLetter == 'C')
                         {
-                            answer = 22;
+                            answer = 26;
                         }
 
                         else if (rightLetter == 'D')
                         {
-                            answer = 80;
+                            answer = 85;
                         }
 
                         else if (rightLetter == 'E')
                         {
-                            answer = 67;
+                            answer = 92;
                         }
 
                         else if (rightLetter == 'G')
                         {
-                            answer = 98;
+                            answer = 12;
                         }
 
                         else if (rightLetter == 'K')
                         {
-                            answer = 78;
+                            answer = 73;
                         }
 
                         else if (rightLetter == 'N')
                         {
-                            answer = 21;
+                            answer = 56;
                         }
 
                         else if (rightLetter == 'P')
                         {
-                            answer = 9;
+                            answer = 81;
                         }
 
                         else if (rightLetter == 'S')
                         {
-                            answer = 4;
+                            answer = 7;
                         }
 
                         else if (rightLetter == 'T')
                         {
-                            answer = 27;
+                            answer = 75;
                         }
 
                         else if (rightLetter == 'X')
                         {
-                            answer = 78;
+                            answer = 47;
                         }
 
                         else if (rightLetter == 'Z')
