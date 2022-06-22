@@ -38,59 +38,68 @@ namespace KTANE_Solver
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 84);
+            this.backButton.Location = new System.Drawing.Point(16, 103);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(97, 35);
+            this.backButton.Size = new System.Drawing.Size(129, 43);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(140, 84);
+            this.strikeButton.Location = new System.Drawing.Point(187, 103);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(97, 35);
+            this.strikeButton.Size = new System.Drawing.Size(129, 43);
             this.strikeButton.TabIndex = 1;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(276, 84);
+            this.submitButton.Location = new System.Drawing.Point(368, 103);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(97, 35);
+            this.submitButton.Size = new System.Drawing.Size(129, 43);
             this.submitButton.TabIndex = 2;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // soundComboBox
             // 
             this.soundComboBox.FormattingEnabled = true;
-            this.soundComboBox.Location = new System.Drawing.Point(129, 38);
+            this.soundComboBox.Location = new System.Drawing.Point(172, 47);
+            this.soundComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.soundComboBox.Name = "soundComboBox";
-            this.soundComboBox.Size = new System.Drawing.Size(121, 21);
+            this.soundComboBox.Size = new System.Drawing.Size(160, 24);
             this.soundComboBox.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 41);
+            this.label1.Location = new System.Drawing.Point(69, 50);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Sound:";
             // 
-            // Form1
+            // ListeningForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 131);
+            this.ClientSize = new System.Drawing.Size(513, 161);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.soundComboBox);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.backButton);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "ListeningForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
