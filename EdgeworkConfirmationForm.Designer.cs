@@ -300,7 +300,7 @@
             // submitButton
             // 
             this.submitButton.Location = new System.Drawing.Point(170, 578);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(2);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(52, 30);
             this.submitButton.TabIndex = 25;
@@ -311,7 +311,7 @@
             // backButton
             // 
             this.backButton.Location = new System.Drawing.Point(57, 578);
-            this.backButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(52, 30);
             this.backButton.TabIndex = 26;
@@ -362,7 +362,7 @@
             this.Controls.Add(this.batteryHolderLabel);
             this.Controls.Add(this.batteryLabel);
             this.Controls.Add(this.serialNumberLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EdgeworkConfirmationForm";
             this.Text = "KTANE Bot by Hawker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdgeworkConfirmationForm_FormClosing);

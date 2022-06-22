@@ -195,6 +195,13 @@
     <Compile Include="ComplicatedWiresForm.Designer.cs">
       <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionCheckForm.Designer.cs">
+      <DependentUpon>ConnectionCheckForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionCheck.cs" />
     <Compile Include="Creation.cs" />
     <Compile Include="CreationForm.cs">
       <SubType>Form</SubType>
@@ -241,6 +248,31 @@
     </Compile>
     <Compile Include="IceCreamStage2Form.Designer.cs">
       <DependentUpon>IceCreamStage2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Microcontroller.cs" />
+    <Compile Include="Microcontroller6PinAnswerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Microcontroller6PinAnswerForm.Designer.cs">
+      <DependentUpon>Microcontroller6PinAnswerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Microcontroller8PinAnswerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Microcontroller8PinAnswerForm.Designer.cs">
+      <DependentUpon>Microcontroller8PinAnswerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MicrocontrollerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MicrocontrollerForm.Designer.cs">
+      <DependentUpon>MicrocontrollerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Microcontroller10PinAnswerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Microcontroller10PinAnswerForm.Designer.cs">
+      <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MultiStageModuleForm.cs">
       <SubType>Form</SubType>
@@ -561,6 +593,9 @@
     <EmbeddedResource Include="ComplicatedWiresForm.resx">
       <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionCheckForm.resx">
+      <DependentUpon>ConnectionCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreationForm.resx">
       <DependentUpon>CreationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -581,6 +616,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IceCreamStage2Form.resx">
       <DependentUpon>IceCreamStage2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Microcontroller6PinAnswerForm.resx">
+      <DependentUpon>Microcontroller6PinAnswerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Microcontroller8PinAnswerForm.resx">
+      <DependentUpon>Microcontroller8PinAnswerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MicrocontrollerForm.resx">
+      <DependentUpon>MicrocontrollerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
+      <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
