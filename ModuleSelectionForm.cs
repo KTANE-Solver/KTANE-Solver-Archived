@@ -50,17 +50,20 @@ namespace KTANE_Solver
         private ButtonForm buttonForm;
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
-        private ComplicatedWiresForm complicatedWiresForm;
         private ColorMathForm colorMathForm;
+        private ComplicatedWiresForm complicatedWiresForm;
+        private ConnectionCheckForm connectionCheckForm;
         private FastMathStage1Form fastMathForm;
         private FizzBuzzForm fizzBuzzForm;
         private GamepadForm gamepadForm;
         private IceCreamForm iceCreamForm;
         private KeypadForm keyPadForm;
         private LightCycleForm lightCycleForm;
+        private ListeningForm listeningForm;
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MemoryStage1Form memoryForm;
+        private MicrocontrollerForm microcontrollerForm;
         private MonsplodeTradingCardForm1 monsplodeTradingCardForm;
         private MorseCodeForm morseCodeForm;
         private MurderForm murderForm;
@@ -136,8 +139,10 @@ namespace KTANE_Solver
             moduleComboBox.Items.Clear();
 
 
-            //String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires","Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
-            String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Two Bits", "Who's on First", "Wires", "Word Search" };
+
+
+            //String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Connection Check", "Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Listening", "Logic", "Maze", "Memory", "Microcontroller", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Switches", "Two Bits", "Who's on First", "Wires", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -478,13 +483,19 @@ namespace KTANE_Solver
 
                     complicatedWiresForm.Show();
                     break;
+                    
+                    case "Connection Check":
+                    connectionCheckForm = new ConnectionCheckForm(bomb, logFileWriter, this);
+                    connectionCheckForm.Show();
+
+                    break;
 
                 case "Fast Math":
                     fastMathForm = new FastMathStage1Form(bomb, logFileWriter, this);
 
                     fastMathForm.Show();
+                    
                     break;
-
                 case "FizzBuzz":
                     if (fizzBuzzForm == null)
                     {
@@ -552,6 +563,11 @@ namespace KTANE_Solver
                     lightCycleForm.Show();
                     break;
 
+                case "Listening":
+                    listeningForm = new ListeningForm(bomb, logFileWriter, this);
+                    listeningForm.Show();
+                    break;
+
                 case "Logic":
 
                     if (logicForm == null)
@@ -595,6 +611,12 @@ namespace KTANE_Solver
                     }
 
                     memoryForm.Show();
+                    break;
+
+                case "Microcontroller":
+                    microcontrollerForm = new MicrocontrollerForm(bomb, logFileWriter, this);
+
+                    microcontrollerForm.Show();
                     break;
 
                 case "Monsplode Trading Cards":
@@ -842,7 +864,7 @@ namespace KTANE_Solver
                 break;
             }
 
-            if (moduleName != "Two Bits" || moduleName != "Broken Buttons")
+            if (moduleName != "Two Bits" && moduleName != "Broken Buttons")
             { 
                 SuccessfulModuleOpening(moduleName);
             }
