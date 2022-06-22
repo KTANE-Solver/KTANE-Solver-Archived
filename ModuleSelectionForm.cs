@@ -58,6 +58,7 @@ namespace KTANE_Solver
         private IceCreamForm iceCreamForm;
         private KeypadForm keyPadForm;
         private LightCycleForm lightCycleForm;
+        private ListeningForm listeningForm;
         private LogicForm logicForm;
         private MazeForm mazeForm;
         private MemoryStage1Form memoryForm;
@@ -551,6 +552,11 @@ namespace KTANE_Solver
                     }
 
                     lightCycleForm.Show();
+                    break;
+
+                case "Listening":
+                    listeningForm = new ListeningForm(bomb, logFileWriter, this);
+                    listeningForm.Show();
                     break;
 
                 case "Logic":
