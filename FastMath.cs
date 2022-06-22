@@ -27,6 +27,8 @@ namespace KTANE_Solver
         {
             GetInitialNumber(leftLetter, rightLetter);
             ModifyNumber();
+
+            ShowAnswer("" + answer, true);
         }
 
         private void GetInitialNumber(char leftLetter, char rightLetter)
@@ -942,42 +944,41 @@ namespace KTANE_Solver
             if (Bomb.Msa.Lit)
             {
                 answer += 20;
-                PrintDebugLine("Bomb has a lit MSA: adding 20");
+                PrintDebugLine("Bomb has a lit MSA: adding 20\n");
             }
 
             if (Bomb.Serial.Visible)
             {
                 answer += 14;
-                PrintDebugLine("Bomb has a serial port: adding 14");
+                PrintDebugLine("Bomb has a serial port: adding 14\n");
             }
 
             if (Bomb.SerialNumber.Contains("F") || Bomb.SerialNumber.Contains("A") || Bomb.SerialNumber.Contains("S") || Bomb.SerialNumber.Contains("T"))
             {
                 answer -= 5;
-                PrintDebugLine("Bomb contains at least one of the following letters: F, A, S, T: subtracting 5");
+                PrintDebugLine("Bomb contains at least one of the following letters: F, A, S, T: subtracting 5\n");
             }
 
             if (Bomb.Rj.Visible)
             {
                 answer += 27;
-                PrintDebugLine("Bomb has a RJ-45 port: adding 27");
+                PrintDebugLine("Bomb has a RJ-45 port: adding 27\n");
             }
 
             if (Bomb.Battery > 3)
             {
                 answer -= 15;
-                PrintDebugLine("Bomb has at least 4 batteries: subtracting 15");
+                PrintDebugLine("Bomb has at least 4 batteries: subtracting 15\n");
 
             }
 
             if (answer < 0)
             {
                 answer += 50;
+                PrintDebugLine("Answer is less than 0, adding 50\n");
             }
 
             answer %= 100;
-
-            PrintDebugLine("Answer is now " + answer);
         }
     }
 }

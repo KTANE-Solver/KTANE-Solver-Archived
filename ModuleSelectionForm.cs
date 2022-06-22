@@ -52,6 +52,7 @@ namespace KTANE_Solver
         private ChessForm chessForm;
         private ComplicatedWiresForm complicatedWiresForm;
         private ColorMathForm colorMathForm;
+        private FastMathStage1Form fastMathForm;
         private FizzBuzzForm fizzBuzzForm;
         private GamepadForm gamepadForm;
         private IceCreamForm iceCreamForm;
@@ -135,7 +136,7 @@ namespace KTANE_Solver
             moduleComboBox.Items.Clear();
 
 
-            //String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            //String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires","Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Memory", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
             String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Two Bits", "Who's on First", "Wires", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
@@ -476,6 +477,12 @@ namespace KTANE_Solver
                     }
 
                     complicatedWiresForm.Show();
+                    break;
+
+                case "Fast Math":
+                    fastMathForm = new FastMathStage1Form(bomb, logFileWriter, this);
+
+                    fastMathForm.Show();
                     break;
 
                 case "FizzBuzz":

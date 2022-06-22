@@ -34,97 +34,110 @@ namespace KTANE_Solver
             this.submitButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.moduleSelectionButton = new System.Windows.Forms.Button();
-            this.yTextBox = new System.Windows.Forms.TextBox();
-            this.xTextBox = new System.Windows.Forms.TextBox();
+            this.rightLetterTextBox = new System.Windows.Forms.TextBox();
+            this.leftLetterTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(161, 151);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(2);
+            this.resetButton.Location = new System.Drawing.Point(215, 186);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(70, 45);
+            this.resetButton.Size = new System.Drawing.Size(93, 55);
             this.resetButton.TabIndex = 12;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(237, 150);
+            this.strikeButton.Location = new System.Drawing.Point(316, 185);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(70, 45);
+            this.strikeButton.Size = new System.Drawing.Size(93, 55);
             this.strikeButton.TabIndex = 11;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(314, 151);
+            this.submitButton.Location = new System.Drawing.Point(419, 186);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(70, 45);
+            this.submitButton.Size = new System.Drawing.Size(93, 55);
             this.submitButton.TabIndex = 10;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(86, 150);
+            this.backButton.Location = new System.Drawing.Point(115, 185);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(70, 45);
+            this.backButton.Size = new System.Drawing.Size(93, 55);
             this.backButton.TabIndex = 9;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // moduleSelectionButton
             // 
-            this.moduleSelectionButton.Location = new System.Drawing.Point(10, 150);
+            this.moduleSelectionButton.Location = new System.Drawing.Point(13, 185);
+            this.moduleSelectionButton.Margin = new System.Windows.Forms.Padding(4);
             this.moduleSelectionButton.Name = "moduleSelectionButton";
-            this.moduleSelectionButton.Size = new System.Drawing.Size(70, 45);
+            this.moduleSelectionButton.Size = new System.Drawing.Size(93, 55);
             this.moduleSelectionButton.TabIndex = 8;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
-            // yTextBox
+            // rightLetterTextBox
             // 
-            this.yTextBox.Location = new System.Drawing.Point(186, 101);
-            this.yTextBox.Name = "yTextBox";
-            this.yTextBox.Size = new System.Drawing.Size(121, 20);
-            this.yTextBox.TabIndex = 15;
+            this.rightLetterTextBox.Location = new System.Drawing.Point(248, 124);
+            this.rightLetterTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.rightLetterTextBox.Name = "rightLetterTextBox";
+            this.rightLetterTextBox.Size = new System.Drawing.Size(160, 22);
+            this.rightLetterTextBox.TabIndex = 15;
             // 
-            // xTextBox
+            // leftLetterTextBox
             // 
-            this.xTextBox.Location = new System.Drawing.Point(186, 37);
-            this.xTextBox.Name = "xTextBox";
-            this.xTextBox.Size = new System.Drawing.Size(121, 20);
-            this.xTextBox.TabIndex = 13;
+            this.leftLetterTextBox.Location = new System.Drawing.Point(248, 46);
+            this.leftLetterTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.leftLetterTextBox.Name = "leftLetterTextBox";
+            this.leftLetterTextBox.Size = new System.Drawing.Size(160, 22);
+            this.leftLetterTextBox.TabIndex = 13;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(83, 104);
+            this.label2.Location = new System.Drawing.Point(111, 128);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 16;
             this.label2.Text = "Right Letter:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(83, 40);
+            this.label1.Location = new System.Drawing.Point(111, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(77, 17);
             this.label1.TabIndex = 14;
             this.label1.Text = "Left Letter:";
             // 
             // FastMathOtherStageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 207);
-            this.Controls.Add(this.yTextBox);
-            this.Controls.Add(this.xTextBox);
+            this.ClientSize = new System.Drawing.Size(525, 255);
+            this.Controls.Add(this.rightLetterTextBox);
+            this.Controls.Add(this.leftLetterTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.resetButton);
@@ -133,7 +146,7 @@ namespace KTANE_Solver
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.moduleSelectionButton);
             this.Name = "FastMathOtherStageForm";
-            this.Text = "FastMathOtherStageForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,8 +159,8 @@ namespace KTANE_Solver
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button moduleSelectionButton;
-        private System.Windows.Forms.TextBox yTextBox;
-        private System.Windows.Forms.TextBox xTextBox;
+        private System.Windows.Forms.TextBox rightLetterTextBox;
+        private System.Windows.Forms.TextBox leftLetterTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
