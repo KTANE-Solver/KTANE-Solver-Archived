@@ -82,51 +82,113 @@ namespace KTANE_Solver
             {
                 currentRow = (row[0] + row[1]) / 2;
             }
+
+            PrintDebugLine($"Starting Row: {currentRow}\n");
         }
 
         public int[] Solve(char symbol)
         {
+            FindStartingRow();
+
+            PrintDebugLine($"Attempting to place {symbol}");
+
             char targetSymbol = PlaceSymbol(symbol);
+
+            PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
 
             int[] targetCoordinates = NumberIsInGrid(targetSymbol);
 
             while (targetCoordinates.Length == 1)
             {
+                PrintDebugLine($"{targetSymbol} was not found in grid");
+
                 currentRow++;
-                targetCoordinates = NumberIsInGrid(targetSymbol);
-            }
 
-            if (!MakesTicTacToe(targetCoordinates[0], targetCoordinates[1]))
-            {
-                return new int[] { targetCoordinates[0], targetCoordinates[1], symbol };
-            }
+                currentRow %= 10;
 
-            else
-            {
-                symbol = GetOppositeSymbol(symbol);
+                if (currentRow == 0)
+                {
+                    currentRow++;
+                }
+
+                PrintDebugLine($"Starting row is now {currentRow}");
 
                 targetSymbol = PlaceSymbol(symbol);
 
-                targetCoordinates = NumberIsInGrid(targetSymbol);
+                PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
 
-                while (targetCoordinates.Length == 1)
+                targetCoordinates = NumberIsInGrid(targetSymbol);
+            }
+
+            PrintDebugLine("Checking for Tic Tac Toe...\n");
+
+            if (!MakesTicTacToe(targetCoordinates[0], targetCoordinates[1]))
+            {
+                PrintDebugLine($"No Tic Tac Toe was made. Placing {symbol} at {targetSymbol}");
+                currentRow++;
+                return new int[] { targetCoordinates[0], targetCoordinates[1], symbol };
+            }
+
+            PrintDebugLine($"{symbol} made Tic Tac at {targetSymbol}. Changing symbol to {GetOppositeSymbol(symbol)}");
+
+            grid[targetCoordinates[0], targetCoordinates[1]] = targetSymbol;
+
+            symbol = GetOppositeSymbol(symbol);
+
+            PrintDebugLine($"Starting Row is now {currentRow}");
+
+            targetSymbol = PlaceSymbol(symbol);
+
+            PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
+
+            targetCoordinates = NumberIsInGrid(targetSymbol);
+
+            while (targetCoordinates.Length == 1)
+            {
+                PrintDebugLine($"{targetSymbol} was not found in grid");
+
+                currentRow++;
+
+                currentRow %= 10;
+
+                if (currentRow == 0)
                 {
                     currentRow++;
-                    targetCoordinates = NumberIsInGrid(targetSymbol);
                 }
 
-                if (!MakesTicTacToe(targetCoordinates[0], targetCoordinates[1]))
-                {
-                    ShowAnswer("Pass", false);
-                    return new int[] { targetCoordinates[0], targetCoordinates[1], symbol };
-                }
+                PrintDebugLine($"Starting row is now {currentRow}");
 
-                else
-                {
-                    ShowAnswer("Double Pass", false);
-                    return new int[] { -1 };
-                }
+                targetSymbol = PlaceSymbol(symbol);
+
+                PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
+
+                targetCoordinates = NumberIsInGrid(targetSymbol);
             }
+
+            PrintDebugLine("Checking for Tic Tac Toe...\n");
+
+            if (!MakesTicTacToe(targetCoordinates[0], targetCoordinates[1]))
+            {
+                PrintDebugLine($"No Tic Tac Toe was made. Passing once and placing {symbol} at {targetSymbol}");
+
+                ShowAnswer("Pass", true);
+                currentRow++;
+                return new int[] { targetCoordinates[0], targetCoordinates[1], symbol };
+            }
+
+            grid[targetCoordinates[0], targetCoordinates[1]] = targetSymbol;
+
+            PrintDebugLine($"{symbol} made Tic Tac Toe at {targetSymbol}. Passing twice and awaiting given symbol\n");
+            ShowAnswer("Double Pass", true);
+            currentRow++;
+            return new int[] { -1 };
+
+        }
+
+        public void SetSymbolPosition(int rowNum, int colNum, char target)
+        {
+            PrintDebugLine($"Setting {rowNum + 1},{colNum + 1} to {target}\n");
+            grid[rowNum, colNum] = target;
         }
 
         private char GetOppositeSymbol(char symbol)
@@ -435,6 +497,8 @@ namespace KTANE_Solver
 
         private bool MakesTicTacToe(int rowNum, int colNum)
         {
+            PrintGrid();
+
             List<char> row = new List<char>();
             int xCount;
             //horizontal
@@ -502,6 +566,26 @@ namespace KTANE_Solver
             }
 
             return false;
+        }
+
+        private void PrintGrid()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    PrintDebug(grid[i, j] + " ");
+                }
+
+                PrintDebugLine("");
+            }
+
+            PrintDebugLine("\n");
+        }
+
+        public bool SolvedModule()
+        {
+            return XCount() + OCount() == 9;
         }
     }
 }

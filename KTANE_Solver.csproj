@@ -497,6 +497,18 @@
     <Compile Include="TicTacToeForm.Designer.cs">
       <DependentUpon>TicTacToeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TicTacToeInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicTacToeInputForm.Designer.cs">
+      <DependentUpon>TicTacToeInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TicTacToeSymbolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicTacToeSymbolForm.Designer.cs">
+      <DependentUpon>TicTacToeSymbolForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TwoBits.cs" />
     <Compile Include="TwoBitsOtherStageForm.cs">
       <SubType>Form</SubType>
@@ -753,6 +765,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TicTacToeForm.resx">
       <DependentUpon>TicTacToeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicTacToeInputForm.resx">
+      <DependentUpon>TicTacToeInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicTacToeSymbolForm.resx">
+      <DependentUpon>TicTacToeSymbolForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TwoBitsOtherStageForm.resx">
       <DependentUpon>TwoBitsOtherStageForm.cs</DependentUpon>
