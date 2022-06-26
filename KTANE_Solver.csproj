@@ -490,6 +490,13 @@
       <DependentUpon>SimonSaysForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Switches.cs" />
+    <Compile Include="TicTacToe.cs" />
+    <Compile Include="TicTacToeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicTacToeForm.Designer.cs">
+      <DependentUpon>TicTacToeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TwoBits.cs" />
     <Compile Include="TwoBitsOtherStageForm.cs">
       <SubType>Form</SubType>
@@ -743,6 +750,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysForm.resx">
       <DependentUpon>SimonSaysForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicTacToeForm.resx">
+      <DependentUpon>TicTacToeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TwoBitsOtherStageForm.resx">
       <DependentUpon>TwoBitsOtherStageForm.cs</DependentUpon>
