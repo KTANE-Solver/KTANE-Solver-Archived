@@ -75,6 +75,7 @@ namespace KTANE_Solver
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
         private SwitchesForm switchesForm;
+        private TicTacToeForm ticTacToeForm;
         private TwoBitsStage1Form twoBitsForm;
         private WhosOnFirstFirstStageForm whosOnFirstForm;
         private WiresForm wiresForm;
@@ -141,7 +142,7 @@ namespace KTANE_Solver
 
 
 
-            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Connection Check", "Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Listening", "Logic", "Maze", "Memory", "Microcontroller", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "Connection Check", "Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Listening", "Logic", "Maze", "Memory", "Microcontroller", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Simon Says", "Switches", "Tic Tac Toe", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
             //String[] modules = new String[] {"Adventure Game", "Adjacent Letters", "Binary Puzzle", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Switches", "Two Bits", "Who's on First", "Wires", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
@@ -781,6 +782,12 @@ namespace KTANE_Solver
                     }
 
                     switchesForm.Show();
+                    break;
+
+                case "Tic Tac Toe":
+
+                    ticTacToeForm = new TicTacToeForm(bomb, logFileWriter, this);
+                    ticTacToeForm.Show();
                     break;
 
 
