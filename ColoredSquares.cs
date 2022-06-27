@@ -648,15 +648,17 @@ namespace KTANE_Solver
 
         public void PrintGrid()
         {
-            for (int i = 0; i < grid.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < grid.Length; j++)
+                for (int j = 0; j < 4; j++)
                 {
                      PrintDebug(grid[i, j].ToString()[0] + " ");
                 }
 
                 PrintDebugLine("");
             }
+
+            PrintDebugLine("");
         }
     }
 }

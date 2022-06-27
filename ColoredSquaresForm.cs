@@ -14,16 +14,16 @@ namespace KTANE_Solver
     public partial class ColoredSquaresForm : ModuleForm
     {
         private ColoredSquares.Color[,] moduleGrid;
+        private ColoredSquares module;
+        private ColoredSquares.Color color;
         public ColoredSquaresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Colored Squares", false)
         {
             InitializeComponent();
+            UpdateForm();
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter)
+        public void UpdateForm()
         {
-            Bomb = bomb;
-            LogFileWriter = logFileWriter;
-
             row1Button1.BackColor = Color.White;
             row1Button2.BackColor = Color.White;
             row1Button3.BackColor = Color.White;
@@ -219,9 +219,6 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            ColoredSquares module = null;
-            ColoredSquares.Color color = ColoredSquares.Color.Red;
-
             if (moduleGrid == null)
             {
                 moduleGrid = ConvertForm();
@@ -238,11 +235,11 @@ namespace KTANE_Solver
                 moduleGrid = ConvertForm();
                 
                 color = module.Solve(color);
+            }
 
-                if (module.ColorNum(ColoredSquares.Color.White) >= 15)
-                {
-                    UpdateForm(Bomb, LogFileWriter);
-                }
+            if (module.ColorNum(ColoredSquares.Color.White) >= 15)
+            {
+                UpdateForm();
             }
         }
 
