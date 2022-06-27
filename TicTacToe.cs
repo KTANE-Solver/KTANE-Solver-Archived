@@ -9,7 +9,7 @@ namespace KTANE_Solver
     public class TicTacToe : Module
     {
         private char[,] grid;
-        private int currentRow;
+        public int currentRow;
         public TicTacToe(Bomb bomb, StreamWriter logFileWriter, char[,] grid) : base(bomb, logFileWriter, "Tic Tac Toe")
         { 
             this.grid = grid;
@@ -22,38 +22,49 @@ namespace KTANE_Solver
             if (Bomb.LastDigit % 2 == 0)
             {
                 row.AddRange(new int[] { 5, 6, 7, 8, 9 });
+                PrintDebugLine("Last digit of serial number is even");
+                DebugLinesForCurrentRow(row);
             }
 
             else
             { 
                 row.AddRange(new int[] { 1, 2, 3, 4});
-
+                PrintDebugLine("Last digit of serial number is odd");
+                DebugLinesForCurrentRow(row);
             }
 
             if (Bomb.Parallel.Visible)
             {
-                for (int i = row.Count - 1; i < -1; i--)
+                PrintDebugLine("A pararrel port is present");
+                for (int i = row.Count - 1; i > -1; i--)
                 {
                     if (row[i] % 2 == 1)
                     {
                         row.RemoveAt(i);
                     }
                 }
+
+                DebugLinesForCurrentRow(row);
             }
 
             else
             {
-                for (int i = row.Count - 1; i < -1; i--)
+                PrintDebugLine("No pararrel port is present");
+                for (int i = row.Count - 1; i > -1; i--)
                 {
                     if (row[i] % 2 == 0)
                     {
                         row.RemoveAt(i);
                     }
                 }
+             
+                DebugLinesForCurrentRow(row);
             }
 
             if (Bomb.UnlitIndicatorsList.Count > Bomb.LitIndicatorsList.Count)
             {
+                PrintDebugLine("More unlit indicators than lit");
+
                 if (row[0] < row[1])
                 {
                     currentRow = row[0];
@@ -65,8 +76,10 @@ namespace KTANE_Solver
                 }
             }
 
-            else if (Bomb.LitIndicatorsList.Count < Bomb.UnlitIndicatorsList.Count)
+            else if (Bomb.LitIndicatorsList.Count > Bomb.UnlitIndicatorsList.Count)
             {
+                PrintDebugLine("More lit indicators than unlit");
+
                 if (row[0] > row[1])
                 {
                     currentRow = row[0];
@@ -80,6 +93,8 @@ namespace KTANE_Solver
 
             else
             {
+                PrintDebugLine("Even number of lit and unlit indicators");
+
                 currentRow = (row[0] + row[1]) / 2;
             }
 
@@ -88,8 +103,6 @@ namespace KTANE_Solver
 
         public int[] Solve(char symbol)
         {
-            FindStartingRow();
-
             PrintDebugLine($"Attempting to place {symbol}");
 
             char targetSymbol = PlaceSymbol(symbol);
@@ -201,7 +214,7 @@ namespace KTANE_Solver
             return 'X';
         }
 
-        private char PlaceSymbol(char symbol)
+        public char PlaceSymbol(char symbol)
         {
             int xCount = XCount();
             int oCount = OCount();
@@ -228,7 +241,7 @@ namespace KTANE_Solver
 
 
                         case 5:
-                            return '9';
+                            return '1';
 
 
                         case 6:
@@ -284,7 +297,7 @@ namespace KTANE_Solver
             }
 
 
-            else if (xCount > oCount)
+            else if (xCount < oCount)
             {
                 if (symbol == 'X')
                 {
@@ -495,7 +508,7 @@ namespace KTANE_Solver
             return new int[] { -1 };
         }
 
-        private bool MakesTicTacToe(int rowNum, int colNum)
+        public bool MakesTicTacToe(int rowNum, int colNum)
         {
             PrintGrid();
 
@@ -585,7 +598,13 @@ namespace KTANE_Solver
 
         public bool SolvedModule()
         {
-            return XCount() + OCount() == 9;
+            int symbolCount = XCount() + OCount();
+            return symbolCount == 9 || symbolCount == 8;
+        }
+
+        private void DebugLinesForCurrentRow(List<int> row)
+        { 
+            PrintDebugLine($"Possbile numbers for row: " + string.Join(", ", row) + "\n");
         }
     }
 }
