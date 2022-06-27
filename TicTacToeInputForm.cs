@@ -17,7 +17,6 @@ namespace KTANE_Solver
         private TicTacToeForm initialForm;
         public TicTacToeInputForm(TicTacToe module, TicTacToeSymbolForm symbolForm, TicTacToeForm initialForm) : base()
         {
-
             InitializeComponent();
 
             this.module = module;
@@ -97,40 +96,20 @@ namespace KTANE_Solver
             int index = -1;
             for (int i = 0; i < 9; i++)
             {
-                if (buttonArr[i].BackColor == Color.Red);
-                index = i;
-                break;
+                if (buttonArr[i].BackColor == Color.Red)
+                {
+                    index = i;
+                    break;
+                }
             }
 
             module.SetSymbolPosition(index / 3, index % 3, symbolComboBox.Text[0]);
 
-            int [] answer = module.Solve(symbolComboBox.Text[0]);
+            this.Hide();
 
-            if (!module.SolvedModule())
-            {
-                if (answer.Length == 1)
-                {
-                    UpdateForm();
-                }
+            symbolForm.UpdateForm();
 
-                else
-                {
-                    TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
-                    answerForm.ShowDialog();
-
-                    this.Hide();
-                    symbolForm.UpdateForm();
-                    symbolForm.Show();
-                }
-            }
-
-            else
-            {
-                this.Hide();
-                initialForm.UpdateForm();
-                initialForm.Show();
-            }
-
+            symbolForm.Show();
         }
     }
 }

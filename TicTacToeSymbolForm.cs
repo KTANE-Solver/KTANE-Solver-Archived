@@ -43,7 +43,13 @@ namespace KTANE_Solver
         {
             int[] answer = module.Solve(symbolComboBox.Text[0]);
 
-            if (!module.SolvedModule())
+            if (answer.Length != 1)
+            {
+                TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
+                answerForm.ShowDialog();
+            }
+
+            if (!module.SolvedModule(answer.Length == 1))
             {
                 if (answer.Length == 1)
                 {
@@ -54,8 +60,6 @@ namespace KTANE_Solver
 
                 else
                 {
-                    TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
-                    answerForm.ShowDialog();
                     UpdateForm();
                 }
             }

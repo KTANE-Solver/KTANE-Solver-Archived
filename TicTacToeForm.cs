@@ -64,19 +64,26 @@ namespace KTANE_Solver
             module.FindStartingRow();
             int [] answer = module.Solve(symbolComboBox.Text[0]);
 
-
-            this.Hide();
-
-            if (answer.Length == 1)
+            if (!module.SolvedModule(answer.Length == 1))
             {
-                tileSelectionForm.Show();
+                this.Hide();
+
+                if (answer.Length != 1)
+                {
+                    TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
+                    answerForm.ShowDialog();
+                    symbolForm.Show();
+                }
+
+                else
+                {
+                    tileSelectionForm.Show();
+                }
             }
 
             else
-            {
-                TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
-                answerForm.ShowDialog();
-                symbolForm.Show();
+            { 
+                UpdateForm();
             }
         }
 

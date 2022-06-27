@@ -12,8 +12,11 @@ namespace KTANE_Solver
         public int currentRow;
         private char targetSymbol;
         private int[] targetCoordiantes;
+        private int tilesCovered;
+
         public TicTacToe(Bomb bomb, StreamWriter logFileWriter, char[,] grid) : base(bomb, logFileWriter, "Tic Tac Toe")
-        { 
+        {
+            tilesCovered = 0;
             this.grid = grid;
         }
 
@@ -263,7 +266,7 @@ namespace KTANE_Solver
             }
 
 
-            else if (xCount < oCount)
+            else if (xCount == oCount)
             {
                 if (symbol == 'X')
                 {
@@ -567,10 +570,16 @@ namespace KTANE_Solver
             PrintDebugLine("");
         }
 
-        public bool SolvedModule()
+        public bool SolvedModule(bool doublePass)
         {
             int symbolCount = XCount() + OCount();
-            return symbolCount == 9 || symbolCount == 8;
+
+            if (doublePass)
+            { 
+                return symbolCount == 9 || symbolCount == 8;
+            }
+
+            return symbolCount == 9;
         }
 
         private void DebugLinesForCurrentRow(List<int> row)
