@@ -10,6 +10,8 @@ namespace KTANE_Solver
     {
         private char[,] grid;
         public int currentRow;
+        private char targetSymbol;
+
         public TicTacToe(Bomb bomb, StreamWriter logFileWriter, char[,] grid) : base(bomb, logFileWriter, "Tic Tac Toe")
         { 
             this.grid = grid;
@@ -101,10 +103,9 @@ namespace KTANE_Solver
             PrintDebugLine($"Starting Row: {currentRow}\n");
         }
 
-        public int[] Solve(char symbol)
+        private int[] FindSymbolToPlace(char symbol)
         {
-            PrintDebugLine($"Attempting to place {symbol}");
-
+            PrintDebugLine($"Current Row is now {currentRow}\n");
             char targetSymbol = PlaceSymbol(symbol);
 
             PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
@@ -131,6 +132,8 @@ namespace KTANE_Solver
                 PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
 
                 targetCoordinates = NumberIsInGrid(targetSymbol);
+
+                grid[targetCoordinates[0], targetCoordinates[1]] = symbol;
             }
 
             PrintDebugLine("Checking for Tic Tac Toe...\n");
@@ -142,60 +145,39 @@ namespace KTANE_Solver
                 return new int[] { targetCoordinates[0], targetCoordinates[1], symbol };
             }
 
-            PrintDebugLine($"{symbol} made Tic Tac at {targetSymbol}. Changing symbol to {GetOppositeSymbol(symbol)}");
-
             grid[targetCoordinates[0], targetCoordinates[1]] = targetSymbol;
+
+            return new int[] { -1 };
+        }
+
+        public int[] Solve(char symbol)
+        {
+            int [] answer = FindSymbolToPlace(symbol);
+
+
+            if (answer.Length == 2)
+            {
+                return answer;
+            }
+
+             PrintDebugLine($"{symbol} made Tic Tac at {targetSymbol}. Changing symbol to {GetOppositeSymbol(symbol)}");
 
             symbol = GetOppositeSymbol(symbol);
 
-            PrintDebugLine($"Starting Row is now {currentRow}");
+            answer = FindSymbolToPlace(symbol);
 
-            targetSymbol = PlaceSymbol(symbol);
-
-            PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
-
-            targetCoordinates = NumberIsInGrid(targetSymbol);
-
-            while (targetCoordinates.Length == 1)
+            if (answer.Length == 2)
             {
-                PrintDebugLine($"{targetSymbol} was not found in grid");
-
-                currentRow++;
-
-                currentRow %= 10;
-
-                if (currentRow == 0)
-                {
-                    currentRow++;
-                }
-
-                PrintDebugLine($"Starting row is now {currentRow}");
-
-                targetSymbol = PlaceSymbol(symbol);
-
-                PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
-
-                targetCoordinates = NumberIsInGrid(targetSymbol);
-            }
-
-            PrintDebugLine("Checking for Tic Tac Toe...\n");
-
-            if (!MakesTicTacToe(targetCoordinates[0], targetCoordinates[1]))
-            {
-                PrintDebugLine($"No Tic Tac Toe was made. Passing once and placing {symbol} at {targetSymbol}");
-
                 ShowAnswer("Pass", true);
-                currentRow++;
-                return new int[] { targetCoordinates[0], targetCoordinates[1], symbol };
+
             }
 
-            grid[targetCoordinates[0], targetCoordinates[1]] = targetSymbol;
+            else
+            {
+                ShowAnswer("Dobule Pass", true);
+            }
 
-            PrintDebugLine($"{symbol} made Tic Tac Toe at {targetSymbol}. Passing twice and awaiting given symbol\n");
-            ShowAnswer("Double Pass", true);
-            currentRow++;
-            return new int[] { -1 };
-
+            return answer;
         }
 
         public void SetSymbolPosition(int rowNum, int colNum, char target)
@@ -581,7 +563,7 @@ namespace KTANE_Solver
             return false;
         }
 
-        private void PrintGrid()
+        public void PrintGrid()
         {
             for (int i = 0; i < 3; i++)
             {

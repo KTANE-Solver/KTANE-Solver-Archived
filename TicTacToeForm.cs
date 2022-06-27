@@ -16,6 +16,7 @@ namespace KTANE_Solver
         public TicTacToeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base (bomb, logFileWriter, moduleSelectionForm, "Tic Tac Toe", false)
         {
             InitializeComponent();
+            UpdateForm();
         }
 
         public void UpdateForm()
@@ -44,8 +45,8 @@ namespace KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
             string topRow = topRowTextBox.Text.ToUpper();
-            string middleRow = topRowTextBox.Text.ToUpper();
-            string bottomRow = topRowTextBox.Text.ToUpper();
+            string middleRow = middleRowTextBox.Text.ToUpper();
+            string bottomRow = bottomRowTextBox.Text.ToUpper();
 
             if (!ValidRow(topRow) || !ValidRow(middleRow) || !ValidRow(bottomRow))
             {
@@ -59,12 +60,23 @@ namespace KTANE_Solver
             TicTacToeInputForm tileSelectionForm = new TicTacToeInputForm(module, symbolForm, this);
             symbolForm.InitaializeForm(module, tileSelectionForm, this);
 
+            module.PrintGrid();
+            module.FindStartingRow();
             int [] answer = module.Solve(symbolComboBox.Text[0]);
+
+
+            this.Hide();
 
             if (answer.Length == 1)
             {
-                this.Hide();
                 tileSelectionForm.Show();
+            }
+
+            else
+            {
+                TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
+                answerForm.ShowDialog();
+                symbolForm.Show();
             }
         }
 
@@ -78,7 +90,12 @@ namespace KTANE_Solver
 
             foreach (char c in text)
             {
-                if (c != 88 && c != 79 && !(c <= 49 && c >= 57))
+                if (c >= 49 && c <= 57 || c == 88 || c == 79)
+                {
+                    continue;
+                }
+
+                else
                 {
                     ShowErrorMessage("Text boxes can only contain caracheters X, O, and the digits between 1-9");
                     return false;

@@ -36,7 +36,7 @@ namespace KTANE_Solver
             bottomMiddleButton.Click += Tile_Click;
             bottomRightButton.Click += Tile_Click;
 
-            
+            UpdateForm();
         }
 
         public void UpdateForm()
@@ -115,6 +115,9 @@ namespace KTANE_Solver
 
                 else
                 {
+                    TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
+                    answerForm.ShowDialog();
+
                     this.Hide();
                     symbolForm.UpdateForm();
                     symbolForm.Show();

@@ -27,6 +27,7 @@ namespace KTANE_Solver
             this.module = module;
             this.initialForm = initialForm;
             this.tileSelectionForm = tileSelectionForm;
+            UpdateForm();
         }
 
         public void UpdateForm()
@@ -53,6 +54,8 @@ namespace KTANE_Solver
 
                 else
                 {
+                    TicTacToeAnswerForm answerForm = new TicTacToeAnswerForm(answer[0], answer[1]);
+                    answerForm.ShowDialog();
                     UpdateForm();
                 }
             }
