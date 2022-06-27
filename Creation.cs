@@ -20,7 +20,6 @@ namespace KTANE_Solver
 
         private int permutation;
 
-        //directions (Lifeform)
         private List<LifeForm []> directions;
         private List<LifeForm [][]> brokenUpDirections;
 
