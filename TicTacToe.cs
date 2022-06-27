@@ -11,7 +11,7 @@ namespace KTANE_Solver
         private char[,] grid;
         public int currentRow;
         private char targetSymbol;
-
+        private int[] targetCoordiantes;
         public TicTacToe(Bomb bomb, StreamWriter logFileWriter, char[,] grid) : base(bomb, logFileWriter, "Tic Tac Toe")
         { 
             this.grid = grid;
@@ -67,37 +67,22 @@ namespace KTANE_Solver
             {
                 PrintDebugLine("More unlit indicators than lit");
 
-                if (row[0] < row[1])
-                {
-                    currentRow = row[0];
-                }
+                currentRow = row.Min();
 
-                else
-                {
-                    currentRow = row[1];
-                }
             }
 
             else if (Bomb.LitIndicatorsList.Count > Bomb.UnlitIndicatorsList.Count)
             {
                 PrintDebugLine("More lit indicators than unlit");
 
-                if (row[0] > row[1])
-                {
-                    currentRow = row[0];
-                }
-
-                else
-                {
-                    currentRow = row[1];
-                }
+                currentRow = row.Max();
             }
 
             else
             {
                 PrintDebugLine("Even number of lit and unlit indicators");
 
-                currentRow = (row[0] + row[1]) / 2;
+                currentRow = row.Sum() / row.Count();
             }
 
             PrintDebugLine($"Starting Row: {currentRow}\n");
@@ -106,15 +91,15 @@ namespace KTANE_Solver
         private int[] FindSymbolToPlace(char symbol)
         {
             PrintDebugLine($"Current Row is now {currentRow}\n");
-            char targetSymbol = PlaceSymbol(symbol);
+            targetSymbol = PlaceSymbol(symbol);
 
             PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
 
-            int[] targetCoordinates = NumberIsInGrid(targetSymbol);
+             targetCoordiantes = NumberIsInGrid(targetSymbol);
 
-            while (targetCoordinates.Length == 1)
+            while (targetCoordiantes.Length == 1)
             {
-                PrintDebugLine($"{targetSymbol} was not found in grid");
+                PrintDebugLine($"{targetSymbol} was not found in grid\n");
 
                 currentRow++;
 
@@ -131,21 +116,21 @@ namespace KTANE_Solver
 
                 PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
 
-                targetCoordinates = NumberIsInGrid(targetSymbol);
-
-                grid[targetCoordinates[0], targetCoordinates[1]] = symbol;
+                targetCoordiantes = NumberIsInGrid(targetSymbol);
             }
+
+            grid[targetCoordiantes[0], targetCoordiantes[1]] = symbol;
 
             PrintDebugLine("Checking for Tic Tac Toe...\n");
 
-            if (!MakesTicTacToe(targetCoordinates[0], targetCoordinates[1]))
+            if (!MakesTicTacToe(targetCoordiantes[0], targetCoordiantes[1]))
             {
                 PrintDebugLine($"No Tic Tac Toe was made. Placing {symbol} at {targetSymbol}");
                 currentRow++;
-                return new int[] { targetCoordinates[0], targetCoordinates[1], symbol };
+                return new int[] { targetCoordiantes[0], targetCoordiantes[1], symbol };
             }
 
-            grid[targetCoordinates[0], targetCoordinates[1]] = targetSymbol;
+            grid[targetCoordiantes[0], targetCoordiantes[1]] = targetSymbol;
 
             return new int[] { -1 };
         }
