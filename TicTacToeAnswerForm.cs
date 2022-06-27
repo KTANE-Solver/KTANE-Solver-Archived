@@ -14,7 +14,10 @@ namespace KTANE_Solver
     {
         public TicTacToeAnswerForm(int row, int column)
         {
-            int index = (row + 1) * 2 + column + 1; 
+            row++;
+            column++;
+
+            int index = (row - 1) * 3 + column; 
             InitializeComponent();
             button1.Enabled = false;
             button2.Enabled = false;

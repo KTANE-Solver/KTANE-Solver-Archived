@@ -127,7 +127,7 @@ namespace KTANE_Solver
             {
                 PrintDebugLine($"No Tic Tac Toe was made. Placing {symbol} at {targetSymbol}");
                 currentRow++;
-                return new int[] { targetCoordiantes[0], targetCoordiantes[1], symbol };
+                return new int[] { targetCoordiantes[0], targetCoordiantes[1]};
             }
 
             grid[targetCoordiantes[0], targetCoordiantes[1]] = targetSymbol;
@@ -138,7 +138,6 @@ namespace KTANE_Solver
         public int[] Solve(char symbol)
         {
             int [] answer = FindSymbolToPlace(symbol);
-
 
             if (answer.Length == 2)
             {
@@ -481,6 +480,7 @@ namespace KTANE_Solver
 
             List<char> row = new List<char>();
             int xCount;
+            int oCount;
             //horizontal
                 row.Clear();
                 for (int j = 0; j < 3; j++)
@@ -489,8 +489,9 @@ namespace KTANE_Solver
                 }
 
                 xCount = row.Where(x => x.Equals('X')).Count();
+                oCount = row.Where(x => x.Equals('O')).Count();
 
-                if (xCount == 0 || xCount == 3)
+            if (oCount == 3 || xCount == 3)
                 {
                     return true;
                 }
@@ -503,8 +504,9 @@ namespace KTANE_Solver
                 }
 
                 xCount = row.Where(x => x.Equals('X')).Count();
+                oCount = row.Where(x => x.Equals('O')).Count();
 
-                if (xCount == 0 || xCount == 3)
+            if (oCount == 3 || xCount == 3)
                 {
                     return true;
                 }
@@ -521,8 +523,9 @@ namespace KTANE_Solver
                 }
 
                 xCount = row.Where(x => x.Equals('X')).Count();
+                oCount = row.Where(x => x.Equals('O')).Count();
 
-                if (xCount == 0 || xCount == 3)
+                if (oCount == 3 || xCount == 3)
                 {
                     return true;
                 }
@@ -538,8 +541,9 @@ namespace KTANE_Solver
                 }
 
                 xCount = row.Where(x => x.Equals('X')).Count();
+                oCount = row.Where(x => x.Equals('O')).Count();
 
-                if (xCount == 0 || xCount == 3)
+                if (oCount == 3 || xCount == 3)
                 {
                     return true;
                 }
@@ -560,7 +564,7 @@ namespace KTANE_Solver
                 PrintDebugLine("");
             }
 
-            PrintDebugLine("\n");
+            PrintDebugLine("");
         }
 
         public bool SolvedModule()

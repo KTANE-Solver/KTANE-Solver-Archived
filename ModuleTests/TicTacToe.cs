@@ -92,6 +92,16 @@ namespace ModuleTests
 
             Assert.IsTrue(module.MakesTicTacToe(2, 0));
 
+            //test 1
+            grid = new char[,] { { 'O', 'O', 'X' },
+                                 { 'X', '6', 'O'},
+                                 { '7', '8', 'X' },
+            };
+
+            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            Assert.IsFalse(module.MakesTicTacToe(0, 1));
+
+
             streamWriter.Close();
         }
 
