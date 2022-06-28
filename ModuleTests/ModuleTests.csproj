@@ -50,6 +50,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColoredSquaresTest.cs" />
     <Compile Include="WireSequence.cs" />
     <Compile Include="FastMath.cs" />
     <Compile Include="Listening.cs" />

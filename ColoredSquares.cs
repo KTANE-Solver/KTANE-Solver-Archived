@@ -21,7 +21,7 @@ namespace KTANE_Solver
             White,
         }
 
-        public Color[,] grid { get; }
+        public Color[,] grid;
 
         public ColoredSquares(Color[,] grid, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Colored Squares")
         {
@@ -37,30 +37,30 @@ namespace KTANE_Solver
             int greenColor = ColorNum(Color.Green);
             int magentaColor = ColorNum(Color.Magenta);
 
-            int smallest = blueColor;
-            Color color = Color.Blue;
+            PrintDebugLine($"Blue Num: {blueColor}");
+            PrintDebugLine($"Red Num: {redColor}");
+            PrintDebugLine($"Yellow Num: {yellowColor}");
+            PrintDebugLine($"Green Num: {greenColor}");
+            PrintDebugLine($"Magenta Num: {magentaColor}\n");
 
-            if (smallest > redColor)
-            {
-                color = Color.Red;
-                smallest = redColor;
-            }
 
-            if (smallest > yellowColor)
-            {
-                color = Color.Yellow;
-                smallest = yellowColor;
-            }
+            List<KeyValuePair<int, Color>> list = new List<KeyValuePair<int, Color>>();
+            list.Add(new KeyValuePair<int, Color>(blueColor, Color.Blue));
+            list.Add(new KeyValuePair<int, Color>(redColor, Color.Red));
+            list.Add(new KeyValuePair<int, Color>(yellowColor, Color.Yellow));
+            list.Add(new KeyValuePair<int, Color>(greenColor, Color.Green));
+            list.Add(new KeyValuePair<int, Color>(magentaColor, Color.Magenta));
 
-            if (smallest > greenColor)
-            {
-                color = Color.Green;
-                smallest = greenColor;
-            }
+            int smallest = list[0].Key;
+            Color color = list[0].Value;
 
-            if (smallest > magentaColor)
+            foreach (KeyValuePair<int, Color> kv in list)
             {
-                color = Color.Magenta;
+                if (smallest > kv.Key)
+                {
+                    smallest = kv.Key;
+                    color = kv.Value;
+                }
             }
 
             ShowAnswer("" + color, true);
@@ -70,9 +70,25 @@ namespace KTANE_Solver
             return color;
         }
 
+        public Color DebugSolve(Color color)
+        {
+            Color answer = FindButtonsToPress(color);
+
+            FillWhiteSquares(answer);
+
+            PrintGrid();
+
+            return answer;
+        }
+
         public Color Solve(Color color)
         {
             Color answer = FindButtonsToPress(color);
+            
+            FillWhiteSquares(answer);
+
+            PrintGrid();
+
             ShowAnswer("" + answer, true);
 
             return answer;
@@ -80,55 +96,57 @@ namespace KTANE_Solver
 
         private void FillWhiteSquares(Color color)
         {
+            List<Color> arr = new List<Color>();
+
             if (color == Color.Row)
             {
-                bool foundWhite = true;
-                int row = 0;
+                int index = -1;
 
-                while (!foundWhite)
+                for (int i = 0; i < 4; i++)
                 {
-                    for (int i = 0; i < 4; i++)
+                    arr.Clear();
+
+                    index = i;
+
+                    arr.AddRange(new Color[] { grid[i, 0], grid[i, 1], grid[i, 2], grid[i, 3] });
+
+                    bool foundNoWhite = arr.Count(x => x == Color.White) != 4;
+
+                    if (foundNoWhite)
                     {
-                        foundWhite = grid[row, i] == Color.White;
-
-                        if (!foundWhite)
-                        {
-                            break;
-                        }
-
-                        row++;
+                        break;
                     }
                 }
 
                 for (int i = 0; i < 4; i++)
                 {
-                    grid[row, i] = Color.White;
+                    grid[index, i] = Color.White;
                 }
             }
 
             else if (color == Color.Column)
             {
-                bool foundWhite = true;
-                int column = 0;
+                int index = -1;
 
-                while (!foundWhite)
+                for (int i = 0; i < 4; i++)
                 {
-                    for (int i = 0; i < 4; i++)
+                    arr.Clear();
+
+                    index = i;
+
+                    arr.AddRange(new Color[] { grid[0, i], grid[1, i], grid[2, i], grid[3, i] });
+
+                    bool foundNoWhite = arr.Count(x => x == Color.White) != 4;
+
+                    if (foundNoWhite)
                     {
-                        foundWhite = grid[i, column] == Color.White;
-
-                        if (!foundWhite)
-                        {
-                            break;
-                        }
-
-                        column++;
+                        break;
                     }
                 }
 
                 for (int i = 0; i < 4; i++)
                 {
-                    grid[i, column] = Color.White;
+                    grid[i, index] = Color.White;
                 }
             }
 
@@ -149,7 +167,11 @@ namespace KTANE_Solver
 
         private Color FindButtonsToPress(Color color)
         {
-            switch (ColorNum(Color.White))
+            int whiteNum = ColorNum(Color.White);
+
+            PrintDebugLine($"White Num: {whiteNum}\n");
+
+            switch (whiteNum)
             {
                 case 1:
                     if (color == Color.Red)
@@ -207,15 +229,15 @@ namespace KTANE_Solver
 
                     if (color == Color.Magenta)
                     {
-                        return Color.Column;
+                        return Color.Red;
                     }
 
                     if (color == Color.Row)
                     {
-                        return Color.Yellow;
+                        return Color.Column;
                     }
 
-                    return Color.Magenta;
+                    return Color.Yellow;
                 case 3:
                     if (color == Color.Red)
                     {
@@ -578,7 +600,7 @@ namespace KTANE_Solver
 
                     return Color.Red;
 
-                default:
+                case 14:
                     if (color == Color.Red)
                     {
                         return Color.Red;
@@ -610,6 +632,14 @@ namespace KTANE_Solver
                     }
 
                     return Color.Column;
+
+                default:
+                    if (color == Color.Red || color == Color.Green || color == Color.Magenta || color == Color.Column)
+                    {
+                        return Color.Column;
+                    }
+
+                    return Color.Row;
             }
         }
 
@@ -626,6 +656,21 @@ namespace KTANE_Solver
             }
 
             return num;
+        }
+
+        public void PrintGrid()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                     PrintDebug(grid[i, j].ToString()[0] + " ");
+                }
+
+                PrintDebugLine("");
+            }
+
+            PrintDebugLine("");
         }
     }
 }
