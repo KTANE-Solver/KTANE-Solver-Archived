@@ -16,16 +16,16 @@ namespace KTANE_Solver
         //**FIELDS**
 
         //goal (LifeForm)
-        private LifeForm goal;
+        public LifeForm goal;
 
         private int permutation;
 
         //directions (Lifeform)
-        private List<LifeForm []> directions;
-        private List<LifeForm [][]> brokenUpDirections;
+        private List<LifeForm[]> directions;
+        public List<LifeForm[][]> brokenUpDirections;
 
 
-        public int DirectionCount { get { return brokenUpDirections.Count;  } }
+        public int DirectionCount { get { return brokenUpDirections.Count; } }
 
         private Weather startingWeather;
 
@@ -33,22 +33,29 @@ namespace KTANE_Solver
 
         private string startingElementPostion;
 
-        //a list of all lifeforms
-        private Dictionary<string, LifeForm> lifeFormList;
+        private string upperLeftElement;
+        private string upperRightElement;
+        private string lowerLeftElement;
+        private string lowerRightElement;
 
-        public Creation(Bomb bomb, StreamWriter logFileWriter, Weather startingWeather, string upperLeftElement, string lowerLeftElement) : base(bomb, logFileWriter, "Creation")
+        //a list of all lifeforms
+        public Dictionary<string, LifeForm> lifeFormList;
+
+        public Creation(Bomb bomb, StreamWriter logFileWriter, Weather startingWeather, string upperLeftElement, string lowerLeftElement, string upperRightElement, string lowerRightElement) : base(bomb, logFileWriter, "Creation")
         {
             lifeFormList = new Dictionary<string, LifeForm>();
             directions = new List<LifeForm[]>();
+            brokenUpDirections = new List<LifeForm[][]>();
 
             this.startingWeather = startingWeather;
-            this.startingElementPostion = startingElementPostion;
-
-            CreateLifeForms();
+            this.upperLeftElement = upperLeftElement;
+            this.upperRightElement = upperRightElement;
+            this.lowerLeftElement = lowerLeftElement;
+            this.lowerRightElement = lowerRightElement;
         }
 
         public enum Weather
-        { 
+        {
             Rain,
             Wind,
             HeatWave,
@@ -56,7 +63,19 @@ namespace KTANE_Solver
             Clear
         }
 
-        public Dictionary<string, LifeForm> CreateLifeForms()
+        public void SetUpModule()
+        { 
+            CreateLifeForms();
+            FindStartingElement();
+            FindStartingElementPosition();
+            FindPermutation();
+            FindGoal();
+            FindRouteToGoal(goal);
+            SortDirections();
+            BreakUpDirections();
+        }
+
+        private Dictionary<string, LifeForm> CreateLifeForms()
         {
             LifeForm earth = new LifeForm("Earth", 0, null, null);
             LifeForm air = new LifeForm("Air", 0, null, null);
@@ -88,7 +107,7 @@ namespace KTANE_Solver
             LifeForm lizard = new LifeForm("Lizard", 4, swamp, egg);
             LifeForm seeds = new LifeForm("Seeds", 4, weeds, egg);
             LifeForm turtle = new LifeForm("Turtle", 4, water, egg);
-            LifeForm mushroom = new LifeForm("Mushroom", 4, water, egg);
+            LifeForm mushroom = new LifeForm("Mushroom", 4, earth, weeds);
             LifeForm moss = new LifeForm("Moss", 4, swamp, weeds);
             LifeForm worm = new LifeForm("Worm", 4, swamp, bacteria);
             LifeForm plankton = new LifeForm("Plankton", 4, water, bacteria);
@@ -142,24 +161,63 @@ namespace KTANE_Solver
             {
                 case Weather.Rain:
                     startingElement = lifeFormList["Water"];
+                    PrintDebugLine("Starting Element: Water\n");
                     break;
 
                 case Weather.Wind:
-                    startingElement = lifeFormList["Wind"];
+                    startingElement = lifeFormList["Air"];
+                    PrintDebugLine("Starting Element: Air\n");
                     break;
 
                 case Weather.HeatWave:
                     startingElement = lifeFormList["Fire"];
+                    PrintDebugLine("Starting Element: Fire\n");
                     break;
 
                 case Weather.MeteorShower:
-                    startingElement = lifeFormList["Wind"];
+                    startingElement = lifeFormList["Earth"];
+                    PrintDebugLine("Starting Element: Earth\n");
                     break;
 
                 default:
                     startingElement = null;
+                    PrintDebugLine("Starting Element: None\n");
                     break;
             }
+        }
+
+        private void FindStartingElementPosition()
+        {
+            if (startingElement == null)
+            {
+                PrintDebugLine("Starting Element Position: None\n");
+                return;
+            }
+
+            string startingElementStr = startingElement.Name;
+
+            if (startingElementStr == upperLeftElement)
+            {
+                startingElementPostion = "Upper Left";
+            }
+
+            else if (startingElementStr == upperRightElement)
+            {
+                startingElementPostion = "Upper Right";
+            }
+
+            else if (startingElementStr == lowerLeftElement)
+            {
+                startingElementPostion = "Bottom Left";
+            }
+
+            else if(startingElementStr == lowerRightElement)
+            { 
+                startingElementPostion = "Bottom Right";
+            }
+
+            PrintDebugLine($"Starting Element Position: {startingElementPostion}\n");
+
         }
 
 
@@ -265,14 +323,14 @@ namespace KTANE_Solver
                         break;
                 }
             }
+
+            PrintDebugLine($"Permutation: {permutation}\n");
         }
 
         private void FindGoal()
         {
-            
-
             //Bomb has 3 or more battery holders:
-            if (Bomb.Battery >= 3)
+            if (Bomb.BatteryHolder >= 3)
             {
                 //If any lit indicators are present, AND all batteries are Double A
                 if (Bomb.LitIndicatorsList.Count > 0 && Bomb.BatteryHolder * 2 == Bomb.AABattery)
@@ -407,7 +465,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
             }
 
             //Bomb has 2 or fewer battery holders:
@@ -512,6 +569,8 @@ namespace KTANE_Solver
                 }
 
             }
+
+            PrintDebugLine($"Goal: {goal.Name}\n");
         }
 
         private void FindRouteToGoal(LifeForm lifeForm)
@@ -538,7 +597,7 @@ namespace KTANE_Solver
 
         private void SortDirections()
         {
-            //have directions go from lowest generation to highest
+            //have directions go from highest generation to lowest
 
             bool notSorted;
             do
@@ -547,12 +606,12 @@ namespace KTANE_Solver
 
                 for (int i = 0; i < directions.Count - 1; i++)
                 {
-                    for (int j = 1; j < directions.Count; j++)
+                    for (int j = i + 1; j < directions.Count; j++)
                     {
                         LifeForm[] leftLifeForm = directions[i];
                         LifeForm[] rightLifeForm = directions[j];
 
-                        if (leftLifeForm[0].Generiation > rightLifeForm[0].Generiation)
+                        if (leftLifeForm[0].Generiation < rightLifeForm[0].Generiation)
                         {
                             notSorted = true;
                             directions[j] = leftLifeForm;
@@ -572,14 +631,12 @@ namespace KTANE_Solver
 
         private void BreakUpDirections()
         {
-            List<LifeForm[]> segment = new List<LifeForm[]>();
-
             do
             {
                 int endIndex = 0;
                 for (int i = 0; i < directions.Count; i++)
                 {
-                    if (directions[i][0].Generiation == 0)
+                    if (directions[i][1].Generiation == 0 || directions[i][2].Generiation == 0)
                     {
                         endIndex = i;
                         break;
@@ -599,18 +656,23 @@ namespace KTANE_Solver
                     {
                         newArray.Add(directions[i]);
                     }
+
+                    newArray.Reverse();
                     brokenUpDirections.Add(newArray.ToArray());
                 }
 
-                for (int i = endIndex; i >= 0; i--)
+
+                for (int i = 0; i <= endIndex; i++)
                 {
-                    directions.RemoveAt(i);
+                    directions.RemoveAt(0);
                 }
 
             } while (directions.Count != 0);
+
+            brokenUpDirections.Reverse();
         }
 
-        public void Solve(Weather currentWeather, int index)
+        public string SolveTest(Weather currentWeather, int index)
         {
             string affectedElement = null;
             string newElement = null;
@@ -658,7 +720,62 @@ namespace KTANE_Solver
                 answerSegments.Add($"{element1} + {element2}");
             }
 
-            string.Join(",\n", answerSegments);
+            return string.Join(",\n", answerSegments);
+        }
+
+        public void Solve(Weather currentWeather, int index)
+        {
+            string affectedElement = null;
+            string newElement = null;
+
+            PrintDebugLine("Current Weather: " + currentWeather.ToString());
+
+            switch (currentWeather)
+            {
+                case Weather.HeatWave:
+                    affectedElement = "Fire";
+                    newElement = "Water";
+                    break;
+
+                case Weather.Wind:
+                    affectedElement = "Air";
+                    newElement = "Earth";
+                    break;
+
+                case Weather.MeteorShower:
+                    affectedElement = "Earth";
+                    newElement = "Air";
+                    break;
+
+                case Weather.Rain:
+                    affectedElement = "Water";
+                    newElement = "Fire";
+                    break;
+            }
+
+            List<string> answerSegments = new List<string>();
+
+            foreach (LifeForm[] arr in brokenUpDirections[index])
+            {
+                string element1 = arr[1].Name;
+                string element2 = arr[2].Name;
+
+                if (element1 == affectedElement)
+                {
+                    element1 = newElement;
+                }
+
+                if (element2 == affectedElement)
+                {
+                    element2 = newElement;
+                }
+
+                answerSegments.Add($"{element1} + {element2}");
+            }
+
+
+
+             ShowAnswer($"\n" + string.Join(",\n", answerSegments), true);
         }
 
         public class LifeForm

@@ -22,47 +22,47 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
-            row1button1.Click += (Tile_Click);
-            row1button2.Click += (Tile_Click);
-            row1button3.Click += (Tile_Click);
-            row1button4.Click += (Tile_Click);
-            row1button5.Click += (Tile_Click);
-            row1button6.Click += (Tile_Click);
+            row1button1.Click += Tile_Click;
+            row1button2.Click += Tile_Click;
+            row1button3.Click += Tile_Click;
+            row1button4.Click += Tile_Click;
+            row1button5.Click += Tile_Click;
+            row1button6.Click += Tile_Click;
 
-            row2button1.Click += (Tile_Click);
-            row2button2.Click += (Tile_Click);
-            row2button3.Click += (Tile_Click);
-            row2button4.Click += (Tile_Click);
-            row2button5.Click += (Tile_Click);
-            row2button6.Click += (Tile_Click);
+            row2button1.Click += Tile_Click;
+            row2button2.Click += Tile_Click;
+            row2button3.Click += Tile_Click;
+            row2button4.Click += Tile_Click;
+            row2button5.Click += Tile_Click;
+            row2button6.Click += Tile_Click;
 
-            row3button1.Click += (Tile_Click);
-            row3button2.Click += (Tile_Click);
-            row3button3.Click += (Tile_Click);
-            row3button4.Click += (Tile_Click);
-            row3button5.Click += (Tile_Click);
-            row3button6.Click += (Tile_Click);
+            row3button1.Click += Tile_Click;
+            row3button2.Click += Tile_Click;
+            row3button3.Click += Tile_Click;
+            row3button4.Click += Tile_Click;
+            row3button5.Click += Tile_Click;
+            row3button6.Click += Tile_Click;
 
-            row4button1.Click += (Tile_Click);
-            row4button2.Click += (Tile_Click);
-            row4button3.Click += (Tile_Click);
-            row4button4.Click += (Tile_Click);
-            row4button5.Click += (Tile_Click);
-            row4button6.Click += (Tile_Click);
+            row4button1.Click += Tile_Click;
+            row4button2.Click += Tile_Click;
+            row4button3.Click += Tile_Click;
+            row4button4.Click += Tile_Click;
+            row4button5.Click += Tile_Click;
+            row4button6.Click += Tile_Click;
 
-            row5button1.Click += (Tile_Click);
-            row5button2.Click += (Tile_Click);
-            row5button3.Click += (Tile_Click);
-            row5button4.Click += (Tile_Click);
-            row5button5.Click += (Tile_Click);
-            row5button6.Click += (Tile_Click);
+            row5button1.Click += Tile_Click;
+            row5button2.Click += Tile_Click;
+            row5button3.Click += Tile_Click;
+            row5button4.Click += Tile_Click;
+            row5button5.Click += Tile_Click;
+            row5button6.Click += Tile_Click;
 
-            row6button1.Click += (Tile_Click);
-            row6button2.Click += (Tile_Click);
-            row6button3.Click += (Tile_Click);
-            row6button4.Click += (Tile_Click);
-            row6button5.Click += (Tile_Click);
-            row6button6.Click += (Tile_Click);
+            row6button1.Click += Tile_Click;
+            row6button2.Click += Tile_Click;
+            row6button3.Click += Tile_Click;
+            row6button4.Click += Tile_Click;
+            row6button5.Click += Tile_Click;
+            row6button6.Click += Tile_Click;
 
  
             UpdateForm(moduleSelection, logFileWriter);
