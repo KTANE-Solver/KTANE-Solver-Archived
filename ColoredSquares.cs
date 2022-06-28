@@ -21,7 +21,7 @@ namespace KTANE_Solver
             White,
         }
 
-        public Color[,] grid { get; }
+        public Color[,] grid;
 
         public ColoredSquares(Color[,] grid, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Colored Squares")
         {
@@ -43,31 +43,29 @@ namespace KTANE_Solver
             PrintDebugLine($"Green Num: {greenColor}");
             PrintDebugLine($"Magenta Num: {magentaColor}\n");
 
-            Dictionary<int, Color> dictionary = new Dictionary<int, Color>();
-            dictionary.Add(blueColor, Color.Blue);
-            dictionary.Add(redColor, Color.Red);
-            dictionary.Add(yellowColor, Color.Yellow);
-            dictionary.Add(greenColor, Color.Green);
-            dictionary.Add(magentaColor, Color.Magenta);
 
-            int smallest = int.MaxValue;
+            List<KeyValuePair<int, Color>> list = new List<KeyValuePair<int, Color>>();
+            list.Add(new KeyValuePair<int, Color>(blueColor, Color.Blue));
+            list.Add(new KeyValuePair<int, Color>(redColor, Color.Red));
+            list.Add(new KeyValuePair<int, Color>(yellowColor, Color.Yellow));
+            list.Add(new KeyValuePair<int, Color>(greenColor, Color.Green));
+            list.Add(new KeyValuePair<int, Color>(magentaColor, Color.Magenta));
 
-            Color color = Color.Blue;
+            int smallest = list[0].Key;
+            Color color = list[0].Value;
 
-            foreach (int key in dictionary.Keys)
+            foreach (KeyValuePair<int, Color> kv in list)
             {
-                if (smallest > key)
+                if (smallest > kv.Key)
                 {
-                    smallest = key;
-                    color = dictionary[key];
+                    smallest = kv.Key;
+                    color = kv.Value;
                 }
             }
 
             ShowAnswer("" + color, true);
 
             FillWhiteSquares(color);
-
-            PrintGrid();
 
             return color;
         }
@@ -112,9 +110,9 @@ namespace KTANE_Solver
 
                     arr.AddRange(new Color[] { grid[i, 0], grid[i, 1], grid[i, 2], grid[i, 3] });
 
-                    bool foundWhite = arr.Count(x => x == Color.White) > 0;
+                    bool foundNoWhite = arr.Count(x => x == Color.White) != 4;
 
-                    if (foundWhite)
+                    if (foundNoWhite)
                     {
                         break;
                     }
@@ -138,9 +136,9 @@ namespace KTANE_Solver
 
                     arr.AddRange(new Color[] { grid[0, i], grid[1, i], grid[2, i], grid[3, i] });
 
-                    bool foundWhite = arr.Count(x => x == Color.White) > 0;
+                    bool foundNoWhite = arr.Count(x => x == Color.White) != 4;
 
-                    if (foundWhite)
+                    if (foundNoWhite)
                     {
                         break;
                     }
