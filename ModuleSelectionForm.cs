@@ -51,6 +51,7 @@ namespace KTANE_Solver
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
         private ColorMathForm colorMathForm;
+        private CreationForm creationForm;
         private ComplicatedWiresForm complicatedWiresForm;
         private ConnectionCheckForm connectionCheckForm;
         private FastMathStage1Form fastMathForm;
@@ -498,6 +499,13 @@ namespace KTANE_Solver
                     fastMathForm.Show();
                     
                     break;
+                case "Creation":
+                    creationForm = new CreationForm(bomb, logFileWriter, this);
+
+                    creationForm.Show();
+                    
+                    break;
+
                 case "FizzBuzz":
                     if (fizzBuzzForm == null)
                     {

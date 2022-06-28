@@ -209,6 +209,12 @@
     <Compile Include="CreationForm.Designer.cs">
       <DependentUpon>CreationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreationOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreationOtherStageForm.Designer.cs">
+      <DependentUpon>CreationOtherStageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EdgeworkConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -636,6 +642,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreationForm.resx">
       <DependentUpon>CreationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreationOtherStageForm.resx">
+      <DependentUpon>CreationOtherStageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EdgeworkConfirmationForm.resx">
       <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
