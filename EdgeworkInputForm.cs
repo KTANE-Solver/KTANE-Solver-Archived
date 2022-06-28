@@ -102,13 +102,14 @@ namespace KTANE_Solver
             serialNumberTextBox.TabIndex = 1;
             batteryTextBox.TabIndex = 2;
             batteryHolderTextBox.TabIndex = 3;
-            dvidTextBox.TabIndex = 4;
-            parallelTextBox.TabIndex = 5;
-            psTextBox.TabIndex = 6;
-            rjTextBox.TabIndex = 7;
-            serialTextBox.TabIndex = 8;
-            stereoTextBox.TabIndex = 9;
-            submitButton.TabIndex = 10;
+            portPlateNumTextBox.TabIndex = 4;
+            dvidTextBox.TabIndex = 5;
+            parallelTextBox.TabIndex = 6;
+            psTextBox.TabIndex = 7;
+            rjTextBox.TabIndex = 8;
+            serialTextBox.TabIndex = 9;
+            stereoTextBox.TabIndex = 10;
+            submitButton.TabIndex = 11;
 
 
             //labels shouldn't be in the tab order
