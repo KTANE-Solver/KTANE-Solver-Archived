@@ -88,11 +88,7 @@ namespace KTANE_Solver
 
             CreationOtherStageForm stage2 = new CreationOtherStageForm(Bomb, LogFileWriter, module, this, ModuleSelectionForm);
 
-<<<<<<< HEAD
-            module = new Creation(Bomb, LogFileWriter, startingWeather, "", "");
-=======
             stage2.Show();
->>>>>>> Creation
         }
     }
 }

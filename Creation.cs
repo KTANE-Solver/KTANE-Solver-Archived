@@ -20,14 +20,9 @@ namespace KTANE_Solver
 
         private int permutation;
 
-<<<<<<< HEAD
-        private List<LifeForm []> directions;
-        private List<LifeForm [][]> brokenUpDirections;
-=======
         //directions (Lifeform)
         private List<LifeForm[]> directions;
         public List<LifeForm[][]> brokenUpDirections;
->>>>>>> Creation
 
 
         public int DirectionCount { get { return brokenUpDirections.Count; } }
