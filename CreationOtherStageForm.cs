@@ -29,7 +29,9 @@ namespace KTANE_Solver
         {
             this.stage = stage;
 
-            String[] weather = new string[] { "Rain", "Wind", "Heat Wave", "Meteor Shower" };
+            stageLabel.Text = "Stage: " + stage;
+
+            String[] weather = new string[] { "Rain", "Wind", "Heat Wave", "Meteor Shower", "Clear" };
 
             weatherComboBox.Items.Clear();
             weatherComboBox.Items.AddRange(weather);
@@ -39,7 +41,9 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Creation.Weather weather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weatherComboBox.Text.Trim());
+            string weatherStr = weatherComboBox.Text.Replace(" ", String.Empty);
+
+            Creation.Weather weather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weatherStr);
             module.Solve(weather, stage - 1);
 
             if (module.DirectionCount == stage)

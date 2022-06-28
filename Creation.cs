@@ -330,7 +330,7 @@ namespace KTANE_Solver
         private void FindGoal()
         {
             //Bomb has 3 or more battery holders:
-            if (Bomb.Battery >= 3)
+            if (Bomb.BatteryHolder >= 3)
             {
                 //If any lit indicators are present, AND all batteries are Double A
                 if (Bomb.LitIndicatorsList.Count > 0 && Bomb.BatteryHolder * 2 == Bomb.AABattery)
@@ -775,7 +775,7 @@ namespace KTANE_Solver
 
 
 
-             ShowAnswer($"Stage {index + 1}:" + string.Join(",\n", answerSegments), true);
+             ShowAnswer($"\n" + string.Join(",\n", answerSegments), true);
         }
 
         public class LifeForm

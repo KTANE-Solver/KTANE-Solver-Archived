@@ -26,7 +26,7 @@ namespace KTANE_Solver
             UpdateElementComboBox(bottomLeftComboBox);
             UpdateElementComboBox(bottomRightComboBox);
 
-            String[] weather = new string[] { "Rain", "Wind", "Heat Wave", "Meteor Shower" };
+            String[] weather = new string[] { "Rain", "Wind", "Heat Wave", "Meteor Shower", "Clear" };
 
             weatherComboBox.Items.Clear();
             weatherComboBox.Items.AddRange(weather);
@@ -61,9 +61,9 @@ namespace KTANE_Solver
             //make sure comboBoxes don't share element
 
             string upperLeft = upperLeftComboBox.Text;
-            string upperRight = upperLeftComboBox.Text;
-            string lowerLeft = upperLeftComboBox.Text;
-            string lowerRight = upperLeftComboBox.Text;
+            string upperRight = upperRightComboBox.Text;
+            string lowerLeft = bottomLeftComboBox.Text;
+            string lowerRight = bottomRightComboBox.Text;
 
             if (upperLeft == upperRight ||
                 upperLeft == lowerLeft ||
@@ -76,11 +76,19 @@ namespace KTANE_Solver
                 return;
             }
 
-            Creation.Weather startingWeather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weatherComboBox.Text.Trim());
+            string weather = weatherComboBox.Text.Replace(" ", String.Empty);
+
+            Creation.Weather startingWeather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weather);
 
             module = new Creation(Bomb, LogFileWriter, startingWeather, upperLeft, lowerLeft, upperRight, lowerRight);
             module.SetUpModule();
             module.Solve(startingWeather, 0);
+
+            this.Hide();
+
+            CreationOtherStageForm stage2 = new CreationOtherStageForm(Bomb, LogFileWriter, module, this, ModuleSelectionForm);
+
+            stage2.Show();
         }
     }
 }
