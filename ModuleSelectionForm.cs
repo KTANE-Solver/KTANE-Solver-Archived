@@ -51,11 +51,8 @@ namespace KTANE_Solver
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
         private ColorMathForm colorMathForm;
-<<<<<<< HEAD
         private CreationForm creationForm;
-=======
         private ColoredSquaresForm coloredSquaresForm;
->>>>>>> d22cca2d4d2d1433ac5a99a8f5535253aa05e363
         private ComplicatedWiresForm complicatedWiresForm;
         private ConnectionCheckForm connectionCheckForm;
         private FastMathStage1Form fastMathForm;
