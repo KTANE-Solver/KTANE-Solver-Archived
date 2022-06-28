@@ -88,6 +88,7 @@ namespace KTANE_Solver
 
             CreationOtherStageForm stage2 = new CreationOtherStageForm(Bomb, LogFileWriter, module, this, ModuleSelectionForm);
 
+
             stage2.Show();
         }
     }
