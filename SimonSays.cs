@@ -22,11 +22,10 @@ namespace KTANE_Solver
             this.lights = "";
         }
 
-        public void Solve(int stage, char newLight)
+        public string DebugSolve(char newLight)
         {
             lights += newLight;
 
-            PrintDebugLine($"Stage: {stage}\n");
 
             PrintDebugLine($"Vowel: {Bomb.HasVowel}\n");
 
@@ -161,7 +160,14 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer, true);
+            return answer;
+        }
+
+        public void Solve(int stage, char newLight)
+        {
+            PrintDebugLine($"Stage: {stage}\n");
+
+            ShowAnswer(DebugSolve(newLight), true);
         }
     }
 }
