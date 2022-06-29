@@ -169,12 +169,12 @@ namespace KTANE_Solver
 
 
                 default:
-                    for (int i = pinNum - 1; i >= halfPinNum; i--)
+                    for (int i = halfPinNum; i < pinList.Count; i++)
                     { 
                         answers.Add(ConvertPin(pinList[i]));
                     }
 
-                    for (int i = 0 ; i < halfPinNum; i++)
+                    for (int i = halfPinNum - 1; i >= 0 ; i--)
                     { 
                         answers.Add(ConvertPin(pinList[i]));
                     }
