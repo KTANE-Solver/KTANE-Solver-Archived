@@ -44,41 +44,47 @@ namespace KTANE_Solver
             string bottomLeft = bottomLeftTextBox.Text;
             string bottomRight = bottomRightTextBox.Text;
 
-            if (topLeft.Length != 2 || topRight.Length != 2 || bottomLeft.Length != 2 || bottomRight.Length != 2)
+            if (!ValidTextBox(topLeft) || !ValidTextBox(topRight) || !ValidTextBox(bottomLeft) || !ValidTextBox(bottomRight))
             {
-                ShowErrorMessage("Text boxes can only have 2 numbers");
                 return;
             }
 
-            int [] topLeftArr;
-            int[] topRightArr;
-            int[] bottomLeftArr;
-            int[] bottomRightArr;
-
-            if (topLeft[0] == topLeft[1] || topRight[0] == topRight[1] || bottomLeft[0] == bottomLeft[1] || bottomRight[0] == bottomRight[1])
-            {
-                ShowErrorMessage("Numbers in the same text box can't be the same");
-                return;
-            }
-
-            try
-            {
-                topLeftArr =  new int[] { int.Parse("" + topLeft[0]), int.Parse("" + topLeft[1]) };
-                topRightArr = new int[] { int.Parse("" + topRight[0]), int.Parse("" + topRight[1]) };
-                bottomLeftArr = new int[] { int.Parse("" + bottomLeft[0]), int.Parse("" + bottomLeft[1]) };
-                bottomRightArr = new int[] { int.Parse("" + bottomRight[0]), int.Parse("" + bottomRight[1]) };
-
-            }
-
-            catch
-            {
-                ShowErrorMessage("Text boxes can only have 2 numbers");
-                return;
-            }
+            int [] topLeftArr  = new int[] { int.Parse("" + topLeft[0]), int.Parse("" + topLeft[1]) };
+            int [] topRightArr = new int[] { int.Parse("" + topRight[0]), int.Parse("" + topRight[1]) };
+            int [] bottomLeftArr = new int[] { int.Parse("" + bottomLeft[0]), int.Parse("" + bottomLeft[1]) };
+            int [] bottomRightArr = new int[] { int.Parse("" + bottomRight[0]), int.Parse("" + bottomRight[1]) };
 
             ConnectionCheck module = new ConnectionCheck(topLeftArr, topRightArr, bottomLeftArr, bottomRightArr, Bomb, LogFileWriter);
             module.Solve();
             UpdateForm();
+        }
+
+        private bool ValidTextBox(string str)
+        {
+            if (str.Length != 2)
+            {
+                ShowErrorMessage("Text boxes can only have 2 numbers");
+                return false;
+            }
+
+            if (str[0] == str[1])
+            {
+                ShowErrorMessage("Numbers in the same text box can't be the same");
+                return false;
+            }
+
+            try
+            {
+                int.Parse("" + str[0]);
+                int.Parse("" + str[1]);
+            }
+            catch
+            {
+                ShowErrorMessage("Text boxes can only have 2 numbers");
+                return false;
+            }
+
+            return true;
         }
     }
 }
