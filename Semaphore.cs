@@ -50,20 +50,18 @@ namespace KTANE_Solver
                     mode = FlagMode.Number;
                 }
 
-                else
+                else if(mode == FlagMode.Letter && !LetterFlag(flag))
                 {
-                    if (mode == FlagMode.Letter && !LetterFlag(flag))
-                    {
-                        answer = flag;
-                        break;
-                    }
-
-                    else if (mode == FlagMode.Number && !NumberFlag(flag))
-                    {
-                        answer = flag;
-                        break;
-                    }
+                    answer = flag;
+                    break;
                 }
+
+                else if (mode == FlagMode.Number && !NumberFlag(flag))
+                {
+                    answer = flag;
+                    break;
+                }
+                
             }
 
             ShowAnswer($"{answer.leftState} {answer.rightState}", true);
