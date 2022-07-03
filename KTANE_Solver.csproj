@@ -299,6 +299,7 @@
     <Compile Include="MultiStageModuleForm.Designer.cs">
       <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screw.cs" />
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
     </Compile>
