@@ -9,7 +9,7 @@ namespace ModuleTests
     public class ShapeShiftTest
     {
         [TestMethod]
-        public void ()
+        public void TicketsInitialized()
         {
         }
     }
