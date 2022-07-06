@@ -25,13 +25,24 @@ namespace KTANE_Solver
             SetUpModule();
             currentTicket = FindStartingTicket(leftSideStartingPosition, rightSideStartingPosition);
             currentTicket.visitNum++;
+
+
         }
 
         public void Solve()
         {
             while (currentTicket.visitNum != 2)
             {
-                currentTicket = currentTicket.GetNextTicket();
+                PrintDebugLine($"Current Ticket {currentTicket.leftSide} {currentTicket.rightSide}\n");
+
+                PrintDebugLine($"Current Ticket's # of visits: {currentTicket.visitNum}");
+
+                PrintDebugLine($"Current Ticket's condition: {currentTicket.condition}");
+
+                currentTicket = currentTicket.GetNextTicket(); ;
+
+                PrintDebugLine($"Current Ticket's is now {currentTicket.leftSide} {currentTicket.rightSide}\n");
+
                 currentTicket.visitNum++;
             }
 
@@ -99,7 +110,7 @@ namespace KTANE_Solver
             Ticket falseTicket;
             public TicketShape leftSide { get; }
             public TicketShape rightSide { get; }
-            bool condition;
+            public bool condition { get; }
 
             public Ticket(TicketShape leftSide, TicketShape rightSide, bool condition)
             {

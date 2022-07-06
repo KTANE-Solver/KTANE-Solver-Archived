@@ -6,7 +6,7 @@ using System.IO;
 namespace ModuleTests
 {
     [TestClass]
-    public class FastMath
+    public class FastMathTest
     {
         StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
         [TestMethod]
@@ -17,7 +17,7 @@ namespace ModuleTests
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 0), new Port("setero", 0));
 
-            KTANE_Solver.FastMath module = new KTANE_Solver.FastMath(bomb, streamWriter);
+            FastMath module = new FastMath(bomb, streamWriter);
 
             Assert.AreEqual(25, module.SolveDebug('A', 'A'));
             Assert.AreEqual(11, module.SolveDebug('A', 'B'));
@@ -202,7 +202,7 @@ namespace ModuleTests
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 0), new Port("setero", 0));
 
-            KTANE_Solver.FastMath module = new KTANE_Solver.FastMath(bomb, streamWriter);
+            FastMath module = new FastMath(bomb, streamWriter);
 
             Assert.AreEqual(25 + 20, module.SolveDebug('A', 'A'));
 
@@ -211,7 +211,7 @@ namespace ModuleTests
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.FastMath(bomb, streamWriter);
+            module = new FastMath(bomb, streamWriter);
 
             Assert.AreEqual(25 + 14, module.SolveDebug('A', 'A'));
 
@@ -220,7 +220,7 @@ namespace ModuleTests
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 0), new Port("setero", 0));
 
-            module = new KTANE_Solver.FastMath(bomb, streamWriter);
+            module = new FastMath(bomb, streamWriter);
             
             Assert.AreEqual(25 - 5, module.SolveDebug('A', 'A'));
 
@@ -230,7 +230,7 @@ namespace ModuleTests
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 1), new Port("serial", 0), new Port("setero", 0));
 
-            module = new KTANE_Solver.FastMath(bomb, streamWriter);
+            module = new FastMath(bomb, streamWriter);
 
             Assert.AreEqual(25 + 27, module.SolveDebug('A', 'A'));
 
@@ -239,7 +239,7 @@ namespace ModuleTests
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 0), new Port("setero", 0));
 
-            module = new KTANE_Solver.FastMath(bomb, streamWriter);
+            module = new FastMath(bomb, streamWriter);
 
             Assert.AreEqual(25 - 15, module.SolveDebug('A', 'A'));
         }

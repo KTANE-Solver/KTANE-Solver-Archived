@@ -6,14 +6,14 @@ using System.IO;
 namespace ModuleTests
 {
     [TestClass]
-    public class SimonSays
+    public class SimonSaysTest
     {
         StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
         [TestMethod]
         public void Test1()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('R');
             streamWriter.Close();
@@ -24,7 +24,7 @@ namespace ModuleTests
         public void Test2()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('Y');
             streamWriter.Close();
@@ -35,7 +35,7 @@ namespace ModuleTests
         public void Test3()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('B');
             streamWriter.Close();
@@ -46,7 +46,7 @@ namespace ModuleTests
         public void Test4()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('G');
             streamWriter.Close();
@@ -57,7 +57,7 @@ namespace ModuleTests
         public void Test5()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             string answer = module.DebugSolve('R');
@@ -70,7 +70,7 @@ namespace ModuleTests
         public void Test6()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             string answer = module.DebugSolve('Y');
@@ -82,7 +82,7 @@ namespace ModuleTests
         public void Test7()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             string answer = module.DebugSolve('B');
@@ -94,7 +94,7 @@ namespace ModuleTests
         public void Test8()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             string answer = module.DebugSolve('G');
@@ -106,7 +106,7 @@ namespace ModuleTests
         public void Test9()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             bomb.IncrementStrike();
@@ -120,7 +120,7 @@ namespace ModuleTests
         public void Test10()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             bomb.IncrementStrike();
@@ -134,7 +134,7 @@ namespace ModuleTests
         public void Test11()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             bomb.IncrementStrike();
@@ -148,7 +148,7 @@ namespace ModuleTests
         public void Test12()
         {
             Bomb bomb = new Bomb(Day.Sunday, "E", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false),  false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             bomb.IncrementStrike();
             bomb.IncrementStrike();
@@ -162,7 +162,7 @@ namespace ModuleTests
         public void Test13()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('R');
             streamWriter.Close();
@@ -173,7 +173,7 @@ namespace ModuleTests
         public void Test14()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('Y');
             streamWriter.Close();
@@ -184,7 +184,7 @@ namespace ModuleTests
         public void Test15()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('B');
             streamWriter.Close();
@@ -195,7 +195,7 @@ namespace ModuleTests
         public void Test16()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
 
             string answer = module.DebugSolve('G');
             streamWriter.Close();
@@ -206,7 +206,7 @@ namespace ModuleTests
         public void Test17()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
             string answer = module.DebugSolve('R');
             streamWriter.Close();
@@ -217,7 +217,7 @@ namespace ModuleTests
         public void Test18()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
 
             string answer = module.DebugSolve('Y');
@@ -229,7 +229,7 @@ namespace ModuleTests
         public void Test19()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
 
             string answer = module.DebugSolve('B');
@@ -241,7 +241,7 @@ namespace ModuleTests
         public void Test20()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
 
             string answer = module.DebugSolve('G');
@@ -253,7 +253,7 @@ namespace ModuleTests
         public void Test21()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
             string answer = module.DebugSolve('R');
             streamWriter.Close();
@@ -264,7 +264,7 @@ namespace ModuleTests
         public void Test22()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
 
             string answer = module.DebugSolve('Y');
@@ -276,7 +276,7 @@ namespace ModuleTests
         public void Test23()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
 
             string answer = module.DebugSolve('B');
@@ -288,7 +288,7 @@ namespace ModuleTests
         public void Test24()
         {
             Bomb bomb = new Bomb(Day.Sunday, "Q", 0, 0, new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), new Indicator("", false, false), false, 0, null, null, null, null, null, null);
-            KTANE_Solver.SimonSays module = new KTANE_Solver.SimonSays(bomb, streamWriter);
+            SimonSays module = new SimonSays(bomb, streamWriter);
             bomb.IncrementStrike();
 
             string answer = module.DebugSolve('G');
