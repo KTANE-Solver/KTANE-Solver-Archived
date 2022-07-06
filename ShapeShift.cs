@@ -9,7 +9,7 @@ namespace KTANE_Solver
     public class ShapeShift : Module
     {
         Ticket currentTicket;
-        private List<Ticket> ticketList;
+        public List<Ticket> ticketList;
 
         public enum TicketShape
         {
