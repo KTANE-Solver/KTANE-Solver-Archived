@@ -79,10 +79,9 @@ namespace KTANE_Solver
         public string Solve()
         {
             List<Section> sections = new List<Section>() {topLeft, topMid, midLeft, mid, midRight, bottomLeft, bottomMid, bottomRight };
+            List<int> sectionNumArr = new List<int>();
 
             //find the higest number of true conditions in one section
-
-            int highestTrueConditions = int.MinValue;
 
             foreach (Section section in sections)
             {
@@ -90,20 +89,17 @@ namespace KTANE_Solver
 
                 PrintDebugLine($"{section.Name} conditions met: {sectionNum} ({section.GetTrueConditions()})");
 
-                if (highestTrueConditions < sectionNum)
-                {
-                    highestTrueConditions = sectionNum;
-                }
+                sectionNumArr.Add(sectionNum);
             }
+
+            int highestTrueConditions = sectionNumArr.Max();
 
             //add all the sections that have the highest number of true condition
             List<string> answer = new List<string>();
 
             foreach (Section section in sections)
             {
-                int sectionNum = section.GetTrueConditionNum();
-
-                if (highestTrueConditions == sectionNum)
+                if (highestTrueConditions == section.GetTrueConditionNum())
                 {
                     answer.Add(section.Name);
                 }
@@ -177,29 +173,7 @@ namespace KTANE_Solver
 
             public int GetTrueConditionNum()
             {
-                int num = 0;
-
-                if (condition1)
-                {
-                    num++;
-                }
-
-                if (condition2)
-                {
-                    num++;
-                }
-
-                if (condition3)
-                {
-                    num++;
-                }
-
-                if (condition4)
-                {
-                    num++;
-                }
-
-                return num;
+                return new bool[] { condition1, condition2, condition3, condition4 }.Where(x => x).Count();
             }
         }
     }
