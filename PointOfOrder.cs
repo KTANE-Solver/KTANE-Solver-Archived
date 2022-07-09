@@ -123,12 +123,12 @@ namespace KTANE_Solver
 
                 while (difference < 0)
                 {
-                    difference += 13;
+                    difference += 12;
                 }
 
                 while(difference > 12)
                 {
-                    difference -= 13;
+                    difference -= 12;
                 }
 
                 if (difference != requiredDifference1 && difference != requiredDifference2)
