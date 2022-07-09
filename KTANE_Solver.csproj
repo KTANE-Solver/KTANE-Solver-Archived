@@ -299,6 +299,18 @@
     <Compile Include="MultiStageModuleForm.Designer.cs">
       <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MysticSquareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MysticSquareForm.Designer.cs">
+      <DependentUpon>MysticSquareForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MysticSquareForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MysticSquareForm2.Designer.cs">
+      <DependentUpon>MysticSquareForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="MysticSquares.cs" />
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
@@ -682,6 +694,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
       <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MysticSquareForm.resx">
+      <DependentUpon>MysticSquareForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MysticSquareForm2.resx">
+      <DependentUpon>MysticSquareForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
