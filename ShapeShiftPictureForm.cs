@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-    public partial class ShapeShiftForm : Form
+    public partial class ShapeShiftPictureForm : Form
     {
-        public ShapeShiftForm()
+        public ShapeShiftPictureForm()
         {
             InitializeComponent();
         }

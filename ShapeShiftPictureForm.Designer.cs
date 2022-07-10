@@ -1,7 +1,7 @@
 ﻿
 namespace KTANE_Solver
 {
-    partial class ShapeShiftForm
+    partial class ShapeShiftPictureForm
     {
         /// <summary>
         /// Required designer variable.

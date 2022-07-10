@@ -300,11 +300,17 @@
       <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ShapeShift.cs" />
-    <Compile Include="ShapeShiftForm.cs">
+    <Compile Include="ShapeShiftPictureForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShapeShiftForm.Designer.cs">
-      <DependentUpon>ShapeShiftForm.cs</DependentUpon>
+    <Compile Include="ShapeShiftPictureForm.Designer.cs">
+      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShapeShiftWordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShapeShiftWordForm.Designer.cs">
+      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
@@ -689,8 +695,11 @@
     <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
       <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShapeShiftForm.resx">
-      <DependentUpon>ShapeShiftForm.cs</DependentUpon>
+    <EmbeddedResource Include="ShapeShiftPictureForm.resx">
+      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShapeShiftWordForm.resx">
+      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>

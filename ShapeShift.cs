@@ -33,66 +33,70 @@ namespace KTANE_Solver
         {
             while (currentTicket.visitNum != 2)
             {
-                PrintDebugLine($"Current Ticket {currentTicket.leftSide} {currentTicket.rightSide}\n");
+                PrintDebugLine($"Current Ticket: {currentTicket.LeftSide} {currentTicket.RightSide}\n");
 
                 PrintDebugLine($"Current Ticket's # of visits: {currentTicket.visitNum}");
 
-                PrintDebugLine($"Current Ticket's condition: {currentTicket.condition}");
+                PrintDebugLine($"{currentTicket.Condition}: {currentTicket.Condition}");
 
                 currentTicket = currentTicket.GetNextTicket(); ;
 
-                PrintDebugLine($"Current Ticket's is now {currentTicket.leftSide} {currentTicket.rightSide}\n");
+                PrintDebugLine($"Current Ticket's is now {currentTicket.LeftSide} {currentTicket.RightSide}\n");
 
                 currentTicket.visitNum++;
             }
 
-            ShowAnswer($"{currentTicket.leftSide} {currentTicket.rightSide}", true);
+            ShowAnswer($"{currentTicket.LeftSide} {currentTicket.RightSide}", true);
         }
 
         private void SetUpModule()
         {
-            Ticket flatRound = new Ticket(TicketShape.Flat, TicketShape.Round, Bomb.Dvid.Visible);
-            Ticket roundDiamond = new Ticket(TicketShape.Round, TicketShape.Diamond, Bomb.Sig.Lit);
-            Ticket diamondTicket = new Ticket(TicketShape.Diamond, TicketShape.Ticket, Bomb.Rj.Visible);
-            Ticket roundRound = new Ticket(TicketShape.Round, TicketShape.Round, Bomb.HasVowel);
-            Ticket ticketDiamond = new Ticket(TicketShape.Ticket, TicketShape.Diamond, Bomb.Ps.Visible);
-            Ticket diamondDiamond = new Ticket(TicketShape.Diamond, TicketShape.Diamond, Bomb.Ind.Lit);
-            Ticket ticketFlat = new Ticket(TicketShape.Ticket, TicketShape.Flat, !Bomb.Frq.Lit);
-            Ticket diamondRound = new Ticket(TicketShape.Diamond, TicketShape.Round, Bomb.Parallel.Visible);
-            Ticket ticketTicket = new Ticket(TicketShape.Ticket, TicketShape.Ticket, Bomb.Battery >= 3);
-            Ticket roundTicket = new Ticket(TicketShape.Round, TicketShape.Ticket, Bomb.AABattery >= 2);
-            Ticket flatFlat = new Ticket(TicketShape.Flat, TicketShape.Flat, Bomb.LastDigit % 2 == 1);
-            Ticket flatTicket = new Ticket(TicketShape.Flat, TicketShape.Ticket, !Bomb.Bob.Lit);
-            Ticket diamondFlat = new Ticket(TicketShape.Diamond, TicketShape.Flat, !Bomb.Car.Lit);
-            Ticket ticketRound = new Ticket(TicketShape.Ticket, TicketShape.Round, Bomb.Stereo.Visible);
-            Ticket roundFlat = new Ticket(TicketShape.Round, TicketShape.Flat, Bomb.Snd.Lit);
-            Ticket flatDiamond = new Ticket(TicketShape.Flat, TicketShape.Diamond, Bomb.Msa.Lit);
+            Ticket flatRound = new Ticket(TicketShape.Flat, TicketShape.Round, Bomb.Dvid.Visible, "There a DVI-D port");
+            Ticket roundDiamond = new Ticket(TicketShape.Round, TicketShape.Diamond, Bomb.Sig.Lit, "There a lit SIG indicator");
+            Ticket diamondTicket = new Ticket(TicketShape.Diamond, TicketShape.Ticket, Bomb.Rj.Visible, "There an RJ-45 port");
+            Ticket roundRound = new Ticket(TicketShape.Round, TicketShape.Round, Bomb.HasVowel, "The serial # contains a vowel");
+            Ticket ticketDiamond = new Ticket(TicketShape.Ticket, TicketShape.Diamond, Bomb.Ps.Visible, "There's a PS/2 port");
+            Ticket diamondDiamond = new Ticket(TicketShape.Diamond, TicketShape.Diamond, Bomb.Ind.Lit, "There's a lit IND indicator");
+            Ticket ticketFlat = new Ticket(TicketShape.Ticket, TicketShape.Flat, Bomb.Frq.VisibleNotLit, "There's an unlit FRQ indicator");
+            Ticket diamondRound = new Ticket(TicketShape.Diamond, TicketShape.Round, Bomb.Parallel.Visible, "There's a parallel port");
+            Ticket ticketTicket = new Ticket(TicketShape.Ticket, TicketShape.Ticket, Bomb.Battery >= 3, "There's three or more batteries");
+            Ticket roundTicket = new Ticket(TicketShape.Round, TicketShape.Ticket, Bomb.AABattery >= 2, "There's two or more AA batteries");
+            Ticket flatFlat = new Ticket(TicketShape.Flat, TicketShape.Flat, Bomb.LastDigit % 2 == 1, "The last digit of the serial # is odd");
+            Ticket flatTicket = new Ticket(TicketShape.Flat, TicketShape.Ticket, Bomb.Bob.VisibleNotLit, "There's an unlit BOB indicator");
+            Ticket diamondFlat = new Ticket(TicketShape.Diamond, TicketShape.Flat, Bomb.Car.VisibleNotLit, "There's an unlit CAR indicator");
+            Ticket ticketRound = new Ticket(TicketShape.Ticket, TicketShape.Round, Bomb.Stereo.Visible, "There's a stereo RCA port");
+            Ticket roundFlat = new Ticket(TicketShape.Round, TicketShape.Flat, Bomb.Snd.Lit, "There's a lit SND indicator");
+            Ticket flatDiamond = new Ticket(TicketShape.Flat, TicketShape.Diamond, Bomb.Msa.Lit, "There's a lit MSA indicator");
 
-            flatRound.SetTrueFalseTickets(roundDiamond, ticketDiamond);
-            roundDiamond.SetTrueFalseTickets(ticketTicket, flatFlat);
-            diamondTicket.SetTrueFalseTickets(roundDiamond, roundRound);
-            roundRound.SetTrueFalseTickets(ticketTicket, flatTicket);
-            ticketDiamond.SetTrueFalseTickets(diamondTicket, diamondRound);
-            diamondDiamond.SetTrueFalseTickets(diamondTicket, flatFlat);
-            ticketFlat.SetTrueFalseTickets(flatRound, diamondDiamond);
-            diamondRound.SetTrueFalseTickets(flatDiamond, roundFlat);
-            ticketTicket.SetTrueFalseTickets(ticketFlat, flatTicket);
-            roundTicket.SetTrueFalseTickets(ticketFlat, flatTicket);
-            flatFlat.SetTrueFalseTickets(diamondFlat, diamondRound);
-            flatTicket.SetTrueFalseTickets(ticketRound, diamondDiamond);
-            diamondFlat.SetTrueFalseTickets(ticketRound, roundTicket);
-            ticketRound.SetTrueFalseTickets(flatDiamond, roundFlat);
-            roundFlat.SetTrueFalseTickets(roundRound, roundTicket);
-            flatDiamond.SetTrueFalseTickets(ticketDiamond, diamondFlat);
+            AddTrueFalseTickets(flatRound, roundDiamond, ticketDiamond);
+            AddTrueFalseTickets(roundDiamond, ticketTicket, flatFlat);
+            AddTrueFalseTickets(diamondTicket, roundDiamond, roundRound);
+            AddTrueFalseTickets(roundRound, ticketTicket, flatRound);
+            AddTrueFalseTickets(ticketDiamond, diamondTicket, diamondRound);
+            AddTrueFalseTickets(diamondDiamond, diamondTicket, flatFlat);
+            AddTrueFalseTickets(ticketFlat, flatRound, diamondDiamond);
+            AddTrueFalseTickets(diamondRound, flatDiamond, roundFlat);
+            AddTrueFalseTickets(ticketTicket, ticketFlat, flatTicket);
+            AddTrueFalseTickets(roundTicket, ticketFlat, flatTicket);
+            AddTrueFalseTickets(flatFlat, diamondFlat, diamondRound);
+            AddTrueFalseTickets(flatTicket, ticketRound, diamondDiamond);
+            AddTrueFalseTickets(diamondFlat, ticketRound, roundTicket);
+            AddTrueFalseTickets(ticketRound, flatDiamond, roundFlat);
+            AddTrueFalseTickets(roundFlat, roundRound, roundTicket);
+            AddTrueFalseTickets(flatDiamond, ticketDiamond, diamondFlat);
+        }
 
-            ticketList.AddRange(new Ticket[] { flatRound, roundDiamond, diamondTicket, roundRound, ticketDiamond, diamondDiamond, ticketTicket, roundTicket, flatFlat, flatTicket, diamondFlat, ticketRound, roundFlat, flatDiamond });
+        private void AddTrueFalseTickets(Ticket main, Ticket trueTicket, Ticket falseTicket)
+        {
+            main.SetTrueFalseTickets(trueTicket, falseTicket);
+            ticketList.Add(main);
         }
 
         private Ticket FindStartingTicket(TicketShape leftSide, TicketShape rightSide)
         {
             foreach (Ticket t in ticketList)
             {
-                if (t.leftSide == leftSide && t.rightSide == rightSide)
+                if (t.LeftSide == leftSide && t.RightSide == rightSide)
                 {
                     return t;
                 }
@@ -101,22 +105,27 @@ namespace KTANE_Solver
             return null;
         }
 
+        
+
 
 
         public class Ticket
         {
             public int visitNum;
-            Ticket trueTicket;
-            Ticket falseTicket;
-            public TicketShape leftSide { get; }
-            public TicketShape rightSide { get; }
-            public bool condition { get; }
+            public Ticket trueTicket;
+            public Ticket falseTicket;
+            public TicketShape LeftSide { get; }
+            public TicketShape RightSide { get; }
+            public bool Condition { get; }
+            public string ConditionStr { get; }
 
-            public Ticket(TicketShape leftSide, TicketShape rightSide, bool condition)
+            public Ticket(TicketShape leftSide, TicketShape rightSide, bool condition, string conditionStr)
             {
-                this.leftSide = leftSide;
-                this.rightSide = rightSide;
-                this.condition = condition;
+                LeftSide = leftSide;
+                RightSide = rightSide;
+                Condition = condition;
+                ConditionStr = conditionStr;
+
                 visitNum = 0;
             }
 
@@ -128,7 +137,12 @@ namespace KTANE_Solver
 
             public Ticket GetNextTicket()
             {
-                return condition ? trueTicket : falseTicket;
+                return Condition ? trueTicket : falseTicket;
+            }
+
+            public bool SameTicketShapes(TicketShape leftSide, TicketShape rightSide)
+            {
+                return LeftSide == leftSide && RightSide == rightSide;
             }
         }
     }
