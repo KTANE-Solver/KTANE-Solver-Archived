@@ -299,6 +299,13 @@
     <Compile Include="MultiStageModuleForm.Designer.cs">
       <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeaShells.cs" />
+    <Compile Include="SeaShellsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeaShellsForm.Designer.cs">
+      <DependentUpon>SeaShellsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -681,6 +688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
       <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeaShellsForm.resx">
+      <DependentUpon>SeaShellsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
