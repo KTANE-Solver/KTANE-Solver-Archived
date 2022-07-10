@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace ModuleTests
 {
     [TestClass]
-    public class ConnectionCheck
+    public class ConnectionCheckTest
     {
         StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
         #region Neighbor Check
@@ -22,10 +22,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] {1, 1};
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
             
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[2]));
@@ -47,10 +47,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[1].neighbors.Contains(nodes[2]));
@@ -72,10 +72,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[1]));
@@ -96,10 +96,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[1]));
@@ -120,10 +120,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -144,10 +144,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[5].neighbors.Contains(nodes[1]));
@@ -168,10 +168,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[1]));
@@ -192,10 +192,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[1]));
@@ -216,10 +216,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[2]));
@@ -240,10 +240,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[1].neighbors.Contains(nodes[2]));
@@ -264,10 +264,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[1]));
@@ -288,10 +288,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[3].neighbors.Contains(nodes[1]));
@@ -312,10 +312,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -336,10 +336,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[1]));
@@ -360,10 +360,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[6].neighbors.Contains(nodes[1]));
@@ -384,10 +384,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[1]));
@@ -408,10 +408,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[2]));
@@ -432,10 +432,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[2]));
@@ -456,10 +456,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[1]));
@@ -480,10 +480,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[1]));
@@ -504,10 +504,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -528,10 +528,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[1]));
@@ -552,10 +552,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[1]));
@@ -576,10 +576,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[1]));
@@ -600,10 +600,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[2]));
@@ -624,10 +624,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[1].neighbors.Contains(nodes[2]));
@@ -648,10 +648,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[1]));
@@ -672,10 +672,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[3].neighbors.Contains(nodes[1]));
@@ -696,10 +696,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -720,10 +720,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[5].neighbors.Contains(nodes[1]));
@@ -744,10 +744,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[1]));
@@ -768,10 +768,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[1]));
@@ -792,10 +792,10 @@ namespace ModuleTests
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsFalse(nodes[0].neighbors.Contains(nodes[2]));
@@ -816,10 +816,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[1].neighbors.Contains(nodes[2]));
@@ -840,10 +840,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[1]));
@@ -864,10 +864,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[1]));
@@ -888,10 +888,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -912,10 +912,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[1]));
@@ -936,10 +936,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[6].neighbors.Contains(nodes[1]));
@@ -960,10 +960,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[1]));
@@ -984,10 +984,10 @@ namespace ModuleTests
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsFalse(nodes[0].neighbors.Contains(nodes[2]));
@@ -1008,10 +1008,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[2]));
@@ -1032,10 +1032,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[1]));
@@ -1056,10 +1056,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[3].neighbors.Contains(nodes[1]));
@@ -1080,10 +1080,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -1104,10 +1104,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[1]));
@@ -1128,10 +1128,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[1]));
@@ -1152,10 +1152,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[1]));
@@ -1177,10 +1177,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsFalse(nodes[0].neighbors.Contains(nodes[2]));
@@ -1201,10 +1201,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[2]));
@@ -1225,10 +1225,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[1]));
@@ -1249,10 +1249,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[1]));
@@ -1273,10 +1273,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -1297,10 +1297,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[1]));
@@ -1321,10 +1321,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[6].neighbors.Contains(nodes[1]));
@@ -1345,10 +1345,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[7].neighbors.Contains(nodes[1]));
@@ -1369,10 +1369,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[0].neighbors.Contains(nodes[1]));
             Assert.IsFalse(nodes[0].neighbors.Contains(nodes[2]));
@@ -1393,10 +1393,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[1].neighbors.Contains(nodes[2]));
@@ -1417,10 +1417,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[2].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[2].neighbors.Contains(nodes[1]));
@@ -1441,10 +1441,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[3].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[3].neighbors.Contains(nodes[1]));
@@ -1465,10 +1465,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[4].neighbors.Contains(nodes[1]));
@@ -1489,10 +1489,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[5].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[5].neighbors.Contains(nodes[1]));
@@ -1513,10 +1513,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsFalse(nodes[6].neighbors.Contains(nodes[0]));
             Assert.IsTrue(nodes[6].neighbors.Contains(nodes[1]));
@@ -1537,10 +1537,10 @@ new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indi
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(arr, arr, arr, arr, bomb, streamWriter);
 
             module.CreateGraph();
-            List<KTANE_Solver.ConnectionCheck.Node> nodes = module.nodes;
+            List<ConnectionCheck.Node> nodes = module.nodes;
 
             Assert.IsTrue(nodes[7].neighbors.Contains(nodes[0]));
             Assert.IsFalse(nodes[7].neighbors.Contains(nodes[1]));
@@ -1563,7 +1563,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 1, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 1, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1581,7 +1581,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 1, 1 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 1, 1 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1597,7 +1597,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 7, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 7, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1613,7 +1613,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 2, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 2, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1630,7 +1630,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
             int[] arr = new int[] { 1, 1 };
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 1, 2 }, new int[] { 3, 4 }, new int[] { 2, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 1, 2 }, new int[] { 3, 4 }, new int[] { 2, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1646,7 +1646,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 8, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 8, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1662,7 +1662,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1678,7 +1678,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.FindTargetIndex();
 
@@ -1697,7 +1697,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -1715,7 +1715,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
 
@@ -1733,7 +1733,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
 
@@ -1749,7 +1749,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
 
@@ -1767,7 +1767,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -1785,7 +1785,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -1803,7 +1803,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
 
@@ -1821,7 +1821,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
 
@@ -1839,7 +1839,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
 
@@ -1857,7 +1857,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
             
@@ -1874,7 +1874,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -1892,7 +1892,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -1910,7 +1910,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -1928,7 +1928,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -1944,7 +1944,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 4;
 
@@ -1962,7 +1962,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 3;
 
@@ -1980,7 +1980,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 4;
 
@@ -1996,7 +1996,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -2014,7 +2014,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -2032,7 +2032,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 4;
 
@@ -2050,7 +2050,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 3;
 
@@ -2068,7 +2068,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -2086,7 +2086,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 3;
 
@@ -2104,7 +2104,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 3;
 
@@ -2120,7 +2120,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 4;
 
@@ -2138,7 +2138,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -2156,7 +2156,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -2172,7 +2172,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 3;
 
@@ -2190,7 +2190,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 0;
 
@@ -2208,7 +2208,7 @@ new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
         new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 4;
 
@@ -2224,7 +2224,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -2242,7 +2242,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -2258,7 +2258,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 1;
 
@@ -2276,7 +2276,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 2;
 
@@ -2294,7 +2294,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 3;
 
@@ -2312,7 +2312,7 @@ new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indica
 new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
 new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.ConnectionCheck module = new KTANE_Solver.ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
+            ConnectionCheck module = new ConnectionCheck(new int[] { 2, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 }, new int[] { 7, 8 }, bomb, streamWriter);
 
             module.targetIndex = 4;
 

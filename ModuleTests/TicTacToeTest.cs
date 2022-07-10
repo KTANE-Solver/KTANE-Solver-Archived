@@ -6,7 +6,7 @@ using System.IO;
 namespace ModuleTests
 {
     [TestClass]
-    public class TicTacToe
+    public class TicTacToeTest
     {
         StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
 
@@ -18,7 +18,7 @@ namespace ModuleTests
                                          { '1', '2', '3' }, 
                                          { '4', '5', '6'}
             };
-            KTANE_Solver.TicTacToe module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            TicTacToe module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(0, 0));
 
@@ -28,7 +28,7 @@ namespace ModuleTests
                                  { '4', '5', '6'} 
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(1, 0));
 
@@ -38,7 +38,7 @@ namespace ModuleTests
                                  { 'X', 'X', 'X' },
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(2, 0));
 
@@ -48,7 +48,7 @@ namespace ModuleTests
                                  { 'X', '3', '6' },
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(0, 0));
 
@@ -58,7 +58,7 @@ namespace ModuleTests
                                  { '3', 'X', '6' },
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(0, 1));
 
@@ -68,7 +68,7 @@ namespace ModuleTests
                                  { '3', '6', 'X' },
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(0, 2));
 
@@ -78,7 +78,7 @@ namespace ModuleTests
                                  { '4', '5', 'X' },
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(0, 0));
 
@@ -88,7 +88,7 @@ namespace ModuleTests
                                  { 'X', '5', '4' },
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
             Assert.IsTrue(module.MakesTicTacToe(2, 0));
 
@@ -98,7 +98,7 @@ namespace ModuleTests
                                  { '7', '8', 'X' },
             };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
             Assert.IsFalse(module.MakesTicTacToe(0, 1));
 
 
@@ -115,7 +115,7 @@ namespace ModuleTests
                    new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 0),
                    new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            KTANE_Solver.TicTacToe module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            TicTacToe module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(1, module.currentRow);
@@ -126,7 +126,7 @@ namespace ModuleTests
             new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
             new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(2, module.currentRow);
@@ -137,7 +137,7 @@ namespace ModuleTests
             new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
             new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(3, module.currentRow);
@@ -148,7 +148,7 @@ namespace ModuleTests
             new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
             new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(4, module.currentRow);
@@ -159,7 +159,7 @@ namespace ModuleTests
                    new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 0),
                    new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(5, module.currentRow);
@@ -170,7 +170,7 @@ namespace ModuleTests
             new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
             new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(6, module.currentRow);
@@ -181,7 +181,7 @@ namespace ModuleTests
             new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
             new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(7, module.currentRow);
@@ -192,7 +192,7 @@ namespace ModuleTests
             new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 2, new Port("DVID", 0), new Port("Parallel", 1),
             new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            module = new KTANE_Solver.TicTacToe(bomb, streamWriter, null);
+            module = new TicTacToe(bomb, streamWriter, null);
             module.FindStartingRow();
 
             Assert.AreEqual(8, module.currentRow);
@@ -207,7 +207,7 @@ namespace ModuleTests
             char[,] grid = new char[,] { { 'X', '1', '1' }, { '1', '1', '1' }, { '1', '1', '1' } };
 
 
-            KTANE_Solver.TicTacToe module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            TicTacToe module = new TicTacToe(null, streamWriter, grid);
 
 
             module.currentRow = 1;
@@ -260,7 +260,7 @@ namespace ModuleTests
             #region More O
             grid = new char[,] { { 'O', '1', '1' }, { '1', '1', '1' }, { '1', '1', '1' } };
 
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
 
             module.currentRow = 1;
@@ -314,7 +314,7 @@ namespace ModuleTests
 
             #region Even
             grid = new char[,] { { 'O', 'X', '1' }, { '1', '1', '1' }, { '1', '1', '1' } };
-            module = new KTANE_Solver.TicTacToe(null, streamWriter, grid);
+            module = new TicTacToe(null, streamWriter, grid);
 
 
             module.currentRow = 1;
