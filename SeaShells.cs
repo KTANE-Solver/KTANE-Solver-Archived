@@ -13,7 +13,7 @@ namespace KTANE_Solver
         private string phrase2;
         private string bigButton;
 
-        private string lettters;
+        private string letters;
 
         private List<string> answerList;
 
@@ -26,8 +26,10 @@ namespace KTANE_Solver
             answerList = new List<string>();
         }
 
-        public void Solve()
+        public string Solve()
         {
+            FindLetters();
+
             string aWord;
             string bWord;
             string cWord;
@@ -69,7 +71,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            foreach (char c in lettters)
+            foreach (char c in letters)
             {
                 switch (c)
                 {
@@ -97,10 +99,16 @@ namespace KTANE_Solver
 
             string answer = string.Join(", ", answerList);
 
+            PrintDebugLine($"Phrase 1: {phrase1}");
+            PrintDebugLine($"Phrase 2: {phrase2}");
+            PrintDebugLine($"Letters: " + string.Join(", ", letters));
+
             ShowAnswer(answer, true);
+
+            return answer;
         }
 
-        private void FindLetters()
+        public string FindLetters()
         {
             switch (phrase1)
             {
@@ -108,22 +116,22 @@ namespace KTANE_Solver
             
                 if (phrase2 == "SEA SHELLS")
                 {
-                    lettters = "BDABDAB";
+                    letters = "BDABDAB";
                 }
 
                 else if(phrase2 == "SHE SHELLS")
                 { 
-                    lettters = "ACEEAC";
+                    letters = "ACEEAC";
                 }
 
                 else if (phrase2 == "SEA SELLS")
                 {
-                    lettters = "EACEACE";
+                    letters = "EACEACE";
                 }
 
                 else
                 {
-                    lettters = "DAABDAB";
+                    letters = "DAABDAB";
                 }
 
                 break;
@@ -132,50 +140,77 @@ namespace KTANE_Solver
 
                     if (phrase2 == "SEA SHELLS")
                     {
-                        lettters = "BEEBBE";
+                        letters = "BEEBBE";
                     }
 
                     else if (phrase2 == "SHE SHELLS")
                     {
-                        lettters = "CDCCDB";
+                        letters = "CDCCDB";
                     }
 
                     else if (phrase2 == "SEA SELLS")
                     {
-                        lettters = "EAEAEA";
+                        letters = "EAEAEA";
                     }
 
                     else
                     {
-                        lettters = "BEEDA";
+                        letters = "BEEDA";
                     }
 
                     break;
+
+                case "SEA SHELLS":
+
+                    if (phrase2 == "SEA SHELLS")
+                    {
+                        letters = "ABABA";
+                    }
+
+                    else if (phrase2 == "SHE SHELLS")
+                    {
+                        letters = "EAAEEA";
+                    }
+
+                    else if (phrase2 == "SEA SELLS")
+                    {
+                        letters = "DBEAC";
+                    }
+
+                    else
+                    {
+                        letters = "ABDBAA";
+                    }
+
+                    break;
+
 
                 default:
 
                     if (phrase2 == "SEA SHELLS")
                     {
-                        lettters = "ABABA";
+                        letters = "ACACEAC";
                     }
 
                     else if (phrase2 == "SHE SHELLS")
                     {
-                        lettters = "DBAEC";
+                        letters = "DBAEC";
                     }
 
                     else if (phrase2 == "SEA SELLS")
                     {
-                        lettters = "EBDADAB";
+                        letters = "EBDADAB";
                     }
 
                     else
                     {
-                        lettters = "CECEC";
+                        letters = "CECEC";
                     }
 
                     break;
             }
+
+            return letters;
         }
     }
 }

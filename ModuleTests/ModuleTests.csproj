@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColoredSquaresTest.cs" />
+    <Compile Include="SeaShellsTest.cs" />
     <Compile Include="WireSequence.cs" />
     <Compile Include="FastMath.cs" />
     <Compile Include="Listening.cs" />
