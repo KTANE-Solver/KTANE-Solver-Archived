@@ -299,6 +299,12 @@
     <Compile Include="MultiStageModuleForm.Designer.cs">
       <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeaShells.cs" />
+    <Compile Include="SeaShellsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeaShellsForm.Designer.cs">
+      <DependentUpon>SeaShellsForm.cs</DependentUpon>
     <Compile Include="ShapeShift.cs" />
     <Compile Include="ShapeShiftPictureForm.cs">
       <SubType>Form</SubType>
@@ -695,6 +701,8 @@
     <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
       <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SeaShellsForm.resx">
+      <DependentUpon>SeaShellsForm.cs</DependentUpon>
     <EmbeddedResource Include="ShapeShiftPictureForm.resx">
       <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
     </EmbeddedResource>
