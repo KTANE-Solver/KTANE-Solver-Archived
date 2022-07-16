@@ -4,18 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Drawing;
 
 namespace KTANE_Solver
 {
     class Hexamazes : Module
     {
         private Node[,] bigMaze;
-        public Hexamazes(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Hexamazes")
+        private Node[,] littleMaze;
+        private Cardinal littleMazeDirection;
+        private int rowLineUp;
+        private int colLineUp;
+
+        public Hexamazes(Bomb bomb, StreamWriter logFileWriter, Node[,] littleMaze) : base(bomb, logFileWriter, "Hexamazes")
         {
             CreateBigMaze();
             VerifMaze(bigMaze);
+            this.littleMaze = littleMaze;
+
+            littleMazeDirection = Cardinal.North;
         }
 
+        private enum Cardinal
+        {
+            North,
+            NorthEast,
+            SouthEast,
+            South,
+            SouthWest,
+            NorthWest
+        }
+
+        public void Solve()
+        {
+            CreateBigMaze();
+            FindLittleMaze();
+        }
         /// <summary>
         /// Initializes all appropriate cells with data
         /// </summary>
@@ -1959,6 +1983,5588 @@ namespace KTANE_Solver
             AttachNeighbors();
         }
 
+        private void FindLittleMaze()
+        {
+            Node[,] littleMaze;
+            bool validMaze = false;
+
+            while (!validMaze)
+            {
+                for (int row = 0; row < 31; row++)
+                {
+                    for (int col = 0; col < 16; col++)
+                    {
+                        littleMaze = CopyBigMazePart(row, col);
+
+                        validMaze = ValidMazeProjection(littleMaze);
+
+                        if (validMaze)
+                        {
+                            rowLineUp = row;
+                            colLineUp = col;
+                            this.littleMaze = littleMaze;
+                            break;
+                        }
+                    }
+
+                    if (validMaze)
+                    {
+                        break;
+                    }
+                }
+
+                if (!validMaze)
+                {
+                    littleMazeDirection = UpdateCardinalClockWise(littleMazeDirection);
+                    this.littleMaze = Rotate45Clocwise(this.littleMaze);
+
+                    foreach (Node node in this.littleMaze)
+                    {
+                        node.Symbol = UpdateSymbol(node.Symbol);
+                    }
+                }
+            }
+
+
+
+        }
+
+        private Cardinal UpdateCardinalClockWise(Cardinal cardinal)
+        {
+            int num = (int)cardinal + 1;
+
+            if (num >= 6)
+            {
+                num %= 0;
+            }
+
+            return (Cardinal)num;
+        }
+
+        private Node[,] RotateBigMaze(Node[,] oldMaze)
+        {
+            Node[,] newMaze = new Node[45, 23];
+
+            for (int row = 0; row < 45; row++)
+            {
+                for (int col = 0; col < 45; col++)
+                {
+                    switch (row)
+                    {
+                        case 0:
+
+                            if (col != 11)
+                            {
+                                newMaze[row, col] = null;
+                            }
+
+                            else
+                            {
+                                newMaze[row, col] = oldMaze[11, 0];
+                            }
+
+                            break;
+
+                        case 1:
+                            if (col == 10)
+                            {
+                                newMaze[row, col] = oldMaze[13, 0];
+                            }
+
+                            else if (col == 12)
+                            {
+                                newMaze[row, col] = oldMaze[10, 1];
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 2:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 3:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 4:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 5:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 6:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 7:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 8:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 9:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 10:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 11:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 12:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 13:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 14:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 15:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 16:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 17:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 18:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 19:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 20:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 21:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 22:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 23:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 24:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 25:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 26:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 27:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 28:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 29:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 30:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 31:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 32:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 33:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 34:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 35:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 36:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 37:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 38:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 39:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 40:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 41:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 42:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 43:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+
+                        case 44:
+                            if (col == 0)
+                            {
+
+                            }
+
+                            else if (col == 1)
+                            {
+
+                            }
+
+                            else if (col == 2)
+                            {
+
+                            }
+
+                            else if (col == 3)
+                            {
+
+                            }
+
+                            else if (col == 4)
+                            {
+
+                            }
+
+                            else if (col == 5)
+                            {
+
+                            }
+
+                            else if (col == 6)
+                            {
+
+                            }
+
+                            else if (col == 7)
+                            {
+
+                            }
+
+                            else if (col == 8)
+                            {
+
+                            }
+
+                            else if (col == 9)
+                            {
+
+                            }
+
+                            else if (col == 10)
+                            {
+
+                            }
+
+                            else if (col == 11)
+                            {
+
+                            }
+
+                            else if (col == 12)
+                            {
+
+                            }
+
+                            else if (col == 13)
+                            {
+
+                            }
+
+                            else if (col == 14)
+                            {
+
+                            }
+
+                            else if (col == 15)
+                            {
+
+                            }
+
+                            else if (col == 16)
+                            {
+
+                            }
+
+                            else if (col == 17)
+                            {
+
+                            }
+
+                            else if (col == 18)
+                            {
+
+                            }
+
+                            else if (col == 19)
+                            {
+
+                            }
+
+                            else if (col == 20)
+                            {
+
+                            }
+
+                            else if (col == 21)
+                            {
+
+                            }
+
+                            else if (col == 22)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
+                            break;
+                    }
+                }
+
+            }
+        }
+        private void UpdateRowAndColumn(Node node)
+        { 
+            
+        }
+
+        private Symbol UpdateSymbol(Symbol symbol)
+        {
+            switch (symbol)
+            {
+                case Symbol.UpTriangle:
+                    return Symbol.DownTriangle;
+
+                case Symbol.RightTriangle:
+                    return Symbol.LeftTriangle;
+
+                case Symbol.DownTriangle:
+                    return Symbol.UpTriangle;
+
+                case Symbol.LeftTriangle:
+                    return Symbol.RightTriangle;
+
+                default:
+                    return symbol;
+            }
+        }
+
+        private Walls UpdateWall(Walls wall)
+        {
+            switch (wall)
+            {
+                case Walls.None:
+                    return Walls.None;
+
+                case Walls.North:
+                    return Walls.NorthEast;
+
+                case Walls.NorthEast:
+                    return Walls.SouthEast;
+
+                case Walls.SouthEast:
+                    return Walls.South;
+
+                case Walls.South:
+                    return Walls.SouthWest;
+
+                case Walls.SouthWest:
+                    return Walls.NorthWest;
+
+                case Walls.NorthWest:
+                    return Walls.North;
+
+                case Walls.NorthandNorthEast:
+                    return Walls.NorthEastandSouthEast;
+
+                case Walls.NorthandSouthEast:
+                    return 
+                case Walls.NorthandSouth:
+                    break;
+                case Walls.NorthandSouthWest:
+                    break;
+                case Walls.NorthandNorthWest:
+                    break;
+                case Walls.NorthEastandSouthEast:
+                    break;
+                case Walls.NorthEastandSouth:
+                    break;
+                case Walls.NorthEastandSouthWest:
+                    break;
+                case Walls.NorthEastandNorthWest:
+                    break;
+                case Walls.SouthEastandSouth:
+                    break;
+                case Walls.SouthEastandSouthWest:
+                    break;
+                case Walls.SouthEastandNorthWest:
+                    break;
+                case Walls.SouthandSouthWest:
+                    break;
+                case Walls.SouthandNorthWest:
+                    break;
+                case Walls.SouthWestandNorthWest:
+                    break;
+                case Walls.NorthandNorthEastandSouthEast:
+                    break;
+                case Walls.NorthandNorthEastandSouth:
+                    break;
+                case Walls.NorthandNorthEastandSouthWest:
+                    break;
+                case Walls.NorthandNorthEastandNorthWest:
+                    break;
+                case Walls.NorthandSouthEastandSouth:
+                    break;
+                case Walls.NorthandSouthEastandSouthWest:
+                    break;
+                case Walls.NorthandSouthEastandNorthWest:
+                    break;
+                case Walls.NorthandSouthandSouthWest:
+                    break;
+                case Walls.NorthandSouthandNorthWest:
+                    break;
+                case Walls.NorthandSouthWestandNorthWest:
+                    break;
+                case Walls.NorthEastandSouthEastandSouth:
+                    break;
+                case Walls.NorthEastandSouthEastandSouthWest:
+                    break;
+                case Walls.NorthEastandSouthEastandNorthWest:
+                    break;
+                case Walls.NorthEastandSouthandSouthWest:
+                    break;
+                case Walls.NorthEastandSouthandNorthWest:
+                    break;
+                case Walls.NorthEastandSouthWestandNorthWest:
+                    break;
+                case Walls.SouthEastandSouthandSouthWest:
+                    break;
+                case Walls.SouthEastandSouthandNorthWest:
+                    break;
+                case Walls.SouthEastandSouthWestandNorthWest:
+                    break;
+                case Walls.SouthandSouthWestandNorthWest:
+                    break;
+                case Walls.NorthandNorthEastOpen:
+                    break;
+                case Walls.NorthandSouthEastOpen:
+                    break;
+                case Walls.NorthandSouthOpen:
+                    break;
+                case Walls.NorthandSouthWestOpen:
+                    break;
+                case Walls.NorthandNorthWestOpen:
+                    break;
+                case Walls.NorthEastandSouthEastOpen:
+                    break;
+                case Walls.NorthEastandSouthOpen:
+                    break;
+                case Walls.NorthEastandSouthWestOpen:
+                    break;
+                case Walls.NorthEastandNorthWestOpen:
+                    break;
+                case Walls.SouthEastandSouthOpen:
+                    break;
+                case Walls.SouthEastandSouthWestOpen:
+                    break;
+                case Walls.SouthEastandNorthWestOpen:
+                    break;
+                case Walls.SouthandSouthWestOpen:
+                    break;
+                case Walls.SouthandNorthWestOpen:
+                    break;
+                case Walls.SouthWestandNorthWestOpen:
+                    break;
+                case Walls.NorthOpen:
+                    break;
+                case Walls.NorthEastOpen:
+                    break;
+                case Walls.SouthEastOpen:
+                    break;
+                case Walls.SouthOpen:
+                    break;
+                case Walls.SouthWestOpen:
+                    break;
+                case Walls.NorthWestOpen:
+                    break;
+            }
+        }
+
+    
+        private bool ValidMazeProjection(Node[,] littleMaze)
+            {
+                bool validMaze = true;
+
+                for (int row = 0; row < 7; row++)
+                {
+                    for (int col = 0; col < 7; col++)
+                    {
+                        validMaze = SameNode(littleMaze[row, col], this.littleMaze[row, col]);
+
+                        if (!validMaze)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (!validMaze)
+                    {
+                        break;
+                    }
+                }
+
+                return validMaze;
+            }
+
+        private bool SameNode(Node node1, Node node2)
+        {
+            if (node1 == null && node2 != null)
+            {
+                return false;
+            }
+
+            if (node1 != null && node2 == null)
+            {
+                return false;
+            }
+
+            if (node1 == null && node2 == null)
+            {
+                return true;
+            }
+
+            if (node1.Symbol != node2.Symbol)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private Node[,] CopyBigMazePart(int topLeftRow, int topLeftCol)
+        {
+            Node[,] littleMaze = new Node[7, 7];
+
+            for (int row = 0; row < 7; row++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    littleMaze[row, col] = bigMaze[topLeftRow + row, topLeftCol + col];
+                }
+            }
+
+            return littleMaze;
+        }
+
         /// <summary>
         /// Conects all nodes together
         /// </summary>
@@ -2556,10 +8162,16 @@ namespace KTANE_Solver
 
         public class Node
         {
-            public int Row { get; }
-            public int Column { get; }
-            private Symbol Symbol  { get; }
-            public ExitColor ExitColor;
+            public int Row;
+            public int Column;
+            public Symbol Symbol;
+            public ExitColor NorthExitColor;
+            public ExitColor NorthEastExitColor;
+            public ExitColor SouthEastExitColor;
+            public ExitColor SouthExitColor;
+            public ExitColor SouthWestExitColor;
+            public ExitColor NorthWestExitColor;
+
             public Node North;
             public Node NorthEast;
             public Node SouthEast;
@@ -2575,7 +8187,13 @@ namespace KTANE_Solver
                 Column = column;
                 Symbol = symbol;
                 Walls = walls;
-                ExitColor = ExitColor.None;
+
+                NorthExitColor = ExitColor.None;
+                NorthEastExitColor = ExitColor.None;
+                SouthEastExitColor = ExitColor.None;
+                SouthExitColor = ExitColor.None;
+                SouthWestExitColor = ExitColor.None;
+                NorthWestExitColor = ExitColor.None;
 
                 North = null;
                 NorthEast = null;
@@ -2584,7 +8202,7 @@ namespace KTANE_Solver
                 SouthWest = null;
                 NorthWest = null;
             }   
-        }       
-    }           
+        }
+    }
 }               
                 

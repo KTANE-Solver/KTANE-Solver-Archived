@@ -305,6 +305,18 @@
     </Compile>
     <Compile Include="SeaShellsForm.Designer.cs">
       <DependentUpon>SeaShellsForm.cs</DependentUpon>
+    <Compile Include="ShapeShift.cs" />
+    <Compile Include="ShapeShiftPictureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShapeShiftPictureForm.Designer.cs">
+      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShapeShiftWordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShapeShiftWordForm.Designer.cs">
+      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
@@ -691,6 +703,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SeaShellsForm.resx">
       <DependentUpon>SeaShellsForm.cs</DependentUpon>
+    <EmbeddedResource Include="ShapeShiftPictureForm.resx">
+      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShapeShiftWordForm.resx">
+      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>

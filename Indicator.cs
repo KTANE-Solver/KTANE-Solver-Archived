@@ -71,7 +71,6 @@ namespace KTANE_Solver
             }
         }
 
-        //tells if an indicator is visible and  lit
         public bool VisibleAndLit
         {
             get
@@ -79,8 +78,6 @@ namespace KTANE_Solver
                 return visible && lit;
             }
         }
-            
-
 
         //===============CONSTRUCTOR===============
         /// <summary>
