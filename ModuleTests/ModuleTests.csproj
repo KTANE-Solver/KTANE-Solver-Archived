@@ -52,6 +52,10 @@
   <ItemGroup>
     <Compile Include="ColoredSquaresTest.cs" />
     <Compile Include="SafetySafeTest.cs" />
+    <Compile Include="WireSequence.cs" />
+    <Compile Include="FastMath.cs" />
+    <Compile Include="Listening.cs" />
+    <Compile Include="ConnectionCheck.cs" />
     <Compile Include="SeaShellsTest.cs" />
     <Compile Include="ShapeShiftTest.cs" />
     <Compile Include="WireSequenceTest.cs" />
