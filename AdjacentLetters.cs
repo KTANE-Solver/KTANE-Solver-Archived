@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text.RegularExpressions;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -429,13 +431,7 @@ namespace KTANE_Solver
         /// <returns></returns>
         private bool ContainsLetter(int row, int column, string str)
         {
-            foreach (char c in str)
-            {
-                if (Grid[row, column] == c)
-                    return true;
-            }
-
-            return false;
+            return Regex.IsMatch(str, "" + Grid[row, column]);
         }
 
     }

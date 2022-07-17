@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace KTANE_Solver
 {
@@ -20,12 +21,7 @@ namespace KTANE_Solver
         //a 6x6 2d char array that represents the board
         private char[,] board;
 
-        private Piece piece1;
-        private Piece piece2;
-        private Piece piece3;
-        private Piece piece4;
-        private Piece piece5;
-        private Piece piece6;
+        private List<Piece> pieceList;
 
         //CONSTRUCTOR
 
@@ -33,56 +29,62 @@ namespace KTANE_Solver
         public Chess(String position1, String position2, String position3, String position4, String position5, String position6, Bomb bomb, StreamWriter logWriterFile)
         : base(bomb, logWriterFile, "Chess")
         {
-            board = new char[,]
+            board = new char[6,6];
+
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
                 {
-                    {'.','.','.','.','.','.'},
-                    {'.','.','.','.','.','.'},
-                    {'.','.','.','.','.','.'},
-                    {'.','.','.','.','.','.'},
-                    {'.','.','.','.','.','.'},
-                    {'.','.','.','.','.','.'}
-                };
+                    board[i, j] = '.';
+                }
+            }
 
             //determine all the piece locations
-            piece1 = new Piece (ConvertLocation(position1));
-            piece2 = new Piece (ConvertLocation(position2));
-            piece3 = new Piece (ConvertLocation(position3));
-            piece4 = new Piece (ConvertLocation(position4));
-            piece5 = new Piece (ConvertLocation(position5));
-            piece6 = new Piece (ConvertLocation(position6));
 
+            List<string> positionList = new List<string>()
+            {
+                position1,
+                position2,
+                position3,
+                position4,
+                position5,
+                position6
+            };
+
+            pieceList = new List<Piece>();
+
+            foreach (string position in positionList)
+            {
+                pieceList.Add(new Piece(ConvertLocation(position)));
+            }
 
             //determine and place all the pieces
-            piece4.PieceChar = DeterminePiece(piece4.PieceLocation, 4);
-            PlacePiece(piece4);
+            DetermineandPlacePiece(4);
+            DetermineandPlacePiece(5);
+            DetermineandPlacePiece(1);
+            DetermineandPlacePiece(2);
+            DetermineandPlacePiece(3);
+            DetermineandPlacePiece(6);
 
-            piece5.PieceChar = DeterminePiece(piece5.PieceLocation, 5);
-            PlacePiece(piece5);
-
-            piece1.PieceChar = DeterminePiece(piece1.PieceLocation, 1);
-            PlacePiece(piece1);
-
-            piece2.PieceChar = DeterminePiece(piece2.PieceLocation, 2);
-            PlacePiece(piece2);
-
-            piece3.PieceChar = DeterminePiece(piece3.PieceLocation, 3);
-            PlacePiece(piece3);
-
-            piece6.PieceChar = DeterminePiece(piece6.PieceLocation, 6);
-            PlacePiece(piece6);
 
             //print information about all the pieces
-            PrintPiece(1, piece1.PieceChar, position1);
-            PrintPiece(2, piece2.PieceChar, position2);
-            PrintPiece(3, piece3.PieceChar, position3);
-            PrintPiece(4, piece4.PieceChar, position4);
-            PrintPiece(5, piece5.PieceChar, position5);
-            PrintPiece(6, piece6.PieceChar, position6);
+            for(int i = 0; i < 6; i++)
+            {
+                PrintPiece(i + 1, pieceList[i].PieceChar, positionList[i]);
+            }
 
             PrintDebugLine("");
         }
 
         //METHODS
+
+        private void DetermineandPlacePiece(int pieceNum)
+        {
+            Piece piece = pieceList[pieceNum - 1];
+
+            piece.PieceChar = DeterminePiece(piece.PieceLocation, pieceNum);
+            PlacePiece(piece);
+        }
 
         /// <summary>
         /// Solves the module
@@ -90,12 +92,11 @@ namespace KTANE_Solver
         public void Solve()
         {
             //sees which tiles are covered by the pieces
-            ConverArea(piece1);
-            ConverArea(piece2);
-            ConverArea(piece3);
-            ConverArea(piece4);
-            ConverArea(piece5);
-            ConverArea(piece6);
+
+            foreach (Piece piece in pieceList)
+            {
+                CoverArea(piece);
+            }
 
             //print the board
             PrintBoard();
@@ -141,8 +142,6 @@ namespace KTANE_Solver
                 answer = $"{(char)(int.Parse("" + answerList[0][1]) + 97)}{Math.Abs(6 - int.Parse("" + answerList[0][0]))}";
             }
 
-            PrintDebug($"Answer: {answer}\n");
-
             ShowAnswer(answer, true);
 
         }
@@ -160,57 +159,39 @@ namespace KTANE_Solver
             {
                 case 1:
                     //Occupied by a king if Position #5 is occupied by a queen.
-                    if (piece5.PieceChar == 'Q')
-                        return 'K';
-
                     //Otherwise, the field is occupied by a bishop.
-                    return 'B';
+
+                    return pieceList[4].PieceChar == 'Q' ? 'K' : 'B';
 
                 case 2:
                     //Occupied by a rook if the last digit of the serial number is odd.
-                    if (Bomb.LastDigit % 2 == 1)
-                        return 'R';
-
                     //Otherwise, the field is occupied by a knight.
-                    return 'N';
+
+                    return Bomb.LastDigit % 2 == 1 ? 'R' : 'N';
+
 
                 case 3:
                     //Occupied by a queen if there are less than two rooks on the board.
-                    if (PieceCount('R') < 2)
-                        return 'Q';
-
                     //Otherwise, the field is occupied by a king.
-                    return 'K';
+
+                    return PieceCount('R') < 2 ? 'Q' : 'K';
 
                 case 4:
-                    //Always occupied by a rook.
                     return 'R';
 
                 case 5:
                     //Occupied by a queen if the field is white.
-                    if (position[0] % 2 == position[1] % 2)
-                        return 'Q';
-
-
                     //Otherwise, the field is occupied by a rook.
-                    return 'R';
 
-                case 6:
+                    return position[0] % 2 == position[1] % 2 ? 'Q' : 'R';
+
+                default:
                     //Occupied by a queen if there are no other queens on the board.
-                    if (piece5.PieceChar != 'Q' && piece3.PieceChar != 'Q')
-                        return 'Q';
-
                     //Otherwise, occupied by a knight if there are no other knights on the board.
-                    if (piece2.PieceChar != 'N')
-                        return 'N';
-
-
                     //Otherwise, the field is occupied by a bishop.
-                    return 'B';
-            }
 
-            //shouldn't happen
-            return 'F';
+                    return pieceList[4].PieceChar != 'Q' && pieceList[2].PieceChar != 'Q' ? 'Q' : pieceList[1].PieceChar != 'N' ? 'N' : 'B';
+            }
         }
 
         /// <summary>
@@ -244,11 +225,6 @@ namespace KTANE_Solver
             return new int[] { Math.Abs((int)location[1] - 54), (int)location[0] - 97 };
         }
 
-        private string ConvertLocation(int[] pieceLication)
-        {
-            return $"{(char)(int.Parse("" + pieceLication[1]) + 97)}{Math.Abs(6 - int.Parse("" + pieceLication[0]))}";
-        }
-
         //a method that places all the pieces on the board
         private void PlacePiece(Piece piece)
         {
@@ -260,23 +236,9 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
-        private bool isPiece(int row, int column)
+        private bool IsPiece(int row, int column)
         {
-            char character = board[row, column];
-
-            switch (character)
-            {
-                case 'K':
-                case 'R':
-                case 'Q':
-                case 'B':
-                case 'N':
-                    return true;
-
-                default:
-                    return false;
-
-            }
+            return Regex.IsMatch("" + board[row, column], @"[K,R,Q,B,N]");
         }
 
         //a method that will tell where a king will go
@@ -312,7 +274,7 @@ namespace KTANE_Solver
 
             int newRow = 1;
 
-            while (ValidCoordinate(position[0] - newRow, position[1]) && !isPiece(position[0] - newRow, position[1]))
+            while (ValidCoordinate(position[0] - newRow, position[1]) && !IsPiece(position[0] - newRow, position[1]))
             {
                 board[position[0] - newRow, position[1]] = '*';
                 newRow++;
@@ -322,7 +284,7 @@ namespace KTANE_Solver
 
             newRow = 1;
 
-            while (ValidCoordinate(position[0] + newRow, position[1]) && !isPiece(position[0] + newRow, position[1]))
+            while (ValidCoordinate(position[0] + newRow, position[1]) && !IsPiece(position[0] + newRow, position[1]))
             {
                 board[position[0] + newRow, position[1]] = '*';
                 newRow++;
@@ -332,7 +294,7 @@ namespace KTANE_Solver
 
             int newColumn = 1;
 
-            while (ValidCoordinate(position[0], position[1] - newColumn) && !isPiece(position[0], position[1] - newColumn))
+            while (ValidCoordinate(position[0], position[1] - newColumn) && !IsPiece(position[0], position[1] - newColumn))
             {
                 board[position[0], position[1] - newColumn] = '*';
                 newColumn++;
@@ -342,7 +304,7 @@ namespace KTANE_Solver
 
             newColumn = 1;
 
-            while (ValidCoordinate(position[0], position[1] + newColumn) && !isPiece(position[0], position[1] + newColumn))
+            while (ValidCoordinate(position[0], position[1] + newColumn) && !IsPiece(position[0], position[1] + newColumn))
             {
                 board[position[0], position[1] + newColumn] = '*';
                 newColumn++;
@@ -463,7 +425,7 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="piece">the piece itself</param>
         /// <param name="position">the position of the piece</param>
-        private void ConverArea(Piece piece)
+        private void CoverArea(Piece piece)
         {
             switch (piece.PieceChar)
             {

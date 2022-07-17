@@ -56,9 +56,15 @@
     <Compile Include="FastMath.cs" />
     <Compile Include="Listening.cs" />
     <Compile Include="ConnectionCheck.cs" />
+    <Compile Include="SeaShellsTest.cs" />
+    <Compile Include="ShapeShiftTest.cs" />
+    <Compile Include="WireSequenceTest.cs" />
+    <Compile Include="FastMathTest.cs" />
+    <Compile Include="ListeningTest.cs" />
+    <Compile Include="ConnectionCheckTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimonSays.cs" />
-    <Compile Include="TicTacToe.cs" />
+    <Compile Include="SimonSaysTest.cs" />
+    <Compile Include="TicTacToeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

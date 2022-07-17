@@ -2,6 +2,7 @@
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace KTANE_Solver
 {
@@ -11,15 +12,9 @@ namespace KTANE_Solver
     /// </summary>
     public class CheapCheckout : Module
     {
+        List<Item> itemList;
 
-        Item item1;
-        Item item2;
-        Item item3;
-        Item item4;
-        Item item5;
-        Item item6;
-
-        Decimal amount;
+    Decimal amount;
 
         //used to convert decimals to doubles
         double temp;
@@ -30,22 +25,21 @@ namespace KTANE_Solver
                              String item5Name, double item6Wieght, String item6Name)
         : base(bomb, logFileWriter, "Cheap Checkout")
         {
-            item1 = new Item(item1Name, 1);
-            item2 = new Item(item2Name, 1);
-            item3 = new Item(item3Name, 1);
-            item4 = new Item(item4Name, 1);
-            item5 = new Item(item5Name, item5Weight);
-            item6 = new Item(item6Name, item6Wieght);
+            itemList = new List<Item>()
+            {
+                new Item(item1Name, 1),
+                new Item(item2Name, 1),
+                new Item(item3Name, 1),
+                new Item(item4Name, 1),
+                new Item(item5Name, item5Weight),
+                new Item(item6Name, item6Wieght)
+            };
 
             this.amount = amount;
         }
 
         public void Solve()
         {
-            PrintDebugLine("===========================CHEAP CHECKOUT===========================\n");
-            
-
-
             //print the day
             PrintDebugLine($"Day: {Bomb.Day}\n");
 
@@ -53,28 +47,25 @@ namespace KTANE_Solver
             PrintDebugLine($"Amount: ${amount}\n");
 
             //print the items
-            PrintItem(item1, 1);
-            PrintItem(item2, 2);
-            PrintItem(item3, 3);
-            PrintItem(item4, 4);
-            PrintItem(item5, 5);
-            PrintItem(item6, 6);
-
+            for (int i = 0; i < 6; i++)
+            {
+                PrintItem(itemList[0], i + 1);
+            }
             PrintDebugLine("==============================After Sale==============================\n");
             
             //apply the sale
             ApplySale();
 
             //print the items
-            PrintItem(item1, 1);
-            PrintItem(item2, 2);
-            PrintItem(item3, 3);
-            PrintItem(item4, 4);
-            PrintItem(item5, 5);
-            PrintItem(item6, 6);
+            for (int i = 0; i < 6; i++)
+            {
+                PrintItem(itemList[0], i + 1);
+            }
 
             //check the total
-            Decimal total = RoundPrice(item1.price + item2.price + item3.price + item4.price + item5.price + item6.price);
+
+
+            Decimal total = RoundPrice(itemList[0].price + itemList[1].price + itemList[2].price + itemList[3].price + itemList[4].price + itemList[5].price);
 
             PrintDebugLine($"Total: ${total}\n");
 
@@ -128,28 +119,24 @@ namespace KTANE_Solver
                     //Special Sunday
                     //All fixed price items that contain an S in them are $2.15 more.
 
-                    if (item1.name.ToUpper().Contains('S'))
-                        item1.price += 2.15m;
-
-                    if (item2.name.ToUpper().Contains('S'))
-                        item2.price += 2.15m;
-
-                    if (item3.name.ToUpper().Contains('S'))
-                        item3.price += 2.15m;
-
-                    if (item4.name.ToUpper().Contains('S'))
-                        item4.price += 2.15m;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (itemList[i].name.ToUpper().Contains('S'))
+                        {
+                            itemList[i].price += 2.15m;
+                        }
+                    }
                     break;
 
                 case Day.Monday:
                     //Malleable Monday
                     //The 1st, 3rd and 6th items on the shopping list are 15 % off.
 
-                    item1.price = RoundPrice(item1.price *= .85m);
-                    
-                    item3.price = RoundPrice(item3.price *= .85m);
+                    itemList[0].price = RoundPrice(itemList[0].price *= .85m);
 
-                    item6.price = RoundPrice(item6.price *= .85m);
+                    itemList[2].price = RoundPrice(itemList[2].price *= .85m);
+
+                    itemList[5].price = RoundPrice(itemList[5].price *= .85m);
 
 
                     break;
@@ -158,10 +145,10 @@ namespace KTANE_Solver
                     //Calculate the digital root of the item price without the decimal point.
                     //Add that many dollars to the item price. Only applies to fixed price items.
 
-                    item1.price += DigitalRoot(item1.price);
-                    item2.price += DigitalRoot(item2.price);
-                    item3.price += DigitalRoot(item3.price);
-                    item4.price += DigitalRoot(item4.price);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        itemList[i].price += DigitalRoot(itemList[i].price);
+                    }
 
                     break;
                 case Day.Wednesday:
@@ -169,67 +156,50 @@ namespace KTANE_Solver
                     //Change each occurrence of the largest digit in the price with the smallest digit
                     //in the price, and vice versa.
 
-                    item1.price = WackyWednesday(item1.price);
-                    item2.price = WackyWednesday(item2.price);
-                    item3.price = WackyWednesday(item3.price);
-                    item4.price = WackyWednesday(item4.price);
-                    item5.price = WackyWednesday(item5.price);
-                    item6.price = WackyWednesday(item6.price);
+                    foreach (Item item in itemList)
+                    {
+                        item.price = WackyWednesday(item.price);
+                    }
+
                     break;
 
                 case Day.Thursday:
                     //Thrilling Thursday
                     //All of the odd positioned items on the shopping list are half off.
 
-                    item1.price = Convert.ToDecimal(RoundPrice(item1.price /= 2));
-
-                    
-                    item3.price = Convert.ToDecimal(RoundPrice(item3.price /= 2));
-
-                    
-                    item5.price = Convert.ToDecimal(RoundPrice(item5.price /= 2));
-
-
+                    for (int i = 0; i < 6; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            itemList[i].price = Convert.ToDecimal(RoundPrice(itemList[i].price /= 2));
+                        }
+                    }
                     break;
                 case Day.Friday:
                     //Fruity Friday
                     //All fruits are 25 % more per pound.
 
-                    if (item5.category == Item.Category.Fruit)
+                    for (int i = 4; i < 6; i++)
                     {
-                        temp = Convert.ToDouble(item5.price);
-                        item5.price = Convert.ToDecimal(RoundPrice(Convert.ToDecimal(temp *= 1.25 * item5.weight)));
+                        if (itemList[i].category == Item.Category.Fruit)
+                        {
+                            temp = Convert.ToDouble(itemList[i].price);
+                            itemList[i].price = Convert.ToDecimal(RoundPrice(Convert.ToDecimal(temp *= 1.25 * itemList[i].weight)));
+                        }
                     }
-
-                    if (item6.category == Item.Category.Fruit)
-                    {
-                        temp = Convert.ToDouble(item6.price);
-                        item5.price = Convert.ToDecimal(RoundPrice(Convert.ToDecimal(temp *= 1.25 * item6.weight)));
-                    }
-
                     break;
 
                 case Day.Saturday:
                     //Sweet Saturday
                     //All sweet items are 35 % off.
 
-                    if (item1.category == Item.Category.Sweet)
-                        item1.price = Convert.ToDecimal(RoundPrice(item1.price /= .65m));
-
-                    if (item2.category == Item.Category.Sweet)
-                        item2.price = Convert.ToDecimal(RoundPrice(item2.price /= .65m));
-
-                    if (item3.category == Item.Category.Sweet)
-                        item3.price = Convert.ToDecimal(RoundPrice(item3.price /= .65m));
-
-                    if (item4.category == Item.Category.Sweet)
-                        item4.price = Convert.ToDecimal(RoundPrice(item4.price /= .65m));
-
-                    if (item5.category == Item.Category.Sweet)
-                        item5.price = Convert.ToDecimal(RoundPrice(item5.price /= .65m));
-
-                    if (item6.category == Item.Category.Sweet)
-                        item6.price = Convert.ToDecimal(RoundPrice(item6.price /= .65m));
+                    foreach (Item item in itemList)
+                    {
+                        if (item.category == Item.Category.Sweet)
+                        {
+                            item.price = Convert.ToDecimal(RoundPrice(item.price /= .65m));
+                        }
+                    }
                     break;
             }
         }

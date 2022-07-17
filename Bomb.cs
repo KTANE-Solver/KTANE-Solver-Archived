@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -231,7 +232,7 @@ namespace KTANE_Solver
         {
             get
             {
-                return LastLetter == 'A' || LastLetter == 'E' || LastLetter == 'O' || LastLetter == 'I' || LastLetter == 'U';
+                return Regex.IsMatch("" + LastLetter, @"[A,E,I,O,U]");
             }
         }
 
@@ -240,17 +241,7 @@ namespace KTANE_Solver
         {
             get
             {
-                int num = 0;
-
-                for (int i = 0; i < serialNumber.Length; i++)
-                {
-                    if (serialNumber[i] >= 48 && serialNumber[i] <= 57)
-                    {
-                        num++;
-                    }
-                }
-
-                return num;
+                return serialNumber.Where(x => x >= 48 && x <= 57).Count();
             }
         }
 
@@ -259,17 +250,7 @@ namespace KTANE_Solver
         {
             get
             {
-                int num = 0;
-
-                for (int i = 0; i < serialNumber.Length; i++)
-                {
-                    if (serialNumber[i] >= 65 && serialNumber[i] <= 90)
-                    {
-                        num++;
-                    }
-                }
-
-                return num;
+                return serialNumber.Where(x => x >= 65 && x <= 90).Count();
             }
         }
 
@@ -297,23 +278,7 @@ namespace KTANE_Solver
         {
             get
             {
-                int num = 0;
-                for (int i = 0; i < serialNumber.Length; i++)
-                {
-                    switch (serialNumber[i])
-                    {
-                        case 'A':
-                        case 'E':
-                        case 'I':
-                        case 'O':
-                        case 'U':
-                            num++;
-                            break;
-
-                    }
-                }
-
-                return num;
+                return serialNumber.Where(x => Regex.IsMatch("" + x, @"[A,E,I,O,U]")).Count();
             }
         }
 
@@ -322,21 +287,7 @@ namespace KTANE_Solver
         {
             get
             {
-                for (int i = 0; i < serialNumber.Length; i++)
-                {
-                    switch (serialNumber[i])
-                    {
-                        case 'A':
-                        case 'E':
-                        case 'I':
-                        case 'O':
-                        case 'U':
-                            return true;
-
-                    }
-                }
-
-                return false;
+                return Regex.IsMatch(serialNumber, @"[A,E,I,O,U]");
             }
         }
 
@@ -811,17 +762,7 @@ namespace KTANE_Solver
         /// <returns>the number of times the character was found</returns>
         public int CharacterCount(char character)
         {
-            int num = 0;
-
-            for (int i = 0; i < serialNumber.Length; i++)
-            {
-                if (serialNumber[i] == character)
-                {
-                    num++;
-                }
-            }
-
-            return num;
+            return serialNumber.Where(x => x == character).Count();
         }
     }
 }

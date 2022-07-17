@@ -261,7 +261,6 @@
     <Compile Include="ListeningForm.Designer.cs">
       <DependentUpon>ListeningForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hexamazes.cs" />
     <Compile Include="IceCreamStage2Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +304,25 @@
     </Compile>
     <Compile Include="SafetySafeForm.Designer.cs">
       <DependentUpon>SafetySafeForm.cs</DependentUpon>
+    <Compile Include="SeaShells.cs" />
+    <Compile Include="SeaShellsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeaShellsForm.Designer.cs">
+      <DependentUpon>SeaShellsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShapeShift.cs" />
+    <Compile Include="ShapeShiftPictureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShapeShiftPictureForm.Designer.cs">
+      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShapeShiftWordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShapeShiftWordForm.Designer.cs">
+      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
@@ -691,6 +709,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SafetySafeForm.resx">
       <DependentUpon>SafetySafeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeaShellsForm.resx">
+      <DependentUpon>SeaShellsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShapeShiftPictureForm.resx">
+      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShapeShiftWordForm.resx">
+      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
