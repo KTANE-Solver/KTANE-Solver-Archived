@@ -8,13 +8,13 @@ namespace KTANE_Solver
 {
     public class SafetySafe : Module
     {
-        int offset;
-        int firstTurn;
-        int secondTurn;
-        int thirdTurn;
-        int fourthTurn;
-        int fifthTurn;
-        int sixthTurn;
+        public int offset;
+        public int firstTurn;
+        public int secondTurn;
+        public int thirdTurn;
+        public int fourthTurn;
+        public int fifthTurn;
+        public int sixthTurn;
 
         public SafetySafe(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Saftey Safe")
         {
@@ -27,16 +27,54 @@ namespace KTANE_Solver
             sixthTurn = 0;
         }
 
+        public void Debug()
+        {
+            offset = FindOffset();
+
+            firstTurn = FindFirstTurn();
+            secondTurn = FindSecondTurn();
+            thirdTurn = FindThirdTurn();
+            fourthTurn = FindFourthTurn();
+            fifthTurn = FindFifthTurn();
+            sixthTurn = FindSixthTurn();
+            
+            
+            PrintDebugLine("Offset: " + offset);
+            PrintDebugLine("First Turn: " + firstTurn);
+            PrintDebugLine("Second Turn: " + secondTurn);
+            PrintDebugLine("Third Turn: " + thirdTurn);
+            PrintDebugLine("Fourth Turn: " + fourthTurn);
+            PrintDebugLine("Fifth Turn: " + fifthTurn);
+            PrintDebugLine("Sixth Turn: " + sixthTurn + "\n");
+        }
+
         public void Solve()
         {
             offset = FindOffset();
 
-            firstTurn = (FindFirstTurn() + offset) % 12;
-            secondTurn = (FindSecondTurn() + offset) % 12;
-            thirdTurn = (FindThirdTurn() + offset) % 12;
-            fourthTurn = (FindFourthTurn() + offset) % 12;
-            fifthTurn = (FindFifthTurn() + offset) % 12;
-            sixthTurn = (FindSixthTurn() + offset) % 12;
+            PrintDebugLine("Offset: " + offset);
+            firstTurn = FindFirstTurn();
+            secondTurn = FindSecondTurn();
+            thirdTurn = FindThirdTurn();
+            fourthTurn = FindFourthTurn();
+            fifthTurn = FindFifthTurn();
+            sixthTurn = FindSixthTurn();
+
+            PrintDebugLine("First Turn: " + firstTurn);
+            PrintDebugLine("Second Turn: " + secondTurn);
+            PrintDebugLine("Third Turn: " + thirdTurn);
+            PrintDebugLine("Fourth Turn: " + fourthTurn);
+            PrintDebugLine("Fifth Turn: " + fifthTurn);
+            PrintDebugLine("Sixth Turn: " + sixthTurn + "\n");
+
+
+
+            firstTurn = (firstTurn + offset) % 12;
+            secondTurn = (secondTurn + offset) % 12;
+            thirdTurn = (thirdTurn + offset) % 12;
+            fourthTurn = (fourthTurn + offset) % 12;
+            fifthTurn = (fifthTurn + offset) % 12;
+            sixthTurn = (sixthTurn + offset) % 12;
 
             ShowAnswer($"1. {firstTurn}\n2. {secondTurn}\n3. {thirdTurn}\n4. {fourthTurn}\n5. {fifthTurn}\n6. {sixthTurn}", true);
         }
@@ -475,155 +513,169 @@ namespace KTANE_Solver
         private int FindSixthTurn()
         {
             int num = 0;
-            foreach (char c in Bomb.SerialNumber)
+            PrintDebug("Sixth number: ");
+            for(int i = 0; i < Bomb.SerialNumber.Length; i++)
             {
-                switch (c)
+                int addition;
+                
+                switch (Bomb.SerialNumber[i])
                 {
                     case 'A':
-                        num += 0;
+                        addition = 0;
                         break;
                     case 'B':
-                        num += 8;
+                        addition = 8;
                         break;
 
                     case 'C':
-                        num += 6;
+                        addition = 6;
                         break;
 
                     case 'D':
-                        num += 7;
+                        addition = 7;
                         break;
 
                     case 'E':
-                        num += 1;
+                        addition = 1;
                         break;
 
                     case 'F':
-                        num += 5;
+                        addition = 5;
                         break;
 
                     case 'G':
-                        num += 5;
+                        addition = 5;
                         break;
 
                     case 'H':
-                        num += 5;
+                        addition = 5;
                         break;
 
                     case 'I':
-                        num += 10;
+                        addition = 10;
                         break;
 
                     case 'J':
-                        num += 6;
+                        addition = 6;
                         break;
 
                     case 'K':
-                        num += 4;
+                        addition = 4;
                         break;
 
                     case 'L':
-                        num += 11;
+                        addition = 11;
                         break;
 
                     case 'M':
-                        num += 2;
+                        addition = 2;
                         break;
 
                     case 'N':
-                        num += 9;
+                        addition = 9;
                         break;
 
                     case 'O':
-                        num += 8;
+                        addition = 8;
                         break;
 
                     case 'P':
-                        num += 7;
+                        addition = 7;
                         break;
 
                     case 'Q':
-                        num += 8;
+                        addition = 8;
                         break;
 
                     case 'R':
-                        num += 11;
+                        addition = 11;
                         break;
 
                     case 'S':
-                        num += 10;
+                        addition = 10;
                         break;
 
                     case 'T':
-                        num += 3;
+                        addition = 3;
                         break;
 
                     case 'U':
-                        num += 1;
+                        addition = 1;
                         break;
 
                     case 'V':
-                        num += 0;
+                        addition = 0;
                         break;
 
                     case 'W':
-                        num += 2;
+                        addition = 2;
                         break;
 
                     case 'X':
-                        num += 10;
+                        addition = 10;
                         break;
 
                     case 'Y':
-                        num += 9;
+                        addition = 9;
                         break;
 
                     case 'Z':
-                        num += 4;
+                        addition = 4;
                         break;
 
                     case '0':
-                        num += 6;
+                        addition = 6;
                         break;
 
                     case '1':
-                        num += 2;
+                        addition = 2;
                         break;
 
                     case '2':
-                        num += 3;
+                        addition = 3;
                         break;
 
                     case '3':
-                        num += 4;
+                        addition = 4;
                         break;
 
                     case '4':
-                        num += 0;
+                        addition = 0;
                         break;
 
                     case '5':
-                        num += 11;
+                        addition = 11;
                         break;
 
                     case '6':
-                        num += 3;
+                        addition = 3;
                         break;
 
                     case '7':
-                        num += 1;
+                        addition = 1;
                         break;
 
                     case '8':
-                        num += 7;
+                        addition = 7;
                         break;
 
                     default:
-                        num += 9;
+                        addition = 9;
                         break;
 
                 }
+
+                num += addition;
+
+                PrintDebug($"{addition}");
+
+                if (i != Bomb.SerialNumber.Length - 1)
+                {
+                    PrintDebug(" + ");
+                }
             }
+
+            PrintDebugLine("");
 
             return num;
             
