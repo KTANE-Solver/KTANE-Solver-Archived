@@ -36,7 +36,7 @@ namespace KTANE_Solver
             thirdTurn = FindThirdTurn();
             fourthTurn = FindFourthTurn();
             fifthTurn = FindFifthTurn();
-            sixthTurn = FindSixthTurn();
+            sixthTurn = FindSixthTurn() % 12;
             
             
             PrintDebugLine("Offset: " + offset);
@@ -48,26 +48,27 @@ namespace KTANE_Solver
             PrintDebugLine("Sixth Turn: " + sixthTurn + "\n");
         }
 
-        public void Solve()
+        public int[] Solve()
         {
             offset = FindOffset();
 
-            PrintDebugLine("Offset: " + offset);
             firstTurn = FindFirstTurn();
+            PrintDebugLine("Local First Turn: " + firstTurn);
+
             secondTurn = FindSecondTurn();
+            PrintDebugLine("Local Second Turn: " + secondTurn);
+
             thirdTurn = FindThirdTurn();
+            PrintDebugLine("Local Third Turn: " + thirdTurn);
+
             fourthTurn = FindFourthTurn();
+            PrintDebugLine("Local Fourth Turn: " + fourthTurn);
+
             fifthTurn = FindFifthTurn();
-            sixthTurn = FindSixthTurn();
+            PrintDebugLine("Local Fifth Turn: " + fifthTurn);
 
-            PrintDebugLine("First Turn: " + firstTurn);
-            PrintDebugLine("Second Turn: " + secondTurn);
-            PrintDebugLine("Third Turn: " + thirdTurn);
-            PrintDebugLine("Fourth Turn: " + fourthTurn);
-            PrintDebugLine("Fifth Turn: " + fifthTurn);
-            PrintDebugLine("Sixth Turn: " + sixthTurn + "\n");
-
-
+            sixthTurn = FindSixthTurn() % 12;
+            PrintDebugLine("Local Sixth Turn: " + sixthTurn + "\n");
 
             firstTurn = (firstTurn + offset) % 12;
             secondTurn = (secondTurn + offset) % 12;
@@ -76,12 +77,21 @@ namespace KTANE_Solver
             fifthTurn = (fifthTurn + offset) % 12;
             sixthTurn = (sixthTurn + offset) % 12;
 
-            ShowAnswer($"1. {firstTurn}\n2. {secondTurn}\n3. {thirdTurn}\n4. {fourthTurn}\n5. {fifthTurn}\n6. {sixthTurn}", true);
+            string answer = $"1. {firstTurn}\n2. {secondTurn}\n3. {thirdTurn}\n4. {fourthTurn}\n5. {fifthTurn}\n6. {sixthTurn}";
+
+            PrintDebugLine("Answer:\n" + answer + "\n");
+
+            int[] arr = new int[] {firstTurn, secondTurn, thirdTurn, fourthTurn, fifthTurn, sixthTurn };
+
+            return arr;
         }
 
         private int FindOffset()
         {
-            int offset = Bomb.UniquePortNum * 7;
+            int portNum = Bomb.UniquePortNum;
+            int offset = portNum * 7;
+
+            PrintDebugLine($"{portNum} port types were found. Offset is {offset}");
 
             int indicatorLitNum = 0;
             foreach (Indicator indicator in Bomb.LitIndicatorsList)
@@ -95,6 +105,8 @@ namespace KTANE_Solver
 
             offset += indicatorLitNum * 5;
 
+            PrintDebugLine($"{indicatorLitNum} lit indicators that share a letter with the serial number were found. Offset is now {offset}");
+
             int indicatorUnlitNum = 0;
             foreach (Indicator indicator in Bomb.UnlitIndicatorsList)
             {
@@ -106,6 +118,13 @@ namespace KTANE_Solver
             }
 
             offset += indicatorUnlitNum;
+
+            PrintDebugLine($"{indicatorUnlitNum} unlit indicators that share a letter with the serial number were found. Offset is now {offset}");
+
+            offset %= 12;
+
+            PrintDebugLine($"Updated offset is now {offset}\n");
+
 
             return offset;
         }
@@ -196,7 +215,7 @@ namespace KTANE_Solver
 
         private int FindSecondTurn()
         {
-            switch (Bomb.SerialNumber[0])
+            switch (Bomb.SerialNumber[1])
             {
                 case 'A':
                     return 3;
@@ -275,7 +294,7 @@ namespace KTANE_Solver
 
         private int FindThirdTurn()
         {
-            switch (Bomb.SerialNumber[0])
+            switch (Bomb.SerialNumber[2])
             {
                 case 'A':
                     return 4;
@@ -354,7 +373,7 @@ namespace KTANE_Solver
 
         private int FindFourthTurn()
         {
-            switch (Bomb.SerialNumber[0])
+            switch (Bomb.SerialNumber[3])
             {
                 case 'A':
                     return 8;
@@ -433,7 +452,7 @@ namespace KTANE_Solver
 
         private int FindFifthTurn()
         {
-            switch (Bomb.SerialNumber[0])
+            switch (Bomb.SerialNumber[4])
             {
                 case 'A':
                     return 9;
