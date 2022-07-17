@@ -298,6 +298,13 @@
     <Compile Include="MultiStageModuleForm.Designer.cs">
       <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SafetySafe.cs" />
+    <Compile Include="SafetySafeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SafetySafeForm.Designer.cs">
+      <DependentUpon>SafetySafeForm.cs</DependentUpon>
+	</Compile>
     <Compile Include="SeaShells.cs" />
     <Compile Include="SeaShellsForm.cs">
       <SubType>Form</SubType>
