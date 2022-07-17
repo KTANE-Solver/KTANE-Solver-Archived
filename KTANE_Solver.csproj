@@ -174,6 +174,13 @@
     <Compile Include="ChessForm.Designer.cs">
       <DependentUpon>ChessForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChordQualities.cs" />
+    <Compile Include="ChordQualitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChordQualitiesForm.Designer.cs">
+      <DependentUpon>ChordQualitiesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ColoredSquares.cs" />
     <Compile Include="ColoredSquaresForm.cs">
       <SubType>Form</SubType>
@@ -304,7 +311,7 @@
     </Compile>
     <Compile Include="SafetySafeForm.Designer.cs">
       <DependentUpon>SafetySafeForm.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="SeaShells.cs" />
     <Compile Include="SeaShellsForm.cs">
       <SubType>Form</SubType>
@@ -653,6 +660,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChessForm.resx">
       <DependentUpon>ChessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChordQualitiesForm.resx">
+      <DependentUpon>ChordQualitiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ColoredSquaresForm.resx">
       <DependentUpon>ColoredSquaresForm.cs</DependentUpon>
