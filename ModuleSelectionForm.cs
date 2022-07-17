@@ -74,6 +74,7 @@ namespace KTANE_Solver
         private PokerStage1Form pokerForm;
         private RockPaperScissorsLizardSpockForm rockPaperScissorsLizardSpockForm;
         private RubikCubeForm rubikCubeForm;
+        private SafetySafeForm safetySafeForm;
         private SeaShellsForm seaShellsForm;
         private ShapeShiftWordForm shapeShiftWordForm;
         private SillySlotsStage1Form sillySlotsForm;
@@ -142,7 +143,6 @@ namespace KTANE_Solver
         private void SetUpModuleComboBox()
         {
             moduleComboBox.Items.Clear();
-
 
 
             //String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Colored Squares", "Complicated Wires", "Connection Check", "Creation", "Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Listening", "Logic", "Maze", "Memory", "Microcontroller", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Sea Shells", "Shape Shift", "Silly Slots", "Simon Says", "Switches", "Tic Tac Toe", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
@@ -748,7 +748,12 @@ namespace KTANE_Solver
 
                     rubikCubeForm.Show();
                     break;
+                case "Safety Safe":
 
+                    safetySafeForm = new SafetySafeForm(bomb, logFileWriter, this);
+                    safetySafeForm.Show();
+                    break;
+                    
                 case "Sea Shells":
 
                     seaShellsForm = new SeaShellsForm(bomb, logFileWriter, this);
