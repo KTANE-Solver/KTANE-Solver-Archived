@@ -279,8 +279,6 @@ namespace KTANE_Solver
 
             this.Hide();
 
-            Hexamazes module;
-
             switch (moduleName)
             {
                 case "3D Maze":
@@ -535,10 +533,6 @@ namespace KTANE_Solver
                     }
 
                     gamepadForm.Show();
-                    break;
-
-                case "Hexamaze":
-                    module = new Hexamazes(bomb, logFileWriter);
                     break;
 
                 case "Ice Cream":

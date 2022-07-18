@@ -261,7 +261,6 @@
     <Compile Include="ListeningForm.Designer.cs">
       <DependentUpon>ListeningForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hexamazes.cs" />
     <Compile Include="IceCreamStage2Form.cs">
       <SubType>Form</SubType>
     </Compile>
