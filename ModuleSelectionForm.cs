@@ -50,6 +50,7 @@ namespace KTANE_Solver
         private ButtonForm buttonForm;
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
+        private ChordQualitiesForm chordQualitiesForm;
         private ColorMathForm colorMathForm;
         private CreationForm creationForm;
         private ColoredSquaresForm coloredSquaresForm;
@@ -145,8 +146,8 @@ namespace KTANE_Solver
             moduleComboBox.Items.Clear();
 
 
-            //String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Color Math", "Colored Squares", "Complicated Wires", "Connection Check", "Creation", "Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Listening", "Logic", "Maze", "Memory", "Microcontroller", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Sea Shells", "Shape Shift", "Silly Slots", "Simon Says", "Switches", "Tic Tac Toe", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
-            String[] modules = new String[] { "3D Maze", "Adventure Game", "Adjacent Letters", "Binary Puzzle", "Bitmaps", "Boolean Venn Diagram", "Bulb", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Switches", "Two Bits", "Who's on First", "Wires", "Word Search" };
+            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Chord Qualities", "Color Math", "Colored Squares", "Complicated Wires", "Connection Check", "Creation", "Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Light Cycle", "Listening", "Logic", "Maze", "Memory", "Microcontroller", "Monsplode Trading Cards", "Morse Code", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Sea Shells", "Shape Shift", "Silly Slots", "Simon Says", "Switches", "Tic Tac Toe", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            //String[] modules = new String[] { "3D Maze", "Adventure Game", "Adjacent Letters", "Binary Puzzle", "Bitmaps", "Boolean Venn Diagram", "Bulb", "Cheap Checkout", "Chess", "Color Math", "Complicated Wires", "FizzBuzz", "Gamepad", "Ice Cream", "Keypad", "Light Cycle", "Logic", "Maze", "Murder", "Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Rubik's Cube", "Silly Slots", "Switches", "Two Bits", "Who's on First", "Wires", "Word Search" };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -456,6 +457,12 @@ namespace KTANE_Solver
                     }
 
                     chessForm.Show();
+                    break;
+
+                case "Chord Qualities":
+
+                    chordQualitiesForm = new ChordQualitiesForm(bomb, logFileWriter, this);
+                    chordQualitiesForm.Show();
                     break;
 
                 case "Color Math":
