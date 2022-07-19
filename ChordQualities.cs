@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KTANE_Solver
 {
-    class ChordQualities : Module
+    public class ChordQualities : Module
     {
-        Note note1;
-        Note note2;
-        Note note3;
-        Note note4;
+        private Note note1;
+        private Note note2;
+        private Note note3;
+        private Note note4;
 
-        Note currentRoot;
-        string currentQuality;
+        private Note currentRoot;
+        private string currentQuality;
 
-        List<string> qualities;
-        
-        Note newRoot;
-        string newQuality;
+        private List<string> qualities;
+
+        private Note newRoot;
+        private string newQuality;
 
         public ChordQualities(Bomb bomb, StreamWriter logFileWriter, Note note1, Note note2, Note note3, Note note4) : base(bomb, logFileWriter, "Chord Qualities")
         {
             this.note1 = note1;
-            this.note2 = note1;
-            this.note3 = note1;
-            this.note4 = note1;
+            this.note2 = note2;
+            this.note3 = note3;
+            this.note4 = note4;
 
             RefactorNotes();
 
@@ -45,11 +45,10 @@ namespace KTANE_Solver
                 "X....X.X..X.",
                 "X..X....X..X"
             };
-
         }
 
         public enum Note
-        { 
+        {
             A,
             ASharp,
             B,
@@ -64,11 +63,53 @@ namespace KTANE_Solver
             GSharp
         }
 
-        public void Solve()
+        public string DebugSolve()
         {
+            PrintDebugLine("Note 1: " + this.note1);
+            PrintDebugLine("Note 2: " + this.note2);
+            PrintDebugLine("Note 3: " + this.note3);
+            PrintDebugLine("Note 4: " + this.note4 + "\n");
+
             FindQualityAndRoot();
+
+            PrintDebugLine("Old Quality: " + currentQuality);
+            PrintDebugLine("Old Root: " + currentRoot + "\n");
+
             FindNewRoot();
             FindNewQuality();
+
+            PrintDebugLine("New Quality: " + newQuality);
+            PrintDebugLine("New Root: " + newRoot + "\n");
+
+
+            List<Note> answerList = FindAnswer();
+
+            string answer = string.Join(", ", answerList);
+
+            PrintDebugLine(answer + "\n");
+
+            return answer;
+        }
+
+        public void Solve()
+        {
+            PrintDebugLine("Note 1: " + this.note1);
+            PrintDebugLine("Note 2: " + this.note2);
+            PrintDebugLine("Note 3: " + this.note3);
+            PrintDebugLine("Note 4: " + this.note4 + "\n");
+
+            FindQualityAndRoot();
+
+            PrintDebugLine("Old Quality: " + currentQuality);
+            PrintDebugLine("Old Root: " + currentRoot + "\n");
+
+            FindNewRoot();
+            FindNewQuality();
+
+            PrintDebugLine("New Quality: " + newQuality);
+            PrintDebugLine("New Root: " + newRoot + "\n");
+
+
             List<Note> answerList = FindAnswer();
 
             ShowAnswer(string.Join(", ", answerList), true);
@@ -100,7 +141,7 @@ namespace KTANE_Solver
                 notes[maxIndex] = lastNote;
             }
 
-            if (note2 > note3)
+            if (notes[1] > notes[2])
             {
                 Note thirdNote = notes[1];
                 Note secondNote = notes[2];
@@ -108,6 +149,12 @@ namespace KTANE_Solver
                 notes[1] = secondNote;
                 notes[2] = thirdNote;
             }
+
+            note1 = notes[0];
+            note2 = notes[1];
+            note3 = notes[2];
+            note4 = notes[3];
+
         }
 
         private void FindQualityAndRoot()
@@ -115,11 +162,12 @@ namespace KTANE_Solver
             string quality = "";
             bool correctQuality = false;
             int startingNote = -1;
+
             for(int i = 0; i < 12; i++)
             {
                 quality = qualities[i];
 
-                for (int j = 1; j > 5; j++)
+                for (int j = 1; j < 5; j++)
                 {
                     startingNote = j;
                     correctQuality = CoorectQuality(quality, j);
@@ -184,7 +232,14 @@ namespace KTANE_Solver
 
             for (int i = 0; i < 4; i++)
             {
-                gaps[i] = Math.Abs(gaps[i]) % 12;
+                gaps[i] = Math.Abs(gaps[i]);
+
+                if (gaps[i] > 6)
+                {
+                    gaps[i] = 12 - gaps[i];
+                }
+
+                gaps[i] %= 12;
             }
 
             return gaps;
@@ -192,69 +247,66 @@ namespace KTANE_Solver
 
         private int[] FindGaps(string quality)
         {
+            List<int> indexList = new List<int>();
+
             List<int> gaps = new List<int>();
 
-            List<char> qualityList = quality.ToCharArray().ToList();
-
-
-            while (qualityList.Count != 0)
+            for (int i = 0; i < quality.Length; i++)
             {
-                int counter = 0;
-                char c = qualityList[0];
-
-                if (c != '.')
+                if (quality[i] == 'X')
                 {
-                    qualityList.RemoveAt(0);
-                    continue;
+                    indexList.Add(i);
                 }
-
-                while (qualityList.Count != 0 && c == qualityList[0])
-                {
-                    counter++;
-                    qualityList.RemoveAt(0);
-                }
-
-                gaps.Add(counter + 1);
             }
+
+            for (int i = indexList.Count - 1; i > 0; i--)
+            {
+                gaps.Add(indexList[i] - indexList[i - 1]);
+            }
+
+            gaps.Reverse();
+
+            List<char> reversedQuality = quality.ToCharArray().ToList();
+
+            reversedQuality.Reverse();
+
+            quality = string.Join("", reversedQuality);
+
+            gaps.Add(quality.IndexOf('X') + 1);
 
             return gaps.ToArray();
         }
 
         private bool CoorectQuality(string quality, int startingNote)
         {
-            int[] gaps = FindGaps(startingNote);
+            int[] noteGaps = FindGaps(startingNote);
 
-            int previousIndex = 0;
-
-            for (int i = 0; i < gaps.Length; i++)
+            if (quality == "X..XX.....X." && startingNote == 3)
             {
-                if (i != 3)
-                {
-                    string qualityGaps = quality.Substring(previousIndex, gaps[i]);
-
-                    int dotCount = qualityGaps.Where(x => x == '.').Count();
-
-                    if (qualityGaps[0] != 'X' || quality[qualityGaps.Length - 1] != 'X' || dotCount != qualityGaps.Length - 2)
-                    {
-                        return false;
-                    }
-
-                    previousIndex += gaps[i];
-                }
-
-                else
-                {
-                    string qualityGaps = quality.Substring(previousIndex);
-
-                    if (qualityGaps.Length != gaps[3])
-                    {
-                        return false;
-                    }
-                }
-
+                PrintDebug("");
             }
 
-            return true;
+            int[] qualityGaps = FindGaps(quality);
+
+            bool correctQuality = false;
+
+            for (int i = 0; i < noteGaps.Length; i++)
+            {
+                correctQuality = noteGaps[i] == qualityGaps[i];
+
+                if (!correctQuality)
+                {
+                    break;
+                }
+            }
+
+            if (correctQuality)
+            { 
+                PrintDebugLine("Gaps: " + string.Join(", ", qualityGaps) + "\n");
+                return true;
+            }
+
+            return false;
         }
 
         private void FindNewRoot()
@@ -356,22 +408,37 @@ namespace KTANE_Solver
 
         private List<Note> FindAnswer()
         {
-            int [] gaps = FindGaps(newQuality);
-
             List<Note> answer = new List<Note>();
 
             answer.Add(newRoot);
 
 
+            List<int> indexList = new List<int>();
+
+            List<int> gaps = new List<int>();
+
+            for (int i = 0; i < newQuality.Length; i++)
+            {
+                if (newQuality[i] == 'X')
+                {
+                    indexList.Add(i);
+                }
+            }
+
+            for (int i = indexList.Count - 1; i > 0; i--)
+            {
+                gaps.Add(indexList[i] - indexList[i - 1]);
+            }
+
+            gaps.Reverse();
+
             Note currentNote = newRoot;
 
-            for (int i = 0; i < gaps.Length; i++)
+            foreach (int gap in gaps)
             {
-                Note newNote = (Note)((int)(currentNote + gaps[i]) % 12);
-
+                Note newNote = (Note)(((int)(currentNote + gap) % 12));
+                answer.Add(newNote);
                 currentNote = newNote;
-
-                answer.Add(currentNote);
             }
 
             return answer;
