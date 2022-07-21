@@ -39,56 +39,65 @@ namespace KTANE_Solver
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 9);
+            this.label1.Location = new System.Drawing.Point(189, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 13);
+            this.label1.Size = new System.Drawing.Size(191, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "What does the grid look like?";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 34);
+            this.textBox1.Location = new System.Drawing.Point(157, 42);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 20);
+            this.textBox1.Size = new System.Drawing.Size(252, 22);
             this.textBox1.TabIndex = 1;
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 72);
+            this.backButton.Location = new System.Drawing.Point(16, 89);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(84, 33);
+            this.backButton.Size = new System.Drawing.Size(112, 41);
             this.backButton.TabIndex = 2;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(332, 72);
+            this.submitButton.Location = new System.Drawing.Point(443, 89);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(84, 33);
+            this.submitButton.Size = new System.Drawing.Size(112, 41);
             this.submitButton.TabIndex = 3;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(172, 72);
+            this.strikeButton.Location = new System.Drawing.Point(229, 89);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(84, 33);
+            this.strikeButton.Size = new System.Drawing.Size(112, 41);
             this.strikeButton.TabIndex = 4;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // MysticSquareForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 117);
+            this.ClientSize = new System.Drawing.Size(571, 144);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MysticSquareForm";
             this.Text = "MysticSquareForm";
             this.ResumeLayout(false);

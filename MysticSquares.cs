@@ -12,15 +12,76 @@ namespace KTANE_Solver
         private List<Puzzle> closedList;
         private Puzzle startingPuzzle;
 
-        public MysticSquares(Bomb bomb, StreamWriter logFileWriter, int[,]startingPuzzle) : base(bomb, logFileWriter, "Mystic Squares")
+        public MysticSquares(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Mystic Squares")
         {
             openList = new List<Puzzle>();
             closedList = new List<Puzzle>();
+        }
 
-            this.startingPuzzle = new Puzzle(startingPuzzle, null);
-            this.startingPuzzle.GCost = 0;
+        public int FindSkullDebug(int[,] grid)
+        {
+            int skull;
+            int startingNum = grid[1, 1];
 
-            openList.Add(this.startingPuzzle);
+            if (grid[1, 1] == 0)
+            {
+                skull = 7;
+
+            }
+
+            else
+            {
+                int[] arr;
+
+                int row = -1;
+                int col = -1;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (grid[i, j] == 0)
+                        {
+                            row = i;
+                            col = j;
+
+                            break;
+                        }
+                    }
+
+                    if (row != -1)
+                    {
+                        break;
+                    }
+                }
+
+                if (grid[0, 0] == Bomb.LastDigit || grid[1, 1] == Bomb.LastDigit || grid[0, 2] == Bomb.LastDigit || grid[2, 0] == Bomb.LastDigit || grid[2, 2] == Bomb.LastDigit)
+                {
+                    arr = FindSkullRow(startingNum);
+                }
+
+                else
+                {
+                    arr = FindSkullColumn(startingNum);
+                }
+
+                foreach (int n in arr)
+                {
+                    int[] coor = FindSkull(row, col, n, grid);
+
+                    if (coor.Length != 1)
+                    {
+                        row = coor[0];
+                        col = coor[1];
+                    }
+
+
+                }
+
+                skull = grid[row, col];
+            }
+
+            return skull;
         }
 
         public void FindSkull(int[,] grid)
@@ -37,11 +98,30 @@ namespace KTANE_Solver
             else
             {
                 int[] arr;
-                int row = 1;
-                int col = 1;
 
+                int row = -1;
+                int col = -1;
 
-                if (grid[0, 0] == Bomb.LastDigit || grid[1, 1] == Bomb.LastDigit || grid[0, 2] == Bomb.LastDigit || grid[2, 0] == Bomb.LastDigit || grid[2, 2] == Bomb.LastDigit)
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (grid[i, j] == 0)
+                        {
+                            row = i;
+                            col = j;
+
+                            break;
+                        }
+                    }
+
+                    if (row != -1)
+                    {
+                        break;
+                    }
+                }
+
+                if (Bomb.LastDigit != 0 && (grid[0, 0] == Bomb.LastDigit || grid[1, 1] == Bomb.LastDigit || grid[0, 2] == Bomb.LastDigit || grid[2, 0] == Bomb.LastDigit || grid[2, 2] == Bomb.LastDigit))
                 {
                     arr = FindSkullRow(startingNum);
                 }
@@ -53,7 +133,7 @@ namespace KTANE_Solver
 
                 foreach (int n in arr)
                 {
-                    int [] coor = FindSkull(row, col, n, grid);
+                    int[] coor = FindSkull(row, col, n, grid);
 
                     if (coor.Length != 1)
                     {
@@ -133,28 +213,42 @@ namespace KTANE_Solver
 
         private int[] FindSkull(int currentRow, int currentColumn, int nextTarget, int [,] grid)
         {
-            for (int i = -1; i > 2; i++)
+            int[][] directions = new int[][]
             {
-                for (int j = -1; j > 2; j++)
-                {
-                    if (i == 0 && j == 0)
-                    {
-                        continue;
-                    }
+                new int[]{ 1, 0 },
+                new int[]{ 0, 1 },
+                new int[]{ -1, 0 },
+                new int[]{ 0, -1 },
 
-                    if (grid[currentRow + i, currentColumn + j] == nextTarget)
+            };
+
+            foreach (int[] direction in directions)
+            {
+                try
+                {
+                    if (grid[currentRow + direction[0], currentColumn + direction[1]] == nextTarget)
                     {
-                        return new int[] { currentRow + i, currentColumn + j };
+                        return new int[] { currentRow + direction[0], currentColumn + direction[1] };
                     }
+                }
+
+                catch
+                {
+                    continue;
                 }
             }
 
             return new int[] { -1 };
         }
 
-        public void Solve()
+        public void Solve(int[,] startingPuzzle)
         {
-            Puzzle currentPuzzle = startingPuzzle;
+            this.startingPuzzle = new Puzzle(startingPuzzle, null);
+            this.startingPuzzle.GCost = 0;
+
+            openList.Add(this.startingPuzzle);
+
+            Puzzle currentPuzzle = this.startingPuzzle;
 
             while (!GoalIsInOpenList())
             {
@@ -235,7 +329,7 @@ namespace KTANE_Solver
                 PrintDebugLine("");
             }
 
-            PrintDebugLine(FindAnswer(answer));
+            ShowAnswer(FindAnswer(answer), true);
         }
 
         public bool GoalIsInOpenList()
@@ -284,7 +378,30 @@ namespace KTANE_Solver
                 answer.Add("" + num);
             }
 
-            return string.Join(", ", answer);
+            List<string> brokenUpAnswer = new List<string>();
+
+            for (int i = 0; i < answer.Count / 3; i++)
+            {
+                string str = "" + answer[i * 3] + answer[i * 3 + 1] + answer[i * 3 + 2];
+                brokenUpAnswer.Add(str);
+            }
+
+            int difference = answer.Count % 3;
+
+            if (difference != 0)
+            {
+
+                string str = "";
+
+                for (int i = difference; i > 0; i--)
+                {
+                    str += answer[answer.Count - i];
+                }
+
+                brokenUpAnswer.Add(str);
+            }
+
+            return string.Join("\n", brokenUpAnswer);
         }
 
 
