@@ -73,6 +73,7 @@ namespace KTANE_Solver
         private PasswordFirstStageForm passwordForm;
         private PokerStage1Form pokerForm;
         private RockPaperScissorsLizardSpockForm rockPaperScissorsLizardSpockForm;
+        private RoundKeypadForm roundKeypadForm;
         private RubikCubeForm rubikCubeForm;
         private SafetySafeForm safetySafeForm;
         private SeaShellsForm seaShellsForm;
@@ -731,6 +732,13 @@ namespace KTANE_Solver
                     }
 
                     rockPaperScissorsLizardSpockForm.Show();
+                    break;
+
+                case "Round Keypad":
+
+                    roundKeypadForm = new RoundKeypadForm(bomb, logFileWriter, this);
+
+                    roundKeypadForm.Show();
                     break;
 
                 case "Rubik's Cube":
