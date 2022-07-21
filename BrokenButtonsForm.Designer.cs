@@ -36,7 +36,7 @@ namespace KTANE_Solver
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(197, 62);
+            this.startButton.Location = new System.Drawing.Point(197, 12);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(83, 34);
             this.startButton.TabIndex = 0;
@@ -46,7 +46,7 @@ namespace KTANE_Solver
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 62);
+            this.backButton.Location = new System.Drawing.Point(12, 12);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(83, 34);
             this.backButton.TabIndex = 1;
@@ -56,7 +56,7 @@ namespace KTANE_Solver
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(104, 62);
+            this.strikeButton.Location = new System.Drawing.Point(104, 12);
             this.strikeButton.Name = "strikeButton";
             this.strikeButton.Size = new System.Drawing.Size(83, 34);
             this.strikeButton.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace KTANE_Solver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 108);
+            this.ClientSize = new System.Drawing.Size(292, 55);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.startButton);

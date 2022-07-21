@@ -14,8 +14,6 @@ namespace KTANE_Solver
         
         private bool leftSubmitButton;
 
-        private bool submitAndBuutonRule;
-        private bool noAnswerFound;
         public string tempAnswer;
         public bool closeProgram;
 
@@ -25,9 +23,6 @@ namespace KTANE_Solver
             leftSubmitButton = true;
 
             buttonPressed = new List<string>();
-
-            submitAndBuutonRule = false;
-            noAnswerFound = false;
             closeProgram = false;
         }
 
@@ -40,7 +35,7 @@ namespace KTANE_Solver
                 answer = "right";
             }
 
-            ShowAnswer($"Press the {answer} submit button", false);
+            ShowAnswer($"Press the {answer} submit button", true);
         }
 
 
@@ -63,7 +58,11 @@ namespace KTANE_Solver
             else if (AskMutipleWordAppearQuestion("ONE", "SUBMIT", true))
             {
                 answer = "ONE";
+                PrintDebug("Found ONE AND SUBMIT. ");
+
                 leftSubmitButton = true;
+
+                PrintSubitButtonDebugLine();
             }
 
             else if (AskQuestion("Is there a button that is literally blank?"))
@@ -75,6 +74,10 @@ namespace KTANE_Solver
             {
                 answer = "OTHER";
                 leftSubmitButton = !leftSubmitButton;
+
+                PrintDebug("Found OTHER. ");
+
+                PrintSubitButtonDebugLine();
             }
 
             else if (AskQuestion("Is there a duplicate word?"))
@@ -91,6 +94,12 @@ namespace KTANE_Solver
                 answer = tempAnswer;
             }
 
+            else if (AskMutipleWordAppearQuestion("BOOM", "BOMB", true))
+            {
+                answer = "BOOM";
+            }
+
+
             else if (AskQuestion("Is there a button that has less than 3 characters on it?"))
             {
                 BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("threeLess", this, LogFileWriter);
@@ -100,7 +109,6 @@ namespace KTANE_Solver
 
             else if (AskMutipleWordAppearQuestion("SUBMIT", "BUTTON", true))
             {
-                submitAndBuutonRule = true;
                 answer = "DON'T PRESS";
             }
 
@@ -118,25 +126,49 @@ namespace KTANE_Solver
             }
 
 
-            else if (buttonPressed.Count != 0 && buttonPressed[0].Contains('E'))
+            else if ((buttonPressed.Count != 0 && buttonPressed[0].Contains('E')))
             {
                 answer = "NO ANSWER";
-                noAnswerFound = true;
                 leftSubmitButton = false;
+
+                PrintDebug("First button contains an E. ");
+
+                PrintSubitButtonDebugLine();
+
+                buttonPressed.Add(answer);
             }
 
             if (answer == "LITERALLY BLANK")
             {
                 ShowAnswer("Press the literally blank button", false);
                 buttonPressed.Add("");
+                PrintDebugLine($"{buttonPressed.Count}: {buttonPressed[buttonPressed.Count - 1]}\n");
             }
 
-            else if (answer != "DON'T PRESS" && answer != "NO ANSWER")
+            else if (answer != "DON'T PRESS" && answer != "NO ANSWER" && answer != "")
             {
                 ShowAnswer($"Press \"{answer}\"", false);
                 buttonPressed.Add(answer);
+                PrintDebugLine($"{buttonPressed.Count}: {buttonPressed[buttonPressed.Count - 1]}\n");
             }
 
+            else
+            {
+                answer = "NO ANSWER";
+                buttonPressed.Add(answer);
+            }
+        }
+
+        private void PrintSubitButtonDebugLine()
+        {
+            string side = "left";
+
+            if (!leftSubmitButton)
+            {
+                side = "right";
+            }
+
+            PrintDebugLine($"The {side} is now the correct submit button\n");
         }
 
         private bool AskWordAppearQuestion(string word)

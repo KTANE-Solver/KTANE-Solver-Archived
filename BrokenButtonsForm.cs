@@ -26,11 +26,9 @@ namespace KTANE_Solver
 
             while (buttonList.Count != 5)
             {
-                PrintDebugLine("" + buttonList.Count);
-
                 module.FindButtonToPress();
 
-                if (module.buttonPressed.Contains("DON'T PRESS"))
+                if (module.buttonPressed.Contains("DON'T PRESS") || module.buttonPressed.Contains("NO ANSWER"))
                 {
                     break;
                 }
