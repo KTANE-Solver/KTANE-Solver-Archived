@@ -300,6 +300,12 @@
       <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RoundKeypad.cs" />
+    <Compile Include="RoundKeypadAnswerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoundKeypadAnswerForm.Designer.cs">
+      <DependentUpon>RoundKeypadAnswerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoundKeypadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -688,6 +694,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
       <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoundKeypadAnswerForm.resx">
+      <DependentUpon>RoundKeypadAnswerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RoundKeypadForm.resx">
       <DependentUpon>RoundKeypadForm.cs</DependentUpon>
