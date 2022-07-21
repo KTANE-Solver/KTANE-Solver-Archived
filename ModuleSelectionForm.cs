@@ -50,6 +50,7 @@ namespace KTANE_Solver
         private ButtonForm buttonForm;
         private CheapCheckoutForm cheapForm;
         private ChessForm chessForm;
+        private ChordQualitiesForm chordQualitiesForm;
         private ColorMathForm colorMathForm;
         private CreationForm creationForm;
         private ColoredSquaresForm coloredSquaresForm;
@@ -457,6 +458,12 @@ namespace KTANE_Solver
                     }
 
                     chessForm.Show();
+                    break;
+
+                case "Chord Qualities":
+
+                    chordQualitiesForm = new ChordQualitiesForm(bomb, logFileWriter, this);
+                    chordQualitiesForm.Show();
                     break;
 
                 case "Color Math":
