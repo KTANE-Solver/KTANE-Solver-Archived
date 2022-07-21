@@ -104,11 +104,8 @@ namespace KTANE_Solver
 
             module.tempAnswer = answer;
 
-        }
+            this.Close();
 
-        public void CloseProgram(object sender, FormClosingEventArgs e)
-        {
-            
         }
     }
 }

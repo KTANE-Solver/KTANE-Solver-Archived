@@ -45,7 +45,7 @@ namespace KTANE_Solver
         private BitmapsForm bitmapsForm;
         private BlindAlleyForm blindAlleyForm;
         private BooleanVennDiagramForm booleanVennDiagramForm;
-        private BrokenButtons brokenButtonsModule;
+        private BrokenButtonsForm brokenButtonsForm;
         private BulbForm bulbForm;
         private ButtonForm buttonForm;
         private CheapCheckoutForm cheapForm;
@@ -396,8 +396,8 @@ namespace KTANE_Solver
 
                 case "Broken Buttons":
 
-                    brokenButtonsModule = new BrokenButtons(bomb, logFileWriter);
-                    brokenButtonsModule.Solve();
+                    brokenButtonsForm = new BrokenButtonsForm(bomb, logFileWriter, this);
+                    brokenButtonsForm.Show();
                     break;
 
                 case "Button":

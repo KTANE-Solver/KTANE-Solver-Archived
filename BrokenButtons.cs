@@ -10,11 +10,7 @@ namespace KTANE_Solver
 {
     public class BrokenButtons : Module
     {
-        public string firstButtonPressed;
-        public string secondButtonPressed; 
-        public string thirdButtonPressed; 
-        public string fourthButtonPressed; 
-        public string fifthButtonPressed; 
+        public List<string> buttonPressed;
         
         private bool leftSubmitButton;
 
@@ -26,13 +22,10 @@ namespace KTANE_Solver
         
         public BrokenButtons(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Broken Buttons")
         {
-            leftSubmitButton = false;
+            leftSubmitButton = true;
 
-            firstButtonPressed = "";
-            secondButtonPressed = "";
-            thirdButtonPressed = "";
-            fourthButtonPressed = "";
-            fifthButtonPressed = "";
+            buttonPressed = new List<string>();
+
             submitAndBuutonRule = false;
             noAnswerFound = false;
             closeProgram = false;
@@ -40,36 +33,9 @@ namespace KTANE_Solver
 
         public void Solve()
         {
-            firstButtonPressed = FindButtonToPress();
+            string answer = "left";
 
-            if (!submitAndBuutonRule && !noAnswerFound)
-            {
-                secondButtonPressed = FindButtonToPress();
-
-                if (!submitAndBuutonRule && !noAnswerFound)
-                {
-                    if (!submitAndBuutonRule && !noAnswerFound)
-                    {
-                        fourthButtonPressed = FindButtonToPress();
-
-                        if (!submitAndBuutonRule && !noAnswerFound)
-                        {
-                            fifthButtonPressed = FindButtonToPress();
-                        }
-                    }
-                }
-            }
-            
-
-
-            string answer;
-
-            if (leftSubmitButton)
-            {
-                answer = "left";
-            }
-
-            else
+            if (!leftSubmitButton)
             {
                 answer = "right";
             }
@@ -78,7 +44,7 @@ namespace KTANE_Solver
         }
 
 
-        private string FindButtonToPress()
+        public void FindButtonToPress()
         {
             string answer = "";
 
@@ -143,11 +109,7 @@ namespace KTANE_Solver
                 answer = "COLUMN";
             }
 
-            else if (firstButtonPressed == "" &&
-                    secondButtonPressed == "" &&
-                    thirdButtonPressed == "" &&
-                    fourthButtonPressed == "" &&
-                    fifthButtonPressed == "")
+            else if (buttonPressed.Count == 0)
             {
                 ShowAnswer("Find the word that is in the 2nd row and 3rd column", false);
                 BrokenButtonsWordSelectionForm wordSelectionForm = new BrokenButtonsWordSelectionForm("All", this, LogFileWriter);
@@ -156,7 +118,7 @@ namespace KTANE_Solver
             }
 
 
-            else if (firstButtonPressed != "" && firstButtonPressed.Contains('E'))
+            else if (buttonPressed.Count != 0 && buttonPressed[0].Contains('E'))
             {
                 answer = "NO ANSWER";
                 noAnswerFound = true;
@@ -166,14 +128,15 @@ namespace KTANE_Solver
             if (answer == "LITERALLY BLANK")
             {
                 ShowAnswer("Press the literally blank button", false);
+                buttonPressed.Add("");
             }
 
             else if (answer != "DON'T PRESS" && answer != "NO ANSWER")
             {
                 ShowAnswer($"Press \"{answer}\"", false);
+                buttonPressed.Add(answer);
             }
 
-            return answer;
         }
 
         private bool AskWordAppearQuestion(string word)

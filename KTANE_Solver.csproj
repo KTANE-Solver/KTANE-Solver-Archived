@@ -134,6 +134,12 @@
       <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BrokenButtons.cs" />
+    <Compile Include="BrokenButtonsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrokenButtonsForm.Designer.cs">
+      <DependentUpon>BrokenButtonsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BrokenButtonsWordSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -669,6 +675,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BooleanVennDiagramForm.resx">
       <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrokenButtonsForm.resx">
+      <DependentUpon>BrokenButtonsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BrokenButtonsWordSelectionForm.resx">
       <DependentUpon>BrokenButtonsWordSelectionForm.cs</DependentUpon>
