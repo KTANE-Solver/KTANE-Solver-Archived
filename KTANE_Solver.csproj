@@ -261,6 +261,12 @@
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
     <Compile Include="3DMaze.cs" />
+    <Compile Include="PointOfOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PointOfOrderForm.Designer.cs">
+      <DependentUpon>PointOfOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listening.cs" />
     <Compile Include="ListeningForm.cs">
       <SubType>Form</SubType>
@@ -345,6 +351,14 @@
     <Compile Include="RoundKeypadForm.Designer.cs">
       <DependentUpon>RoundKeypadForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MysticSquareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MysticSquareForm.Designer.cs">
+      <DependentUpon>MysticSquareForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MysticSquares.cs" />
+    <Compile Include="PointOfOrder.cs" />
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -713,6 +727,9 @@
     <EmbeddedResource Include="FizzBuzzForm.resx">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PointOfOrderForm.resx">
+      <DependentUpon>PointOfOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListeningForm.resx">
       <DependentUpon>ListeningForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -731,23 +748,8 @@
     <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
       <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SafetySafeForm.resx">
-      <DependentUpon>SafetySafeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SeaShellsForm.resx">
-      <DependentUpon>SeaShellsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShapeShiftPictureForm.resx">
-      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShapeShiftWordForm.resx">
-      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoundKeypadAnswerForm.resx">
-      <DependentUpon>RoundKeypadAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoundKeypadForm.resx">
-      <DependentUpon>RoundKeypadForm.cs</DependentUpon>
+    <EmbeddedResource Include="MysticSquareForm.resx">
+      <DependentUpon>MysticSquareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>

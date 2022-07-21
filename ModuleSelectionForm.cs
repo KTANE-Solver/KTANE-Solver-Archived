@@ -70,6 +70,7 @@ namespace KTANE_Solver
         private MonsplodeTradingCardForm1 monsplodeTradingCardForm;
         private MorseCodeForm morseCodeForm;
         private MurderForm murderForm;
+        private MysticSquareForm mysticSquareForm;
         private NumberPadForm numberPadForm;
         private PasswordFirstStageForm passwordForm;
         private PokerStage1Form pokerForm;
@@ -679,6 +680,12 @@ namespace KTANE_Solver
                     }
 
                     murderForm.Show();
+                    break;
+
+                case "Mystic Square":
+
+                    mysticSquareForm = new MysticSquareForm(bomb, logFileWriter, this);
+                    mysticSquareForm.Show();
                     break;
 
                 case "Number Pad":
