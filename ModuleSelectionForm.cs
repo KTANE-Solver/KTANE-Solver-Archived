@@ -926,7 +926,7 @@ namespace KTANE_Solver
                 break;
             }
 
-            if (moduleName != "Two Bits" && moduleName != "Broken Buttons")
+            if (moduleName != "Two Bits")
             { 
                 SuccessfulModuleOpening(moduleName);
             }
