@@ -22,7 +22,7 @@ namespace KTANE_Solver
         int stage;
 
         public SimonSaysOtherStageForm(int stage, SimonSaysForm firstStage, SimonSays module, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        :base(bomb,logFileWriter,moduleSelectionForm, firstStage, "Simon Says", false)
+        : base(bomb, logFileWriter, moduleSelectionForm, firstStage, "Simon Says", false)
         {
             InitializeComponent();
             this.firstStage = firstStage;
@@ -46,7 +46,7 @@ namespace KTANE_Solver
         private void backButton_Click(object sender, EventArgs e)
         {
 
-            module.lights = module.lights.Remove(module.lights.Length-1);
+            module.lights = module.lights.Remove(module.lights.Length - 1);
 
             PrintDebugLine($"User pressed back. Sequence is now {module.lights}\n");
 
@@ -104,6 +104,6 @@ namespace KTANE_Solver
             UpdateForm(stage + 1, module, Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
-        
+
     }
 }

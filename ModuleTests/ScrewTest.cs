@@ -3,6 +3,8 @@ using System;
 using KTANE_Solver;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
 namespace ModuleTests
 {
     [TestClass]
@@ -17,7 +19,7 @@ namespace ModuleTests
                     new Indicator("SIG", true, true), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 1, new Port("DVID", 1), new Port("Parallel", 0),
                     new Port("ps", 0), new Port("rj", 1), new Port("serial", 0), new Port("setero", 1));
 
-            Screw module = new Screw(bomb, streamWriter, Screw.Color.White, Screw.Color.Yellow, Screw.Color.Green, Screw.Color.Red, Screw.Color.Magenta, Screw.Color.Blue);
+            Screw module = new Screw(bomb, streamWriter, new List<Screw.Color>() { Screw.Color.White, Screw.Color.Yellow, Screw.Color.Green, Screw.Color.Red, Screw.Color.Magenta, Screw.Color.Blue });
 
             module.FindScrewLocations();
 
@@ -39,7 +41,7 @@ namespace ModuleTests
                     new Indicator("SIG", true, true), new Indicator("SND", true, false), new Indicator("TRN", false, false), false, 1, new Port("DVID", 1), new Port("Parallel", 0),
                     new Port("ps", 1), new Port("rj", 0), new Port("serial", 0), new Port("setero", 1));
 
-            Screw module = new Screw(bomb, streamWriter, Screw.Color.Green, Screw.Color.Red, Screw.Color.White, Screw.Color.Magenta, Screw.Color.Blue, Screw.Color.Yellow);
+            Screw module = new Screw(bomb, streamWriter, new List<Screw.Color>() { Screw.Color.Green, Screw.Color.Red, Screw.Color.White, Screw.Color.Magenta, Screw.Color.Blue, Screw.Color.Yellow });
 
             module.FindScrewLocations();
 
@@ -60,7 +62,7 @@ namespace ModuleTests
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 1, new Port("DVID", 0), new Port("Parallel", 0),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            Screw module = new Screw(bomb, streamWriter, Screw.Color.White, Screw.Color.Red, Screw.Color.Green, Screw.Color.Blue, Screw.Color.Yellow, Screw.Color.Magenta);
+            Screw module = new Screw(bomb, streamWriter, new List<Screw.Color>() { Screw.Color.White, Screw.Color.Red, Screw.Color.Green, Screw.Color.Blue, Screw.Color.Yellow, Screw.Color.Magenta });
 
             module.FindScrewLocations();
 
@@ -82,7 +84,7 @@ namespace ModuleTests
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 1, new Port("DVID", 0), new Port("Parallel", 0),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            Screw module = new Screw(bomb, streamWriter, Screw.Color.Blue, Screw.Color.Yellow, Screw.Color.White, Screw.Color.Magenta, Screw.Color.Green, Screw.Color.Red);
+            Screw module = new Screw(bomb, streamWriter, new List<Screw.Color>() { Screw.Color.Blue, Screw.Color.Yellow, Screw.Color.White, Screw.Color.Magenta, Screw.Color.Green, Screw.Color.Red });
 
             module.FindScrewLocations();
 
@@ -104,7 +106,7 @@ namespace ModuleTests
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 1, new Port("DVID", 0), new Port("Parallel", 0),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            Screw module = new Screw(bomb, streamWriter, Screw.Color.Blue, Screw.Color.White, Screw.Color.Magenta, Screw.Color.Red, Screw.Color.Yellow, Screw.Color.Green);
+            Screw module = new Screw(bomb, streamWriter, new List<Screw.Color>() { Screw.Color.Blue, Screw.Color.White, Screw.Color.Magenta, Screw.Color.Red, Screw.Color.Yellow, Screw.Color.Green });
 
             module.FindScrewLocations();
 
@@ -126,7 +128,7 @@ namespace ModuleTests
                     new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", false, false), false, 1, new Port("DVID", 0), new Port("Parallel", 0),
                     new Port("ps", 0), new Port("rj", 0), new Port("serial", 1), new Port("setero", 0));
 
-            Screw module = new Screw(bomb, streamWriter, Screw.Color.Red, Screw.Color.Yellow, Screw.Color.Green, Screw.Color.Blue, Screw.Color.White, Screw.Color.Magenta);
+            Screw module = new Screw(bomb, streamWriter, new List<Screw.Color>() { Screw.Color.Red, Screw.Color.Yellow, Screw.Color.Green, Screw.Color.Blue, Screw.Color.White, Screw.Color.Magenta });
 
             module.FindScrewLocations();
 
