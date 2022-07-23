@@ -378,6 +378,13 @@
     </Compile>
     <Compile Include="MysticSquares.cs" />
     <Compile Include="PointOfOrder.cs" />
+    <Compile Include="Screw.cs" />
+    <Compile Include="ScrewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScrewForm.Designer.cs">
+      <DependentUpon>ScrewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimonSaysOtherStageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -781,6 +788,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
+    <EmbeddedResource Include="ScrewForm.resx">
+      <DependentUpon>ScrewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwitchesForm.resx">
       <DependentUpon>SwitchesForm.cs</DependentUpon>

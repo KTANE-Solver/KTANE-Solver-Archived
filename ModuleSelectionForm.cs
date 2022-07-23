@@ -81,6 +81,7 @@ namespace KTANE_Solver
         private SeaShellsForm seaShellsForm;
         private ShapeShiftWordForm shapeShiftWordForm;
         private SemaphoreStage1Form semaphoreCountForm; 
+        private ScrewForm screwForm;
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
         private SwitchesForm switchesForm;
@@ -786,6 +787,12 @@ namespace KTANE_Solver
 
                     semaphoreCountForm = new SemaphoreStage1Form(bomb, logFileWriter, this);
                     semaphoreCountForm.Show();
+                    break;
+
+                case "Screw":
+
+                    ScrewForm screwForm = new ScrewForm(bomb, logFileWriter, this);
+                    screwForm.Show();
                     break;
 
                 case "Silly Slots":
