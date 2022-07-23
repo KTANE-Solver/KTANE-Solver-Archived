@@ -16,14 +16,10 @@ namespace KTANE_Solver
         Color bottomMid;
         Color bottomRight;
 
-        Color screwInitialLocation;
-
         List<Color> screwLocationAnswers;
         List<Color> colorLocations;
 
-        List<string> letterAnswers;
-
-        public Screw(Bomb bomb, StreamWriter logFileWriter, Color topLeft, Color topMid, Color topRight, Color bottomLeft, Color bottomMid, Color bottomRight, Color screwLocation) : base(bomb, logFileWriter, "Screw")
+        public Screw(Bomb bomb, StreamWriter logFileWriter, Color topLeft, Color topMid, Color topRight, Color bottomLeft, Color bottomMid, Color bottomRight) : base(bomb, logFileWriter, "Screw")
         {
             this.topLeft = topLeft;
             this.topMid = topMid;
@@ -31,15 +27,18 @@ namespace KTANE_Solver
             this.bottomLeft = bottomLeft;
             this.bottomMid = bottomMid;
             this.bottomRight = bottomRight;
-            this.screwInitialLocation = screwLocation;
             colorLocations = new List<Color> { topLeft, topMid, topRight, bottomLeft, bottomMid, bottomRight };
             screwLocationAnswers = new List<Color>();
-            letterAnswers = new List<string>();
+        }
+
+        public string SolveDebug(int stage)
+        {
+            return $"{screwLocationAnswers[stage - 1]} and {FindLetterAnswers(stage - 1)}"; 
         }
 
         public void Solve(int stage)
         {
-            ShowAnswer($"{screwLocationAnswers[stage]} in {FindLetterAnswers(stage)}", true);
+            ShowAnswer(SolveDebug(stage), true);
         }
 
         public void FindScrewLocations()
@@ -62,10 +61,7 @@ namespace KTANE_Solver
 
         public string FindLetterAnswers(int stage)
         {
-            bool letterAinFirstThirdPos = MessageBox.Show("Is the letter A in the first or third position?", "", MessageBoxButtons.YesNo) == DialogResult.Yes;
-            bool letterCinSecondFourthPos = MessageBox.Show("Is the letter C in the second or fourth position?", "", MessageBoxButtons.YesNo) == DialogResult.Yes;
-
-            Color color = colorLocations[stage];
+            Color color = screwLocationAnswers[stage];
 
             int colorIndex = colorLocations.IndexOf(color);
 
@@ -75,22 +71,22 @@ namespace KTANE_Solver
                 {
                     if (colorIndex % 3 + 1 == Bomb.BatteryHolder)
                     {
-                        return "Fourth Position";
+                        return "4th position";
                     }
 
-                    else if (letterAinFirstThirdPos)
+                    else if (MessageBox.Show("Is the letter A in the 1st or 3rd position?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         return "C";
                     }
 
                     else if (Bomb.Clr.Visible || Bomb.Frk.Visible || Bomb.Trn.Visible)
                     {
-                        return "Third Position";
+                        return "3rd position";
                     }
 
                     else if (colorLocations.IndexOf(Color.Blue) % 3 == colorIndex % 3)
                     {
-                        return "First Position";
+                        return "1st position";
                     }
 
                     else
@@ -103,7 +99,7 @@ namespace KTANE_Solver
                 {
                     if (colorIndex % 3 + 1 == Bomb.UniquePortNum)
                     {
-                        return "Second Position";
+                        return "2nd position";
                     }
 
                     else if (colorIndex % 3 + 1 == Bomb.Battery)
@@ -123,7 +119,7 @@ namespace KTANE_Solver
 
                     else
                     {
-                        return "First Position";
+                        return "1st position";
                     }
                 }
             }
@@ -137,19 +133,19 @@ namespace KTANE_Solver
                         return "D";
                     }
 
-                    else if (letterCinSecondFourthPos)
+                    else if (MessageBox.Show("Is the letter C in the 2nd or 4th position?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         return "B";
                     }
 
                     else if (Bomb.Car.Visible || Bomb.Frk.Visible || Bomb.Snd.Visible)
                     {
-                        return "Fourth Position";
+                        return "4th position";
                     }
 
-                    else if (colorIndex % 3 == colorLocations.IndexOf(Color.Red) % 3)
+                    else if (colorIndex / 3 == colorLocations.IndexOf(Color.Red) / 3)
                     {
-                        return "Second Position";
+                        return "2nd position";
                     }
 
                     else
@@ -162,7 +158,7 @@ namespace KTANE_Solver
                 {
                     if (colorIndex % 3 + 1 == Bomb.PortPlateNum)
                     {
-                        return "Second Position";
+                        return "2nd position";
                     }
 
                     else if (colorIndex % 3 + 1 == Bomb.IndicatorNum)
@@ -170,7 +166,7 @@ namespace KTANE_Solver
                         return "A";
                     }
 
-                    else if ((colorLocations[colorIndex - 1] == Color.Yellow && colorIndex - 1 > 2) || (colorIndex + 1 < 5 && colorLocations[colorIndex + 1] == Color.Yellow))
+                    else if ((colorIndex - 1 > 2 && colorLocations[colorIndex - 1] == Color.Yellow) || (colorIndex + 1 < 6 && colorLocations[colorIndex + 1] == Color.Yellow))
                     {
                         return "C";
                     }
@@ -182,7 +178,7 @@ namespace KTANE_Solver
 
                     else
                     {
-                        return "Fourth Position";
+                        return "4th position";
                     }
                 }
             }            
@@ -194,7 +190,7 @@ namespace KTANE_Solver
             {
                 int index = colorLocations.IndexOf(currentStageAnswer) + 1;
 
-                index %= 7;
+                index %= 6;
 
                 if (index == 0)
                 {
@@ -209,7 +205,7 @@ namespace KTANE_Solver
 
         public Color ConvertNumToScrewLocation(int num)
         {
-            num %= 7;
+            num %= 6;
 
             if (num == 0)
             {
