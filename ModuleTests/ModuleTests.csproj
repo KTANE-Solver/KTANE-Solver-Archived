@@ -61,6 +61,11 @@
     <Compile Include="ConnectionCheckTest.cs" />
     <Compile Include="RoundKeypadTest.cs" />
     <Compile Include="MysticSquareTest.cs" />
+    <Compile Include="SemaphoreTest.cs" />
+    <Compile Include="WireSequence.cs" />
+    <Compile Include="FastMath.cs" />
+    <Compile Include="Listening.cs" />
+    <Compile Include="ConnectionCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimonSaysTest.cs" />
     <Compile Include="TicTacToeTest.cs" />

@@ -273,6 +273,19 @@
     <Compile Include="PointOfOrderForm.Designer.cs">
       <DependentUpon>PointOfOrderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Semaphore.cs" />
+    <Compile Include="SemaphoreStage1Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SemaphoreStage1Form.Designer.cs">
+      <DependentUpon>SemaphoreStage1Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SemaphoreOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SemaphoreOtherStageForm.Designer.cs">
+      <DependentUpon>SemaphoreOtherStageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listening.cs" />
     <Compile Include="ListeningForm.cs">
       <SubType>Form</SubType>
@@ -738,6 +751,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PointOfOrderForm.resx">
       <DependentUpon>PointOfOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SemaphoreStage1Form.resx">
+      <DependentUpon>SemaphoreStage1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SemaphoreOtherStageForm.resx">
+      <DependentUpon>SemaphoreOtherStageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListeningForm.resx">
       <DependentUpon>ListeningForm.cs</DependentUpon>
