@@ -788,6 +788,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SimonSaysOtherStageForm.resx">
       <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="ScrewForm.resx">
       <DependentUpon>ScrewForm.cs</DependentUpon>
     </EmbeddedResource>
