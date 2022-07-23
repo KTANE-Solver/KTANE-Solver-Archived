@@ -255,11 +255,17 @@
     </Compile>
     <Compile Include="3DMaze.cs" />
     <Compile Include="Semaphore.cs" />
-    <Compile Include="SemaphoreForm.cs">
+    <Compile Include="SemaphoreStage1Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SemaphoreForm.Designer.cs">
-      <DependentUpon>SemaphoreForm.cs</DependentUpon>
+    <Compile Include="SemaphoreStage1Form.Designer.cs">
+      <DependentUpon>SemaphoreStage1Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SemaphoreOtherStageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SemaphoreOtherStageForm.Designer.cs">
+      <DependentUpon>SemaphoreOtherStageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Listening.cs" />
     <Compile Include="ListeningForm.cs">
@@ -671,8 +677,11 @@
     <EmbeddedResource Include="FizzBuzzForm.resx">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SemaphoreForm.resx">
-      <DependentUpon>SemaphoreForm.cs</DependentUpon>
+    <EmbeddedResource Include="SemaphoreStage1Form.resx">
+      <DependentUpon>SemaphoreStage1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SemaphoreOtherStageForm.resx">
+      <DependentUpon>SemaphoreOtherStageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListeningForm.resx">
       <DependentUpon>ListeningForm.cs</DependentUpon>

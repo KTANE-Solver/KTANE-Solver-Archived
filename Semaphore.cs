@@ -7,13 +7,20 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    class Semaphore : Module
+    public class Semaphore : Module
     {
-        private List<Flag> flagList;
         private FlagMode mode;
-        public Semaphore(Bomb bomb, StreamWriter logFileWriter, List<Flag> flagList) : base(bomb, logFileWriter, "Semaphore")
+        public Semaphore(Bomb bomb, StreamWriter logFileWriter, Flag firstFlag) : base(bomb, logFileWriter, "Semaphore")
         {
-            this.flagList = flagList;
+            if (firstFlag.AreEqual(FlagState.North, FlagState.East))
+            {
+                mode = FlagMode.Letter;
+            }
+
+            else
+            {
+                mode = FlagMode.Number;
+            }
         }
 
         public enum FlagState
@@ -34,37 +41,48 @@ namespace KTANE_Solver
             Number
         }
 
-        public void Solve()
+        public string DebugSolve(Flag flag)
         {
-            Flag answer = null;
+            bool invalidFlag = false;
 
-            foreach (Flag flag in flagList)
+            if (flag.AreEqual(FlagState.North, FlagState.East))
             {
-                if (flag.AreEqual(FlagState.North, FlagState.East))
-                {
-                    mode = FlagMode.Letter;
-                }
-
-                else if (flag.AreEqual(FlagState.North, FlagState.NorthEast))
-                {
-                    mode = FlagMode.Number;
-                }
-
-                else if(mode == FlagMode.Letter && !LetterFlag(flag))
-                {
-                    answer = flag;
-                    break;
-                }
-
-                else if (mode == FlagMode.Number && !NumberFlag(flag))
-                {
-                    answer = flag;
-                    break;
-                }
-                
+                mode = FlagMode.Letter;
             }
 
-            ShowAnswer($"{answer.leftState} {answer.rightState}", true);
+            else if (flag.AreEqual(FlagState.North, FlagState.NorthEast))
+            {
+                mode = FlagMode.Number;
+            }
+
+            else
+            {
+                if (mode == FlagMode.Letter)
+                {
+                    invalidFlag = !LetterFlag(flag);
+                }
+
+                else
+                {
+                    invalidFlag = !NumberFlag(flag);
+                }
+
+            }
+
+            string answer = invalidFlag ? "Invalid" : "Valid";
+
+            PrintDebug($"{FlagDescription(flag)}: ");
+
+            return answer;
+        }
+
+        public string Solve(Flag flag)
+        {
+            string answer = DebugSolve(flag);
+
+            ShowAnswer(answer, true);
+
+            return answer;
         }
 
         private bool LetterFlag(Flag flag)
@@ -249,6 +267,10 @@ namespace KTANE_Solver
 
         }
 
+        private string FlagDescription(Flag flag)
+        {
+            return $"{flag.leftState} {flag.rightState}";
+        }
 
 
         public class Flag
