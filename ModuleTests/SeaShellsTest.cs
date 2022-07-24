@@ -86,5 +86,14 @@ namespace ModuleTests
 
 
         }
+
+        [TestMethod]
+        public void Method1()
+        { 
+            SeaShells module = new SeaShells(null, streamWriter, "SHE SELLS", "SHE SELLS", "SWITCH");
+
+            Assert.AreEqual("twitch, witch, witch, switch, twitch, witch, switch".ToUpper(), module.Solve());
+
+        }
     }
 }

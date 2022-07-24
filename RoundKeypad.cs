@@ -52,7 +52,7 @@ namespace KTANE_Solver
                 new SymbolRow(new Symbol[] { Symbol.O, Symbol.A, Symbol.Lambda, Symbol.Lightning, Symbol.Squid, Symbol.H, Symbol.BackwardsC }),
                 new SymbolRow(new Symbol[] { Symbol.E, Symbol.O, Symbol.BackwardsC, Symbol.Swirl, Symbol.WhiteStar, Symbol.H, Symbol.QuestionMark }),
                 new SymbolRow(new Symbol[] { Symbol.Copyright, Symbol.Butt, Symbol.Swirl, Symbol.X, Symbol.UfinishedR, Symbol.Lambda, Symbol.WhiteStar }),
-                new SymbolRow(new Symbol[] { Symbol.Six, Symbol.Paragraph, Symbol.B, Symbol.Squid, Symbol.Squid, Symbol.X, Symbol.QuestionMark, Symbol.SmilyFace }),
+                new SymbolRow(new Symbol[] { Symbol.Six, Symbol.Paragraph, Symbol.B, Symbol.Squid, Symbol.X, Symbol.QuestionMark, Symbol.SmilyFace }),
                 new SymbolRow(new Symbol[] { Symbol.Trident, Symbol.SmilyFace, Symbol.B, Symbol.C, Symbol.Paragraph, Symbol.Three, Symbol.BlackStar }),
                 new SymbolRow(new Symbol[] { Symbol.Six, Symbol.E, Symbol.Hashtag, Symbol.Ae, Symbol.Trident, Symbol.N, Symbol.Omega })
             };

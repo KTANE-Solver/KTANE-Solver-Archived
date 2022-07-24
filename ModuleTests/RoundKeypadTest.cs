@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using KTANE_Solver;
-
+using System.Collections.Generic;
 namespace ModuleTests
 {
     [TestClass]
@@ -13,7 +13,7 @@ namespace ModuleTests
         [TestMethod]
         public void TestMethod1()
         {
-            RoundKeypad module = new RoundKeypad(null, streamWriter, RoundKeypad.Symbol.Lightning, RoundKeypad.Symbol.Lambda, RoundKeypad.Symbol.Omega, RoundKeypad.Symbol.Swirl, RoundKeypad.Symbol.UfinishedR, RoundKeypad.Symbol.WhiteStar, RoundKeypad.Symbol.N, RoundKeypad.Symbol.Three);
+            RoundKeypad module = new RoundKeypad(null, streamWriter, new List<RoundKeypad.Symbol>() { RoundKeypad.Symbol.Lightning, RoundKeypad.Symbol.Lambda, RoundKeypad.Symbol.Omega, RoundKeypad.Symbol.Swirl, RoundKeypad.Symbol.UfinishedR, RoundKeypad.Symbol.WhiteStar, RoundKeypad.Symbol.N, RoundKeypad.Symbol.Three });
             RoundKeypad.Symbol[] answer = module.Solve();
 
 
@@ -29,7 +29,7 @@ namespace ModuleTests
         [TestMethod]
         public void TestMethod2()
         {
-            RoundKeypad module = new RoundKeypad(null, streamWriter, RoundKeypad.Symbol.Squid, RoundKeypad.Symbol.Swirl, RoundKeypad.Symbol.Hashtag, RoundKeypad.Symbol.E, RoundKeypad.Symbol.BackwardsC, RoundKeypad.Symbol.Three, RoundKeypad.Symbol.Copyright, RoundKeypad.Symbol.A);
+            RoundKeypad module = new RoundKeypad(null, streamWriter, new List<RoundKeypad.Symbol>() { RoundKeypad.Symbol.Squid, RoundKeypad.Symbol.Swirl, RoundKeypad.Symbol.Hashtag, RoundKeypad.Symbol.E, RoundKeypad.Symbol.BackwardsC, RoundKeypad.Symbol.Three, RoundKeypad.Symbol.Copyright, RoundKeypad.Symbol.A });
             RoundKeypad.Symbol[] answer = module.Solve();
 
             Assert.AreEqual(answer.Length, 5);

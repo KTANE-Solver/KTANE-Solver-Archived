@@ -45,28 +45,32 @@ namespace KTANE_Solver
         {
             bool invalidFlag = false;
 
-            if (flag.AreEqual(FlagState.North, FlagState.East))
-            {
-                mode = FlagMode.Letter;
-            }
-
-            else if (flag.AreEqual(FlagState.North, FlagState.NorthEast))
+            if (flag.AreEqual(FlagState.North, FlagState.NorthEast))
             {
                 mode = FlagMode.Number;
             }
 
-            else
+            else if (flag.AreEqual(FlagState.North, FlagState.East))
             {
                 if (mode == FlagMode.Letter)
                 {
-                    invalidFlag = !LetterFlag(flag);
+                    invalidFlag = true;
                 }
 
                 else
                 {
-                    invalidFlag = !NumberFlag(flag);
+                    mode = FlagMode.Letter;
                 }
+            }
 
+            else if (mode == FlagMode.Letter)
+            {
+                invalidFlag = !LetterFlag(flag);
+            }
+
+            else
+            {
+                invalidFlag = !NumberFlag(flag);
             }
 
             string answer = invalidFlag ? "Invalid" : "Valid";

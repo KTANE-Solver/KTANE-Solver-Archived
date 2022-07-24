@@ -61,7 +61,7 @@ namespace KTANE_Solver
         Symbol[] row1 = new Symbol[] { Symbol.O, Symbol.A, Symbol.Lambda, Symbol.Lightning, Symbol.Squid, Symbol.H, Symbol.BackwardsC };
         Symbol[] row2 = new Symbol[] { Symbol.E, Symbol.O, Symbol.BackwardsC, Symbol.Swirl, Symbol.WhiteStar, Symbol.H, Symbol.QuestionMark };
         Symbol[] row3 = new Symbol[] { Symbol.Copyright, Symbol.Butt, Symbol.Swirl, Symbol.X, Symbol.UfinishedR, Symbol.Lambda, Symbol.WhiteStar };
-        Symbol[] row4 = new Symbol[] { Symbol.Six, Symbol.Paragraph, Symbol.B, Symbol.Squid, Symbol.Squid, Symbol.X, Symbol.QuestionMark, Symbol.SmilyFace };
+        Symbol[] row4 = new Symbol[] { Symbol.Six, Symbol.Paragraph, Symbol.B, Symbol.Squid, Symbol.X, Symbol.QuestionMark, Symbol.SmilyFace };
         Symbol[] row5 = new Symbol[] { Symbol.Trident, Symbol.SmilyFace, Symbol.B, Symbol.C, Symbol.Paragraph, Symbol.Three, Symbol.BlackStar };
         Symbol[] row6 = new Symbol[] { Symbol.Six, Symbol.E, Symbol.Hashtag, Symbol.Ae, Symbol.Trident, Symbol.N, Symbol.Omega };
 

@@ -248,7 +248,10 @@ namespace KTANE_Solver
 
         public Color ConvertNumToScrewLocation(int num, int stage)
         {
-            num %= 6;
+            while (num > 6)
+            {
+                num -= 6;   
+            }
 
             if (num == 0)
             {
