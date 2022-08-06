@@ -7,7 +7,7 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-    class SkewedSlots : Module
+    public class SkewedSlots : Module
     {
         private int[] originalNumbers;
         private int[] currentNumbers;
@@ -15,22 +15,31 @@ namespace KTANE_Solver
         private int[] fibonacciSequence;
         private int[] primeValues;
         private int[] binaryValueSum;
-        public SkewedSlots(Bomb bomb, StreamWriter logFileWriter, int [] originalNumbers) : base(bomb, logFileWriter, "Skewed Slots")
+
+        public SkewedSlots(Bomb bomb, StreamWriter logFileWriter, int originalNumbers) : base(bomb, logFileWriter, "Skewed Slots")
         {
-            this.originalNumbers = originalNumbers;
+            string OgStr = originalNumbers.ToString();
+
+            if (originalNumbers < 100)
+            {
+                OgStr = "0" + OgStr;
+            }
+
+            this.originalNumbers = OgStr.Select(o => Convert.ToInt32(o) - 48).ToArray();
+
+            currentNumbers = new int[3];
 
             for (int i = 0; i < 3; i++)
             {
-                currentNumbers[i] = originalNumbers[i];
+                currentNumbers[i] = this.originalNumbers[i];
             }
 
-            fibonacciSequence = new int[]{ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 };
+            fibonacciSequence = new int[] { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 };
             primeValues = new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-            binaryValueSum = new int[] { 0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2 }; 
+            binaryValueSum = new int[] { 0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2 };
         }
 
-
-        public void Solve()
+        public string DebugSolve()
         {
             for (int i = 0; i < currentNumbers.Length; i++)
             {
@@ -46,7 +55,14 @@ namespace KTANE_Solver
                 currentNumbers[i] = ModifyNumber(currentNumbers[i]);
             }
 
-            ShowAnswer(string.Join("", currentNumbers), true);
+            return string.Join("", currentNumbers);
+        }
+
+        public void Solve()
+        {
+
+
+            ShowAnswer(DebugSolve(), true);
 
         }
 

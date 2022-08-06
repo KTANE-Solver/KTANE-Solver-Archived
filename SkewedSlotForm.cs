@@ -48,7 +48,7 @@ namespace KTANE_Solver
                 return;
             }
 
-            SkewedSlots module = new SkewedSlots(Bomb, LogFileWriter, num.ToString().Select(o => Convert.ToInt32(o) - 48).ToArray());
+            SkewedSlots module = new SkewedSlots(Bomb, LogFileWriter, num);
             module.Solve();
 
             textBox1.Text = "";
