@@ -24,7 +24,7 @@ namespace KTANE_Solver
 
 
         //the maze itself
-        private char[,] maze;
+        private Node[,] maze;
 
         //the player coordinates
         private int playerRow;
@@ -89,175 +89,439 @@ namespace KTANE_Solver
             // . - represents a passage
 
             //sets up the rest of the maze
+
+            maze = new Node[6,6];
             if ((markerRow == 2 && markerColumn == 1) || (markerRow == 3 && markerColumn == 6))
             {
                 mazeIndex = 1;
-                maze = new char[,]
-                {
-                        {'?','.','?','.','?','!','?','.','?','.','?'},
-                        {'.','.','!','.','.','.','.','.','!','.','!'},
-                        {'?','!','?','.','?','!','?','.','?','.','?'},
-                        {'.','.','.','.','!','.','!','.','!','.','.'},
-                        {'?','!','?','.','?','!','?','.','?','.','?'},
-                        {'.','.','!','.','.','.','.','.','!','.','.'},
-                        {'?','!','?','.','?','.','?','!','?','.','?'},
-                        {'.','.','!','.','!','.','!','.','!','.','.'},
-                        {'?','.','?','.','?','!','?','.','?','!','?'},
-                        {'.','.','!','.','.','.','.','.','!','.','.'},
-                        {'?','.','?','!','?','.','?','!','?','.','?'}
-                };
+                maze[0, 0] = new Node(Walls.NorthWest);
+                maze[0, 1] = new Node(Walls.Vertical);
+                maze[0, 2] = new Node(Walls.Vertical);
+                maze[0, 3] = new Node(Walls.Vertical);
+                maze[0, 4] = new Node(Walls.West);
+                maze[0, 5] = new Node(Walls.SouthWest);
+
+                maze[1, 0] = new Node(Walls.Horizontal);
+                maze[1, 1] = new Node(Walls.NorthWest);
+                maze[1, 2] = new Node(Walls.SouthWest);
+                maze[1, 3] = new Node(Walls.WestU);
+                maze[1, 4] = new Node(Walls.Horizontal);
+                maze[1, 5] = new Node(Walls.EastU);
+
+                maze[2, 0] = new Node(Walls.NorthEast);
+                maze[2, 1] = new Node(Walls.SouthEast);
+                maze[2, 2] = new Node(Walls.NorthEast);
+                maze[2, 3] = new Node(Walls.South);
+                maze[2, 4] = new Node(Walls.NorthEast);
+                maze[2, 5] = new Node(Walls.SouthWest);
+
+                maze[3, 0] = new Node(Walls.NorthWest);
+                maze[3, 1] = new Node(Walls.SouthWest);
+                maze[3, 2] = new Node(Walls.NorthWest);
+                maze[3, 3] = new Node(Walls.SouthEast);
+                maze[3, 4] = new Node(Walls.NorthWest);
+                maze[3, 5] = new Node(Walls.SouthEast);
+
+                maze[4, 0] = new Node(Walls.Horizontal);
+                maze[4, 1] = new Node(Walls.Horizontal);
+                maze[4, 2] = new Node(Walls.Horizontal);
+                maze[4, 3] = new Node(Walls.WestU);
+                maze[4, 4] = new Node(Walls.EastU);
+                maze[4, 5] = new Node(Walls.WestU);
+
+                maze[5, 0] = new Node(Walls.Horizontal);
+                maze[5, 1] = new Node(Walls.NorthEast);
+                maze[5, 2] = new Node(Walls.East);
+                maze[5, 3] = new Node(Walls.East);
+                maze[5, 4] = new Node(Walls.Vertical);
+                maze[5, 5] = new Node(Walls.SouthEast);
             }
 
             else if ((markerRow == 2 && markerColumn == 5) || (markerRow == 4 && markerColumn == 2))
             {
                 mazeIndex = 2;
-                maze = new char[,]
-                {
-                    {'?','.','?','.','?','!','?','.','?','.','?'},
-                    {'!','.','.','.','!','.','.','.','.','.','!'},
-                    {'?','.','?','!','?','.','?','!','?','.','?'},
-                    {'.','.','!','.','.','.','!','.','!','.','.'},
-                    {'?','!','?','.','?','!','?','.','?','.','?'},
-                    {'.','.','.','.','!','.','.','.','!','.','.'},
-                    {'?','.','?','!','?','.','?','!','?','!','?'},
-                    {'.','.','!','.','.','.','!','.','.','.','.'},
-                    {'?','!','?','!','?','!','?','.','?','!','?'},
-                    {'.','.','.','.','.','.','.','.','!','.','.'},
-                    {'?','!','?','.','?','!','?','.','?','.','?'}
-                };
+
+                maze[0, 0] = new Node(Walls.WestU);
+                maze[0, 1] = new Node(Walls.NorthWest);
+                maze[0, 2] = new Node(Walls.Vertical);
+                maze[0, 3] = new Node(Walls.West);
+                maze[0, 4] = new Node(Walls.Vertical);
+                maze[0, 5] = new Node(Walls.SouthU);
+
+                maze[1, 0] = new Node(Walls.North);
+                maze[1, 1] = new Node(Walls.SouthEast);
+                maze[1, 2] = new Node(Walls.NorthWest);
+                maze[1, 3] = new Node(Walls.SouthEast);
+                maze[1, 4] = new Node(Walls.NorthU);
+                maze[1, 5] = new Node(Walls.SouthWest);
+
+                maze[2, 0] = new Node(Walls.EastU);
+                maze[2, 1] = new Node(Walls.NorthWest);
+                maze[2, 2] = new Node(Walls.SouthEast);
+                maze[2, 3] = new Node(Walls.NorthWest);
+                maze[2, 4] = new Node(Walls.Vertical);
+                maze[2, 5] = new Node(Walls.SouthEast);
+
+                maze[3, 0] = new Node(Walls.NorthWest);
+                maze[3, 1] = new Node(Walls.SouthEast);
+                maze[3, 2] = new Node(Walls.NorthWest);
+                maze[3, 3] = new Node(Walls.SouthEast);
+                maze[3, 4] = new Node(Walls.NorthWest);
+                maze[3, 5] = new Node(Walls.SouthWest);
+
+                maze[4, 0] = new Node(Walls.North);
+                maze[4, 1] = new Node(Walls.SouthWest);
+                maze[4, 2] = new Node(Walls.Horizontal);
+                maze[4, 3] = new Node(Walls.NorthU);
+                maze[4, 4] = new Node(Walls.SouthEast);
+                maze[4, 5] = new Node(Walls.Horizontal);
+
+                maze[5, 0] = new Node(Walls.EastU);
+                maze[5, 1] = new Node(Walls.NorthEast);
+                maze[5, 2] = new Node(Walls.East);
+                maze[5, 3] = new Node(Walls.Vertical);
+                maze[5, 4] = new Node(Walls.Vertical);
+                maze[5, 5] = new Node(Walls.SouthEast);
             }
 
             else if ((markerRow == 4 && markerColumn == 4) || (markerRow == 4 && markerColumn == 6))
             {
                 mazeIndex = 3;
-                maze = new char[,]
-                {
-                        {'?','.','?','.','?','!','?','!','?','.','?'},
-                        {'.','.','!','.','.','.','.','.','.','.','.'},
-                        {'?','!','?','!','?','!','?','.','?','!','?'},
-                        {'!','.','.','.','.','.','!','.','!','.','.'},
-                        {'?','.','?','!','?','!','?','.','?','!','?'},
-                        {'.','.','.','.','.','.','.','.','.','.','.'},
-                        {'?','!','?','!','?','!','?','!','?','!','?'},
-                        {'.','.','.','.','.','.','.','.','.','.','.'},
-                        {'?','!','?','.','?','!','?','!','?','!','?'},
-                        {'.','.','!','.','!','.','.','.','.','.','.'},
-                        {'?','.','?','.','?','.','?','!','?','.','?'}
-                };
+
+                maze[0, 0] = new Node(Walls.NorthWest);
+                maze[0, 1] = new Node(Walls.SouthU);
+                maze[0, 2] = new Node(Walls.NorthWest);
+                maze[0, 3] = new Node(Walls.Vertical);
+                maze[0, 4] = new Node(Walls.Vertical);
+                maze[0, 5] = new Node(Walls.SouthWest);
+
+                maze[1, 0] = new Node(Walls.);
+                maze[1, 1] = new Node(Walls.);
+                maze[1, 2] = new Node(Walls.);
+                maze[1, 3] = new Node(Walls.);
+                maze[1, 4] = new Node(Walls.);
+                maze[1, 5] = new Node(Walls.);
+
+                maze[2, 0] = new Node(Walls.);
+                maze[2, 1] = new Node(Walls.);
+                maze[2, 2] = new Node(Walls.);
+                maze[2, 3] = new Node(Walls.);
+                maze[2, 4] = new Node(Walls.);
+                maze[2, 5] = new Node(Walls.);
+
+                maze[3, 0] = new Node(Walls.);
+                maze[3, 1] = new Node(Walls.);
+                maze[3, 2] = new Node(Walls.);
+                maze[3, 3] = new Node(Walls.);
+                maze[3, 4] = new Node(Walls.);
+                maze[3, 5] = new Node(Walls.);
+
+                maze[4, 0] = new Node(Walls.);
+                maze[4, 1] = new Node(Walls.);
+                maze[4, 2] = new Node(Walls.);
+                maze[4, 3] = new Node(Walls.);
+                maze[4, 4] = new Node(Walls.);
+                maze[4, 5] = new Node(Walls.);
+
+                maze[5, 0] = new Node(Walls.);
+                maze[5, 1] = new Node(Walls.);
+                maze[5, 2] = new Node(Walls.);
+                maze[5, 3] = new Node(Walls.);
+                maze[5, 4] = new Node(Walls.);
+                maze[5, 5] = new Node(Walls.);
             }
 
             else if ((markerRow == 1 && markerColumn == 1) || (markerRow == 4 && markerColumn == 1))
             {
                 mazeIndex = 4;
-                maze = new char[,]
-                {
-                    { '?','.','?','!','?','.','?','.','?','.','?'},
-                    {'.','.','.','.','!','.','!','.','!','.','.'},
-                    { '?','!','?','!','?','.','?','.','?','.','?'},
-                    { '.','.','.','.','.','.', '!','.','!','.','.'},
-                    { '?','!','?','.','?','!','?','.','?','!','?'},
-                    { '.','.','!','.','!','.','.','.','!','.','.'},
-                    { '?','!','?','.','?','.','?','.','?','.','?'},
-                    { '.','.','!','.','!','.','!','.','!','.','.'},
-                    { '?','.','?','.','?','.','?','.','?','!','?'},
-                    { '.','.','!','.','!','.','!','.','.','.','.'},
-                    { '?','.','?','.','?','!','?','.','?','!','?'}
-                };
+
+                maze[0, 0] = new Node(Walls.);
+                maze[0, 1] = new Node(Walls.);
+                maze[0, 2] = new Node(Walls.);
+                maze[0, 3] = new Node(Walls.);
+                maze[0, 4] = new Node(Walls.);
+                maze[0, 5] = new Node(Walls.);
+
+                maze[1, 0] = new Node(Walls.);
+                maze[1, 1] = new Node(Walls.);
+                maze[1, 2] = new Node(Walls.);
+                maze[1, 3] = new Node(Walls.);
+                maze[1, 4] = new Node(Walls.);
+                maze[1, 5] = new Node(Walls.);
+
+                maze[2, 0] = new Node(Walls.);
+                maze[2, 1] = new Node(Walls.);
+                maze[2, 2] = new Node(Walls.);
+                maze[2, 3] = new Node(Walls.);
+                maze[2, 4] = new Node(Walls.);
+                maze[2, 5] = new Node(Walls.);
+
+                maze[3, 0] = new Node(Walls.);
+                maze[3, 1] = new Node(Walls.);
+                maze[3, 2] = new Node(Walls.);
+                maze[3, 3] = new Node(Walls.);
+                maze[3, 4] = new Node(Walls.);
+                maze[3, 5] = new Node(Walls.);
+
+                maze[4, 0] = new Node(Walls.);
+                maze[4, 1] = new Node(Walls.);
+                maze[4, 2] = new Node(Walls.);
+                maze[4, 3] = new Node(Walls.);
+                maze[4, 4] = new Node(Walls.);
+                maze[4, 5] = new Node(Walls.);
+
+                maze[5, 0] = new Node(Walls.);
+                maze[5, 1] = new Node(Walls.);
+                maze[5, 2] = new Node(Walls.);
+                maze[5, 3] = new Node(Walls.);
+                maze[5, 4] = new Node(Walls.);
+                maze[5, 5] = new Node(Walls.);
             }
 
             else if ((markerRow == 3 && markerColumn == 5) || (markerRow == 6 && markerColumn == 4))
             {
                 mazeIndex = 5;
-                maze = new char[,]
-                {
-                    {'?','.','?','.','?','.','?','.','?','.','?'},
-                    {'!','.','!','.','!','.','!','.','.','.','.'},
-                    {'?','.','?','.','?','.','?','.','?','!','?'},
-                    {'.','.','!','.','!','.','.','.','!','.','!'},
-                    {'?','.','?','!','?','.','?','!','?','.','?'},
-                    {'.','.','.','.','!','.','!','.','.','.','.'},
-                    {'?','!','?','.','?','.','?','!','?','!','?'},
-                    {'.','.','!','.','!','.','.','.','!','.','.'},
-                    {'?','!','?','.','?','.','?','.','?','!','?'},
-                    {'.','.','.','.','!','.','!','.','!','.','.'},
-                    {'?','!','?','.','?','.','?','.','?','.','?'}
-                };
+
+                maze[0, 0] = new Node(Walls.);
+                maze[0, 1] = new Node(Walls.);
+                maze[0, 2] = new Node(Walls.);
+                maze[0, 3] = new Node(Walls.);
+                maze[0, 4] = new Node(Walls.);
+                maze[0, 5] = new Node(Walls.);
+
+                maze[1, 0] = new Node(Walls.);
+                maze[1, 1] = new Node(Walls.);
+                maze[1, 2] = new Node(Walls.);
+                maze[1, 3] = new Node(Walls.);
+                maze[1, 4] = new Node(Walls.);
+                maze[1, 5] = new Node(Walls.);
+
+                maze[2, 0] = new Node(Walls.);
+                maze[2, 1] = new Node(Walls.);
+                maze[2, 2] = new Node(Walls.);
+                maze[2, 3] = new Node(Walls.);
+                maze[2, 4] = new Node(Walls.);
+                maze[2, 5] = new Node(Walls.);
+
+                maze[3, 0] = new Node(Walls.);
+                maze[3, 1] = new Node(Walls.);
+                maze[3, 2] = new Node(Walls.);
+                maze[3, 3] = new Node(Walls.);
+                maze[3, 4] = new Node(Walls.);
+                maze[3, 5] = new Node(Walls.);
+
+                maze[4, 0] = new Node(Walls.);
+                maze[4, 1] = new Node(Walls.);
+                maze[4, 2] = new Node(Walls.);
+                maze[4, 3] = new Node(Walls.);
+                maze[4, 4] = new Node(Walls.);
+                maze[4, 5] = new Node(Walls.);
+
+                maze[5, 0] = new Node(Walls.);
+                maze[5, 1] = new Node(Walls.);
+                maze[5, 2] = new Node(Walls.);
+                maze[5, 3] = new Node(Walls.);
+                maze[5, 4] = new Node(Walls.);
+                maze[5, 5] = new Node(Walls.);
             }
 
             else if ((markerRow == 1 && markerColumn == 5) || (markerRow == 5 && markerColumn == 3))
             {
                 mazeIndex = 6;
-                maze = new char[,]
-                {
-                    {'?','!','?','.','?','!','?','.','?','.','?'},
-                    {'.','.','.','.','.','.','!','.','.','.','.'},
-                    {'?','!','?','!','?','!','?','.','?','!','?'},
-                    {'.','.','.','.','.','.','.','.','!','.','.'},
-                    {'?','.','?','!','?','!','?','!','?','.','?'},
-                    {'.','.','!','.','!','.','.','.','.','.','!'},
-                    {'?','.','?','!','?','.','?','!','?','!','?'},
-                    {'!','.','.','.','.','.','.','.','.','.','.'},
-                    {'?','.','?','!','?','!','?','!','?','.','?'},
-                    {'.','.','!','.','!','.','.','.','!','.','.'},
-                    {'?','.','?','.','?','.','?','!','?','.','?'}
-                };
+
+                maze[0, 0] = new Node(Walls.);
+                maze[0, 1] = new Node(Walls.);
+                maze[0, 2] = new Node(Walls.);
+                maze[0, 3] = new Node(Walls.);
+                maze[0, 4] = new Node(Walls.);
+                maze[0, 5] = new Node(Walls.);
+
+                maze[1, 0] = new Node(Walls.);
+                maze[1, 1] = new Node(Walls.);
+                maze[1, 2] = new Node(Walls.);
+                maze[1, 3] = new Node(Walls.);
+                maze[1, 4] = new Node(Walls.);
+                maze[1, 5] = new Node(Walls.);
+
+                maze[2, 0] = new Node(Walls.);
+                maze[2, 1] = new Node(Walls.);
+                maze[2, 2] = new Node(Walls.);
+                maze[2, 3] = new Node(Walls.);
+                maze[2, 4] = new Node(Walls.);
+                maze[2, 5] = new Node(Walls.);
+
+                maze[3, 0] = new Node(Walls.);
+                maze[3, 1] = new Node(Walls.);
+                maze[3, 2] = new Node(Walls.);
+                maze[3, 3] = new Node(Walls.);
+                maze[3, 4] = new Node(Walls.);
+                maze[3, 5] = new Node(Walls.);
+
+                maze[4, 0] = new Node(Walls.);
+                maze[4, 1] = new Node(Walls.);
+                maze[4, 2] = new Node(Walls.);
+                maze[4, 3] = new Node(Walls.);
+                maze[4, 4] = new Node(Walls.);
+                maze[4, 5] = new Node(Walls.);
+
+                maze[5, 0] = new Node(Walls.);
+                maze[5, 1] = new Node(Walls.);
+                maze[5, 2] = new Node(Walls.);
+                maze[5, 3] = new Node(Walls.);
+                maze[5, 4] = new Node(Walls.);
+                maze[5, 5] = new Node(Walls.);
             }
 
             else if ((markerRow == 1 && markerColumn == 2) || (markerRow == 6 && markerColumn == 2))
             {
                 mazeIndex = 7;
-                maze = new char[,]
-                {
-                    {'?','.','?','.','?','.','?','!','?','.','?'},
-                    {'.','.','!','.','!','.','.','.','.','.','.'},
-                    {'?','!','?','.','?','!','?','.','?','!','?'},
-                    {'.','.','.','.','!','.','!','.','!','.','.'},
-                    {'?','.','?','!','?','.','?','!','?','.','?'},
-                    {'!','.','!','.','.','.','!','.','.','.','!'},
-                    {'?','.','?','!','?','.','?','.','?','!','?'},
-                    {'.','.','.','.','.','.','!','.','!','.','.'},
-                    {'?','!','?','!','?','.','?','.','?','!','?'},
-                    {'.','.','!','.','!','.','!','.','.','.','.'},
-                    {'?','.','?','.','?','.','?','.','?','.','?'}
-                };
+
+                maze[0, 0] = new Node(Walls.);
+                maze[0, 1] = new Node(Walls.);
+                maze[0, 2] = new Node(Walls.);
+                maze[0, 3] = new Node(Walls.);
+                maze[0, 4] = new Node(Walls.);
+                maze[0, 5] = new Node(Walls.);
+
+                maze[1, 0] = new Node(Walls.);
+                maze[1, 1] = new Node(Walls.);
+                maze[1, 2] = new Node(Walls.);
+                maze[1, 3] = new Node(Walls.);
+                maze[1, 4] = new Node(Walls.);
+                maze[1, 5] = new Node(Walls.);
+
+                maze[2, 0] = new Node(Walls.);
+                maze[2, 1] = new Node(Walls.);
+                maze[2, 2] = new Node(Walls.);
+                maze[2, 3] = new Node(Walls.);
+                maze[2, 4] = new Node(Walls.);
+                maze[2, 5] = new Node(Walls.);
+
+                maze[3, 0] = new Node(Walls.);
+                maze[3, 1] = new Node(Walls.);
+                maze[3, 2] = new Node(Walls.);
+                maze[3, 3] = new Node(Walls.);
+                maze[3, 4] = new Node(Walls.);
+                maze[3, 5] = new Node(Walls.);
+
+                maze[4, 0] = new Node(Walls.);
+                maze[4, 1] = new Node(Walls.);
+                maze[4, 2] = new Node(Walls.);
+                maze[4, 3] = new Node(Walls.);
+                maze[4, 4] = new Node(Walls.);
+                maze[4, 5] = new Node(Walls.);
+
+                maze[5, 0] = new Node(Walls.);
+                maze[5, 1] = new Node(Walls.);
+                maze[5, 2] = new Node(Walls.);
+                maze[5, 3] = new Node(Walls.);
+                maze[5, 4] = new Node(Walls.);
+                maze[5, 5] = new Node(Walls.);
             }
 
             else if ((markerRow == 1 && markerColumn == 4) || (markerRow == 4 && markerColumn == 3))
             {
                 mazeIndex = 8;
-                maze = new char[,]
-                {
-                    {'?','!','?','.','?','.','?','!','?','.','?'},
-                    {'.','.','.','.','!','.','.','.','.','.','.'},
-                    {'?','.','?','.','?','!','?','.','?','!','?'},
-                    {'.','.','!','.','!','.','!','.','!','.','.'},
-                    {'?','!','?','.','?','.','?','.','?','!','?'},
-                    {'.','.','.','.','!','.','!','.','.','.','.'},
-                    {'?','!','?','.','?','!','?','.','?','.','?'},
-                    {'.','.','!','.','.','.','!','.','!','.','!'},
-                    {'?','!','?','!','?','.','?','.','?','.','?'},
-                    {'.','.','.','.','!','.','!','.','!','.','!'},
-                    {'?','.','?','.','?','.','?','.','?','.','?'}
-                };
+
+                maze[0, 0] = new Node(Walls.);
+                maze[0, 1] = new Node(Walls.);
+                maze[0, 2] = new Node(Walls.);
+                maze[0, 3] = new Node(Walls.);
+                maze[0, 4] = new Node(Walls.);
+                maze[0, 5] = new Node(Walls.);
+
+                maze[1, 0] = new Node(Walls.);
+                maze[1, 1] = new Node(Walls.);
+                maze[1, 2] = new Node(Walls.);
+                maze[1, 3] = new Node(Walls.);
+                maze[1, 4] = new Node(Walls.);
+                maze[1, 5] = new Node(Walls.);
+
+                maze[2, 0] = new Node(Walls.);
+                maze[2, 1] = new Node(Walls.);
+                maze[2, 2] = new Node(Walls.);
+                maze[2, 3] = new Node(Walls.);
+                maze[2, 4] = new Node(Walls.);
+                maze[2, 5] = new Node(Walls.);
+
+                maze[3, 0] = new Node(Walls.);
+                maze[3, 1] = new Node(Walls.);
+                maze[3, 2] = new Node(Walls.);
+                maze[3, 3] = new Node(Walls.);
+                maze[3, 4] = new Node(Walls.);
+                maze[3, 5] = new Node(Walls.);
+
+                maze[4, 0] = new Node(Walls.);
+                maze[4, 1] = new Node(Walls.);
+                maze[4, 2] = new Node(Walls.);
+                maze[4, 3] = new Node(Walls.);
+                maze[4, 4] = new Node(Walls.);
+                maze[4, 5] = new Node(Walls.);
+
+                maze[5, 0] = new Node(Walls.);
+                maze[5, 1] = new Node(Walls.);
+                maze[5, 2] = new Node(Walls.);
+                maze[5, 3] = new Node(Walls.);
+                maze[5, 4] = new Node(Walls.);
+                maze[5, 5] = new Node(Walls.);
             }
 
             else
             {
                 mazeIndex = 9;
-                maze = new char[,]
+
+                maze[0, 0] = new Node(Walls.);
+                maze[0, 1] = new Node(Walls.);
+                maze[0, 2] = new Node(Walls.);
+                maze[0, 3] = new Node(Walls.);
+                maze[0, 4] = new Node(Walls.);
+                maze[0, 5] = new Node(Walls.);
+
+                maze[1, 0] = new Node(Walls.);
+                maze[1, 1] = new Node(Walls.);
+                maze[1, 2] = new Node(Walls.);
+                maze[1, 3] = new Node(Walls.);
+                maze[1, 4] = new Node(Walls.);
+                maze[1, 5] = new Node(Walls.);
+
+                maze[2, 0] = new Node(Walls.);
+                maze[2, 1] = new Node(Walls.);
+                maze[2, 2] = new Node(Walls.);
+                maze[2, 3] = new Node(Walls.);
+                maze[2, 4] = new Node(Walls.);
+                maze[2, 5] = new Node(Walls.);
+
+                maze[3, 0] = new Node(Walls.);
+                maze[3, 1] = new Node(Walls.);
+                maze[3, 2] = new Node(Walls.);
+                maze[3, 3] = new Node(Walls.);
+                maze[3, 4] = new Node(Walls.);
+                maze[3, 5] = new Node(Walls.);
+
+                maze[4, 0] = new Node(Walls.);
+                maze[4, 1] = new Node(Walls.);
+                maze[4, 2] = new Node(Walls.);
+                maze[4, 3] = new Node(Walls.);
+                maze[4, 4] = new Node(Walls.);
+                maze[4, 5] = new Node(Walls.);
+
+                maze[5, 0] = new Node(Walls.);
+                maze[5, 1] = new Node(Walls.);
+                maze[5, 2] = new Node(Walls.);
+                maze[5, 3] = new Node(Walls.);
+                maze[5, 4] = new Node(Walls.);
+                maze[5, 5] = new Node(Walls.);
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
                 {
-                    {'?','!','?','.','?','.','?','.','?','.','?'},
-                    {'.','.','.','.','!','.','!','.','.','.','.'},
-                    {'?','!','?','!','?','.','?','!','?','!','?'},
-                    {'.','.','.','.','.','.','!','.','.','.','.'},
-                    {'?','.','?','.','?','!','?','.','?','!','?'},
-                    {'.','.','!','.','!','.','.','.','!','.','.'},
-                    {'?','!','?','!','?','.','?','!','?','.','?'},
-                    {'.','.','.','.','.','.','!','.','!','.','.'},
-                    {'?','!','?','!','?','!','?','.','?','!','?'},
-                    {'.','.','.','.','.','.','.','.','.','.','!'},
-                    {'?','.','?','!','?','.','?','!','?','.','?'}
-                };
+                    maze[i, j].Row = i;
+                    maze[i, j].Col = j;
+
+                }
+
             }
 
             //converts the player and goal coordinates
@@ -278,8 +542,6 @@ namespace KTANE_Solver
         /// </summary>
         public List<Coordinate> Solve()
         {
-            PrintDebugLine("======================MAZE======================");
-
             PrintDebugLine($"Player: ({startingPlayerRow},{startingPlayerColumn})\n");
             PrintDebugLine($"Goal: ({startingGoalRow},{startingGoalColumn})\n");
             PrintDebugLine($"Marker: ({markerRow},{markerColumn})\n");
@@ -678,6 +940,184 @@ namespace KTANE_Solver
                 {
                     visitedNodes.RemoveAt(i);
                     return;
+                }
+            }
+        }
+
+        private enum Walls
+        {
+            //1 walls
+
+            North,
+            East,
+            South,
+            West,
+
+            //2 walls
+            Vertical,
+            Horizontal,
+            NorthWest,
+            NorthEast,
+            SouthEast,
+            SouthWest,
+
+            //3 walls
+            NorthU,
+            EastU,
+            SouthU,
+            WestU,
+
+            //0 walls
+            None
+        }
+
+
+
+        private class Node
+        {
+            public int Row;
+            public int Col;
+
+            public Node North;
+            public Node East;
+            public Node South;
+            public Node West;
+
+            Walls wall;
+            public Node(Walls wall)
+            {
+                this.wall = wall;
+            }
+
+            public void SetMazeConnection(Walls wall, Node[,] maze)
+            {
+                bool north, east, south, west;
+                switch (wall)
+                {
+                    case Walls.North:
+                        north = false;
+                        east = true;
+                        south = true;
+                        west = true;
+                        break;
+
+                    case Walls.East:
+                        north = true;
+                        east = false;
+                        south = true;
+                        west = true;
+                        break;
+
+                    case Walls.South:
+                        north = true;
+                        east = true;
+                        south = false;
+                        west = true;
+                        break;
+
+                    case Walls.West:
+                        north = true;
+                        east = true;
+                        south = true;
+                        west = false;
+                        break;
+
+                    case Walls.Vertical:
+                        north = true;
+                        south = true;
+                        west = false;
+                        east = false;
+                        break;
+
+                    case Walls.Horizontal:
+                        north = false;
+                        south = false;
+                        west = true;
+                        east = true;
+                        break;
+
+                    case Walls.NorthWest:
+                        north = false;
+                        south = true;
+                        west = false;
+                        east = true;
+                        break;
+
+                    case Walls.NorthEast:
+                        north = false;
+                        south = true;
+                        west = true;
+                        east = false;
+                        break;
+
+                    case Walls.SouthEast:
+                        north = true;
+                        south = false;
+                        west = true;
+                        east = false;
+                        break;
+
+                    case Walls.SouthWest:
+                        north = true;
+                        south = false;
+                        west = false;
+                        east = true;
+                        break;
+
+                    case Walls.NorthU:
+                        north = false;
+                        south = true;
+                        west = false;
+                        east = false;
+                        break;
+
+                    case Walls.EastU:
+                        north = false;
+                        south = false;
+                        west = true;
+                        east = false;
+                        break;
+
+                    case Walls.SouthU:
+                        north = true;
+                        south = false;
+                        west = false;
+                        east = false;
+                        break;
+
+                    case Walls.WestU:
+                        north = false;
+                        south = false;
+                        west = false;
+                        east = true;
+                        break;
+
+                    default:
+                        north = true;
+                        south = true;
+                        west = true;
+                        east = true;
+                        break;
+                }
+
+                if (north)
+                {
+                    North = maze[Row - 1, Col];
+                }
+
+                if (east)
+                {
+                    East = maze[Row, Col + 1];
+                }
+
+                if (south)
+                {
+                    South = maze[Row + 1, Col];
+                }
+
+                if (west)
+                {
+                    West = maze[Row, Col - 1];
                 }
             }
         }
