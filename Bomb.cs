@@ -153,7 +153,7 @@ namespace KTANE_Solver
                 {
                     if (serialNumber[i] >= 48 && serialNumber[i] <= 57)
                     {
-                        return Int32.Parse("" + serialNumber[i]);
+                        return int.Parse("" + serialNumber[i]);
                     }
                 }
 
@@ -167,7 +167,7 @@ namespace KTANE_Solver
         {
             get
             {
-                return Int32.Parse("" + serialNumber[serialNumber.Length - 1]);
+                return int.Parse("" + serialNumber[serialNumber.Length - 1]);
             }
         }
 
@@ -265,11 +265,29 @@ namespace KTANE_Solver
                 {
                     if (serialNumber[i] >= 48 && serialNumber[i] <= 57)
                     {
-                        sum += Int32.Parse("" + serialNumber[i]);
+                        sum += int.Parse("" + serialNumber[i]);
                     }
                 }
 
                 return sum;
+            }
+        }
+
+        public int LargestDigit
+        {
+            get 
+            {
+                int highest = -1;
+
+                foreach (char c in serialNumber)
+                {
+                    if (Char.IsDigit(c) && int.Parse("" + c) > highest)
+                    {
+                        highest = int.Parse("" + c);
+                    }
+                }
+
+                return highest;
             }
         }
 
