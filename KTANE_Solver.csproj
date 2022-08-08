@@ -267,6 +267,7 @@
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
     <Compile Include="3DMaze.cs" />
+    <Compile Include="OrientationCube.cs" />
     <Compile Include="PointOfOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
