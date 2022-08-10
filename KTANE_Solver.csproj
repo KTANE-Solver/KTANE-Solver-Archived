@@ -267,6 +267,13 @@
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
     <Compile Include="3DMaze.cs" />
+    <Compile Include="LEDGrid.cs" />
+    <Compile Include="LEDGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LEDGridForm.Designer.cs">
+      <DependentUpon>LEDGridForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PointOfOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -762,6 +769,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FizzBuzzForm.resx">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LEDGridForm.resx">
+      <DependentUpon>LEDGridForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PointOfOrderForm.resx">
       <DependentUpon>PointOfOrderForm.cs</DependentUpon>
