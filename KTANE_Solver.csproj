@@ -160,6 +160,7 @@
     <Compile Include="ButtonForm.Designer.cs">
       <DependentUpon>ButtonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ButtonSequence.cs" />
     <Compile Include="CheapCheckout.cs" />
     <Compile Include="CheapCheckoutAlertForm.cs">
       <SubType>Form</SubType>
