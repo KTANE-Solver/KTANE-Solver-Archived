@@ -12,7 +12,7 @@ namespace KTANE_Solver
 {
     public partial class LetterKeysForm : ModuleForm
     {
-        public LetterKeysForm()
+        public LetterKeysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Letter Keys", false)
         {
             InitializeComponent();
         }
