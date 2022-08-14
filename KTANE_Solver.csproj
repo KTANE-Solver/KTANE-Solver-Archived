@@ -201,6 +201,7 @@
     <Compile Include="ColorMathForm.Designer.cs">
       <DependentUpon>ColorMathForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComplicatedButtons.cs" />
     <Compile Include="ComplicatedWires.cs" />
     <Compile Include="ComplicatedWiresForm.cs">
       <SubType>Form</SubType>
