@@ -8,7 +8,7 @@ namespace ModuleTests
     [TestClass]
     public class RoundKeypadTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\Users\\nyabe\\Downloads\\delete later\\dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
 
         [TestMethod]
         public void TestMethod1()

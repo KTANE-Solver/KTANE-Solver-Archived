@@ -8,7 +8,8 @@ namespace ModuleTests
     [TestClass]
     public class FastMathTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
+
         [TestMethod]
         public void LettersGiveCorrectAnswers()
         {

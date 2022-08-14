@@ -12,7 +12,7 @@ namespace ModuleTests
         [TestMethod]
         public void CorrectAnswers()
         {
-            StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
+            StreamWriter streamWriter = new StreamWriter("dummy.txt");
 
             Listening module = new Listening("Taxi Dispatch", null, streamWriter);
             Assert.AreEqual("&&&**", module.DebugSolve());

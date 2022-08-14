@@ -56,6 +56,7 @@
     <Compile Include="ShapeShiftTest.cs" />
     <Compile Include="ChordQualitiesTest.cs" />
     <Compile Include="SkewedSlotsTest.cs" />
+    <Compile Include="LetterKeysTest.cs" />
     <Compile Include="WireSequenceTest.cs" />
     <Compile Include="FastMathTest.cs" />
     <Compile Include="ListeningTest.cs" />

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 namespace KTANE_Solver
 {
-    public partial class LetteredKeysForm : ModuleForm
+    public partial class LetterKeysForm : ModuleForm
     {
-        public LetteredKeysForm()
+        public LetterKeysForm()
         {
             InitializeComponent();
         }
@@ -38,7 +38,7 @@ namespace KTANE_Solver
                 return;
             }
 
-            LetteredKeys module = new LetteredKeys(Bomb, LogFileWriter, num);
+            LetterKeys module = new LetterKeys(Bomb, LogFileWriter, num);
             module.Solve();
 
             textBox1.Text = "";

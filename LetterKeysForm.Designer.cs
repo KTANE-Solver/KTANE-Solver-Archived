@@ -1,7 +1,7 @@
 ﻿
 namespace KTANE_Solver
 {
-    partial class LetteredKeysForm
+    partial class LetterKeysForm
     {
         /// <summary>
         /// Required designer variable.

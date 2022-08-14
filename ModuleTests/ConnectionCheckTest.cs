@@ -10,7 +10,8 @@ namespace ModuleTests
     [TestClass]
     public class ConnectionCheckTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
+
         #region Neighbor Check
 
         [TestMethod]

@@ -7,7 +7,8 @@ namespace ModuleTests
     [TestClass]
     public class ColoredSquaresTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
+
         ColoredSquares.Color[,] grid;
         ColoredSquares module;
 

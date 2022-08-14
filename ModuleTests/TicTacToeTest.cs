@@ -8,7 +8,7 @@ namespace ModuleTests
     [TestClass]
     public class TicTacToeTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
 
         [TestMethod]
         public void CorrectTicTacToe()

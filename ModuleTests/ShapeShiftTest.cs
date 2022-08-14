@@ -9,7 +9,8 @@ namespace ModuleTests
     [TestClass]
     public class ShapeShiftTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\Users\\nyabe\\Downloads\\delete later.dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
+
         Bomb bomb = new Bomb(Day.Sunday, "IIIII1", 1, 1, new Indicator("BOB", false, false), new Indicator("CAR", false, false),
         new Indicator("CLR", false, false), new Indicator("FRK", true, true), new Indicator("FRQ", false, false), new Indicator("IND", false, false), new Indicator("MSA", false, false), new Indicator("NSA", false, false),
         new Indicator("SIG", false, false), new Indicator("SND", false, false), new Indicator("TRN", true, true), false, 2, new Port("DVID", 0), new Port("Parallel", 1),

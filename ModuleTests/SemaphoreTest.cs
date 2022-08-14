@@ -9,7 +9,7 @@ namespace ModuleTests
     [TestClass]
     public class SemaphoreTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\Users\\Nya\\Downloads\\delete later\\dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
 
         [TestMethod]
         public void TestMethod1()

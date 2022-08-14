@@ -7,8 +7,7 @@ namespace ModuleTests
     [TestClass]
     public class MysticSquareTest
     {
-        StreamWriter writer = new StreamWriter("C:\\Users\\nyabe\\Downloads\\delete later\\dummy.txt");
-
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
 
         [TestMethod]
         public void TestMethod1()
@@ -28,11 +27,11 @@ namespace ModuleTests
                 grid[row, col] = int.Parse("" + text[i]);
             }
 
-            MysticSquares module = new MysticSquares(bomb, writer);
+            MysticSquares module = new MysticSquares(bomb, streamWriter);
 
             Assert.AreEqual(5, module.FindSkullDebug(grid));
 
-            writer.Close();
+            streamWriter.Close();
         }
 
         [TestMethod]
@@ -53,7 +52,7 @@ namespace ModuleTests
                 grid[row, col] = int.Parse("" + text[i]);
             }
 
-            MysticSquares module = new MysticSquares(bomb, writer);
+            MysticSquares module = new MysticSquares(bomb, streamWriter);
 
             Assert.AreEqual(5, module.FindSkullDebug(grid));
         }
