@@ -306,6 +306,7 @@ namespace KTANE_Solver
             {
                 puzzleAnswer.Add(current);
                 current = current.Parent;
+
             } while (current != null);
 
             puzzleAnswer.Reverse();

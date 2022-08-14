@@ -589,6 +589,7 @@
       <DependentUpon>SimonSaysForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Switches.cs" />
+    <Compile Include="SymbolicPassword.cs" />
     <Compile Include="TicTacToe.cs" />
     <Compile Include="TicTacToeAnswerForm.cs">
       <SubType>Form</SubType>
