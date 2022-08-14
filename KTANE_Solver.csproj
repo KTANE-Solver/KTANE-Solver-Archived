@@ -267,6 +267,13 @@
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
     </Compile>
     <Compile Include="3DMaze.cs" />
+    <Compile Include="LetterKeys.cs" />
+    <Compile Include="LetterKeysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LetterKeysForm.Designer.cs">
+      <DependentUpon>LetterKeysForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PointOfOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -762,6 +769,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FizzBuzzForm.resx">
       <DependentUpon>FizzBuzzForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LetterKeysForm.resx">
+      <DependentUpon>LetterKeysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PointOfOrderForm.resx">
       <DependentUpon>PointOfOrderForm.cs</DependentUpon>

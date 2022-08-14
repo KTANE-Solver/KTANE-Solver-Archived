@@ -8,8 +8,8 @@ namespace ModuleTests
     [TestClass]
     public class SeaShellsTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\Users\\Nya\\Downloads\\delete later\\dummy.txt");
-        
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
+
         [TestMethod]
         public void Table1()
         {

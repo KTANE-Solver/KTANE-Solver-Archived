@@ -7,7 +7,8 @@ namespace ModuleTests
     [TestClass]
     public class WireSequenceTest
     {
-        StreamWriter streamWriter = new StreamWriter("C:\\delete later\\dummy.txt");
+        StreamWriter streamWriter = new StreamWriter("dummy.txt");
+
         [TestMethod]
         public void Red1A()
         {
