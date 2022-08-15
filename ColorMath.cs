@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
-
+using System.Drawing;
 namespace KTANE_Solver
 {
     /// <summary>
     /// Author: Nya Bentley
     /// Purpose: Solves the color math module
     /// </summary>
-    class ColorMath : Module
+    public class ColorMath : Module
     {
         Color leftColor1;
         Color leftColor2;
@@ -105,7 +105,7 @@ namespace KTANE_Solver
             PrintDebugLine($"Right Number: {rightNumber}\n");
         }
 
-        public void Solve(bool red)
+        public string Solve(bool red)
         {
             GetLeftNumbers();
             GetRightNumbers(red);
@@ -113,7 +113,8 @@ namespace KTANE_Solver
             string color = red ? "Red" : "Green";
 
             PrintDebugLine($"{color} {letter}\n");
-            int answer = -1;
+
+            int answer;
 
             char operation;
             switch (letter)
@@ -147,162 +148,223 @@ namespace KTANE_Solver
 
             string colorAnswer = ConvertAnswerToColor(answer);
 
-            PrintDebugLine($"Color Answer:\n{colorAnswer}\n");
-
             ShowAnswer(colorAnswer, true);
+
+            return colorAnswer;
         }
 
         public int GetLeftSideNumber(int place, Color color)
         {
             if (place == 1)
             {
-                switch (color)
+                if (Color.Blue == color)
                 {
-
-                    case Color.Blue:
-                        return 6;
-
-                    case Color.Green:
-                        return 1;
-
-                    case Color.Purple:
-                        return 2;
-
-                    case Color.Yellow:
-                        return 4;
-
-                    case Color.White:
-                        return 9;
-
-                    case Color.Magenta:
-                        return 0;
-
-                    case Color.Red:
-                        return 8;
-
-                    case Color.Orange:
-                        return 5;
-
-                    case Color.Gray:
-                        return 3;
-
-                    case Color.Black:
-                        return 7;
+                    return 6;
                 }
+
+                if (Color.Green == color)
+                {
+                    return 1;
+                }
+
+                if (Color.Purple == color)
+                {
+                    return 2;
+                }
+
+                if (Color.Yellow == color)
+                {
+                    return 4;
+                }
+
+                if (Color.White == color)
+                {
+                    return 9;
+                }
+
+                if (Color.Magenta == color)
+                { 
+                    return 0;
+                }
+
+                if (Color.Red == color)
+                { 
+                    return 8;
+                }
+
+                if (Color.Orange == color)
+                {
+                    return 5;
+                }
+
+                if (Color.Gray == color)
+                {
+                    return 3;
+                }
+
+
+                return 7;
             }
 
             else if (place == 2)
             {
-                switch (color)
+
                 {
-
-                    case Color.Blue:
+                    if (Color.Blue == color)
+                    {
                         return 8;
+                    }
 
-                    case Color.Green:
+                    if (Color.Green == color)
+                    {
                         return 1;
+                    }
 
-                    case Color.Purple:
+                    if (Color.Purple == color)
+                    {
                         return 9;
+                    }
 
-                    case Color.Yellow:
+                    if (Color.Yellow == color)
+                    {
                         return 4;
+                    }
 
-                    case Color.White:
+                    if (Color.White == color)
+                    {
                         return 3;
+                    }
 
-                    case Color.Magenta:
+                    if (Color.Magenta == color)
+                    {
                         return 6;
+                    }
 
-                    case Color.Red:
+                    if (Color.Red == color)
+                    {
                         return 0;
+                    }
 
-                    case Color.Orange:
+                    if (Color.Orange == color)
+                    {
                         return 5;
+                    }
 
-                    case Color.Gray:
+                    if (Color.Gray == color)
+                    {
                         return 7;
+                    }
 
-                    case Color.Black:
-                        return 2;
+
+                    return 2;
                 }
             }
 
             else if (place == 3)
             {
-                switch (color)
+
                 {
-
-                    case Color.Blue:
+                    if (Color.Blue == color)
+                    {
                         return 4;
+                    }
 
-                    case Color.Green:
+                    if (Color.Green == color)
+                    {
                         return 1;
+                    }
 
-                    case Color.Purple:
+                    if (Color.Purple == color)
+                    {
                         return 9;
+                    }
 
-                    case Color.Yellow:
+                    if (Color.Yellow == color)
+                    {
                         return 7;
+                    }
 
-                    case Color.White:
+                    if (Color.White == color)
+                    {
                         return 0;
+                    }
 
-                    case Color.Magenta:
+                    if (Color.Magenta == color)
+                    {
                         return 2;
+                    }
 
-                    case Color.Red:
+                    if (Color.Red == color)
+                    {
                         return 5;
+                    }
 
-                    case Color.Orange:
+                    if (Color.Orange == color)
+                    {
                         return 3;
+                    }
 
-                    case Color.Gray:
+                    if (Color.Gray == color)
+                    {
                         return 8;
+                    }
 
-                    case Color.Black:
-                        return 6;
+                    return 6;
                 }
             }
 
             else
             {
-                switch (color)
+
                 {
-
-                    case Color.Blue:
+                    if (Color.Blue == color)
+                    {
                         return 6;
+                    }
 
-                    case Color.Green:
+                    if (Color.Green == color)
+                    {
                         return 8;
+                    }
 
-                    case Color.Purple:
+                    if (Color.Purple == color)
+                    {
                         return 7;
+                    }
 
-                    case Color.Yellow:
+                    if (Color.Yellow == color)
+                    {
                         return 5;
+                    }
 
-                    case Color.White:
+                    if (Color.White == color)
+                    {
                         return 4;
+                    }
 
-                    case Color.Magenta:
+                    if (Color.Magenta == color)
+                    {
                         return 9;
+                    }
 
-                    case Color.Red:
+                    if (Color.Red == color)
+                    {
                         return 1;
+                    }
 
-                    case Color.Orange:
+                    if (Color.Orange == color)
+                    {
                         return 3;
+                    }
 
-                    case Color.Gray:
+                    if (Color.Gray == color)
+                    {
                         return 0;
+                    }
 
-                    case Color.Black:
-                        return 2;   
+                    return 2;
                 }
             }
-
-            return -1;
         }
 
         public int GetRightSideNumber(int place, Color color)
@@ -310,153 +372,207 @@ namespace KTANE_Solver
         {
             if (place == 1)
             {
-                switch (color)
+                if (Color.Blue == color)
                 {
-
-                    case Color.Blue:
-                        return 0;
-
-                    case Color.Green:
-                        return 6;
-
-                    case Color.Purple:
-                        return 5;
-
-                    case Color.Yellow:
-                        return 4;
-
-                    case Color.White:
-                        return 3;
-
-                    case Color.Magenta:
-                        return 7;
-
-                    case Color.Red:
-                        return 9;
-
-                    case Color.Orange:
-                        return 8;
-
-                    case Color.Gray:
-                        return 1;
-
-                    case Color.Black:
-                        return 2;
+                    return 0;
                 }
+
+                if (Color.Green == color)
+                {
+                    return 6;
+                }
+
+                if (Color.Purple == color)
+                {
+                    return 5;
+                }
+
+                if (Color.Yellow == color)
+                {
+                    return 4;
+                }
+
+                if (Color.White == color)
+                {
+                    return 3;
+                }
+
+                if (Color.Magenta == color)
+                {
+                    return 7;
+                }
+
+                if (Color.Red == color)
+                {
+                    return 9;
+                }
+
+                if (Color.Orange == color)
+                {
+                    return 8;
+                }
+
+                if (Color.Gray == color)
+                {
+                    return 1;
+                }
+
+
+                return 2;
             }
 
             else if (place == 2)
             {
-                switch (color)
+                if (Color.Blue == color)
                 {
-
-                    case Color.Blue:
-                        return 2;
-
-                    case Color.Green:
-                        return 9;
-
-                    case Color.Purple:
-                        return 8;
-
-                    case Color.Yellow:
-                        return 0;
-
-                    case Color.White:
-                        return 5;
-
-                    case Color.Magenta:
-                        return 3;
-
-                    case Color.Red:
-                        return 4;
-
-                    case Color.Orange:
-                        return 7;
-
-                    case Color.Gray:
-                        return 1;
-
-                    case Color.Black:
-                        return 6;
+                    return 2;
                 }
+
+                if (Color.Green == color)
+                {
+                    return 9;
+                }
+
+                if (Color.Purple == color)
+                {
+                    return 8;
+                }
+
+                if (Color.Yellow == color)
+                {
+                    return 0;
+                }
+
+                if (Color.White == color)
+                {
+                    return 5;
+                }
+
+                if (Color.Magenta == color)
+                {
+                    return 3;
+                }
+
+                if (Color.Red == color)
+                {
+                    return 4;
+                }
+
+                if (Color.Orange == color)
+                {
+                    return 7;
+                }
+
+                if (Color.Gray == color)
+                {
+                    return 1;
+                }
+
+
+                return 6;
             }
 
             else if (place == 3)
             {
-                switch (color)
+                if (Color.Blue == color)
                 {
-
-                    case Color.Blue:
-                        return 5;
-
-                    case Color.Green:
-                        return 0;
-
-                    case Color.Purple:
-                        return 6;
-
-                    case Color.Yellow:
-                        return 4;
-
-                    case Color.White:
-                        return 2;
-
-                    case Color.Magenta:
-                        return 7;
-
-                    case Color.Red:
-                        return 9;
-
-                    case Color.Orange:
-                        return 3;
-
-                    case Color.Gray:
-                        return 8;
-
-                    case Color.Black:
-                        return 1;
+                    return 5;
                 }
+
+                if (Color.Green == color)
+                {
+                    return 0;
+                }
+
+                if (Color.Purple == color)
+                {
+                    return 6;
+                }
+
+                if (Color.Yellow == color)
+                {
+                    return 4;
+                }
+
+                if (Color.White == color)
+                {
+                    return 2;
+                }
+
+                if (Color.Magenta == color)
+                {
+                    return 7;
+                }
+
+                if (Color.Red == color)
+                {
+                    return 9;
+                }
+
+                if (Color.Orange == color)
+                {
+                    return 3;
+                }
+
+                if (Color.Gray == color)
+                {
+                    return 8;
+                }
+
+
+                return 1;
             }
 
             else
             {
-                switch (color)
+                if (Color.Blue == color)
                 {
-
-                    case Color.Blue:
-                        return 5;
-
-                    case Color.Green:
-                        return 4;
-
-                    case Color.Purple:
-                        return 2;
-
-                    case Color.Yellow:
-                        return 9;
-
-                    case Color.White:
-                        return 8;
-
-                    case Color.Magenta:
-                        return 6;
-
-                    case Color.Red:
-                        return 7;
-
-                    case Color.Orange:
-                        return 1;
-
-                    case Color.Gray:
-                        return 3;
-
-                    case Color.Black:
-                        return 0;
+                    return 5;
                 }
-            }
 
-            return -1;
+                if (Color.Green == color)
+                {
+                    return 0;
+                }
+
+                if (Color.Purple == color)
+                {
+                    return 6;
+                }
+
+                if (Color.Yellow == color)
+                {
+                    return 4;
+                }
+
+                if (Color.White == color)
+                {
+                    return 2;
+                }
+
+                if (Color.Magenta == color)
+                {
+                    return 7;
+                }
+
+                if (Color.Red == color)
+                {
+                    return 9;
+                }
+
+                if (Color.Orange == color)
+                {
+                    return 3;
+                }
+
+                if (Color.Gray == color)
+                {
+                    return 8;
+                }
+
+
+                return 1;
+            }
         }
 
         public int GetRightSideNumber(int place)
@@ -546,7 +662,7 @@ namespace KTANE_Solver
             }
         }
 
-        private String ConvertAnswerToColor(int answer)
+        private string ConvertAnswerToColor(int answer)
         {
             int thousandPlace = answer / 1000;
             int hundredPlace = (answer % 1000) / 100;
@@ -734,21 +850,7 @@ namespace KTANE_Solver
                 answerString += color.ToString() + "\n";
             }
 
-            return answerString;
-        }
-
-        public enum Color
-        { 
-            Gray,
-            Green,
-            Orange,
-            White,
-            Purple,
-            Blue,
-            Black,
-            Magenta,
-            Yellow,
-            Red
+            return string.Join("\n", answerList);
         }
     }
 }

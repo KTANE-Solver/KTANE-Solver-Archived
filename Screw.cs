@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 namespace KTANE_Solver
 {
     public class Screw : Module
@@ -262,16 +263,6 @@ namespace KTANE_Solver
 
 
             return colorLocations[num  - 1];
-        }
-
-        public enum Color
-        { 
-            White,
-            Magenta,
-            Green,
-            Blue,
-            Red,
-            Yellow
         }
     }
 }

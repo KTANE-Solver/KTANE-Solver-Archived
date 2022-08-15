@@ -11,12 +11,12 @@ namespace KTANE_Solver
     public class Microcontroller : Module
     {
         private string whiteDotCorner;
-        private string moduleType; 
-        private int pinNum; 
-        private int secondDigit; 
+        private string moduleType;
+        private int pinNum;
+        private int secondDigit;
         private int lastDigit;
         public List<Pin> pinList;
-        public Dictionary<string, Pin.Color> colorDictionary;
+        public Dictionary<string, Color> colorDictionary;
         public Microcontroller(Bomb bomb, StreamWriter logFileWriter, string whiteDotCorner, string moduleType, int pinNum, int secondDigit, int lastDigit) : base(bomb, logFileWriter, "Microcontroller")
         {
             this.whiteDotCorner = whiteDotCorner;
@@ -25,36 +25,36 @@ namespace KTANE_Solver
             this.secondDigit = secondDigit;
             this.lastDigit = lastDigit;
             pinList = new List<Pin>();
-            colorDictionary = new Dictionary<string, Pin.Color>();
+            colorDictionary = new Dictionary<string, Color>();
         }
 
         public void FindColor()
         {
-            colorDictionary.Add("GND", Pin.Color.White);
-                //If the last digit of the controller's serial number is 1 or 4
-                if (lastDigit == 1 || lastDigit == 4)
-                {
-                    colorDictionary.Add("VCC", Pin.Color.Yellow);
-                    colorDictionary.Add("AIN", Pin.Color.Magenta);
-                    colorDictionary.Add("DIN", Pin.Color.Green);
-                    colorDictionary.Add("PWM", Pin.Color.Blue);
-                    colorDictionary.Add("RST", Pin.Color.Red);
+            colorDictionary.Add("GND", Color.White);
+            //If the last digit of the controller's serial number is 1 or 4
+            if (lastDigit == 1 || lastDigit == 4)
+            {
+                colorDictionary.Add("VCC", Color.Yellow);
+                colorDictionary.Add("AIN", Color.Magenta);
+                colorDictionary.Add("DIN", Color.Green);
+                colorDictionary.Add("PWM", Color.Blue);
+                colorDictionary.Add("RST", Color.Red);
 
-                    PrintDebugLine("The last digit of the controller's serial number is 1 or 4\n");
-                }
+                PrintDebugLine("The last digit of the controller's serial number is 1 or 4\n");
+            }
 
-                //Otherwise, if there is a lit indicator "SIG" or a RJ-45 port
-                else if (Bomb.Sig.Lit || Bomb.Rj.Visible)
-                {
-                    colorDictionary.Add("VCC", Pin.Color.Yellow);
-                    colorDictionary.Add("AIN", Pin.Color.Red);
-                    colorDictionary.Add("DIN", Pin.Color.Magenta);
-                    colorDictionary.Add("PWM", Pin.Color.Green);
-                    colorDictionary.Add("RST", Pin.Color.Blue);
+            //Otherwise, if there is a lit indicator "SIG" or a RJ-45 port
+            else if (Bomb.Sig.Lit || Bomb.Rj.Visible)
+            {
+                colorDictionary.Add("VCC", Color.Yellow);
+                colorDictionary.Add("AIN", Color.Red);
+                colorDictionary.Add("DIN", Color.Magenta);
+                colorDictionary.Add("PWM", Color.Green);
+                colorDictionary.Add("RST", Color.Blue);
 
-                    PrintDebugLine("There is a lit indicator SIG or a RJ-45 port\n");
+                PrintDebugLine("There is a lit indicator SIG or a RJ-45 port\n");
 
-                }
+            }
 
             //Otherwise, if the bomb's serial number contains C, L, R, X, 1 or 8
             else if (Bomb.SerialNumber.Contains('C') ||
@@ -65,11 +65,11 @@ namespace KTANE_Solver
                         Bomb.SerialNumber.Contains('8'))
             {
 
-                colorDictionary.Add("VCC", Pin.Color.Red);
-                colorDictionary.Add("AIN", Pin.Color.Magenta);
-                colorDictionary.Add("DIN", Pin.Color.Green);
-                colorDictionary.Add("PWM", Pin.Color.Blue);
-                colorDictionary.Add("RST", Pin.Color.Yellow);
+                colorDictionary.Add("VCC", Color.Red);
+                colorDictionary.Add("AIN", Color.Magenta);
+                colorDictionary.Add("DIN", Color.Green);
+                colorDictionary.Add("PWM", Color.Blue);
+                colorDictionary.Add("RST", Color.Yellow);
 
                 PrintDebugLine("The bomb's serial number contains C, L, R, X, 1 or 8\n");
             }
@@ -77,22 +77,22 @@ namespace KTANE_Solver
             //Otherwise, if the second numerical digit of the controller's serial number matches the number of batteries on the bomb
             else if (secondDigit == Bomb.Battery)
             {
-                colorDictionary.Add("VCC", Pin.Color.Red);
-                colorDictionary.Add("AIN", Pin.Color.Blue);
-                colorDictionary.Add("DIN", Pin.Color.Yellow);
-                colorDictionary.Add("PWM", Pin.Color.Green);
-                colorDictionary.Add("RST", Pin.Color.Magenta);
+                colorDictionary.Add("VCC", Color.Red);
+                colorDictionary.Add("AIN", Color.Blue);
+                colorDictionary.Add("DIN", Color.Yellow);
+                colorDictionary.Add("PWM", Color.Green);
+                colorDictionary.Add("RST", Color.Magenta);
 
                 PrintDebugLine("The second numerical digit of the controller's serial number matches the number of batteries on the bomb\n");
             }
 
             else
             {
-                colorDictionary.Add("VCC", Pin.Color.Green);
-                colorDictionary.Add("AIN", Pin.Color.Red);
-                colorDictionary.Add("DIN", Pin.Color.Yellow);
-                colorDictionary.Add("PWM", Pin.Color.Blue);
-                colorDictionary.Add("RST", Pin.Color.Magenta);
+                colorDictionary.Add("VCC", Color.Green);
+                colorDictionary.Add("AIN", Color.Red);
+                colorDictionary.Add("DIN", Color.Yellow);
+                colorDictionary.Add("PWM", Color.Blue);
+                colorDictionary.Add("RST", Color.Magenta);
 
                 PrintDebugLine("No above color condition applies\n");
             }
@@ -104,7 +104,7 @@ namespace KTANE_Solver
             PrintDebugLine($"White Dot Corner: {whiteDotCorner}");
             PrintDebugLine($"Second Controller Digit: {secondDigit}");
             PrintDebugLine($"Last Controller Digit: {lastDigit}\n");
-            
+
             FindColor();
 
             for (int i = 1; i <= pinNum; i++)
@@ -127,16 +127,15 @@ namespace KTANE_Solver
             switch (whiteDotCorner)
             {
                 case "Top Left":
-                    
 
                     for (int i = 0; i < halfPinNum; i++)
                     {
-                        answers.Add(ConvertPin(pinList[i]));
+                        answers.Add(pinList[i].color);
                     }
 
                     for (int i = pinNum - 1; i >= halfPinNum; i--)
                     {
-                        answers.Add(ConvertPin(pinList[i]));
+                        answers.Add(pinList[i].color);
                     }
 
                     return answers;
@@ -144,25 +143,25 @@ namespace KTANE_Solver
                 case "Top Right":
                     for (int i = halfPinNum - 1; i >= 0; i--)
                     {
-                        answers.Add(ConvertPin(pinList[i]));
+                        answers.Add(pinList[i].color);
                     }
 
                     for (int i = halfPinNum; i < pinNum; i++)
                     {
-                        answers.Add(ConvertPin(pinList[i]));
+                        answers.Add(pinList[i].color);
                     }
 
                     return answers;
 
                 case "Bottom Left":
                     for (int i = pinNum - 1; i >= halfPinNum; i--)
-                    { 
-                        answers.Add(ConvertPin(pinList[i]));
+                    {
+                        answers.Add(pinList[i].color);
                     }
 
                     for (int i = 0; i < halfPinNum; i++)
                     {
-                        answers.Add(ConvertPin(pinList[i]));
+                        answers.Add(pinList[i].color);
                     }
 
                     return answers;
@@ -170,43 +169,20 @@ namespace KTANE_Solver
 
                 default:
                     for (int i = halfPinNum; i < pinList.Count; i++)
-                    { 
-                        answers.Add(ConvertPin(pinList[i]));
+                    {
+                        answers.Add(pinList[i].color);
                     }
 
-                    for (int i = halfPinNum - 1; i >= 0 ; i--)
-                    { 
-                        answers.Add(ConvertPin(pinList[i]));
+
+                    for (int i = halfPinNum - 1; i >= 0; i--)
+                    {
+                        answers.Add(pinList[i].color);
                     }
 
                     return answers;
+
             }
         }
-
-        private Color ConvertPin(Pin p)
-        {
-            switch (p.color)
-            {
-                case Pin.Color.Yellow:
-                    return Color.Yellow;
-
-                case Pin.Color.Magenta:
-                    return Color.Magenta;
-
-                case Pin.Color.Green:
-                    return Color.Green;
-
-                case Pin.Color.Blue:
-                    return Color.Blue;
-
-                case Pin.Color.Red:
-                    return Color.Red;
-
-                default:
-                    return Color.White;
-            }
-        }
-
 
         public class Pin
         {
@@ -214,16 +190,6 @@ namespace KTANE_Solver
             public string name;
             public Color color { get { return c; } }
             private Color c;
-
-            public enum Color
-            { 
-                Yellow,
-                Magenta,
-                Green,
-                Blue,
-                Red,
-                White
-            }
 
             public Pin(int index, string moduleType, int pinNum, int secondDigit, int lastDigit, Bomb bomb, Dictionary<string, Color> colorDictionary)
             {
@@ -769,3 +735,4 @@ namespace KTANE_Solver
         }
     }
 }
+

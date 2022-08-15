@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace KTANE_Solver
 {
@@ -13,7 +14,7 @@ namespace KTANE_Solver
     /// Date: 4/27/21
     /// Purpose: Solves the complicated module
     /// </summary>
-    class ComplicatedWires : Module
+    public class ComplicatedWires : Module
     {
         //the list of wires on the module
         private List<ComplicatedWire> wires;
@@ -35,7 +36,7 @@ namespace KTANE_Solver
             
         }
 
-        public void Solve()
+        public string Solve()
         {
             directions = new List<string>();
 
@@ -49,89 +50,80 @@ namespace KTANE_Solver
             //find which wire needs to be cut
             foreach (ComplicatedWire wire in wires)
             {
-                switch (wire.ColorPropety)
+                if (wire.ColorPropety == Color.Blue)
                 {
-                    //if the wire is blue,
-                    case ComplicatedWire.Color.BLUE:
+                    //if the wire is lit, cut if parllel port is there
+                    if (wire.Lit)
+                    {
+                        AddParallelCondition();
+                    }
 
-                        //if the wire is lit, cut if parllel port is there
-                        if (wire.Lit)
-                        {
-                            AddParallelCondition();
-                        }
+                    //if the wire is unlit and has star, don't cut
+                    else if (wire.Star)
+                        directions.Add("Don't Cut");
 
-                        //if the wire is unlit and has star, don't cut
-                        else if (wire.Star)
-                            directions.Add("Don't Cut");
+                    //if the wire doesn't have a star, cut if last digit is even
+                    else
+                    {
+                        AddEvenNumberCondition();
+                    }
+                }
 
-                        //if the wire doesn't have a star, cut if last digit is even
-                        else
-                        {
-                            AddEvenNumberCondition();
-                        }
-                        break;
+                //if the wire is red,
+                else if (wire.ColorPropety == Color.Red)
+                {
+                    //if the light is lit, cut if there's two or more batteries
+                    if (wire.Lit)
+                    {
+                        AddBatteryCondition();
+                    }
 
-                    //if the wire is red,
-                    case ComplicatedWire.Color.RED:
+                    //if the light is unlit and has no star, cut if last digit is even
+                    else if (!wire.Lit && !wire.Star)
+                    {
+                        AddEvenNumberCondition();
+                    }
 
-                        //if the light is lit, cut if there's two or more batteries
-                        if (wire.Lit)
-                        {
-                            AddBatteryCondition();
-                        }
+                    //if the light is unlit and there's a star, cut the wire
+                    else
+                        directions.Add("Cut");
+                }
 
-                        //if the light is unlit and has no star, cut if last digit is even
-                        else if (!wire.Lit && !wire.Star)
-                        {
-                            AddEvenNumberCondition();
-                        }
-
-                        //if the light is unlit and there's a star, cut the wire
-                        else
-                            directions.Add("Cut");
-                        break;
-
-                        
-                        
-
-                    //if the wire is purple,
-                    case ComplicatedWire.Color.PURPLE:
-
-                        //if the light is lit, and there's a star, don't cut the wire
-                        if (wire.Lit && wire.Star)
-                            directions.Add("Don't Cut");
+                if (wire.ColorPropety == Color.Purple)
+                {
+                    if (wire.Lit && wire.Star)
+                        directions.Add("Don't Cut");
 
 
-                        //if the light is unlit, and star, cut if parallel port is there
-                        else if (!wire.Lit && wire.Star)
-                        {
-                            AddParallelCondition();
-                        }
+                    //if the light is unlit, and star, cut if parallel port is there
+                    else if (!wire.Lit && wire.Star)
+                    {
+                        AddParallelCondition();
+                    }
 
-                        //if the light is unlit and no star, cut if last digit is even
+                    //if the light is unlit and no star, cut if last digit is even
 
-                        //if the light is lit, and no star, cut if last digit is even
+                    //if the light is lit, and no star, cut if last digit is even
 
-                        else
-                            AddEvenNumberCondition();
-                            break;
+                    else
+                        AddEvenNumberCondition();
+                }
 
-                    //if the wire is white,
-                    case ComplicatedWire.Color.WHITE:
-                        //if light is unlit, cut the wire
-                        if (!wire.Lit)
-                            directions.Add("Cut");
+                else
+                {
+                    //if light is unlit, cut the wire
+                    if (!wire.Lit)
+                        directions.Add("Cut");
 
-                        //if light is lit, and star, cut if more than 2 batteires
-                        else if (wire.Lit && wire.Star)
-                        {
-                            AddBatteryCondition();
-                        }
+                    //if light is lit, and star, cut if more than 2 batteires
+                    else if (wire.Lit && wire.Star)
+                    {
+                        AddBatteryCondition();
+                    }
 
-                        //if light is lit, and no star, don't cut
-                        else
-                            directions.Add("Don't Cut");
-                        break;
+                    //if light is lit, and no star, don't cut
+                    else
+                        directions.Add("Don't Cut");
                 }
             }
 
@@ -142,9 +134,9 @@ namespace KTANE_Solver
                 answer += $"{i + 1}. {directions[i]}\n";
             }
 
-            PrintDebugLine("Answer:\n" + answer);
-
             ShowAnswer(answer, true);
+
+            return answer;
             
         }
 
@@ -192,15 +184,6 @@ namespace KTANE_Solver
     public class ComplicatedWire
     {
         //PROPERTIES
-
-        //the colors the wire could be
-        public enum Color
-        {
-            BLUE,
-            RED,
-            PURPLE,
-            WHITE
-        }
 
         //the color of the wire
         public Color ColorPropety { get; set; }

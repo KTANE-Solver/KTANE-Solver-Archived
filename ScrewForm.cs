@@ -100,35 +100,35 @@ namespace KTANE_Solver
             return true;
         }
 
-        private List<Screw.Color> GetColorLocation()
+        private List<Color> GetColorLocation()
         {
-            List<Screw.Color> colorList = new List<Screw.Color>();
+            List<Color> colorList = new List<Color>();
             foreach (ComboBox comboBox in list)
             {
                 switch (comboBox.Text)
                 {
                     case "Red":
-                        colorList.Add(Screw.Color.Red);
+                        colorList.Add(Color.Red);
                         break;
 
                     case "Blue":
-                        colorList.Add(Screw.Color.Blue);
+                        colorList.Add(Color.Blue);
                         break;
 
                     case "Green":
-                        colorList.Add(Screw.Color.Green);
+                        colorList.Add(Color.Green);
                         break;
 
                     case "Magenta":
-                        colorList.Add(Screw.Color.Magenta);
+                        colorList.Add(Color.Magenta);
                         break;
 
                     case "Yellow":
-                        colorList.Add(Screw.Color.Yellow);
+                        colorList.Add(Color.Yellow);
                         break;
 
                     default:
-                        colorList.Add(Screw.Color.White);
+                        colorList.Add(Color.White);
                         break;
                 }
             }

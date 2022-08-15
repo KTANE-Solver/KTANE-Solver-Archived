@@ -76,15 +76,15 @@ namespace KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
 
-            ColorMath.Color left1;
-            ColorMath.Color left2;
-            ColorMath.Color left3;
-            ColorMath.Color left4;
+            Color left1;
+            Color left2;
+            Color left3;
+            Color left4;
 
-            ColorMath.Color right1 = ColorMath.Color.Red;
-            ColorMath.Color right2 = ColorMath.Color.Red;
-            ColorMath.Color right3 = ColorMath.Color.Red;
-            ColorMath.Color right4 = ColorMath.Color.Red;
+            Color right1 = Color.Red;
+            Color right2 = Color.Red;
+            Color right3 = Color.Red;
+            Color right4 = Color.Red;
 
             //if at least one, but not all are filled, throw an error
             int rightFilled = RightTextBoxFilled();
@@ -95,10 +95,10 @@ namespace KTANE_Solver
                 return;
             }
 
-            left1 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), leftComboBox1.Text);
-            left2 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), leftComboBox2.Text);
-            left3 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), leftComboBox3.Text);
-            left4 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), leftComboBox4.Text);
+            left1 = (Color)Enum.Parse(typeof(Color), leftComboBox1.Text);
+            left2 = (Color)Enum.Parse(typeof(Color), leftComboBox2.Text);
+            left3 = (Color)Enum.Parse(typeof(Color), leftComboBox3.Text);
+            left4 = (Color)Enum.Parse(typeof(Color), leftComboBox4.Text);
 
 
 
@@ -128,10 +128,10 @@ namespace KTANE_Solver
 
             if (filled)
             {
-                right1 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox1.Text);
-                right2 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox2.Text);
-                right3 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox3.Text);
-                right4 = (ColorMath.Color)Enum.Parse(typeof(ColorMath.Color), rightComboBox4.Text);
+                right1 = (Color)Enum.Parse(typeof(Color), rightComboBox1.Text);
+                right2 = (Color)Enum.Parse(typeof(Color), rightComboBox2.Text);
+                right3 = (Color)Enum.Parse(typeof(Color), rightComboBox3.Text);
+                right4 = (Color)Enum.Parse(typeof(Color), rightComboBox4.Text);
 
             }
 

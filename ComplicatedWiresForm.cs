@@ -151,19 +151,38 @@ namespace KTANE_Solver
         /// <param name="lit"></param>
         /// <param name="star"></param>
         /// <returns>a wire if the word isn't blank</returns>
-        private ComplicatedWire CreateWire(ComboBox color, CheckBox lit, CheckBox star)
+        private ComplicatedWire CreateWire(ComboBox colorComboBox, CheckBox lit, CheckBox star)
         {
-            String colorString = color.Text.ToUpper();
+            String colorString = colorComboBox.Text.ToUpper();
 
             if (colorString == "")
                 return null;
 
-            ComplicatedWire.Color colorEnum = (ComplicatedWire.Color)Enum.Parse(typeof(ComplicatedWire.Color), colorString);
+            Color color = GetColor(colorString);
 
-
-            ComplicatedWire wire = new ComplicatedWire(colorEnum, star.Checked, lit.Checked);
+            ComplicatedWire wire = new ComplicatedWire(color, star.Checked, lit.Checked);
 
             return wire;
+        }
+
+        private Color GetColor(string str)
+        {
+            if (str == "Blue")
+            {
+                return Color.Blue;
+            }
+
+            if (str == "Red")
+            {
+                return Color.Red;
+            }
+
+            if (str == "White")
+            {
+                return Color.White;
+            }
+
+            return Color.Purple;
         }
     }
 }

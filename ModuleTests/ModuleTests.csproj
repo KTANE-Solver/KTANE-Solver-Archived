@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +58,9 @@
     <Compile Include="ChordQualitiesTest.cs" />
     <Compile Include="SkewedSlotsTest.cs" />
     <Compile Include="LetterKeysTest.cs" />
+    <Compile Include="ButtonTest.cs" />
+    <Compile Include="ColorMathTest.cs" />
+    <Compile Include="ComplicatedWiresTest.cs" />
     <Compile Include="WireSequenceTest.cs" />
     <Compile Include="FastMathTest.cs" />
     <Compile Include="ListeningTest.cs" />

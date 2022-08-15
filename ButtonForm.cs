@@ -60,9 +60,29 @@ namespace KTANE_Solver
 
             Button module = new Button(Bomb, LogFileWriter);
 
-            Button.Color color = (Button.Color)Enum.Parse(typeof(Button.Color), colorComboBox.Text);
+            Color color = GetColor(colorComboBox.Text);
 
             module.Solve(color, wordComboBox.Text);
+        }
+
+        private Color GetColor(string str)
+        {
+            if (str == "Blue")
+            {
+                return Color.Blue;
+            }
+
+            if (str == "Red")
+            {
+                return Color.Red;
+            }
+
+            if (str == "White")
+            {
+                return Color.White;
+            }
+
+            return Color.Yellow;
         }
     }
 }

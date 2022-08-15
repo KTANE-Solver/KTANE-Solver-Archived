@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace KTANE_Solver
 {
@@ -12,127 +13,115 @@ namespace KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the Button Module
     /// </summary>
-    class Button : Module
+    public class Button : Module
     {
         public Button(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Button")
         { 
         }
 
-        public void Solve(Color color, String word)
+        public string Solve(Color color, String word)
         {
+            string answer;
             PrintDebugLine($"{color} {word}\n");
 
-            switch (color)
+            if (color == Color.Red)
             {
-                case Color.Red:
+                if (word == "Detonate")
+                {
+                    answer = DentonateAnswer();
+                }
 
-                    if (word == "Detonate")
-                    {
-                        DentonateAnswer();
-                    }
+                else if (word == "Hold")
+                {
+                    answer = PressAnswer();
+                }
 
-                    else if (word == "Hold")
-                    {
-                        PressAnswer();
-                    }
-
-                    else
-                    {
-                        CheckAnswer();
-                    }
-                    break;
-                case Color.Blue:
-                    if (word == "Abort")
-                    {
-                        HoldAnswer();
-                    }
-
-                    else if (word == "Detonate")
-                    {
-                        DentonateAnswer();
-                    }
-
-                    else
-                    {
-                        CheckAnswer();
-                    }
-                    break;
-                case Color.White:
-
-                    if (word == "Detonate")
-                    {
-                        DentonateAnswer();
-                    }
-
-                    else if (Bomb.Car.Lit)
-                    {
-                        HoldAnswer();
-                    }
-
-                    else
-                    {
-                        CheckAnswer();
-                    }
-                    break;
-
-
-                default:
-
-                    if (word == "Detonate")
-                    {
-                        DentonateAnswer();
-                    }
-
-                    else
-                    {
-                        CheckAnswer();
-                    }
-                    break;
+                else
+                {
+                    answer = CheckAnswer();
+                }
             }
+
+            else if (color == Color.Blue)
+            {
+                if (word == "Abort")
+                {
+                    answer = HoldAnswer();
+                }
+
+                else if (word == "Detonate")
+                {
+                    answer = DentonateAnswer();
+                }
+
+                else
+                {
+                    answer = CheckAnswer();
+                }
+            }
+
+            else if (color == Color.White)
+            {
+                if (word == "Detonate")
+                {
+                    answer = DentonateAnswer();
+                }
+
+                else if (Bomb.Car.Lit)
+                {
+                    answer = HoldAnswer();
+                }
+
+                else
+                {
+                    answer = CheckAnswer();
+                }
+            }
+
+            else
+            {
+                if (word == "Detonate")
+                {
+                    answer = DentonateAnswer();
+                }
+
+                else
+                {
+                    answer = CheckAnswer();
+                }
+            }
+
+            ShowAnswer(answer, true);
+            return answer;
         }
 
-        private void CheckAnswer()
+        private string CheckAnswer()
         {
             if (Bomb.Battery >= 3 && Bomb.Frk.Lit)
             {
-                PressAnswer();
+                return PressAnswer();
             }
-
-            else
-            {
-                HoldAnswer();
-            }
+            return HoldAnswer();
         }
 
-        private void DentonateAnswer()
+        private string DentonateAnswer()
         {
             if (Bomb.Battery >= 2)
             {
-                PressAnswer();
+                return PressAnswer();
             }
 
-            else
-            {
-                HoldAnswer();
-            }
+            return HoldAnswer();
         }
 
-        private void PressAnswer()
+        private string PressAnswer()
         {
-            ShowAnswer("Press", true);
+            return "Press";
         }
 
-        private void HoldAnswer()
+        private string HoldAnswer()
         {
-            ShowAnswer("Hold Button\nBlue: 4\nYellow: 5\nElse: 1", true);
-        }
-
-        public enum Color
-        { 
-            Red,
-            Blue,
-            White,
-            Yellow
+            return "Hold Button\nBlue: 4\nYellow: 5\nElse: 1";
         }
     }
 }
