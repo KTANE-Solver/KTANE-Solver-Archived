@@ -14,15 +14,9 @@ namespace KTANE_Solver
     /// </summary>
     public class ColorMath : Module
     {
-        Color leftColor1;
-        Color leftColor2;
-        Color leftColor3;
-        Color leftColor4;
+        Color[] leftColors;
 
-        Color rightColor1;
-        Color rightColor2;
-        Color rightColor3;
-        Color rightColor4;
+        Color[] rightColors;
 
         int leftNumberThousand;
         int leftNumberHundred;
@@ -39,36 +33,29 @@ namespace KTANE_Solver
 
         char letter;
 
-        public ColorMath(Color leftColor1, Color leftColor2, Color leftColor3, Color leftColor4,
-                         Color rightColor1, Color rightColor2, Color rightColor3, Color rightColor4, char letter, 
-                         Bomb bomb, StreamWriter logfileWriter) : base(bomb, logfileWriter, "Color Math")
+        public ColorMath(Color[] leftColors, Color[] rightColors, char letter, Bomb bomb, StreamWriter logfileWriter) : base(bomb, logfileWriter, "Color Math")
         {
-            this.leftColor1 = leftColor1;
-            this.leftColor2 = leftColor2;
-            this.leftColor3 = leftColor3;
-            this.leftColor4 = leftColor4;
-
-            this.rightColor1 = rightColor1;
-            this.rightColor2 = rightColor2;
-            this.rightColor3 = rightColor3;
-            this.rightColor4 = rightColor4;
+            this.leftColors = leftColors;
+            this.rightColors = rightColors;
 
             this.letter = letter;
         }
 
         private void GetLeftNumbers()
         { 
-            leftNumberThousand = GetLeftSideNumber(1, leftColor1);
-            leftNumberHundred = GetLeftSideNumber(2, leftColor2);
-            leftNumberTen = GetLeftSideNumber(3, leftColor3);
-            leftNumberOne = GetLeftSideNumber(4, leftColor4);
+            leftNumberThousand = GetLeftSideNumber(1, leftColors[0]);
+            leftNumberHundred = GetLeftSideNumber(2, leftColors[1]);
+            leftNumberTen = GetLeftSideNumber(3, leftColors[2]);
+            leftNumberOne = GetLeftSideNumber(4, leftColors[3]);
 
             leftNumber = leftNumberThousand * 1000 + leftNumberHundred * 100 + leftNumberTen * 10 + leftNumberOne;
 
-            PrintDebugLine($"Left Color 1: {leftColor1}");
-            PrintDebugLine($"Left Color 2: {leftColor2}");
-            PrintDebugLine($"Left Color 3: {leftColor3}");
-            PrintDebugLine($"Left Color 4: {leftColor4}\n");
+            for (int i = 0; i < 4; i++)
+            {
+                PrintDebugLine($"Left Color {i + 1}: {leftColors[i]}");
+            }
+
+            PrintDebugLine("");
 
             PrintDebugLine($"Left Number: {leftNumber}\n");
         }
@@ -89,15 +76,17 @@ namespace KTANE_Solver
             
             else
             {
-                rightNumberThousand = GetRightSideNumber(1, rightColor1);
-                rightNumberHundred = GetRightSideNumber(2, rightColor2);
-                rightNumberTen = GetRightSideNumber(3, rightColor3);
-                rightNumberOne = GetRightSideNumber(4, rightColor4);
+                rightNumberThousand = GetLeftSideNumber(1, leftColors[0]);
+                rightNumberHundred = GetLeftSideNumber(2, leftColors[1]);
+                rightNumberTen = GetLeftSideNumber(3, leftColors[2]);
+                rightNumberOne = GetLeftSideNumber(4, leftColors[3]);
 
-                PrintDebugLine($"Right Color 1: {rightColor1}");
-                PrintDebugLine($"Right Color 2: {rightColor2}");
-                PrintDebugLine($"Right Color 3: {rightColor3}");
-                PrintDebugLine($"Right Color 4: {rightColor4}\n");
+                for (int i = 0; i < 4; i++)
+                {
+                    PrintDebugLine($"Right Color {i + 1}: {rightColors[i]}");
+                }
+
+                PrintDebugLine("");
             }
 
             rightNumber = rightNumberThousand * 1000 + rightNumberHundred * 100 + rightNumberTen * 10 + rightNumberOne;

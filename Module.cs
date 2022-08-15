@@ -19,10 +19,10 @@ namespace KTANE_Solver
     public class Module
     {
         //where the information of the bomb is stored
-        protected Bomb Bomb { get; }
+        public Bomb Bomb;
 
         //used to write to the log file
-        protected StreamWriter LogFileWriter { get; }
+        public StreamWriter LogFileWriter;
 
         protected string Name { get; }
 

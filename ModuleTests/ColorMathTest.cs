@@ -4,12 +4,13 @@ using System.IO;
 using KTANE_Solver;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Collections.Generic;
 namespace ModuleTests
 {
 
     //https://ktane.timwi.de/More/Logfile%20Analyzer.html#file=016282f09842e838b18a41e9f2a3c65f3dd775bd;bomb=7I1VK3
-   
-    
+
+
     [TestClass]
     public class ColorMathTest
     {
@@ -22,60 +23,56 @@ namespace ModuleTests
             new Port("DVID", 1), new Port("Parallel", 1), new Port("ps", 1),
             new Port("rj", 0), new Port("serial", 1), new Port("setero", 1));
 
+
+        List<ColorMath> modules = new List<ColorMath>()
+        {
+            new ColorMath(new Color[] { Color.Yellow, Color.Green, Color.Magenta, Color.Magenta },
+                          new Color[] { Color.Black, Color.Magenta, Color.Red, Color.Blue },
+                          'M', null, null),
+
+            new ColorMath(new Color[] { Color.Purple, Color.Purple, Color.Yellow, Color.White } , 
+                          new Color [] { Color.White, Color.Red, Color.Gray, Color.White } ,
+                          'D', null, null),
+
+            new ColorMath(new Color[] { Color.Purple,
+                          Color.Purple,
+                          Color.Yellow,
+                          Color.White,
+                          Color.Empty,
+                          Color.Empty,
+                          Color.Empty,
+                          Color.Empty,
+                          'S',
+                          bomb,
+                          io);
+
+    };
+
+
         [TestMethod]
         public void TestMethod1()
         {
-            ColorMath module = new ColorMath(Color.Yellow,
-                                             Color.Green,
-                                             Color.Magenta,
-                                             Color.Magenta,
-                                             Color.Black,
-                                             Color.Magenta,
-                                             Color.Red,
-                                             Color.Blue,
-                                             'M',
-                                             bomb,
-                                             io);
-
-            Assert.AreEqual("Yellow, White, Black, Magenta", module.Solve(false));
-
+            SetBombFile(1);
+            Assert.AreEqual("Yellow, White, Black, Magenta", modules[0].Solve(false));
+            io.Close();
         }
 
         [TestMethod]
         public void TestMethod10()
         {
-            ColorMath module = new ColorMath(Color.Purple,
-                                             Color.Purple,
-                                             Color.Yellow,
-                                             Color.White,
-                                             Color.White,
-                                             Color.Red,
-                                             Color.Gray,
-                                             Color.White,
-                                             'D',
-                                             bomb,
-                                             io);
-
-            Assert.AreEqual("Gray, Blue, Magenta, Gray", module.Solve(false));
+            SetBombFile(2);
+            Assert.AreEqual("Gray, Blue, Magenta, Gray", modules[1].Solve(false));
+            io.Close();
 
         }
 
         [TestMethod]
         public void TestMethod100()
         {
-            ColorMath module = new ColorMath(Color.Purple,
-                                             Color.Purple,
-                                             Color.Yellow,
-                                             Color.White,
-                                             Color.Empty,
-                                             Color.Empty,
-                                             Color.Empty,
-                                             Color.Empty,
-                                             'D',
-                                             bomb,
-                                             io);
+
 
             Assert.AreEqual("Gray, Blue, Magenta, Gray", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod11()
@@ -88,11 +85,12 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'A',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Gray, Green, Red, Red", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod12()
@@ -105,11 +103,12 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'A',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Yellow, Red, Blue, Gray", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod13()
@@ -122,11 +121,12 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'S',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Magenta, Gray, Magenta, Magenta", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod14()
@@ -139,11 +139,12 @@ namespace ModuleTests
                                              Color.Green,
                                              Color.Red,
                                              Color.Purple,
-                                             'D',
+                                             'M',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Yellow, Orange, Orange, Gray", module.Solve(false));
+            io.Close();
         }
 
         public void TestMethod15()
@@ -156,11 +157,12 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'm',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Orange, White, White, White", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod16()
@@ -173,11 +175,12 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'S',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Green, White, Black, Blue", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod17()
@@ -195,6 +198,7 @@ namespace ModuleTests
                                              io);
 
             Assert.AreEqual("Gray, Blue, Magenta, Gray", module.Solve(false));
+            io.Close();
         }
 
         public void TestMethod18()
@@ -207,11 +211,12 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'S',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Gray, White, Orange, White", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod19()
@@ -224,7 +229,7 @@ namespace ModuleTests
                                              Color.Red,
                                              Color.Orange,
                                              Color.Blue,
-                                             'D',
+                                             'S',
                                              bomb,
                                              io);
 
@@ -241,7 +246,7 @@ namespace ModuleTests
                                              Color.Black,
                                              Color.Orange,
                                              Color.Blue,
-                                             'D',
+                                             'M',
                                              bomb,
                                              io);
 
@@ -263,6 +268,7 @@ namespace ModuleTests
                                              io);
 
             Assert.AreEqual("Gray, Blue, Black, Red", module.Solve(true));
+            io.Close();
         }
 
         public void TestMethod21()
@@ -275,7 +281,7 @@ namespace ModuleTests
                                              Color.Gray,
                                              Color.Purple,
                                              Color.Yellow,
-                                             'D',
+                                             'S',
                                              bomb,
                                              io);
 
@@ -292,7 +298,7 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'S',
                                              bomb,
                                              io);
 
@@ -309,7 +315,7 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'M',
                                              bomb,
                                              io);
 
@@ -326,11 +332,12 @@ namespace ModuleTests
                                              Color.Red,
                                              Color.Yellow,
                                              Color.Yellow,
-                                             'D',
+                                             'A',
                                              bomb,
                                              io);
 
             Assert.AreEqual("Orange, Gray, Orange, Magenta", module.Solve(false));
+            io.Close();
         }
 
         public void TestMethod25()
@@ -348,6 +355,7 @@ namespace ModuleTests
                                              io);
 
             Assert.AreEqual("Green, Blue, Magenta, Green", module.Solve(false));
+            io.Close();
         }
 
         public void TestMethod26()
@@ -360,7 +368,7 @@ namespace ModuleTests
                                              Color.Orange,
                                              Color.Purple,
                                              Color.Magenta,
-                                             'D',
+                                             'A',
                                              bomb,
                                              io);
 
@@ -445,7 +453,7 @@ namespace ModuleTests
                                              Color.Magenta,
                                              Color.Magenta,
                                              Color.Gray,
-                                             'D',
+                                             'M',
                                              bomb,
                                              io);
 
@@ -462,11 +470,11 @@ namespace ModuleTests
                                              Color.Orange,
                                              Color.White,
                                              Color.Black,
-                                             'D',
+                                             'M',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("Yellow, Yellow, Blue, Gray", module.Solve());
+            Assert.AreEqual("Yellow, Yellow, Blue, Gray", module.Solve(false));
         }
 
         public void TestMethod32()
@@ -479,7 +487,7 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'S',
                                              bomb,
                                              io);
 
@@ -513,11 +521,11 @@ namespace ModuleTests
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
-                                             'D',
+                                             'A',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("Green, Black, Purple, Yellow", module.Solve());
+            Assert.AreEqual("Green, Black, Purple, Yellow", module.Solve(true));
         }
 
         public void TestMethod35()
@@ -625,10 +633,10 @@ namespace ModuleTests
 
         public void TestMethod40()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Orange,
+                                             Color.Magenta,
+                                             Color.Purple,
+                                             Color.Green,
                                              Color.Empty,
                                              Color.Empty,
                                              Color.Empty,
@@ -637,466 +645,466 @@ namespace ModuleTests
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Black, Orange, Gray, Yellow", module.Solve(true));
         }
 
         public void TestMethod41()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Blue,
+                                             Color.White,
+                                             Color.Black,
+                                             Color.Blue,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
-                                             io);
+                                             io); ;
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Magenta, Black, Gray, Red", module.Solve(true));
         }
 
         public void TestMethod42()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Green,
+                                             Color.Green,
+                                             Color.Purple,
+                                             Color.Yellow,
+                                             Color.Black,
+                                             Color.Gray,
+                                             Color.Black,
+                                             Color.Green,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Gray, Blue, Magenta, Gray", module.Solve(false));
         }
 
         public void TestMethod43()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Green,
+                                             Color.White,
+                                             Color.Blue,
+                                             Color.Black,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Green, Black, Magenta, White", module.Solve(true));
         }
 
         public void TestMethod44()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Black,
+                                             Color.Green,
+                                             Color.Red,
+                                             Color.Magenta,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Black, Blue, Blue, Black", module.Solve(true));
         }
 
         public void TestMethod45()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.White,
+                                             Color.Gray,
+                                             Color.Purple,
+                                             Color.Blue,
+                                             Color.Yellow,
+                                             Color.Blue,
+                                             Color.Black,
+                                             Color.Red,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Blue, Red, Purple, White", module.Solve(false));
         }
 
         public void TestMethod46()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Gray,
+                                             Color.Green,
+                                             Color.Purple,
+                                             Color.Blue,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Gray, Blue, Blue, Yellow", module.Solve(true));
         }
 
         public void TestMethod47()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Purple,
+                                             Color.Magenta,
+                                             Color.Yellow,
+                                             Color.Green,
+                                             Color.Orange,
+                                             Color.Green,
+                                             Color.Yellow,
+                                             Color.Green,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Orange, Blue, Gray, Purple", module.Solve(false));
         }
 
         public void TestMethod48()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Black,
+                                             Color.Purple,
+                                             Color.Orange,
+                                             Color.Blue,
+                                             Color.Gray,
+                                             Color.Red,
+                                             Color.Orange,
+                                             Color.Yellow,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Red, Purple, Purple, Magenta", module.Solve(false));
         }
 
         public void TestMethod49()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Gray,
+                                             Color.Yellow,
+                                             Color.White,
+                                             Color.Blue,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("White, Black, Purple, Red", module.Solve(true));
         }
 
         public void TestMethod5()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Green,
+                                             Color.Yellow,
+                                             Color.Green,
+                                             Color.Yellow,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Green, Red, Red, Green", module.Solve(true));
         }
 
         public void TestMethod50()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Green,
+                                             Color.Red,
+                                             Color.Yellow,
+                                             Color.Magenta,
+                                             Color.Red,
+                                             Color.Magenta,
+                                             Color.Black,
+                                             Color.Gray,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Yellow, Black, Gray, Yellow", module.Solve(false));
         }
 
         public void TestMethod51()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Blue,
+                                             Color.Blue,
+                                             Color.Magenta,
+                                             Color.Orange,
+                                             Color.Purple,
+                                             Color.Black,
+                                             Color.Blue,
+                                             Color.Black,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Orange, Magenta, Purple, Red", module.Solve(false));
         }
 
         public void TestMethod52()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Yellow,
+                                             Color.Orange,
+                                             Color.Blue,
+                                             Color.Gray,
+                                             Color.Magenta,
+                                             Color.Yellow,
+                                             Color.Red,
+                                             Color.Black,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Orange, Red, Black, Gray", module.Solve(false));
         }
 
         public void TestMethod53()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Blue,
+                                             Color.Green,
+                                             Color.White,
+                                             Color.Yellow,
+                                             Color.Green,
+                                             Color.Yellow,
+                                             Color.Black,
+                                             Color.Yellow,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Gray, Blue, Orange, Black", module.Solve(false));
         }
 
         public void TestMethod54()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Gray,
+                                             Color.Purple,
+                                             Color.Orange,
+                                             Color.Blue,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Gray, Blue, Blue, White", module.Solve(true));
         }
 
         public void TestMethod55()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Blue,
+                                             Color.White,
+                                             Color.Green,
+                                             Color.Purple,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Gray, Blue, Red, Orange", module.Solve(true));
         }
 
         public void TestMethod56()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Black,
+                                             Color.Orange,
+                                             Color.White,
+                                             Color.Gray,
+                                             Color.White,
+                                             Color.Black,
+                                             Color.Black,
+                                             Color.Blue,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("White, Orange, Orange, Magenta", module.Solve(true));
         }
 
         public void TestMethod57()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Red,
+                                             Color.Yellow,
+                                             Color.Magenta,
+                                             Color.Red,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Gray, Blue, Green, Red", module.Solve(true));
         }
 
         public void TestMethod58()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Red,
+                                             Color.Purple,
+                                             Color.Orange,
+                                             Color.White,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Yellow, Orange, Magenta, Blue", module.Solve(true));
         }
 
         public void TestMethod59()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.White,
+                                             Color.Orange,
+                                             Color.Magenta,
+                                             Color.Magenta,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Red, Purple, White, Black", module.Solve(true));
         }
 
         public void TestMethod6()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Red,
+                                             Color.White,
+                                             Color.Black,
+                                             Color.Red,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Yellow, Magenta, White, Yellow", module.Solve(true));
         }
 
         public void TestMethod60()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Orange,
+                                             Color.Purple,
+                                             Color.Orange,
+                                             Color.Purple,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Red, Gray, Blue, Blue", module.Solve(false));
         }
 
         public void TestMethod61()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Green,
+                                             Color.Gray,
+                                             Color.Gray,
+                                             Color.White,
+                                             Color.Magenta,
+                                             Color.Red,
+                                             Color.Blue,
+                                             Color.Orange,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Gray, Blue, Magenta, Gray", module.Solve(false));
         }
 
         public void TestMethod62()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Yellow,
+                                             Color.Yellow,
+                                             Color.Magenta,
+                                             Color.Yellow,
+                                             Color.Yellow,
+                                             Color.Yellow,
+                                             Color.Black,
+                                             Color.Purple,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Yellow, Magenta, Gray, Orange", module.Solve(false));
         }
 
         public void TestMethod63()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.White,
+                                             Color.White,
+                                             Color.White,
+                                             Color.Purple,
+                                             Color.Green,
+                                             Color.Red,
+                                             Color.Purple,
+                                             Color.Blue,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Blue, Yellow, Purple, Purple", module.Solve(false));
         }
 
         public void TestMethod64()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Blue,
+                                             Color.White,
+                                             Color.Green,
+                                             Color.Yellow,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Red ,Orange, White, Magenta", module.Solve(true));
         }
 
         public void TestMethod65()
         {
-            ColorMath module = new ColorMath(Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
-                                             Color.,
+            ColorMath module = new ColorMath(Color.Purple,
+                                             Color.Purple,
+                                             Color.Orange,
+                                             Color.White,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
+                                             Color.Empty,
                                              'D',
                                              bomb,
                                              io);
 
-            Assert.AreEqual("", module.Solve());
+            Assert.AreEqual("Orange, Orange, Magenta, Blue", module.Solve());
         }
 
         public void TestMethod66()
@@ -1727,5 +1735,13 @@ namespace ModuleTests
 
             Assert.AreEqual("", module.Solve());
         }
+
+        protected void SetBombFile(int index)
+        {
+            modules[index - 1].LogFileWriter = io;
+            modules[index - 1].Bomb = bomb;
+
+        }
+
     }
 }
