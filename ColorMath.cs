@@ -16,7 +16,7 @@ namespace KTANE_Solver
     {
         Color[] leftColors;
 
-        Color[] rightColors;
+        public Color[] rightColors;
 
         int leftNumberThousand;
         int leftNumberHundred;
