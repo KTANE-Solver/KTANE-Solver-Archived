@@ -73,7 +73,7 @@ namespace KTANE_Solver
 
             for (int i = 1; i < 4; i++)
             {
-                module.Solve(i);
+                module.Solve(i, false);
             }
 
             UpdateForm();

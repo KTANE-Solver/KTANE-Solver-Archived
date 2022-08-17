@@ -28,14 +28,17 @@ namespace KTANE_Solver
             PrintDebugLine("");
         }
 
-        public string SolveDebug(int stage)
+        public string Solve(int stage, bool debug)
         {
-            return $"{screwLocationAnswers[stage - 1]} and {FindLetterAnswers(stage - 1)}"; 
-        }
+            string answer = $"{screwLocationAnswers[stage - 1]} and {FindLetterAnswers(stage - 1)}".Replace("Color", "").Replace("[", "").Replace("]", "").Trim();
 
-        public void Solve(int stage)
-        {
-            ShowAnswer(SolveDebug(stage), true);
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
+
         }
 
         public void FindScrewLocations()

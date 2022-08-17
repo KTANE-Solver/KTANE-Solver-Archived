@@ -25,11 +25,11 @@ namespace ModuleTests
             module.FindScrewLocations();
 
             //BCAD
-            Assert.AreEqual("Yellow and C", module.SolveDebug(1));
+            Assert.AreEqual("Yellow and C", module.Solve(1, true));
 
-            Assert.AreEqual("Red and C", module.SolveDebug(2));
+            Assert.AreEqual("Red and C", module.Solve(2, true));
 
-            Assert.AreEqual("Magenta and D", module.SolveDebug(3));
+            Assert.AreEqual("Magenta and D", module.Solve(3, true));
 
             streamWriter.Close();
         }
@@ -46,11 +46,11 @@ namespace ModuleTests
 
             module.FindScrewLocations();
 
-            Assert.AreEqual("White and D", module.SolveDebug(1));
+            Assert.AreEqual("White and D", module.Solve(1, true));
 
-            Assert.AreEqual("Magenta and 2nd position", module.SolveDebug(2));
+            Assert.AreEqual("Magenta and 2nd position", module.Solve(2, true));
 
-            Assert.AreEqual("Blue and C", module.SolveDebug(3));
+            Assert.AreEqual("Blue and C", module.Solve(3, true));
 
             streamWriter.Close();
         }
@@ -67,12 +67,12 @@ namespace ModuleTests
 
             module.FindScrewLocations();
 
-            Assert.AreEqual("Blue and 2nd position", module.SolveDebug(1));
+            Assert.AreEqual("Blue and 2nd position", module.Solve(1, true));
 
             //ADCB
-            Assert.AreEqual("Green and C", module.SolveDebug(2));
+            Assert.AreEqual("Green and C", module.Solve(2, true));
 
-            Assert.AreEqual("Blue and 2nd position", module.SolveDebug(3));
+            Assert.AreEqual("Blue and 2nd position", module.Solve(3, true));
 
             streamWriter.Close();
         }
@@ -89,12 +89,12 @@ namespace ModuleTests
 
             module.FindScrewLocations();
 
-            Assert.AreEqual("Magenta and 2nd position", module.SolveDebug(1));
+            Assert.AreEqual("Magenta and 2nd position", module.Solve(1, true));
 
             //BDCA
-            Assert.AreEqual("White and A", module.SolveDebug(2));
+            Assert.AreEqual("White and A", module.Solve(2, true));
 
-            Assert.AreEqual("Magenta and 2nd position", module.SolveDebug(3));
+            Assert.AreEqual("Magenta and 2nd position", module.Solve(3, true));
 
             streamWriter.Close();
         }
@@ -111,12 +111,12 @@ namespace ModuleTests
 
             module.FindScrewLocations();
 
-            Assert.AreEqual("Red and 2nd position", module.SolveDebug(1));
+            Assert.AreEqual("Red and 2nd position", module.Solve(1, true));
 
             //DBCA
-            Assert.AreEqual("Magenta and A", module.SolveDebug(2));
+            Assert.AreEqual("Magenta and A", module.Solve(2, true));
 
-            Assert.AreEqual("Red and 2nd position", module.SolveDebug(3));
+            Assert.AreEqual("Red and 2nd position", module.Solve(3, true));
 
             streamWriter.Close();
         }
@@ -133,12 +133,12 @@ namespace ModuleTests
 
             module.FindScrewLocations();
 
-            Assert.AreEqual("Blue and 2nd position", module.SolveDebug(1));
+            Assert.AreEqual("Blue and 2nd position", module.Solve(1, true));
 
             //BDAC
-            Assert.AreEqual("Green and C", module.SolveDebug(2));
+            Assert.AreEqual("Green and C", module.Solve(2, true));
 
-            Assert.AreEqual("Blue and 2nd position", module.SolveDebug(3));
+            Assert.AreEqual("Blue and 2nd position", module.Solve(3, true));
 
             streamWriter.Close();
         }
