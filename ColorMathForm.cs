@@ -135,7 +135,7 @@ namespace KTANE_Solver
 
             }
 
-            ColorMath module = new ColorMath(left1, left2, left3, left4, right1, right2, right3, right4, letter, Bomb, LogFileWriter);
+            ColorMath module = new ColorMath(new Color[] { left1, left2, left3, left4 }, new Color[] { right1, right2, right3, right4 }, letter, Bomb, LogFileWriter);
             PrintHeader();
             module.Solve(!filled);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

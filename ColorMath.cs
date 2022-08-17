@@ -60,11 +60,12 @@ namespace KTANE_Solver
             PrintDebugLine($"Left Number: {leftNumber}\n");
         }
 
-        private void GetRightNumbers(bool red)
+        private void GetRightNumbers()
         { 
+
             //if the letter is red, use edgework
 
-            if(red)
+            if(rightColors == null)
             { 
                 PrintDebugLine($"Number of batteries: {Bomb.Battery}\n");
 
@@ -76,10 +77,10 @@ namespace KTANE_Solver
             
             else
             {
-                rightNumberThousand = GetLeftSideNumber(1, leftColors[0]);
-                rightNumberHundred = GetLeftSideNumber(2, leftColors[1]);
-                rightNumberTen = GetLeftSideNumber(3, leftColors[2]);
-                rightNumberOne = GetLeftSideNumber(4, leftColors[3]);
+                rightNumberThousand = GetRightSideNumber(1, rightColors[0]);
+                rightNumberHundred = GetRightSideNumber(2, rightColors[1]);
+                rightNumberTen = GetRightSideNumber(3, rightColors[2]);
+                rightNumberOne = GetRightSideNumber(4, rightColors[3]);
 
                 for (int i = 0; i < 4; i++)
                 {
@@ -94,12 +95,12 @@ namespace KTANE_Solver
             PrintDebugLine($"Right Number: {rightNumber}\n");
         }
 
-        public string Solve(bool red)
+        public string Solve(bool debug)
         {
             GetLeftNumbers();
-            GetRightNumbers(red);
+            GetRightNumbers();
 
-            string color = red ? "Red" : "Green";
+            string color = rightColors == null ? "Red" : "Green";
 
             PrintDebugLine($"{color} {letter}\n");
 
@@ -137,7 +138,12 @@ namespace KTANE_Solver
 
             string colorAnswer = ConvertAnswerToColor(answer);
 
-            ShowAnswer(colorAnswer, true);
+            colorAnswer = colorAnswer.Replace("[", "").Replace("]", "").Replace("Color ", "");
+
+            if (!debug)
+            { 
+                ShowAnswer(colorAnswer, true);
+            }
 
             return colorAnswer;
         }
@@ -521,46 +527,46 @@ namespace KTANE_Solver
 
                 if (Color.Green == color)
                 {
-                    return 0;
+                    return 4;
                 }
 
                 if (Color.Purple == color)
                 {
-                    return 6;
+                    return 2;
                 }
 
                 if (Color.Yellow == color)
                 {
-                    return 4;
+                    return 9;
                 }
 
                 if (Color.White == color)
                 {
-                    return 2;
+                    return 8;
                 }
 
                 if (Color.Magenta == color)
                 {
-                    return 7;
+                    return 6;
                 }
 
                 if (Color.Red == color)
                 {
-                    return 9;
+                    return 7;
                 }
 
                 if (Color.Orange == color)
                 {
-                    return 3;
+                    return 1;
                 }
 
                 if (Color.Gray == color)
                 {
-                    return 8;
+                    return 3;
                 }
 
 
-                return 1;
+                return 0;
             }
         }
 
@@ -832,14 +838,7 @@ namespace KTANE_Solver
                     break;
             }
 
-            String answerString = "";
-
-            foreach (Color color in answerList)
-            {
-                answerString += color.ToString() + "\n";
-            }
-
-            return string.Join("\n", answerList);
+            return string.Join(", ", answerList);
         }
     }
 }
