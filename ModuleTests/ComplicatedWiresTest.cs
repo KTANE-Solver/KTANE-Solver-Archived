@@ -38,7 +38,8 @@ namespace ModuleTests
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
             /*Cut, Cut, Cut, Cut, Cut, Cut*/
-            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4. Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
         }
 
         [TestMethod]
@@ -57,7 +58,8 @@ namespace ModuleTests
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
             /*Cut, Dont, Cut, Cut, Cut, Dont*/
-            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Cut\n4.Cut\n5.Cut\n6.Don't Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Cut\n4. Cut\n5. Cut\n6. Don't Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -76,7 +78,8 @@ namespace ModuleTests
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
             /*Cut, D, D, Cut, D */
-            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Don't Cut\n4.Cut\n5. Don't Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Don't Cut\n4. Cut\n5. Don't Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -95,8 +98,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, D, D, Cut, Cut, Cut*/
-            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Don't Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Don't Cut\n4. Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -115,8 +118,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, Cut, Cut, Cut, Cut, Cut*/
-            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4. Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -135,8 +138,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, D, Cut, D, D, Cut*/
-            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Cut\n4. Don't Cut\n5. Don't Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Cut\n4. Don't Cut\n5. Don't Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -155,8 +158,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, Cut, Cut, Cut, Cut, Cut*/
-            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Cut\n4. Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -175,8 +178,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, D, D, Cut, Cut, Cut*/
-            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Don't Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Don't Cut\n2. Cut\n3. Don't Cut\n4. Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -195,8 +198,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*D, D, Cut, Cut, Cut, Cut*/
-            Assert.AreEqual("1. Don't Cut\n2. Don't Cut\n3. Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Don't Cut\n2. Don't Cut\n3. Cut\n4. Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -215,8 +218,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, Cut, Cut, D, Cut, Cut*/
-            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4. Don't Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4. Don't Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -235,8 +238,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, Cut, Cut, Cut, Cut, D*/
-            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4. Cut\n5. Cut\n6. Don't Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -255,8 +258,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*D, Cut, Cut, Cut, D, Cut*/
-            Assert.AreEqual("1. Don't Cut\n2. Cut\n3. Cut\n4.Cut\n5. Don't Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Don't Cut\n2. Cut\n3. Cut\n4. Cut\n5. Don't Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -276,8 +279,8 @@ namespace ModuleTests
 
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
-            /*Cut, D, Cut, D, D, Cut*/
-            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Cut\n4. Don't Cut\n5. Don't Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4. Don't Cut\n5. Don't Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -297,7 +300,8 @@ namespace ModuleTests
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
             /*Cut, D, Cut, D, Cut, Cut*/
-            Assert.AreEqual("1. Cut\n2. Cut\n3. Cut\n4.Cut\n5.Cut\n6.Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Don't Cut\n3. Cut\n4. Don't Cut\n5. Cut\n6. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -316,7 +320,8 @@ namespace ModuleTests
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
             /*D, Cut, Cut, Cut, Cut*/
-            Assert.AreEqual("1. Don't Cut\n2. Cut\n3. Cut\n4.Cut\n5.Cut", module.Solve());
+            Assert.AreEqual("1. Don't Cut\n2. Cut\n3. Cut\n4. Cut\n5. Cut", module.Solve(true));
+            io.Close();
 
         }
 
@@ -334,7 +339,8 @@ namespace ModuleTests
             ComplicatedWires module = new ComplicatedWires(wireList, bomb, io);
 
             /*Cut, Cut, D, D*/
-            Assert.AreEqual("1. Cut\n2. Cut\n3. Don't Cut\n4. Don't Cut", module.Solve());
+            Assert.AreEqual("1. Cut\n2. Cut\n3. Don't Cut\n4. Don't Cut", module.Solve(true));
+            io.Close();
 
         }
     }

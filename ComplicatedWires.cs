@@ -36,7 +36,7 @@ namespace KTANE_Solver
             
         }
 
-        public string Solve()
+        public string Solve(bool debug)
         {
             directions = new List<string>();
 
@@ -89,7 +89,7 @@ namespace KTANE_Solver
                         directions.Add("Cut");
                 }
 
-                if (wire.ColorPropety == Color.Purple)
+                else if (wire.ColorPropety == Color.Purple)
                 {
                     if (wire.Lit && wire.Star)
                         directions.Add("Don't Cut");
@@ -111,30 +111,42 @@ namespace KTANE_Solver
 
                 else
                 {
-                    //if light is unlit, cut the wire
-                    if (!wire.Lit)
-                        directions.Add("Cut");
-
-                    //if light is lit, and star, cut if more than 2 batteires
-                    else if (wire.Lit && wire.Star)
+                    if (wire.Lit && wire.Star)
                     {
                         AddBatteryCondition();
                     }
 
-                    //if light is lit, and no star, don't cut
-                    else
+                    else if (wire.Lit)
+                    {
                         directions.Add("Don't Cut");
+                    }
+
+                    else
+                    {
+                        directions.Add("Cut");
+                    }
                 }
             }
 
-            string answer = "";
+            string answer = ""; 
+
+
 
             for (int i = 0; i < directions.Count; i++)
             {
-                answer += $"{i + 1}. {directions[i]}\n";
+                answer += $"{i + 1}. {directions[i]}";
+
+                if (i != directions.Count - 1)
+                {
+                    answer += "\n";
+                }
             }
 
-            ShowAnswer(answer, true);
+
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
 
             return answer;
             
