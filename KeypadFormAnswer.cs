@@ -17,7 +17,6 @@ namespace KTANE_Solver
 
     public partial class KeypadFormAnswer : ModuleForm
     {
-
         //all of the images
         Image threeImage = Image.FromFile("Keypad Pictures/3.png");
         Image sixImage = Image.FromFile("Keypad Pictures/6.png");
@@ -52,8 +51,12 @@ namespace KTANE_Solver
             InitializeComponent();
         }
 
-        public KeypadFormAnswer(Keypad.Symbol symbol1, Keypad.Symbol symbol2, Keypad.Symbol symbol3, Keypad.Symbol symbol4)
-        : base(null, null, null, "Keypad", true)
+        public KeypadFormAnswer(
+            Keypad.Symbol symbol1,
+            Keypad.Symbol symbol2,
+            Keypad.Symbol symbol3,
+            Keypad.Symbol symbol4
+        ) : base(null, null, null, "Keypad", true)
         {
             InitializeComponent();
             UpdateForm(symbol1, symbol2, symbol3, symbol4);
@@ -61,7 +64,12 @@ namespace KTANE_Solver
             Text = ModuleName + " Answer";
         }
 
-        public void UpdateForm(Keypad.Symbol symbol1, Keypad.Symbol symbol2, Keypad.Symbol symbol3, Keypad.Symbol symbol4)
+        public void UpdateForm(
+            Keypad.Symbol symbol1,
+            Keypad.Symbol symbol2,
+            Keypad.Symbol symbol3,
+            Keypad.Symbol symbol4
+        )
         {
             button1.Image = GetImage(symbol1);
             button2.Image = GetImage(symbol2);
@@ -129,7 +137,7 @@ namespace KTANE_Solver
 
                 case Keypad.Symbol.Paragraph:
                     return paragraphImage;
-                
+
                 case Keypad.Symbol.QuestionMark:
                     return questionMarkImage;
 

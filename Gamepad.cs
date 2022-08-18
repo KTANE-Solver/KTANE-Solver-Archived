@@ -7,17 +7,24 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
     /// <summary>
     /// Author: Nya Bentley
     /// Purpose: Solves the gamepad module
     /// </summary>
     class Gamepad : Module
     {
-        private int x, y, a, b, c, d;
-        private String[] firstSubcommand, secondSubcommand, command;
+        private int x,
+            y,
+            a,
+            b,
+            c,
+            d;
+        private String[] firstSubcommand,
+            secondSubcommand,
+            command;
 
-        public Gamepad(int x, int y, Bomb bomb, StreamWriter logFileWriter) : base (bomb, logFileWriter, "Gamepad")
+        public Gamepad(int x, int y, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Gamepad")
         {
             this.x = x;
             this.y = y;
@@ -40,7 +47,9 @@ namespace KTANE_Solver
             SetFirstSubcommand();
             setSecondSubcommand();
 
-            PrintDebugLine($"Answer (before overrides): {string.Join(", ", firstSubcommand)}, {string.Join(",", secondSubcommand)}\n");
+            PrintDebugLine(
+                $"Answer (before overrides): {string.Join(", ", firstSubcommand)}, {string.Join(",", secondSubcommand)}\n"
+            );
 
             setOverrides();
 
@@ -58,69 +67,56 @@ namespace KTANE_Solver
             {
                 firstSubcommand = new String[] { "UP", "UP", "DOWN", "DOWN" };
             }
-
             //x is a multiple of 12
             else if (x % 12 == 0)
             {
                 firstSubcommand = new String[] { "UP", "A", "LEFT", "LEFT" };
             }
-
-
             //a + b = 10 and the last digit of the serial number is odd
             else if (a + b == 10 && Bomb.LastDigit % 2 == 1)
             {
                 firstSubcommand = new String[] { "A", "B", "LEFT", "RIGHT" };
             }
-
             //x = 6n + 3 or x = 10n + 5
             else if ((x - 3) % 6 == 0 || (x - 5) % 10 == 0)
             {
                 firstSubcommand = new String[] { "DOWN", "LEFT", "A", "RIGHT" };
             }
-
             //x = 7n and y != 7n
             else if (x % 7 == 0 && y % 7 != 0)
             {
                 firstSubcommand = new String[] { "LEFT", "LEFT", "UP", "B" };
             }
-
             //x = c * d
             else if (x == c * d)
             {
                 firstSubcommand = new String[] { "A", "UP", "LEFT", "LEFT" };
             }
-
             //x is a perfect square
             else if (IsPerfectSquare(x))
             {
                 firstSubcommand = new String[] { "RIGHT", "RIGHT", "A", "DOWN" };
             }
-
             //x = 3n - 1 or unlit SND
             else if ((x + 1) % 3 == 0 || Bomb.Snd.VisibleNotLit)
             {
                 firstSubcommand = new String[] { "RIGHT", "A", "B", "UP" };
             }
-
             //60 <= x < 90 and no batteries
             else if (60 <= x && x < 90 && Bomb.Battery == 0)
             {
                 firstSubcommand = new String[] { "B", "B", "RIGHT", "LEFT" };
             }
-
-
             //x = 6n
             else if (x % 6 == 0)
             {
                 firstSubcommand = new String[] { "A", "B", "A", "RIGHT" };
             }
-
             //x = 4n
             else if (x % 4 == 0)
             {
                 firstSubcommand = new String[] { "DOWN", "DOWN", "LEFT", "UP" };
             }
-
             //last resort
             else
             {
@@ -152,67 +148,56 @@ namespace KTANE_Solver
             {
                 secondSubcommand = new String[] { "LEFT", "RIGHT", "LEFT", "RIGHT" };
             }
-
             //y is a multiple of 8
             else if (y % 8 == 0)
             {
                 secondSubcommand = new String[] { "DOWN", "RIGHT", "B", "UP" };
             }
-
             //c - d = 4 and has a stereo rca
             else if (c - d == 4 && Bomb.Stereo.Visible)
             {
                 secondSubcommand = new String[] { "RIGHT", "A", "DOWN", "DOWN" };
             }
-
             //y = 4n + 2 or lit frq
             else if ((y - 2) % 4 == 0 || Bomb.Frq.Lit)
             {
                 secondSubcommand = new String[] { "B", "UP", "RIGHT", "A" };
             }
-
             //y = 7n and x != 7n
             else if (y % 7 == 0 && x % 7 != 0)
             {
                 secondSubcommand = new String[] { "LEFT", "LEFT", "DOWN", "A" };
             }
-
             //y is a perfect square
             else if (IsPerfectSquare(y))
             {
                 secondSubcommand = new String[] { "UP", "DOWN", "B", "RIGHT" };
             }
-
             //y = a * b
             else if (a * b == y)
             {
                 secondSubcommand = new String[] { "A", "UP", "LEFT", "DOWN" };
             }
-
             //y = 4n - 1 or has a ps2
             else if ((y + 1) % 4 == 0 || Bomb.Ps.Visible)
             {
                 secondSubcommand = new String[] { "UP", "B", "B", "B" };
             }
-
             //c > d and 2 or more batteries
             else if (c > d && Bomb.Battery >= 2)
             {
                 secondSubcommand = new String[] { "A", "A", "UP", "DOWN" };
             }
-
             //y = 5n
             else if (y % 5 == 0)
             {
                 secondSubcommand = new String[] { "B", "A", "B", "LEFT" };
             }
-
             //y = 3n
             else if (y % 3 == 0)
             {
                 secondSubcommand = new String[] { "RIGHT", "UP", "UP", "LEFT" };
             }
-
             //last resort
             else
             {
@@ -226,7 +211,6 @@ namespace KTANE_Solver
             //if x is a multiple 11, switch 1 with 2 and switch 5 with 7
             if (x % 11 == 0)
             {
-
                 String temp = firstSubcommand[0];
 
                 firstSubcommand[0] = firstSubcommand[1];

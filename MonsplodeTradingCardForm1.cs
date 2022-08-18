@@ -18,8 +18,11 @@ namespace KTANE_Solver
 
     public partial class MonsplodeTradingCardForm1 : ModuleForm
     {
-        public MonsplodeTradingCardForm1(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base (bomb, logFileWriter, moduleSelectionForm, "Monsplode Trading Cards", false)
+        public MonsplodeTradingCardForm1(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Monsplode Trading Cards", false)
         {
             InitializeComponent();
             label1.TabStop = false;
@@ -43,11 +46,14 @@ namespace KTANE_Solver
             label19.TabStop = false;
             label21.TabStop = false;
 
-
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -80,7 +86,37 @@ namespace KTANE_Solver
 
         private void UpdateCardNameComboBox(ComboBox comboBox)
         {
-            String[] names = { "Aluga", "Aluga, The Fighter", "Asteran", "Bob", "Bob, The Ancestor", "Buhar", "Buhar, The Protector", "Caadarim", "Clondar", "Cutie Pie", "Docsplode", "Flaurim", "Gloorim", "Lanaluff", "Lugirit", "Magmy", "Melbor", "Melbor, The Web Bug", "Mountoise", "Myrchat", "Nibs", "Percy", "Pouse", "Ukkens", "Vellarim", "Violan", "Zapra", "Zenlad" };
+            String[] names =
+            {
+                "Aluga",
+                "Aluga, The Fighter",
+                "Asteran",
+                "Bob",
+                "Bob, The Ancestor",
+                "Buhar",
+                "Buhar, The Protector",
+                "Caadarim",
+                "Clondar",
+                "Cutie Pie",
+                "Docsplode",
+                "Flaurim",
+                "Gloorim",
+                "Lanaluff",
+                "Lugirit",
+                "Magmy",
+                "Melbor",
+                "Melbor, The Web Bug",
+                "Mountoise",
+                "Myrchat",
+                "Nibs",
+                "Percy",
+                "Pouse",
+                "Ukkens",
+                "Vellarim",
+                "Violan",
+                "Zapra",
+                "Zenlad"
+            };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(names);
             comboBox.Text = names[0];
@@ -89,7 +125,7 @@ namespace KTANE_Solver
 
         private void UpdateRarityComboBox(ComboBox comboBox)
         {
-            String[] rarity = {"Common", "Uncommon", "Rare", "Ultra"};
+            String[] rarity = { "Common", "Uncommon", "Rare", "Ultra" };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(rarity);
@@ -114,28 +150,52 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            MonsplodeTradingCard.Card card1 = GetCard(card1NameComboBox, card1RarityComboBox, card1PrintVersionTextBox, card1BentCornerTextBox, card1ShinyCheckBox);
+            MonsplodeTradingCard.Card card1 = GetCard(
+                card1NameComboBox,
+                card1RarityComboBox,
+                card1PrintVersionTextBox,
+                card1BentCornerTextBox,
+                card1ShinyCheckBox
+            );
 
             if (card1 == null)
             {
                 return;
             }
 
-            MonsplodeTradingCard.Card card2 = GetCard(card2NameComboBox, card2RarityComboBox, card2PrintVersionTextBox, card2BentCornerTextBox, card2ShinyCheckBox);
+            MonsplodeTradingCard.Card card2 = GetCard(
+                card2NameComboBox,
+                card2RarityComboBox,
+                card2PrintVersionTextBox,
+                card2BentCornerTextBox,
+                card2ShinyCheckBox
+            );
 
             if (card2 == null)
             {
                 return;
             }
 
-            MonsplodeTradingCard.Card card3 = GetCard(card3NameComboBox, card3RarityComboBox, card3PrintVersionTextBox, card3BentCornerTextBox, card3ShinyCheckBox);
+            MonsplodeTradingCard.Card card3 = GetCard(
+                card3NameComboBox,
+                card3RarityComboBox,
+                card3PrintVersionTextBox,
+                card3BentCornerTextBox,
+                card3ShinyCheckBox
+            );
 
             if (card3 == null)
             {
                 return;
             }
 
-            MonsplodeTradingCard.Card offeringCard = GetCard(offeringCardNameComboBox, offeringCardRarityComboBox, offeringCardPrintVersionTextBox, offeringCardBentCornerTextBox, offeringCardShinyCheckBox);
+            MonsplodeTradingCard.Card offeringCard = GetCard(
+                offeringCardNameComboBox,
+                offeringCardRarityComboBox,
+                offeringCardPrintVersionTextBox,
+                offeringCardBentCornerTextBox,
+                offeringCardShinyCheckBox
+            );
 
             if (offeringCard == null)
             {
@@ -144,16 +204,35 @@ namespace KTANE_Solver
 
             PrintHeader();
 
-            MonsplodeTradingCard module = new MonsplodeTradingCard(Bomb, LogFileWriter, card1, card2, card3);
+            MonsplodeTradingCard module = new MonsplodeTradingCard(
+                Bomb,
+                LogFileWriter,
+                card1,
+                card2,
+                card3
+            );
 
             module.Solve(offeringCard);
 
             this.Hide();
-            MonsplodeTradingCardOtherStageForm secondStage = new MonsplodeTradingCardOtherStageForm(2, module, Bomb, this, LogFileWriter, ModuleSelectionForm);
+            MonsplodeTradingCardOtherStageForm secondStage = new MonsplodeTradingCardOtherStageForm(
+                2,
+                module,
+                Bomb,
+                this,
+                LogFileWriter,
+                ModuleSelectionForm
+            );
             secondStage.Show();
         }
 
-        private MonsplodeTradingCard.Card GetCard(ComboBox name, ComboBox rarityComboBox, TextBox printVersionTextBox, TextBox bentCorners, CheckBox shiny)
+        private MonsplodeTradingCard.Card GetCard(
+            ComboBox name,
+            ComboBox rarityComboBox,
+            TextBox printVersionTextBox,
+            TextBox bentCorners,
+            CheckBox shiny
+        )
         {
             String printVersion = printVersionTextBox.Text.ToUpper();
 
@@ -180,7 +259,6 @@ namespace KTANE_Solver
             {
                 bentNumber = int.Parse(bentCorners.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Bent Corners must be a number");
@@ -193,11 +271,17 @@ namespace KTANE_Solver
                 return null;
             }
 
-            MonsplodeTradingCard.Card.Rarity rarity = (MonsplodeTradingCard.Card.Rarity)Enum.Parse(typeof(MonsplodeTradingCard.Card.Rarity), rarityComboBox.Text);
+            MonsplodeTradingCard.Card.Rarity rarity = (MonsplodeTradingCard.Card.Rarity)
+                Enum.Parse(typeof(MonsplodeTradingCard.Card.Rarity), rarityComboBox.Text);
 
-            return new MonsplodeTradingCard.Card(name.Text, printVersion, rarity, shiny.Checked, bentNumber, Bomb);
+            return new MonsplodeTradingCard.Card(
+                name.Text,
+                printVersion,
+                rarity,
+                shiny.Checked,
+                bentNumber,
+                Bomb
+            );
         }
-
-
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -12,10 +13,9 @@ namespace KTANE_Solver
     /// </summary>
     public class MorseCode : Module
     {
-        public MorseCode(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Morse Code")
-        { 
-        
-        }
+        public MorseCode(Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Morse Code") { }
+
         public void Solve(String word)
         {
             decimal answer;
@@ -36,7 +36,6 @@ namespace KTANE_Solver
                 case "vector":
                     answer = 3.595m;
                     break;
-
 
                 case "strobe":
                     answer = 3.545m;
@@ -81,9 +80,7 @@ namespace KTANE_Solver
                 default:
                     answer = 3.535m;
                     break;
-
             }
-            
 
             PrintDebugLine($"Word: {word}\nAnswer: {answer:0.000}\n");
 

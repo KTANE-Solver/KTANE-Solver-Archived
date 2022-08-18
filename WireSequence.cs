@@ -16,7 +16,9 @@ namespace KTANE_Solver
         private int RedColor { get; set; }
         private int BlueColor { get; set; }
         private int BlackColor { get; set; }
-        public WireSequence(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Wire Sequence")
+
+        public WireSequence(Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Wire Sequence")
         {
             RedColor = 0;
             BlueColor = 0;
@@ -33,44 +35,51 @@ namespace KTANE_Solver
             switch (color)
             {
                 case "Red":
-                    
+
                     RedColor++;
-                    
+
                     colorNum = RedColor;
 
                     if (letter == 'A')
                     {
-                        if (RedColor == 3 || RedColor == 4 || RedColor == 6 || RedColor == 7 || RedColor == 8)
+                        if (
+                            RedColor == 3
+                            || RedColor == 4
+                            || RedColor == 6
+                            || RedColor == 7
+                            || RedColor == 8
+                        )
                         {
                             answer = "Cut";
                         }
-
                         else
-                        { 
+                        {
                             answer = "Don't Cut";
                         }
                     }
-
                     else if (letter == 'B')
                     {
-                        if (RedColor == 2 || RedColor == 5 || RedColor == 7 || RedColor == 8 || RedColor == 9)
+                        if (
+                            RedColor == 2
+                            || RedColor == 5
+                            || RedColor == 7
+                            || RedColor == 8
+                            || RedColor == 9
+                        )
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
                             answer = "Don't Cut";
                         }
                     }
-
                     else
                     {
                         if (RedColor == 1 || RedColor == 4 || RedColor == 6 || RedColor == 7)
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
                             answer = "Don't Cut";
@@ -91,36 +100,32 @@ namespace KTANE_Solver
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
                             answer = "Don't Cut";
                         }
                     }
-
                     else if (letter == 'B')
                     {
                         if (BlueColor == 1 || BlueColor == 3 || BlueColor == 5 || BlueColor == 6)
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
                             answer = "Don't Cut";
                         }
                     }
-
                     else
                     {
                         if (BlueColor == 2 || BlueColor == 7 || BlueColor == 8 || BlueColor == 6)
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
-                            answer = "Don't Cut";;
+                            answer = "Don't Cut";
+                            ;
                         }
                     }
 
@@ -134,37 +139,47 @@ namespace KTANE_Solver
 
                     if (letter == 'A')
                     {
-                        if (BlackColor == 1 || BlackColor == 2 || BlackColor == 4 || BlackColor == 7)
+                        if (
+                            BlackColor == 1 || BlackColor == 2 || BlackColor == 4 || BlackColor == 7
+                        )
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
                             answer = "Don't Cut";
                         }
                     }
-
                     else if (letter == 'B')
                     {
-                        if (BlackColor == 1 || BlackColor == 3 || BlackColor == 5 || BlackColor == 6 || BlackColor == 7)
+                        if (
+                            BlackColor == 1
+                            || BlackColor == 3
+                            || BlackColor == 5
+                            || BlackColor == 6
+                            || BlackColor == 7
+                        )
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
                             answer = "Don't Cut";
                         }
                     }
-
                     else
                     {
-                        if (BlackColor == 1 || BlackColor == 2 || BlackColor == 4 || BlackColor == 6 || BlackColor == 8 || BlackColor == 9)
+                        if (
+                            BlackColor == 1
+                            || BlackColor == 2
+                            || BlackColor == 4
+                            || BlackColor == 6
+                            || BlackColor == 8
+                            || BlackColor == 9
+                        )
                         {
                             answer = "Cut";
                         }
-
                         else
                         {
                             answer = "Don't Cut";
@@ -180,9 +195,8 @@ namespace KTANE_Solver
             {
                 PrintDebugLine($"Cut wire {wireNum}\n");
             }
-
             else
-            { 
+            {
                 PrintDebugLine($"Don't cut wire {wireNum}\n");
             }
 

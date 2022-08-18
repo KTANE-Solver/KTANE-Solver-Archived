@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class ShapeShiftWordForm : ModuleForm
     {
-        public ShapeShiftWordForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Shape Shift", false)
+        public ShapeShiftWordForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Shape Shift", false)
         {
             InitializeComponent();
             UpdateForm();
@@ -51,12 +56,12 @@ namespace KTANE_Solver
             ShapeShift module = new ShapeShift(Bomb, LogFileWriter, leftTicket, rightTicket);
             module.Solve();
             UpdateForm();
-
         }
 
         private ShapeShift.TicketShape GetTicketEnum(ComboBox comboBox)
         {
-            return (ShapeShift.TicketShape)Enum.Parse(typeof(ShapeShift.TicketShape), comboBox.Text);
+            return (ShapeShift.TicketShape)
+                Enum.Parse(typeof(ShapeShift.TicketShape), comboBox.Text);
         }
     }
 }

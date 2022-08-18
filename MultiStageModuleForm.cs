@@ -19,14 +19,20 @@ namespace KTANE_Solver
     public partial class MultiStageModuleForm : ModuleForm
     {
         private ModuleForm firstStageForm;
+
         public MultiStageModuleForm() : base()
         {
             InitializeComponent();
         }
 
-        public MultiStageModuleForm(Bomb bomb, StreamWriter logFileWriter,
-               ModuleSelectionForm moduleSelectionForm, ModuleForm firstStageForm, string name, bool answerForm)
-                 : base(bomb, logFileWriter, moduleSelectionForm, name, answerForm)
+        public MultiStageModuleForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            ModuleForm firstStageForm,
+            string name,
+            bool answerForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, name, answerForm)
         {
             InitializeComponent();
             this.firstStageForm = firstStageForm;
@@ -38,10 +44,5 @@ namespace KTANE_Solver
             firstStageForm.UpdateEdgeWork(Bomb, LogFileWriter, ModuleSelectionForm);
             firstStageForm.Show();
         }
-
     }
-
-   
-
-
 }

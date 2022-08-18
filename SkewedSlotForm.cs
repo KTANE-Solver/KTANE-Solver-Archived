@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class SkewedSlotForm : ModuleForm
     {
-        public SkewedSlotForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Skewed Slots", false)
+        public SkewedSlotForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Skewed Slots", false)
         {
             InitializeComponent();
         }
@@ -41,7 +46,6 @@ namespace KTANE_Solver
             {
                 num = int.Parse(textBox1.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Text box must contain a 3 digit number");

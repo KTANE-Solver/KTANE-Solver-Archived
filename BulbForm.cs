@@ -18,14 +18,22 @@ namespace KTANE_Solver
 
     public partial class BulbForm : ModuleForm
     {
-        public BulbForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, string name) 
-        : base(bomb, logFileWriter, moduleSelectionForm, name, false)
+        public BulbForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            string name
+        ) : base(bomb, logFileWriter, moduleSelectionForm, name, false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             String[] colors = { "Blue", "Green", "Purple", "Red", "White", "Yellow" };
 
@@ -54,7 +62,13 @@ namespace KTANE_Solver
         {
             PrintHeader();
 
-            Bulb module = new Bulb(Bomb, LogFileWriter, litCheckBox.Checked, opaqueCheckBox.Checked, colorComboBox.Text);
+            Bulb module = new Bulb(
+                Bomb,
+                LogFileWriter,
+                litCheckBox.Checked,
+                opaqueCheckBox.Checked,
+                colorComboBox.Text
+            );
             module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

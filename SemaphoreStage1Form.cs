@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class SemaphoreStage1Form : ModuleForm
     {
-        public SemaphoreStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base (bomb, logFileWriter, moduleSelectionForm, "Semaphore", false)
+        public SemaphoreStage1Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Semaphore", false)
         {
             InitializeComponent();
             UpdateForm();
@@ -27,7 +32,17 @@ namespace KTANE_Solver
             firstFlagComboBox.Text = firstItems[0];
             firstFlagComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            string[] direction = new string[] { "East", "North", "North East", "North West", "South", "South East", "South West", "West" };
+            string[] direction = new string[]
+            {
+                "East",
+                "North",
+                "North East",
+                "North West",
+                "South",
+                "South East",
+                "South West",
+                "West"
+            };
 
             List<string> combinedDirection = new List<string>();
 
@@ -37,7 +52,6 @@ namespace KTANE_Solver
                 {
                     combinedDirection.Add(direction[i] + "/" + direction[j]);
                 }
-
             }
 
             secondFlagComboBox.Items.Clear();
@@ -58,22 +72,24 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             Semaphore.Flag firstFlag = GetFlag(firstFlagComboBox.Text);
 
             Semaphore module = new Semaphore(Bomb, LogFileWriter, firstFlag);
-
-
 
             string answer = module.Solve(GetFlag(secondFlagComboBox.Text));
 
             if (answer == "Valid")
             {
-                SemaphoreOtherStageForm form = new SemaphoreOtherStageForm(Bomb, LogFileWriter, ModuleSelectionForm, module, this);
+                SemaphoreOtherStageForm form = new SemaphoreOtherStageForm(
+                    Bomb,
+                    LogFileWriter,
+                    ModuleSelectionForm,
+                    module,
+                    this
+                );
                 this.Hide();
                 form.Show();
             }
-
             else
             {
                 UpdateForm();
@@ -81,7 +97,7 @@ namespace KTANE_Solver
         }
 
         private Semaphore.Flag GetFlag(string str)
-        { 
+        {
             string[] arr = str.Split('/');
 
             return new Semaphore.Flag(GetFlagState(arr[0]), GetFlagState(arr[1]));
@@ -116,7 +132,5 @@ namespace KTANE_Solver
                     return Semaphore.FlagState.NorthWest;
             }
         }
-
-
     }
 }

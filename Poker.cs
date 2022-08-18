@@ -33,8 +33,9 @@ namespace KTANE_Solver
 
         //opponent's response
         public String response;
+
         public Poker(Bomb bomb, StreamWriter logFileWriter, String startingCard)
-        : base(bomb, logFileWriter, "Poker")
+            : base(bomb, logFileWriter, "Poker")
         {
             //find the starting card
             switch (startingCard)
@@ -48,7 +49,8 @@ namespace KTANE_Solver
                     break;
 
                 case "TWO":
-                    this.startingCard = new Card(Card.Number.TWO, Card.Suite.CLUB); ;
+                    this.startingCard = new Card(Card.Number.TWO, Card.Suite.CLUB);
+                    ;
                     break;
 
                 case "ACE":
@@ -59,210 +61,582 @@ namespace KTANE_Solver
             //set up ace tree
 
             //more than 3 batteries
-            aceTree = new BinaryTree(new Card(Card.Number.ACE, Card.Suite.SPADE), Bomb.Battery >= 3);
+            aceTree = new BinaryTree(
+                new Card(Card.Number.ACE, Card.Suite.SPADE),
+                Bomb.Battery >= 3
+            );
 
             //second card
 
             //1. a lit frk or bob
             //2. serial contain vowel
-            aceTree.SetChildren(aceTree.Root, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.JACK, Card.Suite.DIAMOND),Bomb.Frk.Lit || Bomb.Bob.Visible, Bomb.HasVowel);
+            aceTree.SetChildren(
+                aceTree.Root,
+                new Card(Card.Number.THREE, Card.Suite.SPADE),
+                new Card(Card.Number.JACK, Card.Suite.DIAMOND),
+                Bomb.Frk.Lit || Bomb.Bob.Visible,
+                Bomb.HasVowel
+            );
 
             //third card
 
             //1. total serial digits equal even
             //2. more d batteires than aa batteries
-            aceTree.SetChildren(aceTree.Root.LeftNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.NINE, Card.Suite.HEART), Bomb.DigitSum % 2 == 0, Bomb.DBattery > Bomb.AABattery);
+            aceTree.SetChildren(
+                aceTree.Root.LeftNode,
+                new Card(Card.Number.FIVE, Card.Suite.SPADE),
+                new Card(Card.Number.NINE, Card.Suite.HEART),
+                Bomb.DigitSum % 2 == 0,
+                Bomb.DBattery > Bomb.AABattery
+            );
 
             //1. unlit car
             //2. serial port?
-            aceTree.SetChildren(aceTree.Root.RightNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.FOUR, Card.Suite.CLUB), Bomb.Car.VisibleNotLit, Bomb.Serial.Visible);
+            aceTree.SetChildren(
+                aceTree.Root.RightNode,
+                new Card(Card.Number.JACK, Card.Suite.CLUB),
+                new Card(Card.Number.FOUR, Card.Suite.CLUB),
+                Bomb.Car.VisibleNotLit,
+                Bomb.Serial.Visible
+            );
 
             //fourth card
 
             //1. rj port
             //2. ps port
-            aceTree.SetChildren(aceTree.Root.LeftNode.LeftNode, new Card(Card.Number.TWO, Card.Suite.SPADE), new Card(Card.Number.THREE, Card.Suite.DIAMOND), Bomb.Rj.Visible, Bomb.Ps.Visible);
+            aceTree.SetChildren(
+                aceTree.Root.LeftNode.LeftNode,
+                new Card(Card.Number.TWO, Card.Suite.SPADE),
+                new Card(Card.Number.THREE, Card.Suite.DIAMOND),
+                Bomb.Rj.Visible,
+                Bomb.Ps.Visible
+            );
 
             //1. serial contain vowel
             //2. last digit of sieral even
-            aceTree.SetChildren(aceTree.Root.LeftNode.RightNode, new Card(Card.Number.QUEEN, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.DIAMOND), Bomb.HasVowel, Bomb.LastDigit % 2 == 0);
+            aceTree.SetChildren(
+                aceTree.Root.LeftNode.RightNode,
+                new Card(Card.Number.QUEEN, Card.Suite.CLUB),
+                new Card(Card.Number.ACE, Card.Suite.DIAMOND),
+                Bomb.HasVowel,
+                Bomb.LastDigit % 2 == 0
+            );
 
             //1. dvid port
             //2. parallel port
-            aceTree.SetChildren(aceTree.Root.RightNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.SPADE), new Card(Card.Number.ACE, Card.Suite.HEART), Bomb.Dvid.Visible, Bomb.Parallel.Visible);
+            aceTree.SetChildren(
+                aceTree.Root.RightNode.LeftNode,
+                new Card(Card.Number.JACK, Card.Suite.SPADE),
+                new Card(Card.Number.ACE, Card.Suite.HEART),
+                Bomb.Dvid.Visible,
+                Bomb.Parallel.Visible
+            );
 
             //1, unlit snd or trn
             //2, lit sig or frq
-            aceTree.SetChildren(aceTree.Root.RightNode.RightNode, new Card(Card.Number.SIX, Card.Suite.DIAMOND), new Card(Card.Number.QUEEN, Card.Suite.DIAMOND), Bomb.Snd.VisibleNotLit || Bomb.Trn.Visible, Bomb.Sig.Lit || Bomb.Frq.Visible);
+            aceTree.SetChildren(
+                aceTree.Root.RightNode.RightNode,
+                new Card(Card.Number.SIX, Card.Suite.DIAMOND),
+                new Card(Card.Number.QUEEN, Card.Suite.DIAMOND),
+                Bomb.Snd.VisibleNotLit || Bomb.Trn.Visible,
+                Bomb.Sig.Lit || Bomb.Frq.Visible
+            );
 
             //fifth card
-            aceTree.SetChildren(aceTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.FOUR, Card.Suite.SPADE), new Card(Card.Number.EIGHT, Card.Suite.SPADE), false, false);
-            aceTree.SetChildren(aceTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.THREE, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.CLUB), false, false);
+            aceTree.SetChildren(
+                aceTree.Root.LeftNode.LeftNode.LeftNode,
+                new Card(Card.Number.FOUR, Card.Suite.SPADE),
+                new Card(Card.Number.EIGHT, Card.Suite.SPADE),
+                false,
+                false
+            );
+            aceTree.SetChildren(
+                aceTree.Root.LeftNode.LeftNode.RightNode,
+                new Card(Card.Number.THREE, Card.Suite.CLUB),
+                new Card(Card.Number.ACE, Card.Suite.CLUB),
+                false,
+                false
+            );
 
-            aceTree.SetChildren(aceTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.DIAMOND), new Card(Card.Number.THREE, Card.Suite.DIAMOND), false, false);
-            aceTree.SetChildren(aceTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.ACE, Card.Suite.CLUB), new Card(Card.Number.SIX, Card.Suite.HEART), false, false);
+            aceTree.SetChildren(
+                aceTree.Root.LeftNode.RightNode.LeftNode,
+                new Card(Card.Number.JACK, Card.Suite.DIAMOND),
+                new Card(Card.Number.THREE, Card.Suite.DIAMOND),
+                false,
+                false
+            );
+            aceTree.SetChildren(
+                aceTree.Root.LeftNode.RightNode.RightNode,
+                new Card(Card.Number.ACE, Card.Suite.CLUB),
+                new Card(Card.Number.SIX, Card.Suite.HEART),
+                false,
+                false
+            );
 
-            aceTree.SetChildren(aceTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.HEART), new Card(Card.Number.ACE, Card.Suite.HEART), false, false);
-            aceTree.SetChildren(aceTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.CLUB), false, false);
+            aceTree.SetChildren(
+                aceTree.Root.RightNode.LeftNode.LeftNode,
+                new Card(Card.Number.JACK, Card.Suite.HEART),
+                new Card(Card.Number.ACE, Card.Suite.HEART),
+                false,
+                false
+            );
+            aceTree.SetChildren(
+                aceTree.Root.RightNode.LeftNode.RightNode,
+                new Card(Card.Number.TWO, Card.Suite.CLUB),
+                new Card(Card.Number.ACE, Card.Suite.CLUB),
+                false,
+                false
+            );
 
-            aceTree.SetChildren(aceTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.THREE, Card.Suite.CLUB), new Card(Card.Number.FOUR, Card.Suite.SPADE), false, false);
-            aceTree.SetChildren(aceTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.TEN, Card.Suite.SPADE), new Card(Card.Number.ACE, Card.Suite.CLUB), false, false);
+            aceTree.SetChildren(
+                aceTree.Root.RightNode.RightNode.LeftNode,
+                new Card(Card.Number.THREE, Card.Suite.CLUB),
+                new Card(Card.Number.FOUR, Card.Suite.SPADE),
+                false,
+                false
+            );
+            aceTree.SetChildren(
+                aceTree.Root.RightNode.RightNode.RightNode,
+                new Card(Card.Number.TEN, Card.Suite.SPADE),
+                new Card(Card.Number.ACE, Card.Suite.CLUB),
+                false,
+                false
+            );
 
             //set up king tree
 
             //digit sum of serial is odd
-            kingTree = new BinaryTree(new Card(Card.Number.KING, Card.Suite.HEART), Bomb.DigitSum % 2 == 1);
+            kingTree = new BinaryTree(
+                new Card(Card.Number.KING, Card.Suite.HEART),
+                Bomb.DigitSum % 2 == 1
+            );
 
             //second card
 
             //any batteries
             //parallel port
-            kingTree.SetChildren(kingTree.Root, new Card(Card.Number.FOUR, Card.Suite.CLUB), new Card(Card.Number.THREE, Card.Suite.DIAMOND), Bomb.Battery > 0, Bomb.Parallel.Visible);
+            kingTree.SetChildren(
+                kingTree.Root,
+                new Card(Card.Number.FOUR, Card.Suite.CLUB),
+                new Card(Card.Number.THREE, Card.Suite.DIAMOND),
+                Bomb.Battery > 0,
+                Bomb.Parallel.Visible
+            );
 
             //third card
 
             //lit ind, msa, trn
             //ps or dvid
-            kingTree.SetChildren(kingTree.Root.LeftNode, new Card(Card.Number.FOUR, Card.Suite.HEART), new Card(Card.Number.ACE, Card.Suite.HEART), Bomb.Ind.Lit || Bomb.Msa.Lit || Bomb.Trn.Lit, Bomb.Ps.Visible || Bomb.Dvid.Visible);
-            
+            kingTree.SetChildren(
+                kingTree.Root.LeftNode,
+                new Card(Card.Number.FOUR, Card.Suite.HEART),
+                new Card(Card.Number.ACE, Card.Suite.HEART),
+                Bomb.Ind.Lit || Bomb.Msa.Lit || Bomb.Trn.Lit,
+                Bomb.Ps.Visible || Bomb.Dvid.Visible
+            );
+
             //three or fewer aa batteries
             //unlit bob or frq
-            kingTree.SetChildren(kingTree.Root.RightNode, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.FOUR, Card.Suite.HEART), Bomb.AABattery <= 3, Bomb.Bob.VisibleNotLit || Bomb.Frq.VisibleNotLit);
+            kingTree.SetChildren(
+                kingTree.Root.RightNode,
+                new Card(Card.Number.THREE, Card.Suite.SPADE),
+                new Card(Card.Number.FOUR, Card.Suite.HEART),
+                Bomb.AABattery <= 3,
+                Bomb.Bob.VisibleNotLit || Bomb.Frq.VisibleNotLit
+            );
 
             //fourth card
 
             //stereo rca
             //rj and serial
-            kingTree.SetChildren(kingTree.Root.LeftNode.LeftNode, new Card(Card.Number.FOUR, Card.Suite.SPADE), new Card(Card.Number.KING, Card.Suite.SPADE), Bomb.Stereo.Visible, Bomb.Rj.Visible || Bomb.Serial.Visible);
-            
+            kingTree.SetChildren(
+                kingTree.Root.LeftNode.LeftNode,
+                new Card(Card.Number.FOUR, Card.Suite.SPADE),
+                new Card(Card.Number.KING, Card.Suite.SPADE),
+                Bomb.Stereo.Visible,
+                Bomb.Rj.Visible || Bomb.Serial.Visible
+            );
+
             //lit sind
             //unlit trn or frk
-            kingTree.SetChildren(kingTree.Root.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.CLUB), new Card(Card.Number.QUEEN, Card.Suite.SPADE), Bomb.Snd.Lit, Bomb.Trn.VisibleNotLit || Bomb.Frk.VisibleNotLit);
+            kingTree.SetChildren(
+                kingTree.Root.LeftNode.RightNode,
+                new Card(Card.Number.TWO, Card.Suite.CLUB),
+                new Card(Card.Number.QUEEN, Card.Suite.SPADE),
+                Bomb.Snd.Lit,
+                Bomb.Trn.VisibleNotLit || Bomb.Frk.VisibleNotLit
+            );
 
             //lit frq
             //unlit msa or lit nsa
-            kingTree.SetChildren(kingTree.Root.RightNode.LeftNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SEVEN, Card.Suite.SPADE), Bomb.Msa.VisibleNotLit || Bomb.Nsa.Lit, Bomb.Frq.Lit);
-            
+            kingTree.SetChildren(
+                kingTree.Root.RightNode.LeftNode,
+                new Card(Card.Number.TWO, Card.Suite.DIAMOND),
+                new Card(Card.Number.SEVEN, Card.Suite.SPADE),
+                Bomb.Msa.VisibleNotLit || Bomb.Nsa.Lit,
+                Bomb.Frq.Lit
+            );
+
             //more aa than d
             //five or fewr batteries
-            kingTree.SetChildren(kingTree.Root.RightNode.RightNode, new Card(Card.Number.TEN, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.CLUB), Bomb.AABattery > Bomb.DBattery, Bomb.Battery <= 5);
+            kingTree.SetChildren(
+                kingTree.Root.RightNode.RightNode,
+                new Card(Card.Number.TEN, Card.Suite.CLUB),
+                new Card(Card.Number.TWO, Card.Suite.CLUB),
+                Bomb.AABattery > Bomb.DBattery,
+                Bomb.Battery <= 5
+            );
 
             //fifth card
-            kingTree.SetChildren(kingTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.KING, Card.Suite.CLUB), false, false);
-            kingTree.SetChildren(kingTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.THREE, Card.Suite.CLUB), new Card(Card.Number.KING, Card.Suite.CLUB), false, false);
+            kingTree.SetChildren(
+                kingTree.Root.LeftNode.LeftNode.LeftNode,
+                new Card(Card.Number.FOUR, Card.Suite.DIAMOND),
+                new Card(Card.Number.KING, Card.Suite.CLUB),
+                false,
+                false
+            );
+            kingTree.SetChildren(
+                kingTree.Root.LeftNode.LeftNode.RightNode,
+                new Card(Card.Number.THREE, Card.Suite.CLUB),
+                new Card(Card.Number.KING, Card.Suite.CLUB),
+                false,
+                false
+            );
 
-            kingTree.SetChildren(kingTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.FOUR, Card.Suite.DIAMOND), false, false);
-            kingTree.SetChildren(kingTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.THREE, Card.Suite.CLUB), new Card(Card.Number.FIVE, Card.Suite.CLUB), false, false);
+            kingTree.SetChildren(
+                kingTree.Root.LeftNode.RightNode.LeftNode,
+                new Card(Card.Number.THREE, Card.Suite.SPADE),
+                new Card(Card.Number.FOUR, Card.Suite.DIAMOND),
+                false,
+                false
+            );
+            kingTree.SetChildren(
+                kingTree.Root.LeftNode.RightNode.RightNode,
+                new Card(Card.Number.THREE, Card.Suite.CLUB),
+                new Card(Card.Number.FIVE, Card.Suite.CLUB),
+                false,
+                false
+            );
 
-            kingTree.SetChildren(kingTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.NINE, Card.Suite.CLUB), new Card(Card.Number.THREE, Card.Suite.HEART), false, false);
-            kingTree.SetChildren(kingTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.CLUB), new Card(Card.Number.SEVEN, Card.Suite.DIAMOND), false, false);
+            kingTree.SetChildren(
+                kingTree.Root.RightNode.LeftNode.LeftNode,
+                new Card(Card.Number.NINE, Card.Suite.CLUB),
+                new Card(Card.Number.THREE, Card.Suite.HEART),
+                false,
+                false
+            );
+            kingTree.SetChildren(
+                kingTree.Root.RightNode.LeftNode.RightNode,
+                new Card(Card.Number.TWO, Card.Suite.CLUB),
+                new Card(Card.Number.SEVEN, Card.Suite.DIAMOND),
+                false,
+                false
+            );
 
-            kingTree.SetChildren(kingTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.KING, Card.Suite.CLUB), new Card(Card.Number.QUEEN, Card.Suite.SPADE), false, false);
-            kingTree.SetChildren(kingTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.NINE, Card.Suite.CLUB), false, false);
+            kingTree.SetChildren(
+                kingTree.Root.RightNode.RightNode.LeftNode,
+                new Card(Card.Number.KING, Card.Suite.CLUB),
+                new Card(Card.Number.QUEEN, Card.Suite.SPADE),
+                false,
+                false
+            );
+            kingTree.SetChildren(
+                kingTree.Root.RightNode.RightNode.RightNode,
+                new Card(Card.Number.ACE, Card.Suite.HEART),
+                new Card(Card.Number.NINE, Card.Suite.CLUB),
+                false,
+                false
+            );
 
             //diamond tree
 
             //there are more aa than b
-            fiveTree = new BinaryTree(new Card(Card.Number.FIVE, Card.Suite.DIAMOND), Bomb.AABattery > Bomb.DBattery);
+            fiveTree = new BinaryTree(
+                new Card(Card.Number.FIVE, Card.Suite.DIAMOND),
+                Bomb.AABattery > Bomb.DBattery
+            );
 
             //second card
 
             //serial contains vowel
             //last digit of the serial an odd number
-            fiveTree.SetChildren(fiveTree.Root, new Card(Card.Number.THREE, Card.Suite.CLUB), new Card(Card.Number.NINE, Card.Suite.DIAMOND), Bomb.HasVowel, Bomb.LastDigit % 2 == 1);
+            fiveTree.SetChildren(
+                fiveTree.Root,
+                new Card(Card.Number.THREE, Card.Suite.CLUB),
+                new Card(Card.Number.NINE, Card.Suite.DIAMOND),
+                Bomb.HasVowel,
+                Bomb.LastDigit % 2 == 1
+            );
 
             //third card
 
             //more than one port
             //ther are ps or rj port
-            fiveTree.SetChildren(fiveTree.Root.LeftNode, new Card(Card.Number.TWO, Card.Suite.SPADE), new Card(Card.Number.NINE, Card.Suite.HEART), Bomb.PortNum > 1, Bomb.Ps.Visible || Bomb.Rj.Visible);
+            fiveTree.SetChildren(
+                fiveTree.Root.LeftNode,
+                new Card(Card.Number.TWO, Card.Suite.SPADE),
+                new Card(Card.Number.NINE, Card.Suite.HEART),
+                Bomb.PortNum > 1,
+                Bomb.Ps.Visible || Bomb.Rj.Visible
+            );
 
             //bob or unlit frq or sig
             //any lit indicators
-            fiveTree.SetChildren(fiveTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), Bomb.Bob.Lit || Bomb.Frq.VisibleNotLit || Bomb.Sig.Visible, Bomb.LitIndicatorsList.Count > 0);
+            fiveTree.SetChildren(
+                fiveTree.Root.RightNode,
+                new Card(Card.Number.FOUR, Card.Suite.DIAMOND),
+                new Card(Card.Number.SIX, Card.Suite.DIAMOND),
+                Bomb.Bob.Lit || Bomb.Frq.VisibleNotLit || Bomb.Sig.Visible,
+                Bomb.LitIndicatorsList.Count > 0
+            );
 
             //fourth card
 
             //unlit clr or lit car
             //lit msa or unlit nsa
-            fiveTree.SetChildren(fiveTree.Root.LeftNode.LeftNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Clr.VisibleNotLit || Bomb.Car.Lit, Bomb.Msa.Lit || Bomb.Nsa.VisibleNotLit);
-            
+            fiveTree.SetChildren(
+                fiveTree.Root.LeftNode.LeftNode,
+                new Card(Card.Number.ACE, Card.Suite.HEART),
+                new Card(Card.Number.SIX, Card.Suite.HEART),
+                Bomb.Clr.VisibleNotLit || Bomb.Car.Lit,
+                Bomb.Msa.Lit || Bomb.Nsa.VisibleNotLit
+            );
+
             //any unlit indicator
             //ulit clr
-            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode, new Card(Card.Number.TEN, Card.Suite.SPADE), new Card(Card.Number.JACK, Card.Suite.SPADE), Bomb.UnlitIndicatorsList.Count > 0, Bomb.Car.VisibleNotLit);
+            fiveTree.SetChildren(
+                fiveTree.Root.LeftNode.RightNode,
+                new Card(Card.Number.TEN, Card.Suite.SPADE),
+                new Card(Card.Number.JACK, Card.Suite.SPADE),
+                Bomb.UnlitIndicatorsList.Count > 0,
+                Bomb.Car.VisibleNotLit
+            );
 
             //any port
             //parallel port
-            fiveTree.SetChildren(fiveTree.Root.RightNode.LeftNode, new Card(Card.Number.KING, Card.Suite.DIAMOND), new Card(Card.Number.ACE, Card.Suite.DIAMOND), Bomb.PortNum > 0, Bomb.Parallel.Visible);
-            
+            fiveTree.SetChildren(
+                fiveTree.Root.RightNode.LeftNode,
+                new Card(Card.Number.KING, Card.Suite.DIAMOND),
+                new Card(Card.Number.ACE, Card.Suite.DIAMOND),
+                Bomb.PortNum > 0,
+                Bomb.Parallel.Visible
+            );
+
             //fewer than three ports
             //rca and dvid port
-            fiveTree.SetChildren(fiveTree.Root.RightNode.RightNode, new Card(Card.Number.SEVEN, Card.Suite.DIAMOND), new Card(Card.Number.FIVE, Card.Suite.CLUB), Bomb.PortNum < 3, Bomb.Stereo.Visible && Bomb.Dvid.Visible);
+            fiveTree.SetChildren(
+                fiveTree.Root.RightNode.RightNode,
+                new Card(Card.Number.SEVEN, Card.Suite.DIAMOND),
+                new Card(Card.Number.FIVE, Card.Suite.CLUB),
+                Bomb.PortNum < 3,
+                Bomb.Stereo.Visible && Bomb.Dvid.Visible
+            );
 
             //fifth card
-            fiveTree.SetChildren(fiveTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.FOUR, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.DIAMOND), false, false);
-            fiveTree.SetChildren(fiveTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.SPADE), new Card(Card.Number.THREE, Card.Suite.DIAMOND), false, false);
+            fiveTree.SetChildren(
+                fiveTree.Root.LeftNode.LeftNode.LeftNode,
+                new Card(Card.Number.FOUR, Card.Suite.DIAMOND),
+                new Card(Card.Number.SIX, Card.Suite.DIAMOND),
+                false,
+                false
+            );
+            fiveTree.SetChildren(
+                fiveTree.Root.LeftNode.LeftNode.RightNode,
+                new Card(Card.Number.FOUR, Card.Suite.SPADE),
+                new Card(Card.Number.THREE, Card.Suite.DIAMOND),
+                false,
+                false
+            );
 
-            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.NINE, Card.Suite.SPADE), false, false);
-            fiveTree.SetChildren(fiveTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.QUEEN, Card.Suite.HEART), new Card(Card.Number.FIVE, Card.Suite.HEART), false, false);
+            fiveTree.SetChildren(
+                fiveTree.Root.LeftNode.RightNode.LeftNode,
+                new Card(Card.Number.JACK, Card.Suite.CLUB),
+                new Card(Card.Number.NINE, Card.Suite.SPADE),
+                false,
+                false
+            );
+            fiveTree.SetChildren(
+                fiveTree.Root.LeftNode.RightNode.RightNode,
+                new Card(Card.Number.QUEEN, Card.Suite.HEART),
+                new Card(Card.Number.FIVE, Card.Suite.HEART),
+                false,
+                false
+            );
 
-            fiveTree.SetChildren(fiveTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.KING, Card.Suite.HEART), new Card(Card.Number.QUEEN, Card.Suite.DIAMOND), false, false);
-            fiveTree.SetChildren(fiveTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.SPADE), false, false);
+            fiveTree.SetChildren(
+                fiveTree.Root.RightNode.LeftNode.LeftNode,
+                new Card(Card.Number.KING, Card.Suite.HEART),
+                new Card(Card.Number.QUEEN, Card.Suite.DIAMOND),
+                false,
+                false
+            );
+            fiveTree.SetChildren(
+                fiveTree.Root.RightNode.LeftNode.RightNode,
+                new Card(Card.Number.TWO, Card.Suite.DIAMOND),
+                new Card(Card.Number.SIX, Card.Suite.SPADE),
+                false,
+                false
+            );
 
-            fiveTree.SetChildren(fiveTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.EIGHT, Card.Suite.DIAMOND), new Card(Card.Number.EIGHT, Card.Suite.HEART), false, false);
-            fiveTree.SetChildren(fiveTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.SPADE), false, false);
+            fiveTree.SetChildren(
+                fiveTree.Root.RightNode.RightNode.LeftNode,
+                new Card(Card.Number.EIGHT, Card.Suite.DIAMOND),
+                new Card(Card.Number.EIGHT, Card.Suite.HEART),
+                false,
+                false
+            );
+            fiveTree.SetChildren(
+                fiveTree.Root.RightNode.RightNode.RightNode,
+                new Card(Card.Number.FIVE, Card.Suite.SPADE),
+                new Card(Card.Number.SIX, Card.Suite.SPADE),
+                false,
+                false
+            );
 
             //twoTree tree
 
             //lit trn bob or ind
-            twoTree = new BinaryTree(new Card(Card.Number.TWO, Card.Suite.CLUB), Bomb.Trn.Lit || Bomb.Bob.Visible || Bomb.Ind.Visible);
+            twoTree = new BinaryTree(
+                new Card(Card.Number.TWO, Card.Suite.CLUB),
+                Bomb.Trn.Lit || Bomb.Bob.Visible || Bomb.Ind.Visible
+            );
 
             //second card
 
             //five or fewer batteries
             //serial contain even number of letters
-            twoTree.SetChildren(twoTree.Root, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.THREE, Card.Suite.HEART), Bomb.Battery <= 5, Bomb.LetterNum % 2 == 0);
+            twoTree.SetChildren(
+                twoTree.Root,
+                new Card(Card.Number.SIX, Card.Suite.CLUB),
+                new Card(Card.Number.THREE, Card.Suite.HEART),
+                Bomb.Battery <= 5,
+                Bomb.LetterNum % 2 == 0
+            );
 
             //third card
 
             //dvid or stereo
             //digits of the serial add up to more than 12
-            twoTree.SetChildren(twoTree.Root.LeftNode, new Card(Card.Number.TEN, Card.Suite.CLUB), new Card(Card.Number.ACE, Card.Suite.SPADE), Bomb.Dvid.Visible || Bomb.Stereo.Visible, Bomb.DigitSum > 12);
-            
+            twoTree.SetChildren(
+                twoTree.Root.LeftNode,
+                new Card(Card.Number.TEN, Card.Suite.CLUB),
+                new Card(Card.Number.ACE, Card.Suite.SPADE),
+                Bomb.Dvid.Visible || Bomb.Stereo.Visible,
+                Bomb.DigitSum > 12
+            );
+
             //parallel and serial
             //rj port
-            twoTree.SetChildren(twoTree.Root.RightNode, new Card(Card.Number.FOUR, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), Bomb.Parallel.Visible && Bomb.Serial.Visible, Bomb.Rj.Visible);
+            twoTree.SetChildren(
+                twoTree.Root.RightNode,
+                new Card(Card.Number.FOUR, Card.Suite.HEART),
+                new Card(Card.Number.KING, Card.Suite.HEART),
+                Bomb.Parallel.Visible && Bomb.Serial.Visible,
+                Bomb.Rj.Visible
+            );
 
             //fourth card
 
             //last letter of seiral is a consonant
             //last digit of serial odd
-            twoTree.SetChildren(twoTree.Root.LeftNode.LeftNode, new Card(Card.Number.JACK, Card.Suite.HEART), new Card(Card.Number.JACK, Card.Suite.CLUB), !Bomb.LastLetterIsVowel, Bomb.LastDigit % 2 == 1);
-            
+            twoTree.SetChildren(
+                twoTree.Root.LeftNode.LeftNode,
+                new Card(Card.Number.JACK, Card.Suite.HEART),
+                new Card(Card.Number.JACK, Card.Suite.CLUB),
+                !Bomb.LastLetterIsVowel,
+                Bomb.LastDigit % 2 == 1
+            );
+
             //ps and parallel
             //three or fewer ports
-            twoTree.SetChildren(twoTree.Root.LeftNode.RightNode, new Card(Card.Number.TWO, Card.Suite.DIAMOND), new Card(Card.Number.SIX, Card.Suite.HEART), Bomb.Ps.Visible && Bomb.Parallel.Visible, Bomb.PortNum <= 3);
+            twoTree.SetChildren(
+                twoTree.Root.LeftNode.RightNode,
+                new Card(Card.Number.TWO, Card.Suite.DIAMOND),
+                new Card(Card.Number.SIX, Card.Suite.HEART),
+                Bomb.Ps.Visible && Bomb.Parallel.Visible,
+                Bomb.PortNum <= 3
+            );
 
             //more aa than d
             //more d than aa
-            twoTree.SetChildren(twoTree.Root.RightNode.LeftNode, new Card(Card.Number.FIVE, Card.Suite.SPADE), new Card(Card.Number.SIX, Card.Suite.HEART),  Bomb.AABattery > Bomb.DBattery, Bomb.DBattery > Bomb.AABattery);
+            twoTree.SetChildren(
+                twoTree.Root.RightNode.LeftNode,
+                new Card(Card.Number.FIVE, Card.Suite.SPADE),
+                new Card(Card.Number.SIX, Card.Suite.HEART),
+                Bomb.AABattery > Bomb.DBattery,
+                Bomb.DBattery > Bomb.AABattery
+            );
 
             //more than 2 d
             //mor than 2 batteries
-            twoTree.SetChildren(twoTree.Root.RightNode.RightNode, new Card(Card.Number.KING, Card.Suite.CLUB), new Card(Card.Number.FOUR, Card.Suite.DIAMOND), Bomb.DBattery > 2, Bomb.Battery > 2);
+            twoTree.SetChildren(
+                twoTree.Root.RightNode.RightNode,
+                new Card(Card.Number.KING, Card.Suite.CLUB),
+                new Card(Card.Number.FOUR, Card.Suite.DIAMOND),
+                Bomb.DBattery > 2,
+                Bomb.Battery > 2
+            );
 
             //fifth card
-            twoTree.SetChildren(twoTree.Root.LeftNode.LeftNode.LeftNode, new Card(Card.Number.QUEEN, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
-            twoTree.SetChildren(twoTree.Root.LeftNode.LeftNode.RightNode, new Card(Card.Number.FOUR, Card.Suite.CLUB), new Card(Card.Number.KING, Card.Suite.CLUB), false, false);
+            twoTree.SetChildren(
+                twoTree.Root.LeftNode.LeftNode.LeftNode,
+                new Card(Card.Number.QUEEN, Card.Suite.CLUB),
+                new Card(Card.Number.TWO, Card.Suite.DIAMOND),
+                false,
+                false
+            );
+            twoTree.SetChildren(
+                twoTree.Root.LeftNode.LeftNode.RightNode,
+                new Card(Card.Number.FOUR, Card.Suite.CLUB),
+                new Card(Card.Number.KING, Card.Suite.CLUB),
+                false,
+                false
+            );
 
-            twoTree.SetChildren(twoTree.Root.LeftNode.RightNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.DIAMOND), new Card(Card.Number.TWO, Card.Suite.HEART), false, false);
-            twoTree.SetChildren(twoTree.Root.LeftNode.RightNode.RightNode, new Card(Card.Number.ACE, Card.Suite.HEART), new Card(Card.Number.SEVEN, Card.Suite.SPADE), false, false);
+            twoTree.SetChildren(
+                twoTree.Root.LeftNode.RightNode.LeftNode,
+                new Card(Card.Number.SIX, Card.Suite.DIAMOND),
+                new Card(Card.Number.TWO, Card.Suite.HEART),
+                false,
+                false
+            );
+            twoTree.SetChildren(
+                twoTree.Root.LeftNode.RightNode.RightNode,
+                new Card(Card.Number.ACE, Card.Suite.HEART),
+                new Card(Card.Number.SEVEN, Card.Suite.SPADE),
+                false,
+                false
+            );
 
-            twoTree.SetChildren(twoTree.Root.RightNode.LeftNode.LeftNode, new Card(Card.Number.SIX, Card.Suite.CLUB), new Card(Card.Number.FIVE, Card.Suite.DIAMOND), false, false);
-            twoTree.SetChildren(twoTree.Root.RightNode.LeftNode.RightNode, new Card(Card.Number.FIVE, Card.Suite.HEART), new Card(Card.Number.KING, Card.Suite.HEART), false, false);
+            twoTree.SetChildren(
+                twoTree.Root.RightNode.LeftNode.LeftNode,
+                new Card(Card.Number.SIX, Card.Suite.CLUB),
+                new Card(Card.Number.FIVE, Card.Suite.DIAMOND),
+                false,
+                false
+            );
+            twoTree.SetChildren(
+                twoTree.Root.RightNode.LeftNode.RightNode,
+                new Card(Card.Number.FIVE, Card.Suite.HEART),
+                new Card(Card.Number.KING, Card.Suite.HEART),
+                false,
+                false
+            );
 
-            twoTree.SetChildren(twoTree.Root.RightNode.RightNode.LeftNode, new Card(Card.Number.THREE, Card.Suite.SPADE), new Card(Card.Number.KING, Card.Suite.SPADE), false, false);
-            twoTree.SetChildren(twoTree.Root.RightNode.RightNode.RightNode, new Card(Card.Number.JACK, Card.Suite.CLUB), new Card(Card.Number.TWO, Card.Suite.DIAMOND), false, false);
+            twoTree.SetChildren(
+                twoTree.Root.RightNode.RightNode.LeftNode,
+                new Card(Card.Number.THREE, Card.Suite.SPADE),
+                new Card(Card.Number.KING, Card.Suite.SPADE),
+                false,
+                false
+            );
+            twoTree.SetChildren(
+                twoTree.Root.RightNode.RightNode.RightNode,
+                new Card(Card.Number.JACK, Card.Suite.CLUB),
+                new Card(Card.Number.TWO, Card.Suite.DIAMOND),
+                false,
+                false
+            );
         }
 
         /// <summary>
@@ -281,19 +655,16 @@ namespace KTANE_Solver
             {
                 currentNode = ChoosePath(aceTree.Root);
             }
-
             else if (startingCard.number == Card.Number.TWO)
             {
                 currentNode = ChoosePath(twoTree.Root);
             }
-
             else if (startingCard.number == Card.Number.KING)
             {
                 currentNode = ChoosePath(kingTree.Root);
             }
-
             else
-            { 
+            {
                 currentNode = ChoosePath(fiveTree.Root);
             }
 
@@ -354,32 +725,48 @@ namespace KTANE_Solver
             bool aceFound = FindNumber(Card.Number.ACE, hand);
             bool tenFound = FindNumber(Card.Number.TEN, hand);
 
-            if (hand[0].suite == hand[1].suite && hand[0].suite == hand[2].suite 
-                && hand[0].suite == hand[3].suite && hand[0].suite == hand[4].suite && 
-                kingFound && queenFound && jackFound && aceFound && tenFound)
+            if (
+                hand[0].suite == hand[1].suite
+                && hand[0].suite == hand[2].suite
+                && hand[0].suite == hand[3].suite
+                && hand[0].suite == hand[4].suite
+                && kingFound
+                && queenFound
+                && jackFound
+                && aceFound
+                && tenFound
+            )
             {
                 return "Royal Flush";
             }
 
             //straight flush - Five consecutive values of the same suit
-            if (hand[0].suite == hand[1].suite && hand[0].suite == hand[2].suite &&
-                hand[0].suite == hand[3].suite && hand[0].suite == hand[4].suite)
+            if (
+                hand[0].suite == hand[1].suite
+                && hand[0].suite == hand[2].suite
+                && hand[0].suite == hand[3].suite
+                && hand[0].suite == hand[4].suite
+            )
             {
                 //check to see if there is a straight flush noramally
-                if ((int)hand[0].number + 1 == (int)hand[1].number &&
-                   (int)hand[1].number + 1 == (int)hand[2].number &&
-                   (int)hand[2].number + 1 == (int)hand[3].number &&
-                   (int)hand[3].number + 1 == (int)hand[4].number)
+                if (
+                    (int)hand[0].number + 1 == (int)hand[1].number
+                    && (int)hand[1].number + 1 == (int)hand[2].number
+                    && (int)hand[2].number + 1 == (int)hand[3].number
+                    && (int)hand[3].number + 1 == (int)hand[4].number
+                )
                 {
                     return "Straight Flush";
                 }
 
                 //if there is an Ace, check to see if it with the ace being at the bottom
-                if (FindNumber(Card.Number.ACE, hand) &&
-                   (int)hand[0].number + 1 == (int)hand[1].number &&
-                   (int)hand[1].number + 1 == (int)hand[2].number &&
-                   (int)hand[2].number + 1 == (int)hand[3].number)
-                { 
+                if (
+                    FindNumber(Card.Number.ACE, hand)
+                    && (int)hand[0].number + 1 == (int)hand[1].number
+                    && (int)hand[1].number + 1 == (int)hand[2].number
+                    && (int)hand[2].number + 1 == (int)hand[3].number
+                )
+                {
                     return "Straight Flush";
                 }
             }
@@ -415,8 +802,12 @@ namespace KTANE_Solver
             }
 
             //flush - five cards of the same suit
-            if (hand[0].suite == hand[1].suite && hand[0].suite == hand[2].suite &&
-                hand[0].suite == hand[3].suite && hand[0].suite == hand[4].suite)
+            if (
+                hand[0].suite == hand[1].suite
+                && hand[0].suite == hand[2].suite
+                && hand[0].suite == hand[3].suite
+                && hand[0].suite == hand[4].suite
+            )
             {
                 return "Flush";
             }
@@ -424,19 +815,23 @@ namespace KTANE_Solver
             //straight - Five consecutive values of any suit
 
             //check to see if there is a straight noramally
-            if ((int)hand[0].number + 1 == (int)hand[1].number &&
-               (int)hand[1].number + 1 == (int)hand[2].number &&
-               (int)hand[2].number + 1 == (int)hand[3].number &&
-               (int)hand[3].number + 1 == (int)hand[4].number)
+            if (
+                (int)hand[0].number + 1 == (int)hand[1].number
+                && (int)hand[1].number + 1 == (int)hand[2].number
+                && (int)hand[2].number + 1 == (int)hand[3].number
+                && (int)hand[3].number + 1 == (int)hand[4].number
+            )
             {
                 return "Straight";
             }
 
             //if there is an Ace, check to see if it with the ace being at the bottom
-            if (FindNumber(Card.Number.ACE, hand) &&
-               (int)hand[0].number + 1 == (int)hand[1].number &&
-               (int)hand[1].number + 1 == (int)hand[2].number &&
-               (int)hand[2].number + 1 == (int)hand[3].number)
+            if (
+                FindNumber(Card.Number.ACE, hand)
+                && (int)hand[0].number + 1 == (int)hand[1].number
+                && (int)hand[1].number + 1 == (int)hand[2].number
+                && (int)hand[2].number + 1 == (int)hand[3].number
+            )
             {
                 return "Straight";
             }
@@ -499,10 +894,12 @@ namespace KTANE_Solver
                         return "Bluff";
 
                     return "Truth";
-                    
 
                 case "Awful play!":
-                    if (startingCard.number == Card.Number.TWO || startingCard.number == Card.Number.ACE)
+                    if (
+                        startingCard.number == Card.Number.TWO
+                        || startingCard.number == Card.Number.ACE
+                    )
                         return "Bluff";
 
                     return "Truth";
@@ -520,7 +917,10 @@ namespace KTANE_Solver
                     return "Bluff";
 
                 case "Sure about that?":
-                    if (startingCard.number == Card.Number.KING || startingCard.number == Card.Number.FIVE)
+                    if (
+                        startingCard.number == Card.Number.KING
+                        || startingCard.number == Card.Number.FIVE
+                    )
                         return "Bluff";
 
                     return "Truth";
@@ -533,7 +933,6 @@ namespace KTANE_Solver
             }
 
             return "Bluff";
-
         }
 
         /// <summary>
@@ -546,9 +945,12 @@ namespace KTANE_Solver
             switch (betAmount)
             {
                 case 25:
-                    
+
                     //If the first card is red and there is a lit BOB indicator, press the fourth card.
-                    if ((card1.suite == Card.Suite.DIAMOND || card1.suite == Card.Suite.HEART) && Bomb.Bob.Lit)
+                    if (
+                        (card1.suite == Card.Suite.DIAMOND || card1.suite == Card.Suite.HEART)
+                        && Bomb.Bob.Lit
+                    )
                         return 4;
 
                     //Otherwise, if your opponent said "Awful play!" and the starter card was the Ace of Spades, press the first card.
@@ -556,11 +958,17 @@ namespace KTANE_Solver
                         return 1;
 
                     //Otherwise, if there is an unlit FRQ indicator and the fourth card is black, press the second card.
-                    if (Bomb.Frq.VisibleNotLit && (card4.suite == Card.Suite.CLUB || card4.suite == Card.Suite.SPADE))
+                    if (
+                        Bomb.Frq.VisibleNotLit
+                        && (card4.suite == Card.Suite.CLUB || card4.suite == Card.Suite.SPADE)
+                    )
                         return 2;
 
                     //Otherwise, if there is at least one diamond and your opponent said "Really?" or "Really, really?", press the third card.
-                    if (DiamondNum(card1, card2, card3, card4) >= 1 && (response == "Really, really?" || response == "Really?"))
+                    if (
+                        DiamondNum(card1, card2, card3, card4) >= 1
+                        && (response == "Really, really?" || response == "Really?")
+                    )
                         return 3;
 
                     //Otherwise, if the fourth card is a spade and there are more than four batteries, press the third card.
@@ -592,17 +1000,24 @@ namespace KTANE_Solver
                         return 1;
 
                     //Otherwise, if there are no clubs and the starter card was the Two of Clubs, press the third card.
-                    if (ClubNum(card1, card2, card3, card4) == 0 && startingCard.suite == Card.Suite.CLUB)
+                    if (
+                        ClubNum(card1, card2, card3, card4) == 0
+                        && startingCard.suite == Card.Suite.CLUB
+                    )
                         return 3;
 
                     //Otherwise, if a heart appears anywhere above a spade and there are no diamonds press the fourth card.
-                    if (DiamondNum(card1, card2, card3, card4) == 0 && 
-                       ((card1.suite == Card.Suite.HEART && card2.suite == Card.Suite.SPADE) ||
-                        (card1.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE) ||
-                        (card1.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE) ||
-                        (card2.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE) ||
-                        (card2.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE) ||
-                        (card3.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)))
+                    if (
+                        DiamondNum(card1, card2, card3, card4) == 0
+                        && (
+                            (card1.suite == Card.Suite.HEART && card2.suite == Card.Suite.SPADE)
+                            || (card1.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE)
+                            || (card1.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)
+                            || (card2.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE)
+                            || (card2.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)
+                            || (card3.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)
+                        )
+                    )
                         return 4;
 
                     //Otherwise, if the first card is a heart and the starter card was not the King of Hearts, press the second card.
@@ -610,7 +1025,10 @@ namespace KTANE_Solver
                         return 2;
 
                     //Otherwise, if your opponent said "Really, really?" and the first or second card are hearts, press the fourth card.
-                    if(response == "Really, really?" && (card1.suite == Card.Suite.HEART || card2.suite == Card.Suite.HEART))
+                    if (
+                        response == "Really, really?"
+                        && (card1.suite == Card.Suite.HEART || card2.suite == Card.Suite.HEART)
+                    )
                         return 4;
 
                     //Otherwise, if the starter card was the Five of Diamonds and there is a parallel port, press the first card.
@@ -618,7 +1036,12 @@ namespace KTANE_Solver
                         return 1;
 
                     //Otherwise, if there is a lit TRN indicator and there is at least one black card, press the second card.
-                    if (Bomb.Trn.Lit && ClubNum(card1, card2, card3, card4) + SpadeNum(card1, card2, card3, card4) >= 1)
+                    if (
+                        Bomb.Trn.Lit
+                        && ClubNum(card1, card2, card3, card4)
+                            + SpadeNum(card1, card2, card3, card4)
+                            >= 1
+                    )
                         return 2;
 
                     //Otherwise, if your opponent said "Terrible play!", press the third card.
@@ -646,42 +1069,52 @@ namespace KTANE_Solver
                         return 1;
 
                     //Otherwise, if the digits of the serial number add up to a prime number and there is at least one heart, press the fourth card.
-                    if (IsPrime(Bomb.DigitSum) &&
-                            (card1.suite == Card.Suite.HEART ||
-                            card2.suite == Card.Suite.HEART ||
-                            card3.suite == Card.Suite.HEART ||
-                             card4.suite == Card.Suite.HEART))
+                    if (
+                        IsPrime(Bomb.DigitSum)
+                        && (
+                            card1.suite == Card.Suite.HEART
+                            || card2.suite == Card.Suite.HEART
+                            || card3.suite == Card.Suite.HEART
+                            || card4.suite == Card.Suite.HEART
+                        )
+                    )
 
                         return 4;
 
                     //Otherwise, if a club and a spade appear and your opponent said "Sure about that?", press the third card.
-                    if (response == "Sure about that?" &&
-                                ((card1.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE) ||
-                                 (card1.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE) ||
-                                 (card1.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE) ||
-                                 (card2.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE) ||
-                                 (card2.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE) ||
-                                 (card2.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE) ||
-                                 (card3.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE) ||
-                                 (card3.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE) ||
-                                 (card3.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE) ||
-                                 (card4.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE) ||
-                                 (card4.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)))
-                            return 3;
+                    if (
+                        response == "Sure about that?"
+                        && (
+                            (card1.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE)
+                            || (card1.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
+                            || (card1.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
+                            || (card2.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE)
+                            || (card2.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
+                            || (card2.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
+                            || (card3.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE)
+                            || (card3.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE)
+                            || (card3.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
+                            || (card4.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE)
+                            || (card4.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
+                        )
+                    )
+                        return 3;
 
                     //Otherwise, if a club and a spade appear next to each other, press the second card.
-                    if ((card1.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE) ||
-                       (card2.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE) ||
-                       (card3.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE) ||
-                       (card1.suite == Card.Suite.SPADE && card2.suite == Card.Suite.CLUB) ||
-                       (card2.suite == Card.Suite.SPADE && card3.suite == Card.Suite.CLUB) ||
-                       (card3.suite == Card.Suite.SPADE && card4.suite == Card.Suite.CLUB))
+                    if (
+                        (card1.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE)
+                        || (card2.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
+                        || (card3.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
+                        || (card1.suite == Card.Suite.SPADE && card2.suite == Card.Suite.CLUB)
+                        || (card2.suite == Card.Suite.SPADE && card3.suite == Card.Suite.CLUB)
+                        || (card3.suite == Card.Suite.SPADE && card4.suite == Card.Suite.CLUB)
+                    )
                         return 2;
 
                     //Otherwise, if there is an unlit MSA indicator, press the first card.
                     if (Bomb.Msa.Lit)
                         return 1;
-                    
+
                     //Otherwise, if there is at least one diamond, press the third card.
                     if (DiamondNum(card1, card2, card3, card4) >= 1)
                         return 3;
@@ -707,7 +1140,10 @@ namespace KTANE_Solver
                         return 1;
 
                     //Otherwise, if there are no red cards, press the fourth card.
-                    if (HeartNum(card1, card2, card3, card4) == 0 && DiamondNum(card1, card2, card3, card4) == 0)
+                    if (
+                        HeartNum(card1, card2, card3, card4) == 0
+                        && DiamondNum(card1, card2, card3, card4) == 0
+                    )
                         return 4;
 
                     //Otherwise, if your opponent said "Are you sure?", press the fourth card.
@@ -723,7 +1159,11 @@ namespace KTANE_Solver
                         return 2;
 
                     //Otherwise, if your opponent said "Really?" and there are no black cards, press the first card.
-                    if(response == "Really?" && SpadeNum(card1, card2, card3, card4) == 0 && ClubNum(card1, card2, card3, card4) == 0)
+                    if (
+                        response == "Really?"
+                        && SpadeNum(card1, card2, card3, card4) == 0
+                        && ClubNum(card1, card2, card3, card4) == 0
+                    )
                         return 1;
 
                     //Otherwise, if there is more than one D battery, press the third card.
@@ -847,9 +1287,12 @@ namespace KTANE_Solver
 
         public bool IsPrime(int number)
         {
-            if (number <= 1) return false;
-            if (number == 2) return true;
-            if (number % 2 == 0) return false;
+            if (number <= 1)
+                return false;
+            if (number == 2)
+                return true;
+            if (number % 2 == 0)
+                return false;
 
             var boundary = (int)Math.Floor(Math.Sqrt(number));
 
@@ -923,22 +1366,19 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// A helper class for the 
+        /// A helper class for the
         /// </summary>
         public class BinaryTreeNode
         {
             //the card the node will hold
             public Card Data;
 
-            public BinaryTreeNode LeftNode
-            { get; set; }
+            public BinaryTreeNode LeftNode { get; set; }
 
-            public BinaryTreeNode RightNode
-            { get; set; }
+            public BinaryTreeNode RightNode { get; set; }
 
             //the condition on wheter to go left or right
-            public bool Condition
-            { get; set; }
+            public bool Condition { get; set; }
 
             public BinaryTreeNode(Card data, bool condition)
             {
@@ -952,8 +1392,7 @@ namespace KTANE_Solver
         /// </summary>
         public class BinaryTree
         {
-            public BinaryTreeNode Root
-            { get; set; }
+            public BinaryTreeNode Root { get; set; }
 
             public BinaryTree(Card data, bool condition)
             {
@@ -966,7 +1405,13 @@ namespace KTANE_Solver
             /// <param name="parent"></param>
             /// <param name="leftCard"></param>
             /// <param name="rightCard"></param>
-            public void SetChildren(BinaryTreeNode parent, Card leftCard, Card rightCard, bool leftCondition, bool rightCondition)
+            public void SetChildren(
+                BinaryTreeNode parent,
+                Card leftCard,
+                Card rightCard,
+                bool leftCondition,
+                bool rightCondition
+            )
             {
                 parent.LeftNode = new BinaryTreeNode(leftCard, leftCondition);
                 parent.RightNode = new BinaryTreeNode(rightCard, rightCondition);
@@ -978,15 +1423,13 @@ namespace KTANE_Solver
         /// </summary>
         public class Card
         {
-            public Suite suite
-            { get; set; }
+            public Suite suite { get; set; }
 
-            public Number number
-            { get; set; }
+            public Number number { get; set; }
 
             //the suite of the card
             public enum Suite
-            { 
+            {
                 CLUB,
                 DIAMOND,
                 HEART,
@@ -995,7 +1438,7 @@ namespace KTANE_Solver
 
             //the number of the card
             public enum Number
-            { 
+            {
                 ONE,
                 TWO,
                 THREE,
@@ -1012,7 +1455,7 @@ namespace KTANE_Solver
                 ACE
             }
 
-            public Card( Number number, Suite suite)
+            public Card(Number number, Suite suite)
             {
                 this.suite = suite;
                 this.number = number;

@@ -18,14 +18,21 @@ namespace KTANE_Solver
 
     public partial class ColorMathForm : ModuleForm
     {
-        public ColorMathForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm, "Color Math", false)
+        public ColorMathForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Color Math", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -40,12 +47,23 @@ namespace KTANE_Solver
             UpdateRightComboBox(rightComboBox4);
 
             letterTextBox.Text = "";
-
         }
 
         private void UpdateLeftComboBox(ComboBox comboBox)
-        { 
-            String [] colors = new String [] { "Black", "Blue", "Gray", "Green", "Magenta", "Orange", "Purple", "Red", "White", "Yellow"};
+        {
+            String[] colors = new String[]
+            {
+                "Black",
+                "Blue",
+                "Gray",
+                "Green",
+                "Magenta",
+                "Orange",
+                "Purple",
+                "Red",
+                "White",
+                "Yellow"
+            };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(colors);
@@ -55,7 +73,20 @@ namespace KTANE_Solver
 
         private void UpdateRightComboBox(ComboBox comboBox)
         {
-            String[] colors = new String[] { "", "Black", "Blue", "Gray", "Green", "Magenta", "Orange", "Purple", "Red", "White", "Yellow"};
+            String[] colors = new String[]
+            {
+                "",
+                "Black",
+                "Blue",
+                "Gray",
+                "Green",
+                "Magenta",
+                "Orange",
+                "Purple",
+                "Red",
+                "White",
+                "Yellow"
+            };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(colors);
@@ -75,7 +106,6 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             Color left1;
             Color left2;
             Color left3;
@@ -100,9 +130,6 @@ namespace KTANE_Solver
             left3 = (Color)Enum.Parse(typeof(Color), leftComboBox3.Text);
             left4 = (Color)Enum.Parse(typeof(Color), leftComboBox4.Text);
 
-
-
-
             //make sure that the letter text box only has a letter
 
             if (letterTextBox.Text.Length != 1)
@@ -111,16 +138,19 @@ namespace KTANE_Solver
                 return;
             }
 
-            if (!((letterTextBox.Text[0] >= 65 && letterTextBox.Text[0] <= 90) || (letterTextBox.Text[0] >= 97 && letterTextBox.Text[0] <= 122)))
+            if (
+                !(
+                    (letterTextBox.Text[0] >= 65 && letterTextBox.Text[0] <= 90)
+                    || (letterTextBox.Text[0] >= 97 && letterTextBox.Text[0] <= 122)
+                )
+            )
             {
                 ShowErrorMessage("Letter text box can only have 1 letter");
                 return;
             }
 
-
             //capitalize letter
             char letter = letterTextBox.Text.ToUpper()[0];
-
 
             //if not all of the right is filled, assume that the letter is red
 
@@ -132,10 +162,15 @@ namespace KTANE_Solver
                 right2 = (Color)Enum.Parse(typeof(Color), rightComboBox2.Text);
                 right3 = (Color)Enum.Parse(typeof(Color), rightComboBox3.Text);
                 right4 = (Color)Enum.Parse(typeof(Color), rightComboBox4.Text);
-
             }
 
-            ColorMath module = new ColorMath(new Color[] { left1, left2, left3, left4 }, new Color[] { right1, right2, right3, right4 }, letter, Bomb, LogFileWriter);
+            ColorMath module = new ColorMath(
+                new Color[] { left1, left2, left3, left4 },
+                new Color[] { right1, right2, right3, right4 },
+                letter,
+                Bomb,
+                LogFileWriter
+            );
             PrintHeader();
             module.Solve(!filled);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

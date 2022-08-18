@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public class ChordQualities : Module
@@ -21,7 +22,14 @@ namespace KTANE_Solver
         private Note newRoot;
         private string newQuality;
 
-        public ChordQualities(Bomb bomb, StreamWriter logFileWriter, Note note1, Note note2, Note note3, Note note4) : base(bomb, logFileWriter, "Chord Qualities")
+        public ChordQualities(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            Note note1,
+            Note note2,
+            Note note3,
+            Note note4
+        ) : base(bomb, logFileWriter, "Chord Qualities")
         {
             this.note1 = note1;
             this.note2 = note2;
@@ -81,7 +89,6 @@ namespace KTANE_Solver
             PrintDebugLine("New Quality: " + newQuality);
             PrintDebugLine("New Root: " + newRoot + "\n");
 
-
             List<Note> answerList = FindAnswer();
 
             string answer = string.Join(", ", answerList);
@@ -108,7 +115,6 @@ namespace KTANE_Solver
 
             PrintDebugLine("New Quality: " + newQuality);
             PrintDebugLine("New Root: " + newRoot + "\n");
-
 
             List<Note> answerList = FindAnswer();
 
@@ -154,7 +160,6 @@ namespace KTANE_Solver
             note2 = notes[1];
             note3 = notes[2];
             note4 = notes[3];
-
         }
 
         private void FindQualityAndRoot()
@@ -163,7 +168,7 @@ namespace KTANE_Solver
             bool correctQuality = false;
             int startingNote = -1;
 
-            for(int i = 0; i < 12; i++)
+            for (int i = 0; i < 12; i++)
             {
                 quality = qualities[i];
 
@@ -204,7 +209,6 @@ namespace KTANE_Solver
             }
 
             this.currentQuality = quality;
-
         }
 
         private int[] FindGaps(int startingNote)
@@ -214,19 +218,19 @@ namespace KTANE_Solver
             switch (startingNote)
             {
                 case 1:
-                    gaps = new int[] { note2 - note1, note3 - note2, note4 - note3, note4 - note1};
+                    gaps = new int[] { note2 - note1, note3 - note2, note4 - note3, note4 - note1 };
                     break;
 
                 case 2:
-                    gaps = new int[] {note3 - note2, note4 - note3, note4 - note1, note2 - note1};
+                    gaps = new int[] { note3 - note2, note4 - note3, note4 - note1, note2 - note1 };
                     break;
 
                 case 3:
-                    gaps = new int[] {  note4 - note3, note4 - note1, note2 - note1, note3 - note2 };
+                    gaps = new int[] { note4 - note3, note4 - note1, note2 - note1, note3 - note2 };
                     break;
 
                 default:
-                    gaps = new int[] {  note4 - note1, note2 - note1, note3 - note2, note4 - note3 };
+                    gaps = new int[] { note4 - note1, note2 - note1, note3 - note2, note4 - note3 };
                     break;
             }
 
@@ -301,7 +305,7 @@ namespace KTANE_Solver
             }
 
             if (correctQuality)
-            { 
+            {
                 PrintDebugLine("Gaps: " + string.Join(", ", qualityGaps) + "\n");
                 return true;
             }
@@ -412,7 +416,6 @@ namespace KTANE_Solver
 
             answer.Add(newRoot);
 
-
             List<int> indexList = new List<int>();
 
             List<int> gaps = new List<int>();
@@ -443,6 +446,5 @@ namespace KTANE_Solver
 
             return answer;
         }
-
     }
 }

@@ -34,7 +34,15 @@ namespace KTANE_Solver
 
         List<String> directions = new List<string>();
 
-        public RubikCube(Face upFace, Face leftFace, Face frontFace, Face rightFace, Face bottomFace, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Rubik Cube")
+        public RubikCube(
+            Face upFace,
+            Face leftFace,
+            Face frontFace,
+            Face rightFace,
+            Face bottomFace,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "Rubik Cube")
         {
             this.upFace = upFace;
             this.leftFace = leftFace;
@@ -43,7 +51,6 @@ namespace KTANE_Solver
             this.bottomFace = bottomFace;
 
             directions = new List<string>();
-
         }
 
         /// <summary>
@@ -60,7 +67,8 @@ namespace KTANE_Solver
             //figure out if we're getting both moves
 
             //If the R face is red, green or blue, take both moves for each serial number character in order.
-            bool bothMoves = rightFace == Face.RED || rightFace == Face.GREEN || rightFace == Face.BLUE;
+            bool bothMoves =
+                rightFace == Face.RED || rightFace == Face.GREEN || rightFace == Face.BLUE;
 
             //used just in case moves need to be sperated
             List<String> directions2 = new List<string>();
@@ -163,7 +171,6 @@ namespace KTANE_Solver
 
                     PrintDebugLine($"Directions are now: [{string.Join(", ", directions)}]\n");
                 }
-
                 //or put them in sperate lists
                 else
                 {
@@ -178,7 +185,9 @@ namespace KTANE_Solver
             //if moves were taken seperatly, then combine them now
             if (!bothMoves)
             {
-                PrintDebugLine($"Directions are now: [{string.Join(", ", directions)}, {string.Join(", ", directions2)}]\n");
+                PrintDebugLine(
+                    $"Directions are now: [{string.Join(", ", directions)}, {string.Join(", ", directions2)}]\n"
+                );
 
                 directions.AddRange(directions2);
             }
@@ -186,7 +195,9 @@ namespace KTANE_Solver
             //If the R face is red or yellow, change the first five moves to their opposites.
             if (rightFace == Face.RED || rightFace == Face.YELLOW)
             {
-                PrintDebugLine($"Right face is {rightFace}, changing first five moves to their opposite\n");
+                PrintDebugLine(
+                    $"Right face is {rightFace}, changing first five moves to their opposite\n"
+                );
 
                 for (int i = 0; i < 5; i++)
                 {
@@ -195,7 +206,6 @@ namespace KTANE_Solver
 
                 PrintDebugLine($"Directions are now: [{string.Join(", ", directions)}]\n");
             }
-
             //If the R face is green or white, reverse the order of all the moves.
             else if (rightFace == Face.GREEN || rightFace == Face.WHITE)
             {
@@ -222,7 +232,6 @@ namespace KTANE_Solver
 
             String answer = string.Join(", ", directions);
 
-
             PrintDebugLine($"Answer is [{answer}]\n");
 
             ShowAnswer(answer, true);
@@ -246,7 +255,6 @@ namespace KTANE_Solver
 
             //return if move1 is the same as move2 without the '
             return move1 == "" + move2[0];
-
         }
 
         private String GetOppositeMove(String move)
@@ -258,7 +266,6 @@ namespace KTANE_Solver
 
             return move + "'";
         }
-
 
         public int GetStartingRow(char character)
         {
@@ -359,9 +366,6 @@ namespace KTANE_Solver
                 default:
                     return frontFace;
             }
-
-
-
         }
     }
 }

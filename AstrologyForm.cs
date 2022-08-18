@@ -18,8 +18,11 @@ namespace KTANE_Solver
         private String image2Name;
         private String image3Name;
 
-        public AstrologyForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm, "Astrology", false)
+        public AstrologyForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Astrology", false)
         {
             InitializeComponent();
 
@@ -81,10 +84,13 @@ namespace KTANE_Solver
             selectedImageButton1.Click += new EventHandler(DeleteSelection);
             selectedImageButton2.Click += new EventHandler(DeleteSelection);
             selectedImageButton3.Click += new EventHandler(DeleteSelection);
-
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -92,6 +98,7 @@ namespace KTANE_Solver
             selectedImageButton2.Image = null;
             selectedImageButton3.Image = null;
         }
+
         /// <summary>
         /// Gets images from the astrology folder
         /// </summary>
@@ -144,7 +151,13 @@ namespace KTANE_Solver
                 return;
             }
 
-            Astrology module = new Astrology(Bomb, LogFileWriter, image1Name, image2Name, image3Name);
+            Astrology module = new Astrology(
+                Bomb,
+                LogFileWriter,
+                image1Name,
+                image2Name,
+                image3Name
+            );
             module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
@@ -200,7 +213,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Adds the image the user selected as one of the selected 
+        /// Adds the image the user selected as one of the selected
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -213,16 +226,12 @@ namespace KTANE_Solver
 
             string imageName = GetFileName(selectedButton);
 
-
             if (IsElement(imageName) && selectedImageButton1.Image == null)
             {
                 //if there's no element in the element slot, add the selected image there
                 selectedImageButton1.Image = selectedImage;
                 image1Name = imageName;
-
             }
-
-
             //check to see if which slot the image belongs in
             else if (IsPlanet(imageName) && selectedImageButton2.Image == null)
             {
@@ -230,9 +239,7 @@ namespace KTANE_Solver
                 selectedImageButton2.Image = selectedImage;
                 image2Name = imageName;
             }
-
-            
-            else if(IsZodiac(imageName) && selectedImageButton3.Image == null)
+            else if (IsZodiac(imageName) && selectedImageButton3.Image == null)
             {
                 //if there's no zodiac in the zodiac slot, add the selected image there
                 selectedImageButton3.Image = selectedImage;
@@ -317,8 +324,7 @@ namespace KTANE_Solver
             if (selectedButton == virgoButton)
                 return "Virgo";
 
-            
-                return "Water";
+            return "Water";
         }
 
         /// <summary>
@@ -338,7 +344,6 @@ namespace KTANE_Solver
         /// <returns></returns>
         private int SelectedImageNum()
         {
-
             if (selectedImageButton3.Image != null)
                 return 3;
 
@@ -356,9 +361,9 @@ namespace KTANE_Solver
         /// </summary>
         private bool ImageSelected(Image selectedImage)
         {
-            return selectedImageButton1.Image == selectedImage ||
-                   selectedImageButton2.Image == selectedImage ||
-                   selectedImageButton3.Image == selectedImage;
+            return selectedImageButton1.Image == selectedImage
+                || selectedImageButton2.Image == selectedImage
+                || selectedImageButton3.Image == selectedImage;
         }
     }
 }

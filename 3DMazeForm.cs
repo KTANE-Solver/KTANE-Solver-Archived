@@ -19,22 +19,28 @@ namespace KTANE_Solver
     {
         private _3DMaze module;
 
-        public _3DMaze Module { get { return module; } }
-
+        public _3DMaze Module
+        {
+            get { return module; }
+        }
 
         //if the user is currently facing a wall
         private bool facingWall;
 
         private _3DMazeStage2Form secondStage;
 
-        public _3DMazeForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFile, moduleSelectionForm, "3D Maze", false)
+        public _3DMazeForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
+            : base(bomb, logFile, moduleSelectionForm, "3D Maze", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFile, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFile,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             mazeTextBox.Text = "";
             pathTextBox.Text = "";
@@ -48,7 +54,6 @@ namespace KTANE_Solver
 
             string mazeText = mazeTextBox.Text.ToUpper();
 
-
             //maze can only have 3 letters
             if (mazeText.Length != 3)
             {
@@ -57,16 +62,18 @@ namespace KTANE_Solver
             }
 
             //make sure maze given is valid
-            if (!(mazeText.Contains('A') && mazeText.Contains('B') && mazeText.Contains('C')) &&
-                !(mazeText.Contains('A') && mazeText.Contains('B') && mazeText.Contains('D')) &&
-                !(mazeText.Contains('A') && mazeText.Contains('B') && mazeText.Contains('H')) &&
-                !(mazeText.Contains('A') && mazeText.Contains('C') && mazeText.Contains('D')) &&
-                !(mazeText.Contains('A') && mazeText.Contains('C') && mazeText.Contains('H')) &&
-                !(mazeText.Contains('A') && mazeText.Contains('D') && mazeText.Contains('H')) &&
-                !(mazeText.Contains('B') && mazeText.Contains('C') && mazeText.Contains('D')) &&
-                !(mazeText.Contains('B') && mazeText.Contains('C') && mazeText.Contains('H')) &&
-                !(mazeText.Contains('B') && mazeText.Contains('D') && mazeText.Contains('H')) &&
-                !(mazeText.Contains('C') && mazeText.Contains('D') && mazeText.Contains('H')))
+            if (
+                !(mazeText.Contains('A') && mazeText.Contains('B') && mazeText.Contains('C'))
+                && !(mazeText.Contains('A') && mazeText.Contains('B') && mazeText.Contains('D'))
+                && !(mazeText.Contains('A') && mazeText.Contains('B') && mazeText.Contains('H'))
+                && !(mazeText.Contains('A') && mazeText.Contains('C') && mazeText.Contains('D'))
+                && !(mazeText.Contains('A') && mazeText.Contains('C') && mazeText.Contains('H'))
+                && !(mazeText.Contains('A') && mazeText.Contains('D') && mazeText.Contains('H'))
+                && !(mazeText.Contains('B') && mazeText.Contains('C') && mazeText.Contains('D'))
+                && !(mazeText.Contains('B') && mazeText.Contains('C') && mazeText.Contains('H'))
+                && !(mazeText.Contains('B') && mazeText.Contains('D') && mazeText.Contains('H'))
+                && !(mazeText.Contains('C') && mazeText.Contains('D') && mazeText.Contains('H'))
+            )
             {
                 ShowErrorMessage("Unaable to find correct maze");
                 return;
@@ -87,7 +94,17 @@ namespace KTANE_Solver
 
             foreach (char c in pathText)
             {
-                if (c != '*' && c != '?' && c != 'N' && c != 'E' && c != 'S' && c != 'W' && c != mazeLetters[0] && c != mazeLetters[1] && c != mazeLetters[2])
+                if (
+                    c != '*'
+                    && c != '?'
+                    && c != 'N'
+                    && c != 'E'
+                    && c != 'S'
+                    && c != 'W'
+                    && c != mazeLetters[0]
+                    && c != mazeLetters[1]
+                    && c != mazeLetters[2]
+                )
                 {
                     ShowErrorMessage("Path has at least one invalid character: " + c);
                     return;
@@ -102,13 +119,12 @@ namespace KTANE_Solver
             {
                 PrintDebugLine("while facing wall\n");
             }
-
             else
             {
-                PrintDebugLine("while not facing wall\n"); 
+                PrintDebugLine("while not facing wall\n");
             }
 
-            List<int[]>possiblePaths = ValidPathText(pathText, module);
+            List<int[]> possiblePaths = ValidPathText(pathText, module);
 
             //print all possilbe locations
             PrintDebugLine("Possible locations:");
@@ -133,9 +149,11 @@ namespace KTANE_Solver
                         break;
                 }
 
-                PrintDebugLine($"Location [{possibleLocation[0]},{possibleLocation[1]}] Direction: {direction}");
+                PrintDebugLine(
+                    $"Location [{possibleLocation[0]},{possibleLocation[1]}] Direction: {direction}"
+                );
             }
-            
+
             PrintDebugLine("");
 
             if (possiblePaths.Count == 0)
@@ -143,9 +161,8 @@ namespace KTANE_Solver
                 ShowErrorMessage("Unable to find any paths");
                 return;
             }
-
             else if (possiblePaths.Count != 1)
-            { 
+            {
                 ShowErrorMessage("Found multiple paths");
                 return;
             }
@@ -165,7 +182,6 @@ namespace KTANE_Solver
 
             this.Hide();
 
-
             secondStage = new _3DMazeStage2Form(Bomb, LogFileWriter, ModuleSelectionForm, this);
 
             secondStage.Show();
@@ -180,28 +196,36 @@ namespace KTANE_Solver
                 //verify that start's north has south set to start
                 if (start.North != null && start.North.South != start)
                 {
-                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.North.Row},{start.North.Colunm}\n");
+                    PrintDebugLine(
+                        $"Inconsistencies at {start.Row},{start.Colunm} and {start.North.Row},{start.North.Colunm}\n"
+                    );
                     counter++;
                 }
 
                 //verify that start's south has north set to start
-                if (start.South != null && start.South.North!= start)
+                if (start.South != null && start.South.North != start)
                 {
-                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.South.Row},{start.South.Colunm}\n");
+                    PrintDebugLine(
+                        $"Inconsistencies at {start.Row},{start.Colunm} and {start.South.Row},{start.South.Colunm}\n"
+                    );
                     counter++;
                 }
 
                 //verify that start's east has west set to start
                 if (start.East != null && start.East.West != start)
                 {
-                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.East.Row},{start.East.Colunm}\n");
+                    PrintDebugLine(
+                        $"Inconsistencies at {start.Row},{start.Colunm} and {start.East.Row},{start.East.Colunm}\n"
+                    );
                     counter++;
                 }
 
                 //verify that start's west has east set to start
                 if (start.West != null && start.West.East != start)
                 {
-                    PrintDebugLine($"Inconsistencies at {start.Row},{start.Colunm} and {start.West.Row},{start.West.Colunm}\n");
+                    PrintDebugLine(
+                        $"Inconsistencies at {start.Row},{start.Colunm} and {start.West.Row},{start.West.Colunm}\n"
+                    );
                     counter++;
                 }
             }
@@ -210,14 +234,12 @@ namespace KTANE_Solver
             {
                 PrintDebugLine("No inconsistencies found\n");
             }
-
         }
 
         private void PrintDebugInfo()
-        { 
-            foreach(_3DMaze.Node start in module.Maze)
+        {
+            foreach (_3DMaze.Node start in module.Maze)
             {
-
                 PrintDebugLine("Start: " + GetNodeInformation(start));
 
                 if (start.North != null)
@@ -241,9 +263,7 @@ namespace KTANE_Solver
                 }
 
                 PrintDebugLine("");
-                
             }
-
         }
 
         private string GetNodeInformation(_3DMaze.Node node)
@@ -264,7 +284,6 @@ namespace KTANE_Solver
         /// <returns>All of the possible paths</returns>
         private List<int[]> ValidPathText(string path, _3DMaze module)
         {
-
             string newPath = "";
 
             //convert all N, E, S, W to *
@@ -276,13 +295,11 @@ namespace KTANE_Solver
                 {
                     newPath += "*";
                 }
-
                 //convert all ? to .
                 else if (c == '?')
                 {
                     newPath += ".";
                 }
-
                 else
                 {
                     newPath += c;
@@ -294,11 +311,11 @@ namespace KTANE_Solver
             //first digit: ending row (where the user is now)
             //second digit: ending column (where the user is now)
             //third digit: which direction the user is facing
-                //0 - north
-                //1 - east
-                //2 - south
-                //3 - west
-            List<int []> possiblePaths = new List<int[]> ();
+            //0 - north
+            //1 - east
+            //2 - south
+            //3 - west
+            List<int[]> possiblePaths = new List<int[]>();
 
             //find where user can start
             for (int row = 0; row < 8; row++)
@@ -324,19 +341,23 @@ namespace KTANE_Solver
                                 newRow += 8;
                             }
 
-                            possiblePaths.Add(new int[3] { newRow, col , 0 });
+                            possiblePaths.Add(new int[3] { newRow, col, 0 });
                         }
 
                         //East
                         if (EastValid(newPath, row, col))
-                        { 
-                            possiblePaths.Add(new int[3] {row, (col + (newPath.Length - 1)) % 8, 1 });
+                        {
+                            possiblePaths.Add(
+                                new int[3] { row, (col + (newPath.Length - 1)) % 8, 1 }
+                            );
                         }
 
                         //South
                         if (SouthValid(newPath, row, col))
                         {
-                            possiblePaths.Add(new int[3] { (row + (newPath.Length - 1)) % 8, col, 2 });
+                            possiblePaths.Add(
+                                new int[3] { (row + (newPath.Length - 1)) % 8, col, 2 }
+                            );
                         }
 
                         //West
@@ -351,7 +372,6 @@ namespace KTANE_Solver
 
                             possiblePaths.Add(new int[3] { row, newCol, 3 });
                         }
-
                     }
                 }
             }
@@ -360,9 +380,8 @@ namespace KTANE_Solver
             return possiblePaths;
         }
 
-
         /// <summary>
-        /// Tells if node has the targeted caracter 
+        /// Tells if node has the targeted caracter
         /// </summary>
         /// <param name="node"></param>
         /// <param name="target"></param>
@@ -400,7 +419,7 @@ namespace KTANE_Solver
                 }
 
                 //check to see if neighbor characters match
-                if(!CharacterMatch(neighbor, path[i]))
+                if (!CharacterMatch(neighbor, path[i]))
                 {
                     return false;
                 }

@@ -17,8 +17,8 @@ namespace KTANE_Solver
     /// </summary>
     public partial class BinaryPuzzleForm : ModuleForm
     {
-        public BinaryPuzzleForm(ModuleSelectionForm moduleSelection, StreamWriter logFileWriter) 
-        : base (null, logFileWriter, moduleSelection, "Binary Puzzle", false)
+        public BinaryPuzzleForm(ModuleSelectionForm moduleSelection, StreamWriter logFileWriter)
+            : base(null, logFileWriter, moduleSelection, "Binary Puzzle", false)
         {
             InitializeComponent();
 
@@ -64,9 +64,7 @@ namespace KTANE_Solver
             row6button5.Click += Tile_Click;
             row6button6.Click += Tile_Click;
 
- 
             UpdateForm(moduleSelection, logFileWriter);
-
         }
 
         public void UpdateForm(ModuleSelectionForm moduleSelection, StreamWriter logFileWriter)
@@ -125,12 +123,10 @@ namespace KTANE_Solver
             {
                 button.BackColor = Color.Red;
             }
-
             else if (button.BackColor == Color.Red)
             {
                 button.BackColor = Color.Green;
             }
-
             else
             {
                 button.BackColor = Color.White;
@@ -190,18 +186,14 @@ namespace KTANE_Solver
             grid[5, 4] = GetInput(row6button5);
             grid[5, 5] = GetInput(row6button6);
 
-
-
             BinaryPuzzle module = new BinaryPuzzle(grid, LogFileWriter);
 
             grid = module.Solve();
-
 
             if (grid == null)
             {
                 ShowErrorMessage("Unable to solve");
             }
-
             else
             {
                 BinaryPuzzleAnswerForm answerForm = new BinaryPuzzleAnswerForm(grid, LogFileWriter);
@@ -216,15 +208,12 @@ namespace KTANE_Solver
             {
                 return '-';
             }
-
             else if (button.BackColor == Color.Red)
             {
                 return '0';
-
             }
 
             return '1';
-
         }
     }
 }

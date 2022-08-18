@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -29,7 +30,6 @@ namespace KTANE_Solver
         public string MainCardinalGoal { get; set; }
 
         public string SecondaryCardinalGoal { get; set; }
-
 
         //the letters that are used to differentiate the maze
         public char[] mazeLetters;
@@ -148,7 +148,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, 'C', Walls.South);
                 Maze[7, 7] = new Node(7, 7, '.', Walls.North);
             }
-
             else if (str.Contains('A') && str.Contains('B') && str.Contains('D'))
             {
                 mazeLetters = new char[3] { 'A', 'B', 'D' };
@@ -225,7 +224,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.South);
                 Maze[7, 7] = new Node(7, 7, 'B', Walls.South);
             }
-
             else if (str.Contains('A') && str.Contains('B') && str.Contains('H'))
             {
                 mazeLetters = new char[3] { 'A', 'B', 'H' };
@@ -302,7 +300,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.SouthEast);
                 Maze[7, 7] = new Node(7, 7, '.', Walls.SouthWest);
             }
-
             else if (str.Contains('A') && str.Contains('C') && str.Contains('D'))
             {
                 mazeLetters = new char[3] { 'A', 'C', 'D' };
@@ -379,7 +376,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.SouthWest);
                 Maze[7, 7] = new Node(7, 7, '.', Walls.SouthEast);
             }
-
             else if (str.Contains('A') && str.Contains('C') && str.Contains('H'))
             {
                 mazeLetters = new char[3] { 'A', 'C', 'H' };
@@ -455,9 +451,7 @@ namespace KTANE_Solver
                 Maze[7, 5] = new Node(7, 5, '.', Walls.SouthEast);
                 Maze[7, 6] = new Node(7, 6, '.', Walls.NorthWest);
                 Maze[7, 7] = new Node(7, 7, '.', Walls.North);
-
             }
-
             else if (str.Contains('A') && str.Contains('D') && str.Contains('H'))
             {
                 mazeLetters = new char[3] { 'A', 'D', 'H' };
@@ -534,7 +528,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.East);
                 Maze[7, 7] = new Node(7, 7, '.', Walls.SouthU);
             }
-
             else if (str.Contains('B') && str.Contains('C') && str.Contains('D'))
             {
                 mazeLetters = new char[3] { 'B', 'C', 'D' };
@@ -611,7 +604,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.SouthEast);
                 Maze[7, 7] = new Node(7, 7, '.', Walls.NorthWest);
             }
-
             else if (str.Contains('B') && str.Contains('C') && str.Contains('H'))
             {
                 mazeLetters = new char[3] { 'B', 'C', 'H' };
@@ -688,7 +680,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.WestU);
                 Maze[7, 7] = new Node(7, 7, 'B', Walls.South);
             }
-
             else if (str.Contains('B') && str.Contains('D') && str.Contains('H'))
             {
                 mazeLetters = new char[3] { 'B', 'D', 'H' };
@@ -765,7 +756,6 @@ namespace KTANE_Solver
                 Maze[7, 6] = new Node(7, 6, '.', Walls.NorthWest);
                 Maze[7, 7] = new Node(7, 7, '.', Walls.Horizontal);
             }
-
             //CDH maze
             else
             {
@@ -846,12 +836,10 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Using {mazeLetters[0]}{mazeLetters[1]}{mazeLetters[2]} Maze\n");
 
-
             foreach (Node node in Maze)
             {
                 node.SetMazeConnection(node.Wall, Maze);
             }
-
         }
 
         public void PrintGrid()
@@ -874,24 +862,20 @@ namespace KTANE_Solver
 
                 for (int column = 0; column < 16; column++)
                 {
-                    if (row == 5 && column == 0)
-                    { }
+                    if (row == 5 && column == 0) { }
                     //printing the north walls
 
                     if (row % 2 == 0)
                     {
-
                         if (column % 2 == 0)
                         {
                             PrintDebug(" ");
                         }
-
                         else
                         {
                             PrintNorthWall(Maze[row / 2, column / 2]);
                         }
                     }
-
                     //printing west walls or letters
                     else
                     {
@@ -904,7 +888,6 @@ namespace KTANE_Solver
                         {
                             PrintWestWall(Maze[row / 2, (column + 1) / 2]);
                         }
-
                         else
                         {
                             PrintDebug("" + Maze[row / 2, column / 2].Character);
@@ -922,7 +905,6 @@ namespace KTANE_Solver
             {
                 PrintDebug("-");
             }
-
             else
             {
                 PrintDebug(" ");
@@ -935,7 +917,6 @@ namespace KTANE_Solver
             {
                 PrintDebug("|");
             }
-
             else
             {
                 PrintDebug(" ");
@@ -985,7 +966,6 @@ namespace KTANE_Solver
 
             return column % 8;
         }
-
 
         /// <summary>
         /// Tells in an indicator is going to be used to find the goal
@@ -1050,7 +1030,6 @@ namespace KTANE_Solver
                 }
             }
 
-
             //set up the maze to find smallest path from where the user started
             Dijkstra(PlayerPosition);
 
@@ -1066,11 +1045,10 @@ namespace KTANE_Solver
                 answer = "Stay where you are";
             }
 
-
-            PrintDebugLine($"Closest Cardinal is at [{smallestDistanceCardianl.Row},{smallestDistanceCardianl.Colunm}]");
-            PrintDebugLine($"Direction to cardinal: {answer}\n" +
-                $"" +
-                $"");
+            PrintDebugLine(
+                $"Closest Cardinal is at [{smallestDistanceCardianl.Row},{smallestDistanceCardianl.Colunm}]"
+            );
+            PrintDebugLine($"Direction to cardinal: {answer}\n" + $"" + $"");
 
             ShowAnswer(answer, true);
         }
@@ -1117,7 +1095,6 @@ namespace KTANE_Solver
                 {
                     SecondaryGoal = Maze[7, MainGoal.Colunm];
                 }
-
                 else
                 {
                     SecondaryGoal = Maze[MainGoal.Row - 1, MainGoal.Colunm];
@@ -1125,14 +1102,12 @@ namespace KTANE_Solver
 
                 SecondaryCardinalGoal = "SOUTH";
             }
-
             else if (MainCardinalGoal == "EAST")
             {
                 if (MainGoal.Colunm == 7)
                 {
                     SecondaryGoal = Maze[MainGoal.Row, 0];
                 }
-
                 else
                 {
                     SecondaryGoal = Maze[MainGoal.Row, MainGoal.Colunm + 1];
@@ -1140,14 +1115,12 @@ namespace KTANE_Solver
 
                 SecondaryCardinalGoal = "WEST";
             }
-
             else if (MainCardinalGoal == "SOUTH")
             {
                 if (MainGoal.Row == 7)
                 {
                     SecondaryGoal = Maze[0, MainGoal.Colunm];
                 }
-
                 else
                 {
                     SecondaryGoal = Maze[MainGoal.Row + 1, MainGoal.Colunm];
@@ -1155,14 +1128,12 @@ namespace KTANE_Solver
 
                 SecondaryCardinalGoal = "NORTH";
             }
-
             else
             {
                 if (MainGoal.Colunm == 0)
                 {
                     SecondaryGoal = Maze[MainGoal.Row, 7];
                 }
-
                 else
                 {
                     SecondaryGoal = Maze[MainGoal.Row, MainGoal.Colunm - 1];
@@ -1170,8 +1141,6 @@ namespace KTANE_Solver
 
                 SecondaryCardinalGoal = "EAST";
             }
-
-
         }
 
         /// <summary>
@@ -1199,7 +1168,6 @@ namespace KTANE_Solver
 
             int secondaryGoalDistance = FindDistance(PlayerPosition, SecondaryGoal);
 
-
             bool usingMainGoal = mainGoalDistance <= secondaryGoalDistance;
 
             PrintDebugLine("Main Goal Distance: " + mainGoalDistance);
@@ -1210,14 +1178,11 @@ namespace KTANE_Solver
                 PrintDebugLine("Using main goal\n");
                 SolveMaze(MainGoal, MainCardinalGoal);
             }
-
             else
             {
                 PrintDebugLine("Using secondary goal\n");
                 SolveMaze(SecondaryGoal, SecondaryCardinalGoal);
             }
-
-
         }
 
         /// <summary>
@@ -1226,8 +1191,8 @@ namespace KTANE_Solver
         /// <param name="goal"></param>
         /// <param name="cardinal"></param>
         private void SolveMaze(Node goal, string cardinal)
-        { 
-            List<string>answerList = FindPath(PlayerPosition, goal, false);
+        {
+            List<string> answerList = FindPath(PlayerPosition, goal, false);
 
             //update player position
             PlayerPosition = goal;
@@ -1252,17 +1217,14 @@ namespace KTANE_Solver
                     PlayerPosition = PlayerPosition.North;
                 }
             }
-
             else if (cardinal == "EAST")
             {
                 while (PlayerPosition.East != null)
                 {
                     additionalDirections.Add("Forward");
                     PlayerPosition = PlayerPosition.East;
-
                 }
             }
-
             else if (cardinal == "SOUTH")
             {
                 while (PlayerPosition.South != null)
@@ -1271,7 +1233,6 @@ namespace KTANE_Solver
                     PlayerPosition = PlayerPosition.South;
                 }
             }
-
             else
             {
                 while (PlayerPosition.West != null)
@@ -1283,7 +1244,6 @@ namespace KTANE_Solver
 
             //go Forward one more time to run into wall
             additionalDirections.Add("Forward");
-
 
             //simplfy these set of directions
             additionalDirections = SimplifyDirections(additionalDirections, false);
@@ -1302,9 +1262,7 @@ namespace KTANE_Solver
             PrintDebugLine("Directions to goal: " + fullAnswer + "\n");
 
             ShowAnswer(fullAnswer, true);
-
         }
-
 
         /// <summary>
         /// Finds the distance between two nodes
@@ -1332,7 +1290,7 @@ namespace KTANE_Solver
 
                 case 2:
                     return "SOUTH";
-                
+
                 default:
                     return "WEST";
             }
@@ -1367,8 +1325,8 @@ namespace KTANE_Solver
         }
 
         private void PrintDirectionList(List<Node> directions)
-        { 
-            foreach(Node n in directions)
+        {
+            foreach (Node n in directions)
             {
                 PrintDebug($"[{n.Row},{n.Colunm}] ");
             }
@@ -1402,7 +1360,6 @@ namespace KTANE_Solver
                     {
                         newDirections.Add("Forward");
                     }
-
                     else
                     {
                         while (PlayerDirection != "NORTH")
@@ -1414,7 +1371,6 @@ namespace KTANE_Solver
                         newDirections.Add("Forward");
                     }
                 }
-
                 //East
                 else if (currentNode.East == directions[currentNodeIndex + 1])
                 {
@@ -1422,7 +1378,6 @@ namespace KTANE_Solver
                     {
                         newDirections.Add("Forward");
                     }
-
                     else
                     {
                         while (PlayerDirection != "EAST")
@@ -1434,7 +1389,6 @@ namespace KTANE_Solver
                         newDirections.Add("Forward");
                     }
                 }
-
                 //South
                 else if (currentNode.South == directions[currentNodeIndex + 1])
                 {
@@ -1442,7 +1396,6 @@ namespace KTANE_Solver
                     {
                         newDirections.Add("Forward");
                     }
-
                     else
                     {
                         while (PlayerDirection != "SOUTH")
@@ -1454,7 +1407,6 @@ namespace KTANE_Solver
                         newDirections.Add("Forward");
                     }
                 }
-
                 //West
                 else
                 {
@@ -1462,7 +1414,6 @@ namespace KTANE_Solver
                     {
                         newDirections.Add("Forward");
                     }
-
                     else
                     {
                         while (PlayerDirection != "WEST")
@@ -1474,7 +1425,6 @@ namespace KTANE_Solver
                         newDirections.Add("Forward");
                     }
                 }
-
 
                 currentNode = directions[currentNodeIndex + 1];
             }
@@ -1553,7 +1503,6 @@ namespace KTANE_Solver
             }
         }
 
-
         /// <summary>
         /// Finds shortest distance of each Node from the starting Node
         /// </summary>
@@ -1582,7 +1531,6 @@ namespace KTANE_Solver
 
             //find a list of all the unvistedRooms
             List<Node> unvistedNodes = FindAllUnvistedNodes();
-
 
             while (unvistedNodes.Count != 0)
             {
@@ -1617,30 +1565,22 @@ namespace KTANE_Solver
 
                 smallestDistanceNode.Visted = true;
 
-
                 //remove the node with the smallest distance
                 unvistedNodes.Remove(smallestDistanceNode);
             }
-
-
-
-
-
-
         }
 
         private List<Node> FindAllUnvistedNodes()
         {
             List<Node> unvistedNodes = new List<Node>();
 
-                foreach(Node node in Maze)
+            foreach (Node node in Maze)
+            {
+                if (!node.Visted)
                 {
-                    if (!node.Visted)
-                    {
-                        unvistedNodes.Add(node);
-                    }
+                    unvistedNodes.Add(node);
                 }
-            
+            }
 
             return unvistedNodes;
         }
@@ -1727,10 +1667,13 @@ namespace KTANE_Solver
             /// </summary>
             /// <param name="wall">What type of wall is around the node</param>
             /// <param name="maze">The maze the user is in</param>
-            /// 
+            ///
             public void SetMazeConnection(Walls wall, Node[,] maze)
             {
-                bool north, east, south, west;
+                bool north,
+                    east,
+                    south,
+                    west;
                 switch (wall)
                 {
                     case Walls.North:
@@ -1845,7 +1788,6 @@ namespace KTANE_Solver
                     {
                         North = maze[7, Colunm];
                     }
-
                     else
                     {
                         North = maze[Row - 1, Colunm];
@@ -1858,7 +1800,6 @@ namespace KTANE_Solver
                     {
                         East = maze[Row, 0];
                     }
-
                     else
                     {
                         East = maze[Row, Colunm + 1];
@@ -1871,7 +1812,6 @@ namespace KTANE_Solver
                     {
                         South = maze[0, Colunm];
                     }
-
                     else
                     {
                         South = maze[Row + 1, Colunm];
@@ -1884,14 +1824,12 @@ namespace KTANE_Solver
                     {
                         West = maze[Row, 7];
                     }
-
                     else
                     {
                         West = maze[Row, Colunm - 1];
                     }
                 }
             }
-
         }
     }
 }

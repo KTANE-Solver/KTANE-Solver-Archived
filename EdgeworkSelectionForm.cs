@@ -11,13 +11,11 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 2/27/21
-    /// Purpose: Used to prompt the user if they want to get 
-    ///          the edgework from the Edgework.txt or type 
+    /// Purpose: Used to prompt the user if they want to get
+    ///          the edgework from the Edgework.txt or type
     ///          it in manually
     /// </summary>
     public partial class EdgeworkSelectionForm : Form
@@ -26,7 +24,15 @@ namespace KTANE_Solver
         bool validPref = false;
 
         //default Maze Colors
-        Color[] defaultMazeColors = {Color.Blue, Color.Green, Color.White, Color.Red, Color.Yellow, Color.Orange };
+        Color[] defaultMazeColors =
+        {
+            Color.Blue,
+            Color.Green,
+            Color.White,
+            Color.Red,
+            Color.Yellow,
+            Color.Orange
+        };
 
         //preference maze Colors
         Color[] mazeColors;
@@ -47,15 +53,18 @@ namespace KTANE_Solver
             logFileWriter = new StreamWriter("LogFile.txt");
             logFileWriter.AutoFlush = true;
 
-            logFileWriter.WriteLine("======================EDGEWORK SELECTION======================");
-            System.Diagnostics.Debug.WriteLine("======================EDGEWORK SELECTION======================");
+            logFileWriter.WriteLine(
+                "======================EDGEWORK SELECTION======================"
+            );
+            System.Diagnostics.Debug.WriteLine(
+                "======================EDGEWORK SELECTION======================"
+            );
             EnablePreferences();
 
             if (validPref)
             {
                 bombMazeColors = mazeColors;
             }
-
             else
             {
                 bombMazeColors = defaultMazeColors;
@@ -67,8 +76,12 @@ namespace KTANE_Solver
         /// </summary>
         private void automaticButton_Click(object sender, EventArgs e)
         {
-            logFileWriter.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
-            System.Diagnostics.Debug.WriteLine("User chose to autmoatically get edgework. Reading Edgework.txt...\n");
+            logFileWriter.WriteLine(
+                "User chose to autmoatically get edgework. Reading Edgework.txt...\n"
+            );
+            System.Diagnostics.Debug.WriteLine(
+                "User chose to autmoatically get edgework. Reading Edgework.txt...\n"
+            );
 
             Day day = Day.Sunday;
 
@@ -166,14 +179,12 @@ namespace KTANE_Solver
 
                             bob = new Indicator("BOB", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
 
-
-                            errorString = $"Can't read bob. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
-
+                            errorString =
+                                $"Can't read bob. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -189,11 +200,11 @@ namespace KTANE_Solver
 
                             car = new Indicator("CAR", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read car. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read car. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
                         break;
 
@@ -209,11 +220,11 @@ namespace KTANE_Solver
 
                             clr = new Indicator("CLR", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read clr. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read clr. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -230,11 +241,11 @@ namespace KTANE_Solver
 
                             frk = new Indicator("FRK", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read frk. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read frk. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -250,11 +261,11 @@ namespace KTANE_Solver
 
                             frq = new Indicator("FRQ", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read frq. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read frq. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -271,11 +282,11 @@ namespace KTANE_Solver
 
                             ind = new Indicator("IND", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read ind. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read ind. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -292,11 +303,11 @@ namespace KTANE_Solver
 
                             msa = new Indicator("MSA", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read msa. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read msa. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -313,11 +324,11 @@ namespace KTANE_Solver
 
                             nsa = new Indicator("NSA", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read nsa. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read nsa. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -334,11 +345,11 @@ namespace KTANE_Solver
 
                             sig = new Indicator("SIG", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read sig. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read sig. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
 
                         break;
@@ -355,13 +366,12 @@ namespace KTANE_Solver
 
                             snd = new Indicator("SND", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read snd. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read snd. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
-
 
                         break;
 
@@ -377,13 +387,12 @@ namespace KTANE_Solver
 
                             trn = new Indicator("TRN", visible, lit);
                         }
-
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read trn. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
+                            errorString =
+                                $"Can't read trn. Read {indicatorInfo[0]} for visiblity and {indicatorInfo[1]} for lit";
                         }
-
 
                         break;
 
@@ -393,7 +402,6 @@ namespace KTANE_Solver
                         {
                             emptyPortPlate = bool.Parse(currentLine);
                         }
-
                         catch
                         {
                             errorReached = true;
@@ -411,7 +419,6 @@ namespace KTANE_Solver
                         }
 
                         break;
-
 
                     //Port dvid
                     case 18:
@@ -454,7 +461,7 @@ namespace KTANE_Solver
                         ps = new Port("PS/2", portNum);
 
                         break;
-                        
+
                     //Port rj-45
                     case 21:
                         errorReached = !Int32.TryParse(currentLine, out portNum);
@@ -493,7 +500,6 @@ namespace KTANE_Solver
                         stereo = new Port("Stero RCA", portNum);
 
                         break;
-
                 }
 
                 if (errorReached)
@@ -522,7 +528,11 @@ namespace KTANE_Solver
                         hasLetter = true;
                     }
 
-                    if (i == serialNumber.Length - 1 && serialNumber[i] >= 48 && serialNumber[i] <= 57)
+                    if (
+                        i == serialNumber.Length - 1
+                        && serialNumber[i] >= 48
+                        && serialNumber[i] <= 57
+                    )
                     {
                         lastCharIsNum = true;
                     }
@@ -532,14 +542,17 @@ namespace KTANE_Solver
                 {
                     errorReached = true;
                     logFileWriter.WriteLine(serialNumber + " is not a valid serial number");
-                    System.Diagnostics.Debug.WriteLine(serialNumber + " is not a valid serial number");
+                    System.Diagnostics.Debug.WriteLine(
+                        serialNumber + " is not a valid serial number"
+                    );
                 }
 
                 //make sure the number of batteries is at least the same number of holders or at most twice
                 if (!errorReached && battery < batteryHolder || battery > batteryHolder * 2)
                 {
                     errorReached = true;
-                    errorString = $"Invalid batteries and battery holders. Battery Count: {battery}. Battery Holder Count: {batteryHolder}";
+                    errorString =
+                        $"Invalid batteries and battery holders. Battery Count: {battery}. Battery Holder Count: {batteryHolder}";
                 }
 
                 //make sure each indicator is valid
@@ -623,33 +636,62 @@ namespace KTANE_Solver
                     errorString = "Can't have no port plates but still have an empty port plate";
                 }
             }
-            
-            
 
             //if there is an error tell the user that and send them to the manually
             if (errorReached)
             {
-                logFileWriter.WriteLine($"Unable to read edgework. {errorString}. Sending user to manual edgework input\n");
-                System.Diagnostics.Debug.WriteLine($"Unable to read edgework. {errorString}. Sending user to manual edgework input\n");
+                logFileWriter.WriteLine(
+                    $"Unable to read edgework. {errorString}. Sending user to manual edgework input\n"
+                );
+                System.Diagnostics.Debug.WriteLine(
+                    $"Unable to read edgework. {errorString}. Sending user to manual edgework input\n"
+                );
 
-                MessageBox.Show("There was an error reading Egdework.txt. Try manually inputting the edgework",
-                                "Error Reading Edgework.txt",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "There was an error reading Egdework.txt. Try manually inputting the edgework",
+                    "Error Reading Edgework.txt",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
 
                 inputForm = new EdgeworkInputForm(logFileWriter);
                 this.Hide();
                 inputForm.Show();
             }
-
             //otherwise go to the edgework confirmation form
             else
             {
-                Bomb bomb = new Bomb(day, serialNumber, battery, batteryHolder, 
-                                    bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, 
-                                    emptyPortPlate, portPlateNum, dvid, parallel, ps, rj, serial, stereo);
+                Bomb bomb = new Bomb(
+                    day,
+                    serialNumber,
+                    battery,
+                    batteryHolder,
+                    bob,
+                    car,
+                    clr,
+                    frk,
+                    frq,
+                    ind,
+                    msa,
+                    nsa,
+                    sig,
+                    snd,
+                    trn,
+                    emptyPortPlate,
+                    portPlateNum,
+                    dvid,
+                    parallel,
+                    ps,
+                    rj,
+                    serial,
+                    stereo
+                );
 
-                confirmationForm = new EdgeworkConfirmationForm(bomb, logFileWriter, bombMazeColors);
+                confirmationForm = new EdgeworkConfirmationForm(
+                    bomb,
+                    logFileWriter,
+                    bombMazeColors
+                );
                 this.Hide();
                 confirmationForm.Show();
             }
@@ -677,14 +719,18 @@ namespace KTANE_Solver
                 String message = "Are you sure you want to quit the program?";
                 String caption = "Quit Program";
 
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    message,
+                    caption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 //if the user clicks no, don't close the program
                 if (result == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
-
                 else
                 {
                     logFileWriter.Write("User closed program...");
@@ -710,13 +756,16 @@ namespace KTANE_Solver
             {
                 return;
             }
-
             else if (enablePref != "ON")
             {
-                MessageBox.Show($"Invalid \"Enable Preferences\" value ({enablePref}). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    $"Invalid \"Enable Preferences\" value ({enablePref}). Using default preferences",
+                    "Preferences",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
                 return;
             }
-
             else
             {
                 //the number of preferences being loocked for
@@ -728,15 +777,25 @@ namespace KTANE_Solver
                     {
                         //order of button colors being clicked
                         case 1:
-                            string[] colors = reader.ReadLine().ToUpper().Substring(13).Trim(new Char[] { '[', ']' }).Split(',');
+                            string[] colors = reader
+                                .ReadLine()
+                                .ToUpper()
+                                .Substring(13)
+                                .Trim(new Char[] { '[', ']' })
+                                .Split(',');
 
                             //make sure there are 6 elements
                             if (colors.Length != 6)
                             {
-                                MessageBox.Show($"Invalid \"Maze Colors\" (Counted {colors.Length} items instead of 6). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(
+                                    $"Invalid \"Maze Colors\" (Counted {colors.Length} items instead of 6). Using default preferences",
+                                    "Preferences",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
                                 return;
                             }
-                            
+
                             for (int j = 0; j < 6; j++)
                             {
                                 colors[j] = colors[j].Trim();
@@ -745,46 +804,81 @@ namespace KTANE_Solver
                             //make sure there is a blue, green, white, red, yellow, orange
 
                             if (!colors.Contains("BLUE"))
-                            { 
-                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing BLUE). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            {
+                                MessageBox.Show(
+                                    $"Invalid \"Maze Colors\" (Missing BLUE). Using default preferences",
+                                    "Preferences",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
                                 return;
                             }
 
-
                             if (!colors.Contains("GREEN"))
                             {
-                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing GREEN). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(
+                                    $"Invalid \"Maze Colors\" (Missing GREEN). Using default preferences",
+                                    "Preferences",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
                                 return;
                             }
 
                             if (!colors.Contains("WHITE"))
                             {
-                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing WHITE). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(
+                                    $"Invalid \"Maze Colors\" (Missing WHITE). Using default preferences",
+                                    "Preferences",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
                                 return;
                             }
 
-
                             if (!colors.Contains("RED"))
                             {
-                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing RED). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(
+                                    $"Invalid \"Maze Colors\" (Missing RED). Using default preferences",
+                                    "Preferences",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
                                 return;
                             }
 
                             if (!colors.Contains("YELLOW"))
                             {
-                                MessageBox.Show($"Invalid \"Maze Colors\" (Missing YELLOW). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(
+                                    $"Invalid \"Maze Colors\" (Missing YELLOW). Using default preferences",
+                                    "Preferences",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
                                 return;
                             }
 
-
                             if (!colors.Contains("ORANGE"))
                             {
-                                MessageBox.Show($"Invalid \"Maze Colors\" value (Missing ORANGE). Using default preferences", "Preferences", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(
+                                    $"Invalid \"Maze Colors\" value (Missing ORANGE). Using default preferences",
+                                    "Preferences",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
                                 return;
                             }
 
                             //convert the arr from a string to a color enum
-                            mazeColors = new Color [] { Color.FromName(colors[0]), Color.FromName(colors[1]), Color.FromName(colors[2]), Color.FromName(colors[3]), Color.FromName(colors[4]), Color.FromName(colors[5])};
+                            mazeColors = new Color[]
+                            {
+                                Color.FromName(colors[0]),
+                                Color.FromName(colors[1]),
+                                Color.FromName(colors[2]),
+                                Color.FromName(colors[3]),
+                                Color.FromName(colors[4]),
+                                Color.FromName(colors[5])
+                            };
 
                             break;
                     }

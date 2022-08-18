@@ -26,10 +26,18 @@ namespace KTANE_Solver
         //CONSTRUCTOR
 
         //will take 6 positions for the pieces, the bomb, and the streamwriter
-        public Chess(String position1, String position2, String position3, String position4, String position5, String position6, Bomb bomb, StreamWriter logWriterFile)
-        : base(bomb, logWriterFile, "Chess")
+        public Chess(
+            String position1,
+            String position2,
+            String position3,
+            String position4,
+            String position5,
+            String position6,
+            Bomb bomb,
+            StreamWriter logWriterFile
+        ) : base(bomb, logWriterFile, "Chess")
         {
-            board = new char[6,6];
+            board = new char[6, 6];
 
             for (int i = 0; i < 6; i++)
             {
@@ -66,9 +74,8 @@ namespace KTANE_Solver
             DetermineandPlacePiece(3);
             DetermineandPlacePiece(6);
 
-
             //print information about all the pieces
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 PrintPiece(i + 1, pieceList[i].PieceChar, positionList[i]);
             }
@@ -107,7 +114,6 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 6; j++)
                 {
-
                     if (board[i, j] == '.')
                     {
                         answerList.Add("" + i + j);
@@ -126,27 +132,25 @@ namespace KTANE_Solver
 
                 foreach (String a in answerList)
                 {
-                    newAnwerList.Add($"{(char)(int.Parse("" + a[1]) + 97)}{Math.Abs(6 - int.Parse("" + a[0]))}");
+                    newAnwerList.Add(
+                        $"{(char)(int.Parse("" + a[1]) + 97)}{Math.Abs(6 - int.Parse("" + a[0]))}"
+                    );
                 }
 
                 answer += string.Join(", ", newAnwerList);
             }
-
             else if (answerList.Count == 0)
             {
                 answer = "Couldn't find answer";
             }
-
             else
             {
-                answer = $"{(char)(int.Parse("" + answerList[0][1]) + 97)}{Math.Abs(6 - int.Parse("" + answerList[0][0]))}";
+                answer =
+                    $"{(char)(int.Parse("" + answerList[0][1]) + 97)}{Math.Abs(6 - int.Parse("" + answerList[0][0]))}";
             }
 
             ShowAnswer(answer, true);
-
         }
-
-        
 
         /// <summary>
         /// Will tell which piece is what
@@ -169,7 +173,6 @@ namespace KTANE_Solver
 
                     return Bomb.LastDigit % 2 == 1 ? 'R' : 'N';
 
-
                 case 3:
                     //Occupied by a queen if there are less than two rooks on the board.
                     //Otherwise, the field is occupied by a king.
@@ -190,7 +193,11 @@ namespace KTANE_Solver
                     //Otherwise, occupied by a knight if there are no other knights on the board.
                     //Otherwise, the field is occupied by a bishop.
 
-                    return pieceList[4].PieceChar != 'Q' && pieceList[2].PieceChar != 'Q' ? 'Q' : pieceList[1].PieceChar != 'N' ? 'N' : 'B';
+                    return pieceList[4].PieceChar != 'Q' && pieceList[2].PieceChar != 'Q'
+                        ? 'Q'
+                        : pieceList[1].PieceChar != 'N'
+                            ? 'N'
+                            : 'B';
             }
         }
 
@@ -274,7 +281,10 @@ namespace KTANE_Solver
 
             int newRow = 1;
 
-            while (ValidCoordinate(position[0] - newRow, position[1]) && !IsPiece(position[0] - newRow, position[1]))
+            while (
+                ValidCoordinate(position[0] - newRow, position[1])
+                && !IsPiece(position[0] - newRow, position[1])
+            )
             {
                 board[position[0] - newRow, position[1]] = '*';
                 newRow++;
@@ -284,7 +294,10 @@ namespace KTANE_Solver
 
             newRow = 1;
 
-            while (ValidCoordinate(position[0] + newRow, position[1]) && !IsPiece(position[0] + newRow, position[1]))
+            while (
+                ValidCoordinate(position[0] + newRow, position[1])
+                && !IsPiece(position[0] + newRow, position[1])
+            )
             {
                 board[position[0] + newRow, position[1]] = '*';
                 newRow++;
@@ -294,7 +307,10 @@ namespace KTANE_Solver
 
             int newColumn = 1;
 
-            while (ValidCoordinate(position[0], position[1] - newColumn) && !IsPiece(position[0], position[1] - newColumn))
+            while (
+                ValidCoordinate(position[0], position[1] - newColumn)
+                && !IsPiece(position[0], position[1] - newColumn)
+            )
             {
                 board[position[0], position[1] - newColumn] = '*';
                 newColumn++;
@@ -304,13 +320,15 @@ namespace KTANE_Solver
 
             newColumn = 1;
 
-            while (ValidCoordinate(position[0], position[1] + newColumn) && !IsPiece(position[0], position[1] + newColumn))
+            while (
+                ValidCoordinate(position[0], position[1] + newColumn)
+                && !IsPiece(position[0], position[1] + newColumn)
+            )
             {
                 board[position[0], position[1] + newColumn] = '*';
                 newColumn++;
             }
         }
-
 
         /// <summary>
         /// Tells where a knight will go
@@ -321,7 +339,6 @@ namespace KTANE_Solver
             //left twice and up once
             if (ValidCoordinate(position[0] - 1, position[1] - 2))
                 CoverTile(position[0] - 1, position[1] - 2);
-
 
             //left twice and down once
             if (ValidCoordinate(position[0] + 1, position[1] - 2))
@@ -343,7 +360,6 @@ namespace KTANE_Solver
             if (ValidCoordinate(position[0] - 2, position[1] + 1))
                 CoverTile(position[0] - 2, position[1] + 1);
 
-
             //down twice and left once
             if (ValidCoordinate(position[0] + 2, position[1] - 1))
                 CoverTile(position[0] + 2, position[1] - 1);
@@ -353,7 +369,7 @@ namespace KTANE_Solver
                 CoverTile(position[0] + 2, position[1] + 1);
         }
 
-        //a method that will 
+        //a method that will
 
         /// <summary>
         /// Tells where a bishop will go
@@ -395,7 +411,6 @@ namespace KTANE_Solver
                 newColumn++;
                 newRow++;
             }
-
 
             //bottom right
 
@@ -454,8 +469,7 @@ namespace KTANE_Solver
         //a method that will tell if a position is considered valid
         private bool ValidCoordinate(int row, int column)
         {
-            return row >= 0 && row <= 5 &&
-                   column >= 0 && column <= 5;
+            return row >= 0 && row <= 5 && column >= 0 && column <= 5;
         }
 
         /// <summary>
@@ -499,17 +513,16 @@ namespace KTANE_Solver
 
         private class Piece
         {
-            //tells what the piece is 
-            public char PieceChar { get; set;  }
+            //tells what the piece is
+            public char PieceChar { get; set; }
 
             //the location for piece 1
             public int[] PieceLocation { get; }
 
-            public Piece(int [] pieceLocation)
+            public Piece(int[] pieceLocation)
             {
                 PieceLocation = pieceLocation;
             }
         }
-
     }
 }

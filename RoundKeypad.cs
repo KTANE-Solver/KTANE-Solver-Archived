@@ -45,23 +45,87 @@ namespace KTANE_Solver
             Null
         }
 
-        public RoundKeypad(Bomb bomb, StreamWriter logFileWriter, List<Symbol> symbolList) : base(bomb, logFileWriter, "Round Keypad")
+        public RoundKeypad(Bomb bomb, StreamWriter logFileWriter, List<Symbol> symbolList)
+            : base(bomb, logFileWriter, "Round Keypad")
         {
             symbolRowList = new List<SymbolRow>
             {
-                new SymbolRow(new Symbol[] { Symbol.O, Symbol.A, Symbol.Lambda, Symbol.Lightning, Symbol.Squid, Symbol.H, Symbol.BackwardsC }),
-                new SymbolRow(new Symbol[] { Symbol.E, Symbol.O, Symbol.BackwardsC, Symbol.Swirl, Symbol.WhiteStar, Symbol.H, Symbol.QuestionMark }),
-                new SymbolRow(new Symbol[] { Symbol.Copyright, Symbol.Butt, Symbol.Swirl, Symbol.X, Symbol.UfinishedR, Symbol.Lambda, Symbol.WhiteStar }),
-                new SymbolRow(new Symbol[] { Symbol.Six, Symbol.Paragraph, Symbol.B, Symbol.Squid, Symbol.X, Symbol.QuestionMark, Symbol.SmilyFace }),
-                new SymbolRow(new Symbol[] { Symbol.Trident, Symbol.SmilyFace, Symbol.B, Symbol.C, Symbol.Paragraph, Symbol.Three, Symbol.BlackStar }),
-                new SymbolRow(new Symbol[] { Symbol.Six, Symbol.E, Symbol.Hashtag, Symbol.Ae, Symbol.Trident, Symbol.N, Symbol.Omega })
+                new SymbolRow(
+                    new Symbol[]
+                    {
+                        Symbol.O,
+                        Symbol.A,
+                        Symbol.Lambda,
+                        Symbol.Lightning,
+                        Symbol.Squid,
+                        Symbol.H,
+                        Symbol.BackwardsC
+                    }
+                ),
+                new SymbolRow(
+                    new Symbol[]
+                    {
+                        Symbol.E,
+                        Symbol.O,
+                        Symbol.BackwardsC,
+                        Symbol.Swirl,
+                        Symbol.WhiteStar,
+                        Symbol.H,
+                        Symbol.QuestionMark
+                    }
+                ),
+                new SymbolRow(
+                    new Symbol[]
+                    {
+                        Symbol.Copyright,
+                        Symbol.Butt,
+                        Symbol.Swirl,
+                        Symbol.X,
+                        Symbol.UfinishedR,
+                        Symbol.Lambda,
+                        Symbol.WhiteStar
+                    }
+                ),
+                new SymbolRow(
+                    new Symbol[]
+                    {
+                        Symbol.Six,
+                        Symbol.Paragraph,
+                        Symbol.B,
+                        Symbol.Squid,
+                        Symbol.X,
+                        Symbol.QuestionMark,
+                        Symbol.SmilyFace
+                    }
+                ),
+                new SymbolRow(
+                    new Symbol[]
+                    {
+                        Symbol.Trident,
+                        Symbol.SmilyFace,
+                        Symbol.B,
+                        Symbol.C,
+                        Symbol.Paragraph,
+                        Symbol.Three,
+                        Symbol.BlackStar
+                    }
+                ),
+                new SymbolRow(
+                    new Symbol[]
+                    {
+                        Symbol.Six,
+                        Symbol.E,
+                        Symbol.Hashtag,
+                        Symbol.Ae,
+                        Symbol.Trident,
+                        Symbol.N,
+                        Symbol.Omega
+                    }
+                )
             };
 
             this.symbolList = symbolList;
         }
-
-
-
 
         public Symbol[] Solve()
         {
@@ -87,7 +151,6 @@ namespace KTANE_Solver
 
             List<Symbol> answers = new List<Symbol>();
 
-
             foreach (Symbol symbol in symbolList)
             {
                 if (!answerRow.row.Contains(symbol))
@@ -99,14 +162,12 @@ namespace KTANE_Solver
             return answers.ToArray();
         }
 
-
-
         public class SymbolRow
         {
             public Symbol[] row;
-            public  int foundSymbolNum;
+            public int foundSymbolNum;
 
-            public SymbolRow(Symbol [] row)
+            public SymbolRow(Symbol[] row)
             {
                 this.row = row;
                 foundSymbolNum = 0;

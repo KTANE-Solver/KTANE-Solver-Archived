@@ -13,7 +13,11 @@ namespace KTANE_Solver
 {
     public partial class SeaShellsForm : ModuleForm
     {
-        public SeaShellsForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Sea Shells", false)
+        public SeaShellsForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Sea Shells", false)
         {
             InitializeComponent();
             UpdateForm();
@@ -30,7 +34,6 @@ namespace KTANE_Solver
             bigButtonComboBox.Items.AddRange(arr);
             bigButtonComboBox.Text = arr[0];
             bigButtonComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-
         }
 
         private void SetPhraseComboBox(ComboBox combox)
@@ -55,7 +58,13 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            SeaShells module = new SeaShells(Bomb, LogFileWriter, firstPhraseComboBox.Text, secondPhraseComboBox.Text, bigButtonComboBox.Text);
+            SeaShells module = new SeaShells(
+                Bomb,
+                LogFileWriter,
+                firstPhraseComboBox.Text,
+                secondPhraseComboBox.Text,
+                bigButtonComboBox.Text
+            );
             module.Solve();
             UpdateForm();
         }

@@ -18,7 +18,6 @@ namespace KTANE_Solver
     /// </summary>
     public partial class SillySlotsOtherStageForm : MultiStageModuleForm
     {
-
         //=========FEILDS=========
 
         //slot information
@@ -26,7 +25,6 @@ namespace KTANE_Solver
 
         //the stage the user is on
         private int stage;
-
 
         //the form the user will see next if they press the back button
         //while on stage 2
@@ -49,29 +47,47 @@ namespace KTANE_Solver
         /// <param name="logFileWriter">used to write to the log file</param>
         /// <param name="sillySlotsModule">used to solve the module</param>
         /// <param name="stage">which stage the user is on</param>
-        public SillySlotsOtherStageForm(SillySlotsStage1Form sillySlotsStage1Form,
-                                        ModuleSelectionForm moduleSelectionForm,
-                                        Bomb bomb, StreamWriter logFileWriter,
-                                        SillySlots sillySlotsModule, int stage)
-        : base(bomb, logFileWriter,moduleSelectionForm, sillySlotsStage1Form, "Silly Slots", false)
+        public SillySlotsOtherStageForm(
+            SillySlotsStage1Form sillySlotsStage1Form,
+            ModuleSelectionForm moduleSelectionForm,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            SillySlots sillySlotsModule,
+            int stage
+        )
+            : base(
+                bomb,
+                logFileWriter,
+                moduleSelectionForm,
+                sillySlotsStage1Form,
+                "Silly Slots",
+                false
+            )
         {
             InitializeComponent();
-            UpdateForm(sillySlotsStage1Form, moduleSelectionForm, bomb, logFileWriter, sillySlotsModule, stage);
+            UpdateForm(
+                sillySlotsStage1Form,
+                moduleSelectionForm,
+                bomb,
+                logFileWriter,
+                sillySlotsModule,
+                stage
+            );
         }
-
-        
-
 
         //=========METHODS=========
         /// <summary>
         /// Used to update the form so it's good as new
         /// </summary>
-        public void UpdateForm(SillySlotsStage1Form sillySlotsStage1Form,
-                                        ModuleSelectionForm moduleSelectionForm,
-                                        Bomb bomb, StreamWriter logFileWriter,
-                                        SillySlots sillySlotsModule, int stage)
+        public void UpdateForm(
+            SillySlotsStage1Form sillySlotsStage1Form,
+            ModuleSelectionForm moduleSelectionForm,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            SillySlots sillySlotsModule,
+            int stage
+        )
         {
-
             FormClosing += CloseProgram;
 
             //setting up all the vairables
@@ -90,7 +106,16 @@ namespace KTANE_Solver
             //set up keyword comboBox
             keywordComboBox.Items.Clear();
 
-            String[] keywordList = new String[] { "Sally", "Sassy", "Sausage", "Silly", "Simon", "Soggy", "Steven" };
+            String[] keywordList = new String[]
+            {
+                "Sally",
+                "Sassy",
+                "Sausage",
+                "Silly",
+                "Simon",
+                "Soggy",
+                "Steven"
+            };
 
             keywordComboBox.Items.AddRange(keywordList);
             keywordComboBox.Text = keywordList[0];
@@ -127,7 +152,16 @@ namespace KTANE_Solver
             //set up keyword comboBox
             keywordComboBox.Items.Clear();
 
-            String[] keywordList = new String[] { "Sally", "Sassy", "Silly", "Simon", "Soggy", "Sausage", "Steven" };
+            String[] keywordList = new String[]
+            {
+                "Sally",
+                "Sassy",
+                "Silly",
+                "Simon",
+                "Soggy",
+                "Sausage",
+                "Steven"
+            };
 
             keywordComboBox.Items.AddRange(keywordList);
             keywordComboBox.Text = keywordList[0];
@@ -202,10 +236,16 @@ namespace KTANE_Solver
                 sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 ResetModule();
             }
-
             else
             {
-                UpdateForm(sillySlotsStage1Form, ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, stage - 1);
+                UpdateForm(
+                    sillySlotsStage1Form,
+                    ModuleSelectionForm,
+                    Bomb,
+                    LogFileWriter,
+                    sillySlotsModule,
+                    stage - 1
+                );
             }
         }
 
@@ -225,10 +265,16 @@ namespace KTANE_Solver
             String slot2Object = slot2ObjectComboBox.Text;
             String slot3Object = slot3ObjectComboBox.Text;
 
-            sillySlotsModule.UpdateModule(stage, keyword,
-                                          slot1Color, slot1Object,
-                                          slot2Color, slot2Object,
-                                          slot3Color, slot3Object);
+            sillySlotsModule.UpdateModule(
+                stage,
+                keyword,
+                slot1Color,
+                slot1Object,
+                slot2Color,
+                slot2Object,
+                slot3Color,
+                slot3Object
+            );
 
             //getting the answer and showing the appropriate form next
             bool presskeep = sillySlotsModule.Solve(stage);
@@ -239,7 +285,6 @@ namespace KTANE_Solver
                 sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 ResetModule();
             }
-
             else
             {
                 ShowAnswer("Pull the lever");
@@ -250,9 +295,8 @@ namespace KTANE_Solver
                     sillySlotsStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                     ResetModule();
                 }
-
                 else
-                { 
+                {
                     UpdateForm(stage + 1);
                 }
             }

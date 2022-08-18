@@ -101,18 +101,12 @@ namespace KTANE_Solver
         //===============PROPERTIES===============
         public Day Day
         {
-            get
-            { 
-                return day;
-            }
+            get { return day; }
         }
 
         public String SerialNumber
         {
-            get
-            {
-                return serialNumber;
-            }
+            get { return serialNumber; }
         }
 
         //tells if this serial number
@@ -134,7 +128,11 @@ namespace KTANE_Solver
                         hasLetter = true;
                     }
 
-                    if (i == serialNumber.Length - 1 && serialNumber[i] >= 48 && serialNumber[i] <= 57)
+                    if (
+                        i == serialNumber.Length - 1
+                        && serialNumber[i] >= 48
+                        && serialNumber[i] <= 57
+                    )
                     {
                         lastCharIsNum = true;
                     }
@@ -165,10 +163,7 @@ namespace KTANE_Solver
         //tells the last digit in the serial number
         public int LastDigit
         {
-            get
-            {
-                return int.Parse("" + serialNumber[serialNumber.Length - 1]);
-            }
+            get { return int.Parse("" + serialNumber[serialNumber.Length - 1]); }
         }
 
         //tells if there is an even digit in the serial number
@@ -213,8 +208,8 @@ namespace KTANE_Solver
         public char LastLetter
         {
             get
-            { 
-                for(int i = serialNumber.Length - 1; i > -1; i--)
+            {
+                for (int i = serialNumber.Length - 1; i > -1; i--)
                 {
                     if (serialNumber[i] >= 65 && serialNumber[i] <= 90)
                     {
@@ -230,28 +225,19 @@ namespace KTANE_Solver
         //Tells if the last letter is a vowel
         public bool LastLetterIsVowel
         {
-            get
-            {
-                return Regex.IsMatch("" + LastLetter, @"[A,E,I,O,U]");
-            }
+            get { return Regex.IsMatch("" + LastLetter, @"[A,E,I,O,U]"); }
         }
 
         //tells how many digits are in the serial number
         public int DigitNum
         {
-            get
-            {
-                return serialNumber.Where(x => x >= 48 && x <= 57).Count();
-            }
+            get { return serialNumber.Where(x => x >= 48 && x <= 57).Count(); }
         }
 
         //tells how many digits are in the serial number
         public int LetterNum
         {
-            get
-            {
-                return serialNumber.Where(x => x >= 65 && x <= 90).Count();
-            }
+            get { return serialNumber.Where(x => x >= 65 && x <= 90).Count(); }
         }
 
         //tells how the sum of digits in the serial number
@@ -275,7 +261,7 @@ namespace KTANE_Solver
 
         public int LargestDigit
         {
-            get 
+            get
             {
                 int highest = -1;
 
@@ -294,35 +280,23 @@ namespace KTANE_Solver
         //the number of vowles in the serial number
         public int VowelNum
         {
-            get
-            {
-                return serialNumber.Where(x => Regex.IsMatch("" + x, @"[A,E,I,O,U]")).Count();
-            }
+            get { return serialNumber.Where(x => Regex.IsMatch("" + x, @"[A,E,I,O,U]")).Count(); }
         }
 
         //tells if the serial number has a vowel
         public bool HasVowel
         {
-            get
-            {
-                return Regex.IsMatch(serialNumber, @"[A,E,I,O,U]");
-            }
+            get { return Regex.IsMatch(serialNumber, @"[A,E,I,O,U]"); }
         }
 
         public int Battery
         {
-            get
-            {
-                return battery;
-            }
+            get { return battery; }
         }
 
         public int BatteryHolder
         {
-            get
-            {
-                return batteryHolder;
-            }
+            get { return batteryHolder; }
         }
 
         //the number AA batteries on the bomb
@@ -361,163 +335,103 @@ namespace KTANE_Solver
 
         public Indicator Bob
         {
-            get
-            {
-                return bob;
-            }
+            get { return bob; }
         }
 
         public Indicator Car
         {
-            get
-            {
-                return car;
-            }
+            get { return car; }
         }
 
         public Indicator Clr
         {
-            get
-            {
-                return clr;
-            }
+            get { return clr; }
         }
 
         public Indicator Frk
         {
-            get
-            {
-                return frk;
-            }
+            get { return frk; }
         }
 
         public Indicator Frq
         {
-            get
-            {
-                return frq;
-            }
+            get { return frq; }
         }
 
         public Indicator Ind
         {
-            get
-            {
-                return ind;
-            }
+            get { return ind; }
         }
 
         public Indicator Msa
         {
-            get
-            {
-                return msa;
-            }
+            get { return msa; }
         }
 
         public Indicator Nsa
         {
-            get
-            {
-                return nsa;
-            }
+            get { return nsa; }
         }
 
         public Indicator Sig
         {
-            get
-            {
-                return sig;
-            }
+            get { return sig; }
         }
 
         public Indicator Snd
         {
-            get
-            {
-                return snd;
-            }
+            get { return snd; }
         }
 
         public Indicator Trn
         {
-            get
-            {
-                return trn;
-            }
+            get { return trn; }
         }
 
         //the number of indicaotrs on the bomb
         public int IndicatorNum
         {
-            get
-            { 
-                return LitIndicatorsList.Count + UnlitIndicatorsList.Count;
-            }
+            get { return LitIndicatorsList.Count + UnlitIndicatorsList.Count; }
         }
 
         public int PortPlateNum
         {
-            get
-            {
-                return portPlateNum;
-            }
+            get { return portPlateNum; }
         }
 
         public bool EmptyPortPlate
         {
-            get
-            {
-                return emptyPortPlate;
-            }
+            get { return emptyPortPlate; }
         }
 
         public Port Dvid
         {
-            get
-            {
-                return dvid;
-            }
+            get { return dvid; }
         }
 
         public Port Parallel
         {
-            get
-            {
-                return parallel;
-            }
+            get { return parallel; }
         }
 
         public Port Ps
         {
-            get
-            {
-                return ps;
-            }
+            get { return ps; }
         }
 
         public Port Rj
         {
-            get
-            {
-                return rj;
-            }
+            get { return rj; }
         }
 
         public Port Serial
         {
-            get
-            {
-                return serial;
-            }
+            get { return serial; }
         }
 
         public Port Stereo
         {
-            get
-            {
-                return stereo;
-            }
+            get { return stereo; }
         }
 
         //the number of unique ports on the bomb
@@ -572,16 +486,10 @@ namespace KTANE_Solver
 
         public int Strike
         {
-            get
-            {
-                return strike;
-            }
-
-            set
-            {
-                strike = value;
-            }
+            get { return strike; }
+            set { strike = value; }
         }
+
         //===============CONSTRUCTORS===============
         /// <summary>
         /// Create a bomb
@@ -608,10 +516,31 @@ namespace KTANE_Solver
         /// <param name="rj">the rj-45 port</param>
         /// <param name="serial">the serial port</param>
         /// <param name="stereo">the stereo port</param>
-        public Bomb(Day day, String serialNumber, int battery, int batteryHolder, Indicator bob, Indicator car, 
-                    Indicator clr, Indicator frk, Indicator frq, Indicator ind, Indicator msa, Indicator nsa, 
-                    Indicator sig, Indicator snd, Indicator trn, bool emptyPortPlate, int portPlateNum, Port dvid, Port parallel, 
-                    Port ps, Port rj, Port serial, Port stereo)
+        public Bomb(
+            Day day,
+            String serialNumber,
+            int battery,
+            int batteryHolder,
+            Indicator bob,
+            Indicator car,
+            Indicator clr,
+            Indicator frk,
+            Indicator frq,
+            Indicator ind,
+            Indicator msa,
+            Indicator nsa,
+            Indicator sig,
+            Indicator snd,
+            Indicator trn,
+            bool emptyPortPlate,
+            int portPlateNum,
+            Port dvid,
+            Port parallel,
+            Port ps,
+            Port rj,
+            Port serial,
+            Port stereo
+        )
         {
             LitIndicatorsList = new List<Indicator>();
             UnlitIndicatorsList = new List<Indicator>();
@@ -640,12 +569,10 @@ namespace KTANE_Solver
             this.serial = serial;
             this.stereo = stereo;
 
-
             if (bob.VisibleAndLit)
             {
                 LitIndicatorsList.Add(bob);
             }
-
             else if (bob.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(bob);
@@ -655,29 +582,24 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(car);
             }
-
             else if (car.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(car);
             }
 
-
             if (clr.VisibleAndLit)
             {
                 LitIndicatorsList.Add(clr);
             }
-
             else if (clr.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(clr);
             }
 
-
             if (frk.VisibleAndLit)
             {
                 LitIndicatorsList.Add(frk);
             }
-
             else if (frk.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(frk);
@@ -687,7 +609,6 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(frq);
             }
-
             else if (frq.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(frq);
@@ -697,7 +618,6 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(ind);
             }
-
             else if (ind.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(ind);
@@ -707,7 +627,6 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(msa);
             }
-
             else if (msa.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(msa);
@@ -717,7 +636,6 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(nsa);
             }
-
             else if (nsa.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(nsa);
@@ -727,7 +645,6 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(sig);
             }
-
             else if (sig.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(sig);
@@ -737,7 +654,6 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(snd);
             }
-
             else if (snd.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(snd);
@@ -747,12 +663,10 @@ namespace KTANE_Solver
             {
                 LitIndicatorsList.Add(trn);
             }
-
             else if (trn.VisibleNotLit)
             {
                 UnlitIndicatorsList.Add(trn);
             }
-
         }
 
         //===============METHODS===============
@@ -773,7 +687,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Tells how many times a desired character 
+        /// Tells how many times a desired character
         /// is found in the serial number
         /// </summary>
         /// <param name="character">the character that wants to be found</param>

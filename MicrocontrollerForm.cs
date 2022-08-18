@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class MicrocontrollerForm : ModuleForm
     {
-        public MicrocontrollerForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Microcontroller", false)
+        public MicrocontrollerForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Microcontroller", false)
         {
             InitializeComponent();
             UpdateForm();
@@ -33,7 +38,13 @@ namespace KTANE_Solver
 
             controllerTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            string[] corner = new string[] { "Top Left", "Top Right", "Bottom Left", "Bottom Right" };
+            string[] corner = new string[]
+            {
+                "Top Left",
+                "Top Right",
+                "Bottom Left",
+                "Bottom Right"
+            };
 
             whiteDotComboBox.Items.Clear();
             whiteDotComboBox.Items.AddRange(corner);
@@ -41,7 +52,6 @@ namespace KTANE_Solver
             whiteDotComboBox.Text = corner[0];
 
             whiteDotComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -56,7 +66,6 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             string secondNumStr = secondNumTextBox.Text;
             string lastNumStr = LastNumTextBox.Text;
             string pinNumStr = pinNumTextBox.Text;
@@ -74,7 +83,6 @@ namespace KTANE_Solver
             {
                 secondNum = int.Parse(secondNumStr);
             }
-
             catch
             {
                 ShowErrorMessage("Second Num Text Box can only take numbers");
@@ -85,7 +93,6 @@ namespace KTANE_Solver
             {
                 lastNum = int.Parse(lastNumStr);
             }
-
             catch
             {
                 ShowErrorMessage("Last Num Text Box can only take numbers");
@@ -96,7 +103,6 @@ namespace KTANE_Solver
             {
                 pinNum = int.Parse(pinNumStr);
             }
-
             catch
             {
                 ShowErrorMessage("Pin Num Text Box can only take numbers");
@@ -109,29 +115,70 @@ namespace KTANE_Solver
                 return;
             }
 
-            Microcontroller module = new Microcontroller(Bomb, LogFileWriter, whiteDotComboBox.Text, controllerTypeComboBox.Text, pinNum, secondNum, lastNum);
+            Microcontroller module = new Microcontroller(
+                Bomb,
+                LogFileWriter,
+                whiteDotComboBox.Text,
+                controllerTypeComboBox.Text,
+                pinNum,
+                secondNum,
+                lastNum
+            );
             List<Color> answer = module.Solve();
 
             Microcontroller6PinAnswerForm sixForm = null;
             Microcontroller8PinAnswerForm eigthForm = null;
             Microcontroller10PinAnswerForm tenForm = null;
 
-
             if (answer.Count == 6)
             {
-                sixForm = new Microcontroller6PinAnswerForm(Bomb, LogFileWriter, ModuleSelectionForm, answer[0], answer[1], answer[2], answer[3], answer[4], answer[5]);
+                sixForm = new Microcontroller6PinAnswerForm(
+                    Bomb,
+                    LogFileWriter,
+                    ModuleSelectionForm,
+                    answer[0],
+                    answer[1],
+                    answer[2],
+                    answer[3],
+                    answer[4],
+                    answer[5]
+                );
                 sixForm.ShowDialog();
             }
-
             else if (answer.Count == 8)
             {
-                eigthForm = new Microcontroller8PinAnswerForm(Bomb, LogFileWriter, ModuleSelectionForm, answer[0], answer[1], answer[2], answer[3], answer[4], answer[5], answer[6], answer[7]);
+                eigthForm = new Microcontroller8PinAnswerForm(
+                    Bomb,
+                    LogFileWriter,
+                    ModuleSelectionForm,
+                    answer[0],
+                    answer[1],
+                    answer[2],
+                    answer[3],
+                    answer[4],
+                    answer[5],
+                    answer[6],
+                    answer[7]
+                );
                 eigthForm.ShowDialog();
             }
-
             else
             {
-                tenForm = new Microcontroller10PinAnswerForm(Bomb, LogFileWriter, ModuleSelectionForm, answer[0], answer[1], answer[2], answer[3], answer[4], answer[5], answer[6], answer[7], answer[8], answer[9]);
+                tenForm = new Microcontroller10PinAnswerForm(
+                    Bomb,
+                    LogFileWriter,
+                    ModuleSelectionForm,
+                    answer[0],
+                    answer[1],
+                    answer[2],
+                    answer[3],
+                    answer[4],
+                    answer[5],
+                    answer[6],
+                    answer[7],
+                    answer[8],
+                    answer[9]
+                );
                 tenForm.ShowDialog();
             }
 

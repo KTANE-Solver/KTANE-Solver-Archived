@@ -13,7 +13,11 @@ namespace KTANE_Solver
 {
     public partial class FastMathStage1Form : ModuleForm
     {
-        public FastMathStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Fast Math", false)
+        public FastMathStage1Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Fast Math", false)
         {
             InitializeComponent();
         }
@@ -55,7 +59,13 @@ namespace KTANE_Solver
 
             module.Solve(left[0], right[0]);
 
-            FastMathOtherStageForm stage2 = new FastMathOtherStageForm(Bomb, LogFileWriter, ModuleSelectionForm, this, module);
+            FastMathOtherStageForm stage2 = new FastMathOtherStageForm(
+                Bomb,
+                LogFileWriter,
+                ModuleSelectionForm,
+                this,
+                module
+            );
             this.Hide();
             stage2.Show();
         }

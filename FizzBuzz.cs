@@ -13,13 +13,27 @@ namespace KTANE_Solver
     /// </summary>
     public class FizzBuzz : Module
     {
-        Condition firstCondition, secondCondition, thirdCondition;
-        
-        string firstColor, secondColor, thirdColor;
-        string firstNumber, secondNumber, thirdNumber;
+        Condition firstCondition,
+            secondCondition,
+            thirdCondition;
 
-        public FizzBuzz(string firstColor, string firstNumber, string secondColor, string secondNumber, string thirdColor, string thirdNumber, Bomb bomb, StreamWriter logFileWriter)
-        : base(bomb, logFileWriter, "FizzBuzz")
+        string firstColor,
+            secondColor,
+            thirdColor;
+        string firstNumber,
+            secondNumber,
+            thirdNumber;
+
+        public FizzBuzz(
+            string firstColor,
+            string firstNumber,
+            string secondColor,
+            string secondNumber,
+            string thirdColor,
+            string thirdNumber,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "FizzBuzz")
         {
             this.firstColor = firstColor;
             this.secondColor = secondColor;
@@ -43,7 +57,7 @@ namespace KTANE_Solver
 
             //Go through that column and take a note of each integer whose condition applies.
 
-            //Take the sum of these integers to get a number. 
+            //Take the sum of these integers to get a number.
 
             int firstAdditionNumber = 0;
             int secondAdditionNumber = 0;
@@ -129,7 +143,6 @@ namespace KTANE_Solver
             PrintDebugLine($"Second Addition Number: {secondAdditionNumber}");
             PrintDebugLine($"Third Addition Number: {thirdAdditionNumber}\n");
 
-
             int first = GetNewNumber(firstNumber, firstAdditionNumber);
             int second = GetNewNumber(secondNumber, secondAdditionNumber);
             int third = GetNewNumber(thirdNumber, thirdAdditionNumber);
@@ -158,7 +171,7 @@ namespace KTANE_Solver
             if (num % 5 == 0)
                 str += "Buzz";
 
-            if(str.Length == 0)
+            if (str.Length == 0)
                 return "#";
 
             return str;
@@ -189,9 +202,9 @@ namespace KTANE_Solver
         {
             if (addition == 0)
                 return int.Parse(n);
-            
+
             string newNum = "";
-            foreach(char c in n)
+            foreach (char c in n)
             {
                 newNum += "" + (int.Parse("" + c) + addition) % 10;
             }
@@ -201,10 +214,10 @@ namespace KTANE_Solver
 
         class Condition
         {
-            //3 or more battery holders are present on the bomb.	
+            //3 or more battery holders are present on the bomb.
             public int ThreeBatteryHolder { get; }
 
-            //3 or more battery holders are present on the bomb.	
+            //3 or more battery holders are present on the bomb.
             public int SerialParallelPort { get; }
 
             //3 letters and 3 digits are present in the serial number
@@ -222,7 +235,15 @@ namespace KTANE_Solver
             //None of the above apply.
             public int None { get; }
 
-            public Condition(int ThreeBatteryHolder, int SerialParallelPort, int ThreeLetterDigit, int DvidStereoPort, int Strikes, int FiveBattery, int None)
+            public Condition(
+                int ThreeBatteryHolder,
+                int SerialParallelPort,
+                int ThreeLetterDigit,
+                int DvidStereoPort,
+                int Strikes,
+                int FiveBattery,
+                int None
+            )
             {
                 this.ThreeBatteryHolder = ThreeBatteryHolder;
                 this.SerialParallelPort = SerialParallelPort;
@@ -235,5 +256,3 @@ namespace KTANE_Solver
         }
     }
 }
-
-

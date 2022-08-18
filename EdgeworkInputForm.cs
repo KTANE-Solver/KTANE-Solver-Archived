@@ -11,7 +11,6 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 3/1/21
@@ -54,7 +53,11 @@ namespace KTANE_Solver
         /// input edgework
         /// </summary>
         /// <param name="confirmationForm">the confirm form the user will go to</param>
-        public EdgeworkInputForm(EdgeworkConfirmationForm confirmationForm, StreamWriter logFileWriter, Color [] mazeColors)
+        public EdgeworkInputForm(
+            EdgeworkConfirmationForm confirmationForm,
+            StreamWriter logFileWriter,
+            Color[] mazeColors
+        )
         {
             InitializeComponent();
             this.mazeColors = mazeColors;
@@ -111,7 +114,6 @@ namespace KTANE_Solver
             stereoTextBox.TabIndex = 10;
             submitButton.TabIndex = 11;
 
-
             //labels shouldn't be in the tab order
             dayOfWeekLabel.TabStop = false;
             serialNumberLabel.TabStop = false;
@@ -129,7 +131,7 @@ namespace KTANE_Solver
             nsaLabel.TabStop = false;
             sigLabel.TabStop = false;
             trnLabel.TabStop = false;
-            
+
             portLabel.TabStop = false;
             dvidLabel.TabStop = false;
             psLabel.TabStop = false;
@@ -172,7 +174,6 @@ namespace KTANE_Solver
             trnLitCheckBox.TabStop = false;
 
             emptyPortPlateCheckBox.TabStop = false;
-
         }
 
         //METHODS
@@ -181,7 +182,16 @@ namespace KTANE_Solver
         /// </summary>
         private void SetUpDayOfWeekComboBox()
         {
-            String[] days = new String[] {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            String[] days = new String[]
+            {
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            };
             dayOfWeekComboBox.Items.Clear();
             dayOfWeekComboBox.Items.AddRange(days);
             dayOfWeekComboBox.Text = "Sunday";
@@ -199,7 +209,7 @@ namespace KTANE_Solver
             visibleCheckBox.Checked = false;
             litCheckBox.Checked = false;
         }
- 
+
         /// <summary>
         /// Changing the checkbox so an invalid indicator
         /// can't be produed
@@ -473,7 +483,6 @@ namespace KTANE_Solver
             Day day;
             Enum.TryParse(dayOfWeekComboBox.Text, out day);
 
-
             String serialNumber = serialNumberTextBox.Text.ToUpper();
             bool oneLetter = false;
 
@@ -489,20 +498,21 @@ namespace KTANE_Solver
             }
 
             for (int i = 0; i < serialNumber.Length; i++)
-            { 
-                if(serialNumber[i] >= 65 && serialNumber[i] <= 90)
+            {
+                if (serialNumber[i] >= 65 && serialNumber[i] <= 90)
                 {
                     oneLetter = true;
                     break;
                 }
             }
 
-            if (!oneLetter) 
+            if (!oneLetter)
             {
                 logFileWriter.WriteLine("There isn't a letter in the serial number\n");
                 System.Diagnostics.Debug.WriteLine("There isn't a letter in the serial number\n");
 
-                String text = "You entered an invalid serial number. There has to be at least 1 letter in the serial number";
+                String text =
+                    "You entered an invalid serial number. There has to be at least 1 letter in the serial number";
 
                 String caption = "Invalid Serial Number";
 
@@ -511,14 +521,19 @@ namespace KTANE_Solver
                 return;
             }
 
-            bool lastCharIsDigit = serialNumber[serialNumber.Length - 1] >= 48 && serialNumber[serialNumber.Length - 1] <= 57;
+            bool lastCharIsDigit =
+                serialNumber[serialNumber.Length - 1] >= 48
+                && serialNumber[serialNumber.Length - 1] <= 57;
 
             if (!lastCharIsDigit)
             {
                 logFileWriter.WriteLine("The last character of the serial number isn't a number\n");
-                System.Diagnostics.Debug.WriteLine("The last character of the serial number isn't a number\n");
+                System.Diagnostics.Debug.WriteLine(
+                    "The last character of the serial number isn't a number\n"
+                );
 
-                String text = "You entered an invalid serial number. A valid serial number must have the last character be a number";
+                String text =
+                    "You entered an invalid serial number. A valid serial number must have the last character be a number";
 
                 String caption = "Invalid Serial Number";
 
@@ -563,12 +578,11 @@ namespace KTANE_Solver
                 return;
             }
 
-
             //make sure the number of batteries and battery holders isn't invalid
             if (battery < batteryHolder)
             {
-                String text = "The number of batteries can't be less than the number of battery holders";
-
+                String text =
+                    "The number of batteries can't be less than the number of battery holders";
 
                 String caption = "Invalid Battery Holder and Battery";
 
@@ -579,8 +593,8 @@ namespace KTANE_Solver
 
             if (battery > batteryHolder * 2)
             {
-                String text = "The number of batteries can't be greater than twice the number of battery holders";
-
+                String text =
+                    "The number of batteries can't be greater than twice the number of battery holders";
 
                 String caption = "Invalid Battery Holder and Battery";
 
@@ -590,21 +604,64 @@ namespace KTANE_Solver
             }
 
             //setting the indicators
-            Indicator bob = new Indicator("BOB", bobVisibleCheckBox.Checked, bobLitCheckBox.Checked);
-            Indicator car = new Indicator("CAR", carVisibleCheckBox.Checked, carLitCheckBox.Checked);
-            Indicator clr = new Indicator("CLR", clrVisibleCheckBox.Checked, clrLitCheckBox.Checked);
-            Indicator frk = new Indicator("FRK", frkVisibleCheckBox.Checked, frkLitCheckBox.Checked);
-            Indicator frq = new Indicator("FRQ", frqVisibleCheckBox.Checked, frqLitCheckBox.Checked);
-            Indicator ind = new Indicator("IND", indVisibleCheckBox.Checked, indLitCheckBox.Checked);
-            Indicator msa = new Indicator("MSA", msaVisibleCheckBox.Checked, msaLitCheckBox.Checked);
-            Indicator nsa = new Indicator("NSA", nsaVisibleCheckBox.Checked, nsaLitCheckBox.Checked);
-            Indicator snd = new Indicator("SND", sndVisibleCheckBox.Checked, sndLitCheckBox.Checked);
-            Indicator sig = new Indicator("SIG", sigVisibleCheckBox.Checked, sigLitCheckBox.Checked);
-            Indicator trn = new Indicator("TRN", trnVisibleCheckBox.Checked, trnLitCheckBox.Checked);
+            Indicator bob = new Indicator(
+                "BOB",
+                bobVisibleCheckBox.Checked,
+                bobLitCheckBox.Checked
+            );
+            Indicator car = new Indicator(
+                "CAR",
+                carVisibleCheckBox.Checked,
+                carLitCheckBox.Checked
+            );
+            Indicator clr = new Indicator(
+                "CLR",
+                clrVisibleCheckBox.Checked,
+                clrLitCheckBox.Checked
+            );
+            Indicator frk = new Indicator(
+                "FRK",
+                frkVisibleCheckBox.Checked,
+                frkLitCheckBox.Checked
+            );
+            Indicator frq = new Indicator(
+                "FRQ",
+                frqVisibleCheckBox.Checked,
+                frqLitCheckBox.Checked
+            );
+            Indicator ind = new Indicator(
+                "IND",
+                indVisibleCheckBox.Checked,
+                indLitCheckBox.Checked
+            );
+            Indicator msa = new Indicator(
+                "MSA",
+                msaVisibleCheckBox.Checked,
+                msaLitCheckBox.Checked
+            );
+            Indicator nsa = new Indicator(
+                "NSA",
+                nsaVisibleCheckBox.Checked,
+                nsaLitCheckBox.Checked
+            );
+            Indicator snd = new Indicator(
+                "SND",
+                sndVisibleCheckBox.Checked,
+                sndLitCheckBox.Checked
+            );
+            Indicator sig = new Indicator(
+                "SIG",
+                sigVisibleCheckBox.Checked,
+                sigLitCheckBox.Checked
+            );
+            Indicator trn = new Indicator(
+                "TRN",
+                trnVisibleCheckBox.Checked,
+                trnLitCheckBox.Checked
+            );
 
             //seeing if there is an empty port plate
             bool emptyPortPlate = emptyPortPlateCheckBox.Checked;
-
 
             //see if port plate num is valid
             int portPlateNum;
@@ -613,7 +670,6 @@ namespace KTANE_Solver
             {
                 portPlateNum = int.Parse(portPlateNumTextBox.Text);
             }
-
             catch
             {
                 String text = "You entered an invalid port plate number";
@@ -625,14 +681,12 @@ namespace KTANE_Solver
                 return;
             }
 
-            
-
             //make sure dvid text box is valid
             int dvidNum;
 
             try
             {
-                dvidNum = Int32.Parse(dvidTextBox.Text); 
+                dvidNum = Int32.Parse(dvidTextBox.Text);
             }
             catch
             {
@@ -666,7 +720,6 @@ namespace KTANE_Solver
             }
 
             Port parallel = new Port("parallel", parallelNum);
-
 
             //make sure rj text box is valid
             int rjNum;
@@ -728,7 +781,6 @@ namespace KTANE_Solver
 
             Port serial = new Port("serial", serialNum);
 
-
             //make sure stereo text box is valid
             int stereoNum;
 
@@ -750,9 +802,32 @@ namespace KTANE_Solver
 
             Port stereo = new Port("stereo RCA", stereoNum);
 
-
             //if this statement is reached, the bomb is valid.
-            bomb = new Bomb(day, serialNumber, battery, batteryHolder, bob, car, clr, frk, frq, ind, msa, nsa, sig, snd, trn, emptyPortPlate, portPlateNum, dvid, parallel, ps, rj, serial, stereo);
+            bomb = new Bomb(
+                day,
+                serialNumber,
+                battery,
+                batteryHolder,
+                bob,
+                car,
+                clr,
+                frk,
+                frq,
+                ind,
+                msa,
+                nsa,
+                sig,
+                snd,
+                trn,
+                emptyPortPlate,
+                portPlateNum,
+                dvid,
+                parallel,
+                ps,
+                rj,
+                serial,
+                stereo
+            );
 
             //going onto the confirmation page
 
@@ -760,16 +835,13 @@ namespace KTANE_Solver
             {
                 confirmationForm = new EdgeworkConfirmationForm(bomb, this, logFileWriter);
             }
-
             else
             {
                 confirmationForm.UpdateForm(bomb, this);
             }
 
-
             this.Hide();
             confirmationForm.Show();
-
         }
 
         /// <summary>
@@ -792,14 +864,18 @@ namespace KTANE_Solver
                 String message = "Are you sure you want to quit the program?";
                 String caption = "Quit Program";
 
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    message,
+                    caption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 //if the user clicks no, don't close the program
                 if (result == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
-
                 else
                 {
                     logFileWriter.Write("User closed program...");
@@ -821,7 +897,6 @@ namespace KTANE_Solver
         {
             textBox.Text = text;
             textBox.ForeColor = Color.Gray;
-
         }
 
         /// <summary>
@@ -847,7 +922,6 @@ namespace KTANE_Solver
         private void batteryTextBox_Enter(object sender, EventArgs e)
         {
             DeletePromptText(batteryTextBox, "# of batteries");
-
         }
 
         /// <summary>
@@ -932,10 +1006,9 @@ namespace KTANE_Solver
         private void batteryTextBox_Leave(object sender, EventArgs e)
         {
             if (batteryTextBox.Text == "")
-            { 
+            {
                 SetPromptText(batteryTextBox, "# of batteries");
             }
-
         }
 
         /// <summary>
@@ -1029,7 +1102,5 @@ namespace KTANE_Solver
                 SetPromptText(stereoTextBox, "# of stereo RCA ports");
             }
         }
-
-        
-    }  
+    }
 }

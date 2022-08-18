@@ -19,7 +19,6 @@ namespace KTANE_Solver
     /// </summary>
     public partial class ModuleSelectionForm : Form
     {
-
         //===========FIELDS===========
 
         //the current bomb
@@ -81,7 +80,7 @@ namespace KTANE_Solver
         private SafetySafeForm safetySafeForm;
         private SeaShellsForm seaShellsForm;
         private ShapeShiftWordForm shapeShiftWordForm;
-        private SemaphoreStage1Form semaphoreCountForm; 
+        private SemaphoreStage1Form semaphoreCountForm;
         private ScrewForm screwForm;
         private SillySlotsStage1Form sillySlotsForm;
         private SimonSaysForm simonSaysForm;
@@ -97,10 +96,9 @@ namespace KTANE_Solver
         //Preferences
         private Color[] mazeColors;
 
-
         //===========CONSTRUCTORS===========
 
-        
+
 
         /// <summary>
         /// Creates an form that allows the user to
@@ -109,7 +107,13 @@ namespace KTANE_Solver
         /// <param name="bomb">the current bomb</param>
         /// <param name="confirmationForm">the form used if the player wants to check the edgework</param>
         /// <param name="inputForm">the form used if the player want to change the edgework</param>
-        public ModuleSelectionForm(Bomb bomb, EdgeworkConfirmationForm confirmationForm, EdgeworkInputForm inputForm, StreamWriter logFileWriter, Color [] mazeColors)
+        public ModuleSelectionForm(
+            Bomb bomb,
+            EdgeworkConfirmationForm confirmationForm,
+            EdgeworkInputForm inputForm,
+            StreamWriter logFileWriter,
+            Color[] mazeColors
+        )
         {
             InitializeComponent();
             this.mazeColors = mazeColors;
@@ -119,7 +123,6 @@ namespace KTANE_Solver
             this.inputForm = inputForm;
             UpdateForm();
         }
-
 
         //===========METHODS===========
 
@@ -145,14 +148,73 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Sets up the combo box so it has all the modules 
+        /// Sets up the combo box so it has all the modules
         /// </summary>
         private void SetUpModuleComboBox()
         {
             moduleComboBox.Items.Clear();
 
-
-            String[] modules = new String[] {"3D Maze", "Adjacent Letters", "Adventure Game", "Anagrams", "Astrology", "Binary Puzzle", "Bitmaps", "Blind Alley", "Boolean Venn Diagram", "Broken Buttons", "Bulb", "Button", "Cheap Checkout", "Chess", "Chord Qualities", "Color Math", "Colored Squares", "Complicated Wires", "Connection Check", "Creation", "Fast Math", "FizzBuzz", "Gamepad", "Hexamaze", "Ice Cream", "Keypad", "Letter Keys", "Light Cycle", "Listening", "Logic", "Maze", "Memory", "Microcontroller", "Monsplode Trading Cards", "Morse Code", "Mystic Square", "Murder","Number Pad", "Password", "Poker", "Rock Paper Scissors Lizard Spock", "Round Keypad", "Rubik's Cube", "Safety Safe", "Screw", "Semaphore", "Sea Shells", "Shape Shift", "Silly Slots", "Simon Says", "Skewed Slots", "Switches", "Tic Tac Toe", "Two Bits", "Who's on First", "Wires", "Wires Sequence", "Word Search" };
+            String[] modules = new String[]
+            {
+                "3D Maze",
+                "Adjacent Letters",
+                "Adventure Game",
+                "Anagrams",
+                "Astrology",
+                "Binary Puzzle",
+                "Bitmaps",
+                "Blind Alley",
+                "Boolean Venn Diagram",
+                "Broken Buttons",
+                "Bulb",
+                "Button",
+                "Cheap Checkout",
+                "Chess",
+                "Chord Qualities",
+                "Color Math",
+                "Colored Squares",
+                "Complicated Wires",
+                "Connection Check",
+                "Creation",
+                "Fast Math",
+                "FizzBuzz",
+                "Gamepad",
+                "Hexamaze",
+                "Ice Cream",
+                "Keypad",
+                "Letter Keys",
+                "Light Cycle",
+                "Listening",
+                "Logic",
+                "Maze",
+                "Memory",
+                "Microcontroller",
+                "Monsplode Trading Cards",
+                "Morse Code",
+                "Mystic Square",
+                "Murder",
+                "Number Pad",
+                "Password",
+                "Poker",
+                "Rock Paper Scissors Lizard Spock",
+                "Round Keypad",
+                "Rubik's Cube",
+                "Safety Safe",
+                "Screw",
+                "Semaphore",
+                "Sea Shells",
+                "Shape Shift",
+                "Silly Slots",
+                "Simon Says",
+                "Skewed Slots",
+                "Switches",
+                "Tic Tac Toe",
+                "Two Bits",
+                "Who's on First",
+                "Wires",
+                "Wires Sequence",
+                "Word Search"
+            };
 
             moduleComboBox.Items.AddRange(modules);
             moduleComboBox.Text = modules[0];
@@ -191,14 +253,18 @@ namespace KTANE_Solver
                 String message = "Are you sure you want to quit the program?";
                 String caption = "Quit Program";
 
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    message,
+                    caption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 //if the user clicks no, don't close the program
                 if (result == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
-
                 else
                 {
                     PrintDebug("User closed program...");
@@ -247,16 +313,22 @@ namespace KTANE_Solver
 
                 writer.Close();
 
-                MessageBox.Show("Edgework saved successfully", "Edgework Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    "Edgework saved successfully",
+                    "Edgework Saved",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
                 PrintDebugLine("User has successfully saved edgeork\n");
-
             }
-
             catch
             {
-                MessageBox.Show("There was an error saving this edgework to Edgework.txt", "Saving Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "There was an error saving this edgework to Edgework.txt",
+                    "Saving Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
 
                 PrintDebugLine("User has unsuccessfully saved edgeork\n");
             }
@@ -272,7 +344,6 @@ namespace KTANE_Solver
             writer.WriteLine($"{indicator.Visible}|{indicator.Lit}");
         }
 
-        
         /// <summary>
         /// Sends the player to the module form
         /// they selected in the combo box
@@ -283,7 +354,6 @@ namespace KTANE_Solver
 
             PrintDebugLine($"User selected {moduleName}. Attempting to open...\n");
 
-
             this.Hide();
 
             switch (moduleName)
@@ -293,7 +363,6 @@ namespace KTANE_Solver
                     {
                         _3DMazeForm = new _3DMazeForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         _3DMazeForm.UpdateForm(bomb, logFileWriter, this);
@@ -307,7 +376,6 @@ namespace KTANE_Solver
                     {
                         adjacentLettersForm = new AdjacentLettersForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         adjacentLettersForm.UpdateForm(bomb, logFileWriter, this);
@@ -322,14 +390,13 @@ namespace KTANE_Solver
                     {
                         adventureGameForm = new AdventureGameForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         adventureGameForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     adventureGameForm.Show();
-                    
+
                     break;
 
                 case "Anagrams":
@@ -337,7 +404,6 @@ namespace KTANE_Solver
                     {
                         anagramsForm = new AnagramsForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         anagramsForm.UpdateForm(bomb, logFileWriter, this);
@@ -352,14 +418,13 @@ namespace KTANE_Solver
                     {
                         astrologyForm = new AstrologyForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         astrologyForm.UpdateForm(bomb, logFileWriter, this);
                     }
 
                     astrologyForm.Show();
-                    
+
                     break;
 
                 case "Binary Puzzle":
@@ -368,7 +433,6 @@ namespace KTANE_Solver
                     {
                         binaryForm = new BinaryPuzzleForm(this, logFileWriter);
                     }
-
                     else
                     {
                         binaryForm.UpdateForm(this, logFileWriter);
@@ -409,7 +473,6 @@ namespace KTANE_Solver
                     {
                         buttonForm = new ButtonForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         buttonForm.UpdateForm(bomb, logFileWriter, this);
@@ -424,7 +487,6 @@ namespace KTANE_Solver
                     {
                         bulbForm = new BulbForm(bomb, logFileWriter, this, "Bulb");
                     }
-
                     else
                     {
                         bulbForm.UpdateForm(bomb, logFileWriter, this);
@@ -435,12 +497,11 @@ namespace KTANE_Solver
                     break;
 
                 case "Cheap Checkout":
-   
+
                     if (cheapForm == null)
                     {
                         cheapForm = new CheapCheckoutForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         cheapForm.UpdateForm(bomb, logFileWriter, this);
@@ -450,12 +511,11 @@ namespace KTANE_Solver
                     break;
 
                 case "Chess":
-                    
+
                     if (chessForm == null)
                     {
                         chessForm = new ChessForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         chessForm.UpdateForm(bomb, logFileWriter, this);
@@ -502,8 +562,8 @@ namespace KTANE_Solver
 
                     complicatedWiresForm.Show();
                     break;
-                    
-                    case "Connection Check":
+
+                case "Connection Check":
                     connectionCheckForm = new ConnectionCheckForm(bomb, logFileWriter, this);
                     connectionCheckForm.Show();
 
@@ -513,13 +573,13 @@ namespace KTANE_Solver
                     fastMathForm = new FastMathStage1Form(bomb, logFileWriter, this);
 
                     fastMathForm.Show();
-                    
+
                     break;
                 case "Creation":
                     creationForm = new CreationForm(bomb, logFileWriter, this);
 
                     creationForm.Show();
-                    
+
                     break;
 
                 case "FizzBuzz":
@@ -551,7 +611,7 @@ namespace KTANE_Solver
                 case "Ice Cream":
 
                     iceCreamForm = new IceCreamForm(bomb, logFileWriter, this);
-                    
+
                     iceCreamForm.Show();
                     break;
 
@@ -561,7 +621,6 @@ namespace KTANE_Solver
                     {
                         keyPadForm = new KeypadForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         keyPadForm.UpdateForm(bomb, logFileWriter, this);
@@ -583,7 +642,6 @@ namespace KTANE_Solver
                     {
                         lightCycleForm = new LightCycleForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         lightCycleForm.UpdateForm(bomb, logFileWriter, this);
@@ -603,7 +661,6 @@ namespace KTANE_Solver
                     {
                         logicForm = new LogicForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         logicForm.UpdateForm(bomb, logFileWriter, this);
@@ -618,7 +675,6 @@ namespace KTANE_Solver
                     {
                         mazeForm = new MazeForm(bomb, logFileWriter, this, mazeColors);
                     }
-
                     else
                     {
                         mazeForm.UpdateForm(bomb, logFileWriter, this);
@@ -633,7 +689,6 @@ namespace KTANE_Solver
                     {
                         memoryForm = new MemoryStage1Form(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         memoryForm.UpdateForm(bomb, logFileWriter, this);
@@ -651,9 +706,12 @@ namespace KTANE_Solver
                 case "Monsplode Trading Cards":
                     if (monsplodeTradingCardForm == null)
                     {
-                        monsplodeTradingCardForm = new MonsplodeTradingCardForm1(bomb, logFileWriter, this);
+                        monsplodeTradingCardForm = new MonsplodeTradingCardForm1(
+                            bomb,
+                            logFileWriter,
+                            this
+                        );
                     }
-
                     else
                     {
                         monsplodeTradingCardForm.UpdateForm(bomb, logFileWriter, this);
@@ -668,7 +726,6 @@ namespace KTANE_Solver
                     {
                         morseCodeForm = new MorseCodeForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         morseCodeForm.UpdateForm(bomb, logFileWriter, this);
@@ -683,7 +740,6 @@ namespace KTANE_Solver
                     {
                         murderForm = new MurderForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         murderForm.UpdateForm(bomb, logFileWriter, this);
@@ -704,7 +760,6 @@ namespace KTANE_Solver
                     {
                         numberPadForm = new NumberPadForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         numberPadForm.UpdateForm(bomb, logFileWriter, this);
@@ -719,7 +774,6 @@ namespace KTANE_Solver
                     {
                         passwordForm = new PasswordFirstStageForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         passwordForm.UpdateForm(bomb, logFileWriter, this);
@@ -728,14 +782,12 @@ namespace KTANE_Solver
                     passwordForm.Show();
                     break;
 
-
                 case "Poker":
 
                     if (pokerForm == null)
                     {
                         pokerForm = new PokerStage1Form(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         pokerForm.UpdateForm(bomb, logFileWriter, this);
@@ -747,9 +799,12 @@ namespace KTANE_Solver
                 case "Rock Paper Scissors Lizard Spock":
                     if (rockPaperScissorsLizardSpockForm == null)
                     {
-                        rockPaperScissorsLizardSpockForm = new RockPaperScissorsLizardSpockForm(bomb, logFileWriter, this);
+                        rockPaperScissorsLizardSpockForm = new RockPaperScissorsLizardSpockForm(
+                            bomb,
+                            logFileWriter,
+                            this
+                        );
                     }
-
                     else
                     {
                         rockPaperScissorsLizardSpockForm.UpdateForm(bomb, logFileWriter, this);
@@ -771,7 +826,6 @@ namespace KTANE_Solver
                     {
                         rubikCubeForm = new RubikCubeForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         rubikCubeForm.UpdateForm(bomb, logFileWriter, this);
@@ -784,7 +838,7 @@ namespace KTANE_Solver
                     safetySafeForm = new SafetySafeForm(bomb, logFileWriter, this);
                     safetySafeForm.Show();
                     break;
-                    
+
                 case "Sea Shells":
 
                     seaShellsForm = new SeaShellsForm(bomb, logFileWriter, this);
@@ -809,7 +863,6 @@ namespace KTANE_Solver
                     {
                         sillySlotsForm = new SillySlotsStage1Form(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         sillySlotsForm.UpdateForm(bomb, logFileWriter, this);
@@ -824,7 +877,6 @@ namespace KTANE_Solver
                     {
                         simonSaysForm = new SimonSaysForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         simonSaysForm.UpdateForm(bomb, logFileWriter, this);
@@ -836,8 +888,8 @@ namespace KTANE_Solver
                 case "Shape Shift":
                     shapeShiftWordForm = new ShapeShiftWordForm(bomb, logFileWriter, this);
                     shapeShiftWordForm.Show();
-                
-                break;
+
+                    break;
 
                 case "Skewed Slots":
                     skewedSlotForm = new SkewedSlotForm(bomb, logFileWriter, this);
@@ -855,7 +907,6 @@ namespace KTANE_Solver
                     ticTacToeForm.Show();
                     break;
 
-
                 case "Two Bits":
 
                     SuccessfulModuleOpening(moduleName);
@@ -864,7 +915,6 @@ namespace KTANE_Solver
                     {
                         twoBitsForm = new TwoBitsStage1Form(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         twoBitsForm.UpdateForm(bomb, logFileWriter, this);
@@ -877,13 +927,11 @@ namespace KTANE_Solver
 
                     if (whosOnFirstForm == null)
                         whosOnFirstForm = new WhosOnFirstFirstStageForm(bomb, logFileWriter, this);
-
                     else
                         whosOnFirstForm.UpdateForm(bomb, logFileWriter, this);
 
                     whosOnFirstForm.Show();
                     break;
-
 
                 case "Wires":
 
@@ -891,7 +939,6 @@ namespace KTANE_Solver
                     {
                         wiresForm = new WiresForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         wiresForm.UpdateForm(bomb, logFileWriter, this);
@@ -906,7 +953,6 @@ namespace KTANE_Solver
                     {
                         wireSequenceForm = new WireSequenceStage1Form(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         wireSequenceForm.UpdateForm(bomb, logFileWriter, this);
@@ -921,7 +967,6 @@ namespace KTANE_Solver
                     {
                         wordSearchForm = new WordSearchForm(bomb, logFileWriter, this);
                     }
-
                     else
                     {
                         wordSearchForm.UpdateForm(bomb, logFileWriter, this);
@@ -933,15 +978,14 @@ namespace KTANE_Solver
                 //this means that the module doesn't exist
                 default:
                     this.Show();
-                break;
+                    break;
             }
 
             if (moduleName != "Two Bits")
-            { 
+            {
                 SuccessfulModuleOpening(moduleName);
             }
         }
-
 
         /// <summary>
         /// Tells the log the module opend successfully

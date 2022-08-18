@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -17,20 +18,19 @@ namespace KTANE_Solver
     public partial class BinaryPuzzleAnswerForm : ModuleForm
     {
         public BinaryPuzzleAnswerForm(char[,] grid, StreamWriter logFileWriter)
-        : base (null, logFileWriter, null, "Binary Puzzle", true)
-
+            : base(null, logFileWriter, null, "Binary Puzzle", true)
         {
             InitializeComponent();
 
             this.ControlBox = false;
             LogFileWriter = logFileWriter;
 
-            row1button1.BackColor = GetColor(grid[0,0]);
-            row1button2.BackColor = GetColor(grid[0,1]);
-            row1button3.BackColor = GetColor(grid[0,2]);
-            row1button4.BackColor = GetColor(grid[0,3]);
-            row1button5.BackColor = GetColor(grid[0,4]);
-            row1button6.BackColor = GetColor(grid[0,5]);
+            row1button1.BackColor = GetColor(grid[0, 0]);
+            row1button2.BackColor = GetColor(grid[0, 1]);
+            row1button3.BackColor = GetColor(grid[0, 2]);
+            row1button4.BackColor = GetColor(grid[0, 3]);
+            row1button5.BackColor = GetColor(grid[0, 4]);
+            row1button6.BackColor = GetColor(grid[0, 5]);
 
             row2button1.BackColor = GetColor(grid[1, 0]);
             row2button2.BackColor = GetColor(grid[1, 1]);

@@ -18,9 +18,11 @@ namespace KTANE_Solver
 
     public partial class ComplicatedWiresForm : ModuleForm
     {
-
-        public ComplicatedWiresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Complicated Wires", false)
+        public ComplicatedWiresForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Complicated Wires", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -29,7 +31,11 @@ namespace KTANE_Solver
         /// <summary>
         /// Updates the form
         /// </summary>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -47,7 +53,6 @@ namespace KTANE_Solver
             wireLitCheckBox4.Checked = false;
             wireLitCheckBox5.Checked = false;
             wireLitCheckBox6.Checked = false;
-
 
             wireStarCheckBox1.Checked = false;
             wireStarCheckBox2.Checked = false;
@@ -79,7 +84,7 @@ namespace KTANE_Solver
         /// <param name="comboBox"></param>
         private void ResetLateComboBox(ComboBox comboBox)
         {
-            string[] items = new string[] {"", "Blue", "Purple", "Red", "White", };
+            string[] items = new string[] { "", "Blue", "Purple", "Red", "White", };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
@@ -110,7 +115,6 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             //wire 6 can't not be blank when 5 isn't
             if (wireComboBox6.Text != "" && wireComboBox5.Text == "")
             {
@@ -126,13 +130,19 @@ namespace KTANE_Solver
             ComplicatedWire wire6 = CreateWire(wireComboBox6, wireLitCheckBox6, wireStarCheckBox6);
 
             //only add wire if not null
-            List<ComplicatedWire> wireList = new List<ComplicatedWire> { wire1, wire2, wire3, wire4};
+            List<ComplicatedWire> wireList = new List<ComplicatedWire>
+            {
+                wire1,
+                wire2,
+                wire3,
+                wire4
+            };
 
             if (wire5 != null)
-            { 
+            {
                 wireList.Add(wire5);
 
-                if(wire6 != null)
+                if (wire6 != null)
                     wireList.Add(wire6);
             }
 

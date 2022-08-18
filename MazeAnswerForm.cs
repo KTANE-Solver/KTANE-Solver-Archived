@@ -26,11 +26,9 @@ namespace KTANE_Solver
         Image downArrowImage = Image.FromFile("Maze Arrows/down arrow.png");
 
         public MazeAnswerForm(List<Maze.Coordinate> correctSpots, StreamWriter logFileWriter)
-        : base(null, logFileWriter, null, "Maze", true)
-
+            : base(null, logFileWriter, null, "Maze", true)
         {
             InitializeComponent();
-
 
             this.correctSpots = correctSpots;
 
@@ -137,16 +135,32 @@ namespace KTANE_Solver
             {
                 if (AreEqual(correctSpots[i], new Maze.Coordinate(row, column)))
                 {
-                    if (row != 5 && correctSpots[i].Row + 1 == correctSpots[i + 1].Row && correctSpots[i].Column == correctSpots[i + 1].Column)
+                    if (
+                        row != 5
+                        && correctSpots[i].Row + 1 == correctSpots[i + 1].Row
+                        && correctSpots[i].Column == correctSpots[i + 1].Column
+                    )
                         return downArrowImage;
 
-                    if (row != 0 && correctSpots[i].Row - 1 == correctSpots[i + 1].Row && correctSpots[i].Column == correctSpots[i + 1].Column)
+                    if (
+                        row != 0
+                        && correctSpots[i].Row - 1 == correctSpots[i + 1].Row
+                        && correctSpots[i].Column == correctSpots[i + 1].Column
+                    )
                         return upArrowImage;
 
-                    if (column != 5 && correctSpots[i].Column + 1 == correctSpots[i + 1].Column && correctSpots[i].Row == correctSpots[i + 1].Row)
+                    if (
+                        column != 5
+                        && correctSpots[i].Column + 1 == correctSpots[i + 1].Column
+                        && correctSpots[i].Row == correctSpots[i + 1].Row
+                    )
                         return rightArrowImage;
 
-                    if (column != 0 && correctSpots[i].Column - 1 == correctSpots[i + 1].Column && correctSpots[i].Row == correctSpots[i + 1].Row)
+                    if (
+                        column != 0
+                        && correctSpots[i].Column - 1 == correctSpots[i + 1].Column
+                        && correctSpots[i].Row == correctSpots[i + 1].Row
+                    )
                         return leftArrowImage;
                 }
             }
@@ -156,25 +170,23 @@ namespace KTANE_Solver
 
         private Color GetColor(int row, int column)
         {
-                if (AreEqual(correctSpots[0], new Maze.Coordinate( row, column )))
-                {
-                    return Color.White;
-                }
+            if (AreEqual(correctSpots[0], new Maze.Coordinate(row, column)))
+            {
+                return Color.White;
+            }
 
-                if (AreEqual(correctSpots[correctSpots.Count - 1], new Maze.Coordinate(row, column)))
-                {
-                    return Color.Red;
-                }
+            if (AreEqual(correctSpots[correctSpots.Count - 1], new Maze.Coordinate(row, column)))
+            {
+                return Color.Red;
+            }
 
-                
-                foreach (Maze.Coordinate pair in correctSpots)
+            foreach (Maze.Coordinate pair in correctSpots)
+            {
+                if (AreEqual(pair, new Maze.Coordinate(row, column)))
                 {
-                    if (AreEqual(pair, new Maze.Coordinate(row, column)))
-                    {
-                        return Color.Purple;
-                    }
+                    return Color.Purple;
                 }
-                
+            }
 
             return Color.Blue;
         }
@@ -184,19 +196,10 @@ namespace KTANE_Solver
             return c1.Row == c2.Row && c1.Column == c2.Column;
         }
 
-        private void row2button6_Click(object sender, EventArgs e)
-        {
+        private void row2button6_Click(object sender, EventArgs e) { }
 
-        }
+        private void row3button6_Click(object sender, EventArgs e) { }
 
-        private void row3button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void row4button6_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void row4button6_Click(object sender, EventArgs e) { }
     }
 }

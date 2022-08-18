@@ -17,14 +17,21 @@ namespace KTANE_Solver
     /// </summary>
     public partial class PasswordFirstStageForm : ModuleForm
     {
-        public PasswordFirstStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base (bomb, logFileWriter, moduleSelectionForm, "Password", false)
+        public PasswordFirstStageForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Password", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -35,14 +42,12 @@ namespace KTANE_Solver
             firstRow5TextBox.Text = "";
             firstRow6TextBox.Text = "";
 
-
             secondRow1TextBox.Text = "";
             secondRow2TextBox.Text = "";
             secondRow3TextBox.Text = "";
             secondRow4TextBox.Text = "";
             secondRow5TextBox.Text = "";
             secondRow6TextBox.Text = "";
-
 
             thirdRow1TextBox.Text = "";
             thirdRow2TextBox.Text = "";
@@ -64,9 +69,6 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
-            
-
             String firstRow1 = firstRow1TextBox.Text.ToUpper();
             String firstRow2 = firstRow2TextBox.Text.ToUpper();
             String firstRow3 = firstRow3TextBox.Text.ToUpper();
@@ -89,17 +91,59 @@ namespace KTANE_Solver
             String thirdRow6 = thirdRow6TextBox.Text.ToUpper();
 
             //make sure each text box only has 1 character and each text box only contains a captialized letter
-            if (!(ContainsOneLetter(firstRow1) || ContainsOneLetter(firstRow2) || ContainsOneLetter(firstRow3) || ContainsOneLetter(firstRow4) || ContainsOneLetter(firstRow5) || ContainsOneLetter(firstRow6) ||
-                  ContainsOneLetter(secondRow1) || ContainsOneLetter(secondRow2) || ContainsOneLetter(secondRow3) || ContainsOneLetter(secondRow4) || ContainsOneLetter(secondRow5) || ContainsOneLetter(secondRow6) ||
-                  ContainsOneLetter(thirdRow1) || ContainsOneLetter(thirdRow2) || ContainsOneLetter(thirdRow3) || ContainsOneLetter(thirdRow4) || ContainsOneLetter(thirdRow5) || ContainsOneLetter(thirdRow6)))
+            if (
+                !(
+                    ContainsOneLetter(firstRow1)
+                    || ContainsOneLetter(firstRow2)
+                    || ContainsOneLetter(firstRow3)
+                    || ContainsOneLetter(firstRow4)
+                    || ContainsOneLetter(firstRow5)
+                    || ContainsOneLetter(firstRow6)
+                    || ContainsOneLetter(secondRow1)
+                    || ContainsOneLetter(secondRow2)
+                    || ContainsOneLetter(secondRow3)
+                    || ContainsOneLetter(secondRow4)
+                    || ContainsOneLetter(secondRow5)
+                    || ContainsOneLetter(secondRow6)
+                    || ContainsOneLetter(thirdRow1)
+                    || ContainsOneLetter(thirdRow2)
+                    || ContainsOneLetter(thirdRow3)
+                    || ContainsOneLetter(thirdRow4)
+                    || ContainsOneLetter(thirdRow5)
+                    || ContainsOneLetter(thirdRow6)
+                )
+            )
             {
                 ShowErrorMessage("Each text box must contain only 1 letter");
                 return;
             }
 
-            if (!RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6) ||
-                !RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6) ||
-                !RowHasDifferentLetters(firstRow1, firstRow2, firstRow3, firstRow4, firstRow5, firstRow6))
+            if (
+                !RowHasDifferentLetters(
+                    firstRow1,
+                    firstRow2,
+                    firstRow3,
+                    firstRow4,
+                    firstRow5,
+                    firstRow6
+                )
+                || !RowHasDifferentLetters(
+                    firstRow1,
+                    firstRow2,
+                    firstRow3,
+                    firstRow4,
+                    firstRow5,
+                    firstRow6
+                )
+                || !RowHasDifferentLetters(
+                    firstRow1,
+                    firstRow2,
+                    firstRow3,
+                    firstRow4,
+                    firstRow5,
+                    firstRow6
+                )
+            )
             {
                 ShowErrorMessage("Each row must have different letters");
                 return;
@@ -109,9 +153,33 @@ namespace KTANE_Solver
 
             Password module = new Password(Bomb, LogFileWriter);
 
-            module.FillRow(firstRow1[0], firstRow2[0], firstRow3[0], firstRow4[0], firstRow5[0], firstRow6[0], 1);
-            module.FillRow(secondRow1[0], secondRow2[0], secondRow3[0], secondRow4[0], secondRow5[0], secondRow6[0], 2);
-            module.FillRow(thirdRow1[0], thirdRow2[0], thirdRow3[0], thirdRow4[0], thirdRow5[0], thirdRow6[0], 3);
+            module.FillRow(
+                firstRow1[0],
+                firstRow2[0],
+                firstRow3[0],
+                firstRow4[0],
+                firstRow5[0],
+                firstRow6[0],
+                1
+            );
+            module.FillRow(
+                secondRow1[0],
+                secondRow2[0],
+                secondRow3[0],
+                secondRow4[0],
+                secondRow5[0],
+                secondRow6[0],
+                2
+            );
+            module.FillRow(
+                thirdRow1[0],
+                thirdRow2[0],
+                thirdRow3[0],
+                thirdRow4[0],
+                thirdRow5[0],
+                thirdRow6[0],
+                3
+            );
 
             List<string> possibleAnswers = module.Solve(3);
 
@@ -125,22 +193,42 @@ namespace KTANE_Solver
             {
                 UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
-
             else
             {
                 this.Hide();
                 List<char> previousLetters = new List<char>
                 {
-                    firstRow1[0], firstRow2[0], firstRow3[0], firstRow4[0], firstRow5[0], firstRow6[0],
-                    secondRow1[0], secondRow2[0], secondRow3[0], secondRow4[0], secondRow5[0], secondRow6[0],
-                    thirdRow1[0], thirdRow2[0], thirdRow3[0], thirdRow4[0], thirdRow5[0], thirdRow6[0]
+                    firstRow1[0],
+                    firstRow2[0],
+                    firstRow3[0],
+                    firstRow4[0],
+                    firstRow5[0],
+                    firstRow6[0],
+                    secondRow1[0],
+                    secondRow2[0],
+                    secondRow3[0],
+                    secondRow4[0],
+                    secondRow5[0],
+                    secondRow6[0],
+                    thirdRow1[0],
+                    thirdRow2[0],
+                    thirdRow3[0],
+                    thirdRow4[0],
+                    thirdRow5[0],
+                    thirdRow6[0]
                 };
 
-                PasswordOtherStageForm otherStageForm = new PasswordOtherStageForm(2, previousLetters, this, module, Bomb, LogFileWriter, ModuleSelectionForm);
+                PasswordOtherStageForm otherStageForm = new PasswordOtherStageForm(
+                    2,
+                    previousLetters,
+                    this,
+                    module,
+                    Bomb,
+                    LogFileWriter,
+                    ModuleSelectionForm
+                );
                 otherStageForm.Show();
             }
-
-
         }
 
         /// <summary>
@@ -150,7 +238,7 @@ namespace KTANE_Solver
         {
             return str.Length == 1 && str[0] >= 65 && str[0] <= 90;
         }
-        
+
         /// <summary>
         /// Tells if all letters are different
         /// </summary>
@@ -161,9 +249,16 @@ namespace KTANE_Solver
         /// <param name="let5"></param>
         /// <param name="let6"></param>
         /// <returns></returns>
-        private bool RowHasDifferentLetters(string let1, string let2, string let3, string let4, string let5, string let6)
+        private bool RowHasDifferentLetters(
+            string let1,
+            string let2,
+            string let3,
+            string let4,
+            string let5,
+            string let6
+        )
         {
-            List<string> letters =  new List<string>();
+            List<string> letters = new List<string>();
 
             letters.Add(let1);
             letters.Add(let2);

@@ -21,14 +21,25 @@ namespace KTANE_Solver
         PokerStage1Form pokerStage1Form;
         public Poker module;
 
-        public PokerStage2Form(PokerStage1Form pokerStage1Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
-        : base(bomb, logFileWriter, moduleSelectionForm, pokerStage1Form, "Poker", false)
+        public PokerStage2Form(
+            PokerStage1Form pokerStage1Form,
+            ModuleSelectionForm moduleSelectionForm,
+            Poker module,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, moduleSelectionForm, pokerStage1Form, "Poker", false)
         {
             InitializeComponent();
             UpdateForm(pokerStage1Form, moduleSelectionForm, module, bomb, logFileWriter);
         }
 
-        public void UpdateForm(PokerStage1Form pokerStage1Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
+        public void UpdateForm(
+            PokerStage1Form pokerStage1Form,
+            ModuleSelectionForm moduleSelectionForm,
+            Poker module,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        )
         {
             this.pokerStage1Form = pokerStage1Form;
             this.module = module;
@@ -36,7 +47,17 @@ namespace KTANE_Solver
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             responseComboBox.Items.Clear();
-            responseComboBox.Items.AddRange(new String [] { "Are you sure?", "Awful play!", "Really?", "Really, really?", "Sure about that?", "Terrible play!" });
+            responseComboBox.Items.AddRange(
+                new String[]
+                {
+                    "Are you sure?",
+                    "Awful play!",
+                    "Really?",
+                    "Really, really?",
+                    "Sure about that?",
+                    "Terrible play!"
+                }
+            );
             responseComboBox.Text = "Are you sure?";
             responseComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -63,14 +84,20 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Response: {module.response}\n");
 
-
             String answer = module.BluffTruth();
 
             ShowAnswer($"Press {answer}");
 
             this.Hide();
 
-            PokerStage3Form stage3 = new PokerStage3Form(pokerStage1Form, this, ModuleSelectionForm, module, Bomb, LogFileWriter);
+            PokerStage3Form stage3 = new PokerStage3Form(
+                pokerStage1Form,
+                this,
+                ModuleSelectionForm,
+                module,
+                Bomb,
+                LogFileWriter
+            );
             stage3.Show();
         }
 

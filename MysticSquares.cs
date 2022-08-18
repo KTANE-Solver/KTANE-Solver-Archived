@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public class MysticSquares : Module
@@ -12,7 +13,8 @@ namespace KTANE_Solver
         private List<Puzzle> closedList;
         private Puzzle startingPuzzle;
 
-        public MysticSquares(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Mystic Squares")
+        public MysticSquares(Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Mystic Squares")
         {
             openList = new List<Puzzle>();
             closedList = new List<Puzzle>();
@@ -26,9 +28,7 @@ namespace KTANE_Solver
             if (grid[1, 1] == 0)
             {
                 skull = 7;
-
             }
-
             else
             {
                 int[] arr;
@@ -55,11 +55,16 @@ namespace KTANE_Solver
                     }
                 }
 
-                if (grid[0, 0] == Bomb.LastDigit || grid[1, 1] == Bomb.LastDigit || grid[0, 2] == Bomb.LastDigit || grid[2, 0] == Bomb.LastDigit || grid[2, 2] == Bomb.LastDigit)
+                if (
+                    grid[0, 0] == Bomb.LastDigit
+                    || grid[1, 1] == Bomb.LastDigit
+                    || grid[0, 2] == Bomb.LastDigit
+                    || grid[2, 0] == Bomb.LastDigit
+                    || grid[2, 2] == Bomb.LastDigit
+                )
                 {
                     arr = FindSkullRow(startingNum);
                 }
-
                 else
                 {
                     arr = FindSkullColumn(startingNum);
@@ -74,8 +79,6 @@ namespace KTANE_Solver
                         row = coor[0];
                         col = coor[1];
                     }
-
-
                 }
 
                 skull = grid[row, col];
@@ -92,9 +95,7 @@ namespace KTANE_Solver
             if (grid[1, 1] == 0)
             {
                 skull = 7;
-
             }
-
             else
             {
                 int[] arr;
@@ -121,11 +122,19 @@ namespace KTANE_Solver
                     }
                 }
 
-                if (Bomb.LastDigit != 0 && (grid[0, 0] == Bomb.LastDigit || grid[1, 1] == Bomb.LastDigit || grid[0, 2] == Bomb.LastDigit || grid[2, 0] == Bomb.LastDigit || grid[2, 2] == Bomb.LastDigit))
+                if (
+                    Bomb.LastDigit != 0
+                    && (
+                        grid[0, 0] == Bomb.LastDigit
+                        || grid[1, 1] == Bomb.LastDigit
+                        || grid[0, 2] == Bomb.LastDigit
+                        || grid[2, 0] == Bomb.LastDigit
+                        || grid[2, 2] == Bomb.LastDigit
+                    )
+                )
                 {
                     arr = FindSkullRow(startingNum);
                 }
-
                 else
                 {
                     arr = FindSkullColumn(startingNum);
@@ -140,8 +149,6 @@ namespace KTANE_Solver
                         row = coor[0];
                         col = coor[1];
                     }
-
-
                 }
 
                 skull = grid[row, col];
@@ -155,71 +162,69 @@ namespace KTANE_Solver
             switch (middle)
             {
                 case 1:
-                    return new int[] { 1,3,5,4,6,7,2,8};
+                    return new int[] { 1, 3, 5, 4, 6, 7, 2, 8 };
 
                 case 2:
-                    return new int[] {  2,5,7,3,8,1,4,6};
-
+                    return new int[] { 2, 5, 7, 3, 8, 1, 4, 6 };
 
                 case 3:
-                    return new int[] { 6,4,8,1,7,3,5,2 };
+                    return new int[] { 6, 4, 8, 1, 7, 3, 5, 2 };
 
                 case 4:
-                    return new int[] { 8,1,2,5,3,4,6,7 };
+                    return new int[] { 8, 1, 2, 5, 3, 4, 6, 7 };
 
                 case 5:
-                    return new int[] { 3,2,6,8,4,5,7,1};
+                    return new int[] { 3, 2, 6, 8, 4, 5, 7, 1 };
 
                 case 6:
-                    return new int[] { 7,6,1,2,5,8,3,4 };
+                    return new int[] { 7, 6, 1, 2, 5, 8, 3, 4 };
 
                 case 7:
-                    return new int[] {4,7,3,6,1,2,8,5 };
+                    return new int[] { 4, 7, 3, 6, 1, 2, 8, 5 };
 
                 default:
-                    return new int[] { 5,8,4,7,2,6,1,3 };
+                    return new int[] { 5, 8, 4, 7, 2, 6, 1, 3 };
             }
         }
 
         private int[] FindSkullColumn(int middle)
+        {
+            switch (middle)
             {
-                switch (middle)
-                {
-                    case 1:
-                        return new int[] { 1,2,6,8,3,7,4,5  };
+                case 1:
+                    return new int[] { 1, 2, 6, 8, 3, 7, 4, 5 };
 
-                    case 2:
-                        return new int[] {3,5,4,1,2,6,7,8 };
+                case 2:
+                    return new int[] { 3, 5, 4, 1, 2, 6, 7, 8 };
 
-                    case 3:
-                        return new int[] { 5,7,8,2,6,1,3,4 };
+                case 3:
+                    return new int[] { 5, 7, 8, 2, 6, 1, 3, 4 };
 
-                    case 4:
-                        return new int[] { 4,3,1,5,8,2,6,7 };
+                case 4:
+                    return new int[] { 4, 3, 1, 5, 8, 2, 6, 7 };
 
-                    case 5:
-                        return new int[] { 6,8,7,3,4,5,1,2 };
+                case 5:
+                    return new int[] { 6, 8, 7, 3, 4, 5, 1, 2 };
 
-                    case 6:
-                        return new int[] { 7,1,3,4,5,8,2,6 };
+                case 6:
+                    return new int[] { 7, 1, 3, 4, 5, 8, 2, 6 };
 
-                    case 7:
-                        return new int[] { 2,4,5,6,7,3,8,1};
+                case 7:
+                    return new int[] { 2, 4, 5, 6, 7, 3, 8, 1 };
 
-                    default:
-                        return new int[] { 8,6,2,7,1,4,5,3 };
-                }
+                default:
+                    return new int[] { 8, 6, 2, 7, 1, 4, 5, 3 };
             }
+        }
 
-        private int[] FindSkull(int currentRow, int currentColumn, int nextTarget, int [,] grid)
+        private int[] FindSkull(int currentRow, int currentColumn, int nextTarget, int[,] grid)
         {
             int[][] directions = new int[][]
             {
-                new int[]{ 1, 0 },
-                new int[]{ 0, 1 },
-                new int[]{ -1, 0 },
-                new int[]{ 0, -1 },
-
+                new int[] { 1, 0 },
+                new int[] { 0, 1 },
+                new int[] { -1, 0 },
+                new int[] { 0, -1 },
             };
 
             foreach (int[] direction in directions)
@@ -228,10 +233,13 @@ namespace KTANE_Solver
                 {
                     if (grid[currentRow + direction[0], currentColumn + direction[1]] == nextTarget)
                     {
-                        return new int[] { currentRow + direction[0], currentColumn + direction[1] };
+                        return new int[]
+                        {
+                            currentRow + direction[0],
+                            currentColumn + direction[1]
+                        };
                     }
                 }
-
                 catch
                 {
                     continue;
@@ -263,7 +271,6 @@ namespace KTANE_Solver
                     {
                         p.Parent = currentPuzzle;
                     }
-
                     else
                     {
                         if (p.GCost > currentPuzzle.GCost + 1)
@@ -275,7 +282,7 @@ namespace KTANE_Solver
                     openList.Add(p);
 
                     if (p.Parent == currentPuzzle)
-                    { 
+                    {
                         p.GCost = currentPuzzle.GCost + 1;
                     }
 
@@ -288,7 +295,7 @@ namespace KTANE_Solver
             //find the goal in the open list
             Puzzle goal = null;
             foreach (Puzzle p in openList)
-            { 
+            {
                 int[,] grid = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
                 if (p.GridsAreEqual(grid))
@@ -362,7 +369,11 @@ namespace KTANE_Solver
                 {
                     for (int col = 0; col < 3; col++)
                     {
-                        if (num == -1 && puzzle1[row, col] != puzzle2[row, col] && puzzle1[row, col] != 0)
+                        if (
+                            num == -1
+                            && puzzle1[row, col] != puzzle2[row, col]
+                            && puzzle1[row, col] != 0
+                        )
                         {
                             num = puzzle1[row, col];
                             break;
@@ -390,7 +401,6 @@ namespace KTANE_Solver
 
             if (difference != 0)
             {
-
                 string str = "";
 
                 for (int i = difference; i > 0; i--)
@@ -403,8 +413,6 @@ namespace KTANE_Solver
 
             return string.Join("\n", brokenUpAnswer);
         }
-
-
 
         public class Puzzle
         {
@@ -441,7 +449,7 @@ namespace KTANE_Solver
                         {
                             continue;
                         }
-                        
+
                         int goalRow = (num - 1) / 3;
                         int goalCol = (num - 1) % 3;
 
@@ -470,7 +478,6 @@ namespace KTANE_Solver
                             return false;
                         }
                     }
-
                 }
 
                 return true;
@@ -494,7 +501,6 @@ namespace KTANE_Solver
 
             public List<Puzzle> GetChildren()
             {
-
                 int zeroRow = -1;
                 int zeroCol = -1;
 
@@ -515,7 +521,6 @@ namespace KTANE_Solver
                         break;
                     }
                 }
-
 
                 //create 4 puzzles based on this current puzzle where the zero tile moves is each cardinal directon
                 Puzzle upPuzzle = null;
@@ -642,6 +647,5 @@ namespace KTANE_Solver
                 return lowestChild;
             }
         }
-
     }
 }

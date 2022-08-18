@@ -8,11 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class Microcontroller8PinAnswerForm : ModuleForm
     {
-        public Microcontroller8PinAnswerForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Color button1Color, Color button2Color, Color button3Color, Color button4Color, Color button5Color, Color button6Color, Color button7Color, Color button8Color) : base(bomb, logFileWriter, moduleSelectionForm, "Microcontroller", true)
+        public Microcontroller8PinAnswerForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            Color button1Color,
+            Color button2Color,
+            Color button3Color,
+            Color button4Color,
+            Color button5Color,
+            Color button6Color,
+            Color button7Color,
+            Color button8Color
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Microcontroller", true)
         {
             InitializeComponent();
             button1.BackColor = button1Color;

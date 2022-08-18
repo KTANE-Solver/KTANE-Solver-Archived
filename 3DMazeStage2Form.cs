@@ -15,26 +15,38 @@ namespace KTANE_Solver
     {
         _3DMazeForm firstStageForm;
 
-        private _3DMaze Module { get { return firstStageForm.Module; } }
+        private _3DMaze Module
+        {
+            get { return firstStageForm.Module; }
+        }
 
         public _3DMazeStage2Form()
         {
             InitializeComponent();
         }
 
-        public _3DMazeStage2Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, _3DMazeForm firstStageForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, firstStageForm, "3D Maze", false)
+        public _3DMazeStage2Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            _3DMazeForm firstStageForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, firstStageForm, "3D Maze", false)
         {
             InitializeComponent();
 
             UpdateForm(bomb, logFileWriter, moduleSelectionForm, firstStageForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, _3DMazeForm firstStageForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            _3DMazeForm firstStageForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
-            string[] cardinals = new string[] { "North", "East", "South", "West"};
+            string[] cardinals = new string[] { "North", "East", "South", "West" };
 
             cardinalComboBox.Items.Clear();
             cardinalComboBox.Items.AddRange(cardinals);
@@ -83,14 +95,15 @@ namespace KTANE_Solver
             PrintDebugLine($"Main Updated Goal: [{Module.MainGoal.Row},{Module.MainGoal.Colunm}]");
             PrintDebugLine($"Main Cardinal Direction: {Module.MainCardinalGoal}\n");
 
-            PrintDebugLine($"Secondary Goal: [{Module.SecondaryGoal.Row},{Module.SecondaryGoal.Colunm}]");
+            PrintDebugLine(
+                $"Secondary Goal: [{Module.SecondaryGoal.Row},{Module.SecondaryGoal.Colunm}]"
+            );
             PrintDebugLine($"Secondary Cardinal Direction: {Module.SecondaryCardinalGoal}\n");
-
 
             Module.Solve();
 
             this.Hide();
-            firstStageForm.UpdateForm(Bomb,LogFileWriter, ModuleSelectionForm);
+            firstStageForm.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             firstStageForm.Show();
         }
     }

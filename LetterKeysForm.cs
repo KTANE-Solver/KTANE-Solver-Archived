@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class LetterKeysForm : ModuleForm
     {
-        public LetterKeysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Letter Keys", false)
+        public LetterKeysForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Letter Keys", false)
         {
             InitializeComponent();
         }
@@ -25,7 +30,6 @@ namespace KTANE_Solver
             {
                 num = int.Parse(textBox1.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Textbox can only contain a number between 0 and 99");

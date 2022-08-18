@@ -19,8 +19,11 @@ namespace KTANE_Solver
     /// </summary>
     public partial class MurderForm : ModuleForm
     {
-        public MurderForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm, "Murder", false)
+        public MurderForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Murder", false)
         {
             InitializeComponent();
 
@@ -32,7 +35,11 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb"></param>
         /// <param name="moduleSelectionForm"></param>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -49,7 +56,16 @@ namespace KTANE_Solver
             //set up comboBox where the body was found
             bodyFoundComboBox.Items.Clear();
 
-            String[] rooms = new string[] { "Ballroom", "Conservatory", "Dining Room", "Kitchen", "Library", "Lounge",  "Study" };
+            String[] rooms = new string[]
+            {
+                "Ballroom",
+                "Conservatory",
+                "Dining Room",
+                "Kitchen",
+                "Library",
+                "Lounge",
+                "Study"
+            };
 
             bodyFoundComboBox.Items.AddRange(rooms);
 
@@ -66,7 +82,15 @@ namespace KTANE_Solver
         {
             comboBox.Items.Clear();
 
-            String[] suspects = new string[] { "Green", "Mustard", "Peacock", "Plum", "Scarlett", "White" };
+            String[] suspects = new string[]
+            {
+                "Green",
+                "Mustard",
+                "Peacock",
+                "Plum",
+                "Scarlett",
+                "White"
+            };
 
             comboBox.Items.AddRange(suspects);
 
@@ -83,14 +107,21 @@ namespace KTANE_Solver
         {
             comboBox.Items.Clear();
 
-            String[] weapom = new string[] { "Candle Stick", "Dagger", "Lead Pipe", "Revolver", "Rope", "Spanner" };
+            String[] weapom = new string[]
+            {
+                "Candle Stick",
+                "Dagger",
+                "Lead Pipe",
+                "Revolver",
+                "Rope",
+                "Spanner"
+            };
 
             comboBox.Items.AddRange(weapom);
 
             comboBox.Text = "Candle Stick";
 
-            comboBox
-                .DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         /// <summary>
@@ -114,19 +145,21 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             String[] suspects = new String[]
-            { suspectComboBox1.Text,
-              suspectComboBox2.Text,
-              suspectComboBox3.Text,
-              suspectComboBox4.Text };
+            {
+                suspectComboBox1.Text,
+                suspectComboBox2.Text,
+                suspectComboBox3.Text,
+                suspectComboBox4.Text
+            };
 
-
-            String [] weapons = new String[] { 
-                weaponComboBox1.Text, 
-                weaponComboBox2.Text, 
-                weaponComboBox3.Text, 
-                weaponComboBox4.Text };
+            String[] weapons = new String[]
+            {
+                weaponComboBox1.Text,
+                weaponComboBox2.Text,
+                weaponComboBox3.Text,
+                weaponComboBox4.Text
+            };
 
             String room = bodyFoundComboBox.Text;
 

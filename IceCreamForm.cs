@@ -29,9 +29,11 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
         /// <param name="bomb">used for the edgework</param>
-        public IceCreamForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Ice Cream", false)
-
+        public IceCreamForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Ice Cream", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -43,19 +45,41 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">used to get the edgework</param>
         /// <param name="stage">what stage the user is on</param>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             stageLabel.Text = "Stage 1";
 
-
             //set up the customer combo box
 
-            String[] names = new String[] {"Adam", "Ashley", "Bob", "Cheryl", "Dave", "Gary",
-                                            "George", "Jacob", "Jade", "Jessica", "Mike", "Pat",
-                                            "Sally", "Sam", "Sean", "Simon", "Taylor", "Tim",
-                                            "Tom", "Victor"};
+            String[] names = new String[]
+            {
+                "Adam",
+                "Ashley",
+                "Bob",
+                "Cheryl",
+                "Dave",
+                "Gary",
+                "George",
+                "Jacob",
+                "Jade",
+                "Jessica",
+                "Mike",
+                "Pat",
+                "Sally",
+                "Sam",
+                "Sean",
+                "Simon",
+                "Taylor",
+                "Tim",
+                "Tom",
+                "Victor"
+            };
 
             customerComboBox.Items.Clear();
             customerComboBox.Items.AddRange(names);
@@ -75,16 +99,24 @@ namespace KTANE_Solver
         /// <param name="comboBox">hte combobox that will be given the flavors</param>
         private void SetUpIceCreamComboBox(ComboBox comboBox)
         {
-            String[] flavors = new String [] { "Cookies and Cream", "Double Chocolate",
-                                               "Double Strawberry", "Mint Chocolate Chip", 
-                                               "Neapolitan", "Raspberry Ripple", "Rocky Road", 
-                                               "The Classic", "Tutti Frutti" }; 
+            String[] flavors = new String[]
+            {
+                "Cookies and Cream",
+                "Double Chocolate",
+                "Double Strawberry",
+                "Mint Chocolate Chip",
+                "Neapolitan",
+                "Raspberry Ripple",
+                "Rocky Road",
+                "The Classic",
+                "Tutti Frutti"
+            };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(flavors);
             comboBox.Text = "Cookies and Cream";
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-        
+
         /// <summary>
         /// sends the player back to the module selection stage
         /// </summary>
@@ -98,32 +130,50 @@ namespace KTANE_Solver
         /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             String flavor1 = flavor1ComboBox.Text;
             String flavor2 = flavor2ComboBox.Text;
             String flavor3 = flavor3ComboBox.Text;
             String flavor4 = flavor4ComboBox.Text;
 
             //check to see if there are duplicate flavors
-            if (flavor1 == flavor2 || flavor1 == flavor3 || flavor1  == flavor4 ||
-                flavor2 == flavor3 || flavor2 == flavor4 ||
-                flavor3 == flavor4)
+            if (
+                flavor1 == flavor2
+                || flavor1 == flavor3
+                || flavor1 == flavor4
+                || flavor2 == flavor3
+                || flavor2 == flavor4
+                || flavor3 == flavor4
+            )
             {
                 ShowErrorMessage("Can't have duplicate flavors");
                 return;
             }
 
-            module = new IceCream(customerComboBox.Text, flavor1, flavor2, flavor3, flavor4, Bomb, LogFileWriter);
-            
+            module = new IceCream(
+                customerComboBox.Text,
+                flavor1,
+                flavor2,
+                flavor3,
+                flavor4,
+                Bomb,
+                LogFileWriter
+            );
+
             PrintHeader();
-            
+
             PrintDebugLine($"{stageLabel.Text}\n");
 
             module.Solve();
 
             this.Hide();
 
-            secondStageForm = new IceCreamStage2Form(Bomb, LogFileWriter, ModuleSelectionForm, this, module);
+            secondStageForm = new IceCreamStage2Form(
+                Bomb,
+                LogFileWriter,
+                ModuleSelectionForm,
+                this,
+                module
+            );
             secondStageForm.Show();
         }
 

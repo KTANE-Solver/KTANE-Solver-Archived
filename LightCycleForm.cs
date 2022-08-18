@@ -17,15 +17,21 @@ namespace KTANE_Solver
     /// </summary>
     public partial class LightCycleForm : ModuleForm
     {
-        public LightCycleForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Light Cycle", false)
-
+        public LightCycleForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Light Cycle", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -38,7 +44,7 @@ namespace KTANE_Solver
 
         private void ColorComboBox(ComboBox comboBox)
         {
-            String[] colors = { "Blue", "Green", "Magenta", "Red", "White", "Yellow"};
+            String[] colors = { "Blue", "Green", "Magenta", "Red", "White", "Yellow" };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(colors);
@@ -68,7 +74,13 @@ namespace KTANE_Solver
             int white = 0;
             int yellow = 0;
 
-            string cycle = "" + colorComboBox1.Text[0] + colorComboBox2.Text[0] + colorComboBox3.Text[0] + colorComboBox4.Text[0] + colorComboBox5.Text[0];
+            string cycle =
+                ""
+                + colorComboBox1.Text[0]
+                + colorComboBox2.Text[0]
+                + colorComboBox3.Text[0]
+                + colorComboBox4.Text[0]
+                + colorComboBox5.Text[0];
 
             foreach (char character in cycle)
             {
@@ -100,43 +112,38 @@ namespace KTANE_Solver
                 }
             }
 
-                if (blue > 1 || green > 1 || magenta > 1 || red > 1 || white > 1 || yellow > 1)
-                {
-                    ShowErrorMessage("Can't have duplicate colors");
-                    return;
-                }
+            if (blue > 1 || green > 1 || magenta > 1 || red > 1 || white > 1 || yellow > 1)
+            {
+                ShowErrorMessage("Can't have duplicate colors");
+                return;
+            }
 
-                //find the missing letter
+            //find the missing letter
 
-                if (blue == 0)
-                {
-                    cycle += "B";
-                }
-
-                else if (green == 0)
-                {
-                    cycle += "G";
-                }
-
-                else if (magenta == 0)
-                {
-                    cycle += "M";
-                }
-
-                else if (red == 0)
-                {
-                    cycle += "R";
-                }
-
-                else if (white == 0)
-                {
-                    cycle += "W";
-                }
-
-                else
-                {
-                    cycle += "Y";
-                }
+            if (blue == 0)
+            {
+                cycle += "B";
+            }
+            else if (green == 0)
+            {
+                cycle += "G";
+            }
+            else if (magenta == 0)
+            {
+                cycle += "M";
+            }
+            else if (red == 0)
+            {
+                cycle += "R";
+            }
+            else if (white == 0)
+            {
+                cycle += "W";
+            }
+            else
+            {
+                cycle += "Y";
+            }
 
             PrintHeader();
 

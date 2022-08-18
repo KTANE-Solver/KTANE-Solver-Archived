@@ -14,25 +14,41 @@ namespace KTANE_Solver
     /// </summary>
     public class Password : Module
     {
-       public List<char> firstRow;
-       public List<char> secondRow;
-       public List<char> thirdRow;
-       public List<char> fourthRow;
-       public List<char> fifthRow;
+        public List<char> firstRow;
+        public List<char> secondRow;
+        public List<char> thirdRow;
+        public List<char> fourthRow;
+        public List<char> fifthRow;
 
-        public Password(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Password")
+        public Password(Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Password")
         {
             firstRow = new List<char>();
             secondRow = new List<char>();
             thirdRow = new List<char>();
             fourthRow = new List<char>();
             fifthRow = new List<char>();
-
         }
 
-        public void FillRow(char letter1, char letter2, char letternum, char letter4, char letter5, char letter6, int num)
+        public void FillRow(
+            char letter1,
+            char letter2,
+            char letternum,
+            char letter4,
+            char letter5,
+            char letter6,
+            int num
+        )
         {
-            List<char> list = new List<char> { letter1, letter2, letternum, letter4, letter5, letter6 };
+            List<char> list = new List<char>
+            {
+                letter1,
+                letter2,
+                letternum,
+                letter4,
+                letter5,
+                letter6
+            };
 
             switch (num)
             {
@@ -59,7 +75,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// Attempts to solve the moudle given 
+        /// Attempts to solve the moudle given
         /// only the first three rows
         /// </summary>
         /// <returns></returns>
@@ -82,7 +98,6 @@ namespace KTANE_Solver
             {
                 possibleAnswer.Add("AGAIN");
             }
-
 
             if (ContainsWord("BELOW", num))
             {
@@ -246,7 +261,6 @@ namespace KTANE_Solver
             PrintDebugLine($"Second Row [{string.Join(", ", secondRow)}]\n");
             PrintDebugLine($"Third Row [{string.Join(", ", thirdRow)}]\n");
 
-
             if (fourthRow.Count != 0)
             {
                 PrintDebugLine($"Fourth Row [{string.Join(", ", fourthRow)}]\n");
@@ -277,18 +291,19 @@ namespace KTANE_Solver
         {
             //this may be a terrible way to inplement, but it looks cleaner
 
-            //depending on the number of rows filled, check to see if you can spell word 
+            //depending on the number of rows filled, check to see if you can spell word
             switch (numRows)
             {
                 case 3:
-                    return firstRow.Contains(word[0]) && secondRow.Contains(word[1]) && thirdRow.Contains(word[2]);
+                    return firstRow.Contains(word[0])
+                        && secondRow.Contains(word[1])
+                        && thirdRow.Contains(word[2]);
 
                 case 4:
                     return ContainsWord(word, 3) && fourthRow.Contains(word[3]);
 
                 default:
                     return ContainsWord(word, 4) && fifthRow.Contains(word[4]);
-
             }
         }
     }

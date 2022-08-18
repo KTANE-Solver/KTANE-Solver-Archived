@@ -14,7 +14,12 @@ namespace KTANE_Solver
     public partial class ScrewForm : ModuleForm
     {
         List<ComboBox> list;
-        public ScrewForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Screw", false)
+
+        public ScrewForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Screw", false)
         {
             InitializeComponent();
 
@@ -35,8 +40,15 @@ namespace KTANE_Solver
         {
             foreach (ComboBox comboBox in list)
             {
-                string[] colors = new string[] { "Blue", "Green", "Magenta", "Red", "White", "Yellow" };
-
+                string[] colors = new string[]
+                {
+                    "Blue",
+                    "Green",
+                    "Magenta",
+                    "Red",
+                    "White",
+                    "Yellow"
+                };
 
                 comboBox.Items.Clear();
 
@@ -46,7 +58,6 @@ namespace KTANE_Solver
 
                 comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -66,7 +77,6 @@ namespace KTANE_Solver
                 ShowErrorMessage("Can't have duplicate colors");
                 return;
             }
-
 
             Screw module = new Screw(Bomb, LogFileWriter, GetColorLocation());
             module.FindScrewLocations();
@@ -134,9 +144,6 @@ namespace KTANE_Solver
             }
 
             return colorList;
-
         }
-
-
     }
 }

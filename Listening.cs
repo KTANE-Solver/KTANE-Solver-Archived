@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public class Listening : Module
     {
         private string sound;
-        public Listening(string sound, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Listening")
+
+        public Listening(string sound, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Listening")
         {
             this.sound = sound;
         }
@@ -184,7 +187,6 @@ namespace KTANE_Solver
                 case "Glass Shattering":
                     answer = "*$*$*";
                     break;
-
             }
 
             return answer;
@@ -360,7 +362,6 @@ namespace KTANE_Solver
                 case "Glass Shattering":
                     answer = "*$*$*";
                     break;
-
             }
 
             ShowAnswer(answer, true);

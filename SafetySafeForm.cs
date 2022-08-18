@@ -8,17 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class SafetySafeForm : ModuleForm
     {
-        public SafetySafeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Safety Safe", false)
+        public SafetySafeForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Safety Safe", false)
         {
             InitializeComponent();
 
             SafetySafe module = new SafetySafe(Bomb, LogFileWriter);
 
-            int [] answer = module.Solve();
+            int[] answer = module.Solve();
 
             topLeftLabel.Text = $"Top Left: {answer[0]}";
             topMidLabel.Text = $"Top Mid: {answer[1]}";
@@ -38,14 +43,8 @@ namespace KTANE_Solver
             IncrementStrike();
         }
 
-        private void topRightLabel_Click(object sender, EventArgs e)
-        {
+        private void topRightLabel_Click(object sender, EventArgs e) { }
 
-        }
-
-        private void bottomRightLabel_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void bottomRightLabel_Click(object sender, EventArgs e) { }
     }
 }

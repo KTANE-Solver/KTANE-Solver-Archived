@@ -36,7 +36,6 @@ namespace KTANE_Solver
             {
                 amount = Decimal.Parse(newAmountTextBox.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Invalid amount");
@@ -70,7 +69,6 @@ namespace KTANE_Solver
         {
             //round the price
             return Math.Round(oldPrice, 2, MidpointRounding.AwayFromZero);
-
         }
     }
 }

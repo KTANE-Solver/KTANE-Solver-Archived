@@ -8,8 +8,6 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 3/6/21
@@ -53,7 +51,6 @@ namespace KTANE_Solver
         //evalualted first
         private bool bottomFirstTwoFirst;
 
-
         //=========PROPERTIES=========
 
         //=========CONSTRUCTORS=========
@@ -78,22 +75,37 @@ namespace KTANE_Solver
         /// <param name="bottomFirstOperation">bottom first operation</param>
         /// <param name="bottomSecondOperation">bottom second operation</param>
         /// <param name="bottomFirstTwoFirst">tells if the first two bottom statements are evaluated first</param>
-        /// 
-        public Logic(Bomb Bomb, 
-                     bool topFirstNotStatement, char topFirstLetter, 
-                     bool topSecondNotStatement, char topSecondLetter, 
-                     bool topThirdNotStatement, char topThirdLetter, 
-                     String topFirstOperation, String topSecondOperation, 
-                     bool topFirstTwoFirst,
-                     bool bottomFirstNotStatement, char bottomFirstLetter, 
-                     bool bottomSecondNotStatement, char bottomSecondLetter,
-                     bool bottomThirdNotStatement,  char bottomThirdLetter, 
-                     String bottomFirstOperation, String bottomSecondOperation, 
-                     bool bottomFirstTwoFirst, StreamWriter LogFileWriter) : base(Bomb, LogFileWriter, "Logic")
+        ///
+        public Logic(
+            Bomb Bomb,
+            bool topFirstNotStatement,
+            char topFirstLetter,
+            bool topSecondNotStatement,
+            char topSecondLetter,
+            bool topThirdNotStatement,
+            char topThirdLetter,
+            String topFirstOperation,
+            String topSecondOperation,
+            bool topFirstTwoFirst,
+            bool bottomFirstNotStatement,
+            char bottomFirstLetter,
+            bool bottomSecondNotStatement,
+            char bottomSecondLetter,
+            bool bottomThirdNotStatement,
+            char bottomThirdLetter,
+            String bottomFirstOperation,
+            String bottomSecondOperation,
+            bool bottomFirstTwoFirst,
+            StreamWriter LogFileWriter
+        ) : base(Bomb, LogFileWriter, "Logic")
         {
-
-            topLetters =  new char[3] { topFirstLetter, topSecondLetter, topThirdLetter};
-            topNotStatements = new bool[3] { topFirstNotStatement, topSecondNotStatement, topThirdNotStatement};
+            topLetters = new char[3] { topFirstLetter, topSecondLetter, topThirdLetter };
+            topNotStatements = new bool[3]
+            {
+                topFirstNotStatement,
+                topSecondNotStatement,
+                topThirdNotStatement
+            };
             topStatements = new bool[3];
 
             this.topFirstOperation = topFirstOperation;
@@ -101,8 +113,18 @@ namespace KTANE_Solver
 
             this.topFirstTwoFirst = topFirstTwoFirst;
 
-            bottomLetters = new char[3] { bottomFirstLetter, bottomSecondLetter, bottomThirdLetter};
-            bottomNotStatements = new bool[3] { bottomFirstNotStatement, bottomSecondNotStatement, bottomThirdNotStatement };
+            bottomLetters = new char[3]
+            {
+                bottomFirstLetter,
+                bottomSecondLetter,
+                bottomThirdLetter
+            };
+            bottomNotStatements = new bool[3]
+            {
+                bottomFirstNotStatement,
+                bottomSecondNotStatement,
+                bottomThirdNotStatement
+            };
             bottomStatements = new bool[3];
 
             this.bottomFirstOperation = bottomFirstOperation;
@@ -118,8 +140,6 @@ namespace KTANE_Solver
             {
                 topStatements[i] = SetStatement(topLetters[i]);
                 bottomStatements[i] = SetStatement(bottomLetters[i]);
-
-
             }
 
             PrintTruthTable(1, topLetters, topStatements);
@@ -132,40 +152,84 @@ namespace KTANE_Solver
                 bottomStatements[i] = UpdateStatement(bottomStatements[i], bottomNotStatements[i]);
             }
 
-
-
             //evaluating the statements
 
             bool topEvaluation;
             if (topFirstTwoFirst)
             {
-                topEvaluation = EvaluateStatement(topStatements[0], topStatements[1], topFirstOperation);
-                topEvaluation = EvaluateStatement(topEvaluation, topStatements[2], topSecondOperation);
+                topEvaluation = EvaluateStatement(
+                    topStatements[0],
+                    topStatements[1],
+                    topFirstOperation
+                );
+                topEvaluation = EvaluateStatement(
+                    topEvaluation,
+                    topStatements[2],
+                    topSecondOperation
+                );
             }
-
             else
             {
-                topEvaluation = EvaluateStatement(topStatements[1], topStatements[2], topSecondOperation);
-                topEvaluation = EvaluateStatement(topStatements[0], topEvaluation, topFirstOperation);
+                topEvaluation = EvaluateStatement(
+                    topStatements[1],
+                    topStatements[2],
+                    topSecondOperation
+                );
+                topEvaluation = EvaluateStatement(
+                    topStatements[0],
+                    topEvaluation,
+                    topFirstOperation
+                );
             }
 
             bool bottomEvaluation;
             if (bottomFirstTwoFirst)
             {
-                bottomEvaluation = EvaluateStatement(bottomStatements[0], bottomStatements[1], bottomFirstOperation);
-                bottomEvaluation = EvaluateStatement(bottomEvaluation, bottomStatements[2], bottomSecondOperation);
+                bottomEvaluation = EvaluateStatement(
+                    bottomStatements[0],
+                    bottomStatements[1],
+                    bottomFirstOperation
+                );
+                bottomEvaluation = EvaluateStatement(
+                    bottomEvaluation,
+                    bottomStatements[2],
+                    bottomSecondOperation
+                );
             }
-
             else
             {
-                bottomEvaluation = EvaluateStatement(bottomStatements[1], bottomStatements[2], bottomSecondOperation);
-                bottomEvaluation = EvaluateStatement(bottomStatements[0], bottomEvaluation, bottomFirstOperation);
+                bottomEvaluation = EvaluateStatement(
+                    bottomStatements[1],
+                    bottomStatements[2],
+                    bottomSecondOperation
+                );
+                bottomEvaluation = EvaluateStatement(
+                    bottomStatements[0],
+                    bottomEvaluation,
+                    bottomFirstOperation
+                );
             }
 
             //Debug info
 
-            PrintEvaluation(1, topLetters, topNotStatements, topFirstTwoFirst, topFirstOperation, topSecondOperation, topEvaluation);
-            PrintEvaluation(2, bottomLetters, bottomNotStatements, bottomFirstTwoFirst, bottomFirstOperation, bottomSecondOperation, bottomEvaluation);
+            PrintEvaluation(
+                1,
+                topLetters,
+                topNotStatements,
+                topFirstTwoFirst,
+                topFirstOperation,
+                topSecondOperation,
+                topEvaluation
+            );
+            PrintEvaluation(
+                2,
+                bottomLetters,
+                bottomNotStatements,
+                bottomFirstTwoFirst,
+                bottomFirstOperation,
+                bottomSecondOperation,
+                bottomEvaluation
+            );
 
             ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}", true);
         }
@@ -177,7 +241,7 @@ namespace KTANE_Solver
         /// <param name="letters">the latters</param>
         /// <param name="statements">the evaulation of each letter</param>
         private void PrintTruthTable(int row, char[] letters, bool[] statements)
-        { 
+        {
             PrintDebug($"(Row #{row}): ");
 
             for (int i = 0; i < 3; i++)
@@ -188,7 +252,15 @@ namespace KTANE_Solver
             PrintDebugLine("");
         }
 
-        private void PrintEvaluation(int row, char[] letters, bool[] notStatements, bool firstTwoFirst, string operation1, string operation2, bool totalEvaluation)
+        private void PrintEvaluation(
+            int row,
+            char[] letters,
+            bool[] notStatements,
+            bool firstTwoFirst,
+            string operation1,
+            string operation2,
+            bool totalEvaluation
+        )
         {
             string actualOperation1 = CovertSymbol(operation1);
             string actualOperation2 = CovertSymbol(operation2);
@@ -212,20 +284,20 @@ namespace KTANE_Solver
                 letter3 = "¬" + letter3;
             }
 
-
-
             PrintDebug($"Row {row}: ");
 
             if (firstTwoFirst)
             {
-                PrintDebugLine($"({letter1} {actualOperation1} {letter2}) {actualOperation2} {letter3} = {totalEvaluation}");
+                PrintDebugLine(
+                    $"({letter1} {actualOperation1} {letter2}) {actualOperation2} {letter3} = {totalEvaluation}"
+                );
             }
-
             else
             {
-                PrintDebugLine($"{letter1} {actualOperation1} ({letter2} {actualOperation2} {letter3}) = {totalEvaluation}");
+                PrintDebugLine(
+                    $"{letter1} {actualOperation1} ({letter2} {actualOperation2} {letter3}) = {totalEvaluation}"
+                );
             }
-
         }
 
         private string CovertSymbol(string symbol)
@@ -278,7 +350,6 @@ namespace KTANE_Solver
             {
                 //A - Number of batteries = number of indicators
                 case 'A':
-                    
 
                     statement = Bomb.Battery == Bomb.IndicatorNum;
                     break;
@@ -364,7 +435,8 @@ namespace KTANE_Solver
                 //O - Has both lit and unlit indicators
                 case 'O':
 
-                    statement = Bomb.UnlitIndicatorsList.Count > 0 && Bomb.LitIndicatorsList.Count > 0;
+                    statement =
+                        Bomb.UnlitIndicatorsList.Count > 0 && Bomb.LitIndicatorsList.Count > 0;
                     break;
 
                 //P - Has parallel port
@@ -426,7 +498,7 @@ namespace KTANE_Solver
 
                     statement = Bomb.PortNum > 5;
                     break;
-                    
+
                 //Z - Less than 2 ports
                 case 'Z':
 
@@ -490,7 +562,6 @@ namespace KTANE_Solver
                 default:
                     return bool1 || !bool2;
             }
-
         }
     }
 }

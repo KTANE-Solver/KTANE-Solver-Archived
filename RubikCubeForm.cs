@@ -18,16 +18,21 @@ namespace KTANE_Solver
 
     public partial class RubikCubeForm : ModuleForm
     {
-        public RubikCubeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Rubik Cube", false)
-
+        public RubikCubeForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Rubik Cube", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -36,8 +41,8 @@ namespace KTANE_Solver
             UpdateComboBox(frontComboBox);
             UpdateComboBox(rightComboBox);
             UpdateComboBox(bottomComboBox);
-
         }
+
         private void UpdateComboBox(ComboBox comboBox)
         {
             String[] items = new String[] { "Blue", "Green", "Orange", "Red", "White", "Yellow" };
@@ -66,10 +71,18 @@ namespace KTANE_Solver
             String front = frontComboBox.Text.ToUpper();
             String bottom = bottomComboBox.Text.ToUpper();
 
-            if (top == left || top == right || top == front || top == bottom ||
-               left == right || left == front || left == bottom ||
-               right == front || right == bottom ||
-               front == bottom)
+            if (
+                top == left
+                || top == right
+                || top == front
+                || top == bottom
+                || left == right
+                || left == front
+                || left == bottom
+                || right == front
+                || right == bottom
+                || front == bottom
+            )
             {
                 ShowErrorMessage("Can't have duplicate colors");
                 return;
@@ -83,11 +96,17 @@ namespace KTANE_Solver
             RubikCube.Face frontFace = (RubikCube.Face)Enum.Parse(typeof(RubikCube.Face), front);
             RubikCube.Face bottomFace = (RubikCube.Face)Enum.Parse(typeof(RubikCube.Face), bottom);
 
-            RubikCube module = new RubikCube(topFace, leftFace, frontFace, rightFace, bottomFace, Bomb, LogFileWriter);
+            RubikCube module = new RubikCube(
+                topFace,
+                leftFace,
+                frontFace,
+                rightFace,
+                bottomFace,
+                Bomb,
+                LogFileWriter
+            );
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-            
-
         }
     }
 }

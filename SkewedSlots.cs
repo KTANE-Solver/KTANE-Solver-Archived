@@ -16,7 +16,8 @@ namespace KTANE_Solver
         private int[] primeValues;
         private int[] binaryValueSum;
 
-        public SkewedSlots(Bomb bomb, StreamWriter logFileWriter, int originalNumbers) : base(bomb, logFileWriter, "Skewed Slots")
+        public SkewedSlots(Bomb bomb, StreamWriter logFileWriter, int originalNumbers)
+            : base(bomb, logFileWriter, "Skewed Slots")
         {
             string OgStr = originalNumbers.ToString();
 
@@ -41,7 +42,13 @@ namespace KTANE_Solver
 
         public string DebugSolve()
         {
-            PrintDebugLine("Original numbers: " + originalNumbers[0] + originalNumbers[1] + originalNumbers[2] + "\n");
+            PrintDebugLine(
+                "Original numbers: "
+                    + originalNumbers[0]
+                    + originalNumbers[1]
+                    + originalNumbers[2]
+                    + "\n"
+            );
 
             for (int i = 0; i < currentNumbers.Length; i++)
             {
@@ -54,15 +61,15 @@ namespace KTANE_Solver
                 {
                     case 0:
                         currentNumbers[0] = Slot1();
-                    break;
+                        break;
 
                     case 1:
                         currentNumbers[1] = Slot2();
-                    break;
+                        break;
 
                     case 2:
                         currentNumbers[2] = Slot3();
-                    break;
+                        break;
                 }
 
                 PrintSlotNum(i);
@@ -90,16 +97,16 @@ namespace KTANE_Solver
 
                 PrintCurrentNumber(currentNumber);
             }
-
             else if (currentNumber == 7)
             {
                 PrintDebugLine("Replacing 7 with 0");
                 currentNumber = 0;
                 PrintCurrentNumber(currentNumber);
-
             }
 
-            PrintDebugLine("Adding the number of lit indicators and subtracting the number of unlit indicators");
+            PrintDebugLine(
+                "Adding the number of lit indicators and subtracting the number of unlit indicators"
+            );
             currentNumber += Bomb.LitIndicatorsList.Count - Bomb.UnlitIndicatorsList.Count;
             PrintCurrentNumber(currentNumber);
 
@@ -108,19 +115,16 @@ namespace KTANE_Solver
                 PrintDebugLine("Current number is a multiple of 3");
                 return currentNumber + 4;
             }
-
             else if (currentNumber > 7)
             {
                 PrintDebugLine("Current number is greater than 7");
                 return currentNumber * 2;
             }
-
             else if (currentNumber < 3 && currentNumber % 2 == 0)
             {
                 PrintDebugLine("Current number is less than 3 and is even");
                 return currentNumber / 2;
             }
-
             else if (Bomb.Stereo.Visible || Bomb.Ps.Visible)
             {
                 PrintDebugLine("Current number doesn't change");
@@ -208,10 +212,12 @@ namespace KTANE_Solver
             }
 
             int orignalNumCount = originalNumbers.Where(x => x == originalNumbers[2]).Count();
-            
+
             if (orignalNumCount > 1)
             {
-                PrintDebugLine("the original digit is the same as any of the other original digits");
+                PrintDebugLine(
+                    "the original digit is the same as any of the other original digits"
+                );
                 return num;
             }
 

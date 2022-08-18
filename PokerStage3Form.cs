@@ -17,21 +17,40 @@ namespace KTANE_Solver
     /// </summary>
     public partial class PokerStage3Form : MultiStageModuleForm
     {
-
         PokerStage1Form pokerStage1Form;
         PokerStage2Form pokerStage2Form;
 
         Poker module;
 
-        public PokerStage3Form(PokerStage1Form pokerStage1Form, PokerStage2Form pokerStage2Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
-        : base(bomb, logFileWriter, moduleSelectionForm, pokerStage1Form, "Poker", false)
+        public PokerStage3Form(
+            PokerStage1Form pokerStage1Form,
+            PokerStage2Form pokerStage2Form,
+            ModuleSelectionForm moduleSelectionForm,
+            Poker module,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, moduleSelectionForm, pokerStage1Form, "Poker", false)
         {
             InitializeComponent();
 
-            UpdateForm(pokerStage1Form, pokerStage2Form, moduleSelectionForm, module, bomb, logFileWriter);
+            UpdateForm(
+                pokerStage1Form,
+                pokerStage2Form,
+                moduleSelectionForm,
+                module,
+                bomb,
+                logFileWriter
+            );
         }
 
-        public void UpdateForm(PokerStage1Form pokerStage1Form, PokerStage2Form pokerStage2Form, ModuleSelectionForm moduleSelectionForm, Poker module, Bomb bomb, StreamWriter logFileWriter)
+        public void UpdateForm(
+            PokerStage1Form pokerStage1Form,
+            PokerStage2Form pokerStage2Form,
+            ModuleSelectionForm moduleSelectionForm,
+            Poker module,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -49,13 +68,12 @@ namespace KTANE_Solver
             UpdateCardComboBox(card2ComboBox);
             UpdateCardComboBox(card3ComboBox);
             UpdateCardComboBox(card4ComboBox);
-
         }
 
         public void UpdateCardComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            comboBox.Items.AddRange(new String[] {"CLUB", "DIAMOND", "HEART", "SPADE"});
+            comboBox.Items.AddRange(new String[] { "CLUB", "DIAMOND", "HEART", "SPADE" });
             comboBox.Text = "CLUB";
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -67,7 +85,13 @@ namespace KTANE_Solver
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            pokerStage2Form.UpdateForm(pokerStage1Form, ModuleSelectionForm, module, Bomb, LogFileWriter);
+            pokerStage2Form.UpdateForm(
+                pokerStage1Form,
+                ModuleSelectionForm,
+                module,
+                Bomb,
+                LogFileWriter
+            );
             this.Hide();
             pokerStage2Form.Show();
         }
@@ -96,11 +120,15 @@ namespace KTANE_Solver
             PrintCard(card3, 3);
             PrintCard(card4, 4);
 
-
-            int index = module.BettingRule(Int32.Parse(betAmountComboBox.Text), card1, card2, card3, card4);
+            int index = module.BettingRule(
+                Int32.Parse(betAmountComboBox.Text),
+                card1,
+                card2,
+                card3,
+                card4
+            );
 
             System.Diagnostics.Debug.WriteLine($"\nAnswer: {index}\n");
-
 
             String prefix = "";
 
@@ -121,7 +149,6 @@ namespace KTANE_Solver
                 case 4:
                     prefix = "4th";
                     break;
-
             }
 
             ShowAnswer($"Press the {prefix} card");
@@ -146,9 +173,7 @@ namespace KTANE_Solver
 
                 default:
                     return new Poker.Card(Poker.Card.Number.ACE, Poker.Card.Suite.SPADE);
-
             }
-
         }
 
         private void resetButton_Click(object sender, EventArgs e)

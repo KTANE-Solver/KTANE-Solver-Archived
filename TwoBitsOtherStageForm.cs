@@ -21,8 +21,14 @@ namespace KTANE_Solver
         TwoBits module;
         TwoBitsStage1Form stage1Form;
 
-        public TwoBitsOtherStageForm(TwoBits module, TwoBitsStage1Form stage1Form, int stage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm, stage1Form, "Two Bits", false)
+        public TwoBitsOtherStageForm(
+            TwoBits module,
+            TwoBitsStage1Form stage1Form,
+            int stage,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, stage1Form, "Two Bits", false)
         {
             InitializeComponent();
             UpdateForm(stage1Form, stage, bomb, logFileWriter, moduleSelectionForm);
@@ -30,7 +36,13 @@ namespace KTANE_Solver
             this.module = module;
         }
 
-        public void UpdateForm(TwoBitsStage1Form stage1Form, int stage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            TwoBitsStage1Form stage1Form,
+            int stage,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -50,7 +62,6 @@ namespace KTANE_Solver
                 stage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 ResetModule();
             }
-
             else
             {
                 UpdateForm(stage1Form, stage - 1, Bomb, LogFileWriter, ModuleSelectionForm);
@@ -75,7 +86,6 @@ namespace KTANE_Solver
             {
                 code = Int32.Parse(resultTextBox.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Text box can only hold numbers");
@@ -98,7 +108,6 @@ namespace KTANE_Solver
                 stage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 stage1Form.Show();
             }
-
             else
             {
                 UpdateForm(stage1Form, stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);

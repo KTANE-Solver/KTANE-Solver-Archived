@@ -28,12 +28,10 @@ namespace KTANE_Solver
         /// <param name="wires">the list of wires</param>
         /// <param name="bomb">used for edgework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public ComplicatedWires(List<ComplicatedWire> wires, Bomb bomb, StreamWriter logFileWriter) 
-        : base(bomb, logFileWriter, "Complicated Wires")
+        public ComplicatedWires(List<ComplicatedWire> wires, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Complicated Wires")
         {
             this.wires = wires;
-
-            
         }
 
         public string Solve(bool debug)
@@ -57,18 +55,15 @@ namespace KTANE_Solver
                     {
                         AddParallelCondition();
                     }
-
                     //if the wire is unlit and has star, don't cut
                     else if (wire.Star)
                         directions.Add("Don't Cut");
-
                     //if the wire doesn't have a star, cut if last digit is even
                     else
                     {
                         AddEvenNumberCondition();
                     }
                 }
-
                 //if the wire is red,
                 else if (wire.ColorPropety == Color.Red)
                 {
@@ -77,30 +72,24 @@ namespace KTANE_Solver
                     {
                         AddBatteryCondition();
                     }
-
                     //if the light is unlit and has no star, cut if last digit is even
                     else if (!wire.Lit && !wire.Star)
                     {
                         AddEvenNumberCondition();
                     }
-
                     //if the light is unlit and there's a star, cut the wire
                     else
                         directions.Add("Cut");
                 }
-
                 else if (wire.ColorPropety == Color.Purple)
                 {
                     if (wire.Lit && wire.Star)
                         directions.Add("Don't Cut");
-
-
                     //if the light is unlit, and star, cut if parallel port is there
                     else if (!wire.Lit && wire.Star)
                     {
                         AddParallelCondition();
                     }
-
                     //if the light is unlit and no star, cut if last digit is even
 
                     //if the light is lit, and no star, cut if last digit is even
@@ -108,19 +97,16 @@ namespace KTANE_Solver
                     else
                         AddEvenNumberCondition();
                 }
-
                 else
                 {
                     if (wire.Lit && wire.Star)
                     {
                         AddBatteryCondition();
                     }
-
                     else if (wire.Lit)
                     {
                         directions.Add("Don't Cut");
                     }
-
                     else
                     {
                         directions.Add("Cut");
@@ -128,9 +114,7 @@ namespace KTANE_Solver
                 }
             }
 
-            string answer = ""; 
-
-
+            string answer = "";
 
             for (int i = 0; i < directions.Count; i++)
             {
@@ -142,14 +126,12 @@ namespace KTANE_Solver
                 }
             }
 
-
             if (!debug)
-            { 
+            {
                 ShowAnswer(answer, true);
             }
 
             return answer;
-            
         }
 
         /// <summary>
@@ -159,7 +141,6 @@ namespace KTANE_Solver
         {
             if (Bomb.Battery >= 2)
                 directions.Add("Cut");
-
             else
                 directions.Add("Don't Cut");
         }
@@ -168,7 +149,6 @@ namespace KTANE_Solver
         {
             if (Bomb.Parallel.Visible)
                 directions.Add("Cut");
-
             else
                 directions.Add("Don't Cut");
         }
@@ -177,7 +157,6 @@ namespace KTANE_Solver
         {
             if (Bomb.LastDigit % 2 == 0)
                 directions.Add("Cut");
-
             else
                 directions.Add("Don't Cut");
         }
@@ -189,7 +168,9 @@ namespace KTANE_Solver
         /// <param name="wire">the wire itself</param>
         private void PrintWire(int num, ComplicatedWire wire)
         {
-            PrintDebugLine($"Wire {num} Color: {wire.ColorPropety} Light: {wire.Lit} Star: {wire.Star}");
+            PrintDebugLine(
+                $"Wire {num} Color: {wire.ColorPropety} Light: {wire.Lit} Star: {wire.Star}"
+            );
         }
     }
 

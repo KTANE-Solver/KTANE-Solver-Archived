@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -23,10 +24,13 @@ namespace KTANE_Solver
         int secondWireIndex;
         int thirdWireIndex;
 
-
-
-        public WireSequenceOtherStageForm(WireSequence module, WireSequenceStage1Form firstStage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, firstStage, "Wire Sequence", false)
+        public WireSequenceOtherStageForm(
+            WireSequence module,
+            WireSequenceStage1Form firstStage,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, firstStage, "Wire Sequence", false)
         {
             InitializeComponent();
 
@@ -36,15 +40,18 @@ namespace KTANE_Solver
             UpdateForm(2, bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(int stage, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            int stage,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             this.stage = stage;
 
             firstWireIndex = (stage - 1) * 3 + 1;
             secondWireIndex = firstWireIndex + 1;
             thirdWireIndex = firstWireIndex + 2;
-
-
 
             wire1Label.Text = $"Wire {firstWireIndex}:";
             wire2Label.Text = $"Wire {secondWireIndex}:";
@@ -96,7 +103,6 @@ namespace KTANE_Solver
                 firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 ResetModule();
             }
-
             else
             {
                 UpdateForm(stage - 1, Bomb, LogFileWriter, ModuleSelectionForm);
@@ -118,20 +124,22 @@ namespace KTANE_Solver
             int wireNum2 = (stage - 1) * 3 + 2;
             int wireNum3 = (stage - 1) * 3 + 3;
 
-
             if (wire1ColorComboBox.Text != "" && wire1LetterComboBox.Text != "")
             {
-                answer += $"{firstWireIndex}. {module.Solve(wireNum1, wire1ColorComboBox.Text, wire1LetterComboBox.Text[0])}";
+                answer +=
+                    $"{firstWireIndex}. {module.Solve(wireNum1, wire1ColorComboBox.Text, wire1LetterComboBox.Text[0])}";
             }
 
             if (wire2ColorComboBox.Text != "" && wire2LetterComboBox.Text != "")
             {
-                answer += $"\n{secondWireIndex}. {module.Solve(wireNum2, wire2ColorComboBox.Text, wire2LetterComboBox.Text[0])}";
+                answer +=
+                    $"\n{secondWireIndex}. {module.Solve(wireNum2, wire2ColorComboBox.Text, wire2LetterComboBox.Text[0])}";
             }
 
             if (wire3ColorComboBox.Text != "" && wire3LetterComboBox.Text != "")
             {
-                answer += $"\n{thirdWireIndex}. {module.Solve(wireNum3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0])}";
+                answer +=
+                    $"\n{thirdWireIndex}. {module.Solve(wireNum3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0])}";
             }
 
             ShowAnswer(answer);

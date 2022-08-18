@@ -14,16 +14,24 @@ namespace KTANE_Solver
     {
         List<Item> itemList;
 
-    Decimal amount;
+        Decimal amount;
 
         //used to convert decimals to doubles
         double temp;
 
-        public CheapCheckout(Bomb bomb, StreamWriter logFileWriter,
-                             Decimal amount, String item1Name, String item2Name,
-                             String item3Name, String item4Name, double item5Weight,
-                             String item5Name, double item6Wieght, String item6Name)
-        : base(bomb, logFileWriter, "Cheap Checkout")
+        public CheapCheckout(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            Decimal amount,
+            String item1Name,
+            String item2Name,
+            String item3Name,
+            String item4Name,
+            double item5Weight,
+            String item5Name,
+            double item6Wieght,
+            String item6Name
+        ) : base(bomb, logFileWriter, "Cheap Checkout")
         {
             itemList = new List<Item>()
             {
@@ -51,8 +59,10 @@ namespace KTANE_Solver
             {
                 PrintItem(itemList[0], i + 1);
             }
-            PrintDebugLine("==============================After Sale==============================\n");
-            
+            PrintDebugLine(
+                "==============================After Sale==============================\n"
+            );
+
             //apply the sale
             ApplySale();
 
@@ -65,7 +75,14 @@ namespace KTANE_Solver
             //check the total
 
 
-            Decimal total = RoundPrice(itemList[0].price + itemList[1].price + itemList[2].price + itemList[3].price + itemList[4].price + itemList[5].price);
+            Decimal total = RoundPrice(
+                itemList[0].price
+                    + itemList[1].price
+                    + itemList[2].price
+                    + itemList[3].price
+                    + itemList[4].price
+                    + itemList[5].price
+            );
 
             PrintDebugLine($"Total: ${total}\n");
 
@@ -80,7 +97,6 @@ namespace KTANE_Solver
 
                 ShowAnswer($"${string.Format("{0:0.00}", answer)}", true);
             }
-
             else
             {
                 //if not, then tell ther user to alert the customer and tell the new amount
@@ -88,8 +104,6 @@ namespace KTANE_Solver
 
                 alertForm.ShowDialog();
             }
-
-
         }
 
         /// <summary>
@@ -97,7 +111,7 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="item"></param>
         private void PrintItem(Item item, int num)
-        { 
+        {
             PrintDebugLine($"Item {num}: {item.name}");
 
             PrintDebugLine($"Weight: {item.weight}");
@@ -112,7 +126,6 @@ namespace KTANE_Solver
         /// </summary>
         private void ApplySale()
         {
-
             switch (Bomb.Day)
             {
                 case Day.Sunday:
@@ -137,7 +150,6 @@ namespace KTANE_Solver
                     itemList[2].price = RoundPrice(itemList[2].price *= .85m);
 
                     itemList[5].price = RoundPrice(itemList[5].price *= .85m);
-
 
                     break;
                 case Day.Tuesday:
@@ -171,7 +183,9 @@ namespace KTANE_Solver
                     {
                         if (i % 2 == 0)
                         {
-                            itemList[i].price = Convert.ToDecimal(RoundPrice(itemList[i].price /= 2));
+                            itemList[i].price = Convert.ToDecimal(
+                                RoundPrice(itemList[i].price /= 2)
+                            );
                         }
                     }
                     break;
@@ -184,7 +198,9 @@ namespace KTANE_Solver
                         if (itemList[i].category == Item.Category.Fruit)
                         {
                             temp = Convert.ToDouble(itemList[i].price);
-                            itemList[i].price = Convert.ToDecimal(RoundPrice(Convert.ToDecimal(temp *= 1.25 * itemList[i].weight)));
+                            itemList[i].price = Convert.ToDecimal(
+                                RoundPrice(Convert.ToDecimal(temp *= 1.25 * itemList[i].weight))
+                            );
                         }
                     }
                     break;
@@ -267,10 +283,8 @@ namespace KTANE_Solver
 
                 if (currentChar == highestDigit)
                     newPrice += lowestDigit;
-
                 else if (currentChar == lowestDigit)
                     newPrice += highestDigit;
-
                 else
                     newPrice += priceString[i];
             }
@@ -288,7 +302,7 @@ namespace KTANE_Solver
         {
             //remove .
 
-            String newPriceString = price.ToString().Replace(".","");
+            String newPriceString = price.ToString().Replace(".", "");
 
             //convert to int
 
@@ -311,7 +325,6 @@ namespace KTANE_Solver
                 newPrice /= 10;
             }
             return root;
-
         }
 
         /// <summary>
@@ -321,7 +334,6 @@ namespace KTANE_Solver
         {
             //round the price
             return Math.Round(oldPrice, 2, MidpointRounding.AwayFromZero);
-
         }
 
         /// <summary>
@@ -331,7 +343,7 @@ namespace KTANE_Solver
         {
             //The category each item can fits into
             public enum Category
-            { 
+            {
                 CareProduct,
                 Dairy,
                 Fruit,
@@ -594,10 +606,12 @@ namespace KTANE_Solver
 
             private decimal RoundPrice(decimal amount, double weight)
             {
-                return decimal.Round(amount * Convert.ToDecimal(weight), 2, MidpointRounding.AwayFromZero);
+                return decimal.Round(
+                    amount * Convert.ToDecimal(weight),
+                    2,
+                    MidpointRounding.AwayFromZero
+                );
             }
-
-            
         }
     }
 }

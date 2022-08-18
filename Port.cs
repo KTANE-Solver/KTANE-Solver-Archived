@@ -23,28 +23,19 @@ namespace KTANE_Solver
         //===============PROPERTIES===============
         public String Name
         {
-            get
-            {
-                return name;
-            }
+            get { return name; }
         }
 
         public int Num
         {
-            get
-            {
-                return num;
-            }
+            get { return num; }
         }
 
         //tells if the port is visible on the
         //bomb
         public bool Visible
         {
-            get
-            {
-                return num > 0;
-            }
+            get { return num > 0; }
         }
 
         //===============PROPERTIES===============
@@ -60,6 +51,5 @@ namespace KTANE_Solver
         }
 
         //===============METHODS===============
-
     }
 }

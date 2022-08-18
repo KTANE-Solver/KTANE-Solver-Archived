@@ -12,7 +12,7 @@ namespace KTANE_Solver
 {
     public partial class RoundKeypadAnswerForm : Form
     {
-        public RoundKeypadAnswerForm(RoundKeypad.Symbol[] buttonArr,RoundKeypad.Symbol[] answer)
+        public RoundKeypadAnswerForm(RoundKeypad.Symbol[] buttonArr, RoundKeypad.Symbol[] answer)
         {
             InitializeComponent();
 

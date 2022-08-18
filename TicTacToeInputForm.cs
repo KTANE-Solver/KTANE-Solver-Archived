@@ -15,7 +15,12 @@ namespace KTANE_Solver
         private TicTacToe module;
         private TicTacToeSymbolForm symbolForm;
         private TicTacToeForm initialForm;
-        public TicTacToeInputForm(TicTacToe module, TicTacToeSymbolForm symbolForm, TicTacToeForm initialForm) : base()
+
+        public TicTacToeInputForm(
+            TicTacToe module,
+            TicTacToeSymbolForm symbolForm,
+            TicTacToeForm initialForm
+        ) : base()
         {
             InitializeComponent();
 
@@ -67,7 +72,6 @@ namespace KTANE_Solver
             {
                 button.BackColor = Color.Red;
             }
-
             else
             {
                 button.BackColor = Color.White;
@@ -76,7 +80,18 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Button [] buttonArr = new System.Windows.Forms.Button[] { topLeftButton, topMiddleButton, topRightButton, middleLeftButton, middleButton, middleRightButton, bottomLeftButton, bottomMiddleButton, bottomRightButton };
+            System.Windows.Forms.Button[] buttonArr = new System.Windows.Forms.Button[]
+            {
+                topLeftButton,
+                topMiddleButton,
+                topRightButton,
+                middleLeftButton,
+                middleButton,
+                middleRightButton,
+                bottomLeftButton,
+                bottomMiddleButton,
+                bottomRightButton
+            };
             int buttonNum = 0;
 
             foreach (System.Windows.Forms.Button b in buttonArr)

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class MysticSquareForm : ModuleForm
@@ -15,7 +16,11 @@ namespace KTANE_Solver
         bool stage1;
         MysticSquares module;
 
-        public MysticSquareForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base (bomb, logFileWriter, moduleSelectionForm, "Mystic Square", false)
+        public MysticSquareForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Mystic Square", false)
         {
             InitializeComponent();
             stage1 = true;
@@ -23,7 +28,6 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             string text = textBox1.Text;
 
             if (text.Length != 9)
@@ -36,7 +40,7 @@ namespace KTANE_Solver
 
             for (int i = 0; i < 9; i++)
             {
-                char target =  (char) (48 + i);
+                char target = (char)(48 + i);
                 validText = text.Contains(target);
 
                 if (!validText)
@@ -51,8 +55,7 @@ namespace KTANE_Solver
                 return;
             }
 
-            int[,] grid = new int [3,3];
-
+            int[,] grid = new int[3, 3];
 
             for (int i = 0; i < 9; i++)
             {
@@ -70,7 +73,6 @@ namespace KTANE_Solver
 
                 UpdateForm2();
             }
-
             else
             {
                 module.Solve(grid);
@@ -78,7 +80,6 @@ namespace KTANE_Solver
             }
 
             stage1 = !stage1;
-
         }
 
         private void UpdateForm()
@@ -88,7 +89,7 @@ namespace KTANE_Solver
         }
 
         private void UpdateForm2()
-        { 
+        {
             label1.Text = "What does the grid look like now?";
             textBox1.Text = "";
         }

@@ -16,9 +16,15 @@ namespace KTANE_Solver
     {
         public Card[] hand { get; }
 
-        public MonsplodeTradingCard(Bomb bomb, StreamWriter logfileWriter, Card card1, Card card2, Card card3) : base(bomb, logfileWriter, "Monsplode Trading Cards")
+        public MonsplodeTradingCard(
+            Bomb bomb,
+            StreamWriter logfileWriter,
+            Card card1,
+            Card card2,
+            Card card3
+        ) : base(bomb, logfileWriter, "Monsplode Trading Cards")
         {
-            hand = new Card [] { card1, card2, card3 };
+            hand = new Card[] { card1, card2, card3 };
         }
 
         /// <summary>
@@ -26,7 +32,6 @@ namespace KTANE_Solver
         /// </summary>
         public void Solve(Card offeredCard)
         {
-
             System.Diagnostics.Debug.WriteLine("Card 1");
             hand[0].PrintCard();
 
@@ -60,9 +65,8 @@ namespace KTANE_Solver
             {
                 ShowAnswer("Press Keep", true);
             }
-
             else
-            { 
+            {
                 ShowAnswer($"Trade Card {position + 1} ({lowestCard.Name})", true);
                 hand[position] = offeredCard;
             }
@@ -70,18 +74,18 @@ namespace KTANE_Solver
 
         public class Card
         {
-
             public enum Rarity
-            { 
+            {
                 Common,
                 Uncommon,
                 Rare,
                 Ultra
             }
+
             public String Name { get; }
 
             public char PrintAlphabet { get; }
-            
+
             public int PrintNumeral { get; }
 
             public String PrintVersion { get; }
@@ -95,9 +99,16 @@ namespace KTANE_Solver
             public double Value { get; }
 
             private Bomb bomb;
-            public Card(String name, String printVersion, Rarity rarity, bool shiny, int dentCorners, Bomb bomb)
+
+            public Card(
+                String name,
+                String printVersion,
+                Rarity rarity,
+                bool shiny,
+                int dentCorners,
+                Bomb bomb
+            )
             {
-                
                 Name = name;
                 PrintVersion = printVersion.ToUpper();
 
@@ -124,13 +135,11 @@ namespace KTANE_Solver
                 {
                     mutiplier = 1;
                 }
-
                 //Otherwise, if the card is Uncommon, the multiplier is 1.25.
                 else if (rarity == Rarity.Uncommon)
                 {
                     mutiplier = 1.25;
                 }
-
                 //Otherwise, if the card is Rare, the multiplier is 1.5.
                 else if (rarity == Rarity.Rare)
                 {
@@ -154,7 +163,7 @@ namespace KTANE_Solver
                 Value = GetInitalValue(name) * mutiplier;
 
                 if (Value < 0)
-                { 
+                {
                     Value = 0;
                 }
             }
@@ -167,9 +176,6 @@ namespace KTANE_Solver
                 System.Diagnostics.Debug.WriteLine($"Bent Corners: {DentCorners}");
                 System.Diagnostics.Debug.WriteLine($"Value: {Value}");
                 System.Diagnostics.Debug.WriteLine($"Shiny: {Shiny}\n");
-
-
-
             }
 
             private int GetInitalValue(String Name)
@@ -183,7 +189,12 @@ namespace KTANE_Solver
                 }
 
                 //two letters
-                if (bomb.SerialNumber[0] >= 65 && bomb.SerialNumber[0] <= 90 && bomb.SerialNumber[1] >= 65 && bomb.SerialNumber[1] <= 90)
+                if (
+                    bomb.SerialNumber[0] >= 65
+                    && bomb.SerialNumber[0] <= 90
+                    && bomb.SerialNumber[1] >= 65
+                    && bomb.SerialNumber[1] <= 90
+                )
                 {
                     switch (Name)
                     {
@@ -227,9 +238,13 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 //letter then number
-                else if (bomb.SerialNumber[0] >= 65 && bomb.SerialNumber[0] <= 90 && bomb.SerialNumber[1] >= 48 && bomb.SerialNumber[1] <= 57)
+                else if (
+                    bomb.SerialNumber[0] >= 65
+                    && bomb.SerialNumber[0] <= 90
+                    && bomb.SerialNumber[1] >= 48
+                    && bomb.SerialNumber[1] <= 57
+                )
                 {
                     switch (Name)
                     {
@@ -269,12 +284,15 @@ namespace KTANE_Solver
                         default:
                             Value = 2;
                             break;
-
                     }
                 }
-
                 //number then letter
-                else if (bomb.SerialNumber[0] >= 48 && bomb.SerialNumber[0] <= 57 && bomb.SerialNumber[1] >= 65 && bomb.SerialNumber[1] <= 90)
+                else if (
+                    bomb.SerialNumber[0] >= 48
+                    && bomb.SerialNumber[0] <= 57
+                    && bomb.SerialNumber[1] >= 65
+                    && bomb.SerialNumber[1] <= 90
+                )
                 {
                     switch (Name)
                     {
@@ -313,7 +331,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 //two numbers
                 else
                 {
@@ -368,7 +385,6 @@ namespace KTANE_Solver
                 //For each indicator on the bomb that contains the letter of the Print Version, add 1 to the card’s value if it’s lit and subtract 1 if it’s unlit
                 foreach (Indicator litIndicator in bomb.LitIndicatorsList)
                 {
-                    
                     if (litIndicator.Name.Contains(PrintAlphabet))
                     {
                         Value++;
@@ -388,7 +404,6 @@ namespace KTANE_Solver
                 {
                     return Value;
                 }
-
                 //Otherwise, if the numeral of the Print Version is greater than the amount of batteries on the bomb, add 1 to the card’s current value.
                 else if (PrintNumeral > bomb.Battery)
                 {

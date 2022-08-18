@@ -10,7 +10,9 @@ namespace KTANE_Solver
     public class LetterKeys : Module
     {
         int number;
-        public LetterKeys(Bomb bomb, StreamWriter logFileWriter, int number) : base(bomb, logFileWriter, "Lettered Keys")
+
+        public LetterKeys(Bomb bomb, StreamWriter logFileWriter, int number)
+            : base(bomb, logFileWriter, "Lettered Keys")
         {
             this.number = number;
         }
@@ -26,22 +28,29 @@ namespace KTANE_Solver
             }
 
             if (number % 6 == 0)
-            { 
+            {
                 PrintDebugLine("The number indicated is divisible by 6");
                 return "A";
             }
 
             if (Bomb.Battery >= 2 && number % 3 == 0)
-            { 
-                PrintDebugLine("There are two or more batteries on the bomb and the number is divisible by 3");
+            {
+                PrintDebugLine(
+                    "There are two or more batteries on the bomb and the number is divisible by 3"
+                );
                 return "B";
             }
 
-            bool containsCE3 = Bomb.SerialNumber.Contains('C') || Bomb.SerialNumber.Contains('E') || Bomb.SerialNumber.Contains('3');
+            bool containsCE3 =
+                Bomb.SerialNumber.Contains('C')
+                || Bomb.SerialNumber.Contains('E')
+                || Bomb.SerialNumber.Contains('3');
 
             if (containsCE3 && number >= 22 && number <= 79)
             {
-                PrintDebugLine("The serial number contains a 'C' 'E' or '3' and the number is greater than or equal to 22, and less than or equal to 79");
+                PrintDebugLine(
+                    "The serial number contains a 'C' 'E' or '3' and the number is greater than or equal to 22, and less than or equal to 79"
+                );
                 return "B";
             }
 

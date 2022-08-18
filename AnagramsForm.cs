@@ -18,20 +18,57 @@ namespace KTANE_Solver
             InitializeComponent();
         }
 
-        public AnagramsForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFile, moduleSelectionForm, "Anagrams", false)
-        { 
+        public AnagramsForm(
+            Bomb bomb,
+            StreamWriter logFile,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFile, moduleSelectionForm, "Anagrams", false)
+        {
             InitializeComponent();
             UpdateForm(bomb, logFile, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFile, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFile,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFile, moduleSelectionForm);
 
-            string[] words = new string[] {  "ARMETS", "BARELY","BARLEY","BLEARY","CALLER","CELLAR","CEREUS","CERUSE","DUSTER","LOOPED",
-                                             "MASTER","MATERS","MATRES","POODLE","POOLED","RAMETS","RASHES","RECALL","RECUSE","RESCUE",
-                                             "RUDEST","RUSTED","SEATED","SEDATE","SECURE","SHARES","SHEARS","STREAM","TAMERS","TEASED" };
+            string[] words = new string[]
+            {
+                "ARMETS",
+                "BARELY",
+                "BARLEY",
+                "BLEARY",
+                "CALLER",
+                "CELLAR",
+                "CEREUS",
+                "CERUSE",
+                "DUSTER",
+                "LOOPED",
+                "MASTER",
+                "MATERS",
+                "MATRES",
+                "POODLE",
+                "POOLED",
+                "RAMETS",
+                "RASHES",
+                "RECALL",
+                "RECUSE",
+                "RESCUE",
+                "RUDEST",
+                "RUSTED",
+                "SEATED",
+                "SEDATE",
+                "SECURE",
+                "SHARES",
+                "SHEARS",
+                "STREAM",
+                "TAMERS",
+                "TEASED"
+            };
 
             wordComboBox.Items.Clear();
             wordComboBox.Items.AddRange(words);

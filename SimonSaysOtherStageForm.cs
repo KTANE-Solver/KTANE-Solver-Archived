@@ -21,15 +21,27 @@ namespace KTANE_Solver
         SimonSaysForm firstStage;
         int stage;
 
-        public SimonSaysOtherStageForm(int stage, SimonSaysForm firstStage, SimonSays module, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, firstStage, "Simon Says", false)
+        public SimonSaysOtherStageForm(
+            int stage,
+            SimonSaysForm firstStage,
+            SimonSays module,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, firstStage, "Simon Says", false)
         {
             InitializeComponent();
             this.firstStage = firstStage;
             UpdateForm(stage, module, bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(int stage, SimonSays module, Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            int stage,
+            SimonSays module,
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
             this.module = module;
@@ -45,18 +57,15 @@ namespace KTANE_Solver
 
         private void backButton_Click(object sender, EventArgs e)
         {
-
             module.lights = module.lights.Remove(module.lights.Length - 1);
 
             PrintDebugLine($"User pressed back. Sequence is now {module.lights}\n");
-
 
             if (stage == 2)
             {
                 firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
                 ResetModule();
             }
-
             else
             {
                 UpdateForm(stage - 1, module, Bomb, LogFileWriter, ModuleSelectionForm);
@@ -97,13 +106,10 @@ namespace KTANE_Solver
                 default:
                     ShowErrorMessage("Textbox can only contain the character b, r, g, or y");
                     return;
-
             }
 
             module.Solve(stage, input[0]);
             UpdateForm(stage + 1, module, Bomb, LogFileWriter, ModuleSelectionForm);
         }
-
-
     }
 }

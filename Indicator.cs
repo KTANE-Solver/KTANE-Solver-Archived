@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 2/27/21
@@ -30,53 +28,34 @@ namespace KTANE_Solver
 
         public String Name
         {
-            get
-            {
-                return name;
-            }
+            get { return name; }
         }
 
         public bool Visible
         {
-            get
-            {
-                return visible;
-            }
+            get { return visible; }
         }
 
         public bool Lit
         {
-            get
-            {
-                return lit;
-            }
+            get { return lit; }
         }
 
         //Tells if this indicator can actually appear on the bomb
         public bool ValidIndicator
         {
-            get
-            {
-                return !(!visible && lit);
-            }
+            get { return !(!visible && lit); }
         }
 
         //tells if an indicator is visible and not lit
         public bool VisibleNotLit
         {
-
-            get
-            { 
-                return visible && !lit;
-            }
+            get { return visible && !lit; }
         }
 
         public bool VisibleAndLit
         {
-            get
-            {
-                return visible && lit;
-            }
+            get { return visible && lit; }
         }
 
         //===============CONSTRUCTOR===============
@@ -95,9 +74,8 @@ namespace KTANE_Solver
             {
                 lit = false;
             }
-
             else
-            { 
+            {
                 this.lit = lit;
             }
         }

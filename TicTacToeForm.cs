@@ -13,7 +13,11 @@ namespace KTANE_Solver
 {
     public partial class TicTacToeForm : ModuleForm
     {
-        public TicTacToeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base (bomb, logFileWriter, moduleSelectionForm, "Tic Tac Toe", false)
+        public TicTacToeForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Tic Tac Toe", false)
         {
             InitializeComponent();
             UpdateForm();
@@ -55,14 +59,14 @@ namespace KTANE_Solver
 
             char[,] grid = SetUpGrid(topRow, middleRow, bottomRow);
 
-            TicTacToe module = new TicTacToe(Bomb,LogFileWriter, grid);
+            TicTacToe module = new TicTacToe(Bomb, LogFileWriter, grid);
             TicTacToeSymbolForm symbolForm = new TicTacToeSymbolForm();
             TicTacToeInputForm tileSelectionForm = new TicTacToeInputForm(module, symbolForm, this);
             symbolForm.InitaializeForm(module, tileSelectionForm, this);
 
             module.PrintGrid();
             module.FindStartingRow();
-            int [] answer = module.Solve(symbolComboBox.Text[0]);
+            int[] answer = module.Solve(symbolComboBox.Text[0]);
 
             if (!module.SolvedModule(answer.Length == 1))
             {
@@ -74,15 +78,13 @@ namespace KTANE_Solver
                     answerForm.ShowDialog();
                     symbolForm.Show();
                 }
-
                 else
                 {
                     tileSelectionForm.Show();
                 }
             }
-
             else
-            { 
+            {
                 UpdateForm();
             }
         }
@@ -101,10 +103,11 @@ namespace KTANE_Solver
                 {
                     continue;
                 }
-
                 else
                 {
-                    ShowErrorMessage("Text boxes can only contain caracheters X, O, and the digits between 1-9");
+                    ShowErrorMessage(
+                        "Text boxes can only contain caracheters X, O, and the digits between 1-9"
+                    );
                     return false;
                 }
             }
@@ -121,7 +124,6 @@ namespace KTANE_Solver
                 grid[0, i] = row1[i];
                 grid[1, i] = row2[i];
                 grid[2, i] = row3[i];
-
             }
 
             return grid;

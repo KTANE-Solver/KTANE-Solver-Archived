@@ -16,7 +16,14 @@ namespace KTANE_Solver
         private int stage;
         private FastMathStage1Form stage1;
         private FastMath module;
-        public FastMathOtherStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, FastMathStage1Form stage1, FastMath module) : base(bomb, logFileWriter, moduleSelectionForm, "Fast Math", false)
+
+        public FastMathOtherStageForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            FastMathStage1Form stage1,
+            FastMath module
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Fast Math", false)
         {
             InitializeComponent();
             UpdateForm(2);
@@ -43,7 +50,6 @@ namespace KTANE_Solver
             {
                 GoToStage1();
             }
-
             else
             {
                 UpdateForm(stage - 1);
@@ -83,7 +89,6 @@ namespace KTANE_Solver
             {
                 GoToStage1();
             }
-
             else
             {
                 UpdateForm(stage + 1);

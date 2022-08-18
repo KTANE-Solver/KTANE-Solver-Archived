@@ -19,8 +19,11 @@ namespace KTANE_Solver
 
     public partial class CheapCheckoutForm : ModuleForm
     {
-        public CheapCheckoutForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Cheap Checkout", false)
+        public CheapCheckoutForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Cheap Checkout", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -29,7 +32,11 @@ namespace KTANE_Solver
         /// <summary>
         /// Updates the form so it looks brand new
         /// </summary>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -52,13 +59,46 @@ namespace KTANE_Solver
         /// </summary>
         private void SetUpFixedComboBox(ComboBox comboBox)
         {
-            String[] fixedItems = new string[] { "Candy Canes", "Canola Oil",
-             "Cereal", "Cheese", "Chocolate Bar", "Chocolate Milk", "Coffee Beans",
-             "Cookies",  "Deodorant", "Fruit Punch", "Grape Jelly", "Grapefruit",
-                "Gum", "Honey", "Ketchup", "Lollipops", "Lotion", "Mayonnaise", "Mints",
-                "Mustard", "Oranges", "Paper Towels", "Pasta Sauce", "Peanut Butter",
-                "Pork", "Potato Chips", "Shampoo", "Socks", "Soda", "Spaghetti", "Sugar", "Tea",
-                "Tissues", "Toothpaste", "Water Bottles", "White Bread", "White Milk"  };
+            String[] fixedItems = new string[]
+            {
+                "Candy Canes",
+                "Canola Oil",
+                "Cereal",
+                "Cheese",
+                "Chocolate Bar",
+                "Chocolate Milk",
+                "Coffee Beans",
+                "Cookies",
+                "Deodorant",
+                "Fruit Punch",
+                "Grape Jelly",
+                "Grapefruit",
+                "Gum",
+                "Honey",
+                "Ketchup",
+                "Lollipops",
+                "Lotion",
+                "Mayonnaise",
+                "Mints",
+                "Mustard",
+                "Oranges",
+                "Paper Towels",
+                "Pasta Sauce",
+                "Peanut Butter",
+                "Pork",
+                "Potato Chips",
+                "Shampoo",
+                "Socks",
+                "Soda",
+                "Spaghetti",
+                "Sugar",
+                "Tea",
+                "Tissues",
+                "Toothpaste",
+                "Water Bottles",
+                "White Bread",
+                "White Milk"
+            };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(fixedItems);
@@ -71,9 +111,21 @@ namespace KTANE_Solver
         /// </summary>
         private void SetUpWeightedComboBox(ComboBox comboBox)
         {
-            String[] items = new string[] { "Bananas", "Broccoli",
-           "Chicken", "Grapefruit", "Lemons", "Lettuce", "Oranges", 
-                "Pork", "Potatoes", "Steak", "Tomatoes", "Turkey" };
+            String[] items = new string[]
+            {
+                "Bananas",
+                "Broccoli",
+                "Chicken",
+                "Grapefruit",
+                "Lemons",
+                "Lettuce",
+                "Oranges",
+                "Pork",
+                "Potatoes",
+                "Steak",
+                "Tomatoes",
+                "Turkey"
+            };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
@@ -105,15 +157,12 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
-
             String item1 = item1ComboBox.Text;
             String item2 = item2ComboBox.Text;
             String item3 = item3ComboBox.Text;
             String item4 = item4ComboBox.Text;
             String item5 = item5ComboBox.Text;
             String item6 = item6ComboBox.Text;
-
 
             double item5Weight = Double.Parse(item5WeightComboBox.Text);
             double item6Weight = Double.Parse(item6WeightComboBox.Text);
@@ -123,7 +172,6 @@ namespace KTANE_Solver
             {
                 amount = Int32.Parse(amountTextBox.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Invalid amount");
@@ -140,21 +188,34 @@ namespace KTANE_Solver
 
             //no duplicate items
 
-            if (item1 == item2 ||
-                item1 == item3 ||
-                item1 == item4 ||
-                item2 == item3 ||
-                item2 == item4 ||
-                item3 == item4 ||
-                item5 == item6)
+            if (
+                item1 == item2
+                || item1 == item3
+                || item1 == item4
+                || item2 == item3
+                || item2 == item4
+                || item3 == item4
+                || item5 == item6
+            )
             {
                 ShowErrorMessage("Can't have duplicate items");
                 return;
             }
 
-            
-            CheapCheckout module = new CheapCheckout(Bomb, LogFileWriter, amount, item1, item2, item3, item4, item5Weight, item5, item6Weight, item6);
-            
+            CheapCheckout module = new CheapCheckout(
+                Bomb,
+                LogFileWriter,
+                amount,
+                item1,
+                item2,
+                item3,
+                item4,
+                item5Weight,
+                item5,
+                item6Weight,
+                item6
+            );
+
             module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

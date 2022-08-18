@@ -17,7 +17,13 @@ namespace KTANE_Solver
 
         private List<string> answerList;
 
-        public SeaShells(Bomb bomb, StreamWriter logFileWriter, string phrase1, string phrase2, string bigButton) : base(bomb, logFileWriter, "Sea Shells")
+        public SeaShells(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            string phrase1,
+            string phrase2,
+            string bigButton
+        ) : base(bomb, logFileWriter, "Sea Shells")
         {
             this.phrase1 = phrase1;
             this.phrase2 = phrase2;
@@ -113,28 +119,25 @@ namespace KTANE_Solver
             switch (phrase1)
             {
                 case "SHE SELLS":
-            
-                if (phrase2 == "SEA SHELLS")
-                {
-                    letters = "BDABDAB";
-                }
 
-                else if(phrase2 == "SHE SHELLS")
-                { 
-                    letters = "ACEEAC";
-                }
+                    if (phrase2 == "SEA SHELLS")
+                    {
+                        letters = "BDABDAB";
+                    }
+                    else if (phrase2 == "SHE SHELLS")
+                    {
+                        letters = "ACEEAC";
+                    }
+                    else if (phrase2 == "SEA SELLS")
+                    {
+                        letters = "EACEACE";
+                    }
+                    else
+                    {
+                        letters = "DAABDAB";
+                    }
 
-                else if (phrase2 == "SEA SELLS")
-                {
-                    letters = "EACEACE";
-                }
-
-                else
-                {
-                    letters = "DAABDAB";
-                }
-
-                break;
+                    break;
 
                 case "SHE SHELLS":
 
@@ -142,17 +145,14 @@ namespace KTANE_Solver
                     {
                         letters = "BEEBBE";
                     }
-
                     else if (phrase2 == "SHE SHELLS")
                     {
                         letters = "CDCCDB";
                     }
-
                     else if (phrase2 == "SEA SELLS")
                     {
                         letters = "EAEAEA";
                     }
-
                     else
                     {
                         letters = "BEEDA";
@@ -166,17 +166,14 @@ namespace KTANE_Solver
                     {
                         letters = "ABABA";
                     }
-
                     else if (phrase2 == "SHE SHELLS")
                     {
                         letters = "EAAEEA";
                     }
-
                     else if (phrase2 == "SEA SELLS")
                     {
                         letters = "DBEAC";
                     }
-
                     else
                     {
                         letters = "ABDBAA";
@@ -184,24 +181,20 @@ namespace KTANE_Solver
 
                     break;
 
-
                 default:
 
                     if (phrase2 == "SEA SHELLS")
                     {
                         letters = "ACACEAC";
                     }
-
                     else if (phrase2 == "SHE SHELLS")
                     {
                         letters = "DBAEC";
                     }
-
                     else if (phrase2 == "SEA SELLS")
                     {
                         letters = "EBDADAB";
                     }
-
                     else
                     {
                         letters = "CECEC";

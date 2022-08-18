@@ -18,14 +18,21 @@ namespace KTANE_Solver
 
     public partial class WordSearchForm : ModuleForm
     {
-        public WordSearchForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Word Search", false)
+        public WordSearchForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Word Search", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -43,16 +50,36 @@ namespace KTANE_Solver
             String bottomRight = bottomRightTextBox.Text;
 
             //each textbox can only have 1 character
-            if (topLeft.Length != 1 || bottomLeft.Length != 1 || topRight.Length != 1 || bottomRight.Length != 1)
+            if (
+                topLeft.Length != 1
+                || bottomLeft.Length != 1
+                || topRight.Length != 1
+                || bottomRight.Length != 1
+            )
             {
-                MessageBox.Show("Each text box must have only 1 character", "Word Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Each text box must have only 1 character",
+                    "Word Search Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
                 return;
             }
 
             //each character can only be a letter
-            if (!IsLetter(topLeft[0]) || !IsLetter(bottomLeft[0]) || !IsLetter(topRight[0]) || !IsLetter(bottomRight[0]))
+            if (
+                !IsLetter(topLeft[0])
+                || !IsLetter(bottomLeft[0])
+                || !IsLetter(topRight[0])
+                || !IsLetter(bottomRight[0])
+            )
             {
-                MessageBox.Show("Text boxes can only contain letters", "Word Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Text boxes can only contain letters",
+                    "Word Search Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
                 return;
             }
 
@@ -71,7 +98,14 @@ namespace KTANE_Solver
 
             PrintHeader();
 
-            WordSearch module = new WordSearch(Bomb, LogFileWriter, topLeft[0], topRight[0], bottomLeft[0], bottomRight[0]);
+            WordSearch module = new WordSearch(
+                Bomb,
+                LogFileWriter,
+                topLeft[0],
+                topRight[0],
+                bottomLeft[0],
+                bottomRight[0]
+            );
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
@@ -106,6 +140,4 @@ namespace KTANE_Solver
             GoToMoudleSelectionForm();
         }
     }
-
-  
 }

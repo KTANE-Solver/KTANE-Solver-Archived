@@ -17,15 +17,21 @@ namespace KTANE_Solver
     /// </summary>
     public partial class WireSequenceStage1Form : ModuleForm
     {
-        public WireSequenceStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Wire Sequence", false)
+        public WireSequenceStage1Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Wire Sequence", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
-
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateColorComboBox(wire1ColorComboBox);
             UpdateColorComboBox(wire2ColorComboBox);
@@ -34,7 +40,6 @@ namespace KTANE_Solver
             UpdateLetterComboBox(wire1LetterComboBox);
             UpdateLetterComboBox(wire2LetterComboBox);
             UpdateLetterComboBox(wire3LetterComboBox);
-
 
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
@@ -81,27 +86,33 @@ namespace KTANE_Solver
 
             if (wire1ColorComboBox.Text != "" && wire1LetterComboBox.Text != "")
             {
-                answer += "1. " + module.Solve(1, wire1ColorComboBox.Text, wire1LetterComboBox.Text[0]);
+                answer +=
+                    "1. " + module.Solve(1, wire1ColorComboBox.Text, wire1LetterComboBox.Text[0]);
             }
 
             if (wire2ColorComboBox.Text != "" && wire2LetterComboBox.Text != "")
             {
-                answer += "\n2. " + module.Solve(2, wire2ColorComboBox.Text, wire2LetterComboBox.Text[0]);
+                answer +=
+                    "\n2. " + module.Solve(2, wire2ColorComboBox.Text, wire2LetterComboBox.Text[0]);
             }
 
             if (wire3ColorComboBox.Text != "" && wire3LetterComboBox.Text != "")
             {
-                answer += "\n3. " + module.Solve(3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0]);
+                answer +=
+                    "\n3. " + module.Solve(3, wire3ColorComboBox.Text, wire3LetterComboBox.Text[0]);
             }
-
 
             ShowAnswer(answer);
 
-
             this.Hide();
 
-
-            WireSequenceOtherStageForm otherStage = new WireSequenceOtherStageForm(module, this, Bomb, LogFileWriter, ModuleSelectionForm);
+            WireSequenceOtherStageForm otherStage = new WireSequenceOtherStageForm(
+                module,
+                this,
+                Bomb,
+                LogFileWriter,
+                ModuleSelectionForm
+            );
 
             otherStage.Show();
         }

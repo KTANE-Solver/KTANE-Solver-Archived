@@ -11,8 +11,6 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 3/6/21
@@ -28,8 +26,11 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">where the edgework will come from</param>
         /// <param name="moduleSelectionForm">the form used to get here</param>
-        public LogicForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Logic", false)
+        public LogicForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Logic", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -40,7 +41,11 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">where the edgework will come from</param>
         /// <param name="moduleSelectionForm">the form used to get here</param>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -99,7 +104,6 @@ namespace KTANE_Solver
         private void backButton_Click(object sender, EventArgs e)
         {
             GoToMoudleSelectionForm();
-
         }
 
         /// <summary>
@@ -108,7 +112,7 @@ namespace KTANE_Solver
         private void SetComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            String [] operations = new String [] { "∧", "∨", "	⊻", "|", "↓", "↔", "→", "←" };
+            String[] operations = new String[] { "∧", "∨", "	⊻", "|", "↓", "↔", "→", "←" };
             comboBox.Items.AddRange(operations);
             comboBox.Text = operations[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -123,7 +127,6 @@ namespace KTANE_Solver
         {
             textBox.Text = text;
             textBox.ForeColor = Color.Gray;
-
         }
 
         /// <summary>
@@ -197,7 +200,7 @@ namespace KTANE_Solver
             TextBox textBox = (TextBox)sender;
 
             if (textBox.Text == "")
-            { 
+            {
                 SetPromptText((TextBox)sender, "Top First Letter");
             }
         }
@@ -213,7 +216,6 @@ namespace KTANE_Solver
             {
                 SetPromptText((TextBox)sender, "Top Second Letter");
             }
-
         }
 
         /// <summary>
@@ -282,11 +284,15 @@ namespace KTANE_Solver
             String bottomSecond = bottomSecondTextBox.Text.ToUpper();
             String bottomThird = bottomThirdTextBox.Text.ToUpper();
 
-            
-
             //check to see if all text box length is one character long
-            if (topFirst.Length != 1 || topSecond.Length != 1 || topThird.Length != 1 ||
-                bottomFirst.Length != 1 || bottomSecond.Length != 1 || bottomThird.Length != 1)
+            if (
+                topFirst.Length != 1
+                || topSecond.Length != 1
+                || topThird.Length != 1
+                || bottomFirst.Length != 1
+                || bottomSecond.Length != 1
+                || bottomThird.Length != 1
+            )
             {
                 ShowErrorMessage("Invalid Character Count");
                 return;
@@ -301,8 +307,16 @@ namespace KTANE_Solver
             char bottomThirdChar = bottomThirdTextBox.Text.ToUpper()[0];
 
             //checks to see if character is illegal
-            if (!(IsLetter(topFirstChar) && IsLetter(topSecondChar) && IsLetter(topThirdChar) &&
-                  IsLetter(bottomFirstChar) && IsLetter(bottomSecondChar) && IsLetter(bottomThirdChar)))
+            if (
+                !(
+                    IsLetter(topFirstChar)
+                    && IsLetter(topSecondChar)
+                    && IsLetter(topThirdChar)
+                    && IsLetter(bottomFirstChar)
+                    && IsLetter(bottomSecondChar)
+                    && IsLetter(bottomThirdChar)
+                )
+            )
             {
                 ShowErrorMessage("Invalid Character");
                 return;
@@ -321,21 +335,32 @@ namespace KTANE_Solver
             bottomFirstOperation = bottomFirstOperation.Replace(tab.ToString(), "");
             bottomSecondOperation = bottomSecondOperation.Replace(tab.ToString(), "");
 
-
             PrintHeader();
-            logicModule = new Logic(Bomb, topFirstNotCheckBox.Checked, topFirstChar, 
-                                    topSecondNotCheckBox.Checked, topSecondChar, 
-                                    topThirdNotCheckBox.Checked, topThirdChar, 
-                                    topFirstOperation, topSecondOperation, 
-                                    topFirstTwoCheckBox.Checked, bottomFirstNotCheckBox.Checked, 
-                                    bottomFirstChar, bottomSecondNotCheckBox.Checked, 
-                                    bottomSecondChar, bottomThirdNotCheckBox.Checked, 
-                                    bottomThirdChar, bottomFirstOperation, 
-                                    bottomSecondOperation, bottomFirstTwoCheckBox.Checked, LogFileWriter);
+            logicModule = new Logic(
+                Bomb,
+                topFirstNotCheckBox.Checked,
+                topFirstChar,
+                topSecondNotCheckBox.Checked,
+                topSecondChar,
+                topThirdNotCheckBox.Checked,
+                topThirdChar,
+                topFirstOperation,
+                topSecondOperation,
+                topFirstTwoCheckBox.Checked,
+                bottomFirstNotCheckBox.Checked,
+                bottomFirstChar,
+                bottomSecondNotCheckBox.Checked,
+                bottomSecondChar,
+                bottomThirdNotCheckBox.Checked,
+                bottomThirdChar,
+                bottomFirstOperation,
+                bottomSecondOperation,
+                bottomFirstTwoCheckBox.Checked,
+                LogFileWriter
+            );
 
             logicModule.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-
         }
 
         /// <summary>

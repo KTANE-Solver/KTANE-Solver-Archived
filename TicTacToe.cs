@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public class TicTacToe : Module
@@ -14,7 +15,8 @@ namespace KTANE_Solver
         private int[] targetCoordiantes;
         private int tilesCovered;
 
-        public TicTacToe(Bomb bomb, StreamWriter logFileWriter, char[,] grid) : base(bomb, logFileWriter, "Tic Tac Toe")
+        public TicTacToe(Bomb bomb, StreamWriter logFileWriter, char[,] grid)
+            : base(bomb, logFileWriter, "Tic Tac Toe")
         {
             tilesCovered = 0;
             this.grid = grid;
@@ -30,10 +32,9 @@ namespace KTANE_Solver
                 PrintDebugLine("Last digit of serial number is even");
                 DebugLinesForCurrentRow(row);
             }
-
             else
-            { 
-                row.AddRange(new int[] { 1, 2, 3, 4});
+            {
+                row.AddRange(new int[] { 1, 2, 3, 4 });
                 PrintDebugLine("Last digit of serial number is odd");
                 DebugLinesForCurrentRow(row);
             }
@@ -51,7 +52,6 @@ namespace KTANE_Solver
 
                 DebugLinesForCurrentRow(row);
             }
-
             else
             {
                 PrintDebugLine("No pararrel port is present");
@@ -62,7 +62,7 @@ namespace KTANE_Solver
                         row.RemoveAt(i);
                     }
                 }
-             
+
                 DebugLinesForCurrentRow(row);
             }
 
@@ -71,16 +71,13 @@ namespace KTANE_Solver
                 PrintDebugLine("More unlit indicators than lit");
 
                 currentRow = row.Min();
-
             }
-
             else if (Bomb.LitIndicatorsList.Count > Bomb.UnlitIndicatorsList.Count)
             {
                 PrintDebugLine("More lit indicators than unlit");
 
                 currentRow = row.Max();
             }
-
             else
             {
                 PrintDebugLine("Even number of lit and unlit indicators");
@@ -98,7 +95,7 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Attemting to place {symbol} at {targetSymbol}");
 
-             targetCoordiantes = NumberIsInGrid(targetSymbol);
+            targetCoordiantes = NumberIsInGrid(targetSymbol);
 
             while (targetCoordiantes.Length == 1)
             {
@@ -130,7 +127,7 @@ namespace KTANE_Solver
             {
                 PrintDebugLine($"No Tic Tac Toe was made. Placing {symbol} at {targetSymbol}");
                 currentRow++;
-                return new int[] { targetCoordiantes[0], targetCoordiantes[1]};
+                return new int[] { targetCoordiantes[0], targetCoordiantes[1] };
             }
 
             grid[targetCoordiantes[0], targetCoordiantes[1]] = targetSymbol;
@@ -140,14 +137,16 @@ namespace KTANE_Solver
 
         public int[] Solve(char symbol)
         {
-            int [] answer = FindSymbolToPlace(symbol);
+            int[] answer = FindSymbolToPlace(symbol);
 
             if (answer.Length == 2)
             {
                 return answer;
             }
 
-             PrintDebugLine($"{symbol} made Tic Tac at {targetSymbol}. Changing symbol to {GetOppositeSymbol(symbol)}");
+            PrintDebugLine(
+                $"{symbol} made Tic Tac at {targetSymbol}. Changing symbol to {GetOppositeSymbol(symbol)}"
+            );
 
             symbol = GetOppositeSymbol(symbol);
 
@@ -156,9 +155,7 @@ namespace KTANE_Solver
             if (answer.Length == 2)
             {
                 ShowAnswer("Pass", true);
-
             }
-
             else
             {
                 ShowAnswer("Dobule Pass", true);
@@ -200,18 +197,14 @@ namespace KTANE_Solver
                         case 2:
                             return '5';
 
-
                         case 3:
                             return '7';
-
 
                         case 4:
                             return '4';
 
-
                         case 5:
                             return '1';
-
 
                         case 6:
                             return '8';
@@ -226,7 +219,6 @@ namespace KTANE_Solver
                             return '3';
                     }
                 }
-
                 else
                 {
                     switch (currentRow)
@@ -237,18 +229,14 @@ namespace KTANE_Solver
                         case 2:
                             return '6';
 
-
                         case 3:
                             return '8';
-
 
                         case 4:
                             return '5';
 
-
                         case 5:
                             return '4';
-
 
                         case 6:
                             return '7';
@@ -264,8 +252,6 @@ namespace KTANE_Solver
                     }
                 }
             }
-
-
             else if (xCount == oCount)
             {
                 if (symbol == 'X')
@@ -278,18 +264,14 @@ namespace KTANE_Solver
                         case 2:
                             return '6';
 
-
                         case 3:
                             return '2';
-
 
                         case 4:
                             return '7';
 
-
                         case 5:
                             return '1';
-
 
                         case 6:
                             return '5';
@@ -304,7 +286,6 @@ namespace KTANE_Solver
                             return '4';
                     }
                 }
-
                 else
                 {
                     switch (currentRow)
@@ -315,18 +296,14 @@ namespace KTANE_Solver
                         case 2:
                             return '7';
 
-
                         case 3:
                             return '1';
-
 
                         case 4:
                             return '8';
 
-
                         case 5:
                             return '6';
-
 
                         case 6:
                             return '2';
@@ -342,10 +319,8 @@ namespace KTANE_Solver
                     }
                 }
             }
-
             else
             {
-
                 {
                     if (symbol == 'X')
                     {
@@ -357,18 +332,14 @@ namespace KTANE_Solver
                             case 2:
                                 return '1';
 
-
                             case 3:
                                 return '5';
-
 
                             case 4:
                                 return '9';
 
-
                             case 5:
                                 return '7';
-
 
                             case 6:
                                 return '4';
@@ -383,7 +354,6 @@ namespace KTANE_Solver
                                 return '6';
                         }
                     }
-
                     else
                     {
                         switch (currentRow)
@@ -394,18 +364,14 @@ namespace KTANE_Solver
                             case 2:
                                 return '2';
 
-
                             case 3:
                                 return '8';
-
 
                             case 4:
                                 return '6';
 
-
                             case 5:
                                 return '3';
-
 
                             case 6:
                                 return '4';
@@ -422,7 +388,6 @@ namespace KTANE_Solver
                     }
                 }
             }
-
         }
 
         private int XCount()
@@ -466,8 +431,8 @@ namespace KTANE_Solver
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
-                { 
-                    if(grid[i,j] == target)
+                {
+                    if (grid[i, j] == target)
                     {
                         return new int[] { i, j };
                     }
@@ -485,40 +450,40 @@ namespace KTANE_Solver
             int xCount;
             int oCount;
             //horizontal
-                row.Clear();
-                for (int j = 0; j < 3; j++)
-                {
-                    row.Add(grid[rowNum, j]);
-                }
+            row.Clear();
+            for (int j = 0; j < 3; j++)
+            {
+                row.Add(grid[rowNum, j]);
+            }
 
-                xCount = row.Where(x => x.Equals('X')).Count();
-                oCount = row.Where(x => x.Equals('O')).Count();
+            xCount = row.Where(x => x.Equals('X')).Count();
+            oCount = row.Where(x => x.Equals('O')).Count();
 
             if (oCount == 3 || xCount == 3)
-                {
-                    return true;
-                }
+            {
+                return true;
+            }
 
             //vertical
-                row.Clear();
-                for (int j = 0; j < 3; j++)
-                {
-                    row.Add(grid[j, colNum]);
-                }
+            row.Clear();
+            for (int j = 0; j < 3; j++)
+            {
+                row.Add(grid[j, colNum]);
+            }
 
-                xCount = row.Where(x => x.Equals('X')).Count();
-                oCount = row.Where(x => x.Equals('O')).Count();
+            xCount = row.Where(x => x.Equals('X')).Count();
+            oCount = row.Where(x => x.Equals('O')).Count();
 
             if (oCount == 3 || xCount == 3)
-                {
-                    return true;
-                }
+            {
+                return true;
+            }
 
             //diagnoal
 
             row.Clear();
 
-            if(rowNum == colNum)
+            if (rowNum == colNum)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -575,7 +540,7 @@ namespace KTANE_Solver
             int symbolCount = XCount() + OCount();
 
             if (doublePass)
-            { 
+            {
                 return symbolCount == 9 || symbolCount == 8;
             }
 
@@ -583,7 +548,7 @@ namespace KTANE_Solver
         }
 
         private void DebugLinesForCurrentRow(List<int> row)
-        { 
+        {
             PrintDebugLine($"Possbile numbers for row: " + string.Join(", ", row) + "\n");
         }
     }

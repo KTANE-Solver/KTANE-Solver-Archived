@@ -18,14 +18,21 @@ namespace KTANE_Solver
 
     public partial class FizzBuzzForm : ModuleForm
     {
-        public FizzBuzzForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        :base(bomb, logFileWriter, moduleSelectionForm, "FizzBuzz", false)
+        public FizzBuzzForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "FizzBuzz", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
             ColorComboBox(colorComboBox1);
@@ -62,8 +69,11 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
-            if (numberTextBox1.Text.Length != 7 || numberTextBox2.Text.Length != 7 || numberTextBox3.Text.Length != 7)
+            if (
+                numberTextBox1.Text.Length != 7
+                || numberTextBox2.Text.Length != 7
+                || numberTextBox3.Text.Length != 7
+            )
             {
                 ShowErrorMessage("Numbers have to be 7 digits long");
                 return;
@@ -75,7 +85,6 @@ namespace KTANE_Solver
                 int.Parse(numberTextBox2.Text);
                 int.Parse(numberTextBox3.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Numbers text box can only contain numbers");
@@ -84,7 +93,16 @@ namespace KTANE_Solver
 
             PrintHeader();
 
-            FizzBuzz module = new FizzBuzz(colorComboBox1.Text, numberTextBox1.Text, colorComboBox2.Text, numberTextBox2.Text, colorComboBox3.Text, numberTextBox3.Text, Bomb, LogFileWriter);
+            FizzBuzz module = new FizzBuzz(
+                colorComboBox1.Text,
+                numberTextBox1.Text,
+                colorComboBox2.Text,
+                numberTextBox2.Text,
+                colorComboBox3.Text,
+                numberTextBox3.Text,
+                Bomb,
+                LogFileWriter
+            );
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }

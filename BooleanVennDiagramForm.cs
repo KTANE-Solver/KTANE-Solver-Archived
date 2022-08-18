@@ -13,8 +13,11 @@ namespace KTANE_Solver
 {
     public partial class BooleanVennDiagramForm : ModuleForm
     {
-        public BooleanVennDiagramForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : 
-        base(bomb, logFileWriter, moduleSelectionForm, "Boolean Venn Diagram", false)
+        public BooleanVennDiagramForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Boolean Venn Diagram", false)
         {
             InitializeComponent();
             UpdateForm();
@@ -49,7 +52,13 @@ namespace KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
             PrintHeader();
-            BooleanVennDiagram module = new BooleanVennDiagram(operationChoiceBox1.Text, operationChoiceBox2.Text, checkBox.Checked, Bomb, LogFileWriter);
+            BooleanVennDiagram module = new BooleanVennDiagram(
+                operationChoiceBox1.Text,
+                operationChoiceBox2.Text,
+                checkBox.Checked,
+                Bomb,
+                LogFileWriter
+            );
             module.Solve();
             UpdateForm();
         }

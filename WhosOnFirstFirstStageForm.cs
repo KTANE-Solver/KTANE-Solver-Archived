@@ -22,23 +22,29 @@ namespace KTANE_Solver
         WhosOnFirstOtherStageForm whosOnFirstOtherStage;
 
         /// <summary>
-        /// Creates the form that will Get information 
+        /// Creates the form that will Get information
         /// needed to solve Stage 1 of "Who's on First"
         /// </summary>
         /// <param name="moduleSelectionForm"></param>
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
-        public WhosOnFirstFirstStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Who's on First", false)
-
+        public WhosOnFirstFirstStageForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Who's on First", false)
         {
             InitializeComponent();
 
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
 
-            whosOnFirstOtherStage = new WhosOnFirstOtherStageForm(moduleSelectionForm, bomb, logFileWriter, this);
+            whosOnFirstOtherStage = new WhosOnFirstOtherStageForm(
+                moduleSelectionForm,
+                bomb,
+                logFileWriter,
+                this
+            );
         }
-
 
         /// <summary>
         /// Restarts the form
@@ -46,20 +52,22 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm"></param>
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
-
             UpdateDisplay();
-            
+
             UpdateButtonComboBox(topLeftComboBox);
             UpdateButtonComboBox(topRightComboBox);
             UpdateButtonComboBox(midLeftComboBox);
             UpdateButtonComboBox(midRightComboBox);
             UpdateButtonComboBox(bottomLeftComboBox);
             UpdateButtonComboBox(bottomRightComboBox);
-
         }
 
         /// <summary>
@@ -67,9 +75,37 @@ namespace KTANE_Solver
         /// </summary>
         private void UpdateDisplay()
         {
-            String[] display = new string[] { "", "BLANK", "C", "CEE", "DISPLAY", "FIRST", "HOLD ON", "LEAD", "LED", "LEED", "NO", "NOTHING", "OKAY", "READ", 
-                                              "RED", "REED", "SAYS", "SEE", "THEIR", "THERE", "THEY ARE", "THEY'RE", "UR", "YES", "YOU", "YOU ARE", "YOU'RE", "YOUR" };
-
+            String[] display = new string[]
+            {
+                "",
+                "BLANK",
+                "C",
+                "CEE",
+                "DISPLAY",
+                "FIRST",
+                "HOLD ON",
+                "LEAD",
+                "LED",
+                "LEED",
+                "NO",
+                "NOTHING",
+                "OKAY",
+                "READ",
+                "RED",
+                "REED",
+                "SAYS",
+                "SEE",
+                "THEIR",
+                "THERE",
+                "THEY ARE",
+                "THEY'RE",
+                "UR",
+                "YES",
+                "YOU",
+                "YOU ARE",
+                "YOU'RE",
+                "YOUR"
+            };
 
             displayComboBox.Items.Clear();
 
@@ -78,7 +114,6 @@ namespace KTANE_Solver
             displayComboBox.Text = display[0];
 
             displayComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-
         }
 
         /// <summary>
@@ -89,8 +124,37 @@ namespace KTANE_Solver
         {
             comboBox.Items.Clear();
 
-            String[] items = new string[] { "BLANK", "DONE", "FIRST", "HOLD", "LEFT", "LIKE", "MIDDLE", "NEXT", "NO", "NOTHING", "OKAY", "PRESS", "READY", "RIGHT", "SURE", "U", "UH HUH",
-                                            "UH UH", "UHHH", "UR", "WAIT", "WHAT", "WHAT?", "YES", "YOU ARE", "YOU", "YOU'RE", "YOUR" };
+            String[] items = new string[]
+            {
+                "BLANK",
+                "DONE",
+                "FIRST",
+                "HOLD",
+                "LEFT",
+                "LIKE",
+                "MIDDLE",
+                "NEXT",
+                "NO",
+                "NOTHING",
+                "OKAY",
+                "PRESS",
+                "READY",
+                "RIGHT",
+                "SURE",
+                "U",
+                "UH HUH",
+                "UH UH",
+                "UHHH",
+                "UR",
+                "WAIT",
+                "WHAT",
+                "WHAT?",
+                "YES",
+                "YOU ARE",
+                "YOU",
+                "YOU'RE",
+                "YOUR"
+            };
 
             comboBox.Items.AddRange(items);
 
@@ -120,8 +184,15 @@ namespace KTANE_Solver
             String midRight = midRightComboBox.Text;
             String bottomRight = bottomRightComboBox.Text;
 
-
-            List<String> words = new List<string>() { topLeft, midLeft, bottomLeft, topRight, midRight, bottomRight };
+            List<String> words = new List<string>()
+            {
+                topLeft,
+                midLeft,
+                bottomLeft,
+                topRight,
+                midRight,
+                bottomRight
+            };
 
             for (int i = 0; i < 6; i++)
             {
@@ -135,20 +206,28 @@ namespace KTANE_Solver
                         ShowErrorMessage("Can't have duplicate words");
                         return;
                     }
-                    
                 }
             }
 
-
             PrintHeader();
-            WhosOnFirst module = new WhosOnFirst(1, displayComboBox.Text, topLeft, topRight, midLeft, midRight, bottomLeft, bottomRight, Bomb, LogFileWriter);
+            WhosOnFirst module = new WhosOnFirst(
+                1,
+                displayComboBox.Text,
+                topLeft,
+                topRight,
+                midLeft,
+                midRight,
+                bottomLeft,
+                bottomRight,
+                Bomb,
+                LogFileWriter
+            );
             module.Solve();
 
             this.Hide();
 
             whosOnFirstOtherStage.Show();
             whosOnFirstOtherStage.UpdateForm(2, ModuleSelectionForm, Bomb, LogFileWriter);
-
         }
     }
 }

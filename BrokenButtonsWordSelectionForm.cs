@@ -15,7 +15,11 @@ namespace KTANE_Solver
     {
         private BrokenButtons module;
 
-        public BrokenButtonsWordSelectionForm(string type, BrokenButtons module, StreamWriter logFileWriter) 
+        public BrokenButtonsWordSelectionForm(
+            string type,
+            BrokenButtons module,
+            StreamWriter logFileWriter
+        )
         {
             InitializeComponent();
             this.module = module;
@@ -26,25 +30,67 @@ namespace KTANE_Solver
         {
             List<string> words = new List<string>();
 
-            words.AddRange(new string[]
-            {
-                // Explosion Related
-                "bomb", "blast", "boom", "burst",
-
-                // Bomb Components
-                "wire", "button", "module", "light", "led", "switch",
-                "RJ-45", "DVI-D", "RCA", "PS/2", "serial", "port",
-
-                // Descriptions
-                "row", "column", "one", "two", "three", "four", "five",
-                "six", "seven", "eight", "size",
-
-                // Misc
-                "this", "that", "other", "submit", "abort", "drop",
-                "thing", "blank", "", "broken", "too", "to", "yes",
-                "see", "sea", "c", "wait", "word", "bob", "no",
-                "not", "first", "hold", "late", "fail"
-            });
+            words.AddRange(
+                new string[]
+                {
+                    // Explosion Related
+                    "bomb",
+                    "blast",
+                    "boom",
+                    "burst",
+                    // Bomb Components
+                    "wire",
+                    "button",
+                    "module",
+                    "light",
+                    "led",
+                    "switch",
+                    "RJ-45",
+                    "DVI-D",
+                    "RCA",
+                    "PS/2",
+                    "serial",
+                    "port",
+                    // Descriptions
+                    "row",
+                    "column",
+                    "one",
+                    "two",
+                    "three",
+                    "four",
+                    "five",
+                    "six",
+                    "seven",
+                    "eight",
+                    "size",
+                    // Misc
+                    "this",
+                    "that",
+                    "other",
+                    "submit",
+                    "abort",
+                    "drop",
+                    "thing",
+                    "blank",
+                    "",
+                    "broken",
+                    "too",
+                    "to",
+                    "yes",
+                    "see",
+                    "sea",
+                    "c",
+                    "wait",
+                    "word",
+                    "bob",
+                    "no",
+                    "not",
+                    "first",
+                    "hold",
+                    "late",
+                    "fail"
+                }
+            );
 
             switch (type)
             {
@@ -63,7 +109,13 @@ namespace KTANE_Solver
 
                 case "Port":
                     words = new string[]
-                    { "RJ-45", "DVI-D", "RCA", "PS/2", "serial"}.ToList<string>();
+                    {
+                        "RJ-45",
+                        "DVI-D",
+                        "RCA",
+                        "PS/2",
+                        "serial"
+                    }.ToList<string>();
                     break;
 
                 case "threeLess":
@@ -105,7 +157,6 @@ namespace KTANE_Solver
             module.tempAnswer = answer;
 
             this.Close();
-
         }
     }
 }

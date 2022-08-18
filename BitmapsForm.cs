@@ -18,8 +18,11 @@ namespace KTANE_Solver
             InitializeComponent();
         }
 
-        public BitmapsForm(Bomb bomb, ModuleSelectionForm moduleSelection, StreamWriter logFileWriter)
-       : base(bomb, logFileWriter, moduleSelection, "Bitmaps", false)
+        public BitmapsForm(
+            Bomb bomb,
+            ModuleSelectionForm moduleSelection,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, moduleSelection, "Bitmaps", false)
         {
             InitializeComponent();
 
@@ -96,10 +99,13 @@ namespace KTANE_Solver
             row8Button8.Click += (Tile_Click);
 
             UpdateForm(bomb, logFileWriter, moduleSelection);
-
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelection)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelection
+        )
         {
             Bomb = bomb;
             ModuleSelectionForm = moduleSelection;
@@ -186,7 +192,6 @@ namespace KTANE_Solver
             {
                 button.BackColor = Color.Black;
             }
-
             else
             {
                 button.BackColor = Color.White;
@@ -211,7 +216,7 @@ namespace KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
             bool[,] grid = new bool[8, 8];
-            
+
             grid[0, 0] = GetInput(row1Button1);
             grid[0, 1] = GetInput(row1Button2);
             grid[0, 2] = GetInput(row1Button3);

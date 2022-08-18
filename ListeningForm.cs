@@ -13,7 +13,11 @@ namespace KTANE_Solver
 {
     public partial class ListeningForm : ModuleForm
     {
-        public ListeningForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Listening", false)
+        public ListeningForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Listening", false)
         {
             InitializeComponent();
             UpdateForm();

@@ -18,8 +18,11 @@ namespace KTANE_Solver
 
     public partial class GamepadForm : ModuleForm
     {
-        public GamepadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Gamepad", false)
+        public GamepadForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Gamepad", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -30,7 +33,11 @@ namespace KTANE_Solver
             GoToMoudleSelectionForm();
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             xTextBox.Text = "";
             yTextBox.Text = "";
@@ -45,14 +52,14 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            int x, y;
+            int x,
+                y;
 
             try
             {
                 x = int.Parse(xTextBox.Text);
                 y = int.Parse(yTextBox.Text);
             }
-
             catch
             {
                 ShowErrorMessage("X and Y text boxes must only contain numbers");

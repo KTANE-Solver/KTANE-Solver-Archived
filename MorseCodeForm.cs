@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -16,25 +17,50 @@ namespace KTANE_Solver
     /// </summary>
     public partial class MorseCodeForm : ModuleForm
     {
-        public MorseCodeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base (bomb, logFileWriter, moduleSelectionForm, "Morse Code", false)
+        public MorseCodeForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Morse Code", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             wordComboBox.Items.Clear();
 
-            String[] words = new string[] { "beats", "bistro", "bombs", "boxes", "break", "brick", "flick", "halls", "leaks", "shell", "slick", "steak", "sting", "strobe", "trick", "vector" };
+            String[] words = new string[]
+            {
+                "beats",
+                "bistro",
+                "bombs",
+                "boxes",
+                "break",
+                "brick",
+                "flick",
+                "halls",
+                "leaks",
+                "shell",
+                "slick",
+                "steak",
+                "sting",
+                "strobe",
+                "trick",
+                "vector"
+            };
 
             wordComboBox.Items.AddRange(words);
 
             wordComboBox.Text = words[0];
 
             wordComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            
+
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
         }
 

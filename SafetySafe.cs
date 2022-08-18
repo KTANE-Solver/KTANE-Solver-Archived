@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public class SafetySafe : Module
@@ -16,7 +17,8 @@ namespace KTANE_Solver
         public int fifthTurn;
         public int sixthTurn;
 
-        public SafetySafe(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Saftey Safe")
+        public SafetySafe(Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Saftey Safe")
         {
             offset = 0;
             firstTurn = 0;
@@ -37,8 +39,7 @@ namespace KTANE_Solver
             fourthTurn = FindFourthTurn();
             fifthTurn = FindFifthTurn();
             sixthTurn = FindSixthTurn() % 12;
-            
-            
+
             PrintDebugLine("Offset: " + offset);
             PrintDebugLine("First Turn: " + firstTurn);
             PrintDebugLine("Second Turn: " + secondTurn);
@@ -77,11 +78,20 @@ namespace KTANE_Solver
             fifthTurn = (fifthTurn + offset) % 12;
             sixthTurn = (sixthTurn + offset) % 12;
 
-            string answer = $"1. {firstTurn}\n2. {secondTurn}\n3. {thirdTurn}\n4. {fourthTurn}\n5. {fifthTurn}\n6. {sixthTurn}";
+            string answer =
+                $"1. {firstTurn}\n2. {secondTurn}\n3. {thirdTurn}\n4. {fourthTurn}\n5. {fifthTurn}\n6. {sixthTurn}";
 
             PrintDebugLine("Answer:\n" + answer + "\n");
 
-            int[] arr = new int[] {firstTurn, secondTurn, thirdTurn, fourthTurn, fifthTurn, sixthTurn };
+            int[] arr = new int[]
+            {
+                firstTurn,
+                secondTurn,
+                thirdTurn,
+                fourthTurn,
+                fifthTurn,
+                sixthTurn
+            };
 
             return arr;
         }
@@ -100,12 +110,13 @@ namespace KTANE_Solver
                 {
                     indicatorLitNum++;
                 }
-                
             }
 
             offset += indicatorLitNum * 5;
 
-            PrintDebugLine($"{indicatorLitNum} lit indicators that share a letter with the serial number were found. Offset is now {offset}");
+            PrintDebugLine(
+                $"{indicatorLitNum} lit indicators that share a letter with the serial number were found. Offset is now {offset}"
+            );
 
             int indicatorUnlitNum = 0;
             foreach (Indicator indicator in Bomb.UnlitIndicatorsList)
@@ -114,17 +125,17 @@ namespace KTANE_Solver
                 {
                     indicatorUnlitNum++;
                 }
-
             }
 
             offset += indicatorUnlitNum;
 
-            PrintDebugLine($"{indicatorUnlitNum} unlit indicators that share a letter with the serial number were found. Offset is now {offset}");
+            PrintDebugLine(
+                $"{indicatorUnlitNum} unlit indicators that share a letter with the serial number were found. Offset is now {offset}"
+            );
 
             offset %= 12;
 
             PrintDebugLine($"Updated offset is now {offset}\n");
-
 
             return offset;
         }
@@ -135,7 +146,7 @@ namespace KTANE_Solver
             {
                 case 'A':
                     return 8;
-                    
+
                 case 'B':
                     return 10;
 
@@ -533,10 +544,10 @@ namespace KTANE_Solver
         {
             int num = 0;
             PrintDebug("Sixth number: ");
-            for(int i = 0; i < Bomb.SerialNumber.Length; i++)
+            for (int i = 0; i < Bomb.SerialNumber.Length; i++)
             {
                 int addition;
-                
+
                 switch (Bomb.SerialNumber[i])
                 {
                     case 'A':
@@ -681,7 +692,6 @@ namespace KTANE_Solver
                     default:
                         addition = 9;
                         break;
-
                 }
 
                 num += addition;
@@ -697,7 +707,6 @@ namespace KTANE_Solver
             PrintDebugLine("");
 
             return num;
-            
         }
 
         private bool HasLetterInSerialNumber(string str)

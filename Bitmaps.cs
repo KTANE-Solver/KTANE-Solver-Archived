@@ -13,14 +13,14 @@ namespace KTANE_Solver
     /// </summary>
     class Bitmaps : Module
     {
-
         private bool[,] grid;
         private Quadrant topLeftQuadrant;
         private Quadrant topRightQuadrant;
         private Quadrant bottomLeftQuadrant;
         private Quadrant bottomRightQuadrant;
 
-        public Bitmaps(bool [,] grid, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Bitmaps")
+        public Bitmaps(bool[,] grid, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Bitmaps")
         {
             this.grid = grid;
 
@@ -34,8 +34,6 @@ namespace KTANE_Solver
             {
                 for (int column = 0; column < 4; column++)
                 {
-                    
-
                     topLeft[row, column] = grid[row, column];
                     topRight[row, column] = grid[row, column + 4];
                     bottomLeft[row, column] = grid[row + 4, column];
@@ -119,7 +117,6 @@ namespace KTANE_Solver
                     ruleNumber++;
                     ruleNumber %= 10;
                 }
-
             }
 
             switch (ruleNumber)
@@ -133,21 +130,18 @@ namespace KTANE_Solver
                         answer += bottomLeftQuadrant.WhiteNum;
                         answer += bottomRightQuadrant.WhiteNum;
                     }
-
                     else if (topRightQuadrant.FiveWhiteOrLess)
                     {
                         answer = topLeftQuadrant.WhiteNum;
                         answer += bottomLeftQuadrant.WhiteNum;
                         answer += bottomRightQuadrant.WhiteNum;
                     }
-
                     else if (bottomLeftQuadrant.FiveWhiteOrLess)
                     {
                         answer = topRightQuadrant.WhiteNum;
                         answer += topLeftQuadrant.WhiteNum;
                         answer += bottomRightQuadrant.WhiteNum;
                     }
-
                     else
                     {
                         answer = topRightQuadrant.WhiteNum;
@@ -216,21 +210,18 @@ namespace KTANE_Solver
                         answer += bottomLeftQuadrant.BlackNum;
                         answer += bottomRightQuadrant.BlackNum;
                     }
-
                     else if (topRightQuadrant.FiveBlackOrLess)
                     {
                         answer = topLeftQuadrant.BlackNum;
                         answer += bottomLeftQuadrant.BlackNum;
                         answer += bottomRightQuadrant.BlackNum;
                     }
-
                     else if (bottomLeftQuadrant.FiveBlackOrLess)
                     {
                         answer = topRightQuadrant.BlackNum;
                         answer += topLeftQuadrant.BlackNum;
                         answer += bottomRightQuadrant.BlackNum;
                     }
-
                     else
                     {
                         answer = topRightQuadrant.BlackNum;
@@ -272,7 +263,6 @@ namespace KTANE_Solver
                                 break;
                             }
                         }
-
                     } while (answer == -1);
                     break;
 
@@ -289,7 +279,6 @@ namespace KTANE_Solver
             {
                 answer += 4;
             }
-
 
             ShowAnswer("Press " + answer, true);
         }
@@ -327,7 +316,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// If there are exactly as many mostly - white 
+        /// If there are exactly as many mostly - white
         /// quadrants as there are lit indicators
         /// </summary>
         /// <returns></returns>
@@ -359,7 +348,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// If exactly one row or column is completely 
+        /// If exactly one row or column is completely
         /// white or completely black,
         /// </summary>
         /// <returns></returns>
@@ -377,7 +366,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// If there are fewer mostly-white quadrants than 
+        /// If there are fewer mostly-white quadrants than
         /// mostly-black quadrants
         /// </summary>
         /// <returns></returns>
@@ -396,7 +385,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        ///If there are more mostly-white quadrants than 
+        ///If there are more mostly-white quadrants than
         ///mostly-black quadrants
         /// </summary>
         /// <returns></returns>
@@ -436,7 +425,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// If there are exactly as many mostly-black quadrants 
+        /// If there are exactly as many mostly-black quadrants
         /// as there are unlit indicators
         /// </summary>
         /// <returns></returns>
@@ -446,7 +435,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// If there is a 3×3 square that is 
+        /// If there is a 3×3 square that is
         /// completely white or completely black
         /// </summary>
         /// <returns></returns>
@@ -467,7 +456,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// If there are exactly as many mostly-white 
+        /// If there are exactly as many mostly-white
         /// quadrants as mostly-black quadrants
         /// </summary>
         /// <returns></returns>
@@ -488,14 +477,12 @@ namespace KTANE_Solver
         /// <returns>the center x quordinate</returns>
         private int ThreeByThreeSquare(int row, int column)
         {
-
             bool color = grid[row, column];
 
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-
                     if (color != grid[i + row, j + column])
                     {
                         return -1;
@@ -503,25 +490,25 @@ namespace KTANE_Solver
                 }
             }
 
-            return  column + 2;
+            return column + 2;
         }
 
         private int WhitePixelNum()
         {
-            return topLeftQuadrant.WhiteNum +
-                   topRightQuadrant.WhiteNum +
-                   bottomLeftQuadrant.WhiteNum +
-                   bottomRightQuadrant.WhiteNum;
+            return topLeftQuadrant.WhiteNum
+                + topRightQuadrant.WhiteNum
+                + bottomLeftQuadrant.WhiteNum
+                + bottomRightQuadrant.WhiteNum;
         }
 
         private int MostlyBlackQuadrantNum()
         {
             int mostlyBlackNum = 0;
 
-             if (topLeftQuadrant.MostlyBlack)
-             {
+            if (topLeftQuadrant.MostlyBlack)
+            {
                 mostlyBlackNum++;
-             }
+            }
 
             if (topRightQuadrant.MostlyBlack)
             {
@@ -618,7 +605,6 @@ namespace KTANE_Solver
                     {
                         PrintDebug("1 ");
                     }
-
                     else
                     {
                         PrintDebug("0 ");
@@ -656,7 +642,6 @@ namespace KTANE_Solver
                     {
                         WhiteNum++;
                     }
-
                     else
                     {
                         BlackNum++;
@@ -666,12 +651,9 @@ namespace KTANE_Solver
                 MostlyWhite = WhiteNum > BlackNum;
                 MostlyBlack = BlackNum > WhiteNum;
 
-                
                 FiveWhiteOrLess = WhiteNum <= 5;
                 FiveBlackOrLess = BlackNum <= 5;
             }
         }
-
-        
     }
 }

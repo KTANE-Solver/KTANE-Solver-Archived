@@ -14,13 +14,10 @@ namespace KTANE_Solver
     /// </summary>
     public class TwoBits : Module
     {
-
         public int initalCode;
 
-        public TwoBits(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Two Bits")
-        {
-
-        }
+        public TwoBits(Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Two Bits") { }
 
         public int GetInitalCode()
         {
@@ -64,7 +61,6 @@ namespace KTANE_Solver
             {
                 action = $"Insert {answer} and press submit";
             }
-
             else
             {
                 action = $"Insert {answer} and press query";

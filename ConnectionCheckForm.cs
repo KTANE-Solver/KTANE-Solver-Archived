@@ -13,7 +13,11 @@ namespace KTANE_Solver
 {
     public partial class ConnectionCheckForm : ModuleForm
     {
-        public ConnectionCheckForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Connection Check", false)
+        public ConnectionCheckForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Connection Check", false)
         {
             InitializeComponent();
         }
@@ -24,7 +28,6 @@ namespace KTANE_Solver
             topRightTextBox.Text = "";
             bottomLeftTextBox.Text = "";
             bottomRightTextBox.Text = "";
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -44,17 +47,41 @@ namespace KTANE_Solver
             string bottomLeft = bottomLeftTextBox.Text;
             string bottomRight = bottomRightTextBox.Text;
 
-            if (!ValidTextBox(topLeft) || !ValidTextBox(topRight) || !ValidTextBox(bottomLeft) || !ValidTextBox(bottomRight))
+            if (
+                !ValidTextBox(topLeft)
+                || !ValidTextBox(topRight)
+                || !ValidTextBox(bottomLeft)
+                || !ValidTextBox(bottomRight)
+            )
             {
                 return;
             }
 
-            int [] topLeftArr  = new int[] { int.Parse("" + topLeft[0]), int.Parse("" + topLeft[1]) };
-            int [] topRightArr = new int[] { int.Parse("" + topRight[0]), int.Parse("" + topRight[1]) };
-            int [] bottomLeftArr = new int[] { int.Parse("" + bottomLeft[0]), int.Parse("" + bottomLeft[1]) };
-            int [] bottomRightArr = new int[] { int.Parse("" + bottomRight[0]), int.Parse("" + bottomRight[1]) };
+            int[] topLeftArr = new int[] { int.Parse("" + topLeft[0]), int.Parse("" + topLeft[1]) };
+            int[] topRightArr = new int[]
+            {
+                int.Parse("" + topRight[0]),
+                int.Parse("" + topRight[1])
+            };
+            int[] bottomLeftArr = new int[]
+            {
+                int.Parse("" + bottomLeft[0]),
+                int.Parse("" + bottomLeft[1])
+            };
+            int[] bottomRightArr = new int[]
+            {
+                int.Parse("" + bottomRight[0]),
+                int.Parse("" + bottomRight[1])
+            };
 
-            ConnectionCheck module = new ConnectionCheck(topLeftArr, topRightArr, bottomLeftArr, bottomRightArr, Bomb, LogFileWriter);
+            ConnectionCheck module = new ConnectionCheck(
+                topLeftArr,
+                topRightArr,
+                bottomLeftArr,
+                bottomRightArr,
+                Bomb,
+                LogFileWriter
+            );
             module.Solve();
             UpdateForm();
         }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -17,17 +18,30 @@ namespace KTANE_Solver
 
     public partial class RockPaperScissorsLizardSpockForm : ModuleForm
     {
-        public RockPaperScissorsLizardSpockForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Rock Paper Scissors Lizard Spock", false)
-
+        public RockPaperScissorsLizardSpockForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
+            : base(
+                bomb,
+                logFileWriter,
+                moduleSelectionForm,
+                "Rock Paper Scissors Lizard Spock",
+                false
+            )
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
-            String[] symbols = new String[] { "", "Lizard", "Paper", "Rock", "Scissors", "Spock"};
+            String[] symbols = new String[] { "", "Lizard", "Paper", "Rock", "Scissors", "Spock" };
 
             decoyComboBox.Items.Clear();
             decoyComboBox.Items.AddRange(symbols);
@@ -57,16 +71,17 @@ namespace KTANE_Solver
             {
                 symbol = RockPaperScissorsLizardSpock.Symbol.Null;
             }
-
             else
             {
-                symbol = (RockPaperScissorsLizardSpock.Symbol)Enum.Parse(typeof(RockPaperScissorsLizardSpock.Symbol), decoyComboBox.Text);
-
+                symbol = (RockPaperScissorsLizardSpock.Symbol)
+                    Enum.Parse(typeof(RockPaperScissorsLizardSpock.Symbol), decoyComboBox.Text);
             }
 
-
-
-            RockPaperScissorsLizardSpock module = new RockPaperScissorsLizardSpock(symbol, Bomb, LogFileWriter);
+            RockPaperScissorsLizardSpock module = new RockPaperScissorsLizardSpock(
+                symbol,
+                Bomb,
+                LogFileWriter
+            );
             module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

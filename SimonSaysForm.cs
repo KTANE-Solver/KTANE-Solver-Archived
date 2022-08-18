@@ -18,21 +18,27 @@ namespace KTANE_Solver
 
     public partial class SimonSaysForm : ModuleForm
     {
-
         private SimonSaysOtherStageForm secondStage;
-        public SimonSaysForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter , moduleSelectionForm, "Simon Says", false)
+
+        public SimonSaysForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Simon Says", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
             inputTextBox.Text = "";
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -63,7 +69,6 @@ namespace KTANE_Solver
                 default:
                     ShowErrorMessage("Textbox can only contain the character b, r, g, or y");
                     return;
-
             }
 
             PrintHeader();
@@ -75,7 +80,14 @@ namespace KTANE_Solver
 
             if (secondStage == null)
             {
-                secondStage = new SimonSaysOtherStageForm(2, this, module, Bomb, LogFileWriter, ModuleSelectionForm);
+                secondStage = new SimonSaysOtherStageForm(
+                    2,
+                    this,
+                    module,
+                    Bomb,
+                    LogFileWriter,
+                    ModuleSelectionForm
+                );
             }
 
             secondStage.UpdateForm(2, module, Bomb, LogFileWriter, ModuleSelectionForm);

@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class BrokenButtonsForm : ModuleForm
     {
-        public BrokenButtonsForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Broken Buttons", false)
+        public BrokenButtonsForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Broken Buttons", false)
         {
             InitializeComponent();
         }
@@ -23,12 +28,14 @@ namespace KTANE_Solver
 
             List<string> buttonList = module.buttonPressed;
 
-
             while (buttonList.Count != 5)
             {
                 module.FindButtonToPress();
 
-                if (module.buttonPressed.Contains("DON'T PRESS") || module.buttonPressed.Contains("NO ANSWER"))
+                if (
+                    module.buttonPressed.Contains("DON'T PRESS")
+                    || module.buttonPressed.Contains("NO ANSWER")
+                )
                 {
                     break;
                 }

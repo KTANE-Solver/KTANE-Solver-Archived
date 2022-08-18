@@ -17,14 +17,21 @@ namespace KTANE_Solver
     /// </summary>
     public partial class MemoryStage1Form : ModuleForm
     {
-        public MemoryStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base (bomb, logFileWriter, moduleSelectionForm, "Memory", false)
+        public MemoryStage1Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Memory", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             displayTextBox.Text = "";
             numberTextBox.Text = "";
@@ -50,7 +57,6 @@ namespace KTANE_Solver
             {
                 display = int.Parse(displayTextBox.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Display can only be 1 - 4");
@@ -70,18 +76,16 @@ namespace KTANE_Solver
 
             int totalNumber;
 
-            if(numberTextBox.Text.Length != 4)
+            if (numberTextBox.Text.Length != 4)
             {
                 ShowErrorMessage("The second textbox can only hold 4 numbers");
                 return;
             }
 
-
             try
             {
                 totalNumber = int.Parse(numberTextBox.Text);
             }
-
             catch
             {
                 ShowErrorMessage("The second textbox can only hold 4 numbers");
@@ -108,15 +112,17 @@ namespace KTANE_Solver
                 return;
             }
 
-            if (num1 == num2 ||
-                num1 == num3 ||
-                num1 == num4 ||
-                num2 == num3 ||
-                num2 == num4 ||
-                num3 == num4)
+            if (
+                num1 == num2
+                || num1 == num3
+                || num1 == num4
+                || num2 == num3
+                || num2 == num4
+                || num3 == num4
+            )
             {
                 ShowErrorMessage("Can't have duplicate messages");
-                return;   
+                return;
             }
 
             Memory module = new Memory(Bomb, LogFileWriter);
@@ -126,11 +132,16 @@ namespace KTANE_Solver
 
             this.Hide();
 
-            MemoryOtherStageForm secondStage = new MemoryOtherStageForm(Bomb, LogFileWriter, ModuleSelectionForm, module, this);
+            MemoryOtherStageForm secondStage = new MemoryOtherStageForm(
+                Bomb,
+                LogFileWriter,
+                ModuleSelectionForm,
+                module,
+                this
+            );
             secondStage.Show();
-
-
         }
+
         private bool ValidNumber(int num)
         {
             switch (num)

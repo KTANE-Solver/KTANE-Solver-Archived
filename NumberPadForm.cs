@@ -17,8 +17,11 @@ namespace KTANE_Solver
     /// </summary>
     public partial class NumberPadForm : ModuleForm
     {
-        public NumberPadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base (bomb, logFileWriter, moduleSelectionForm, "Number Pad", false)
+        public NumberPadForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Number Pad", false)
         {
             InitializeComponent();
 
@@ -36,7 +39,11 @@ namespace KTANE_Solver
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -60,22 +67,18 @@ namespace KTANE_Solver
             {
                 button.BackColor = Color.Red;
             }
-
             else if (button.BackColor == Color.Red)
             {
                 button.BackColor = Color.Yellow;
             }
-
             else if (button.BackColor == Color.Yellow)
             {
                 button.BackColor = Color.Green;
             }
-
             else if (button.BackColor == Color.Green)
             {
                 button.BackColor = Color.Blue;
             }
-
             else
             {
                 button.BackColor = Color.White;
@@ -107,7 +110,20 @@ namespace KTANE_Solver
 
             PrintHeader();
 
-            NumberPad module = new NumberPad(zeroColor, oneColor, twoColor, threeColor, fourColor, fiveColor, sixColor, sevenColor, eightColor, nineColor, Bomb, LogFileWriter);
+            NumberPad module = new NumberPad(
+                zeroColor,
+                oneColor,
+                twoColor,
+                threeColor,
+                fourColor,
+                fiveColor,
+                sixColor,
+                sevenColor,
+                eightColor,
+                nineColor,
+                Bomb,
+                LogFileWriter
+            );
             module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

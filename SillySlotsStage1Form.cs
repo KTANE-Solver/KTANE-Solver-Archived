@@ -28,9 +28,11 @@ namespace KTANE_Solver
         /// <param name="moduleSelectionForm">the form used to get here</param>
         /// <param name="bomb">used to get the edgework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public SillySlotsStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Silly Slots", false)
-
+        public SillySlotsStage1Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Silly Slots", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -40,7 +42,11 @@ namespace KTANE_Solver
         /// Updates this form so it looks
         /// good as new
         /// </summary>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -56,8 +62,16 @@ namespace KTANE_Solver
             slot3ObjectComboBox.Items.Clear();
 
             //set up kewyword comboBox
-            String[] keywordList = new String[] { "Sally", "Sassy", "Sausage", "Silly", "Simon", "Soggy", "Steven" };
-
+            String[] keywordList = new String[]
+            {
+                "Sally",
+                "Sassy",
+                "Sausage",
+                "Silly",
+                "Simon",
+                "Soggy",
+                "Steven"
+            };
 
             keywordComboBox.Items.AddRange(keywordList);
             keywordComboBox.Text = "Sally";
@@ -104,7 +118,6 @@ namespace KTANE_Solver
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-
         /// <summary>
         /// sends the user back to the module selection stage
         /// </summary>
@@ -121,7 +134,6 @@ namespace KTANE_Solver
             IncrementStrike();
         }
 
-
         /// <summary>
         /// Gets the answer for the first stage of the Silly Slots
         /// </summary>
@@ -129,11 +141,26 @@ namespace KTANE_Solver
         {
             PrintHeader();
 
-            SillySlots.Slot slot1 = new SillySlots.Slot(slot1ColorComboBox.Text, slot1ObjectComboBox.Text);
-            SillySlots.Slot slot2 = new SillySlots.Slot(slot2ColorComboBox.Text, slot2ObjectComboBox.Text);
-            SillySlots.Slot slot3 = new SillySlots.Slot(slot3ColorComboBox.Text, slot3ObjectComboBox.Text);
+            SillySlots.Slot slot1 = new SillySlots.Slot(
+                slot1ColorComboBox.Text,
+                slot1ObjectComboBox.Text
+            );
+            SillySlots.Slot slot2 = new SillySlots.Slot(
+                slot2ColorComboBox.Text,
+                slot2ObjectComboBox.Text
+            );
+            SillySlots.Slot slot3 = new SillySlots.Slot(
+                slot3ColorComboBox.Text,
+                slot3ObjectComboBox.Text
+            );
 
-            sillySlotsModule = new SillySlots(keywordComboBox.Text, slot1, slot2, slot3, LogFileWriter);
+            sillySlotsModule = new SillySlots(
+                keywordComboBox.Text,
+                slot1,
+                slot2,
+                slot3,
+                LogFileWriter
+            );
 
             //tells if the user has to press keep or not
             bool pressKeep = sillySlotsModule.Solve(1);
@@ -142,17 +169,22 @@ namespace KTANE_Solver
             if (pressKeep)
             {
                 ShowAnswer("Press Keep");
-                
+
                 UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             }
-
             //otherwise send them to stage 2
             else
             {
                 ShowAnswer("Pull the lever");
 
-                SillySlotsOtherStageForm sillySlotsOtherStageForm = new SillySlotsOtherStageForm(this,
-                    ModuleSelectionForm, Bomb, LogFileWriter, sillySlotsModule, 2);
+                SillySlotsOtherStageForm sillySlotsOtherStageForm = new SillySlotsOtherStageForm(
+                    this,
+                    ModuleSelectionForm,
+                    Bomb,
+                    LogFileWriter,
+                    sillySlotsModule,
+                    2
+                );
 
                 this.Hide();
                 sillySlotsOtherStageForm.Show();

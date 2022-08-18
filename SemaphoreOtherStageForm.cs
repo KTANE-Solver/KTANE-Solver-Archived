@@ -8,13 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class SemaphoreOtherStageForm : ModuleForm
     {
         SemaphoreStage1Form firstForm;
         Semaphore module;
-        public SemaphoreOtherStageForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Semaphore module, SemaphoreStage1Form firstForm) : base(bomb, logFileWriter, moduleSelectionForm, "Semaphore", false)
+
+        public SemaphoreOtherStageForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            Semaphore module,
+            SemaphoreStage1Form firstForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Semaphore", false)
         {
             InitializeComponent();
             this.module = module;
@@ -24,7 +32,17 @@ namespace KTANE_Solver
 
         private void SetUpComboBox()
         {
-            string[] direction = new string[] { "East", "North", "North East", "North West", "South", "South East", "South West", "West" };
+            string[] direction = new string[]
+            {
+                "East",
+                "North",
+                "North East",
+                "North West",
+                "South",
+                "South East",
+                "South West",
+                "West"
+            };
 
             List<string> combinedDirection = new List<string>();
 
@@ -34,7 +52,6 @@ namespace KTANE_Solver
                 {
                     combinedDirection.Add(direction[i] + "/" + direction[j]);
                 }
-
             }
 
             comboBox.Items.Clear();
@@ -46,7 +63,7 @@ namespace KTANE_Solver
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            firstForm.Show();   
+            firstForm.Show();
         }
 
         private void strikeButton_Click(object sender, EventArgs e)
@@ -66,7 +83,6 @@ namespace KTANE_Solver
                 firstForm.Show();
                 firstForm.UpdateForm();
             }
-
             else
             {
                 SetUpComboBox();
@@ -79,7 +95,6 @@ namespace KTANE_Solver
 
             return new Semaphore.Flag(GetFlagState(arr[0]), GetFlagState(arr[1]));
         }
-
 
         private Semaphore.FlagState GetFlagState(string str)
         {

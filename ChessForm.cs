@@ -12,21 +12,28 @@ using System.IO;
 namespace KTANE_Solver
 {
     /// <summary>
-    /// Author: Nya Bentley\
+    /// Author: Nya Bentley
     /// Date: 5/1/21
     /// Purpose: Gets information needed to solve the chess module
     /// </summary>
 
     public partial class ChessForm : ModuleForm
     {
-        public ChessForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Chess", false)
-        { 
+        public ChessForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Chess", false)
+        {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -73,15 +80,30 @@ namespace KTANE_Solver
             String piece5 = piece5TextBox.Text.ToLower();
             String piece6 = piece6TextBox.Text.ToLower();
 
-            if (!ValidLocation(piece1) || !ValidLocation(piece2) || !ValidLocation(piece3) ||
-                !ValidLocation(piece4) || !ValidLocation(piece5) || !ValidLocation(piece6))
+            if (
+                !ValidLocation(piece1)
+                || !ValidLocation(piece2)
+                || !ValidLocation(piece3)
+                || !ValidLocation(piece4)
+                || !ValidLocation(piece5)
+                || !ValidLocation(piece6)
+            )
             {
                 return;
             }
 
             PrintHeader();
 
-            Chess module = new Chess(piece1, piece2, piece3, piece4, piece5, piece6, Bomb, LogFileWriter);
+            Chess module = new Chess(
+                piece1,
+                piece2,
+                piece3,
+                piece4,
+                piece5,
+                piece6,
+                Bomb,
+                LogFileWriter
+            );
 
             module.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

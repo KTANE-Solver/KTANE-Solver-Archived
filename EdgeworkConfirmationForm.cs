@@ -11,8 +11,6 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     ///Author: Nya Bentley
     /// Date: 3/1/21
@@ -48,9 +46,6 @@ namespace KTANE_Solver
             this.logFileWriter = logFileWriter;
             inputForm = new EdgeworkInputForm(logFileWriter);
             UpdateForm(bomb);
-
-
-
         }
 
         /// <summary>
@@ -58,7 +53,11 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="bomb">the bomb that was created</param>
         /// <param name="inputForm">the form used to get to this form</param>
-        public EdgeworkConfirmationForm(Bomb bomb, EdgeworkInputForm inputForm, StreamWriter logFileWriter)
+        public EdgeworkConfirmationForm(
+            Bomb bomb,
+            EdgeworkInputForm inputForm,
+            StreamWriter logFileWriter
+        )
         {
             InitializeComponent();
             this.logFileWriter = logFileWriter;
@@ -98,23 +97,59 @@ namespace KTANE_Solver
         /// </summary>
         private void WriteLog()
         {
-            PrintDebugLine("======================EDGEWORK CONFIRMATION======================" + "\n", logFileWriter);
+            PrintDebugLine(
+                "======================EDGEWORK CONFIRMATION======================" + "\n",
+                logFileWriter
+            );
             PrintDebugLine("Day of the week: " + bomb.Day, logFileWriter);
             PrintDebugLine("Serial Number: " + bomb.SerialNumber, logFileWriter);
             PrintDebugLine("# of batteries: " + bomb.Battery, logFileWriter);
             PrintDebugLine("# battery holders:" + bomb.BatteryHolder + "\n", logFileWriter);
 
-            PrintDebugLine($"BOB - Visisble: {bomb.Bob.Visible} Lit: {bomb.Bob.Lit}", logFileWriter);
-            PrintDebugLine($"CAR - Visisble: {bomb.Car.Visible} Lit: {bomb.Car.Lit}", logFileWriter);
-            PrintDebugLine($"CLR - Visisble: {bomb.Clr.Visible} Lit: {bomb.Clr.Lit}", logFileWriter);
-            PrintDebugLine($"FRK - Visisble: {bomb.Frk.Visible} Lit: {bomb.Frk.Lit}", logFileWriter);
-            PrintDebugLine($"FRQ - Visisble: {bomb.Frq.Visible} Lit: {bomb.Frq.Lit}", logFileWriter);
-            PrintDebugLine($"IND - Visisble: {bomb.Ind.Visible} Lit: {bomb.Ind.Lit}", logFileWriter);
-            PrintDebugLine($"MSA - Visisble: {bomb.Msa.Visible} Lit: {bomb.Msa.Lit}", logFileWriter);
-            PrintDebugLine($"NSA - Visisble: {bomb.Nsa.Visible} Lit: {bomb.Nsa.Lit}", logFileWriter);
-            PrintDebugLine($"SIG - Visisble: {bomb.Sig.Visible} Lit: {bomb.Sig.Lit}", logFileWriter);
-            PrintDebugLine($"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}", logFileWriter);
-            PrintDebugLine($"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n", logFileWriter);
+            PrintDebugLine(
+                $"BOB - Visisble: {bomb.Bob.Visible} Lit: {bomb.Bob.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"CAR - Visisble: {bomb.Car.Visible} Lit: {bomb.Car.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"CLR - Visisble: {bomb.Clr.Visible} Lit: {bomb.Clr.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"FRK - Visisble: {bomb.Frk.Visible} Lit: {bomb.Frk.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"FRQ - Visisble: {bomb.Frq.Visible} Lit: {bomb.Frq.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"IND - Visisble: {bomb.Ind.Visible} Lit: {bomb.Ind.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"MSA - Visisble: {bomb.Msa.Visible} Lit: {bomb.Msa.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"NSA - Visisble: {bomb.Nsa.Visible} Lit: {bomb.Nsa.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"SIG - Visisble: {bomb.Sig.Visible} Lit: {bomb.Sig.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"SND - Visisble: {bomb.Snd.Visible} Lit: {bomb.Snd.Lit}",
+                logFileWriter
+            );
+            PrintDebugLine(
+                $"TRN - Visisble: {bomb.Trn.Visible} Lit: {bomb.Trn.Lit}\n",
+                logFileWriter
+            );
 
             PrintDebugLine($"Empty Port Plate: {bomb.EmptyPortPlate}", logFileWriter);
             PrintDebugLine($"# Port Plates: {bomb.PortPlateNum}", logFileWriter);
@@ -152,12 +187,10 @@ namespace KTANE_Solver
 
             SetLabel(portLabel, "Port", 17);
 
-
             if (bomb.EmptyPortPlate)
             {
                 SetLabel(emptyPortPlateLabel, "There is an empty port plate", 18);
             }
-
             else
             {
                 SetLabel(emptyPortPlateLabel, "There isn't an empty port plate", 18);
@@ -198,12 +231,10 @@ namespace KTANE_Solver
             {
                 text = indicator.Name + " is invisible";
             }
-
             else if (indicator.Visible && indicator.Lit)
             {
                 text = indicator.Name + " is visible and lit";
             }
-
             else
             {
                 text = indicator.Name + " is visible and unlit";
@@ -228,7 +259,6 @@ namespace KTANE_Solver
             //sets where the label is going to be vertically
             int positionY = index * 22;
 
-
             label.Location = new Point(positionX, positionY);
         }
 
@@ -242,14 +272,18 @@ namespace KTANE_Solver
                 String message = "Are you sure you want to quit the program?";
                 String caption = "Quit Program";
 
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    message,
+                    caption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 //if the user clicks no, don't close the program
                 if (result == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
-
                 else
                 {
                     logFileWriter.Write("User closed program...");
@@ -283,9 +317,14 @@ namespace KTANE_Solver
         {
             if (moduleSelectionForm == null)
             {
-                moduleSelectionForm = new ModuleSelectionForm(bomb, this, inputForm, logFileWriter, mazeColors);
+                moduleSelectionForm = new ModuleSelectionForm(
+                    bomb,
+                    this,
+                    inputForm,
+                    logFileWriter,
+                    mazeColors
+                );
             }
-
             else
             {
                 moduleSelectionForm.UpdateForm(bomb);

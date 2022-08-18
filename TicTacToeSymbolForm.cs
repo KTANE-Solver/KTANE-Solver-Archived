@@ -19,10 +19,13 @@ namespace KTANE_Solver
         public TicTacToeSymbolForm() : base()
         {
             InitializeComponent();
-
         }
 
-        public void InitaializeForm(TicTacToe module, TicTacToeInputForm tileSelectionForm, TicTacToeForm initialForm)
+        public void InitaializeForm(
+            TicTacToe module,
+            TicTacToeInputForm tileSelectionForm,
+            TicTacToeForm initialForm
+        )
         {
             this.module = module;
             this.initialForm = initialForm;
@@ -57,13 +60,11 @@ namespace KTANE_Solver
                     tileSelectionForm.UpdateForm();
                     tileSelectionForm.Show();
                 }
-
                 else
                 {
                     UpdateForm();
                 }
             }
-
             else
             {
                 this.Hide();

@@ -17,7 +17,16 @@ namespace KTANE_Solver
         private int lastDigit;
         public List<Pin> pinList;
         public Dictionary<string, Color> colorDictionary;
-        public Microcontroller(Bomb bomb, StreamWriter logFileWriter, string whiteDotCorner, string moduleType, int pinNum, int secondDigit, int lastDigit) : base(bomb, logFileWriter, "Microcontroller")
+
+        public Microcontroller(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            string whiteDotCorner,
+            string moduleType,
+            int pinNum,
+            int secondDigit,
+            int lastDigit
+        ) : base(bomb, logFileWriter, "Microcontroller")
         {
             this.whiteDotCorner = whiteDotCorner;
             this.moduleType = moduleType;
@@ -42,7 +51,6 @@ namespace KTANE_Solver
 
                 PrintDebugLine("The last digit of the controller's serial number is 1 or 4\n");
             }
-
             //Otherwise, if there is a lit indicator "SIG" or a RJ-45 port
             else if (Bomb.Sig.Lit || Bomb.Rj.Visible)
             {
@@ -53,18 +61,17 @@ namespace KTANE_Solver
                 colorDictionary.Add("RST", Color.Blue);
 
                 PrintDebugLine("There is a lit indicator SIG or a RJ-45 port\n");
-
             }
-
             //Otherwise, if the bomb's serial number contains C, L, R, X, 1 or 8
-            else if (Bomb.SerialNumber.Contains('C') ||
-                        Bomb.SerialNumber.Contains('L') ||
-                        Bomb.SerialNumber.Contains('R') ||
-                        Bomb.SerialNumber.Contains('X') ||
-                        Bomb.SerialNumber.Contains('1') ||
-                        Bomb.SerialNumber.Contains('8'))
+            else if (
+                Bomb.SerialNumber.Contains('C')
+                || Bomb.SerialNumber.Contains('L')
+                || Bomb.SerialNumber.Contains('R')
+                || Bomb.SerialNumber.Contains('X')
+                || Bomb.SerialNumber.Contains('1')
+                || Bomb.SerialNumber.Contains('8')
+            )
             {
-
                 colorDictionary.Add("VCC", Color.Red);
                 colorDictionary.Add("AIN", Color.Magenta);
                 colorDictionary.Add("DIN", Color.Green);
@@ -73,7 +80,6 @@ namespace KTANE_Solver
 
                 PrintDebugLine("The bomb's serial number contains C, L, R, X, 1 or 8\n");
             }
-
             //Otherwise, if the second numerical digit of the controller's serial number matches the number of batteries on the bomb
             else if (secondDigit == Bomb.Battery)
             {
@@ -83,9 +89,10 @@ namespace KTANE_Solver
                 colorDictionary.Add("PWM", Color.Green);
                 colorDictionary.Add("RST", Color.Magenta);
 
-                PrintDebugLine("The second numerical digit of the controller's serial number matches the number of batteries on the bomb\n");
+                PrintDebugLine(
+                    "The second numerical digit of the controller's serial number matches the number of batteries on the bomb\n"
+                );
             }
-
             else
             {
                 colorDictionary.Add("VCC", Color.Green);
@@ -109,7 +116,9 @@ namespace KTANE_Solver
 
             for (int i = 1; i <= pinNum; i++)
             {
-                pinList.Add(new Pin(i, moduleType, pinNum, secondDigit, lastDigit, Bomb, colorDictionary));
+                pinList.Add(
+                    new Pin(i, moduleType, pinNum, secondDigit, lastDigit, Bomb, colorDictionary)
+                );
             }
 
             foreach (Pin p in pinList)
@@ -166,13 +175,11 @@ namespace KTANE_Solver
 
                     return answers;
 
-
                 default:
                     for (int i = halfPinNum; i < pinList.Count; i++)
                     {
                         answers.Add(pinList[i].color);
                     }
-
 
                     for (int i = halfPinNum - 1; i >= 0; i--)
                     {
@@ -180,7 +187,6 @@ namespace KTANE_Solver
                     }
 
                     return answers;
-
             }
         }
 
@@ -188,10 +194,21 @@ namespace KTANE_Solver
         {
             private int index;
             public string name;
-            public Color color { get { return c; } }
+            public Color color
+            {
+                get { return c; }
+            }
             private Color c;
 
-            public Pin(int index, string moduleType, int pinNum, int secondDigit, int lastDigit, Bomb bomb, Dictionary<string, Color> colorDictionary)
+            public Pin(
+                int index,
+                string moduleType,
+                int pinNum,
+                int secondDigit,
+                int lastDigit,
+                Bomb bomb,
+                Dictionary<string, Color> colorDictionary
+            )
             {
                 this.index = index;
                 SetName(moduleType, pinNum);
@@ -209,27 +226,22 @@ namespace KTANE_Solver
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 2)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 3)
                             {
                                 name = "RST";
                             }
-
                             else if (index == 4)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 5)
                             {
                                 name = "PWM";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -241,27 +253,22 @@ namespace KTANE_Solver
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 2)
                             {
                                 name = "RST";
                             }
-
                             else if (index == 3)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 4)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 5)
                             {
                                 name = "AIN";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -273,27 +280,22 @@ namespace KTANE_Solver
                             {
                                 name = "GND";
                             }
-
                             else if (index == 2)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 3)
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 4)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 5)
                             {
                                 name = "DIN";
                             }
-
                             else
                             {
                                 name = "RST";
@@ -305,27 +307,22 @@ namespace KTANE_Solver
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 2)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 3)
                             {
                                 name = "RST";
                             }
-
                             else if (index == 4)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 5)
                             {
                                 name = "DIN";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -333,7 +330,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 else if (pinNum == 8)
                 {
                     switch (moduleType)
@@ -343,37 +339,30 @@ namespace KTANE_Solver
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 2)
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 3)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 4)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 5)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 6)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 7)
                             {
                                 name = "RST";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -385,37 +374,30 @@ namespace KTANE_Solver
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 2)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 3)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 4)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 5)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 6)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 7)
                             {
                                 name = "RST";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -427,37 +409,30 @@ namespace KTANE_Solver
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 2)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 3)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 4)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 5)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 6)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 7)
                             {
                                 name = "DIN";
                             }
-
                             else
                             {
                                 name = "RST";
@@ -469,37 +444,30 @@ namespace KTANE_Solver
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 2)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 3)
                             {
                                 name = "RST";
                             }
-
                             else if (index == 4)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 5)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 6)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 7)
                             {
                                 name = "DIN";
                             }
-
                             else
                             {
                                 name = "PWM";
@@ -507,7 +475,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 else if (pinNum == 10)
                 {
                     switch (moduleType)
@@ -517,47 +484,38 @@ namespace KTANE_Solver
                             {
                                 name = "GND";
                             }
-
                             else if (index == 2)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 3)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 4)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 5)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 6)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 7)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 8)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 9)
                             {
                                 name = "RST";
                             }
-
                             else
                             {
                                 name = "PWM";
@@ -569,47 +527,38 @@ namespace KTANE_Solver
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 2)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 3)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 4)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 5)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 6)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 7)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 8)
                             {
                                 name = "RST";
                             }
-
                             else if (index == 9)
                             {
                                 name = "VCC";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -621,47 +570,38 @@ namespace KTANE_Solver
                             {
                                 name = "PWM";
                             }
-
                             else if (index == 2)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 3)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 4)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 5)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 6)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 7)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 8)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 9)
                             {
                                 name = "RST";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -673,47 +613,38 @@ namespace KTANE_Solver
                             {
                                 name = "RST";
                             }
-
                             else if (index == 2)
                             {
                                 name = "DIN";
                             }
-
                             else if (index == 3)
                             {
                                 name = "VCC";
                             }
-
                             else if (index == 4)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 5)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 6)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 7)
                             {
                                 name = "AIN";
                             }
-
                             else if (index == 8)
                             {
                                 name = "GND";
                             }
-
                             else if (index == 9)
                             {
                                 name = "PWM";
                             }
-
                             else
                             {
                                 name = "GND";
@@ -735,4 +666,3 @@ namespace KTANE_Solver
         }
     }
 }
-

@@ -17,8 +17,8 @@ namespace KTANE_Solver
     /// </summary>
     public partial class AdjacentLettersAnswerForm : ModuleForm
     {
-        public AdjacentLettersAnswerForm(bool[,] answer, StreamWriter logFileWriter) :
-        base (null, logFileWriter, null, "Adjacent Letters", true)
+        public AdjacentLettersAnswerForm(bool[,] answer, StreamWriter logFileWriter)
+            : base(null, logFileWriter, null, "Adjacent Letters", true)
         {
             LogFileWriter = logFileWriter;
 
@@ -47,12 +47,10 @@ namespace KTANE_Solver
                     {
                         PrintDebug("* ");
                     }
-
                     else
-                    { 
+                    {
                         PrintDebug(". ");
                     }
-
                 }
 
                 PrintDebugLine("");

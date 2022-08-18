@@ -8,12 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     public partial class CreationForm : ModuleForm
     {
         private Creation module;
-        public CreationForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Creation", false)
+
+        public CreationForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Creation", false)
         {
             InitializeComponent();
             UpdateForm();
@@ -26,7 +32,14 @@ namespace KTANE_Solver
             UpdateElementComboBox(bottomLeftComboBox);
             UpdateElementComboBox(bottomRightComboBox);
 
-            String[] weather = new string[] { "Rain", "Wind", "Heat Wave", "Meteor Shower", "Clear" };
+            String[] weather = new string[]
+            {
+                "Rain",
+                "Wind",
+                "Heat Wave",
+                "Meteor Shower",
+                "Clear"
+            };
 
             weatherComboBox.Items.Clear();
             weatherComboBox.Items.AddRange(weather);
@@ -36,14 +49,12 @@ namespace KTANE_Solver
 
         private void UpdateElementComboBox(ComboBox comboBox)
         {
-           
             String[] elements = new string[] { "Air", "Earth", "Fire", "Water", };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(elements);
             comboBox.Text = elements[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -65,12 +76,14 @@ namespace KTANE_Solver
             string lowerLeft = bottomLeftComboBox.Text;
             string lowerRight = bottomRightComboBox.Text;
 
-            if (upperLeft == upperRight ||
-                upperLeft == lowerLeft ||
-                upperLeft == lowerRight ||
-                upperRight == lowerLeft ||
-                upperRight == lowerRight ||
-                lowerLeft == lowerRight)
+            if (
+                upperLeft == upperRight
+                || upperLeft == lowerLeft
+                || upperLeft == lowerRight
+                || upperRight == lowerLeft
+                || upperRight == lowerRight
+                || lowerLeft == lowerRight
+            )
             {
                 ShowErrorMessage("Can't have duplicate elements");
                 return;
@@ -78,16 +91,30 @@ namespace KTANE_Solver
 
             string weather = weatherComboBox.Text.Replace(" ", String.Empty);
 
-            Creation.Weather startingWeather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weather);
+            Creation.Weather startingWeather = (Creation.Weather)
+                Enum.Parse(typeof(Creation.Weather), weather);
 
-            module = new Creation(Bomb, LogFileWriter, startingWeather, upperLeft, lowerLeft, upperRight, lowerRight);
+            module = new Creation(
+                Bomb,
+                LogFileWriter,
+                startingWeather,
+                upperLeft,
+                lowerLeft,
+                upperRight,
+                lowerRight
+            );
             module.SetUpModule();
             module.Solve(startingWeather, 0);
 
             this.Hide();
 
-            CreationOtherStageForm stage2 = new CreationOtherStageForm(Bomb, LogFileWriter, module, this, ModuleSelectionForm);
-
+            CreationOtherStageForm stage2 = new CreationOtherStageForm(
+                Bomb,
+                LogFileWriter,
+                module,
+                this,
+                ModuleSelectionForm
+            );
 
             stage2.Show();
         }

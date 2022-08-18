@@ -16,10 +16,11 @@ namespace KTANE_Solver
     {
         private char[,] Grid { get; }
         private bool[,] Answer { get; set; }
-        public AdjacentLetters(char[,] grid, Bomb bomb, StreamWriter logFileWriter) 
-        : base (bomb, logFileWriter, "Adjacent Letters")
+
+        public AdjacentLetters(char[,] grid, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Adjacent Letters")
         {
-            Grid = grid;            
+            Grid = grid;
         }
 
         /// <summary>
@@ -34,7 +35,11 @@ namespace KTANE_Solver
                 for (int column = 0; column < 4; column++)
                 {
                     PrintDebug(Grid[row, column] + " ");
-                    Answer[row, column] = Left(row, column) || Right(row, column) || Up(row, column) || Down(row, column);
+                    Answer[row, column] =
+                        Left(row, column)
+                        || Right(row, column)
+                        || Up(row, column)
+                        || Down(row, column);
                 }
 
                 PrintDebugLine("");
@@ -42,7 +47,10 @@ namespace KTANE_Solver
 
             PrintDebugLine("");
 
-            AdjacentLettersAnswerForm answerForm = new AdjacentLettersAnswerForm(Answer, LogFileWriter);
+            AdjacentLettersAnswerForm answerForm = new AdjacentLettersAnswerForm(
+                Answer,
+                LogFileWriter
+            );
             answerForm.Show();
         }
 
@@ -55,11 +63,11 @@ namespace KTANE_Solver
         private bool Left(int row, int column)
         {
             if (column == 0)
-            { 
+            {
                 return false;
             }
 
-            switch (Grid[row,column])
+            switch (Grid[row, column])
             {
                 case 'A':
                     return ContainsLetter(row, column - 1, "GJMOY");
@@ -242,11 +250,10 @@ namespace KTANE_Solver
         /// <returns>true if the current letter is being pressed</returns>
         private bool Down(int row, int column)
         {
-
             if (row == 2)
                 return false;
 
-            switch (Grid[row,column])
+            switch (Grid[row, column])
             {
                 case 'A':
                     return ContainsLetter(row + 1, column, "HKPRW");
@@ -339,7 +346,7 @@ namespace KTANE_Solver
             if (row == 0)
                 return false;
 
-            switch (Grid[row,column])
+            switch (Grid[row, column])
             {
                 case 'A':
                     return ContainsLetter(row - 1, column, "HKPRW");
@@ -421,7 +428,6 @@ namespace KTANE_Solver
             }
         }
 
-
         /// <summary>
         /// Tells if a string contains a target letter
         /// </summary>
@@ -433,6 +439,5 @@ namespace KTANE_Solver
         {
             return Regex.IsMatch(str, "" + Grid[row, column]);
         }
-
     }
 }

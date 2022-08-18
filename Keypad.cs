@@ -9,8 +9,6 @@ using System.Drawing;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 5/20/21
@@ -26,7 +24,7 @@ namespace KTANE_Solver
 
         //an enum list that will contain every symbol
         public enum Symbol
-        { 
+        {
             Three,
             Six,
             A,
@@ -58,25 +56,84 @@ namespace KTANE_Solver
         }
 
         //lists of all of the symbols
-        Symbol[] row1 = new Symbol[] { Symbol.O, Symbol.A, Symbol.Lambda, Symbol.Lightning, Symbol.Squid, Symbol.H, Symbol.BackwardsC };
-        Symbol[] row2 = new Symbol[] { Symbol.E, Symbol.O, Symbol.BackwardsC, Symbol.Swirl, Symbol.WhiteStar, Symbol.H, Symbol.QuestionMark };
-        Symbol[] row3 = new Symbol[] { Symbol.Copyright, Symbol.Butt, Symbol.Swirl, Symbol.X, Symbol.UfinishedR, Symbol.Lambda, Symbol.WhiteStar };
-        Symbol[] row4 = new Symbol[] { Symbol.Six, Symbol.Paragraph, Symbol.B, Symbol.Squid, Symbol.X, Symbol.QuestionMark, Symbol.SmilyFace };
-        Symbol[] row5 = new Symbol[] { Symbol.Trident, Symbol.SmilyFace, Symbol.B, Symbol.C, Symbol.Paragraph, Symbol.Three, Symbol.BlackStar };
-        Symbol[] row6 = new Symbol[] { Symbol.Six, Symbol.E, Symbol.Hashtag, Symbol.Ae, Symbol.Trident, Symbol.N, Symbol.Omega };
+        Symbol[] row1 = new Symbol[]
+        {
+            Symbol.O,
+            Symbol.A,
+            Symbol.Lambda,
+            Symbol.Lightning,
+            Symbol.Squid,
+            Symbol.H,
+            Symbol.BackwardsC
+        };
+        Symbol[] row2 = new Symbol[]
+        {
+            Symbol.E,
+            Symbol.O,
+            Symbol.BackwardsC,
+            Symbol.Swirl,
+            Symbol.WhiteStar,
+            Symbol.H,
+            Symbol.QuestionMark
+        };
+        Symbol[] row3 = new Symbol[]
+        {
+            Symbol.Copyright,
+            Symbol.Butt,
+            Symbol.Swirl,
+            Symbol.X,
+            Symbol.UfinishedR,
+            Symbol.Lambda,
+            Symbol.WhiteStar
+        };
+        Symbol[] row4 = new Symbol[]
+        {
+            Symbol.Six,
+            Symbol.Paragraph,
+            Symbol.B,
+            Symbol.Squid,
+            Symbol.X,
+            Symbol.QuestionMark,
+            Symbol.SmilyFace
+        };
+        Symbol[] row5 = new Symbol[]
+        {
+            Symbol.Trident,
+            Symbol.SmilyFace,
+            Symbol.B,
+            Symbol.C,
+            Symbol.Paragraph,
+            Symbol.Three,
+            Symbol.BlackStar
+        };
+        Symbol[] row6 = new Symbol[]
+        {
+            Symbol.Six,
+            Symbol.E,
+            Symbol.Hashtag,
+            Symbol.Ae,
+            Symbol.Trident,
+            Symbol.N,
+            Symbol.Omega
+        };
 
-        public Keypad(String image1, String image2, String image3, String image4, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Keypad")
+        public Keypad(
+            String image1,
+            String image2,
+            String image3,
+            String image4,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "Keypad")
         {
             symbol1 = SetUpSymbol(image1);
             symbol2 = SetUpSymbol(image2);
             symbol3 = SetUpSymbol(image3);
             symbol4 = SetUpSymbol(image4);
-
         }
 
         public void Solve()
         {
-
             //Debug information
             PrintSymbol(1, symbol1);
             PrintSymbol(2, symbol2);
@@ -113,81 +170,100 @@ namespace KTANE_Solver
 
             if (symbol1Place == 1 && symbol2Place == 2 && symbol3Place == 3 && symbol4Place == 4)
                 answerForm = new KeypadFormAnswer(symbol1, symbol2, symbol3, symbol4);
-
-            else if (symbol1Place == 1 && symbol2Place == 2 && symbol3Place == 4 && symbol4Place == 3)
+            else if (
+                symbol1Place == 1 && symbol2Place == 2 && symbol3Place == 4 && symbol4Place == 3
+            )
                 answerForm = new KeypadFormAnswer(symbol1, symbol2, symbol4, symbol3);
-
-            else if (symbol1Place == 1 && symbol2Place == 3 && symbol3Place == 4 && symbol4Place == 2)
+            else if (
+                symbol1Place == 1 && symbol2Place == 3 && symbol3Place == 4 && symbol4Place == 2
+            )
                 answerForm = new KeypadFormAnswer(symbol1, symbol4, symbol2, symbol3);
-
-            else if (symbol1Place == 1 && symbol2Place == 3 && symbol3Place == 2 && symbol4Place == 4)
+            else if (
+                symbol1Place == 1 && symbol2Place == 3 && symbol3Place == 2 && symbol4Place == 4
+            )
                 answerForm = new KeypadFormAnswer(symbol1, symbol3, symbol2, symbol4);
-
-            else if (symbol1Place == 1 && symbol2Place == 4 && symbol3Place == 2 && symbol4Place == 3)
+            else if (
+                symbol1Place == 1 && symbol2Place == 4 && symbol3Place == 2 && symbol4Place == 3
+            )
                 answerForm = new KeypadFormAnswer(symbol1, symbol3, symbol4, symbol2);
-
-            else if (symbol1Place == 1 && symbol2Place == 4 && symbol3Place == 3 && symbol4Place == 2)
+            else if (
+                symbol1Place == 1 && symbol2Place == 4 && symbol3Place == 3 && symbol4Place == 2
+            )
                 answerForm = new KeypadFormAnswer(symbol1, symbol4, symbol3, symbol2);
-
-            else if (symbol1Place == 2 && symbol2Place == 1 && symbol3Place == 3 && symbol4Place == 4)
+            else if (
+                symbol1Place == 2 && symbol2Place == 1 && symbol3Place == 3 && symbol4Place == 4
+            )
                 answerForm = new KeypadFormAnswer(symbol2, symbol1, symbol3, symbol4);
-
-            else if (symbol1Place == 2 && symbol2Place == 1 && symbol3Place == 4 && symbol4Place == 3)
+            else if (
+                symbol1Place == 2 && symbol2Place == 1 && symbol3Place == 4 && symbol4Place == 3
+            )
                 answerForm = new KeypadFormAnswer(symbol2, symbol1, symbol4, symbol3);
-
-            else if (symbol1Place == 2 && symbol2Place == 3 && symbol3Place == 1 && symbol4Place == 4)
+            else if (
+                symbol1Place == 2 && symbol2Place == 3 && symbol3Place == 1 && symbol4Place == 4
+            )
                 answerForm = new KeypadFormAnswer(symbol3, symbol1, symbol2, symbol4);
-
-            else if (symbol1Place == 2 && symbol2Place == 3 && symbol3Place == 4 && symbol4Place == 1)
+            else if (
+                symbol1Place == 2 && symbol2Place == 3 && symbol3Place == 4 && symbol4Place == 1
+            )
                 answerForm = new KeypadFormAnswer(symbol4, symbol1, symbol2, symbol3);
-
-            else if (symbol1Place == 2 && symbol2Place == 4 && symbol3Place == 1 && symbol4Place == 3)
+            else if (
+                symbol1Place == 2 && symbol2Place == 4 && symbol3Place == 1 && symbol4Place == 3
+            )
                 answerForm = new KeypadFormAnswer(symbol3, symbol1, symbol4, symbol2);
-
-            else if (symbol1Place == 2 && symbol2Place == 4 && symbol3Place == 3 && symbol4Place == 1)
+            else if (
+                symbol1Place == 2 && symbol2Place == 4 && symbol3Place == 3 && symbol4Place == 1
+            )
                 answerForm = new KeypadFormAnswer(symbol4, symbol1, symbol3, symbol2);
-
-            else if (symbol1Place == 3 && symbol2Place == 1 && symbol3Place == 2 && symbol4Place == 4)
+            else if (
+                symbol1Place == 3 && symbol2Place == 1 && symbol3Place == 2 && symbol4Place == 4
+            )
                 answerForm = new KeypadFormAnswer(symbol2, symbol3, symbol1, symbol4);
-
-            else if (symbol1Place == 3 && symbol2Place == 1 && symbol3Place == 4 && symbol4Place == 2)
+            else if (
+                symbol1Place == 3 && symbol2Place == 1 && symbol3Place == 4 && symbol4Place == 2
+            )
                 answerForm = new KeypadFormAnswer(symbol2, symbol4, symbol1, symbol3);
-
-            else if (symbol1Place == 3 && symbol2Place == 2 && symbol3Place == 1 && symbol4Place == 4)
+            else if (
+                symbol1Place == 3 && symbol2Place == 2 && symbol3Place == 1 && symbol4Place == 4
+            )
                 answerForm = new KeypadFormAnswer(symbol3, symbol2, symbol1, symbol4);
-
-            else if (symbol1Place == 3 && symbol2Place == 2 && symbol3Place == 4 && symbol4Place == 1)
+            else if (
+                symbol1Place == 3 && symbol2Place == 2 && symbol3Place == 4 && symbol4Place == 1
+            )
                 answerForm = new KeypadFormAnswer(symbol4, symbol2, symbol1, symbol3);
-
-            else if (symbol1Place == 3 && symbol2Place == 4 && symbol3Place == 1 && symbol4Place == 2)
+            else if (
+                symbol1Place == 3 && symbol2Place == 4 && symbol3Place == 1 && symbol4Place == 2
+            )
                 answerForm = new KeypadFormAnswer(symbol3, symbol4, symbol1, symbol2);
-
-            else if (symbol1Place == 3 && symbol2Place == 4 && symbol3Place == 2 && symbol4Place == 1)
+            else if (
+                symbol1Place == 3 && symbol2Place == 4 && symbol3Place == 2 && symbol4Place == 1
+            )
                 answerForm = new KeypadFormAnswer(symbol4, symbol3, symbol1, symbol2);
-
-            else if (symbol1Place == 4 && symbol2Place == 1 && symbol3Place == 2 && symbol4Place == 3)
+            else if (
+                symbol1Place == 4 && symbol2Place == 1 && symbol3Place == 2 && symbol4Place == 3
+            )
                 answerForm = new KeypadFormAnswer(symbol2, symbol3, symbol4, symbol1);
-
-            else if (symbol1Place == 4 && symbol2Place == 1 && symbol3Place == 2 && symbol4Place == 3)
+            else if (
+                symbol1Place == 4 && symbol2Place == 1 && symbol3Place == 2 && symbol4Place == 3
+            )
                 answerForm = new KeypadFormAnswer(symbol2, symbol3, symbol4, symbol1);
-
-            else if (symbol1Place == 4 && symbol2Place == 1 && symbol3Place == 3 && symbol4Place == 2)
+            else if (
+                symbol1Place == 4 && symbol2Place == 1 && symbol3Place == 3 && symbol4Place == 2
+            )
                 answerForm = new KeypadFormAnswer(symbol2, symbol4, symbol3, symbol1);
-
-            else if (symbol1Place == 4 && symbol2Place == 2 && symbol3Place == 1 && symbol4Place == 3)
+            else if (
+                symbol1Place == 4 && symbol2Place == 2 && symbol3Place == 1 && symbol4Place == 3
+            )
                 answerForm = new KeypadFormAnswer(symbol3, symbol2, symbol4, symbol1);
-
-            else if (symbol1Place == 4 && symbol2Place == 2 && symbol3Place == 3 && symbol4Place == 1)
+            else if (
+                symbol1Place == 4 && symbol2Place == 2 && symbol3Place == 3 && symbol4Place == 1
+            )
                 answerForm = new KeypadFormAnswer(symbol4, symbol2, symbol3, symbol1);
-
-            else if (symbol1Place == 4 && symbol2Place == 3 && symbol3Place == 1 && symbol4Place == 2)
+            else if (
+                symbol1Place == 4 && symbol2Place == 3 && symbol3Place == 1 && symbol4Place == 2
+            )
                 answerForm = new KeypadFormAnswer(symbol3, symbol4, symbol2, symbol1);
-
             else
                 answerForm = new KeypadFormAnswer(symbol4, symbol3, symbol2, symbol1);
-
-            
-
 
             int rowIndex;
 
@@ -195,27 +271,22 @@ namespace KTANE_Solver
             {
                 rowIndex = 1;
             }
-
             else if (row2 == row)
             {
                 rowIndex = 2;
             }
-
             else if (row3 == row)
             {
                 rowIndex = 3;
             }
-
             else if (row4 == row)
             {
                 rowIndex = 4;
             }
-
             else if (row5 == row)
             {
                 rowIndex = 5;
             }
-
             else
             {
                 rowIndex = 6;
@@ -231,7 +302,6 @@ namespace KTANE_Solver
 
             PrintDebugLine($"4. {row[3]}\n");
 
-
             answerForm.ShowDialog();
         }
 
@@ -240,28 +310,57 @@ namespace KTANE_Solver
             PrintDebugLine($"Symbol {num}: " + symbol);
         }
 
-
         /// <summary>
         /// Finds the row the contains all symbols
         /// </summary>
         private Symbol[] FindCorrectRow()
         {
-            if (row1.Contains<Symbol>(symbol1) && row1.Contains<Symbol>(symbol2) && row1.Contains<Symbol>(symbol3) && row1.Contains<Symbol>(symbol4))
+            if (
+                row1.Contains<Symbol>(symbol1)
+                && row1.Contains<Symbol>(symbol2)
+                && row1.Contains<Symbol>(symbol3)
+                && row1.Contains<Symbol>(symbol4)
+            )
                 return row1;
 
-            if (row2.Contains<Symbol>(symbol1) && row2.Contains<Symbol>(symbol2) && row2.Contains<Symbol>(symbol3) && row2.Contains<Symbol>(symbol4))
+            if (
+                row2.Contains<Symbol>(symbol1)
+                && row2.Contains<Symbol>(symbol2)
+                && row2.Contains<Symbol>(symbol3)
+                && row2.Contains<Symbol>(symbol4)
+            )
                 return row2;
 
-            if (row3.Contains<Symbol>(symbol1) && row3.Contains<Symbol>(symbol2) && row3.Contains<Symbol>(symbol3) && row3.Contains<Symbol>(symbol4))
+            if (
+                row3.Contains<Symbol>(symbol1)
+                && row3.Contains<Symbol>(symbol2)
+                && row3.Contains<Symbol>(symbol3)
+                && row3.Contains<Symbol>(symbol4)
+            )
                 return row3;
 
-            if (row4.Contains<Symbol>(symbol1) && row4.Contains<Symbol>(symbol2) && row4.Contains<Symbol>(symbol3) && row4.Contains<Symbol>(symbol4))
+            if (
+                row4.Contains<Symbol>(symbol1)
+                && row4.Contains<Symbol>(symbol2)
+                && row4.Contains<Symbol>(symbol3)
+                && row4.Contains<Symbol>(symbol4)
+            )
                 return row4;
 
-            if (row5.Contains<Symbol>(symbol1) && row5.Contains<Symbol>(symbol2) && row5.Contains<Symbol>(symbol3) && row5.Contains<Symbol>(symbol4))
+            if (
+                row5.Contains<Symbol>(symbol1)
+                && row5.Contains<Symbol>(symbol2)
+                && row5.Contains<Symbol>(symbol3)
+                && row5.Contains<Symbol>(symbol4)
+            )
                 return row5;
 
-            if (row6.Contains<Symbol>(symbol1) && row6.Contains<Symbol>(symbol2) && row6.Contains<Symbol>(symbol3) && row6.Contains<Symbol>(symbol4))
+            if (
+                row6.Contains<Symbol>(symbol1)
+                && row6.Contains<Symbol>(symbol2)
+                && row6.Contains<Symbol>(symbol3)
+                && row6.Contains<Symbol>(symbol4)
+            )
                 return row6;
 
             return null;
@@ -359,7 +458,6 @@ namespace KTANE_Solver
                 //should never happen
                 default:
                     return Symbol.Null;
-
             }
         }
     }

@@ -16,18 +16,39 @@ namespace KTANE_Solver
         private ColoredSquares.Color[,] moduleGrid;
         private ColoredSquares module;
         private ColoredSquares.Color color;
-        private List<System.Windows.Forms.Button> buttonList; 
+        private List<System.Windows.Forms.Button> buttonList;
 
-        public ColoredSquaresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Colored Squares", false)
+        public ColoredSquaresForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Colored Squares", false)
         {
             InitializeComponent();
 
             buttonList = new List<System.Windows.Forms.Button>();
 
-            buttonList.AddRange(new System.Windows.Forms.Button[] { row1Button1, row1Button2, row1Button3, row1Button4,
-                                                                    row2Button1, row2Button2, row2Button3, row2Button4,
-                                                                    row3Button1, row3Button2, row3Button3, row3Button4,
-                                                                    row4Button1, row4Button2, row4Button3, row4Button4});
+            buttonList.AddRange(
+                new System.Windows.Forms.Button[]
+                {
+                    row1Button1,
+                    row1Button2,
+                    row1Button3,
+                    row1Button4,
+                    row2Button1,
+                    row2Button2,
+                    row2Button3,
+                    row2Button4,
+                    row3Button1,
+                    row3Button2,
+                    row3Button3,
+                    row3Button4,
+                    row4Button1,
+                    row4Button2,
+                    row4Button3,
+                    row4Button4
+                }
+            );
 
             UpdateForm();
 
@@ -35,16 +56,12 @@ namespace KTANE_Solver
             {
                 b.Click += Tile_Click;
             }
-
-            
-
         }
 
         public void UpdateForm()
         {
             SetButtonsWhite();
 
-            
             moduleGrid = null;
         }
 
@@ -58,27 +75,22 @@ namespace KTANE_Solver
                 {
                     button.BackColor = Color.Red;
                 }
-
                 else if (button.BackColor == Color.Red)
                 {
                     button.BackColor = Color.Blue;
                 }
-
                 else if (button.BackColor == Color.Blue)
                 {
                     button.BackColor = Color.Green;
                 }
-
                 else if (button.BackColor == Color.Green)
                 {
                     button.BackColor = Color.Yellow;
                 }
-
                 else if (button.BackColor == Color.Yellow)
                 {
                     button.BackColor = Color.Magenta;
                 }
-
                 else
                 {
                     button.BackColor = Color.White;
@@ -101,7 +113,6 @@ namespace KTANE_Solver
 
             int index = buttonList.IndexOf(b);
 
-
             int row = index / 4;
             int col = index % 4;
 
@@ -118,7 +129,6 @@ namespace KTANE_Solver
                     return;
                 }
 
-                
                 moduleGrid = ConvertForm();
 
                 module = new ColoredSquares(moduleGrid, Bomb, LogFileWriter);
@@ -126,17 +136,15 @@ namespace KTANE_Solver
                 module.PrintGrid();
 
                 color = module.GetFirstColor();
-
             }
-
-            else if(module.ColorNum(ColoredSquares.Color.White) < 15)
+            else if (module.ColorNum(ColoredSquares.Color.White) < 15)
             {
                 if (!GoodButtonsNotWhite())
                 {
                     ShowErrorMessage("Some buttons are white that are not supposed to be");
                     return;
                 }
-                
+
                 moduleGrid = ConvertForm();
 
                 module.grid = moduleGrid;
@@ -177,9 +185,9 @@ namespace KTANE_Solver
 
         private bool GoodButtonsNotWhiteNullGrid()
         {
-            foreach(System.Windows.Forms.Button b in buttonList)
+            foreach (System.Windows.Forms.Button b in buttonList)
             {
-                if(b.BackColor == Color.White)
+                if (b.BackColor == Color.White)
                 {
                     return false;
                 }
@@ -208,7 +216,7 @@ namespace KTANE_Solver
         private ColoredSquares.Color ConvertFormColor(Color c)
         {
             if (c == Color.Red)
-            { 
+            {
                 return ColoredSquares.Color.Red;
             }
 
@@ -228,7 +236,7 @@ namespace KTANE_Solver
             }
 
             if (c == Color.White)
-            { 
+            {
                 return ColoredSquares.Color.White;
             }
 

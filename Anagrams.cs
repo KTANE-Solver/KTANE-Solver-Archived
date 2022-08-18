@@ -11,9 +11,8 @@ namespace KTANE_Solver
     {
         private Dictionary<string, string> dictionary;
 
-
-        public Anagrams(Bomb bomb, StreamWriter logFileWriter) 
-        : base(bomb, logFileWriter, "Anagrams")
+        public Anagrams(Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Anagrams")
         {
             //set up the dictionary
             dictionary = new Dictionary<string, string>();
@@ -48,7 +47,6 @@ namespace KTANE_Solver
             dictionary.Add("STREAM", "MASTER");
             dictionary.Add("TAMERS", "MASTER");
             dictionary.Add("TEASED", "SEATED");
-
         }
 
         /// <summary>

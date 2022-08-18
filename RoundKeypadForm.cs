@@ -18,11 +18,15 @@ namespace KTANE_Solver
 
         private List<System.Windows.Forms.Button> fixedButtonList;
 
-        public RoundKeypadForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm ) : base(bomb, logFileWriter, moduleSelectionForm, "Round Keypad", false)
+        public RoundKeypadForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Round Keypad", false)
         {
             InitializeComponent();
 
-            symbols = new RoundKeypad.Symbol [8];
+            symbols = new RoundKeypad.Symbol[8];
 
             fixedButtonList = new List<System.Windows.Forms.Button>()
             {
@@ -127,7 +131,7 @@ namespace KTANE_Solver
                     buttonList[i].BackColor = Color.Red;
                     nullIndex = i;
                     break;
-                }    
+                }
             }
 
             for (int i = 0; i > buttonList.Count; i++)
@@ -142,7 +146,7 @@ namespace KTANE_Solver
         }
 
         private void RemoveSelection(object sender, EventArgs e)
-        { 
+        {
             System.Windows.Forms.Button selectedButton = (System.Windows.Forms.Button)sender;
 
             selectedButton.Image = null;
@@ -178,82 +182,56 @@ namespace KTANE_Solver
             //finding which button was selected
             if (selectedButton == threeButton)
                 fileName = "3";
-
             else if (selectedButton == sixButton)
                 fileName = "6";
-
             else if (selectedButton == aButton)
                 fileName = "A";
-
             else if (selectedButton == aeButton)
                 fileName = "AE";
-
             else if (selectedButton == bButton)
                 fileName = "B";
-
             else if (selectedButton == backwardsCButton)
                 fileName = "Backwards C";
-
             else if (selectedButton == blackStarButton)
                 fileName = "Black Star";
-
             else if (selectedButton == buttButton)
                 fileName = "Butt";
-
             else if (selectedButton == cButton)
                 fileName = "C";
-
             else if (selectedButton == copyrightButton)
                 fileName = "Copyright";
-
             else if (selectedButton == eButton)
                 fileName = "E";
-
             else if (selectedButton == hButton)
                 fileName = "H";
-
             else if (selectedButton == hashtagButton)
                 fileName = "Hashtag";
-
             else if (selectedButton == lambdaButton)
                 fileName = "Lambda";
-
             else if (selectedButton == lightningButton)
                 fileName = "Lightning";
-
             else if (selectedButton == nButton)
                 fileName = "N";
-
             else if (selectedButton == oButton)
                 fileName = "O";
-
             else if (selectedButton == omegaButton)
                 fileName = "Omega";
-
             else if (selectedButton == paragraphButton)
                 fileName = "Paragraph";
-
             else if (selectedButton == questionMarkButton)
                 fileName = "Question Mark";
-
             else if (selectedButton == smilyFaceButton)
                 fileName = "Smily Face";
-
             else if (selectedButton == squidButton)
                 fileName = "Squid";
-
             else if (selectedButton == swirlButton)
                 fileName = "Swirl";
-
             else if (selectedButton == tridentButton)
                 fileName = "Trident";
-
             else if (selectedButton == unfinishedRButton)
                 fileName = "Unfinished R";
-
             else if (selectedButton == whiteStarButton)
                 fileName = "White Star";
-
             else if (selectedButton == xButton)
                 fileName = "X";
 
@@ -307,8 +285,7 @@ namespace KTANE_Solver
             UpdateForm();
         }
 
-
-        private RoundKeypad.Symbol FindSymbol (String imageName)
+        private RoundKeypad.Symbol FindSymbol(String imageName)
         {
             switch (imageName)
             {
@@ -396,7 +373,6 @@ namespace KTANE_Solver
                 //should never happen
                 default:
                     return RoundKeypad.Symbol.Null;
-
             }
         }
     }

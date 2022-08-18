@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -30,10 +31,15 @@ namespace KTANE_Solver
         int rightNumberOne;
         int rightNumber;
 
-
         char letter;
 
-        public ColorMath(Color[] leftColors, Color[] rightColors, char letter, Bomb bomb, StreamWriter logfileWriter) : base(bomb, logfileWriter, "Color Math")
+        public ColorMath(
+            Color[] leftColors,
+            Color[] rightColors,
+            char letter,
+            Bomb bomb,
+            StreamWriter logfileWriter
+        ) : base(bomb, logfileWriter, "Color Math")
         {
             this.leftColors = leftColors;
             this.rightColors = rightColors;
@@ -42,13 +48,17 @@ namespace KTANE_Solver
         }
 
         private void GetLeftNumbers()
-        { 
+        {
             leftNumberThousand = GetLeftSideNumber(1, leftColors[0]);
             leftNumberHundred = GetLeftSideNumber(2, leftColors[1]);
             leftNumberTen = GetLeftSideNumber(3, leftColors[2]);
             leftNumberOne = GetLeftSideNumber(4, leftColors[3]);
 
-            leftNumber = leftNumberThousand * 1000 + leftNumberHundred * 100 + leftNumberTen * 10 + leftNumberOne;
+            leftNumber =
+                leftNumberThousand * 1000
+                + leftNumberHundred * 100
+                + leftNumberTen * 10
+                + leftNumberOne;
 
             for (int i = 0; i < 4; i++)
             {
@@ -61,12 +71,11 @@ namespace KTANE_Solver
         }
 
         private void GetRightNumbers()
-        { 
-
+        {
             //if the letter is red, use edgework
 
-            if(rightColors == null)
-            { 
+            if (rightColors == null)
+            {
                 PrintDebugLine($"Number of batteries: {Bomb.Battery}\n");
 
                 rightNumberThousand = GetRightSideNumber(1);
@@ -74,7 +83,6 @@ namespace KTANE_Solver
                 rightNumberTen = GetRightSideNumber(3);
                 rightNumberOne = GetRightSideNumber(4);
             }
-            
             else
             {
                 rightNumberThousand = GetRightSideNumber(1, rightColors[0]);
@@ -90,7 +98,11 @@ namespace KTANE_Solver
                 PrintDebugLine("");
             }
 
-            rightNumber = rightNumberThousand * 1000 + rightNumberHundred * 100 + rightNumberTen * 10 + rightNumberOne;
+            rightNumber =
+                rightNumberThousand * 1000
+                + rightNumberHundred * 100
+                + rightNumberTen * 10
+                + rightNumberOne;
 
             PrintDebugLine($"Right Number: {rightNumber}\n");
         }
@@ -141,7 +153,7 @@ namespace KTANE_Solver
             colorAnswer = colorAnswer.Replace("[", "").Replace("]", "").Replace("Color ", "");
 
             if (!debug)
-            { 
+            {
                 ShowAnswer(colorAnswer, true);
             }
 
@@ -178,12 +190,12 @@ namespace KTANE_Solver
                 }
 
                 if (Color.Magenta == color)
-                { 
+                {
                     return 0;
                 }
 
                 if (Color.Red == color)
-                { 
+                {
                     return 8;
                 }
 
@@ -197,13 +209,10 @@ namespace KTANE_Solver
                     return 3;
                 }
 
-
                 return 7;
             }
-
             else if (place == 2)
             {
-
                 {
                     if (Color.Blue == color)
                     {
@@ -250,14 +259,11 @@ namespace KTANE_Solver
                         return 7;
                     }
 
-
                     return 2;
                 }
             }
-
             else if (place == 3)
             {
-
                 {
                     if (Color.Blue == color)
                     {
@@ -307,10 +313,8 @@ namespace KTANE_Solver
                     return 6;
                 }
             }
-
             else
             {
-
                 {
                     if (Color.Blue == color)
                     {
@@ -363,7 +367,6 @@ namespace KTANE_Solver
         }
 
         public int GetRightSideNumber(int place, Color color)
-
         {
             if (place == 1)
             {
@@ -412,10 +415,8 @@ namespace KTANE_Solver
                     return 1;
                 }
 
-
                 return 2;
             }
-
             else if (place == 2)
             {
                 if (Color.Blue == color)
@@ -463,10 +464,8 @@ namespace KTANE_Solver
                     return 1;
                 }
 
-
                 return 6;
             }
-
             else if (place == 3)
             {
                 if (Color.Blue == color)
@@ -514,10 +513,8 @@ namespace KTANE_Solver
                     return 8;
                 }
 
-
                 return 1;
             }
-
             else
             {
                 if (Color.Blue == color)
@@ -565,7 +562,6 @@ namespace KTANE_Solver
                     return 3;
                 }
 
-
                 return 0;
             }
         }
@@ -581,12 +577,10 @@ namespace KTANE_Solver
                     {
                         return Bomb.FirstDigit;
                     }
-
                     else if (place == 2)
                     {
                         return Bomb.UnlitIndicatorsList.Count;
                     }
-
                     else if (place == 3)
                     {
                         return 9;
@@ -601,19 +595,16 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (place == 2)
                     {
                         return Bomb.Ps.Num;
                     }
-
                     else if (place == 3)
                     {
                         return Bomb.LetterNum;
                     }
 
                     return Bomb.LastDigit;
-
 
                 case 4:
                 case 5:
@@ -622,19 +613,16 @@ namespace KTANE_Solver
                     {
                         return Bomb.VowelNum;
                     }
-
                     else if (place == 2)
                     {
                         return Bomb.BatteryHolder;
                     }
-
                     else if (place == 3)
                     {
                         return Bomb.Serial.Num;
                     }
 
                     return 4;
-           
 
                 default:
 
@@ -642,12 +630,10 @@ namespace KTANE_Solver
                     {
                         return Bomb.Dvid.Num;
                     }
-
                     else if (place == 2)
                     {
                         return 5;
                     }
-
                     else if (place == 3)
                     {
                         return Bomb.SerialNumber.Length - (Bomb.VowelNum + Bomb.DigitNum);

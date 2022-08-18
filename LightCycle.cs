@@ -13,10 +13,22 @@ namespace KTANE_Solver
     /// </summary>
     class LightCycle : Module
     {
-        String pair1, pair2, pair3, pair4, pair5, pair6;
-        String sequence1, sequence2, sequence3, sequence4, sequence5, sequence6;
+        String pair1,
+            pair2,
+            pair3,
+            pair4,
+            pair5,
+            pair6;
+        String sequence1,
+            sequence2,
+            sequence3,
+            sequence4,
+            sequence5,
+            sequence6;
         private string cycle;
-        public LightCycle(Bomb bomb, StreamWriter logFileWriter, String cycle) : base(bomb, logFileWriter, "Light Cycle")
+
+        public LightCycle(Bomb bomb, StreamWriter logFileWriter, String cycle)
+            : base(bomb, logFileWriter, "Light Cycle")
         {
             this.cycle = cycle;
 
@@ -26,13 +38,11 @@ namespace KTANE_Solver
             pair4 = "" + bomb.SerialNumber[3] + bomb.SerialNumber[bomb.SerialNumber.Length - 4];
             pair5 = "" + bomb.SerialNumber[4] + bomb.SerialNumber[bomb.SerialNumber.Length - 5];
             pair6 = "" + bomb.SerialNumber[5] + bomb.SerialNumber[bomb.SerialNumber.Length - 6];
-
         }
 
         public void Solve()
         {
-
-             string orignalcycle = cycle;
+            string orignalcycle = cycle;
 
             PrintDebugLine($"Starting cycle: {cycle}\n");
 
@@ -95,29 +105,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "5B";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "5B";
 
-                    case 'D': case 'E': case 'F': return "BR";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "BR";
 
-                    case 'G': case 'H': case 'I': return "MG";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "MG";
 
-                    case 'J': case 'K': case 'L': return "Y5";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "Y5";
 
-                    case 'M': case 'N': case 'O': return "41";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "41";
 
-                    case 'P': case 'Q': case 'R': return "RW";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "RW";
 
-                    case 'S': case 'T': case 'U': return "64";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "64";
 
-                    case 'V': case 'W': case 'X': return "16";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "16";
 
-                    case 'Y': case 'Z': case '0': return "23";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "23";
 
-                    case '1': case '2': case '3': return "3M";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "3M";
 
-                    case '4': case '5': case '6': return "GY";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "GY";
 
-                    default: return "W2";
+                    default:
+                        return "W2";
                 }
             }
 
@@ -125,29 +169,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "2R";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "2R";
 
-                    case 'D': case 'E': case 'F': return "6M";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "6M";
 
-                    case 'G': case 'H': case 'I': return "43";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "43";
 
-                    case 'J': case 'K': case 'L': return "5B";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "5B";
 
-                    case 'M': case 'N': case 'O': return "R5";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "R5";
 
-                    case 'P': case 'Q': case 'R': return "Y2";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "Y2";
 
-                    case 'S': case 'T': case 'U': return "1G";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "1G";
 
-                    case 'V': case 'W': case 'X': return "MY";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "MY";
 
-                    case 'Y': case 'Z': case '0': return "W6";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "W6";
 
-                    case '1': case '2': case '3': return "34";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "34";
 
-                    case '4': case '5': case '6': return "BW";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "BW";
 
-                    default: return "G1";
+                    default:
+                        return "G1";
                 }
             }
 
@@ -155,29 +233,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "MY";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "MY";
 
-                    case 'D': case 'E': case 'F': return "24";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "24";
 
-                    case 'G': case 'H': case 'I': return "YR";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "YR";
 
-                    case 'J': case 'K': case 'L': return "35";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "35";
 
-                    case 'M': case 'N': case 'O': return "W2";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "W2";
 
-                    case 'P': case 'Q': case 'R': return "GB";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "GB";
 
-                    case 'S': case 'T': case 'U': return "1W";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "1W";
 
-                    case 'V': case 'W': case 'X': return "R3";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "R3";
 
-                    case 'Y': case 'Z': case '0': return "5G";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "5G";
 
-                    case '1': case '2': case '3': return "46";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "46";
 
-                    case '4': case '5': case '6': return "BM";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "BM";
 
-                    default: return "61";
+                    default:
+                        return "61";
                 }
             }
 
@@ -185,29 +297,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "56";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "56";
 
-                    case 'D': case 'E': case 'F': return "63";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "63";
 
-                    case 'G': case 'H': case 'I': return "14";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "14";
 
-                    case 'J': case 'K': case 'L': return "M2";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "M2";
 
-                    case 'M': case 'N': case 'O': return "RY";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "RY";
 
-                    case 'P': case 'Q': case 'R': return "2M";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "2M";
 
-                    case 'S': case 'T': case 'U': return "WR";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "WR";
 
-                    case 'V': case 'W': case 'X': return "BG";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "BG";
 
-                    case 'Y': case 'Z': case '0': return "YW";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "YW";
 
-                    case '1': case '2': case '3': return "3B";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "3B";
 
-                    case '4': case '5': case '6': return "G1";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "G1";
 
-                    default: return "45";
+                    default:
+                        return "45";
                 }
             }
 
@@ -1303,29 +1449,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "MG";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "MG";
 
-                    case 'D': case 'E': case 'F': return "6B";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "6B";
 
-                    case 'G': case 'H': case 'I': return "1G";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "1G";
 
-                    case 'J': case 'K': case 'L': return "35";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "35";
 
-                    case 'M': case 'N': case 'O': return "WR";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "WR";
 
-                    case 'P': case 'Q': case 'R': return "B4";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "B4";
 
-                    case 'S': case 'T': case 'U': return "GM";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "GM";
 
-                    case 'V': case 'W': case 'X': return "R1";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "R1";
 
-                    case 'Y': case 'Z': case '0': return "2W";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "2W";
 
-                    case '1': case '2': case '3': return "52";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "52";
 
-                    case '4': case '5': case '6': return "4Y";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "4Y";
 
-                    default: return "Y3";
+                    default:
+                        return "Y3";
                 }
             }
 
@@ -1333,29 +1513,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "YM";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "YM";
 
-                    case 'D': case 'E': case 'F': return "B1";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "B1";
 
-                    case 'G': case 'H': case 'I': return "53";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "53";
 
-                    case 'J': case 'K': case 'L': return "2G";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "2G";
 
-                    case 'M': case 'N': case 'O': return "32";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "32";
 
-                    case 'P': case 'Q': case 'R': return "R5";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "R5";
 
-                    case 'S': case 'T': case 'U': return "14";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "14";
 
-                    case 'V': case 'W': case 'X': return "W6";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "W6";
 
-                    case 'Y': case 'Z': case '0': return "4W";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "4W";
 
-                    case '1': case '2': case '3': return "GR";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "GR";
 
-                    case '4': case '5': case '6': return "MY";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "MY";
 
-                    default: return "6B";
+                    default:
+                        return "6B";
                 }
             }
 
@@ -1363,29 +1577,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "42";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "42";
 
-                    case 'D': case 'E': case 'F': return "RB";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "RB";
 
-                    case 'G': case 'H': case 'I': return "W5";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "W5";
 
-                    case 'J': case 'K': case 'L': return "YM";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "YM";
 
-                    case 'M': case 'N': case 'O': return "2Y";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "2Y";
 
-                    case 'P': case 'Q': case 'R': return "51";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "51";
 
-                    case 'S': case 'T': case 'U': return "BR";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "BR";
 
-                    case 'V': case 'W': case 'X': return "G3";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "G3";
 
-                    case 'Y': case 'Z': case '0': return "MG";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "MG";
 
-                    case '1': case '2': case '3': return "36";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "36";
 
-                    case '4': case '5': case '6': return "6W";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "6W";
 
-                    default: return "14";
+                    default:
+                        return "14";
                 }
             }
 
@@ -1393,29 +1641,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "GY";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "GY";
 
-                    case 'D': case 'E': case 'F': return "1R";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "1R";
 
-                    case 'G': case 'H': case 'I': return "54";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "54";
 
-                    case 'J': case 'K': case 'L': return "4G";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "4G";
 
-                    case 'M': case 'N': case 'O': return "3B";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "3B";
 
-                    case 'P': case 'Q': case 'R': return "M6";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "M6";
 
-                    case 'S': case 'T': case 'U': return "25";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "25";
 
-                    case 'V': case 'W': case 'X': return "Y2";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "Y2";
 
-                    case 'Y': case 'Z': case '0': return "R1";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "R1";
 
-                    case '1': case '2': case '3': return "W3";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "W3";
 
-                    case '4': case '5': case '6': return "BW";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "BW";
 
-                    default: return "6M";
+                    default:
+                        return "6M";
                 }
             }
 
@@ -1423,29 +1705,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "GB";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "GB";
 
-                    case 'D': case 'E': case 'F': return "BG";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "BG";
 
-                    case 'G': case 'H': case 'I': return "15";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "15";
 
-                    case 'J': case 'K': case 'L': return "M1";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "M1";
 
-                    case 'M': case 'N': case 'O': return "3M";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "3M";
 
-                    case 'P': case 'Q': case 'R': return "R3";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "R3";
 
-                    case 'S': case 'T': case 'U': return "YW";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "YW";
 
-                    case 'V': case 'W': case 'X': return "6Y";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "6Y";
 
-                    case 'Y': case 'Z': case '0': return "52";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "52";
 
-                    case '1': case '2': case '3': return "46";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "46";
 
-                    case '4': case '5': case '6': return "WR";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "WR";
 
-                    default: return "24";
+                    default:
+                        return "24";
                 }
             }
 
@@ -1453,29 +1769,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "2R";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "2R";
 
-                    case 'D': case 'E': case 'F': return "RB";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "RB";
 
-                    case 'G': case 'H': case 'I': return "5G";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "5G";
 
-                    case 'J': case 'K': case 'L': return "W2";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "W2";
 
-                    case 'M': case 'N': case 'O': return "Y1";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "Y1";
 
-                    case 'P': case 'Q': case 'R': return "4Y";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "4Y";
 
-                    case 'S': case 'T': case 'U': return "35";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "35";
 
-                    case 'V': case 'W': case 'X': return "1M";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "1M";
 
-                    case 'Y': case 'Z': case '0': return "BW";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "BW";
 
-                    case '1': case '2': case '3': return "G6";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "G6";
 
-                    case '4': case '5': case '6': return "64";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "64";
 
-                    default: return "24";
+                    default:
+                        return "24";
                 }
             }
 
@@ -1483,29 +1833,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "2R";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "2R";
 
-                    case 'D': case 'E': case 'F': return "RB";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "RB";
 
-                    case 'G': case 'H': case 'I': return "5G";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "5G";
 
-                    case 'J': case 'K': case 'L': return "W2";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "W2";
 
-                    case 'M': case 'N': case 'O': return "Y1";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "Y1";
 
-                    case 'P': case 'Q': case 'R': return "4Y";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "4Y";
 
-                    case 'S': case 'T': case 'U': return "35";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "35";
 
-                    case 'V': case 'W': case 'X': return "1M";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "1M";
 
-                    case 'Y': case 'Z': case '0': return "BW";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "BW";
 
-                    case '1': case '2': case '3': return "G6";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "G6";
 
-                    case '4': case '5': case '6': return "64";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "64";
 
-                    default: return "M3";
+                    default:
+                        return "M3";
                 }
             }
 
@@ -1513,29 +1897,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "R4";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "R4";
 
-                    case 'D': case 'E': case 'F': return "W6";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "W6";
 
-                    case 'G': case 'H': case 'I': return "32";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "32";
 
-                    case 'J': case 'K': case 'L': return "2W";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "2W";
 
-                    case 'M': case 'N': case 'O': return "4Y";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "4Y";
 
-                    case 'P': case 'Q': case 'R': return "65";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "65";
 
-                    case 'S': case 'T': case 'U': return "BR";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "BR";
 
-                    case 'V': case 'W': case 'X': return "5G";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "5G";
 
-                    case 'Y': case 'Z': case '0': return "YB";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "YB";
 
-                    case '1': case '2': case '3': return "GM";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "GM";
 
-                    case '4': case '5': case '6': return "M1";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "M1";
 
-                    default: return "13";
+                    default:
+                        return "13";
                 }
             }
 
@@ -1543,29 +1961,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "4B";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "4B";
 
-                    case 'D': case 'E': case 'F': return "B3";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "B3";
 
-                    case 'G': case 'H': case 'I': return "64";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "64";
 
-                    case 'J': case 'K': case 'L': return "W1";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "W1";
 
-                    case 'M': case 'N': case 'O': return "MY";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "MY";
 
-                    case 'P': case 'Q': case 'R': return "R6";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "R6";
 
-                    case 'S': case 'T': case 'U': return "G5";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "G5";
 
-                    case 'V': case 'W': case 'X': return "YW";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "YW";
 
-                    case 'Y': case 'Z': case '0': return "52";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "52";
 
-                    case '1': case '2': case '3': return "2R";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "2R";
 
-                    case '4': case '5': case '6': return "3G";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "3G";
 
-                    default: return "1M";
+                    default:
+                        return "1M";
                 }
             }
 
@@ -1573,29 +2025,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "B6";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "B6";
 
-                    case 'D': case 'E': case 'F': return "M3";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "M3";
 
-                    case 'G': case 'H': case 'I': return "4B";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "4B";
 
-                    case 'J': case 'K': case 'L': return "14";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "14";
 
-                    case 'M': case 'N': case 'O': return "25";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "25";
 
-                    case 'P': case 'Q': case 'R': return "Y1";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "Y1";
 
-                    case 'S': case 'T': case 'U': return "GY";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "GY";
 
-                    case 'V': case 'W': case 'X': return "RW";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "RW";
 
-                    case 'Y': case 'Z': case '0': return "WG";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "WG";
 
-                    case '1': case '2': case '3': return "52";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "52";
 
-                    case '4': case '5': case '6': return "6M";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "6M";
 
-                    default: return "3R";
+                    default:
+                        return "3R";
                 }
             }
 
@@ -1603,29 +2089,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "MR";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "MR";
 
-                    case 'D': case 'E': case 'F': return "2B";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "2B";
 
-                    case 'G': case 'H': case 'I': return "W5";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "W5";
 
-                    case 'J': case 'K': case 'L': return "6Y";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "6Y";
 
-                    case 'M': case 'N': case 'O': return "B3";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "B3";
 
-                    case 'P': case 'Q': case 'R': return "42";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "42";
 
-                    case 'S': case 'T': case 'U': return "G1";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "G1";
 
-                    case 'V': case 'W': case 'X': return "YG";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "YG";
 
-                    case 'Y': case 'Z': case '0': return "5G";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "5G";
 
-                    case '1': case '2': case '3': return "3M";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "3M";
 
-                    case '4': case '5': case '6': return "RW";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "RW";
 
-                    default: return "14";
+                    default:
+                        return "14";
                 }
             }
 
@@ -1633,29 +2153,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "Y1";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "Y1";
 
-                    case 'D': case 'E': case 'F': return "56";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "56";
 
-                    case 'G': case 'H': case 'I': return "1W";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "1W";
 
-                    case 'J': case 'K': case 'L': return "W4";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "W4";
 
-                    case 'M': case 'N': case 'O': return "BG";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "BG";
 
-                    case 'P': case 'Q': case 'R': return "G5";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "G5";
 
-                    case 'S': case 'T': case 'U': return "4M";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "4M";
 
-                    case 'V': case 'W': case 'X': return "2B";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "2B";
 
-                    case 'Y': case 'Z': case '0': return "3R";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "3R";
 
-                    case '1': case '2': case '3': return "63";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "63";
 
-                    case '4': case '5': case '6': return "M2";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "M2";
 
-                    default: return "RY";
+                    default:
+                        return "RY";
                 }
             }
 
@@ -1663,29 +2217,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "34";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "34";
 
-                    case 'D': case 'E': case 'F': return "WB";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "WB";
 
-                    case 'G': case 'H': case 'I': return "YG";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "YG";
 
-                    case 'J': case 'K': case 'L': return "5M";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "5M";
 
-                    case 'M': case 'N': case 'O': return "R1";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "R1";
 
-                    case 'P': case 'Q': case 'R': return "GW";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "GW";
 
-                    case 'S': case 'T': case 'U': return "12";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "12";
 
-                    case 'V': case 'W': case 'X': return "6Y";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "6Y";
 
-                    case 'Y': case 'Z': case '0': return "BR";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "BR";
 
-                    case '1': case '2': case '3': return "M6";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "M6";
 
-                    case '4': case '5': case '6': return "43";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "43";
 
-                    default: return "25";
+                    default:
+                        return "25";
                 }
             }
 
@@ -1693,29 +2281,63 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "4G";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "4G";
 
-                    case 'D': case 'E': case 'F': return "65";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "65";
 
-                    case 'G': case 'H': case 'I': return "Y4";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "Y4";
 
-                    case 'J': case 'K': case 'L': return "GB";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "GB";
 
-                    case 'M': case 'N': case 'O': return "31";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "31";
 
-                    case 'P': case 'Q': case 'R': return "MY";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "MY";
 
-                    case 'S': case 'T': case 'U': return "53";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "53";
 
-                    case 'V': case 'W': case 'X': return "1M";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "1M";
 
-                    case 'Y': case 'Z': case '0': return "2R";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "2R";
 
-                    case '1': case '2': case '3': return "R2";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "R2";
 
-                    case '4': case '5': case '6': return "BW";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "BW";
 
-                    default: return "W6";
+                    default:
+                        return "W6";
                 }
             }
 
@@ -1723,59 +2345,126 @@ namespace KTANE_Solver
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "YB";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "YB";
 
-                    case 'D': case 'E': case 'F': return "R2";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "R2";
 
-                    case 'G': case 'H': case 'I': return "WR";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "WR";
 
-                    case 'J': case 'K': case 'L': return "53";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "53";
 
-                    case 'M': case 'N': case 'O': return "1W";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "1W";
 
-                    case 'P': case 'Q': case 'R': return "35";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "35";
 
-                    case 'S': case 'T': case 'U': return "BM";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "BM";
 
-                    case 'V': case 'W': case 'X': return "G4";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "G4";
 
-                    case 'Y': case 'Z': case '0': return "6Y";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "6Y";
 
-                    case '1': case '2': case '3': return "4G";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "4G";
 
-                    case '4': case '5': case '6': return "21";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "21";
 
-                    default: return "M6";
+                    default:
+                        return "M6";
                 }
             }
-
             else
             {
                 switch (pair[1])
                 {
-                    case 'A': case 'B': case 'C': return "GY";
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                        return "GY";
 
-                    case 'D': case 'E': case 'F': return "31";
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                        return "31";
 
-                    case 'G': case 'H': case 'I': return "5M";
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                        return "5M";
 
-                    case 'J': case 'K': case 'L': return "R2";
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                        return "R2";
 
-                    case 'M': case 'N': case 'O': return "6W";
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                        return "6W";
 
-                    case 'P': case 'Q': case 'R': return "MB";
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                        return "MB";
 
-                    case 'S': case 'T': case 'U': return "Y6";
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                        return "Y6";
 
-                    case 'V': case 'W': case 'X': return "24";
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                        return "24";
 
-                    case 'Y': case 'Z': case '0': return "4G";
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                        return "4G";
 
-                    case '1': case '2': case '3': return "B5";
+                    case '1':
+                    case '2':
+                    case '3':
+                        return "B5";
 
-                    case '4': case '5': case '6': return "1R";
+                    case '4':
+                    case '5':
+                    case '6':
+                        return "1R";
 
-                    default: return "W3";
+                    default:
+                        return "W3";
                 }
             }
         }
@@ -1793,22 +2482,22 @@ namespace KTANE_Solver
                 firstIndex = int.Parse("" + sequence[0]) - 1;
                 secondIndex = int.Parse("" + sequence[1]) - 1;
             }
-
             //two letters
-            else if (sequence[0] >= 65 && sequence[0] <= 90 && sequence[1] >= 65 && sequence[1] <= 90)
+            else if (
+                sequence[0] >= 65 && sequence[0] <= 90 && sequence[1] >= 65 && sequence[1] <= 90
+            )
             {
                 firstIndex = cycle.IndexOf(sequence[0]);
                 secondIndex = cycle.IndexOf(sequence[1]);
             }
-
             //letter than number
-            else if (sequence[0] >= 65 && sequence[0] <= 90 && sequence[1] >= 49 && sequence[1] <= 57)
+            else if (
+                sequence[0] >= 65 && sequence[0] <= 90 && sequence[1] >= 49 && sequence[1] <= 57
+            )
             {
                 firstIndex = cycle.IndexOf(sequence[0]);
                 secondIndex = int.Parse("" + sequence[1]) - 1;
             }
-
-
             //number then letter
             else
             {
@@ -1839,14 +2528,14 @@ namespace KTANE_Solver
         {
             List<string> list = new List<string>();
 
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 string str = "";
 
                 switch (cycle[i])
-                { 
+                {
                     case 'R':
-                        str = "Red"; 
+                        str = "Red";
                         break;
 
                     case 'B':
@@ -1886,9 +2575,8 @@ namespace KTANE_Solver
 
             string answer = "";
 
-            for(int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-
                 bool newLine = newLineList.Contains(i);
 
                 if (newLine)
@@ -1898,8 +2586,7 @@ namespace KTANE_Solver
 
                 answer += list[i];
 
-                
-                if(i != list.Count - 1)
+                if (i != list.Count - 1)
                 {
                     answer += ", ";
                 }

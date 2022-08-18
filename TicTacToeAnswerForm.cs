@@ -17,7 +17,7 @@ namespace KTANE_Solver
             row++;
             column++;
 
-            int index = (row - 1) * 3 + column; 
+            int index = (row - 1) * 3 + column;
             InitializeComponent();
             button1.Enabled = false;
             button2.Enabled = false;

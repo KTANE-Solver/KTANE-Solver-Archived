@@ -7,8 +7,6 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
-
     //an enum list that will contain every symbol
     public enum Symbol
     {
@@ -41,7 +39,6 @@ namespace KTANE_Solver
         Null
     }
 
-
     class Astrology : Module
     {
         //the 3 symbols on the bomb
@@ -51,8 +48,13 @@ namespace KTANE_Solver
 
         private int omen;
 
-        public Astrology(Bomb bomb, StreamWriter logFileWriter, string symbol1Name, string symbol2Name, string symbol3Name)
-        : base(bomb, logFileWriter, "Astrology")
+        public Astrology(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            string symbol1Name,
+            string symbol2Name,
+            string symbol3Name
+        ) : base(bomb, logFileWriter, "Astrology")
         {
             symbol1 = SetUpSymbol(symbol1Name);
             symbol2 = SetUpSymbol(symbol2Name);
@@ -74,7 +76,6 @@ namespace KTANE_Solver
             int num2 = GetGrid2Num();
             int num3 = GetGrid3Num();
 
-
             PrintSymbolIntersection(symbol1, symbol2, num1);
             PrintSymbolIntersection(symbol1, symbol3, num2);
             PrintSymbolIntersection(symbol2, symbol3, num1);
@@ -83,61 +84,66 @@ namespace KTANE_Solver
 
             PrintDebugLine($"Starting omen is {omen}\n");
 
-
             if (HasLetters(symbol1))
             {
                 omen++;
-                PrintDebugLine($"{symbol1} shares a letter with the serial number. Omen is now " + omen);
+                PrintDebugLine(
+                    $"{symbol1} shares a letter with the serial number. Omen is now " + omen
+                );
             }
-
             else
             {
                 omen--;
-                PrintDebugLine($"{symbol1} does not a letter with the serial number. Omen is now " + omen);
+                PrintDebugLine(
+                    $"{symbol1} does not a letter with the serial number. Omen is now " + omen
+                );
             }
 
             if (HasLetters(symbol2))
             {
                 omen++;
-                PrintDebugLine($"{symbol2} shares a letter with the serial number. Omen is now " + omen);
+                PrintDebugLine(
+                    $"{symbol2} shares a letter with the serial number. Omen is now " + omen
+                );
             }
-
             else
             {
                 omen--;
-                PrintDebugLine($"{symbol2} does not a letter with the serial number. Omen is now " + omen);
+                PrintDebugLine(
+                    $"{symbol2} does not a letter with the serial number. Omen is now " + omen
+                );
             }
 
             if (HasLetters(symbol3))
             {
                 omen++;
-                PrintDebugLine($"{symbol3} shares a letter with the serial number. Omen is now {omen}\n");
+                PrintDebugLine(
+                    $"{symbol3} shares a letter with the serial number. Omen is now {omen}\n"
+                );
             }
-
             else
             {
                 omen--;
-                PrintDebugLine($"{symbol3} does not a letter with the serial number. Omen is now {omen}\n");
+                PrintDebugLine(
+                    $"{symbol3} does not a letter with the serial number. Omen is now {omen}\n"
+                );
             }
 
             if (omen == 0)
             {
                 ShowAnswer("Press NO OMEN", true);
             }
-
             else if (omen < 0)
             {
                 omen = Math.Abs(omen);
 
                 ShowAnswer($"Press POOR OMEN when there is a {omen} anywhere in the timer", true);
             }
-
             else
             {
                 ShowAnswer($"Press GOOD OMEN when there is a {omen} anywhere in the timer", true);
             }
         }
-
 
         /// <summary>
         /// Tells if the symbol shares a letter with the serial number
@@ -257,7 +263,6 @@ namespace KTANE_Solver
                 default:
                     return Symbol.Null;
             }
-
         }
 
         /// <summary>
@@ -268,31 +273,25 @@ namespace KTANE_Solver
         {
             switch (symbol2)
             {
-
                 case Symbol.Jupiter:
                 {
-
                     if (symbol1 == Symbol.Fire)
                     {
                         return 1;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 2;
                     }
-
                     //air
                     else
                     {
                         return -1;
                     }
-
                 }
                 case Symbol.Mars:
                 {
@@ -300,64 +299,55 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 1;
                     }
-
                     //air
                     else
                     {
                         return -2;
                     }
                 }
-                    
+
                 case Symbol.Mercury:
                 {
                     if (symbol1 == Symbol.Fire)
                     {
                         return 1;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return -1;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 0;
                     }
-
                     //air
                     else
                     {
                         return -1;
                     }
-                    }
+                }
                 case Symbol.Moon:
                 {
                     if (symbol1 == Symbol.Fire)
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return -1;
                     }
-
                     //air
                     else
                     {
@@ -370,17 +360,14 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 1;
                     }
-
                     //air
                     else
                     {
@@ -393,17 +380,14 @@ namespace KTANE_Solver
                     {
                         return -1;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 1;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return -2;
                     }
-
                     //air
                     else
                     {
@@ -416,17 +400,14 @@ namespace KTANE_Solver
                     {
                         return -2;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return -2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 0;
                     }
-
                     //air
                     else
                     {
@@ -439,17 +420,14 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return -2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return -1;
                     }
-
                     //air
                     else
                     {
@@ -462,17 +440,14 @@ namespace KTANE_Solver
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 2;
                     }
-
                     //air
                     else
                     {
@@ -487,17 +462,14 @@ namespace KTANE_Solver
                     {
                         return -1;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return -1;
                     }
-
                     //air
                     else
                     {
@@ -507,7 +479,6 @@ namespace KTANE_Solver
             }
         }
 
-
         /// <summary>
         /// Tells the number the first and third symbols give
         /// </summary>
@@ -516,70 +487,60 @@ namespace KTANE_Solver
         {
             switch (symbol3)
             {
-
                 case Symbol.Aquarius:
                 {
-                        if (symbol1 == Symbol.Fire)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol1 == Symbol.Water)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol1 == Symbol.Earth)
-                        {
-                            return 1;
-                        }
-
-                        //air
-                        else
-                        {
-                            return -1;
-                        }
-                } 
+                    if (symbol1 == Symbol.Fire)
+                    {
+                        return 1;
+                    }
+                    else if (symbol1 == Symbol.Water)
+                    {
+                        return 0;
+                    }
+                    else if (symbol1 == Symbol.Earth)
+                    {
+                        return 1;
+                    }
+                    //air
+                    else
+                    {
+                        return -1;
+                    }
+                }
                 case Symbol.Aries:
                 {
-                        if (symbol1 == Symbol.Fire)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol1 == Symbol.Water)
-                        {
-                            return 2;
-                        }
-
-                        else if (symbol1 == Symbol.Earth)
-                        {
-                            return -2;
-                        }
-
-                        //air
-                        else
-                        {
-                            return 1;
-                        }
+                    if (symbol1 == Symbol.Fire)
+                    {
+                        return 1;
                     }
+                    else if (symbol1 == Symbol.Water)
+                    {
+                        return 2;
+                    }
+                    else if (symbol1 == Symbol.Earth)
+                    {
+                        return -2;
+                    }
+                    //air
+                    else
+                    {
+                        return 1;
+                    }
+                }
                 case Symbol.Cancer:
                 {
                     if (symbol1 == Symbol.Fire)
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 0;
                     }
-
                     //air
                     else
                     {
@@ -592,17 +553,14 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return -2;
                     }
-
                     //air
                     else
                     {
@@ -615,17 +573,14 @@ namespace KTANE_Solver
                     {
                         return -1;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return -1;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 0;
                     }
-
                     //air
                     else
                     {
@@ -638,17 +593,14 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return -1;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 1;
                     }
-
                     //air
                     else
                     {
@@ -661,17 +613,14 @@ namespace KTANE_Solver
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return -2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 1;
                     }
-
                     //air
                     else
                     {
@@ -684,17 +633,14 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 1;
                     }
-
                     //air
                     else
                     {
@@ -707,17 +653,14 @@ namespace KTANE_Solver
                     {
                         return 1;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return -1;
                     }
-
                     //air
                     else
                     {
@@ -730,17 +673,14 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 1;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 2;
                     }
-
                     //air
                     else
                     {
@@ -753,17 +693,14 @@ namespace KTANE_Solver
                     {
                         return 0;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return -1;
                     }
-
                     //air
                     else
                     {
@@ -777,17 +714,14 @@ namespace KTANE_Solver
                     {
                         return 2;
                     }
-
                     else if (symbol1 == Symbol.Water)
                     {
                         return -1;
                     }
-
                     else if (symbol1 == Symbol.Earth)
                     {
                         return 0;
                     }
-
                     //air
                     else
                     {
@@ -805,54 +739,44 @@ namespace KTANE_Solver
         {
             switch (symbol3)
             {
-
                 case Symbol.Aquarius:
                 {
                     if (symbol2 == Symbol.Sun)
                     {
                         return -2;
                     }
-
                     else if (symbol2 == Symbol.Moon)
                     {
                         return 1;
                     }
-
                     else if (symbol2 == Symbol.Venus)
                     {
                         return -1;
                     }
-
                     else if (symbol2 == Symbol.Mars)
                     {
                         return -1;
                     }
-
                     else if (symbol2 == Symbol.Mercury)
                     {
                         return -1;
                     }
-
                     else if (symbol2 == Symbol.Jupiter)
                     {
                         return 0;
                     }
-
                     else if (symbol2 == Symbol.Saturn)
                     {
                         return -1;
                     }
-
                     else if (symbol2 == Symbol.Uranus)
                     {
                         return -1;
                     }
-
                     else if (symbol2 == Symbol.Neptune)
                     {
                         return 2;
                     }
-
                     //pluto
                     else
                     {
@@ -862,422 +786,350 @@ namespace KTANE_Solver
 
                 case Symbol.Aries:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 1;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return -1;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return -1;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 1;
+                    }
+                    //pluto
+                    else
+                    {
+                        return -1;
+                    }
+                }
                 case Symbol.Cancer:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 1;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return -1;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return 0;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 1;
+                    }
+                    //pluto
+                    else
+                    {
+                        return -1;
+                    }
+                }
                 case Symbol.Capricon:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return -2;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return 0;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return 0;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return -2;
+                    }
+                    //pluto
+                    else
+                    {
+                        return 0;
+                    }
+                }
                 case Symbol.Gemini:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return 2;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 2;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return 0;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return 2;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 2;
+                    }
+                    //pluto
+                    else
+                    {
+                        return 0;
+                    }
+                }
                 case Symbol.Leo:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 2;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return -1;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return -2;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return -1;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 2;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return -1;
+                    }
+                    //pluto
+                    else
+                    {
+                        return -2;
+                    }
+                }
                 case Symbol.Libra:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 1;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return 2;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return -1;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 1;
+                    }
+                    //pluto
+                    else
+                    {
+                        return 2;
+                    }
+                }
                 case Symbol.Pices:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 0;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return -1;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return -2;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 0;
+                    }
+                    //pluto
+                    else
+                    {
+                        return -1;
+                    }
+                }
                 case Symbol.Sagittarius:
                 {
                     if (symbol2 == Symbol.Sun)
                     {
                         return 0;
                     }
-
                     else if (symbol2 == Symbol.Moon)
                     {
                         return 2;
                     }
-
                     else if (symbol2 == Symbol.Mercury)
                     {
                         return 0;
                     }
-
                     else if (symbol2 == Symbol.Venus)
                     {
                         return 2;
                     }
-
                     else if (symbol2 == Symbol.Mars)
                     {
                         return 1;
                     }
-
                     else if (symbol2 == Symbol.Jupiter)
                     {
                         return 0;
                     }
-
                     else if (symbol2 == Symbol.Saturn)
                     {
                         return 0;
                     }
-
                     else if (symbol2 == Symbol.Uranus)
                     {
                         return 2;
                     }
-
                     else if (symbol2 == Symbol.Neptune)
                     {
                         return 0;
                     }
-
                     //pluto
                     else
                     {
@@ -1286,164 +1138,138 @@ namespace KTANE_Solver
                 }
                 case Symbol.Scorpio:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return 0;
-                        }
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 1;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return 1;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return 1;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 1;
+                    }
+                    //pluto
+                    else
+                    {
+                        return 1;
+                    }
+                }
                 case Symbol.Taurus:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return 2;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return 2;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 0;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return 0;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return -1;
                     }
-                
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return 2;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return 2;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 0;
+                    }
+                    //pluto
+                    else
+                    {
+                        return 0;
+                    }
+                }
+
                 //virgo
                 default:
                 {
-                        if (symbol2 == Symbol.Sun)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Moon)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return -1;
-                        }
-
-                        else if (symbol2 == Symbol.Venus)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Jupiter)
-                        {
-                            return 0;
-                        }
-
-                        else if (symbol2 == Symbol.Saturn)
-                        {
-                            return 1;
-                        }
-
-                        else if (symbol2 == Symbol.Uranus)
-                        {
-                            return -2;
-                        }
-
-                        else if (symbol2 == Symbol.Neptune)
-                        {
-                            return 1;
-                        }
-
-                        //pluto
-                        else
-                        {
-                            return 1;
-                        }
+                    if (symbol2 == Symbol.Sun)
+                    {
+                        return 0;
                     }
+                    else if (symbol2 == Symbol.Moon)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Mercury)
+                    {
+                        return -1;
+                    }
+                    else if (symbol2 == Symbol.Venus)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Mars)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Jupiter)
+                    {
+                        return 0;
+                    }
+                    else if (symbol2 == Symbol.Saturn)
+                    {
+                        return 1;
+                    }
+                    else if (symbol2 == Symbol.Uranus)
+                    {
+                        return -2;
+                    }
+                    else if (symbol2 == Symbol.Neptune)
+                    {
+                        return 1;
+                    }
+                    //pluto
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
         }
     }

@@ -30,7 +30,7 @@ namespace KTANE_Solver
         private int stage5Position;
 
         public Memory(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Memory")
-        {}
+        { }
 
         public void Solve(int stage, int display, int num1, int num2, int num3, int num4)
         {
@@ -39,7 +39,6 @@ namespace KTANE_Solver
             PrintDebugLine($"Display: {display}\n");
 
             PrintDebugLine($"Numbers: {num1}{num2}{num3}{num4}\n");
-
 
             if (stage == 1)
             {
@@ -67,9 +66,7 @@ namespace KTANE_Solver
 
                 PrintStageAnswerInfo(stage1, 1, stage1Position);
                 ShowAnswer($"Press {stage1[stage1Position]}", true);
-
             }
-
             else if (stage == 2)
             {
                 stage2 = new int[] { num1, num2, num3, num4 };
@@ -95,9 +92,7 @@ namespace KTANE_Solver
 
                 PrintStageAnswerInfo(stage2, 2, stage2Position);
                 ShowAnswer($"Press {stage2[stage2Position]}", true);
-
             }
-
             else if (stage == 3)
             {
                 stage3 = new int[] { num1, num2, num3, num4 };
@@ -106,7 +101,7 @@ namespace KTANE_Solver
                 {
                     case 1:
                         //If the display is 1, press the button with the same label you pressed in stage 2.
-                        stage3Position = Array.IndexOf(stage3,stage2[stage2Position]);
+                        stage3Position = Array.IndexOf(stage3, stage2[stage2Position]);
                         break;
 
                     case 2:
@@ -127,10 +122,8 @@ namespace KTANE_Solver
 
                 PrintStageAnswerInfo(stage3, 3, stage3Position);
                 ShowAnswer($"Press {stage3[stage3Position]}", true);
-
             }
-
-            else if(stage == 4)
+            else if (stage == 4)
             {
                 stage4 = new int[] { num1, num2, num3, num4 };
 
@@ -156,7 +149,6 @@ namespace KTANE_Solver
                 PrintStageAnswerInfo(stage4, 4, stage4Position);
                 ShowAnswer($"Press {stage4[stage4Position]}", true);
             }
-
             else
             {
                 stage5 = new int[] { num1, num2, num3, num4 };
@@ -173,12 +165,10 @@ namespace KTANE_Solver
                         stage5Position = Array.IndexOf(stage5, stage2[stage2Position]);
                         break;
 
-
                     case 3:
                         //If the display is 3, press the button with the same label you pressed in stage 4.
                         stage5Position = Array.IndexOf(stage5, stage4[stage4Position]);
                         break;
-
 
                     default:
                         //If the display is 4, press the button with the same label you pressed in stage 3.
@@ -193,7 +183,9 @@ namespace KTANE_Solver
 
         private void PrintStageAnswerInfo(int[] arr, int stage, int position)
         {
-            PrintDebugLine($"Stage {stage} position: {position + 1}\nStage {stage} num: {arr[position]}\n");
+            PrintDebugLine(
+                $"Stage {stage} position: {position + 1}\nStage {stage} num: {arr[position]}\n"
+            );
         }
     }
 }

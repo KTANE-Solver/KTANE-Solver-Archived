@@ -17,8 +17,9 @@ namespace KTANE_Solver
         Symbol bombSymbol;
 
         Dictionary<Symbol, int> counter;
+
         public enum Symbol
-        { 
+        {
             Rock,
             Paper,
             Scissors,
@@ -26,13 +27,15 @@ namespace KTANE_Solver
             Spock,
             Null
         }
-        public RockPaperScissorsLizardSpock(Symbol decoy, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Rock Paper Scissors Lizard Spock")
+
+        public RockPaperScissorsLizardSpock(Symbol decoy, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Rock Paper Scissors Lizard Spock")
         {
             this.decoy = decoy;
-            
+
             PrintDebugLine($"Decoy is {decoy}\n");
 
-            counter = new Dictionary<Symbol, int> ();
+            counter = new Dictionary<Symbol, int>();
             ResetValues();
         }
 
@@ -53,18 +56,18 @@ namespace KTANE_Solver
             {
                 case Symbol.Rock:
                     return new Symbol[] { Symbol.Paper, Symbol.Spock };
-                
+
                 case Symbol.Paper:
-                    return new Symbol[] { Symbol.Lizard, Symbol.Scissors};
-                
+                    return new Symbol[] { Symbol.Lizard, Symbol.Scissors };
+
                 case Symbol.Scissors:
-                    return new Symbol[] { Symbol.Spock, Symbol.Rock};
-                
+                    return new Symbol[] { Symbol.Spock, Symbol.Rock };
+
                 case Symbol.Lizard:
-                    return new Symbol[] { Symbol.Rock, Symbol.Scissors};
-                
+                    return new Symbol[] { Symbol.Rock, Symbol.Scissors };
+
                 case Symbol.Spock:
-                    return new Symbol[] { Symbol.Paper, Symbol.Lizard};
+                    return new Symbol[] { Symbol.Paper, Symbol.Lizard };
 
                 default:
                     List<Symbol> list = new List<Symbol>();
@@ -128,8 +131,10 @@ namespace KTANE_Solver
 
             counter[Symbol.Rock] = CharacterCountInSerialNum('R') + CharacterCountInSerialNum('O');
             counter[Symbol.Paper] = CharacterCountInSerialNum('P') + CharacterCountInSerialNum('A');
-            counter[Symbol.Scissors] = CharacterCountInSerialNum('S') + CharacterCountInSerialNum('I');
-            counter[Symbol.Lizard] = CharacterCountInSerialNum('L') + CharacterCountInSerialNum('Z');
+            counter[Symbol.Scissors] =
+                CharacterCountInSerialNum('S') + CharacterCountInSerialNum('I');
+            counter[Symbol.Lizard] =
+                CharacterCountInSerialNum('L') + CharacterCountInSerialNum('Z');
             counter[Symbol.Spock] = CharacterCountInSerialNum('C') + CharacterCountInSerialNum('K');
 
             PrintDebugLine($"Rock: {counter[Symbol.Rock]}");
@@ -138,14 +143,13 @@ namespace KTANE_Solver
             PrintDebugLine($"Lizard: {counter[Symbol.Lizard]}");
             PrintDebugLine($"Spock: {counter[Symbol.Spock]}\n");
 
-
             return FindHieghestValue();
         }
 
         private Symbol Port()
         {
             if (Bomb.Ps.Visible)
-            { 
+            {
                 PrintDebugLine("Skipping Port Row\n");
                 return Symbol.Null;
             }
@@ -217,7 +221,7 @@ namespace KTANE_Solver
         private Symbol UnlitIndicator()
         {
             if (Bomb.Trn.VisibleNotLit)
-            { 
+            {
                 PrintDebugLine("Skipping unlit Indicator Row\n");
                 return Symbol.Null;
             }
@@ -265,8 +269,10 @@ namespace KTANE_Solver
         {
             counter[Symbol.Rock] = CharacterCountInSerialNum('0') + CharacterCountInSerialNum('5');
             counter[Symbol.Paper] = CharacterCountInSerialNum('3') + CharacterCountInSerialNum('6');
-            counter[Symbol.Scissors] = CharacterCountInSerialNum('1') + CharacterCountInSerialNum('9');
-            counter[Symbol.Lizard] = CharacterCountInSerialNum('2') + CharacterCountInSerialNum('8');
+            counter[Symbol.Scissors] =
+                CharacterCountInSerialNum('1') + CharacterCountInSerialNum('9');
+            counter[Symbol.Lizard] =
+                CharacterCountInSerialNum('2') + CharacterCountInSerialNum('8');
             counter[Symbol.Spock] = CharacterCountInSerialNum('4') + CharacterCountInSerialNum('7');
 
             PrintDebugLine($"Rock: {counter[Symbol.Rock]}");

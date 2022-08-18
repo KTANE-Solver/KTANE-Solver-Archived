@@ -22,20 +22,26 @@ namespace KTANE_Solver
         int initalCode;
         String firstAnswer;
 
-        public TwoBitsStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm, "Two Bits", false)
+        public TwoBitsStage1Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Two Bits", false)
         {
             InitializeComponent();
-            
+
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             module = new TwoBits(bomb, logFileWriter);
 
             initalCode = module.GetInitalCode();
-
 
             firstAnswer = module.ConvertCode(initalCode, 1);
 
@@ -62,11 +68,16 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            
-
             this.Hide();
 
-            TwoBitsOtherStageForm secondStage = new TwoBitsOtherStageForm(module, this, 2, Bomb, LogFileWriter, ModuleSelectionForm);
+            TwoBitsOtherStageForm secondStage = new TwoBitsOtherStageForm(
+                module,
+                this,
+                2,
+                Bomb,
+                LogFileWriter,
+                ModuleSelectionForm
+            );
             secondStage.Show();
         }
     }

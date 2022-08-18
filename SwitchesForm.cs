@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -17,9 +18,11 @@ namespace KTANE_Solver
 
     public partial class SwitchesForm : ModuleForm
     {
-        public SwitchesForm(Bomb bomb,StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Switches", false)
-
+        public SwitchesForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Switches", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
@@ -37,7 +40,11 @@ namespace KTANE_Solver
             end5.Click += Tile_Click;
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -62,7 +69,6 @@ namespace KTANE_Solver
             {
                 button.BackColor = Color.Green;
             }
-
             else
             {
                 button.BackColor = Color.White;
@@ -81,8 +87,22 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            bool[] start = { SwitchedOn(start1), SwitchedOn(start2), SwitchedOn(start3), SwitchedOn(start4), SwitchedOn(start5) };
-            bool[] end = { SwitchedOn(end1), SwitchedOn(end2), SwitchedOn(end3), SwitchedOn(end4), SwitchedOn(end5) };
+            bool[] start =
+            {
+                SwitchedOn(start1),
+                SwitchedOn(start2),
+                SwitchedOn(start3),
+                SwitchedOn(start4),
+                SwitchedOn(start5)
+            };
+            bool[] end =
+            {
+                SwitchedOn(end1),
+                SwitchedOn(end2),
+                SwitchedOn(end3),
+                SwitchedOn(end4),
+                SwitchedOn(end5)
+            };
 
             if (SameSwitches(start, end))
             {

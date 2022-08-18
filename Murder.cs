@@ -10,14 +10,14 @@ namespace KTANE_Solver
 {
     /// <summary>
     /// Author: Nya Bentley
-    /// Date: 4/9/21 
+    /// Date: 4/9/21
     /// Purpose: Solves the murder moudle
     /// </summary>
     class Murder : Module
     {
         //all the rooms
         public enum Room
-        { 
+        {
             DINING,
             STUDY,
             KITCHEN,
@@ -39,14 +39,20 @@ namespace KTANE_Solver
         private Room bodyRoom;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="suspects">the four suspects</param>
         /// <param name="weapons">the four weapons</param>
         /// <param name="bodyRoom">the room the body was found</param>
         /// <param name="bomb">used for edgoework</param>
         /// <param name="logFileWriter">used to write to the log file</param>
-        public Murder(String[] suspects, String [] weapons, String bodyRoom, Bomb bomb, StreamWriter logFileWriter) : base(bomb,logFileWriter, "Murder")
+        public Murder(
+            String[] suspects,
+            String[] weapons,
+            String bodyRoom,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "Murder")
         {
             this.suspects = new List<Suspect>();
             this.weapons = new List<Weapon>();
@@ -95,7 +101,6 @@ namespace KTANE_Solver
 
             PrintDebugLine("Weapon Row: " + weaponRow + "\n");
 
-
             //find where each weapon was
             foreach (Weapon weapon in weapons)
             {
@@ -127,7 +132,6 @@ namespace KTANE_Solver
             {
                 ShowErrorMessage("Something went wrong");
             }
-
             else
             {
                 String answer = $"{murderer} with the {killingItem} in the {room}";
@@ -136,11 +140,7 @@ namespace KTANE_Solver
 
                 ShowAnswer(answer, true);
             }
-
-
-
         }
-
 
         /// <summary>
         /// Finds the suspect row
@@ -150,36 +150,36 @@ namespace KTANE_Solver
         {
             //If there is a lit indicator with label TRN, use row 5 to locate the suspects.
             if (Bomb.Trn.Lit)
-            { 
+            {
                 return 5;
             }
 
             //Otherwise, if the body was found in the Dining Room, use row 7.
             if (bodyRoom == Room.DINING)
-            { 
+            {
                 return 7;
             }
 
             //Otherwise, if the bomb has 2 or more Stereo RCA ports, use row 8.
             if (Bomb.Stereo.Num >= 2)
-            { 
+            {
                 return 8;
             }
             //Otherwise, if there are no D batteries on the bomb, use row 2.
             if (Bomb.DBattery == 0)
-            { 
+            {
                 return 2;
             }
 
             //Otherwise, if the body was found in the Study, use row 4.
             if (bodyRoom == Room.STUDY)
-            { 
+            {
                 return 4;
             }
 
             //Otherwise, if there are 5 or more batteries, use row 9.
             if (Bomb.Battery >= 5)
-            { 
+            {
                 return 9;
             }
 
@@ -259,7 +259,6 @@ namespace KTANE_Solver
         //Represetns each suspect
         public class Suspect
         {
-
             public enum Name
             {
                 SCARLETT,
@@ -284,7 +283,6 @@ namespace KTANE_Solver
             public Suspect(Name name)
             {
                 this.name = name;
-                
             }
 
             /// <summary>
@@ -300,42 +298,34 @@ namespace KTANE_Solver
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.LIBRARY;
@@ -346,42 +336,34 @@ namespace KTANE_Solver
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.DINING;
@@ -393,42 +375,34 @@ namespace KTANE_Solver
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.HALL;
@@ -440,42 +414,34 @@ namespace KTANE_Solver
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.BILLIARD;
@@ -487,42 +453,34 @@ namespace KTANE_Solver
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.BALLROOM;
@@ -534,42 +492,34 @@ namespace KTANE_Solver
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.LOUNGE;
@@ -624,13 +574,13 @@ namespace KTANE_Solver
                 {
                     case Name.SCARLETT:
                         return "Scarlett";
-                        
+
                     case Name.PLUM:
                         return "Plum";
-                        
+
                     case Name.PEACOCK:
                         return "Peacock";
-                        
+
                     case Name.GREEN:
                         return "Green";
 
@@ -654,37 +604,30 @@ namespace KTANE_Solver
                 {
                     return Room.DINING;
                 }
-
                 else if (room == "Study")
                 {
                     return Room.STUDY;
                 }
-
                 else if (room == "Kitchen")
                 {
                     return Room.KITCHEN;
                 }
-
                 else if (room == "Lounge")
                 {
                     return Room.LOUNGE;
                 }
-
                 else if (room == "Billiard Room")
                 {
                     return Room.BILLIARD;
                 }
-
                 else if (room == "Conservatory")
                 {
                     return Room.CONSERVATORY;
                 }
-
                 else if (room == "Ballroom")
                 {
                     return Room.BALLROOM;
                 }
-
                 else if (room == "Hall")
                 {
                     return Room.HALL;
@@ -774,42 +717,34 @@ namespace KTANE_Solver
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.LIBRARY;
@@ -820,42 +755,34 @@ namespace KTANE_Solver
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.DINING;
@@ -867,42 +794,34 @@ namespace KTANE_Solver
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.HALL;
@@ -914,42 +833,34 @@ namespace KTANE_Solver
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.BILLIARD;
@@ -961,42 +872,34 @@ namespace KTANE_Solver
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.LOUNGE;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.BALLROOM;
@@ -1008,42 +911,34 @@ namespace KTANE_Solver
                         {
                             room = Room.CONSERVATORY;
                         }
-
                         else if (num == 2)
                         {
                             room = Room.LIBRARY;
                         }
-
                         else if (num == 3)
                         {
                             room = Room.DINING;
                         }
-
                         else if (num == 4)
                         {
                             room = Room.KITCHEN;
                         }
-
                         else if (num == 5)
                         {
                             room = Room.HALL;
                         }
-
                         else if (num == 6)
                         {
                             room = Room.BALLROOM;
                         }
-
                         else if (num == 7)
                         {
                             room = Room.STUDY;
                         }
-
                         else if (num == 8)
                         {
                             room = Room.BILLIARD;
                         }
-
                         else if (num == 9)
                         {
                             room = Room.LOUNGE;
@@ -1117,6 +1012,5 @@ namespace KTANE_Solver
                 return null;
             }
         }
-
     }
 }

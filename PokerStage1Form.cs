@@ -18,14 +18,21 @@ namespace KTANE_Solver
 
     public partial class PokerStage1Form : ModuleForm
     {
-        public PokerStage1Form(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base (bomb, logFileWriter, moduleSelectionForm, "Poker", false)
+        public PokerStage1Form(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Poker", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -50,7 +57,6 @@ namespace KTANE_Solver
             foreach (Poker.Card card in hand)
             {
                 System.Diagnostics.Debug.WriteLine($"{card.number} of {card.suite}");
-
             }
 
             System.Diagnostics.Debug.WriteLine("");
@@ -102,10 +108,16 @@ namespace KTANE_Solver
             }
 
             ShowAnswer($"Press {answer}");
-            
+
             this.Hide();
 
-            PokerStage2Form stage2 = new PokerStage2Form(this, ModuleSelectionForm, module, Bomb, LogFileWriter);
+            PokerStage2Form stage2 = new PokerStage2Form(
+                this,
+                ModuleSelectionForm,
+                module,
+                Bomb,
+                LogFileWriter
+            );
             stage2.Show();
         }
     }

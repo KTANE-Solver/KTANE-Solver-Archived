@@ -13,9 +13,13 @@ namespace KTANE_Solver
 {
     public partial class ChordQualitiesForm : ModuleForm
     {
-        public ChordQualitiesForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Chord Qualities", false)
+        public ChordQualitiesForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Chord Qualities", false)
         {
-            InitializeComponent(); 
+            InitializeComponent();
             UpdateForm();
         }
 
@@ -25,12 +29,25 @@ namespace KTANE_Solver
             UpdateNoteComboBox(note2ComboBox);
             UpdateNoteComboBox(note3ComboBox);
             UpdateNoteComboBox(note4ComboBox);
-
         }
 
         private void UpdateNoteComboBox(ComboBox comboBox)
         {
-            string[] notes = new string[] { "A", "ASharp", "B", "C", "CSharp", "D", "DSharp", "E", "F", "FSharp", "G", "GSharp"};
+            string[] notes = new string[]
+            {
+                "A",
+                "ASharp",
+                "B",
+                "C",
+                "CSharp",
+                "D",
+                "DSharp",
+                "E",
+                "F",
+                "FSharp",
+                "G",
+                "GSharp"
+            };
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(notes);
@@ -55,15 +72,27 @@ namespace KTANE_Solver
             ChordQualities.Note note3 = ConvertStringToNote(note3ComboBox.Text);
             ChordQualities.Note note4 = ConvertStringToNote(note4ComboBox.Text);
 
-            if (note1 == note2 || note1 == note3 || note1 == note4 ||
-                                 note2 == note3 || note2 == note4 ||
-                                                   note3 == note4)
+            if (
+                note1 == note2
+                || note1 == note3
+                || note1 == note4
+                || note2 == note3
+                || note2 == note4
+                || note3 == note4
+            )
             {
                 ShowErrorMessage("Can't have duplicate Notes");
                 return;
             }
 
-            ChordQualities module = new ChordQualities(Bomb, LogFileWriter, note1, note2, note3, note4);
+            ChordQualities module = new ChordQualities(
+                Bomb,
+                LogFileWriter,
+                note1,
+                note2,
+                note3,
+                note4
+            );
             module.Solve();
             UpdateForm();
         }

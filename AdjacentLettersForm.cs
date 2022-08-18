@@ -17,14 +17,21 @@ namespace KTANE_Solver
     /// </summary>
     public partial class AdjacentLettersForm : ModuleForm
     {
-        public AdjacentLettersForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm) 
-        : base(bomb, logFileWriter, moduleSelectionForm, "Adjacent Letters", false)
+        public AdjacentLettersForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Adjacent Letters", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -45,13 +52,21 @@ namespace KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            if (row1TextBox.Text.Length != 4 || row2TextBox.Text.Length != 4 || row3TextBox.Text.Length != 4)
+            if (
+                row1TextBox.Text.Length != 4
+                || row2TextBox.Text.Length != 4
+                || row3TextBox.Text.Length != 4
+            )
             {
                 ShowErrorMessage("Text boxes must conatain 4 letters");
                 return;
             }
 
-            if (!ContainsOnlyLetters(row1TextBox.Text) || !ContainsOnlyLetters(row2TextBox.Text) || !ContainsOnlyLetters(row3TextBox.Text))
+            if (
+                !ContainsOnlyLetters(row1TextBox.Text)
+                || !ContainsOnlyLetters(row2TextBox.Text)
+                || !ContainsOnlyLetters(row3TextBox.Text)
+            )
             {
                 ShowErrorMessage("Text boxes can only contain letters");
                 return;
@@ -71,7 +86,6 @@ namespace KTANE_Solver
                     {
                         grid[1, j] = row2TextBox.Text.ToUpper()[j];
                     }
-
                     else
                     {
                         grid[2, j] = row3TextBox.Text.ToUpper()[j];

@@ -10,13 +10,14 @@ namespace KTANE_Solver
     public class Semaphore : Module
     {
         private FlagMode mode;
-        public Semaphore(Bomb bomb, StreamWriter logFileWriter, Flag firstFlag) : base(bomb, logFileWriter, "Semaphore")
+
+        public Semaphore(Bomb bomb, StreamWriter logFileWriter, Flag firstFlag)
+            : base(bomb, logFileWriter, "Semaphore")
         {
             if (firstFlag.AreEqual(FlagState.North, FlagState.East))
             {
                 mode = FlagMode.Letter;
             }
-
             else
             {
                 mode = FlagMode.Number;
@@ -24,7 +25,7 @@ namespace KTANE_Solver
         }
 
         public enum FlagState
-        { 
+        {
             North,
             NorthEast,
             East,
@@ -36,7 +37,7 @@ namespace KTANE_Solver
         }
 
         public enum FlagMode
-        { 
+        {
             Letter,
             Number
         }
@@ -49,25 +50,21 @@ namespace KTANE_Solver
             {
                 mode = FlagMode.Number;
             }
-
             else if (flag.AreEqual(FlagState.North, FlagState.East))
             {
                 if (mode == FlagMode.Letter)
                 {
                     invalidFlag = true;
                 }
-
                 else
                 {
                     mode = FlagMode.Letter;
                 }
             }
-
             else if (mode == FlagMode.Letter)
             {
                 invalidFlag = !LetterFlag(flag);
             }
-
             else
             {
                 invalidFlag = !NumberFlag(flag);
@@ -268,14 +265,12 @@ namespace KTANE_Solver
             }
 
             return Bomb.SerialNumber.Contains('0');
-
         }
 
         private string FlagDescription(Flag flag)
         {
             return $"{flag.leftState} {flag.rightState}";
         }
-
 
         public class Flag
         {

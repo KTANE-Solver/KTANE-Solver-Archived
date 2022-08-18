@@ -17,8 +17,14 @@ namespace KTANE_Solver
         private CreationForm stage1Form;
         private int stage;
 
-        public CreationOtherStageForm(Bomb bomb, StreamWriter logFileWriter, Creation module, CreationForm stage1Form, ModuleSelectionForm moduleSelectionForm) : base(bomb, logFileWriter, moduleSelectionForm, "Creation", false)
-        { 
+        public CreationOtherStageForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            Creation module,
+            CreationForm stage1Form,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Creation", false)
+        {
             InitializeComponent();
             this.module = module;
             this.stage1Form = stage1Form;
@@ -31,7 +37,14 @@ namespace KTANE_Solver
 
             stageLabel.Text = "Stage: " + stage;
 
-            String[] weather = new string[] { "Rain", "Wind", "Heat Wave", "Meteor Shower", "Clear" };
+            String[] weather = new string[]
+            {
+                "Rain",
+                "Wind",
+                "Heat Wave",
+                "Meteor Shower",
+                "Clear"
+            };
 
             weatherComboBox.Items.Clear();
             weatherComboBox.Items.AddRange(weather);
@@ -43,7 +56,8 @@ namespace KTANE_Solver
         {
             string weatherStr = weatherComboBox.Text.Replace(" ", String.Empty);
 
-            Creation.Weather weather = (Creation.Weather)Enum.Parse(typeof(Creation.Weather), weatherStr);
+            Creation.Weather weather = (Creation.Weather)
+                Enum.Parse(typeof(Creation.Weather), weatherStr);
             module.Solve(weather, stage - 1);
 
             if (module.DirectionCount == stage)
@@ -52,7 +66,6 @@ namespace KTANE_Solver
                 stage1Form.UpdateForm();
                 stage1Form.Show();
             }
-
             else
             {
                 UpdateForm(stage + 1);
@@ -72,7 +85,6 @@ namespace KTANE_Solver
                 stage1Form.UpdateForm();
                 stage1Form.Show();
             }
-
             else
             {
                 UpdateForm(stage - 1);

@@ -11,12 +11,10 @@ using System.IO;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 3/4/21
-    /// Purpose: Gets the infomration needed 
+    /// Purpose: Gets the infomration needed
     /// to solve the Maze module
     /// </summary>
     public partial class MazeForm : ModuleForm
@@ -29,8 +27,12 @@ namespace KTANE_Solver
         /// Creates the maze form
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public MazeForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm, Color [] mazeColors) 
-        : base(bomb, logFileWriter, moduleSelectionForm, "Maze", false)
+        public MazeForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            Color[] mazeColors
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Maze", false)
         {
             InitializeComponent();
 
@@ -74,14 +76,17 @@ namespace KTANE_Solver
             row6Button4.Click += button_Click;
             row6Button5.Click += button_Click;
             row6Button6.Click += button_Click;
-
         }
 
         /// <summary>
         /// Sets up this form so it looks new
         /// </summary>
         /// <param name="moduleSelectionForm">the form used to get to this form</param>
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -128,34 +133,28 @@ namespace KTANE_Solver
         /// </summary>
         private void button_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Button button = (System.Windows.Forms.Button) sender;
-
+            System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
 
             if (button.BackColor == mazeColors[0])
             {
                 button.BackColor = mazeColors[1];
             }
-
             else if (button.BackColor == mazeColors[1])
-            { 
+            {
                 button.BackColor = mazeColors[2];
             }
-
             else if (button.BackColor == mazeColors[2])
             {
                 button.BackColor = mazeColors[3];
             }
-
             else if (button.BackColor == mazeColors[3])
             {
                 button.BackColor = mazeColors[4];
             }
-
             else if (button.BackColor == mazeColors[4])
             {
                 button.BackColor = mazeColors[5];
             }
-
             else if (button.BackColor == mazeColors[5])
             {
                 button.BackColor = mazeColors[0];
@@ -198,7 +197,6 @@ namespace KTANE_Solver
                 { row4Button1, row4Button2, row4Button3, row4Button4, row4Button5, row4Button6 },
                 { row5Button1, row5Button2, row5Button3, row5Button4, row5Button5, row5Button6 },
                 { row6Button1, row6Button2, row6Button3, row6Button4, row6Button5, row6Button6 }
-
             };
 
             foreach (System.Windows.Forms.Button button in buttonArray)
@@ -207,24 +205,20 @@ namespace KTANE_Solver
                 {
                     goalsFound++;
                 }
-
                 else if (button.BackColor == Color.Orange)
                 {
                     goalsFound++;
                     markersFound++;
                 }
-
                 else if (button.BackColor == Color.Yellow)
                 {
                     playersFound++;
                     markersFound++;
                 }
-
                 else if (button.BackColor == Color.Green)
                 {
                     markersFound++;
                 }
-
                 else if (button.BackColor == Color.White)
                 {
                     playersFound++;
@@ -256,12 +250,26 @@ namespace KTANE_Solver
 
 
             //(1,3) (1,6) (2,2) (2,4) (2,6) (3,1) (3,2) (3,3) (3,4) (4,5) (5,2) (5,4) (5,5) (5,6) (6,1) (6,3) (6,5) (6,6)
-            if (row1Button3.BackColor == Color.Green || row1Button6.BackColor == Color.Green || row2Button2.BackColor == Color.Green ||
-                row2Button4.BackColor == Color.Green || row2Button6.BackColor == Color.Green || row3Button1.BackColor == Color.Green ||
-                row3Button2.BackColor == Color.Green || row3Button3.BackColor == Color.Green || row3Button4.BackColor == Color.Green ||
-                row4Button5.BackColor == Color.Green || row5Button2.BackColor == Color.Green || row5Button4.BackColor == Color.Green ||
-                row5Button5.BackColor == Color.Green || row5Button6.BackColor == Color.Green || row6Button1.BackColor == Color.Green ||
-                row6Button3.BackColor == Color.Green || row6Button5.BackColor == Color.Green || row6Button6.BackColor == Color.Green)
+            if (
+                row1Button3.BackColor == Color.Green
+                || row1Button6.BackColor == Color.Green
+                || row2Button2.BackColor == Color.Green
+                || row2Button4.BackColor == Color.Green
+                || row2Button6.BackColor == Color.Green
+                || row3Button1.BackColor == Color.Green
+                || row3Button2.BackColor == Color.Green
+                || row3Button3.BackColor == Color.Green
+                || row3Button4.BackColor == Color.Green
+                || row4Button5.BackColor == Color.Green
+                || row5Button2.BackColor == Color.Green
+                || row5Button4.BackColor == Color.Green
+                || row5Button5.BackColor == Color.Green
+                || row5Button6.BackColor == Color.Green
+                || row6Button1.BackColor == Color.Green
+                || row6Button3.BackColor == Color.Green
+                || row6Button5.BackColor == Color.Green
+                || row6Button6.BackColor == Color.Green
+            )
             {
                 ShowErrorMessage("There is an invalid marker inputted on the maze");
                 return;
@@ -269,7 +277,7 @@ namespace KTANE_Solver
 
             //if there are 2 markers, make sure they're valid pairs
 
-            if(markersFound == 2)
+            if (markersFound == 2)
             {
                 //(2,1) (3,6)
                 //(2,5) (4,2)
@@ -281,16 +289,33 @@ namespace KTANE_Solver
                 //(1,2) (6,2)
                 //(2,3) (5,1)
 
-                if ((row2Button1.BackColor == Color.Green && row3Button6.BackColor != Color.Green) ||
-                    (row2Button5.BackColor == Color.Green && row4Button2.BackColor != Color.Green) ||
-                    (row4Button4.BackColor == Color.Green && row4Button6.BackColor != Color.Green) ||
-                    (row1Button1.BackColor == Color.Green && row4Button1.BackColor != Color.Green) ||
-                    (row3Button5.BackColor == Color.Green && row6Button4.BackColor != Color.Green) ||
-                    (row1Button5.BackColor == Color.Green && row5Button3.BackColor != Color.Green) ||
-                    (row1Button4.BackColor == Color.Green && row4Button3.BackColor != Color.Green) ||
-                    (row1Button2.BackColor == Color.Green && row6Button2.BackColor != Color.Green) ||
-                    (row2Button3.BackColor == Color.Green && row5Button1.BackColor != Color.Green))
-
+                if (
+                    (row2Button1.BackColor == Color.Green && row3Button6.BackColor != Color.Green)
+                    || (
+                        row2Button5.BackColor == Color.Green && row4Button2.BackColor != Color.Green
+                    )
+                    || (
+                        row4Button4.BackColor == Color.Green && row4Button6.BackColor != Color.Green
+                    )
+                    || (
+                        row1Button1.BackColor == Color.Green && row4Button1.BackColor != Color.Green
+                    )
+                    || (
+                        row3Button5.BackColor == Color.Green && row6Button4.BackColor != Color.Green
+                    )
+                    || (
+                        row1Button5.BackColor == Color.Green && row5Button3.BackColor != Color.Green
+                    )
+                    || (
+                        row1Button4.BackColor == Color.Green && row4Button3.BackColor != Color.Green
+                    )
+                    || (
+                        row1Button2.BackColor == Color.Green && row6Button2.BackColor != Color.Green
+                    )
+                    || (
+                        row2Button3.BackColor == Color.Green && row5Button1.BackColor != Color.Green
+                    )
+                )
                 {
                     ShowErrorMessage("There is an invalid pair of markers");
                     return;
@@ -298,7 +323,7 @@ namespace KTANE_Solver
             }
 
             //finding the goal, player, and marker
-            for(int row = 0; row < 6; row++)
+            for (int row = 0; row < 6; row++)
             {
                 for (int column = 0; column < 6; column++)
                 {
@@ -308,7 +333,6 @@ namespace KTANE_Solver
                         goalRow = row;
                         goalColumn = column;
                     }
-
                     //orange - goal + maker
                     else if (buttonArray[row, column].BackColor == Color.Orange)
                     {
@@ -318,7 +342,6 @@ namespace KTANE_Solver
                         markerRow = row;
                         markerColumn = column;
                     }
-
                     //yellow - player + marker
                     else if (buttonArray[row, column].BackColor == Color.Yellow)
                     {
@@ -328,14 +351,12 @@ namespace KTANE_Solver
                         markerRow = row;
                         markerColumn = column;
                     }
-
                     //green - marker
                     else if (buttonArray[row, column].BackColor == Color.Green)
                     {
                         markerRow = row;
                         markerColumn = column;
                     }
-
                     //white - player
                     else if (buttonArray[row, column].BackColor == Color.White)
                     {
@@ -346,8 +367,16 @@ namespace KTANE_Solver
             }
 
             //solving maze
-            maze = new Maze(playerRow + 1, playerColumn + 1, goalRow + 1, goalColumn + 1, markerRow + 1, markerColumn + 1, LogFileWriter);
-            MazeAnswerForm answerForm = new MazeAnswerForm (maze.Solve(), LogFileWriter);
+            maze = new Maze(
+                playerRow + 1,
+                playerColumn + 1,
+                goalRow + 1,
+                goalColumn + 1,
+                markerRow + 1,
+                markerColumn + 1,
+                LogFileWriter
+            );
+            MazeAnswerForm answerForm = new MazeAnswerForm(maze.Solve(), LogFileWriter);
             answerForm.ShowDialog();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

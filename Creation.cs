@@ -24,8 +24,10 @@ namespace KTANE_Solver
         private List<LifeForm[]> directions;
         public List<LifeForm[][]> brokenUpDirections;
 
-
-        public int DirectionCount { get { return brokenUpDirections.Count; } }
+        public int DirectionCount
+        {
+            get { return brokenUpDirections.Count; }
+        }
 
         private Weather startingWeather;
 
@@ -41,7 +43,15 @@ namespace KTANE_Solver
         //a list of all lifeforms
         public Dictionary<string, LifeForm> lifeFormList;
 
-        public Creation(Bomb bomb, StreamWriter logFileWriter, Weather startingWeather, string upperLeftElement, string lowerLeftElement, string upperRightElement, string lowerRightElement) : base(bomb, logFileWriter, "Creation")
+        public Creation(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            Weather startingWeather,
+            string upperLeftElement,
+            string lowerLeftElement,
+            string upperRightElement,
+            string lowerRightElement
+        ) : base(bomb, logFileWriter, "Creation")
         {
             lifeFormList = new Dictionary<string, LifeForm>();
             directions = new List<LifeForm[]>();
@@ -64,7 +74,7 @@ namespace KTANE_Solver
         }
 
         public void SetUpModule()
-        { 
+        {
             CreateLifeForms();
             FindStartingElement();
             FindStartingElementPosition();
@@ -200,26 +210,21 @@ namespace KTANE_Solver
             {
                 startingElementPostion = "Upper Left";
             }
-
             else if (startingElementStr == upperRightElement)
             {
                 startingElementPostion = "Upper Right";
             }
-
             else if (startingElementStr == lowerLeftElement)
             {
                 startingElementPostion = "Bottom Left";
             }
-
-            else if(startingElementStr == lowerRightElement)
-            { 
+            else if (startingElementStr == lowerRightElement)
+            {
                 startingElementPostion = "Bottom Right";
             }
 
             PrintDebugLine($"Starting Element Position: {startingElementPostion}\n");
-
         }
-
 
         private void FindPermutation()
         {
@@ -227,7 +232,6 @@ namespace KTANE_Solver
             {
                 permutation = 0;
             }
-
             else
             {
                 switch (startingElementPostion)
@@ -237,17 +241,14 @@ namespace KTANE_Solver
                         {
                             permutation = 2;
                         }
-
                         else if (startingElement == lifeFormList["Air"])
                         {
                             permutation = 1;
                         }
-
                         else if (startingElement == lifeFormList["Earth"])
                         {
                             permutation = 4;
                         }
-
                         else
                         {
                             permutation = 3;
@@ -260,17 +261,14 @@ namespace KTANE_Solver
                         {
                             permutation = 1;
                         }
-
                         else if (startingElement == lifeFormList["Air"])
                         {
                             permutation = 2;
                         }
-
                         else if (startingElement == lifeFormList["Earth"])
                         {
                             permutation = 3;
                         }
-
                         else
                         {
                             permutation = 4;
@@ -283,17 +281,14 @@ namespace KTANE_Solver
                         {
                             permutation = 4;
                         }
-
                         else if (startingElement == lifeFormList["Air"])
                         {
                             permutation = 3;
                         }
-
                         else if (startingElement == lifeFormList["Earth"])
                         {
                             permutation = 1;
                         }
-
                         else
                         {
                             permutation = 2;
@@ -305,17 +300,14 @@ namespace KTANE_Solver
                         {
                             permutation = 3;
                         }
-
                         else if (startingElement == lifeFormList["Air"])
                         {
                             permutation = 4;
                         }
-
                         else if (startingElement == lifeFormList["Earth"])
                         {
                             permutation = 2;
                         }
-
                         else
                         {
                             permutation = 1;
@@ -358,7 +350,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 //Otherwise, if any lit indicators are present
                 else if (Bomb.LitIndicatorsList.Count > 0)
                 {
@@ -385,7 +376,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 //Otherwise, if any unlit indicators are present AND all batteries are D cell
                 else if (Bomb.UnlitIndicatorsList.Count > 0 && Bomb.BatteryHolder == Bomb.DBattery)
                 {
@@ -412,7 +402,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 //Otherwise, if any unlit indicators are present
                 else if (Bomb.UnlitIndicatorsList.Count > 0)
                 {
@@ -439,7 +428,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 else
                 {
                     switch (permutation)
@@ -466,7 +454,6 @@ namespace KTANE_Solver
                     }
                 }
             }
-
             //Bomb has 2 or fewer battery holders:
             else
             {
@@ -494,9 +481,15 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 //Otherwise, if there are any duplicate ports:
-                else if (Bomb.Rj.Num > 1 || Bomb.Serial.Num > 1 || Bomb.Stereo.Num > 1 || Bomb.Dvid.Num > 1 || Bomb.Ps.Num > 1 || Bomb.Parallel.Num > 1)
+                else if (
+                    Bomb.Rj.Num > 1
+                    || Bomb.Serial.Num > 1
+                    || Bomb.Stereo.Num > 1
+                    || Bomb.Dvid.Num > 1
+                    || Bomb.Ps.Num > 1
+                    || Bomb.Parallel.Num > 1
+                )
                 {
                     switch (permutation)
                     {
@@ -518,7 +511,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 //Otherwise, if there are more unlit Indicators than lit Indicators:
                 else if (Bomb.UnlitIndicatorsList.Count > Bomb.LitIndicatorsList.Count)
                 {
@@ -543,7 +535,6 @@ namespace KTANE_Solver
                             break;
                     }
                 }
-
                 else
                 {
                     switch (permutation)
@@ -552,7 +543,6 @@ namespace KTANE_Solver
                         case 4:
                             goal = lifeFormList["Mushroom"];
                             break;
-
 
                         case 1:
                             goal = lifeFormList["Ghost"];
@@ -564,10 +554,9 @@ namespace KTANE_Solver
 
                         case 3:
                             goal = lifeFormList["Seeds"];
-                            break;  
+                            break;
                     }
                 }
-
             }
 
             PrintDebugLine($"Goal: {goal.Name}\n");
@@ -589,11 +578,12 @@ namespace KTANE_Solver
                     FindRouteToGoal(lifeForm.Ingrediant2);
                 }
 
-                directions.Add(new LifeForm[] {lifeForm, lifeForm.Ingrediant1, lifeForm.Ingrediant2 });
+                directions.Add(
+                    new LifeForm[] { lifeForm, lifeForm.Ingrediant1, lifeForm.Ingrediant2 }
+                );
                 lifeForm.Created = true;
             }
         }
-
 
         private void SortDirections()
         {
@@ -625,8 +615,7 @@ namespace KTANE_Solver
                         break;
                     }
                 }
-            }
-            while (notSorted);
+            } while (notSorted);
         }
 
         private void BreakUpDirections()
@@ -647,7 +636,6 @@ namespace KTANE_Solver
                 {
                     brokenUpDirections.Add(new LifeForm[][] { directions[endIndex] });
                 }
-
                 else
                 {
                     List<LifeForm[]> newArray = new List<LifeForm[]>();
@@ -661,12 +649,10 @@ namespace KTANE_Solver
                     brokenUpDirections.Add(newArray.ToArray());
                 }
 
-
                 for (int i = 0; i <= endIndex; i++)
                 {
                     directions.RemoveAt(0);
                 }
-
             } while (directions.Count != 0);
 
             brokenUpDirections.Reverse();
@@ -773,9 +759,7 @@ namespace KTANE_Solver
                 answerSegments.Add($"{element1} + {element2}");
             }
 
-
-
-             ShowAnswer($"\n" + string.Join(",\n", answerSegments), true);
+            ShowAnswer($"\n" + string.Join(",\n", answerSegments), true);
         }
 
         public class LifeForm
@@ -794,6 +778,6 @@ namespace KTANE_Solver
                 Ingrediant2 = ingrediant2;
                 Created = false;
             }
-}
+        }
     }
 }

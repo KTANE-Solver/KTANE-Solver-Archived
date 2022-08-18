@@ -16,8 +16,7 @@ namespace KTANE_Solver
     public class Button : Module
     {
         public Button(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Button")
-        { 
-        }
+        { }
 
         public string Solve(Color color, String word)
         {
@@ -30,61 +29,51 @@ namespace KTANE_Solver
                 {
                     answer = DentonateAnswer();
                 }
-
                 else if (word == "Hold")
                 {
                     answer = PressAnswer();
                 }
-
                 else
                 {
                     answer = CheckAnswer();
                 }
             }
-
             else if (color == Color.Blue)
             {
                 if (word == "Abort")
                 {
                     answer = HoldAnswer();
                 }
-
                 else if (word == "Detonate")
                 {
                     answer = DentonateAnswer();
                 }
-
                 else
                 {
                     answer = CheckAnswer();
                 }
             }
-
             else if (color == Color.White)
             {
                 if (word == "Detonate")
                 {
                     answer = DentonateAnswer();
                 }
-
                 else if (Bomb.Car.Lit)
                 {
                     answer = HoldAnswer();
                 }
-
                 else
                 {
                     answer = CheckAnswer();
                 }
             }
-
             else
             {
                 if (word == "Detonate")
                 {
                     answer = DentonateAnswer();
                 }
-
                 else
                 {
                     answer = CheckAnswer();

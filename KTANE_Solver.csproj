@@ -431,11 +431,5 @@
     <EmbeddedResource Remove="KTANE-Solver\WireSequenceStage1Form.resx" />
     <EmbeddedResource Remove="KTANE-Solver\WiresForm.resx" />
     <EmbeddedResource Remove="KTANE-Solver\WordSearchForm.resx" />
-    <EmbeddedResource Remove="RoundKeypadAnswerForm.resx" />
-    <EmbeddedResource Remove="RoundKeypadForm.resx" />
-    <EmbeddedResource Remove="SafetySafeForm.resx" />
-    <EmbeddedResource Remove="SeaShellsForm.resx" />
-    <EmbeddedResource Remove="ShapeShiftPictureForm.resx" />
-    <EmbeddedResource Remove="ShapeShiftWordForm.resx" />
   </ItemGroup>
 </Project>

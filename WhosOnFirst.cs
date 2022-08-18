@@ -23,7 +23,6 @@ namespace KTANE_Solver
 
         private String display;
 
-
         //the six buttons
         private String topLeft;
         private String topRight;
@@ -51,8 +50,18 @@ namespace KTANE_Solver
         /// <param name="bottomRight"></param>
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
-        public WhosOnFirst(int stage, String display, String topLeft, String topRight, String midLeft, String midRight, String bottomLeft, String bottomRight, Bomb bomb, StreamWriter logFileWriter)
-        : base(bomb, logFileWriter, "Who's on First")
+        public WhosOnFirst(
+            int stage,
+            String display,
+            String topLeft,
+            String topRight,
+            String midLeft,
+            String midRight,
+            String bottomLeft,
+            String bottomRight,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "Who's on First")
         {
             this.stage = stage;
 
@@ -63,8 +72,6 @@ namespace KTANE_Solver
             this.midRight = midRight;
             this.bottomLeft = bottomLeft;
             this.bottomRight = bottomRight;
-
-            
         }
 
         public void Solve()
@@ -138,124 +145,570 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Reference: {reference}\n");
 
-
             //an array that will hold the order of words depending on the reference
             String[] orderOfWords = new string[0];
-
 
             //set up the order of words
             switch (reference)
             {
                 case "READY":
-                    orderOfWords = new string[] { "YES", "OKAY", "WHAT", "MIDDLE", "LEFT", "PRESS", "RIGHT", "BLANK", "READY", "NO", "FIRST", "UHHH", "NOTHING", "WAIT"};
+                    orderOfWords = new string[]
+                    {
+                        "YES",
+                        "OKAY",
+                        "WHAT",
+                        "MIDDLE",
+                        "LEFT",
+                        "PRESS",
+                        "RIGHT",
+                        "BLANK",
+                        "READY",
+                        "NO",
+                        "FIRST",
+                        "UHHH",
+                        "NOTHING",
+                        "WAIT"
+                    };
                     break;
 
                 case "FIRST":
-                    orderOfWords = new string[] { "LEFT", "OKAY", "YES", "MIDDLE", "NO", "RIGHT", "NOTHING", "UHHH", "WAIT", "READY", "BLANK", "WHAT", "PRESS", "FIRST"};
+                    orderOfWords = new string[]
+                    {
+                        "LEFT",
+                        "OKAY",
+                        "YES",
+                        "MIDDLE",
+                        "NO",
+                        "RIGHT",
+                        "NOTHING",
+                        "UHHH",
+                        "WAIT",
+                        "READY",
+                        "BLANK",
+                        "WHAT",
+                        "PRESS",
+                        "FIRST"
+                    };
                     break;
 
                 case "NO":
-                    orderOfWords = new string[] { "BLANK", "UHHH", "WAIT", "FIRST", "WHAT", "READY", "RIGHT", "YES", "NOTHING", "LEFT", "PRESS", "OKAY", "NO", "MIDDLE"};
+                    orderOfWords = new string[]
+                    {
+                        "BLANK",
+                        "UHHH",
+                        "WAIT",
+                        "FIRST",
+                        "WHAT",
+                        "READY",
+                        "RIGHT",
+                        "YES",
+                        "NOTHING",
+                        "LEFT",
+                        "PRESS",
+                        "OKAY",
+                        "NO",
+                        "MIDDLE"
+                    };
                     break;
 
                 case "BLANK":
-                    orderOfWords = new string[] { "WAIT", "RIGHT", "OKAY", "MIDDLE", "BLANK", "PRESS", "READY", "NOTHING", "NO", "WHAT", "LEFT", "UHHH", "YES", "FIRST"};
+                    orderOfWords = new string[]
+                    {
+                        "WAIT",
+                        "RIGHT",
+                        "OKAY",
+                        "MIDDLE",
+                        "BLANK",
+                        "PRESS",
+                        "READY",
+                        "NOTHING",
+                        "NO",
+                        "WHAT",
+                        "LEFT",
+                        "UHHH",
+                        "YES",
+                        "FIRST"
+                    };
                     break;
 
                 case "NOTHING":
-                    orderOfWords = new string[] { "UHHH", "RIGHT", "OKAY", "MIDDLE", "YES", "BLANK", "NO", "PRESS", "LEFT", "WHAT", "WAIT", "FIRST", "NOTHING", "READY"};
+                    orderOfWords = new string[]
+                    {
+                        "UHHH",
+                        "RIGHT",
+                        "OKAY",
+                        "MIDDLE",
+                        "YES",
+                        "BLANK",
+                        "NO",
+                        "PRESS",
+                        "LEFT",
+                        "WHAT",
+                        "WAIT",
+                        "FIRST",
+                        "NOTHING",
+                        "READY"
+                    };
                     break;
 
                 case "YES":
-                    orderOfWords = new string[] { "OKAY", "RIGHT", "UHHH", "MIDDLE", "FIRST", "WHAT", "PRESS", "READY", "NOTHING", "YES", "LEFT", "BLANK", "NO", "WAIT"};
+                    orderOfWords = new string[]
+                    {
+                        "OKAY",
+                        "RIGHT",
+                        "UHHH",
+                        "MIDDLE",
+                        "FIRST",
+                        "WHAT",
+                        "PRESS",
+                        "READY",
+                        "NOTHING",
+                        "YES",
+                        "LEFT",
+                        "BLANK",
+                        "NO",
+                        "WAIT"
+                    };
                     break;
 
                 case "WHAT":
-                    orderOfWords = new string[] { "UHHH", "WHAT", "LEFT", "NOTHING", "READY", "BLANK", "MIDDLE", "NO", "OKAY", "FIRST", "WAIT", "YES", "PRESS", "RIGHT"};
+                    orderOfWords = new string[]
+                    {
+                        "UHHH",
+                        "WHAT",
+                        "LEFT",
+                        "NOTHING",
+                        "READY",
+                        "BLANK",
+                        "MIDDLE",
+                        "NO",
+                        "OKAY",
+                        "FIRST",
+                        "WAIT",
+                        "YES",
+                        "PRESS",
+                        "RIGHT"
+                    };
                     break;
 
                 case "UHHH":
-                    orderOfWords = new string[] { "READY", "NOTHING", "LEFT", "WHAT", "OKAY", "YES", "RIGHT", "NO", "PRESS", "BLANK", "UHHH", "MIDDLE", "WAIT", "FIRST"};
+                    orderOfWords = new string[]
+                    {
+                        "READY",
+                        "NOTHING",
+                        "LEFT",
+                        "WHAT",
+                        "OKAY",
+                        "YES",
+                        "RIGHT",
+                        "NO",
+                        "PRESS",
+                        "BLANK",
+                        "UHHH",
+                        "MIDDLE",
+                        "WAIT",
+                        "FIRST"
+                    };
                     break;
 
                 case "LEFT":
-                    orderOfWords = new string[] { "RIGHT", "LEFT", "FIRST", "NO", "MIDDLE", "YES", "BLANK", "WHAT", "UHHH", "WAIT", "PRESS", "READY", "OKAY", "NOTHING"};
+                    orderOfWords = new string[]
+                    {
+                        "RIGHT",
+                        "LEFT",
+                        "FIRST",
+                        "NO",
+                        "MIDDLE",
+                        "YES",
+                        "BLANK",
+                        "WHAT",
+                        "UHHH",
+                        "WAIT",
+                        "PRESS",
+                        "READY",
+                        "OKAY",
+                        "NOTHING"
+                    };
                     break;
 
                 case "RIGHT":
-                    orderOfWords = new string[] { "YES", "NOTHING", "READY", "PRESS", "NO", "WAIT", "WHAT", "RIGHT", "MIDDLE", "LEFT", "UHHH", "BLANK", "OKAY", "FIRST"};
+                    orderOfWords = new string[]
+                    {
+                        "YES",
+                        "NOTHING",
+                        "READY",
+                        "PRESS",
+                        "NO",
+                        "WAIT",
+                        "WHAT",
+                        "RIGHT",
+                        "MIDDLE",
+                        "LEFT",
+                        "UHHH",
+                        "BLANK",
+                        "OKAY",
+                        "FIRST"
+                    };
                     break;
 
                 case "MIDDLE":
-                    orderOfWords = new string[] { "BLANK", "READY", "OKAY", "WHAT", "NOTHING", "PRESS", "NO", "WAIT", "LEFT", "MIDDLE", "RIGHT", "FIRST", "UHHH", "YES"};
+                    orderOfWords = new string[]
+                    {
+                        "BLANK",
+                        "READY",
+                        "OKAY",
+                        "WHAT",
+                        "NOTHING",
+                        "PRESS",
+                        "NO",
+                        "WAIT",
+                        "LEFT",
+                        "MIDDLE",
+                        "RIGHT",
+                        "FIRST",
+                        "UHHH",
+                        "YES"
+                    };
                     break;
 
                 case "OKAY":
-                    orderOfWords = new string[] { "MIDDLE", "NO", "FIRST", "YES", "UHHH", "NOTHING", "WAIT", "OKAY", "LEFT", "READY", "BLANK", "PRESS", "WHAT", "RIGHT"};
+                    orderOfWords = new string[]
+                    {
+                        "MIDDLE",
+                        "NO",
+                        "FIRST",
+                        "YES",
+                        "UHHH",
+                        "NOTHING",
+                        "WAIT",
+                        "OKAY",
+                        "LEFT",
+                        "READY",
+                        "BLANK",
+                        "PRESS",
+                        "WHAT",
+                        "RIGHT"
+                    };
                     break;
 
                 case "WAIT":
-                    orderOfWords = new string[] { "UHHH", "NO", "BLANK", "OKAY", "YES", "LEFT", "FIRST", "PRESS", "WHAT", "WAIT", "NOTHING", "READY", "RIGHT", "MIDDLE"};
+                    orderOfWords = new string[]
+                    {
+                        "UHHH",
+                        "NO",
+                        "BLANK",
+                        "OKAY",
+                        "YES",
+                        "LEFT",
+                        "FIRST",
+                        "PRESS",
+                        "WHAT",
+                        "WAIT",
+                        "NOTHING",
+                        "READY",
+                        "RIGHT",
+                        "MIDDLE"
+                    };
                     break;
 
                 case "PRESS":
-                    orderOfWords = new string[] { "RIGHT", "MIDDLE", "YES", "READY", "PRESS", "OKAY", "NOTHING", "UHHH", "BLANK", "LEFT", "FIRST", "WHAT", "NO", "WAIT"};
+                    orderOfWords = new string[]
+                    {
+                        "RIGHT",
+                        "MIDDLE",
+                        "YES",
+                        "READY",
+                        "PRESS",
+                        "OKAY",
+                        "NOTHING",
+                        "UHHH",
+                        "BLANK",
+                        "LEFT",
+                        "FIRST",
+                        "WHAT",
+                        "NO",
+                        "WAIT"
+                    };
                     break;
 
                 case "YOU":
-                    orderOfWords = new string[] { "SURE", "YOU ARE", "YOUR", "YOU'RE", "NEXT", "UH HUH", "UR", "HOLD", "WHAT?", "YOU", "UH UH", "LIKE", "DONE", "U"};
+                    orderOfWords = new string[]
+                    {
+                        "SURE",
+                        "YOU ARE",
+                        "YOUR",
+                        "YOU'RE",
+                        "NEXT",
+                        "UH HUH",
+                        "UR",
+                        "HOLD",
+                        "WHAT?",
+                        "YOU",
+                        "UH UH",
+                        "LIKE",
+                        "DONE",
+                        "U"
+                    };
                     break;
 
                 case "YOU ARE":
-                    orderOfWords = new string[] {"YOUR", "NEXT", "LIKE", "UH HUH", "WHAT?", "DONE", "UH UH", "HOLD", "YOU", "U", "YOU'RE", "SURE", "UR", "YOU ARE"};
+                    orderOfWords = new string[]
+                    {
+                        "YOUR",
+                        "NEXT",
+                        "LIKE",
+                        "UH HUH",
+                        "WHAT?",
+                        "DONE",
+                        "UH UH",
+                        "HOLD",
+                        "YOU",
+                        "U",
+                        "YOU'RE",
+                        "SURE",
+                        "UR",
+                        "YOU ARE"
+                    };
                     break;
 
                 case "YOUR":
-                    orderOfWords = new string[] { "UH UH", "YOU ARE", "UH HUH", "YOUR", "NEXT", "UR", "SURE", "U", "YOU'RE", "YOU", "WHAT?", "HOLD", "LIKE", "DONE"};
+                    orderOfWords = new string[]
+                    {
+                        "UH UH",
+                        "YOU ARE",
+                        "UH HUH",
+                        "YOUR",
+                        "NEXT",
+                        "UR",
+                        "SURE",
+                        "U",
+                        "YOU'RE",
+                        "YOU",
+                        "WHAT?",
+                        "HOLD",
+                        "LIKE",
+                        "DONE"
+                    };
                     break;
 
                 case "YOU'RE":
-                    orderOfWords = new string[] {"YOU", "YOU'RE", "UR", "NEXT", "UH UH", "YOU ARE", "U", "YOUR", "WHAT?", "UH HUH", "SURE", "DONE", "LIKE", "HOLD"};
+                    orderOfWords = new string[]
+                    {
+                        "YOU",
+                        "YOU'RE",
+                        "UR",
+                        "NEXT",
+                        "UH UH",
+                        "YOU ARE",
+                        "U",
+                        "YOUR",
+                        "WHAT?",
+                        "UH HUH",
+                        "SURE",
+                        "DONE",
+                        "LIKE",
+                        "HOLD"
+                    };
                     break;
 
                 case "UR":
-                    orderOfWords = new string[] { "DONE", "U", "UR", "UH HUH", "WHAT?", "SURE", "YOUR", "HOLD", "YOU'RE", "LIKE", "NEXT", "UH UH", "YOU ARE", "YOU"};
+                    orderOfWords = new string[]
+                    {
+                        "DONE",
+                        "U",
+                        "UR",
+                        "UH HUH",
+                        "WHAT?",
+                        "SURE",
+                        "YOUR",
+                        "HOLD",
+                        "YOU'RE",
+                        "LIKE",
+                        "NEXT",
+                        "UH UH",
+                        "YOU ARE",
+                        "YOU"
+                    };
                     break;
 
                 case "U":
-                    orderOfWords = new string[] {"UH HUH", "SURE", "NEXT", "WHAT?", "YOU'RE", "UR", "UH UH", "DONE", "U", "YOU", "LIKE", "HOLD", "YOU ARE", "YOUR"};
+                    orderOfWords = new string[]
+                    {
+                        "UH HUH",
+                        "SURE",
+                        "NEXT",
+                        "WHAT?",
+                        "YOU'RE",
+                        "UR",
+                        "UH UH",
+                        "DONE",
+                        "U",
+                        "YOU",
+                        "LIKE",
+                        "HOLD",
+                        "YOU ARE",
+                        "YOUR"
+                    };
                     break;
 
                 case "UH HUH":
-                    orderOfWords = new string[] {"UH HUH", "YOUR", "YOU ARE", "YOU", "DONE", "HOLD", "UH UH", "NEXT", "SURE", "LIKE", "YOU'RE", "UR", "U", "WHAT?"};
+                    orderOfWords = new string[]
+                    {
+                        "UH HUH",
+                        "YOUR",
+                        "YOU ARE",
+                        "YOU",
+                        "DONE",
+                        "HOLD",
+                        "UH UH",
+                        "NEXT",
+                        "SURE",
+                        "LIKE",
+                        "YOU'RE",
+                        "UR",
+                        "U",
+                        "WHAT?"
+                    };
                     break;
 
                 case "UH UH":
-                    orderOfWords = new string[] {"UR", "U", "YOU ARE", "YOU'RE", "NEXT", "UH UH", "DONE", "YOU", "UH HUH", "LIKE", "YOUR", "SURE", "HOLD", "WHAT?"};
+                    orderOfWords = new string[]
+                    {
+                        "UR",
+                        "U",
+                        "YOU ARE",
+                        "YOU'RE",
+                        "NEXT",
+                        "UH UH",
+                        "DONE",
+                        "YOU",
+                        "UH HUH",
+                        "LIKE",
+                        "YOUR",
+                        "SURE",
+                        "HOLD",
+                        "WHAT?"
+                    };
                     break;
 
                 case "WHAT?":
-                    orderOfWords = new string[] { "YOU", "HOLD", "YOU'RE", "YOUR", "U", "DONE", "UH UH", "LIKE", "YOU ARE", "UH HUH", "UR", "NEXT", "WHAT?", "SURE"};
+                    orderOfWords = new string[]
+                    {
+                        "YOU",
+                        "HOLD",
+                        "YOU'RE",
+                        "YOUR",
+                        "U",
+                        "DONE",
+                        "UH UH",
+                        "LIKE",
+                        "YOU ARE",
+                        "UH HUH",
+                        "UR",
+                        "NEXT",
+                        "WHAT?",
+                        "SURE"
+                    };
                     break;
 
                 case "DONE":
-                    orderOfWords = new string[] {"SURE", "UH HUH", "NEXT", "WHAT?", "YOUR", "UR", "YOU'RE", "HOLD", "LIKE", "YOU", "U", "YOU ARE", "UH UH", "DONE"};
+                    orderOfWords = new string[]
+                    {
+                        "SURE",
+                        "UH HUH",
+                        "NEXT",
+                        "WHAT?",
+                        "YOUR",
+                        "UR",
+                        "YOU'RE",
+                        "HOLD",
+                        "LIKE",
+                        "YOU",
+                        "U",
+                        "YOU ARE",
+                        "UH UH",
+                        "DONE"
+                    };
                     break;
 
                 case "NEXT":
-                    orderOfWords = new string[] { "WHAT?", "UH HUH", "UH UH", "YOUR", "HOLD", "SURE", "NEXT", "LIKE", "DONE", "YOU ARE", "UR", "YOU'RE", "U", "YOU"};
+                    orderOfWords = new string[]
+                    {
+                        "WHAT?",
+                        "UH HUH",
+                        "UH UH",
+                        "YOUR",
+                        "HOLD",
+                        "SURE",
+                        "NEXT",
+                        "LIKE",
+                        "DONE",
+                        "YOU ARE",
+                        "UR",
+                        "YOU'RE",
+                        "U",
+                        "YOU"
+                    };
                     break;
 
                 case "HOLD":
-                    orderOfWords = new string[] { "YOU ARE", "U", "DONE", "UH UH", "YOU", "UR", "SURE", "WHAT?", "YOU'RE", "NEXT", "HOLD", "UH HUH", "YOUR", "LIKE"};
+                    orderOfWords = new string[]
+                    {
+                        "YOU ARE",
+                        "U",
+                        "DONE",
+                        "UH UH",
+                        "YOU",
+                        "UR",
+                        "SURE",
+                        "WHAT?",
+                        "YOU'RE",
+                        "NEXT",
+                        "HOLD",
+                        "UH HUH",
+                        "YOUR",
+                        "LIKE"
+                    };
                     break;
 
                 case "SURE":
-                    orderOfWords = new string[] {"YOU ARE", "DONE", "LIKE", "YOU'RE", "YOU", "HOLD", "UH HUH", "UR", "SURE", "U", "WHAT?", "NEXT", "YOUR", "UH UH"};
+                    orderOfWords = new string[]
+                    {
+                        "YOU ARE",
+                        "DONE",
+                        "LIKE",
+                        "YOU'RE",
+                        "YOU",
+                        "HOLD",
+                        "UH HUH",
+                        "UR",
+                        "SURE",
+                        "U",
+                        "WHAT?",
+                        "NEXT",
+                        "YOUR",
+                        "UH UH"
+                    };
                     break;
 
                 case "LIKE":
-                    orderOfWords = new string[] {"YOU'RE", "NEXT", "U", "UR", "HOLD", "DONE", "UH UH", "WHAT?", "UH HUH", "YOU", "LIKE", "SURE", "YOU ARE", "YOUR"};
+                    orderOfWords = new string[]
+                    {
+                        "YOU'RE",
+                        "NEXT",
+                        "U",
+                        "UR",
+                        "HOLD",
+                        "DONE",
+                        "UH UH",
+                        "WHAT?",
+                        "UH HUH",
+                        "YOU",
+                        "LIKE",
+                        "SURE",
+                        "YOU ARE",
+                        "YOUR"
+                    };
                     break;
             }
 
@@ -288,19 +741,14 @@ namespace KTANE_Solver
 
             if (smallest == topLeftIndex)
                 answer = topLeft;
-
             else if (smallest == topRightIndex)
                 answer = topRight;
-
             else if (smallest == midLeftIndex)
                 answer = midLeft;
-
             else if (smallest == midRightIndex)
                 answer = midRight;
-
             else if (smallest == bottomLeftIndex)
                 answer = bottomLeft;
-
             else
                 answer = bottomRight;
 
@@ -308,10 +756,5 @@ namespace KTANE_Solver
 
             ShowAnswer(answer, true);
         }
-
-
-
-
-
     }
 }

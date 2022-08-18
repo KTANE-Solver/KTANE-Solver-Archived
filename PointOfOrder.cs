@@ -17,7 +17,8 @@ namespace KTANE_Solver
         private int requiredDifference1;
         private int requiredDifference2;
 
-        public PointOfOrder(Bomb bomb, StreamWriter logFileWriter, Card [] cards) : base(bomb, logFileWriter, "Point of Order")
+        public PointOfOrder(Bomb bomb, StreamWriter logFileWriter, Card[] cards)
+            : base(bomb, logFileWriter, "Point of Order")
         {
             this.cards = cards;
             rule1 = false;
@@ -38,15 +39,22 @@ namespace KTANE_Solver
             }
 
             if (rule2)
-            { 
+            {
                 answer.Add($"Number: " + string.Join(", ", rule2List));
-
             }
 
             if (rule3)
-            { 
-                answer.Add($"Number: " + string.Join(", ", FindNextNumbers(new int[] { requiredDifference1, requiredDifference2}, cards[4].number)));
-
+            {
+                answer.Add(
+                    $"Number: "
+                        + string.Join(
+                            ", ",
+                            FindNextNumbers(
+                                new int[] { requiredDifference1, requiredDifference2 },
+                                cards[4].number
+                            )
+                        )
+                );
             }
 
             ShowAnswer(string.Join("\n", answer), true);
@@ -55,7 +63,7 @@ namespace KTANE_Solver
         private void Rule1()
         {
             suitRow = FindSuitRow();
-            
+
             rule1 = true;
 
             //suit rule
@@ -80,12 +88,12 @@ namespace KTANE_Solver
 
             if (num == 0)
             {
-                num += 3; 
+                num += 3;
             }
 
             rule2List = new List<Number>();
 
-            foreach (int i in  Enum.GetValues(typeof(Number)))
+            foreach (int i in Enum.GetValues(typeof(Number)))
             {
                 if (i + 1 % num == 0)
                 {
@@ -126,7 +134,7 @@ namespace KTANE_Solver
                     difference += 12;
                 }
 
-                while(difference > 12)
+                while (difference > 12)
                 {
                     difference -= 12;
                 }
@@ -165,7 +173,6 @@ namespace KTANE_Solver
             return answer.Distinct().ToArray();
         }
 
-
         private Dictionary<Suit, Suit[]> FindSuitRow()
         {
             Dictionary<Suit, Suit[]> dicitionary = new Dictionary<Suit, Suit[]>();
@@ -179,7 +186,6 @@ namespace KTANE_Solver
                     dicitionary.Add(Suit.CLUB, new Suit[] { Suit.HEART, Suit.SPADE });
                     dicitionary.Add(Suit.DIAMOND, new Suit[] { Suit.CLUB, Suit.HEART });
                 }
-
                 else
                 {
                     dicitionary.Add(Suit.SPADE, new Suit[] { Suit.HEART, Suit.CLUB });
@@ -188,7 +194,6 @@ namespace KTANE_Solver
                     dicitionary.Add(Suit.DIAMOND, new Suit[] { Suit.SPADE, Suit.HEART });
                 }
             }
-
             else
             {
                 if (Bomb.SerialNumber[1] >= 48 && Bomb.SerialNumber[1] <= 57)
@@ -198,7 +203,6 @@ namespace KTANE_Solver
                     dicitionary.Add(Suit.CLUB, new Suit[] { Suit.HEART, Suit.CLUB });
                     dicitionary.Add(Suit.DIAMOND, new Suit[] { Suit.DIAMOND, Suit.CLUB });
                 }
-
                 else
                 {
                     dicitionary.Add(Suit.SPADE, new Suit[] { Suit.SPADE, Suit.CLUB });
@@ -211,9 +215,8 @@ namespace KTANE_Solver
             return dicitionary;
         }
 
-
         public enum Number
-        { 
+        {
             ACE,
             TWO,
             THREE,
@@ -230,7 +233,7 @@ namespace KTANE_Solver
         }
 
         public enum Suit
-        { 
+        {
             DIAMOND,
             HEART,
             SPADE,
@@ -238,7 +241,7 @@ namespace KTANE_Solver
         }
 
         public class Card
-        { 
+        {
             public Suit suit { get; }
             public Number number { get; }
 
@@ -248,6 +251,5 @@ namespace KTANE_Solver
                 this.number = number;
             }
         }
-
     }
 }

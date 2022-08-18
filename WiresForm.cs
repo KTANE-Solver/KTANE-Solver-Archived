@@ -18,14 +18,21 @@ namespace KTANE_Solver
     /// </summary>
     public partial class WiresForm : ModuleForm
     {
-        public WiresForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Wires", false)
+        public WiresForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Wires", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             UpdateEdgeWork(bomb, logFileWriter, moduleSelectionForm);
 
@@ -43,7 +50,7 @@ namespace KTANE_Solver
         /// <param name="comboBox"></param>
         private void SetUpFirstThreeComboBoxes(ComboBox comboBox)
         {
-            String[] items = new String[] {"Black", "Blue", "Red", "White", "Yellow" };
+            String[] items = new String[] { "Black", "Blue", "Red", "White", "Yellow" };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
             comboBox.Text = items[0];
@@ -81,7 +88,6 @@ namespace KTANE_Solver
 
             bool errorFound = false;
 
-
             //if 5th or 6th wire are not blank, but 4th is, then there's an error
             if (wire5 != "" && wire4 == "")
             {
@@ -116,7 +122,16 @@ namespace KTANE_Solver
 
             PrintHeader();
 
-            Wires wireModule = new Wires(wire1, wire2, wire3, wire4, wire5, wire6, Bomb, LogFileWriter);
+            Wires wireModule = new Wires(
+                wire1,
+                wire2,
+                wire3,
+                wire4,
+                wire5,
+                wire6,
+                Bomb,
+                LogFileWriter
+            );
             wireModule.Solve();
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }

@@ -36,7 +36,20 @@ namespace KTANE_Solver
         NumberPadTree tree3;
         NumberPadTree tree4;
 
-        public NumberPad(Color zeroColor, Color oneColor, Color twoColor, Color threeColor, Color fourColor, Color fiveColor, Color sixColor, Color sevenColor, Color eightColor, Color nineColor, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Number Pad")
+        public NumberPad(
+            Color zeroColor,
+            Color oneColor,
+            Color twoColor,
+            Color threeColor,
+            Color fourColor,
+            Color fiveColor,
+            Color sixColor,
+            Color sevenColor,
+            Color eightColor,
+            Color nineColor,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "Number Pad")
         {
             this.zeroColor = zeroColor;
             this.oneColor = oneColor;
@@ -52,7 +65,6 @@ namespace KTANE_Solver
             SetUpTrees();
         }
 
-
         private void SetUpTrees()
         {
             //tree 1
@@ -60,106 +72,320 @@ namespace KTANE_Solver
             tree1 = new NumberPadTree(new NumberPadNode(2));
 
             //level 2
-            tree1.Root.Children = new List<NumberPadNode> { new NumberPadNode(2), new NumberPadNode(3), new NumberPadNode(9), new NumberPadNode(0) };
+            tree1.Root.Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(2),
+                new NumberPadNode(3),
+                new NumberPadNode(9),
+                new NumberPadNode(0)
+            };
 
             //level 3
-            tree1.Root.Children[0].Children = new List<NumberPadNode> { new NumberPadNode(4), new NumberPadNode(3) };
-            tree1.Root.Children[1].Children = new List<NumberPadNode> { new NumberPadNode(9), new NumberPadNode(4) };
-            tree1.Root.Children[2].Children = new List<NumberPadNode> { new NumberPadNode(0), new NumberPadNode(9) };
-            tree1.Root.Children[3].Children = new List<NumberPadNode> { new NumberPadNode(7), new NumberPadNode(9) };
+            tree1.Root.Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(4),
+                new NumberPadNode(3)
+            };
+            tree1.Root.Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(9),
+                new NumberPadNode(4)
+            };
+            tree1.Root.Children[2].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(0),
+                new NumberPadNode(9)
+            };
+            tree1.Root.Children[3].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(7),
+                new NumberPadNode(9)
+            };
 
             //level 4
-            tree1.Root.Children[0].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(8) };
-            tree1.Root.Children[0].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(1), new NumberPadNode(3) };
+            tree1.Root.Children[0].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(8)
+            };
+            tree1.Root.Children[0].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(1),
+                new NumberPadNode(3)
+            };
 
-            tree1.Root.Children[1].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(5), new NumberPadNode(1) };
-            tree1.Root.Children[1].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(3), new NumberPadNode(6) };
+            tree1.Root.Children[1].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(5),
+                new NumberPadNode(1)
+            };
+            tree1.Root.Children[1].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(3),
+                new NumberPadNode(6)
+            };
 
-            tree1.Root.Children[2].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(9), new NumberPadNode(7) };
-            tree1.Root.Children[2].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(8), new NumberPadNode(9) };
+            tree1.Root.Children[2].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(9),
+                new NumberPadNode(7)
+            };
+            tree1.Root.Children[2].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(8),
+                new NumberPadNode(9)
+            };
 
-            tree1.Root.Children[3].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(8), new NumberPadNode(9) };
-            tree1.Root.Children[3].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(4), new NumberPadNode(0) };
+            tree1.Root.Children[3].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(8),
+                new NumberPadNode(9)
+            };
+            tree1.Root.Children[3].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(4),
+                new NumberPadNode(0)
+            };
 
             //tree 2
             //level 1
             tree2 = new NumberPadTree(new NumberPadNode(5));
 
             //level 2
-            tree2.Root.Children = new List<NumberPadNode> { new NumberPadNode(2), new NumberPadNode(6), new NumberPadNode(0), new NumberPadNode(9) };
+            tree2.Root.Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(2),
+                new NumberPadNode(6),
+                new NumberPadNode(0),
+                new NumberPadNode(9)
+            };
 
             //level 3
-            tree2.Root.Children[0].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(4) };
-            tree2.Root.Children[1].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(2) };
-            tree2.Root.Children[2].Children = new List<NumberPadNode> { new NumberPadNode(2), new NumberPadNode(8) };
-            tree2.Root.Children[3].Children = new List<NumberPadNode> { new NumberPadNode(7), new NumberPadNode(4) };
+            tree2.Root.Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(4)
+            };
+            tree2.Root.Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(2)
+            };
+            tree2.Root.Children[2].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(2),
+                new NumberPadNode(8)
+            };
+            tree2.Root.Children[3].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(7),
+                new NumberPadNode(4)
+            };
 
             //level 4
-            tree2.Root.Children[0].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(0), new NumberPadNode(3) };
-            tree2.Root.Children[0].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(1), new NumberPadNode(7) };
+            tree2.Root.Children[0].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(0),
+                new NumberPadNode(3)
+            };
+            tree2.Root.Children[0].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(1),
+                new NumberPadNode(7)
+            };
 
-            tree2.Root.Children[1].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(3), new NumberPadNode(5) };
-            tree2.Root.Children[1].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(8), new NumberPadNode(5) };
+            tree2.Root.Children[1].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(3),
+                new NumberPadNode(5)
+            };
+            tree2.Root.Children[1].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(8),
+                new NumberPadNode(5)
+            };
 
-            tree2.Root.Children[2].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(0) };
-            tree2.Root.Children[2].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(0) };
+            tree2.Root.Children[2].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(0)
+            };
+            tree2.Root.Children[2].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(0)
+            };
 
-            tree2.Root.Children[3].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(9), new NumberPadNode(8) };
-            tree2.Root.Children[3].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(2), new NumberPadNode(9) };
+            tree2.Root.Children[3].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(9),
+                new NumberPadNode(8)
+            };
+            tree2.Root.Children[3].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(2),
+                new NumberPadNode(9)
+            };
 
             //tree 3
             //level 1
             tree3 = new NumberPadTree(new NumberPadNode(7));
 
             //level 2
-            tree3.Root.Children = new List<NumberPadNode> { new NumberPadNode(4), new NumberPadNode(7), new NumberPadNode(2), new NumberPadNode(0) };
+            tree3.Root.Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(4),
+                new NumberPadNode(7),
+                new NumberPadNode(2),
+                new NumberPadNode(0)
+            };
 
             //level 3
-            tree3.Root.Children[0].Children = new List<NumberPadNode> { new NumberPadNode(9), new NumberPadNode(8) };
-            tree3.Root.Children[1].Children = new List<NumberPadNode> { new NumberPadNode(1), new NumberPadNode(5) };
-            tree3.Root.Children[2].Children = new List<NumberPadNode> { new NumberPadNode(8), new NumberPadNode(0) };
-            tree3.Root.Children[3].Children = new List<NumberPadNode> { new NumberPadNode(0), new NumberPadNode(9) };
+            tree3.Root.Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(9),
+                new NumberPadNode(8)
+            };
+            tree3.Root.Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(1),
+                new NumberPadNode(5)
+            };
+            tree3.Root.Children[2].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(8),
+                new NumberPadNode(0)
+            };
+            tree3.Root.Children[3].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(0),
+                new NumberPadNode(9)
+            };
 
             //level 4
-            tree3.Root.Children[0].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(1), new NumberPadNode(4) };
-            tree3.Root.Children[0].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(0), new NumberPadNode(8) };
+            tree3.Root.Children[0].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(1),
+                new NumberPadNode(4)
+            };
+            tree3.Root.Children[0].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(0),
+                new NumberPadNode(8)
+            };
 
-            tree3.Root.Children[1].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(8), new NumberPadNode(5) };
-            tree3.Root.Children[1].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(8), new NumberPadNode(3) };
+            tree3.Root.Children[1].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(8),
+                new NumberPadNode(5)
+            };
+            tree3.Root.Children[1].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(8),
+                new NumberPadNode(3)
+            };
 
-            tree3.Root.Children[2].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(0) };
-            tree3.Root.Children[2].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(8), new NumberPadNode(2) };
+            tree3.Root.Children[2].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(0)
+            };
+            tree3.Root.Children[2].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(8),
+                new NumberPadNode(2)
+            };
 
-            tree3.Root.Children[3].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(3), new NumberPadNode(4) };
-            tree3.Root.Children[3].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(0), new NumberPadNode(3) };
+            tree3.Root.Children[3].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(3),
+                new NumberPadNode(4)
+            };
+            tree3.Root.Children[3].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(0),
+                new NumberPadNode(3)
+            };
 
             //tree 4
             //level 1
             tree4 = new NumberPadTree(new NumberPadNode(8));
 
             //level 2
-            tree4.Root.Children = new List<NumberPadNode> { new NumberPadNode(9), new NumberPadNode(6), new NumberPadNode(3), new NumberPadNode(1) };
+            tree4.Root.Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(9),
+                new NumberPadNode(6),
+                new NumberPadNode(3),
+                new NumberPadNode(1)
+            };
 
             //level 3
-            tree4.Root.Children[0].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(0) };
-            tree4.Root.Children[1].Children = new List<NumberPadNode> { new NumberPadNode(9), new NumberPadNode(2) };
-            tree4.Root.Children[2].Children = new List<NumberPadNode> { new NumberPadNode(3), new NumberPadNode(6) };
-            tree4.Root.Children[3].Children = new List<NumberPadNode> { new NumberPadNode(2), new NumberPadNode(3) };
+            tree4.Root.Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(0)
+            };
+            tree4.Root.Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(9),
+                new NumberPadNode(2)
+            };
+            tree4.Root.Children[2].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(3),
+                new NumberPadNode(6)
+            };
+            tree4.Root.Children[3].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(2),
+                new NumberPadNode(3)
+            };
 
             //level 4
-            tree4.Root.Children[0].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(7), new NumberPadNode(5) };
-            tree4.Root.Children[0].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(1) };
+            tree4.Root.Children[0].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(7),
+                new NumberPadNode(5)
+            };
+            tree4.Root.Children[0].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(1)
+            };
 
-            tree4.Root.Children[1].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(2), new NumberPadNode(9) };
-            tree4.Root.Children[1].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(0), new NumberPadNode(7) };
+            tree4.Root.Children[1].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(2),
+                new NumberPadNode(9)
+            };
+            tree4.Root.Children[1].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(0),
+                new NumberPadNode(7)
+            };
 
-            tree4.Root.Children[2].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(6), new NumberPadNode(9) };
-            tree4.Root.Children[2].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(0), new NumberPadNode(6) };
+            tree4.Root.Children[2].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(6),
+                new NumberPadNode(9)
+            };
+            tree4.Root.Children[2].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(0),
+                new NumberPadNode(6)
+            };
 
-            tree4.Root.Children[3].Children[0].Children = new List<NumberPadNode> { new NumberPadNode(3), new NumberPadNode(8) };
-            tree4.Root.Children[3].Children[1].Children = new List<NumberPadNode> { new NumberPadNode(3), new NumberPadNode(5) };
-
-
+            tree4.Root.Children[3].Children[0].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(3),
+                new NumberPadNode(8)
+            };
+            tree4.Root.Children[3].Children[1].Children = new List<NumberPadNode>
+            {
+                new NumberPadNode(3),
+                new NumberPadNode(5)
+            };
         }
 
         public void Solve()
@@ -171,19 +397,16 @@ namespace KTANE_Solver
             {
                 currentNode = tree1.Root;
             }
-
             //If all three of the numbered buttons 4, 5, and 6 are colored white, blue, or red, take the second path.
             else if (IsAmerican(fourColor) && IsAmerican(fiveColor) && IsAmerican(sixColor))
             {
                 currentNode = tree2.Root;
             }
-
             //If the serial number contains a vowel, take the third path.
             else if (Bomb.HasVowel)
             {
                 currentNode = tree3.Root;
             }
-
             //Otherwise, take the fourth path.
             else
             {
@@ -195,36 +418,34 @@ namespace KTANE_Solver
             System.Diagnostics.Debug.WriteLine($"Level 1: {firstNumber}\n");
             System.Diagnostics.Debug.WriteLine($"Code is {firstNumber}\n");
 
-
-
             //If there are at least two blue numbered buttons and at least three green buttons, take the first path.
             if (ColorNum(Color.Blue) >= 2 && ColorNum(Color.Green) >= 3)
             {
                 currentNode = currentNode.Children[0];
             }
-
             //If the numbered button 5 isn't blue nor white, take the second path.
             else if (!IsColor(Color.White, fiveColor) && !IsColor(Color.Blue, fiveColor))
             {
                 currentNode = currentNode.Children[1];
             }
-
             //If there are fewer than two ports on the bomb, take the third path.
             else if (Bomb.PortNum < 2)
             {
                 currentNode = currentNode.Children[2];
             }
-
             //Otherwise, take the fourth path, and if the top row of buttons contains a green button, subtract 1 from the first digit(if it's 0, it becomes 9).
             else
             {
                 currentNode = currentNode.Children[3];
 
-                if (IsColor(Color.Green, sevenColor) || IsColor(Color.Green, eightColor) || IsColor(Color.Green, nineColor))
+                if (
+                    IsColor(Color.Green, sevenColor)
+                    || IsColor(Color.Green, eightColor)
+                    || IsColor(Color.Green, nineColor)
+                )
                 {
                     if (firstNumber == 0)
                         firstNumber = 9;
-
                     else
                         firstNumber--;
                 }
@@ -243,7 +464,6 @@ namespace KTANE_Solver
             {
                 currentNode = currentNode.Children[0];
             }
-
             //Otherwise, take the second path and reverse the current 3 - digit code.
             else
             {
@@ -256,8 +476,9 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Level 3: {thirdNumber}\n");
 
-            System.Diagnostics.Debug.WriteLine($"Code is {firstNumber}{secondNumber}{thirdNumber}\n");
-
+            System.Diagnostics.Debug.WriteLine(
+                $"Code is {firstNumber}{secondNumber}{thirdNumber}\n"
+            );
 
             if (reverse)
             {
@@ -267,9 +488,10 @@ namespace KTANE_Solver
 
                 thirdNumber = temp;
 
-                System.Diagnostics.Debug.WriteLine($"Reversing. Code is {firstNumber}{secondNumber}{thirdNumber}\n");
+                System.Diagnostics.Debug.WriteLine(
+                    $"Reversing. Code is {firstNumber}{secondNumber}{thirdNumber}\n"
+                );
             }
-
 
             //If there are 2 or fewer yellow numbered buttons, take the first path and add 1 to each digit (if a digit is 9, it becomes 0).
 
@@ -281,10 +503,9 @@ namespace KTANE_Solver
 
                 addDigit = true;
             }
-
             //Otherwise, take the second path.
             else
-            { 
+            {
                 currentNode = currentNode.Children[1];
             }
 
@@ -292,7 +513,9 @@ namespace KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Level 4: {fourthNumber}\n");
 
-            System.Diagnostics.Debug.WriteLine($"Code is {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
+            System.Diagnostics.Debug.WriteLine(
+                $"Code is {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n"
+            );
 
             if (addDigit)
             {
@@ -301,9 +524,10 @@ namespace KTANE_Solver
                 thirdNumber = AddDigit(thirdNumber);
                 fourthNumber = AddDigit(fourthNumber);
 
-                System.Diagnostics.Debug.WriteLine($"Adding one to each digit is {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
+                System.Diagnostics.Debug.WriteLine(
+                    $"Adding one to each digit is {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n"
+                );
             }
-
 
             bool criteriaMet = false;
 
@@ -318,8 +542,9 @@ namespace KTANE_Solver
 
                 criteriaMet = true;
 
-                System.Diagnostics.Debug.WriteLine($"Last digit is even. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
-
+                System.Diagnostics.Debug.WriteLine(
+                    $"Last digit is even. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n"
+                );
             }
 
             //If there are an odd number of batteries, swap the second and third digits.
@@ -333,7 +558,9 @@ namespace KTANE_Solver
 
                 criteriaMet = true;
 
-                System.Diagnostics.Debug.WriteLine($"Odd number of batteries. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
+                System.Diagnostics.Debug.WriteLine(
+                    $"Odd number of batteries. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n"
+                );
             }
 
             //If neither of the above criteria is met, swap the first and fourth digits.
@@ -345,7 +572,9 @@ namespace KTANE_Solver
 
                 fourthNumber = temp;
 
-                System.Diagnostics.Debug.WriteLine($"First two conditions not met. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
+                System.Diagnostics.Debug.WriteLine(
+                    $"First two conditions not met. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n"
+                );
             }
 
             //Finally, if the sum of all the digits in the code is even, reverse the code.
@@ -363,7 +592,9 @@ namespace KTANE_Solver
 
                 thirdNumber = temp;
 
-                System.Diagnostics.Debug.WriteLine($"Sum of digits is even. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n");
+                System.Diagnostics.Debug.WriteLine(
+                    $"Sum of digits is even. Code is: {firstNumber}{secondNumber}{thirdNumber}{fourthNumber}\n"
+                );
             }
 
             int answer = firstNumber * 1000 + secondNumber * 100 + thirdNumber * 10 + fourthNumber;
@@ -387,7 +618,7 @@ namespace KTANE_Solver
         {
             int num = 0;
 
-            if (IsColor(color,zeroColor))
+            if (IsColor(color, zeroColor))
                 num++;
 
             if (IsColor(color, oneColor))
@@ -437,9 +668,10 @@ namespace KTANE_Solver
         /// <returns></returns>
         private bool IsAmerican(Color button)
         {
-            return IsColor(Color.Red, button) || IsColor(Color.White, button) || IsColor(Color.Blue, button);
+            return IsColor(Color.Red, button)
+                || IsColor(Color.White, button)
+                || IsColor(Color.Blue, button);
         }
-
 
         public class NumberPadTree
         {
@@ -455,7 +687,7 @@ namespace KTANE_Solver
         /// used to set up a tree
         /// </summary>
         public class NumberPadNode
-        { 
+        {
             public int Data { get; }
 
             public List<NumberPadNode> Children { get; set; }

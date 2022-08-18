@@ -37,23 +37,38 @@ namespace KTANE_Solver
         private static AdventureGame.Item item4;
         private static AdventureGame.Item item5;
 
-
-        public AdventureGameForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
-        : base(bomb, logFileWriter, moduleSelectionForm, "Adventure Game", false)
+        public AdventureGameForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        ) : base(bomb, logFileWriter, moduleSelectionForm, "Adventure Game", false)
         {
             InitializeComponent();
             UpdateForm(bomb, logFileWriter, moduleSelectionForm);
         }
 
-        public void UpdateForm(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
-            string[] enemies = new string[] { "Demon", "Dragon", "Eagle", "Goblin", "Golem", "Troll", "Lizard", "Wizard" };
+            string[] enemies = new string[]
+            {
+                "Demon",
+                "Dragon",
+                "Eagle",
+                "Goblin",
+                "Golem",
+                "Troll",
+                "Lizard",
+                "Wizard"
+            };
 
             enemyComboBox.Items.Clear();
             enemyComboBox.Items.AddRange(enemies);
             enemyComboBox.Text = enemies[0];
             enemyComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-
 
             broadswoardCheckBox.Checked = false;
             caberCheckBox.Checked = false;
@@ -125,7 +140,6 @@ namespace KTANE_Solver
                 gravity = double.Parse(gravityTextBox.Text);
                 pressure = int.Parse(pressureTextBox.Text);
             }
-
             catch
             {
                 ShowErrorMessage("Only numbers can go in these text box");
@@ -175,14 +189,30 @@ namespace KTANE_Solver
             SetItem(ticketCheckBox);
             SetItem(trophyCheckBox);
 
-            AdventureGame module = new AdventureGame(strength, dexterity, intelligence, height, temp, gravity, pressure, 
-                                                     weapon1, weapon2, weapon3, item1, item2, item3, item4, item5, 
-                                                     enemy, Bomb, LogFileWriter);
+            AdventureGame module = new AdventureGame(
+                strength,
+                dexterity,
+                intelligence,
+                height,
+                temp,
+                gravity,
+                pressure,
+                weapon1,
+                weapon2,
+                weapon3,
+                item1,
+                item2,
+                item3,
+                item4,
+                item5,
+                enemy,
+                Bomb,
+                LogFileWriter
+            );
 
             module.Solve();
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
-
         }
 
         /// <summary>
@@ -198,14 +228,11 @@ namespace KTANE_Solver
                     weapon1SlotTaken = true;
                     weapon1 = weaponCheckBox.Text;
                 }
-
                 else if (!weapon2SlotTaken)
                 {
                     weapon2SlotTaken = true;
                     weapon2 = weaponCheckBox.Text;
-
                 }
-
                 else
                 {
                     weapon3 = weaponCheckBox.Text;
@@ -218,7 +245,6 @@ namespace KTANE_Solver
         /// </summary>
         /// <param name="itemCheckBox">the check box of the item that was selected</param>
         private void SetItem(CheckBox itemCheckBox)
-
         {
             if (itemCheckBox.Checked)
             {
@@ -228,30 +254,25 @@ namespace KTANE_Solver
                     item1SlotTaken = true;
                     item1 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
-
                 else if (!item2SlotTaken)
                 {
                     item2SlotTaken = true;
                     item2 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
-
                 else if (!item3SlotTaken)
                 {
                     item3SlotTaken = true;
                     item3 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
-
                 else if (!item4SlotTaken)
                 {
                     item4SlotTaken = true;
                     item4 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
-
                 else
                 {
                     item5 = (AdventureGame.Item)Enum.Parse(typeof(AdventureGame.Item), itemName);
                 }
-
             }
         }
 

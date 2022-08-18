@@ -23,7 +23,8 @@ namespace KTANE_Solver
 
         public Color[,] grid;
 
-        public ColoredSquares(Color[,] grid, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Colored Squares")
+        public ColoredSquares(Color[,] grid, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Colored Squares")
         {
             this.grid = grid;
         }
@@ -42,7 +43,6 @@ namespace KTANE_Solver
             PrintDebugLine($"Yellow Num: {yellowColor}");
             PrintDebugLine($"Green Num: {greenColor}");
             PrintDebugLine($"Magenta Num: {magentaColor}\n");
-
 
             List<KeyValuePair<int, Color>> list = new List<KeyValuePair<int, Color>>();
             list.Add(new KeyValuePair<int, Color>(blueColor, Color.Blue));
@@ -84,7 +84,7 @@ namespace KTANE_Solver
         public Color Solve(Color color)
         {
             Color answer = FindButtonsToPress(color);
-            
+
             FillWhiteSquares(answer);
 
             PrintGrid();
@@ -123,7 +123,6 @@ namespace KTANE_Solver
                     grid[index, i] = Color.White;
                 }
             }
-
             else if (color == Color.Column)
             {
                 int index = -1;
@@ -149,7 +148,6 @@ namespace KTANE_Solver
                     grid[i, index] = Color.White;
                 }
             }
-
             else
             {
                 for (int row = 0; row < 4; row++)
@@ -175,7 +173,7 @@ namespace KTANE_Solver
             {
                 case 1:
                     if (color == Color.Red)
-                    { 
+                    {
                         return Color.Blue;
                     }
 
@@ -634,7 +632,12 @@ namespace KTANE_Solver
                     return Color.Column;
 
                 default:
-                    if (color == Color.Red || color == Color.Green || color == Color.Magenta || color == Color.Column)
+                    if (
+                        color == Color.Red
+                        || color == Color.Green
+                        || color == Color.Magenta
+                        || color == Color.Column
+                    )
                     {
                         return Color.Column;
                     }
@@ -664,7 +667,7 @@ namespace KTANE_Solver
             {
                 for (int j = 0; j < 4; j++)
                 {
-                     PrintDebug(grid[i, j].ToString()[0] + " ");
+                    PrintDebug(grid[i, j].ToString()[0] + " ");
                 }
 
                 PrintDebugLine("");

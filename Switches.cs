@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+
 namespace KTANE_Solver
 {
     /// <summary>
@@ -15,14 +16,14 @@ namespace KTANE_Solver
         private bool[] start;
         private bool[] end;
         private List<int> directions;
-        public Switches(bool[] start, bool[] end, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Switches")
+
+        public Switches(bool[] start, bool[] end, Bomb bomb, StreamWriter logFileWriter)
+            : base(bomb, logFileWriter, "Switches")
         {
             this.start = start;
             this.end = end;
 
             directions = new List<int>();
-
-            
         }
 
         public void Solve()
@@ -87,7 +88,6 @@ namespace KTANE_Solver
                     }
                 }
             }
-
             else
             {
                 PrintDebugLine("Start is special\n");
@@ -138,7 +138,6 @@ namespace KTANE_Solver
                         return;
                     }
                 }
-
                 //13 - 31
                 else if (start[0] && start[2])
                 {
@@ -158,7 +157,6 @@ namespace KTANE_Solver
                         return;
                     }
                 }
-
                 //23 - 32
                 else if (start[1] && start[2])
                 {
@@ -178,7 +176,6 @@ namespace KTANE_Solver
                         return;
                     }
                 }
-
                 //1245 - 4125
                 else
                 {
@@ -214,7 +211,6 @@ namespace KTANE_Solver
                         return;
                     }
                 }
-
             }
 
             //if the ending position is not special, put the desired switches up from right to left
@@ -265,17 +261,14 @@ namespace KTANE_Solver
                     }
                 }
 
-
                 if (end[0])
                 {
                     turnSwitchOn(0);
 
                     ShowAnswer(Answer(), true);
                     return;
-
                 }
             }
-
             else
             {
                 PrintDebugLine("End is special\n");
@@ -350,7 +343,6 @@ namespace KTANE_Solver
             {
                 directions.RemoveAt(directions.Count - 1);
             }
-
             else
             {
                 directions.Add(num + 1);
@@ -372,7 +364,7 @@ namespace KTANE_Solver
             return true;
         }
 
-        private bool Special(bool [] arr)
+        private bool Special(bool[] arr)
         {
             //12345
             if (arr[0] && arr[1] && arr[2] && arr[3] && arr[4])
@@ -400,7 +392,7 @@ namespace KTANE_Solver
         {
             String str = string.Join(", ", directions);
 
-            PrintDebugLine($"Answer: { str}\n");
+            PrintDebugLine($"Answer: {str}\n");
 
             return str;
         }

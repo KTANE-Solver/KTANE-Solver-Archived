@@ -32,15 +32,18 @@ namespace KTANE_Solver
         {
             InitializeComponent();
 
-
             FormClosing += CloseProgram;
 
             Shown += ChangeTitle;
-
         }
 
-        public ModuleForm(Bomb bomb, StreamWriter logFileWriter,
-               ModuleSelectionForm moduleSelectionForm, string name, bool answerForm)
+        public ModuleForm(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm,
+            string name,
+            bool answerForm
+        )
         {
             InitializeComponent();
 
@@ -74,7 +77,11 @@ namespace KTANE_Solver
         /// <param name="bomb"></param>
         /// <param name="logFileWriter"></param>
         /// <param name="moduleSelectionForm"></param>
-        public void UpdateEdgeWork(Bomb bomb, StreamWriter logFileWriter, ModuleSelectionForm moduleSelectionForm)
+        public void UpdateEdgeWork(
+            Bomb bomb,
+            StreamWriter logFileWriter,
+            ModuleSelectionForm moduleSelectionForm
+        )
         {
             Bomb = bomb;
             LogFileWriter = logFileWriter;
@@ -87,7 +94,8 @@ namespace KTANE_Solver
         public void IncrementStrike()
         {
             Bomb.Strike++;
-            string info = $"A stike has been added by {ModuleName}. Currently at {Bomb.Strike} strike(s)";
+            string info =
+                $"A stike has been added by {ModuleName}. Currently at {Bomb.Strike} strike(s)";
             PrintDebugLine(info + "\n");
             MessageBox.Show(info, "Strike Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -103,14 +111,18 @@ namespace KTANE_Solver
                 String message = "Are you sure you want to quit the program?";
                 String caption = "Quit Program";
 
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    message,
+                    caption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 //if the user clicks no, don't close the program
                 if (result == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
-
                 else
                 {
                     PrintDebug("User closed program...");
@@ -128,12 +140,22 @@ namespace KTANE_Solver
 
         public void ShowErrorMessage(String message)
         {
-            MessageBox.Show(message, $"{ModuleName} Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(
+                message,
+                $"{ModuleName} Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
         }
 
         public void ShowAnswer(String message)
         {
-            MessageBox.Show(message, $"{ModuleName} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                message,
+                $"{ModuleName} Answer",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         public void PrintDebugLine(String message)

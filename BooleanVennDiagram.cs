@@ -13,7 +13,13 @@ namespace KTANE_Solver
         private string operation2;
         private bool parenthesisFirst;
 
-        public BooleanVennDiagram(string operation1, string operation2, bool parenthesisFirst, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Boolean Venn Diagram")
+        public BooleanVennDiagram(
+            string operation1,
+            string operation2,
+            bool parenthesisFirst,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "Boolean Venn Diagram")
         {
             this.operation1 = operation1;
             this.operation2 = operation2;
@@ -37,21 +43,17 @@ namespace KTANE_Solver
                         bool b = j == 1;
                         bool c = k == 1;
 
-
                         if (parenthesisFirst)
                         {
                             statement1 = EvaluateStatement(a, b, operation1);
 
-
                             statement2 = EvaluateStatement(statement1, c, operation2);
-
 
                             if (statement2)
                             {
                                 answers.Add(GetAnswer(a, b, c));
                             }
                         }
-
                         else
                         {
                             statement1 = EvaluateStatement(b, c, operation2);
@@ -77,7 +79,7 @@ namespace KTANE_Solver
             string answer = "";
 
             if (a)
-            { 
+            {
                 answer += "A";
             }
 
@@ -90,7 +92,6 @@ namespace KTANE_Solver
             {
                 answer += "C";
             }
-
             else if (!a && !b && !c)
             {
                 return "None";
@@ -137,16 +138,27 @@ namespace KTANE_Solver
             }
         }
 
-        private void PrintDebug(bool a, bool b, bool c, bool parenthesisAroundFirst, bool totalStatement, string operation1, string operation2)
+        private void PrintDebug(
+            bool a,
+            bool b,
+            bool c,
+            bool parenthesisAroundFirst,
+            bool totalStatement,
+            string operation1,
+            string operation2
+        )
         {
             if (parenthesisAroundFirst)
             {
-                PrintDebugLine($"({a} {CovertSymbol(operation1)} {b}) {CovertSymbol(operation2)} {c} = {totalStatement}\n");
+                PrintDebugLine(
+                    $"({a} {CovertSymbol(operation1)} {b}) {CovertSymbol(operation2)} {c} = {totalStatement}\n"
+                );
             }
-
             else
-            { 
-                PrintDebugLine($"{a} {CovertSymbol(operation1)} ({b} {CovertSymbol(operation2)} {c}) = {totalStatement}\n");
+            {
+                PrintDebugLine(
+                    $"{a} {CovertSymbol(operation1)} ({b} {CovertSymbol(operation2)} {c}) = {totalStatement}\n"
+                );
             }
         }
 
@@ -186,4 +198,3 @@ namespace KTANE_Solver
         }
     }
 }
-    

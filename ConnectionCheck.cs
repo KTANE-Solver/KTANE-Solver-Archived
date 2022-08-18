@@ -16,8 +16,14 @@ namespace KTANE_Solver
         public int targetIndex;
         public List<Node> nodes;
 
-
-        public ConnectionCheck(int[] topLeft, int[] topRight, int[] bottomLeft, int [] bottomRight, Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Connection Check")
+        public ConnectionCheck(
+            int[] topLeft,
+            int[] topRight,
+            int[] bottomLeft,
+            int[] bottomRight,
+            Bomb bomb,
+            StreamWriter logFileWriter
+        ) : base(bomb, logFileWriter, "Connection Check")
         {
             this.topLeft = topLeft;
             this.topRight = topRight;
@@ -46,7 +52,6 @@ namespace KTANE_Solver
             displayNumbers.AddRange(bottomLeft);
             displayNumbers.AddRange(bottomRight);
 
-
             //If the numbers on this module are all different, use the last character of the serial number.
 
             if (displayNumbers.Distinct().Count() == 8)
@@ -54,7 +59,6 @@ namespace KTANE_Solver
                 targetIndex = Bomb.SerialNumber.Length - 1;
                 PrintDebugLine("Numbers are all different. Using index " + targetIndex);
             }
-
             //Otherwise, if there is more than one ''1'' on the module, look at the first character of the serial number.
             else if (displayNumbers.Count(x => x == 1) > 1)
             {
@@ -67,21 +71,18 @@ namespace KTANE_Solver
                 targetIndex = Bomb.SerialNumber.Length - 1;
                 PrintDebugLine("More than one \'7\'. Using index " + targetIndex);
             }
-
             //Otherwise, if there are at least three ''2'' on the module, look at the second character of the serial number.
             else if (displayNumbers.Count(x => x == 2) > 2)
             {
                 targetIndex = 1;
                 PrintDebugLine("At least 3 \'2\'. Using index " + targetIndex);
             }
-
             //Otherwise, if there is no ''5'' on the module, look at the fifth character of the serial number.
             else if (displayNumbers.Count(x => x == 5) == 0)
             {
                 targetIndex = 4;
                 PrintDebugLine("At least 3 \'2\'. Using index " + targetIndex);
             }
-
             //Otherwise, if there are exactly two ''8''s on the module, look at the third character of the serial number.
 
             else if (displayNumbers.Count(x => x == 8) == 2)
@@ -89,14 +90,12 @@ namespace KTANE_Solver
                 targetIndex = 2;
                 PrintDebugLine("At least 2 \'8\'. Using index " + targetIndex);
             }
-
             //Otherwise, if there are more than 6 batteries or no batteries on the bomb, look at the last character of the serial number.
             else if (Bomb.Battery > 6 || Bomb.Battery == 0)
             {
                 targetIndex = Bomb.SerialNumber.Length - 1;
                 PrintDebugLine("At least 6 or no batteries. Using index " + targetIndex);
             }
-
             //Otherwise, count the number of batteries on the bomb. Use that number to decide which character of the serial number you should look at.
             else
             {
@@ -138,7 +137,6 @@ namespace KTANE_Solver
 
                 return "SLIM";
             }
-
             else if ("15BRO".Contains(target))
             {
                 nodes[0].AddNeighbor(nodes[1]);
@@ -155,12 +153,11 @@ namespace KTANE_Solver
                 nodes[4].AddNeighbor(nodes[6]);
 
                 nodes[5].AddNeighbor(nodes[6]);
-             
+
                 PrintDebugLine("Using 15BRO graph \n");
 
                 return "15BRO";
             }
-
             else if ("20DGT".Contains(target))
             {
                 nodes[0].AddNeighbor(nodes[1]);
@@ -180,12 +177,11 @@ namespace KTANE_Solver
                 nodes[4].AddNeighbor(nodes[6]);
 
                 nodes[5].AddNeighbor(nodes[7]);
-                
+
                 PrintDebugLine("Using 20DGT graph \n");
 
                 return "20DGT";
             }
-
             else if ("34XYZ".Contains(target))
             {
                 nodes[0].AddNeighbor(nodes[1]);
@@ -204,12 +200,10 @@ namespace KTANE_Solver
 
                 nodes[6].AddNeighbor(nodes[7]);
 
-
                 PrintDebugLine("Using 34XYZ graph \n");
 
                 return "34XYZ";
             }
-
             else if ("7HPJ".Contains(target))
             {
                 nodes[0].AddNeighbor(nodes[1]);
@@ -222,12 +216,11 @@ namespace KTANE_Solver
 
                 nodes[4].AddNeighbor(nodes[5]);
                 nodes[4].AddNeighbor(nodes[6]);
-                
+
                 PrintDebugLine("Using 7HPJ graph \n");
 
                 return "7HPJ";
             }
-
             else if ("6WUF".Contains(target))
             {
                 nodes[0].AddNeighbor(nodes[1]);
@@ -252,12 +245,11 @@ namespace KTANE_Solver
                 nodes[5].AddNeighbor(nodes[6]);
 
                 nodes[6].AddNeighbor(nodes[7]);
-                
+
                 PrintDebugLine("Using 6WUF graph \n");
 
                 return "6WUF";
             }
-
             else if ("8CAKE".Contains(target))
             {
                 nodes[0].AddNeighbor(nodes[1]);
@@ -281,14 +273,13 @@ namespace KTANE_Solver
                 nodes[4].AddNeighbor(nodes[7]);
 
                 nodes[6].AddNeighbor(nodes[7]);
-                
+
                 PrintDebugLine("Using 8CAKE graph \n");
 
                 return "8CAKE";
             }
-
             else
-            { 
+            {
                 nodes[0].AddNeighbor(nodes[1]);
                 nodes[0].AddNeighbor(nodes[3]);
                 nodes[0].AddNeighbor(nodes[7]);
@@ -309,7 +300,7 @@ namespace KTANE_Solver
                 nodes[5].AddNeighbor(nodes[6]);
 
                 nodes[6].AddNeighbor(nodes[7]);
-                
+
                 PrintDebugLine("Using 9QVN graph \n");
 
                 return "9QVN";
@@ -322,11 +313,16 @@ namespace KTANE_Solver
 
             CreateGraph();
 
-            string answer = string.Join("\n", new string[] { "\nTop Left: " + GetAnswer(topLeft), 
-                                                             "Top Right: " + GetAnswer(topRight), 
-                                                             "Bottom Left: " + GetAnswer(bottomLeft), 
-                                                             "Bottom Right: " + GetAnswer(bottomRight) });
-
+            string answer = string.Join(
+                "\n",
+                new string[]
+                {
+                    "\nTop Left: " + GetAnswer(topLeft),
+                    "Top Right: " + GetAnswer(topRight),
+                    "Bottom Left: " + GetAnswer(bottomLeft),
+                    "Bottom Right: " + GetAnswer(bottomRight)
+                }
+            );
 
             ShowAnswer(answer, true);
         }

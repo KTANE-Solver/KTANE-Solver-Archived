@@ -8,8 +8,6 @@ using System.Windows.Forms;
 
 namespace KTANE_Solver
 {
-
-
     /// <summary>
     /// Author: Nya Bentley
     /// Date: 4/8/21
@@ -51,7 +49,7 @@ namespace KTANE_Solver
         }
 
         /// <summary>
-        /// A method that will show the answer in a messageBox 
+        /// A method that will show the answer in a messageBox
         /// </summary>
         public void ShowAnswer(String answer, bool acutalAnswer)
         {
@@ -60,8 +58,12 @@ namespace KTANE_Solver
                 PrintDebugLine("Answer: " + answer + "\n");
             }
 
-            MessageBox.Show(answer, $"{Name} Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            MessageBox.Show(
+                answer,
+                $"{Name} Answer",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         public void ShowErrorMessage(String error)
