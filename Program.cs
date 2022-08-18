@@ -16,6 +16,7 @@ namespace KTANE_Solver
         static void Main()
         {
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
 
             //check to make sure no files are missing

@@ -1,955 +1,441 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8F6A2693-B6F4-49B8-8880-24C97A34073F}</ProjectGuid>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>KTANE_Solver</RootNamespace>
-    <AssemblyName>KTANE_Solver</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>KTANE_Solver.Program</StartupObject>
+ <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute> 
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="3DMazeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="3DMazeForm.Designer.cs">
-      <DependentUpon>3DMazeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="3DMazeStage2Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="3DMazeStage2Form.Designer.cs">
-      <DependentUpon>3DMazeStage2Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdjacentLetters.cs" />
-    <Compile Include="AdjacentLettersAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdjacentLettersAnswerForm.Designer.cs">
-      <DependentUpon>AdjacentLettersAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdjacentLettersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdjacentLettersForm.Designer.cs">
-      <DependentUpon>AdjacentLettersForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdventureGame.cs" />
-    <Compile Include="AdventureGameForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdventureGameForm.Designer.cs">
-      <DependentUpon>AdventureGameForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Alphabet.cs" />
-    <Compile Include="Anagrams.cs" />
-    <Compile Include="AnagramsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AnagramsForm.Designer.cs">
-      <DependentUpon>AnagramsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Astrology.cs" />
-    <Compile Include="AstrologyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AstrologyForm.Designer.cs">
-      <DependentUpon>AstrologyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Battleship.cs" />
-    <Compile Include="BinaryLED.cs" />
-    <Compile Include="BinaryPuzzle.cs" />
-    <Compile Include="BinaryPuzzleAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BinaryPuzzleAnswerForm.Designer.cs">
-      <DependentUpon>BinaryPuzzleAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BinaryPuzzleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BinaryPuzzleForm.Designer.cs">
-      <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bitmaps.cs" />
-    <Compile Include="BitmapsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BitmapsForm.Designer.cs">
-      <DependentUpon>BitmapsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BlindAlley.cs" />
-    <Compile Include="BlindAlleyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BlindAlleyForm.Designer.cs">
-      <DependentUpon>BlindAlleyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bomb.cs" />
-    <Compile Include="BooleanVennDiagram.cs" />
-    <Compile Include="BooleanVennDiagramForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BooleanVennDiagramForm.Designer.cs">
-      <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrokenButtons.cs" />
-    <Compile Include="BrokenButtonsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BrokenButtonsForm.Designer.cs">
-      <DependentUpon>BrokenButtonsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrokenButtonsWordSelectionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BrokenButtonsWordSelectionForm.Designer.cs">
-      <DependentUpon>BrokenButtonsWordSelectionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bulb.cs" />
-    <Compile Include="BulbForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BulbForm.Designer.cs">
-      <DependentUpon>BulbForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Button.cs" />
-    <Compile Include="ButtonForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ButtonForm.Designer.cs">
-      <DependentUpon>ButtonForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CheapCheckout.cs" />
-    <Compile Include="CheapCheckoutAlertForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CheapCheckoutAlertForm.Designer.cs">
-      <DependentUpon>CheapCheckoutAlertForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CheapCheckoutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CheapCheckoutForm.Designer.cs">
-      <DependentUpon>CheapCheckoutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Chess.cs" />
-    <Compile Include="ChessForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChessForm.Designer.cs">
-      <DependentUpon>ChessForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ChordQualities.cs" />
-    <Compile Include="ChordQualitiesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChordQualitiesForm.Designer.cs">
-      <DependentUpon>ChordQualitiesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ColoredSquares.cs" />
-    <Compile Include="ColoredSquaresForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ColoredSquaresForm.Designer.cs">
-      <DependentUpon>ColoredSquaresForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ColorMath.cs" />
-    <Compile Include="ColorMathForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ColorMathForm.Designer.cs">
-      <DependentUpon>ColorMathForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ComplicatedWires.cs" />
-    <Compile Include="ComplicatedWiresForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ComplicatedWiresForm.Designer.cs">
-      <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConnectionCheckForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConnectionCheckForm.Designer.cs">
-      <DependentUpon>ConnectionCheckForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConnectionCheck.cs" />
-    <Compile Include="Creation.cs" />
-    <Compile Include="CreationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreationForm.Designer.cs">
-      <DependentUpon>CreationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreationOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreationOtherStageForm.Designer.cs">
-      <DependentUpon>CreationOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EdgeworkConfirmationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EdgeworkConfirmationForm.Designer.cs">
-      <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EdgeworkInputForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EdgeworkInputForm.Designer.cs">
-      <DependentUpon>EdgeworkInputForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EdgeworkSelectionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EdgeworkSelectionForm.Designer.cs">
-      <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FastMath.cs" />
-    <Compile Include="FastMathOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FastMathOtherStageForm.Designer.cs">
-      <DependentUpon>FastMathOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FastMathStage1Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FastMathStage1Form.Designer.cs">
-      <DependentUpon>FastMathStage1Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FizzBuzz.cs" />
-    <Compile Include="FizzBuzzForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FizzBuzzForm.Designer.cs">
-      <DependentUpon>FizzBuzzForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="3DMaze.cs" />
-    <Compile Include="LetterKeys.cs" />
-    <Compile Include="LetterKeysForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LetterKeysForm.Designer.cs">
-      <DependentUpon>LetterKeysForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PointOfOrderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PointOfOrderForm.Designer.cs">
-      <DependentUpon>PointOfOrderForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Semaphore.cs" />
-    <Compile Include="SemaphoreStage1Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SemaphoreStage1Form.Designer.cs">
-      <DependentUpon>SemaphoreStage1Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SemaphoreOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SemaphoreOtherStageForm.Designer.cs">
-      <DependentUpon>SemaphoreOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Listening.cs" />
-    <Compile Include="ListeningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListeningForm.Designer.cs">
-      <DependentUpon>ListeningForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IceCreamStage2Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IceCreamStage2Form.Designer.cs">
-      <DependentUpon>IceCreamStage2Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Microcontroller.cs" />
-    <Compile Include="Microcontroller6PinAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Microcontroller6PinAnswerForm.Designer.cs">
-      <DependentUpon>Microcontroller6PinAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Microcontroller8PinAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Microcontroller8PinAnswerForm.Designer.cs">
-      <DependentUpon>Microcontroller8PinAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MicrocontrollerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MicrocontrollerForm.Designer.cs">
-      <DependentUpon>MicrocontrollerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Microcontroller10PinAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Microcontroller10PinAnswerForm.Designer.cs">
-      <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MultiStageModuleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MultiStageModuleForm.Designer.cs">
-      <DependentUpon>MultiStageModuleForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SafetySafe.cs" />
-    <Compile Include="SafetySafeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SafetySafeForm.Designer.cs">
-      <DependentUpon>SafetySafeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SeaShells.cs" />
-    <Compile Include="SeaShellsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SeaShellsForm.Designer.cs">
-      <DependentUpon>SeaShellsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ShapeShift.cs" />
-    <Compile Include="ShapeShiftPictureForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShapeShiftPictureForm.Designer.cs">
-      <DependentUpon>ShapeShiftPictureForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ShapeShiftWordForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShapeShiftWordForm.Designer.cs">
-      <DependentUpon>ShapeShiftWordForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoundKeypad.cs" />
-    <Compile Include="RoundKeypadAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoundKeypadAnswerForm.Designer.cs">
-      <DependentUpon>RoundKeypadAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoundKeypadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoundKeypadForm.Designer.cs">
-      <DependentUpon>RoundKeypadForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MysticSquareForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MysticSquareForm.Designer.cs">
-      <DependentUpon>MysticSquareForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MysticSquares.cs" />
-    <Compile Include="PointOfOrder.cs" />
-    <Compile Include="Screw.cs" />
-    <Compile Include="ScrewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ScrewForm.Designer.cs">
-      <DependentUpon>ScrewForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SimonSaysOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SimonSaysOtherStageForm.Designer.cs">
-      <DependentUpon>SimonSaysOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SkewedSlotForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SkewedSlotForm.Designer.cs">
-      <DependentUpon>SkewedSlotForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SkewedSlots.cs" />
-    <Compile Include="SwitchesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SwitchesForm.Designer.cs">
-      <DependentUpon>SwitchesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gamepad.cs" />
-    <Compile Include="GamepadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GamepadForm.Designer.cs">
-      <DependentUpon>GamepadForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IceCream.cs" />
-    <Compile Include="IceCreamForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IceCreamForm.Designer.cs">
-      <DependentUpon>IceCreamForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Indicator.cs" />
-    <Compile Include="Keypad.cs" />
-    <Compile Include="KeypadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KeypadForm.Designer.cs">
-      <DependentUpon>KeypadForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="KeypadFormAnswer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KeypadFormAnswer.Designer.cs">
-      <DependentUpon>KeypadFormAnswer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LightCycle.cs" />
-    <Compile Include="LightCycleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LightCycleForm.Designer.cs">
-      <DependentUpon>LightCycleForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Logic.cs" />
-    <Compile Include="LogicForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LogicForm.Designer.cs">
-      <DependentUpon>LogicForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Maze.cs" />
-    <Compile Include="MazeAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MazeAnswerForm.Designer.cs">
-      <DependentUpon>MazeAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MazeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MazeForm.Designer.cs">
-      <DependentUpon>MazeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Memory.cs" />
-    <Compile Include="MemoryOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MemoryOtherStageForm.Designer.cs">
-      <DependentUpon>MemoryOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MemoryStage1Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MemoryStage1Form.Designer.cs">
-      <DependentUpon>MemoryStage1Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Module.cs" />
-    <Compile Include="ModuleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModuleForm.Designer.cs">
-      <DependentUpon>ModuleForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSelectionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModuleSelectionForm.Designer.cs">
-      <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MonsplodeTradingCard.cs" />
-    <Compile Include="MonsplodeTradingCardForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MonsplodeTradingCardForm1.Designer.cs">
-      <DependentUpon>MonsplodeTradingCardForm1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MonsplodeTradingCardOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MonsplodeTradingCardOtherStageForm.Designer.cs">
-      <DependentUpon>MonsplodeTradingCardOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MorseCode.cs" />
-    <Compile Include="MorseCodeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MorseCodeForm.Designer.cs">
-      <DependentUpon>MorseCodeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Murder.cs" />
-    <Compile Include="MurderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MurderForm.Designer.cs">
-      <DependentUpon>MurderForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NumberPad.cs" />
-    <Compile Include="NumberPadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NumberPadForm.Designer.cs">
-      <DependentUpon>NumberPadForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Password.cs" />
-    <Compile Include="PasswordFirstStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PasswordFirstStageForm.Designer.cs">
-      <DependentUpon>PasswordFirstStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PasswordOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PasswordOtherStageForm.Designer.cs">
-      <DependentUpon>PasswordOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Poker.cs" />
-    <Compile Include="PokerStage1Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PokerStage1Form.Designer.cs">
-      <DependentUpon>PokerStage1Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PokerStage2Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PokerStage2Form.Designer.cs">
-      <DependentUpon>PokerStage2Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PokerStage3Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PokerStage3Form.Designer.cs">
-      <DependentUpon>PokerStage3Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Port.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RockPaperScissorsLizardSpock.cs" />
-    <Compile Include="RockPaperScissorsLizardSpockForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RockPaperScissorsLizardSpockForm.Designer.cs">
-      <DependentUpon>RockPaperScissorsLizardSpockForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RubikCube.cs" />
-    <Compile Include="RubikCubeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RubikCubeForm.Designer.cs">
-      <DependentUpon>RubikCubeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SillySlots.cs" />
-    <Compile Include="SillySlotsOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SillySlotsOtherStageForm.Designer.cs">
-      <DependentUpon>SillySlotsOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SillySlotsStage1Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SillySlotsStage1Form.Designer.cs">
-      <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SimonSays.cs" />
-    <Compile Include="SimonSaysForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SimonSaysForm.Designer.cs">
-      <DependentUpon>SimonSaysForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Switches.cs" />
-    <Compile Include="TicTacToe.cs" />
-    <Compile Include="TicTacToeAnswerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TicTacToeAnswerForm.Designer.cs">
-      <DependentUpon>TicTacToeAnswerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TicTacToeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TicTacToeForm.Designer.cs">
-      <DependentUpon>TicTacToeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TicTacToeInputForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TicTacToeInputForm.Designer.cs">
-      <DependentUpon>TicTacToeInputForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TicTacToeSymbolForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TicTacToeSymbolForm.Designer.cs">
-      <DependentUpon>TicTacToeSymbolForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TwoBits.cs" />
-    <Compile Include="TwoBitsOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TwoBitsOtherStageForm.Designer.cs">
-      <DependentUpon>TwoBitsOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TwoBitsStage1Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TwoBitsStage1Form.Designer.cs">
-      <DependentUpon>TwoBitsStage1Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WhosOnFirst.cs" />
-    <Compile Include="WhosOnFirstFirstStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WhosOnFirstFirstStageForm.Designer.cs">
-      <DependentUpon>WhosOnFirstFirstStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WhosOnFirstOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WhosOnFirstOtherStageForm.Designer.cs">
-      <DependentUpon>WhosOnFirstOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Wires.cs" />
-    <Compile Include="WireSequence.cs" />
-    <Compile Include="WireSequenceOtherStageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WireSequenceOtherStageForm.Designer.cs">
-      <DependentUpon>WireSequenceOtherStageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WireSequenceStage1Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WireSequenceStage1Form.Designer.cs">
-      <DependentUpon>WireSequenceStage1Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WiresForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WiresForm.Designer.cs">
-      <DependentUpon>WiresForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WordSearch.cs" />
-    <Compile Include="WordSearchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WordSearchForm.Designer.cs">
-      <DependentUpon>WordSearchForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="3DMazeForm.resx">
-      <DependentUpon>3DMazeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="3DMazeStage2Form.resx">
-      <DependentUpon>3DMazeStage2Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdjacentLettersAnswerForm.resx">
-      <DependentUpon>AdjacentLettersAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdjacentLettersForm.resx">
-      <DependentUpon>AdjacentLettersForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdventureGameForm.resx">
-      <DependentUpon>AdventureGameForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AnagramsForm.resx">
-      <DependentUpon>AnagramsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AstrologyForm.resx">
-      <DependentUpon>AstrologyForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BinaryPuzzleAnswerForm.resx">
-      <DependentUpon>BinaryPuzzleAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BinaryPuzzleForm.resx">
-      <DependentUpon>BinaryPuzzleForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BitmapsForm.resx">
-      <DependentUpon>BitmapsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BlindAlleyForm.resx">
-      <DependentUpon>BlindAlleyForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BooleanVennDiagramForm.resx">
-      <DependentUpon>BooleanVennDiagramForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BrokenButtonsForm.resx">
-      <DependentUpon>BrokenButtonsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BrokenButtonsWordSelectionForm.resx">
-      <DependentUpon>BrokenButtonsWordSelectionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BulbForm.resx">
-      <DependentUpon>BulbForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ButtonForm.resx">
-      <DependentUpon>ButtonForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CheapCheckoutAlertForm.resx">
-      <DependentUpon>CheapCheckoutAlertForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CheapCheckoutForm.resx">
-      <DependentUpon>CheapCheckoutForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChessForm.resx">
-      <DependentUpon>ChessForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChordQualitiesForm.resx">
-      <DependentUpon>ChordQualitiesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ColoredSquaresForm.resx">
-      <DependentUpon>ColoredSquaresForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ColorMathForm.resx">
-      <DependentUpon>ColorMathForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ComplicatedWiresForm.resx">
-      <DependentUpon>ComplicatedWiresForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConnectionCheckForm.resx">
-      <DependentUpon>ConnectionCheckForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreationForm.resx">
-      <DependentUpon>CreationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreationOtherStageForm.resx">
-      <DependentUpon>CreationOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EdgeworkConfirmationForm.resx">
-      <DependentUpon>EdgeworkConfirmationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EdgeworkInputForm.resx">
-      <DependentUpon>EdgeworkInputForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EdgeworkSelectionForm.resx">
-      <DependentUpon>EdgeworkSelectionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FastMathOtherStageForm.resx">
-      <DependentUpon>FastMathOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FastMathStage1Form.resx">
-      <DependentUpon>FastMathStage1Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FizzBuzzForm.resx">
-      <DependentUpon>FizzBuzzForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LetterKeysForm.resx">
-      <DependentUpon>LetterKeysForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PointOfOrderForm.resx">
-      <DependentUpon>PointOfOrderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SemaphoreStage1Form.resx">
-      <DependentUpon>SemaphoreStage1Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SemaphoreOtherStageForm.resx">
-      <DependentUpon>SemaphoreOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListeningForm.resx">
-      <DependentUpon>ListeningForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IceCreamStage2Form.resx">
-      <DependentUpon>IceCreamStage2Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Microcontroller6PinAnswerForm.resx">
-      <DependentUpon>Microcontroller6PinAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Microcontroller8PinAnswerForm.resx">
-      <DependentUpon>Microcontroller8PinAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MicrocontrollerForm.resx">
-      <DependentUpon>MicrocontrollerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Microcontroller10PinAnswerForm.resx">
-      <DependentUpon>Microcontroller10PinAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MysticSquareForm.resx">
-      <DependentUpon>MysticSquareForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ScrewForm.resx">
-      <DependentUpon>ScrewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SkewedSlotForm.resx">
-      <DependentUpon>SkewedSlotForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SwitchesForm.resx">
-      <DependentUpon>SwitchesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GamepadForm.resx">
-      <DependentUpon>GamepadForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IceCreamForm.resx">
-      <DependentUpon>IceCreamForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KeypadForm.resx">
-      <DependentUpon>KeypadForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KeypadFormAnswer.resx">
-      <DependentUpon>KeypadFormAnswer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LightCycleForm.resx">
-      <DependentUpon>LightCycleForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm.resx">
-      <DependentUpon>LogicForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MazeAnswerForm.resx">
-      <DependentUpon>MazeAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MazeForm.resx">
-      <DependentUpon>MazeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MemoryOtherStageForm.resx">
-      <DependentUpon>MemoryOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MemoryStage1Form.resx">
-      <DependentUpon>MemoryStage1Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModuleForm.resx">
-      <DependentUpon>ModuleForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModuleSelectionForm.resx">
-      <DependentUpon>ModuleSelectionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MonsplodeTradingCardForm1.resx">
-      <DependentUpon>MonsplodeTradingCardForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MonsplodeTradingCardOtherStageForm.resx">
-      <DependentUpon>MonsplodeTradingCardOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MorseCodeForm.resx">
-      <DependentUpon>MorseCodeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MurderForm.resx">
-      <DependentUpon>MurderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NumberPadForm.resx">
-      <DependentUpon>NumberPadForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasswordFirstStageForm.resx">
-      <DependentUpon>PasswordFirstStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasswordOtherStageForm.resx">
-      <DependentUpon>PasswordOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PokerStage1Form.resx">
-      <DependentUpon>PokerStage1Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PokerStage2Form.resx">
-      <DependentUpon>PokerStage2Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PokerStage3Form.resx">
-      <DependentUpon>PokerStage3Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="RockPaperScissorsLizardSpockForm.resx">
-      <DependentUpon>RockPaperScissorsLizardSpockForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RubikCubeForm.resx">
-      <DependentUpon>RubikCubeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SillySlotsOtherStageForm.resx">
-      <DependentUpon>SillySlotsOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SillySlotsStage1Form.resx">
-      <DependentUpon>SillySlotsStage1Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SimonSaysForm.resx">
-      <DependentUpon>SimonSaysForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TicTacToeAnswerForm.resx">
-      <DependentUpon>TicTacToeAnswerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TicTacToeForm.resx">
-      <DependentUpon>TicTacToeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TicTacToeInputForm.resx">
-      <DependentUpon>TicTacToeInputForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TicTacToeSymbolForm.resx">
-      <DependentUpon>TicTacToeSymbolForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TwoBitsOtherStageForm.resx">
-      <DependentUpon>TwoBitsOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TwoBitsStage1Form.resx">
-      <DependentUpon>TwoBitsStage1Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WhosOnFirstFirstStageForm.resx">
-      <DependentUpon>WhosOnFirstFirstStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WhosOnFirstOtherStageForm.resx">
-      <DependentUpon>WhosOnFirstOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WireSequenceOtherStageForm.resx">
-      <DependentUpon>WireSequenceOtherStageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WireSequenceStage1Form.resx">
-      <DependentUpon>WireSequenceStage1Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WiresForm.resx">
-      <DependentUpon>WiresForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WordSearchForm.resx">
-      <DependentUpon>WordSearchForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <PackageReference Include="CodedUIDependencies" Version="1.0.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.336902">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Compile Remove="BinaryTree.cs" />
+    <Compile Remove="BinaryTreeNode.cs" />
+    <Compile Remove="KTANE-Solver\3DMaze.cs" />
+    <Compile Remove="KTANE-Solver\3DMazeForm.cs" />
+    <Compile Remove="KTANE-Solver\3DMazeForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\3DMazeStage2Form.cs" />
+    <Compile Remove="KTANE-Solver\3DMazeStage2Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\AdjacentLetters.cs" />
+    <Compile Remove="KTANE-Solver\AdjacentLettersAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\AdjacentLettersAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\AdjacentLettersForm.cs" />
+    <Compile Remove="KTANE-Solver\AdjacentLettersForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\AdventureGame.cs" />
+    <Compile Remove="KTANE-Solver\AdventureGameForm.cs" />
+    <Compile Remove="KTANE-Solver\AdventureGameForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Alphabet.cs" />
+    <Compile Remove="KTANE-Solver\Anagrams.cs" />
+    <Compile Remove="KTANE-Solver\AnagramsForm.cs" />
+    <Compile Remove="KTANE-Solver\AnagramsForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Astrology.cs" />
+    <Compile Remove="KTANE-Solver\AstrologyForm.cs" />
+    <Compile Remove="KTANE-Solver\AstrologyForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Battleship.cs" />
+    <Compile Remove="KTANE-Solver\BinaryLED.cs" />
+    <Compile Remove="KTANE-Solver\BinaryPuzzle.cs" />
+    <Compile Remove="KTANE-Solver\BinaryPuzzleAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\BinaryPuzzleAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\BinaryPuzzleForm.cs" />
+    <Compile Remove="KTANE-Solver\BinaryPuzzleForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\BinaryTree.cs" />
+    <Compile Remove="KTANE-Solver\BinaryTreeNode.cs" />
+    <Compile Remove="KTANE-Solver\Bitmaps.cs" />
+    <Compile Remove="KTANE-Solver\BitmapsForm.cs" />
+    <Compile Remove="KTANE-Solver\BitmapsForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\BlindAlley.cs" />
+    <Compile Remove="KTANE-Solver\BlindAlleyForm.cs" />
+    <Compile Remove="KTANE-Solver\BlindAlleyForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Bomb.cs" />
+    <Compile Remove="KTANE-Solver\BooleanVennDiagram.cs" />
+    <Compile Remove="KTANE-Solver\BooleanVennDiagramForm.cs" />
+    <Compile Remove="KTANE-Solver\BooleanVennDiagramForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\BrokenButtons.cs" />
+    <Compile Remove="KTANE-Solver\BrokenButtonsForm.cs" />
+    <Compile Remove="KTANE-Solver\BrokenButtonsForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\BrokenButtonsWordSelectionForm.cs" />
+    <Compile Remove="KTANE-Solver\BrokenButtonsWordSelectionForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Bulb.cs" />
+    <Compile Remove="KTANE-Solver\BulbForm.cs" />
+    <Compile Remove="KTANE-Solver\BulbForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Button.cs" />
+    <Compile Remove="KTANE-Solver\ButtonForm.cs" />
+    <Compile Remove="KTANE-Solver\ButtonForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\CheapCheckout.cs" />
+    <Compile Remove="KTANE-Solver\CheapCheckoutAlertForm.cs" />
+    <Compile Remove="KTANE-Solver\CheapCheckoutAlertForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\CheapCheckoutForm.cs" />
+    <Compile Remove="KTANE-Solver\CheapCheckoutForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Chess.cs" />
+    <Compile Remove="KTANE-Solver\ChessForm.cs" />
+    <Compile Remove="KTANE-Solver\ChessForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ChordQualities.cs" />
+    <Compile Remove="KTANE-Solver\ChordQualitiesForm.cs" />
+    <Compile Remove="KTANE-Solver\ChordQualitiesForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ColoredSquares.cs" />
+    <Compile Remove="KTANE-Solver\ColoredSquaresForm.cs" />
+    <Compile Remove="KTANE-Solver\ColoredSquaresForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ColorMath.cs" />
+    <Compile Remove="KTANE-Solver\ColorMathForm.cs" />
+    <Compile Remove="KTANE-Solver\ColorMathForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ComplicatedWires.cs" />
+    <Compile Remove="KTANE-Solver\ComplicatedWiresForm.cs" />
+    <Compile Remove="KTANE-Solver\ComplicatedWiresForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ConnectionCheck.cs" />
+    <Compile Remove="KTANE-Solver\ConnectionCheckForm.cs" />
+    <Compile Remove="KTANE-Solver\ConnectionCheckForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Creation.cs" />
+    <Compile Remove="KTANE-Solver\CreationForm.cs" />
+    <Compile Remove="KTANE-Solver\CreationForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\CreationOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\CreationOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\EdgeworkConfirmationForm.cs" />
+    <Compile Remove="KTANE-Solver\EdgeworkConfirmationForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\EdgeworkInputForm.cs" />
+    <Compile Remove="KTANE-Solver\EdgeworkInputForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\EdgeworkSelectionForm.cs" />
+    <Compile Remove="KTANE-Solver\EdgeworkSelectionForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\FastMath.cs" />
+    <Compile Remove="KTANE-Solver\FastMathOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\FastMathOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\FastMathStage1Form.cs" />
+    <Compile Remove="KTANE-Solver\FastMathStage1Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\FizzBuzz.cs" />
+    <Compile Remove="KTANE-Solver\FizzBuzzForm.cs" />
+    <Compile Remove="KTANE-Solver\FizzBuzzForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Gamepad.cs" />
+    <Compile Remove="KTANE-Solver\GamepadForm.cs" />
+    <Compile Remove="KTANE-Solver\GamepadForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\IceCream.cs" />
+    <Compile Remove="KTANE-Solver\IceCreamForm.cs" />
+    <Compile Remove="KTANE-Solver\IceCreamForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\IceCreamStage2Form.cs" />
+    <Compile Remove="KTANE-Solver\IceCreamStage2Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Indicator.cs" />
+    <Compile Remove="KTANE-Solver\Keypad.cs" />
+    <Compile Remove="KTANE-Solver\KeypadForm.cs" />
+    <Compile Remove="KTANE-Solver\KeypadForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\KeypadFormAnswer.cs" />
+    <Compile Remove="KTANE-Solver\KeypadFormAnswer.Designer.cs" />
+    <Compile Remove="KTANE-Solver\LetterKeys.cs" />
+    <Compile Remove="KTANE-Solver\LetterKeysForm.cs" />
+    <Compile Remove="KTANE-Solver\LetterKeysForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\LightCycle.cs" />
+    <Compile Remove="KTANE-Solver\LightCycleForm.cs" />
+    <Compile Remove="KTANE-Solver\LightCycleForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Listening.cs" />
+    <Compile Remove="KTANE-Solver\ListeningForm.cs" />
+    <Compile Remove="KTANE-Solver\ListeningForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Logic.cs" />
+    <Compile Remove="KTANE-Solver\LogicForm.cs" />
+    <Compile Remove="KTANE-Solver\LogicForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Maze.cs" />
+    <Compile Remove="KTANE-Solver\MazeAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\MazeAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MazeForm.cs" />
+    <Compile Remove="KTANE-Solver\MazeForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Memory.cs" />
+    <Compile Remove="KTANE-Solver\MemoryOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\MemoryOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MemoryStage1Form.cs" />
+    <Compile Remove="KTANE-Solver\MemoryStage1Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Microcontroller.cs" />
+    <Compile Remove="KTANE-Solver\Microcontroller10PinAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\Microcontroller10PinAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Microcontroller6PinAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\Microcontroller6PinAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Microcontroller8PinAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\Microcontroller8PinAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MicrocontrollerForm.cs" />
+    <Compile Remove="KTANE-Solver\MicrocontrollerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Module.cs" />
+    <Compile Remove="KTANE-Solver\ModuleForm.cs" />
+    <Compile Remove="KTANE-Solver\ModuleForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ModuleSelectionForm.cs" />
+    <Compile Remove="KTANE-Solver\ModuleSelectionForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ButtonTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ChordQualitiesTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ColoredSquaresTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ColorMathTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ComplicatedWiresTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ConnectionCheckTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\Creation.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\FastMathTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\LetterKeysTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ListeningTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\Microcontroller.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\MysticSquareTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\Properties\AssemblyInfo.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\RoundKeypadTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\SafetySafeTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ScrewTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\SeaShellsTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\SemaphoreTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\ShapeShiftTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\SimonSaysTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\SkewedSlotsTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\TicTacToeTest.cs" />
+    <Compile Remove="KTANE-Solver\ModuleTests\WireSequenceTest.cs" />
+    <Compile Remove="KTANE-Solver\MonsplodeTradingCard.cs" />
+    <Compile Remove="KTANE-Solver\MonsplodeTradingCardForm1.cs" />
+    <Compile Remove="KTANE-Solver\MonsplodeTradingCardForm1.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MonsplodeTradingCardOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\MonsplodeTradingCardOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MorseCode.cs" />
+    <Compile Remove="KTANE-Solver\MorseCodeForm.cs" />
+    <Compile Remove="KTANE-Solver\MorseCodeForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MultiStageModuleForm.cs" />
+    <Compile Remove="KTANE-Solver\MultiStageModuleForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Murder.cs" />
+    <Compile Remove="KTANE-Solver\MurderForm.cs" />
+    <Compile Remove="KTANE-Solver\MurderForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MysticSquareForm.cs" />
+    <Compile Remove="KTANE-Solver\MysticSquareForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\MysticSquares.cs" />
+    <Compile Remove="KTANE-Solver\NumberPad.cs" />
+    <Compile Remove="KTANE-Solver\NumberPadForm.cs" />
+    <Compile Remove="KTANE-Solver\NumberPadForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Remove="KTANE-Solver\obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Remove="KTANE-Solver\Password.cs" />
+    <Compile Remove="KTANE-Solver\PasswordFirstStageForm.cs" />
+    <Compile Remove="KTANE-Solver\PasswordFirstStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\PasswordOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\PasswordOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\PointOfOrder.cs" />
+    <Compile Remove="KTANE-Solver\PointOfOrderForm.cs" />
+    <Compile Remove="KTANE-Solver\PointOfOrderForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Poker.cs" />
+    <Compile Remove="KTANE-Solver\PokerStage1Form.cs" />
+    <Compile Remove="KTANE-Solver\PokerStage1Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\PokerStage2Form.cs" />
+    <Compile Remove="KTANE-Solver\PokerStage2Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\PokerStage3Form.cs" />
+    <Compile Remove="KTANE-Solver\PokerStage3Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Port.cs" />
+    <Compile Remove="KTANE-Solver\Program.cs" />
+    <Compile Remove="KTANE-Solver\Properties\AssemblyInfo.cs" />
+    <Compile Remove="KTANE-Solver\Properties\Resources.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Properties\Settings.Designer.cs" />
+    <Compile Remove="KTANE-Solver\RockPaperScissorsLizardSpock.cs" />
+    <Compile Remove="KTANE-Solver\RockPaperScissorsLizardSpockForm.cs" />
+    <Compile Remove="KTANE-Solver\RockPaperScissorsLizardSpockForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\RoundKeypad.cs" />
+    <Compile Remove="KTANE-Solver\RoundKeypadAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\RoundKeypadAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\RoundKeypadForm.cs" />
+    <Compile Remove="KTANE-Solver\RoundKeypadForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\RubikCube.cs" />
+    <Compile Remove="KTANE-Solver\RubikCubeForm.cs" />
+    <Compile Remove="KTANE-Solver\RubikCubeForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SafetySafe.cs" />
+    <Compile Remove="KTANE-Solver\SafetySafeForm.cs" />
+    <Compile Remove="KTANE-Solver\SafetySafeForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Screw.cs" />
+    <Compile Remove="KTANE-Solver\ScrewForm.cs" />
+    <Compile Remove="KTANE-Solver\ScrewForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SeaShells.cs" />
+    <Compile Remove="KTANE-Solver\SeaShellsForm.cs" />
+    <Compile Remove="KTANE-Solver\SeaShellsForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Semaphore.cs" />
+    <Compile Remove="KTANE-Solver\SemaphoreOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\SemaphoreOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SemaphoreStage1Form.cs" />
+    <Compile Remove="KTANE-Solver\SemaphoreStage1Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ShapeShift.cs" />
+    <Compile Remove="KTANE-Solver\ShapeShiftPictureForm.cs" />
+    <Compile Remove="KTANE-Solver\ShapeShiftPictureForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\ShapeShiftWordForm.cs" />
+    <Compile Remove="KTANE-Solver\ShapeShiftWordForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SillySlots.cs" />
+    <Compile Remove="KTANE-Solver\SillySlotsOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\SillySlotsOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SillySlotsStage1Form.cs" />
+    <Compile Remove="KTANE-Solver\SillySlotsStage1Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SimonSays.cs" />
+    <Compile Remove="KTANE-Solver\SimonSaysForm.cs" />
+    <Compile Remove="KTANE-Solver\SimonSaysForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SimonSaysOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\SimonSaysOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SkewedSlotForm.cs" />
+    <Compile Remove="KTANE-Solver\SkewedSlotForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\SkewedSlots.cs" />
+    <Compile Remove="KTANE-Solver\Switches.cs" />
+    <Compile Remove="KTANE-Solver\SwitchesForm.cs" />
+    <Compile Remove="KTANE-Solver\SwitchesForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToe.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeAnswerForm.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeAnswerForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeForm.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeInputForm.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeInputForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeSymbolForm.cs" />
+    <Compile Remove="KTANE-Solver\TicTacToeSymbolForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\TwoBits.cs" />
+    <Compile Remove="KTANE-Solver\TwoBitsOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\TwoBitsOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\TwoBitsStage1Form.cs" />
+    <Compile Remove="KTANE-Solver\TwoBitsStage1Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\WhosOnFirst.cs" />
+    <Compile Remove="KTANE-Solver\WhosOnFirstFirstStageForm.cs" />
+    <Compile Remove="KTANE-Solver\WhosOnFirstFirstStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\WhosOnFirstOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\WhosOnFirstOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\Wires.cs" />
+    <Compile Remove="KTANE-Solver\WireSequence.cs" />
+    <Compile Remove="KTANE-Solver\WireSequenceOtherStageForm.cs" />
+    <Compile Remove="KTANE-Solver\WireSequenceOtherStageForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\WireSequenceStage1Form.cs" />
+    <Compile Remove="KTANE-Solver\WireSequenceStage1Form.Designer.cs" />
+    <Compile Remove="KTANE-Solver\WiresForm.cs" />
+    <Compile Remove="KTANE-Solver\WiresForm.Designer.cs" />
+    <Compile Remove="KTANE-Solver\WordSearch.cs" />
+    <Compile Remove="KTANE-Solver\WordSearchForm.cs" />
+    <Compile Remove="KTANE-Solver\WordSearchForm.Designer.cs" />
+    <Compile Remove="ModuleTests\ButtonTest.cs" />
+    <Compile Remove="ModuleTests\ChordQualitiesTest.cs" />
+    <Compile Remove="ModuleTests\ColoredSquaresTest.cs" />
+    <Compile Remove="ModuleTests\ColorMathTest.cs" />
+    <Compile Remove="ModuleTests\ComplicatedWiresTest.cs" />
+    <Compile Remove="ModuleTests\ConnectionCheckTest.cs" />
+    <Compile Remove="ModuleTests\Creation.cs" />
+    <Compile Remove="ModuleTests\FastMathTest.cs" />
+    <Compile Remove="ModuleTests\LetterKeysTest.cs" />
+    <Compile Remove="ModuleTests\ListeningTest.cs" />
+    <Compile Remove="ModuleTests\Microcontroller.cs" />
+    <Compile Remove="ModuleTests\MysticSquareTest.cs" />
+    <Compile Remove="ModuleTests\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Remove="ModuleTests\Properties\AssemblyInfo.cs" />
+    <Compile Remove="ModuleTests\RoundKeypadTest.cs" />
+    <Compile Remove="ModuleTests\SafetySafeTest.cs" />
+    <Compile Remove="ModuleTests\ScrewTest.cs" />
+    <Compile Remove="ModuleTests\SeaShellsTest.cs" />
+    <Compile Remove="ModuleTests\SemaphoreTest.cs" />
+    <Compile Remove="ModuleTests\ShapeShiftTest.cs" />
+    <Compile Remove="ModuleTests\SimonSaysTest.cs" />
+    <Compile Remove="ModuleTests\SkewedSlotsTest.cs" />
+    <Compile Remove="ModuleTests\TicTacToeTest.cs" />
+    <Compile Remove="ModuleTests\WireSequenceTest.cs" />
+    <EmbeddedResource Remove="KTANE-Solver\3DMazeForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\3DMazeStage2Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\AdjacentLettersAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\AdjacentLettersForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\AdventureGameForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\AnagramsForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\AstrologyForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BinaryPuzzleAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BinaryPuzzleForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BitmapsForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BlindAlleyForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BooleanVennDiagramForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BrokenButtonsForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BrokenButtonsWordSelectionForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\BulbForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ButtonForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\CheapCheckoutAlertForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\CheapCheckoutForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ChessForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ChordQualitiesForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ColoredSquaresForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ColorMathForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ComplicatedWiresForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ConnectionCheckForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\CreationForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\CreationOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\EdgeworkConfirmationForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\EdgeworkInputForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\EdgeworkSelectionForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\FastMathOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\FastMathStage1Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\FizzBuzzForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\GamepadForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\IceCreamForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\IceCreamStage2Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\KeypadForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\KeypadFormAnswer.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\LetterKeysForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\LightCycleForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ListeningForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\LogicForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MazeAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MazeForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MemoryOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MemoryStage1Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\Microcontroller10PinAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\Microcontroller6PinAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\Microcontroller8PinAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MicrocontrollerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ModuleForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ModuleSelectionForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MonsplodeTradingCardForm1.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MonsplodeTradingCardOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MorseCodeForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MurderForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\MysticSquareForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\NumberPadForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\PasswordFirstStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\PasswordOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\PointOfOrderForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\PokerStage1Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\PokerStage2Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\PokerStage3Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\Properties\Resources.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\RockPaperScissorsLizardSpockForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\RoundKeypadAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\RoundKeypadForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\RubikCubeForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SafetySafeForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ScrewForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SeaShellsForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SemaphoreOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SemaphoreStage1Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ShapeShiftPictureForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\ShapeShiftWordForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SillySlotsOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SillySlotsStage1Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SimonSaysForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SkewedSlotForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\SwitchesForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\TicTacToeAnswerForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\TicTacToeForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\TicTacToeInputForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\TicTacToeSymbolForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\TwoBitsOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\TwoBitsStage1Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\WhosOnFirstFirstStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\WhosOnFirstOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\WireSequenceOtherStageForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\WireSequenceStage1Form.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\WiresForm.resx" />
+    <EmbeddedResource Remove="KTANE-Solver\WordSearchForm.resx" />
+    <EmbeddedResource Remove="RoundKeypadAnswerForm.resx" />
+    <EmbeddedResource Remove="RoundKeypadForm.resx" />
+    <EmbeddedResource Remove="SafetySafeForm.resx" />
+    <EmbeddedResource Remove="SeaShellsForm.resx" />
+    <EmbeddedResource Remove="ShapeShiftPictureForm.resx" />
+    <EmbeddedResource Remove="ShapeShiftWordForm.resx" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
